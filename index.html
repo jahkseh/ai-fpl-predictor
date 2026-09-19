@@ -500,7 +500,11 @@ body[data-theme="light"] .hero-stat span {
             flex-wrap: wrap;
         }
 
-        .hero-secondary {
+        .hero .hero-secondary {
+            color: #d6dfda;
+        }
+
+        .hero .hero-secondary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -531,39 +535,42 @@ body[data-theme="light"] .hero-stat span {
             box-shadow: 0 16px 34px rgba(15, 30, 22, .10);
         }
 
-        .featured-explainer {
+        .featured-note {
             max-width: 900px;
-            margin: 0 auto 28px;
-            padding: 22px 24px;
-            display: grid;
-            grid-template-columns: minmax(190px, .75fr) 1.5fr;
-            gap: 24px;
+            margin: 0 auto 30px;
+            padding: 13px 16px;
+            display: flex;
             align-items: center;
+            gap: 12px;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 12px;
         }
 
-        .featured-label {
-            display: block;
-            margin-bottom: 7px;
+        .featured-note-icon {
+            flex: 0 0 auto;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: rgba(32, 184, 109, .12);
             color: var(--accent-hover);
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 900;
-            letter-spacing: .08em;
-            text-transform: uppercase;
+            letter-spacing: .05em;
         }
 
-        .featured-explainer h3 {
-            color: var(--text);
-            font-size: 1.15rem;
-            letter-spacing: -.02em;
-        }
-
-        .featured-explainer p {
+        .featured-note p {
+            margin: 0;
             color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .featured-note strong {
+            color: var(--text);
         }
 
         .players-section {
@@ -573,46 +580,58 @@ body[data-theme="light"] .hero-stat span {
         .player-card {
             position: relative;
             overflow: hidden;
+            min-height: 190px;
+            display: flex;
+            flex-direction: column;
         }
 
         .player-card::before {
             content: "";
             position: absolute;
-            inset: 0 auto 0 0;
-            width: 3px;
+            inset: 0 0 auto 0;
+            height: 3px;
             background: var(--accent);
-            opacity: 0;
-            transition: opacity .2s ease;
-        }
-
-        .player-card:hover::before {
-            opacity: 1;
         }
 
         .player-rank {
             color: var(--accent-hover);
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             letter-spacing: .08em;
             text-transform: uppercase;
         }
 
+        .player-card h3 {
+            margin: 10px 0 5px;
+            font-size: 1.3rem;
+        }
+
+        .player-card > p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
         .player-points {
-            margin-top: 16px;
+            margin-top: auto;
+            padding-top: 18px;
             display: flex;
             align-items: baseline;
             gap: 7px;
         }
 
         .player-points strong {
-            font-size: 1.9rem;
+            font-size: 2rem;
             color: var(--text);
+            letter-spacing: -.03em;
         }
 
         .player-points span {
             color: var(--text-muted);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
         }
 
         .loading {
@@ -623,11 +642,9 @@ body[data-theme="light"] .hero-stat span {
         }
 
         @media (max-width: 800px) {
-            .featured-explainer {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            .featured-note {
+                align-items: flex-start;
             }
-
 
             .hero-actions {
                 flex-direction: column;
@@ -709,19 +726,15 @@ body[data-theme="light"] .hero-stat span {
     <div class="section-title">
         <span class="section-kicker">Players to watch</span>
         <h2>Featured Players</h2>
-        <p>See which players the model currently expects to score the most points.</p>
+        <p>The six highest player projections from the current Gameweek model.</p>
     </div>
 
-    <div class="featured-explainer">
-        <div>
-            <span class="featured-label">How this works</span>
-            <h3>Who is standing out in the model?</h3>
-        </div>
+    <div class="featured-note">
+        <span class="featured-note-icon">AI</span>
         <p>
-            These players are automatically selected from the current Gameweek predictions.
-            We take the highest projected points across every fixture and show the six players
-            at the top. This is a model projection, not a recommendation or a prediction of
-            the final FPL points they will actually score.
+            <strong>How this works:</strong>
+            the site ranks every player in the current prediction data by expected points
+            and displays the top six here. These are model projections, not guaranteed FPL scores.
         </p>
     </div>
 
@@ -951,6 +964,32 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
     }
 
     loadPredictions();
+
+    async function populateFeaturedPlayers() {
+        try {
+            const response = await fetch("predictions.json");
+            if (!response.ok) throw new Error("Prediction data unavailable");
+
+            const data = await response.json();
+
+            const totalPredictions = data.predictions.reduce(
+                (total, fixture) => total + fixture.players.length,
+                0
+            );
+
+            predictionCount.textContent = totalPredictions;
+            predictionCountLabel.textContent = "GW" + data.gameweek + " predictions";
+            predictionsTitle.textContent = "Gameweek " + data.gameweek + " AI Predictions";
+
+            renderFeaturedPlayers(data.predictions);
+        } catch (error) {
+            console.error("Featured player loading error:", error);
+            playerContainer.innerHTML =
+                '<div class="info-card loading">Player predictions are temporarily unavailable.</div>';
+        }
+    }
+
+    populateFeaturedPlayers();
     </script>
 
 </body>
