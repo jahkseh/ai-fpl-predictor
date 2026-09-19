@@ -309,7 +309,48 @@ footer {
     padding: 25px;
     font-size: 14px;
 }
+/* Light theme */
+body[data-theme="light"] {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --surface-soft: #eef2f5;
+    --border: #dce3ea;
+    --text: #1f2937;
+    --text-muted: #64748b;
+    --accent: #20b86d;
+    --accent-hover: #17945a;
 
+    /* Keep the football-style dark hero/header */
+    --hero: #0f172a;
+    --header: #0f172a;
+    --footer: #0f172a;
+}
+
+body[data-theme="light"] .fixture-card:hover,
+body[data-theme="light"] .prediction-card:hover {
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+}
+
+/* Theme toggle */
+.theme-toggle {
+    margin-left: 20px;
+    padding: 8px 12px;
+    border: 1px solid #334155;
+    border-radius: 20px;
+    background: transparent;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+}
+
+@media (max-width: 800px) {
 @media (max-width: 800px) {
     .prediction-grid,
     .fixture-grid,
@@ -332,6 +373,7 @@ footer {
 }
 
 </style>
+</head>
 
 <body>
     <header>
@@ -340,11 +382,14 @@ footer {
                 AI FPL <span>Predictor</span>
             </div>
 
-            <nav>
+          <nav>
     <a href="#home">Home</a>
     <a href="#predictions">Predictions</a>
     <a href="#players">Players</a>
     <a href="#performance">Performance</a>
+    <button class="theme-toggle" id="theme-toggle" type="button">
+        ☀️ Light
+    </button>
 </nav>
         </div>
     </header>
@@ -774,9 +819,33 @@ footer {
     </div>
 
 </section>
-    <footer>
+       <footer>
         AI FPL Predictor · Machine-learning FPL analysis
     </footer>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const savedTheme = localStorage.getItem("fpl-theme");
+
+        if (savedTheme === "light") {
+            document.body.setAttribute("data-theme", "light");
+            themeToggle.textContent = "🌙 Dark";
+        }
+
+        themeToggle.addEventListener("click", () => {
+            const isLight = document.body.getAttribute("data-theme") === "light";
+
+            if (isLight) {
+                document.body.removeAttribute("data-theme");
+                localStorage.setItem("fpl-theme", "dark");
+                themeToggle.textContent = "☀️ Light";
+            } else {
+                document.body.setAttribute("data-theme", "light");
+                localStorage.setItem("fpl-theme", "light");
+                themeToggle.textContent = "🌙 Dark";
+            }
+        });
+    </script>
 
 </body>
 </html>
