@@ -987,8 +987,25 @@ body[data-theme="light"] .hero-stat span {
 
             const data = await response.json();
 
-            console.log("Predictions loaded successfully:", data);
+            predictionContainer.innerHTML = data.predictions.map(fixture => `
+    <div class="fixture-card">
+        <div class="fixture-teams">
+            <span class="team-badge">${teamCodes[fixture.home]}</span>
+            <span class="team-name">${fixture.home}</span>
+            <span class="vs">VS</span>
+            <span class="team-name">${fixture.away}</span>
+            <span class="team-badge">${teamCodes[fixture.away]}</span>
+        </div>
 
+        ${fixture.players.map(player => `
+            <div class="fixture-prediction ${player.rank === 1 ? "top-pick" : ""}">
+                <span class="rank">${player.rank}</span>
+                <span class="player">${player.name}</span>
+                <strong>${player.prediction.toFixed(2)}</strong>
+            </div>
+        `).join("")}
+    </div>
+`).join("");
         } catch (error) {
             console.error("Prediction loading error:", error);
         }
