@@ -203,20 +203,35 @@
             box-shadow: 0 0 0 5px rgba(39, 209, 127, .08);
         }
 
-        .player-monogram {
-            width: 54px;
-            height: 54px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-            border: 1px solid rgba(39, 209, 127, .45);
-            border-radius: 15px;
-            background: rgba(39, 209, 127, .09);
-            color: var(--accent);
-            font-size: 14px;
-            font-weight: 900;
-            letter-spacing: .05em;
+        .model-graphic {
+            width: 190px;
+            height: 120px;
+            display: block;
+            margin-top: 22px;
+            opacity: .95;
+        }
+
+        .model-graphic .line {
+            fill: none;
+            stroke: rgba(148, 163, 184, .28);
+            stroke-width: 1.2;
+        }
+
+        .model-graphic .line-accent {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .model-graphic .node {
+            fill: var(--accent);
+        }
+
+        .model-graphic .node-soft {
+            fill: #94a3b8;
+            opacity: .5;
         }
 
         .profile-hero h1 {
@@ -503,9 +518,15 @@
             }
 
             nav {
+                width: 100%;
                 gap: 12px;
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+
+            .theme-toggle {
+                margin-left: auto;
+                margin-right: auto;
             }
 
             main {
@@ -525,6 +546,12 @@
 
             .profile-hero::after {
                 left: 50%;
+            }
+
+            .model-graphic {
+                width: 165px;
+                height: 104px;
+                margin-top: 18px;
             }
 
             .profile-body {
@@ -615,14 +642,6 @@
                 .replaceAll("'", "&#039;");
         }
 
-        function playerInitials(name) {
-            const parts = String(name).trim().split(/\s+/).filter(Boolean);
-            if (parts.length === 1) {
-                return parts[0].slice(0, 2).toUpperCase();
-            }
-            return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-        }
-
         async function loadPlayerProfile() {
             try {
                 if (!playerName) {
@@ -673,7 +692,17 @@
                         '<section class="profile-hero">' +
                             '<div class="hero-copy">' +
                                 '<div class="profile-kicker">Gameweek ' + escapeHtml(data.gameweek) + ' · Pre-match model</div>' +
-                                '<div class="player-monogram" aria-hidden="true">' + escapeHtml(playerInitials(player.name)) + '</div>' +
+                                '<svg class="model-graphic" viewBox="0 0 190 120" role="img" aria-label="Stylised model signal graphic">' +
+                                    '<path class="line" d="M8 92 H182" />' +
+                                    '<path class="line" d="M28 18 V100" />' +
+                                    '<path class="line" d="M28 76 L72 48 L111 62 L158 25" />' +
+                                    '<path class="line-accent" d="M28 76 L72 48 L111 62 L158 25" />' +
+                                    '<circle class="node-soft" cx="28" cy="76" r="4" />' +
+                                    '<circle class="node-soft" cx="72" cy="48" r="4" />' +
+                                    '<circle class="node-soft" cx="111" cy="62" r="4" />' +
+                                    '<circle class="node" cx="158" cy="25" r="5" />' +
+                                    '<path class="line-accent" d="M158 25 L176 14" opacity=".45" />' +
+                                '</svg>' +
                                 '<h1>' + escapeHtml(player.name) + '</h1>' +
                                 '<div class="fixture-line">' + escapeHtml(player.home) + ' vs ' + escapeHtml(player.away) + '</div>' +
                             '</div>' +
