@@ -793,7 +793,68 @@ body[data-theme="light"] .hero-stat span {
         }
 
 
-                /* Team identity visuals */
+                /* Current Gameweek overview */
+        .prediction-overview {
+            max-width: 1000px;
+            margin: -8px auto 30px;
+            display: grid;
+            grid-template-columns: 1.35fr .65fr .65fr 1.2fr;
+            gap: 1px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--border);
+            box-shadow: 0 12px 30px rgba(15, 30, 22, .05);
+        }
+        .overview-intro,
+        .overview-stat {
+            min-height: 86px;
+            padding: 17px 18px;
+            background: var(--surface);
+        }
+        .overview-intro { display:flex; flex-direction:column; justify-content:center; }
+        .overview-kicker,
+        .overview-stat span { color:var(--text-muted); font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+        .overview-intro strong { margin:2px 0 1px; color:var(--text); font-size:1.3rem; letter-spacing:-.02em; }
+        .overview-intro > span:last-child { color:var(--text-muted); font-size:12px; }
+        .overview-stat { display:flex; flex-direction:column; justify-content:center; }
+        .overview-stat strong { margin-top:4px; color:var(--text); font-size:1.45rem; letter-spacing:-.03em; }
+        .overview-highlight { border-left:2px solid var(--accent); }
+        .overview-highlight strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:1.15rem; }
+        .overview-highlight small { margin-top:3px; color:var(--text-muted); font-size:11px; line-height:1.35; }
+        .fixture-card { position:relative; }
+        .fixture-card::before {
+            content:""; position:absolute; top:0; left:20px; right:20px; height:2px;
+            border-radius:0 0 3px 3px;
+            background:linear-gradient(90deg,var(--home-team-colour),var(--away-team-colour)); opacity:.85;
+        }
+        .team-badge {
+            background: color-mix(in srgb, var(--team-colour) 12%, var(--surface-soft));
+            border-color: color-mix(in srgb, var(--team-colour) 40%, #334155);
+            color:var(--team-colour);
+        }
+        .player-card { --player-team-colour:var(--accent); }
+        .player-card::before { background:var(--player-team-colour); }
+        .player-team-pill {
+            display:inline-flex; align-items:center; gap:6px; margin-top:8px; width:fit-content;
+            padding:5px 8px; border:1px solid color-mix(in srgb,var(--player-team-colour) 32%,var(--border));
+            border-radius:999px; background:color-mix(in srgb,var(--player-team-colour) 8%,var(--surface));
+            color:var(--text-muted); font-size:10px; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+        }
+        .player-team-dot { width:7px; height:7px; border-radius:50%; background:var(--player-team-colour); }
+        body[data-theme="light"] .prediction-overview { box-shadow:0 12px 30px rgba(15,23,42,.07); }
+        @media (max-width:800px) {
+            .prediction-overview { grid-template-columns:1fr 1fr; margin-top:-2px; }
+            .overview-intro { grid-column:1 / -1; }
+            .overview-highlight { border-left:0; border-top:2px solid var(--accent); }
+        }
+        @media (max-width:520px) {
+            .prediction-overview { grid-template-columns:1fr; }
+            .overview-intro { grid-column:auto; }
+            .overview-highlight { border-top:2px solid var(--accent); }
+        }
+
+        /* Team identity visuals */
         .team-visual {
             --team-primary: #64748b;
             --team-secondary: #e5e7eb;
@@ -937,6 +998,27 @@ body[data-theme="light"] .hero-stat span {
         <h2 id="predictions-title">AI Predictions</h2>
         <p>Pre-match predictions for the three players projected to score the most FPL points in each fixture.</p>
     </div>
+        <div class="prediction-overview" aria-label="Current Gameweek summary">
+            <div class="overview-intro">
+                <span class="overview-kicker">Current Gameweek</span>
+                <strong id="overview-gameweek">GW5</strong>
+                <span>Pre-match model snapshot</span>
+            </div>
+            <div class="overview-stat">
+                <span>Fixtures</span>
+                <strong id="overview-fixtures">10</strong>
+            </div>
+            <div class="overview-stat">
+                <span>Predictions</span>
+                <strong id="overview-predictions">30</strong>
+            </div>
+            <div class="overview-stat overview-highlight">
+                <span>Top projection</span>
+                <strong id="overview-top-player">—</strong>
+                <small id="overview-top-points">— expected points</small>
+            </div>
+        </div>
+
 <div class="fixture-grid" id="prediction-container">
 </div>
 
@@ -1187,13 +1269,14 @@ function renderFeaturedPlayers(fixtures) {
     const featured = players.slice(0, 6);
 
     playerContainer.innerHTML = featured.map((player, index) => {
-        return '<a class="info-card player-card" href="player.html?player=' + encodeURIComponent(player.name) + '">' +
+        return '<a class="info-card player-card" style="--player-team-colour:' + (shirtColours[playerTeams[player.name]]?.[0] || "var(--accent)") + '" href="player.html?player=' + encodeURIComponent(player.name) + '">' +
             '<div class="player-card-visual">' +
                 '<div class="player-rank">#' + (index + 1) + ' model projection</div>' +
                 '' + getTeamVisual(player.name) + '' +
             '</div>' +
             '<h3>' + player.name + '</h3>' +
             '<p>' + player.home + ' vs ' + player.away + '</p>' +
+            '<span class="player-team-pill"><span class="player-team-dot"></span>' + (shirtMarks[playerTeams[player.name]] || "FPL") + ' · ' + (playerTeams[player.name] || "Team") + '</span>' +
             '<div class="player-points">' +
                 '<strong>' + player.prediction.toFixed(2) + '</strong>' +
                 '<span>&nbsp;expected points</span>' +
@@ -1239,11 +1322,11 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
     <div class="fixture-card">
         <div class="fixture-teams">
-            <span class="team-badge">${teamCodes[fixture.home]}</span>
+            <span class="team-badge" style="--team-colour:${shirtColours[fixture.home]?.[0] || "#27d17f"}" aria-label="${fixture.home}">${teamCodes[fixture.home]}</span>
             <span class="team-name">${fixture.home}</span>
             <span class="vs">VS</span>
             <span class="team-name">${fixture.away}</span>
-            <span class="team-badge">${teamCodes[fixture.away]}</span>
+            <span class="team-badge" style="--team-colour:${shirtColours[fixture.away]?.[0] || "#27d17f"}" aria-label="${fixture.away}">${teamCodes[fixture.away]}</span>
         </div>
 
         ${fixture.players.map(player => `
@@ -1299,6 +1382,23 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionCount.textContent = totalPredictions;
             predictionCountLabel.textContent = "GW" + data.gameweek + " predictions";
             predictionsTitle.textContent = "Gameweek " + data.gameweek + " AI Predictions";
+
+            const allPlayers = data.predictions.flatMap(fixture =>
+                fixture.players.map(player => ({
+                    ...player,
+                    home: fixture.home,
+                    away: fixture.away
+                }))
+            ).sort((a, b) => b.prediction - a.prediction);
+
+            const topPlayer = allPlayers[0];
+
+            document.getElementById("overview-gameweek").textContent = "GW" + data.gameweek;
+            document.getElementById("overview-fixtures").textContent = data.predictions.length;
+            document.getElementById("overview-predictions").textContent = totalPredictions;
+            document.getElementById("overview-top-player").textContent = topPlayer ? topPlayer.name : "—";
+            document.getElementById("overview-top-points").textContent =
+                topPlayer ? topPlayer.prediction.toFixed(2) + " expected points · " + topPlayer.home + " vs " + topPlayer.away : "—";
 
             renderFeaturedPlayers(data.predictions);
         } catch (error) {
