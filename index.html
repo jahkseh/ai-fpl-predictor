@@ -577,6 +577,30 @@ body[data-theme="light"] .hero-stat span {
             flex-direction: column;
         }
 
+
+        .player-card {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .player-card h3 {
+            color: var(--text);
+        }
+
+        .player-card-link {
+            margin-top: 14px;
+            color: var(--accent-hover);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+
+        .player-card:hover .player-card-link {
+            color: var(--accent);
+        }
+
         .player-card::before {
             content: "";
             position: absolute;
@@ -866,7 +890,7 @@ function renderFeaturedPlayers(fixtures) {
     const featured = players.slice(0, 6);
 
     playerContainer.innerHTML = featured.map((player, index) => {
-        return '<div class="info-card player-card">' +
+        return '<a class="info-card player-card" href="player.html?player=' + encodeURIComponent(player.name) + '">' +
             '<div class="player-rank">#' + (index + 1) + ' model projection</div>' +
             '<h3>' + player.name + '</h3>' +
             '<p>' + player.home + ' vs ' + player.away + '</p>' +
@@ -874,7 +898,8 @@ function renderFeaturedPlayers(fixtures) {
                 '<strong>' + player.prediction.toFixed(2) + '</strong>' +
                 '<span>&nbsp;expected points</span>' +
             '</div>' +
-        '</div>';
+            '<span class="player-card-link">View player profile →</span>' +
+        '</a>';
     }).join("");
 }
 
