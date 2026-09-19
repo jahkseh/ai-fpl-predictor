@@ -527,6 +527,84 @@ body[data-theme="light"] .hero-stat span {
             box-shadow: 0 16px 34px rgba(15, 30, 22, .10);
         }
 
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        .theme-toggle-icon {
+            width: 13px;
+            height: 13px;
+            display: inline-block;
+            border: 1.5px solid currentColor;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .theme-toggle-icon::after {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            top: -3px;
+            right: -3px;
+            border-radius: 50%;
+            background: var(--header);
+        }
+
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .feature-card::after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            right: -42px;
+            bottom: -42px;
+            border: 1px solid rgba(39, 209, 127, .12);
+            border-radius: 50%;
+        }
+
+        .feature-icon {
+            width: 42px;
+            height: 42px;
+            margin-bottom: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(39, 209, 127, .25);
+            border-radius: 12px;
+            background: rgba(39, 209, 127, .08);
+            color: var(--accent);
+        }
+
+        .feature-icon svg {
+            width: 23px;
+            height: 23px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .featured-note-icon {
+            font-size: 0;
+            position: relative;
+        }
+
+        .featured-note-icon::before {
+            content: "✦";
+            font-size: 14px;
+            color: var(--accent-hover);
+        }
+
         .featured-note {
             max-width: 900px;
             margin: 0 auto 30px;
@@ -690,8 +768,9 @@ body[data-theme="light"] .hero-stat span {
     <a href="#predictions">Predictions</a>
     <a href="#players">Players</a>
     <a href="#performance">Performance</a>
-    <button class="theme-toggle" id="theme-toggle" type="button">
-        ☀️ Light
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+        <span class="theme-toggle-label">Light</span>
     </button>
 </nav>
         </div>
@@ -771,8 +850,11 @@ body[data-theme="light"] .hero-stat span {
 
             <div class="info-grid">
 
-                <div class="info-card">
-                    <h3>📊 Historical Data</h3>
+                <div class="info-card feature-card">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48"><path d="M9 37V11h30v26H9Z"/><path d="M14 31l6-7 5 4 8-10"/><circle cx="14" cy="31" r="2"/><circle cx="25" cy="28" r="2"/><circle cx="33" cy="18" r="2"/></svg>
+                    </div>
+                    <h3>Historical Data</h3>
                     <p>
                         Previous gameweek performance, minutes, starts,
                         goals, expected goals, expected assists and other
@@ -780,16 +862,22 @@ body[data-theme="light"] .hero-stat span {
                     </p>
                 </div>
 
-                <div class="info-card">
-                    <h3>🤖 Machine Learning</h3>
+                <div class="info-card feature-card">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48"><rect x="11" y="11" width="26" height="26" rx="7"/><path d="M17 24h14M24 17v14"/><circle cx="17" cy="17" r="2"/><circle cx="31" cy="31" r="2"/></svg>
+                    </div>
+                    <h3>Machine Learning</h3>
                     <p>
                         A Random Forest regression model analyses historical
                         player performance to estimate expected FPL points.
                     </p>
                 </div>
 
-                <div class="info-card">
-                    <h3>⚽ Predictions</h3>
+                <div class="info-card feature-card">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48"><path d="M24 7 39 18v18L24 43 9 36V18L24 7Z"/><path d="m24 7 6 11-6 7-6-7 6-11ZM9 18l15 7 15-7M24 25v18"/></svg>
+                    </div>
+                    <h3>Predictions</h3>
                     <p>
                         The model generates predicted points for players,
                         allowing us to compare predicted performance with
@@ -849,7 +937,7 @@ body[data-theme="light"] .hero-stat span {
 
         if (savedTheme === "light") {
             document.body.setAttribute("data-theme", "light");
-            themeToggle.textContent = "🌙 Dark";
+            themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
         }
 
         themeToggle.addEventListener("click", () => {
@@ -858,7 +946,7 @@ body[data-theme="light"] .hero-stat span {
             if (isLight) {
                 document.body.removeAttribute("data-theme");
                 localStorage.setItem("fpl-theme", "dark");
-                themeToggle.textContent = "☀️ Light";
+                themeToggle.querySelector(".theme-toggle-label").textContent = "Light";
             } else {
                 document.body.setAttribute("data-theme", "light");
                 localStorage.setItem("fpl-theme", "light");
@@ -891,7 +979,14 @@ function renderFeaturedPlayers(fixtures) {
 
     playerContainer.innerHTML = featured.map((player, index) => {
         return '<a class="info-card player-card" href="player.html?player=' + encodeURIComponent(player.name) + '">' +
-            '<div class="player-rank">#' + (index + 1) + ' model projection</div>' +
+            '<div class="player-card-visual">' +
+                '<div class="player-rank">#' + (index + 1) + ' model projection</div>' +
+                '<svg class="kit-graphic" viewBox="0 0 72 72" aria-hidden="true">' +
+                    '<path d="M24 13 13 20l6 12 6-4v27h26V28l6 4 6-12-11-7-8 8h-6l-8-8Z"/>' +
+                    '<path class="kit-neck" d="M27 13c1 5 4 8 9 8s8-3 9-8"/>' +
+                    '<path class="kit-mark" d="M29 35h14"/><path class="kit-mark" d="M36 31v8"/>' +
+                '</svg>' +
+            '</div>' +
             '<h3>' + player.name + '</h3>' +
             '<p>' + player.home + ' vs ' + player.away + '</p>' +
             '<div class="player-points">' +
