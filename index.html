@@ -449,7 +449,6 @@ body[data-theme="light"] .hero-stat span {
 }
 
 @media (max-width: 800px) {
-@media (max-width: 800px) {
     .prediction-grid,
     .fixture-grid,
     .info-grid {
@@ -496,33 +495,54 @@ body[data-theme="light"] .hero-stat span {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
-        .hero .hero-secondary {
+        .hero-button,
+        .hero-secondary {
+            width: 220px;
+            min-height: 48px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 46px;
-            padding: 0 18px;
-            border: 1px solid rgba(255,255,255,.14);
+            padding: 0 20px;
             border-radius: 9px;
-            background: transparent;
-            color: #d6dfda !important;
             font: inherit;
             font-weight: 700;
             line-height: 1;
+            text-align: center;
+            text-decoration: none;
             cursor: pointer;
+            transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .hero-button {
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #101a35;
+        }
+
+        .hero-button:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            color: #101a35;
+            transform: translateY(-1px);
+        }
+
+        .hero-secondary {
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #101a35 !important;
             appearance: none;
             -webkit-appearance: none;
-            text-decoration: none;
-            transition: background .2s ease, border-color .2s ease, color .2s ease;
         }
 
         .hero-secondary:hover {
-            background: rgba(255,255,255,.07);
-            border-color: rgba(255,255,255,.25);
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            color: #101a35 !important;
+            transform: translateY(-1px);
         }
 
         .fixture-card,
@@ -619,18 +639,19 @@ body[data-theme="light"] .hero-stat span {
             padding-top: 18px;
             display: flex;
             align-items: baseline;
+            gap: 12px;
         }
 
         .player-points strong {
-            margin-right: 12px !important;
+            margin: 0;
             font-size: 2rem;
             color: var(--text);
             letter-spacing: -.03em;
         }
 
         .player-points span {
-            margin-left: 0;
-            padding-left: 0;
+            margin: 0;
+            padding: 0;
             white-space: nowrap;
             color: var(--text-muted);
             font-size: 11px;
@@ -688,9 +709,8 @@ body[data-theme="light"] .hero-stat span {
         <h1>AI FPL <span>Predictor</span></h1>
 
         <p>
-            Machine-learning powered Fantasy Premier League predictions
-            designed to help analyse player performance, fixtures and
-            expected points.
+            Data-driven Fantasy Premier League analysis using historical player
+            performance, fixture context and machine-learning predictions.
         </p>
 
         <div class="hero-actions">
