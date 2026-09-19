@@ -199,7 +199,56 @@
             color: #687189;
             font-weight: normal;
         }
+.fixture-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
 
+.fixture-card {
+    background: #111827;
+    border: 1px solid #243047;
+    border-radius: 16px;
+    padding: 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fixture-card:hover {
+    transform: translateY(-3px);
+    border-color: #27d17f;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+}
+
+.fixture-card h3 {
+    margin: 0 0 16px;
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+
+.fixture-prediction {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    border-top: 1px solid #243047;
+}
+
+.fixture-prediction .rank {
+    color: #27d17f;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.fixture-prediction .player {
+    color: #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.fixture-prediction strong {
+    color: #ffffff;
+    font-size: 1rem;
+}
         .info-section {
             background: white;
             border-top: 1px solid #e4e8f0;
@@ -235,9 +284,11 @@
         }
 
         @media (max-width: 800px) {
-            .prediction-grid,
-            .info-grid {
-                grid-template-columns: 1fr;
+            ..prediction-grid,
+.fixture-grid,
+.info-grid {
+    grid-template-columns: 1fr;
+}
             }
 
             .navbar {
@@ -288,222 +339,235 @@
     </section>
 
     <section class="section" id="predictions">
+<div class="fixture-grid">
 
-        <div class="section-title">
-            <h2>GW5 AI Predictions</h2>
-            <p>Example predictions from our pre-gameweek model.</p>
+    <div class="fixture-card">
+        <h3>Bournemouth vs Liverpool</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">Hill</span>
+            <strong>4.98</strong>
         </div>
 
-    <div class="prediction-grid">
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Wirtz</span>
+            <strong>4.65</strong>
+        </div>
 
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>Hill</h3>
-        <div class="fixture">Bournemouth vs Liverpool</div>
-        <div class="points">4.98 <small>predicted points</small></div>
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Szoboszlai</span>
+            <strong>4.50</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Wirtz</h3>
-        <div class="fixture">Bournemouth vs Liverpool</div>
-        <div class="points">4.65 <small>predicted points</small></div>
+
+    <div class="fixture-card">
+        <h3>Brentford vs Chelsea</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">João Pedro</span>
+            <strong>4.57</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Lewis-Potter</span>
+            <strong>4.13</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Palmer</span>
+            <strong>4.02</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Szoboszlai</h3>
-        <div class="fixture">Bournemouth vs Liverpool</div>
-        <div class="points">4.50 <small>predicted points</small></div>
+
+    <div class="fixture-card">
+        <h3>Brighton vs Arsenal</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">Saka</span>
+            <strong>4.69</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Gabriel</span>
+            <strong>4.61</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Dunk</span>
+            <strong>4.44</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>João Pedro</h3>
-        <div class="fixture">Brentford vs Chelsea</div>
-        <div class="points">4.57 <small>predicted points</small></div>
+
+    <div class="fixture-card">
+        <h3>Everton vs Ipswich Town</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">Branthwaite</span>
+            <strong>5.45</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Mykolenko</span>
+            <strong>5.28</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Tarkowski</span>
+            <strong>4.61</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Lewis-Potter</h3>
-        <div class="fixture">Brentford vs Chelsea</div>
-        <div class="points">4.13 <small>predicted points</small></div>
+
+    <div class="fixture-card">
+        <h3>Fulham vs Man Utd</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">B. Fernandes</span>
+            <strong>5.00</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Mbeumo</span>
+            <strong>4.55</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Leno</span>
+            <strong>4.40</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Palmer</h3>
-        <div class="fixture">Brentford vs Chelsea</div>
-        <div class="points">4.02 <small>predicted points</small></div>
+
+    <div class="fixture-card">
+        <h3>Leeds vs Crystal Palace</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">Bogle</span>
+            <strong>4.65</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Calvert-Lewin</span>
+            <strong>4.40</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Stach</span>
+            <strong>4.17</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>Saka</h3>
-        <div class="fixture">Brighton vs Arsenal</div>
-        <div class="points">4.69 <small>predicted points</small></div>
+
+    <div class="fixture-card">
+        <h3>Man City vs Sunderland</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">Erling Haaland</span>
+            <strong>5.87</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Mukiele</span>
+            <strong>4.66</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Semenyo</span>
+            <strong>4.52</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Gabriel</h3>
-        <div class="fixture">Brighton vs Arsenal</div>
-        <div class="points">4.61 <small>predicted points</small></div>
+
+    <div class="fixture-card">
+        <h3>Newcastle vs Hull City</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">Barnes</span>
+            <strong>4.20</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Horníček</span>
+            <strong>4.04</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Wissa</span>
+            <strong>3.78</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Dunk</h3>
-        <div class="fixture">Brighton vs Arsenal</div>
-        <div class="points">4.44 <small>predicted points</small></div>
+
+    <div class="fixture-card">
+        <h3>Nott'm Forest vs Coventry City</h3>
+
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">Sels</span>
+            <strong>4.19</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Schlager</span>
+            <strong>4.07</strong>
+        </div>
+
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Gibbs-White</span>
+            <strong>4.04</strong>
+        </div>
     </div>
 
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>Branthwaite</h3>
-        <div class="fixture">Everton vs Ipswich Town</div>
-        <div class="points">5.45 <small>predicted points</small></div>
-    </div>
 
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Mykolenko</h3>
-        <div class="fixture">Everton vs Ipswich Town</div>
-        <div class="points">5.28 <small>predicted points</small></div>
-    </div>
+    <div class="fixture-card">
+        <h3>Spurs vs Aston Villa</h3>
 
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Tarkowski</h3>
-        <div class="fixture">Everton vs Ipswich Town</div>
-        <div class="points">4.61 <small>predicted points</small></div>
-    </div>
+        <div class="fixture-prediction">
+            <span class="rank">1</span>
+            <span class="player">Van de Ven</span>
+            <strong>4.77</strong>
+        </div>
 
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>B. Fernandes</h3>
-        <div class="fixture">Fulham vs Man Utd</div>
-        <div class="points">5.00 <small>predicted points</small></div>
-    </div>
+        <div class="fixture-prediction">
+            <span class="rank">2</span>
+            <span class="player">Kinsky</span>
+            <strong>4.24</strong>
+        </div>
 
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Mbeumo</h3>
-        <div class="fixture">Fulham vs Man Utd</div>
-        <div class="points">4.55 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Leno</h3>
-        <div class="fixture">Fulham vs Man Utd</div>
-        <div class="points">4.40 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>Bogle</h3>
-        <div class="fixture">Leeds vs Crystal Palace</div>
-        <div class="points">4.65 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Calvert-Lewin</h3>
-        <div class="fixture">Leeds vs Crystal Palace</div>
-        <div class="points">4.40 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Stach</h3>
-        <div class="fixture">Leeds vs Crystal Palace</div>
-        <div class="points">4.17 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>Erling Haaland</h3>
-        <div class="fixture">Man City vs Sunderland</div>
-        <div class="points">5.87 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Mukiele</h3>
-        <div class="fixture">Man City vs Sunderland</div>
-        <div class="points">4.66 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Semenyo</h3>
-        <div class="fixture">Man City vs Sunderland</div>
-        <div class="points">4.52 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>Barnes</h3>
-        <div class="fixture">Newcastle vs Hull City</div>
-        <div class="points">4.20 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Horníček</h3>
-        <div class="fixture">Newcastle vs Hull City</div>
-        <div class="points">4.04 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Wissa</h3>
-        <div class="fixture">Newcastle vs Hull City</div>
-        <div class="points">3.78 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>Sels</h3>
-        <div class="fixture">Nott'm Forest vs Coventry City</div>
-        <div class="points">4.19 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Schlager</h3>
-        <div class="fixture">Nott'm Forest vs Coventry City</div>
-        <div class="points">4.07 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Gibbs-White</h3>
-        <div class="fixture">Nott'm Forest vs Coventry City</div>
-        <div class="points">4.04 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#1 PREDICTION</div>
-        <h3>Van de Ven</h3>
-        <div class="fixture">Spurs vs Aston Villa</div>
-        <div class="points">4.77 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#2 PREDICTION</div>
-        <h3>Kinsky</h3>
-        <div class="fixture">Spurs vs Aston Villa</div>
-        <div class="points">4.24 <small>predicted points</small></div>
-    </div>
-
-    <div class="prediction-card">
-        <div class="rank">#3 PREDICTION</div>
-        <h3>Lindelöf</h3>
-        <div class="fixture">Spurs vs Aston Villa</div>
-        <div class="points">3.78 <small>predicted points</small></div>
+        <div class="fixture-prediction">
+            <span class="rank">3</span>
+            <span class="player">Lindelöf</span>
+            <strong>3.78</strong>
+        </div>
     </div>
 
 </div>
