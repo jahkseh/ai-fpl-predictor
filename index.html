@@ -500,12 +500,9 @@ body[data-theme="light"] .hero-stat span {
             flex-wrap: wrap;
         }
 
-        .hero .hero-secondary,
-        .hero .hero-secondary:visited {
-            color: #d6dfda;
-        }
-
-        .hero .hero-secondary {
+        .hero a.hero-secondary,
+        .hero a.hero-secondary:link,
+        .hero a.hero-secondary:visited {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -513,10 +510,10 @@ body[data-theme="light"] .hero-stat span {
             padding: 0 18px;
             border: 1px solid rgba(255,255,255,.14);
             border-radius: 9px;
-            color: #d6dfda;
-            text-decoration: none;
+            color: #d6dfda !important;
+            text-decoration: none !important;
             font-weight: 700;
-            transition: background .2s ease, border-color .2s ease;
+            transition: background .2s ease, border-color .2s ease, color .2s ease;
         }
 
         .hero-secondary:hover {
@@ -618,7 +615,7 @@ body[data-theme="light"] .hero-stat span {
             padding-top: 18px;
             display: flex;
             align-items: baseline;
-            gap: 7px;
+            gap: 10px;
         }
 
         .player-points strong {
@@ -628,7 +625,9 @@ body[data-theme="light"] .hero-stat span {
         }
 
         .player-points span {
-            margin-left: 6px;
+            margin-left: 0;
+            padding-left: 0;
+            white-space: nowrap;
             color: var(--text-muted);
             font-size: 11px;
             font-weight: 700;
