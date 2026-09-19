@@ -117,11 +117,58 @@
             gap: 20px;
         }
 
-        .prediction-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 18px rgba(16, 26, 53, 0.08);
+       .prediction-card {
+    background: #111827;
+    border: 1px solid #243047;
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.prediction-card:hover {
+    transform: translateY(-4px);
+    border-color: #27d17f;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.prediction-card .rank {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #27d17f;
+    margin-bottom: 12px;
+}
+
+.prediction-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+
+.prediction-card .fixture {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+}
+
+.prediction-card .points {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.prediction-card .points small {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
         }
 
         .prediction-card .rank {
