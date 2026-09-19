@@ -531,6 +531,41 @@ body[data-theme="light"] .hero-stat span {
             box-shadow: 0 16px 34px rgba(15, 30, 22, .10);
         }
 
+        .featured-explainer {
+            max-width: 900px;
+            margin: 0 auto 28px;
+            padding: 22px 24px;
+            display: grid;
+            grid-template-columns: minmax(190px, .75fr) 1.5fr;
+            gap: 24px;
+            align-items: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .featured-label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--accent-hover);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .featured-explainer h3 {
+            color: var(--text);
+            font-size: 1.15rem;
+            letter-spacing: -.02em;
+        }
+
+        .featured-explainer p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
         .players-section {
             background: var(--surface-soft);
         }
@@ -588,6 +623,12 @@ body[data-theme="light"] .hero-stat span {
         }
 
         @media (max-width: 800px) {
+            .featured-explainer {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+
             .hero-actions {
                 flex-direction: column;
             }
@@ -668,7 +709,20 @@ body[data-theme="light"] .hero-stat span {
     <div class="section-title">
         <span class="section-kicker">Players to watch</span>
         <h2>Featured Players</h2>
-        <p>Players currently standing out in the model's Gameweek 5 predictions.</p>
+        <p>See which players the model currently expects to score the most points.</p>
+    </div>
+
+    <div class="featured-explainer">
+        <div>
+            <span class="featured-label">How this works</span>
+            <h3>Who is standing out in the model?</h3>
+        </div>
+        <p>
+            These players are automatically selected from the current Gameweek predictions.
+            We take the highest projected points across every fixture and show the six players
+            at the top. This is a model projection, not a recommendation or a prediction of
+            the final FPL points they will actually score.
+        </p>
     </div>
 
     <div class="info-grid" id="player-container">
