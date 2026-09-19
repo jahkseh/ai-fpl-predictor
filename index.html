@@ -1414,16 +1414,21 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         <div class="fixture-open-hint">Click for fixture details →</div>
     </div>
 `).join("");
+
+            predictionContainer.querySelectorAll(".interactive-fixture").forEach((card, index) => {
+                const fixture = data.predictions[index];
+                card.addEventListener("click", () => openFixtureModal(fixture));
+                card.addEventListener("keydown", event => {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        openFixtureModal(fixture);
+                    }
+                });
+            });
         } catch (error) {
             console.error("Prediction loading error:", error);
         }
     }
-
-    predictionContainer.querySelectorAll(".interactive-fixture").forEach((card, index) => {
-        const fixture = data.predictions[index];
-        card.addEventListener("click", () => openFixtureModal(fixture));
-        card.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openFixtureModal(fixture); } });
-    });
 
     
     const revealSections = document.querySelectorAll(".section");
