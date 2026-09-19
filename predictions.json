@@ -1,0 +1,215 @@
+{
+  "gameweek": 5,
+  "predictions": [
+    {
+      "home": "Bournemouth",
+      "away": "Liverpool",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Hill",
+          "prediction": 4.976448
+        },
+        {
+          "rank": 2,
+          "name": "Wirtz",
+          "prediction": 4.646962
+        },
+        {
+          "rank": 3,
+          "name": "Szoboszlai",
+          "prediction": 4.500420
+        }
+      ]
+    },
+    {
+      "home": "Brentford",
+      "away": "Chelsea",
+      "players": [
+        {
+          "rank": 1,
+          "name": "João Pedro",
+          "prediction": 4.568837
+        },
+        {
+          "rank": 2,
+          "name": "Lewis-Potter",
+          "prediction": 4.133073
+        },
+        {
+          "rank": 3,
+          "name": "Palmer",
+          "prediction": 4.022160
+        }
+      ]
+    },
+    {
+      "home": "Brighton",
+      "away": "Arsenal",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Saka",
+          "prediction": 4.690652
+        },
+        {
+          "rank": 2,
+          "name": "Gabriel",
+          "prediction": 4.605474
+        },
+        {
+          "rank": 3,
+          "name": "Dunk",
+          "prediction": 4.441516
+        }
+      ]
+    },
+    {
+      "home": "Everton",
+      "away": "Ipswich Town",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Branthwaite",
+          "prediction": 5.453578
+        },
+        {
+          "rank": 2,
+          "name": "Mykolenko",
+          "prediction": 5.275051
+        },
+        {
+          "rank": 3,
+          "name": "Tarkowski",
+          "prediction": 4.613713
+        }
+      ]
+    },
+    {
+      "home": "Fulham",
+      "away": "Man Utd",
+      "players": [
+        {
+          "rank": 1,
+          "name": "B. Fernandes",
+          "prediction": 5.000933
+        },
+        {
+          "rank": 2,
+          "name": "Mbeumo",
+          "prediction": 4.549563
+        },
+        {
+          "rank": 3,
+          "name": "Leno",
+          "prediction": 4.396666
+        }
+      ]
+    },
+    {
+      "home": "Leeds",
+      "away": "Crystal Palace",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Bogle",
+          "prediction": 4.649271
+        },
+        {
+          "rank": 2,
+          "name": "Calvert-Lewin",
+          "prediction": 4.402793
+        },
+        {
+          "rank": 3,
+          "name": "Stach",
+          "prediction": 4.166632
+        }
+      ]
+    },
+    {
+      "home": "Man City",
+      "away": "Sunderland",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Haaland",
+          "prediction": 5.874365
+        },
+        {
+          "rank": 2,
+          "name": "Mukiele",
+          "prediction": 4.658420
+        },
+        {
+          "rank": 3,
+          "name": "Semenyo",
+          "prediction": 4.524446
+        }
+      ]
+    },
+    {
+      "home": "Newcastle",
+      "away": "Hull City",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Barnes",
+          "prediction": 4.197820
+        },
+        {
+          "rank": 2,
+          "name": "Horníček",
+          "prediction": 4.035230
+        },
+        {
+          "rank": 3,
+          "name": "Wissa",
+          "prediction": 3.782762
+        }
+      ]
+    },
+    {
+      "home": "Nott'm Forest",
+      "away": "Coventry City",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Sels",
+          "prediction": 4.187737
+        },
+        {
+          "rank": 2,
+          "name": "Schlager",
+          "prediction": 4.072924
+        },
+        {
+          "rank": 3,
+          "name": "Gibbs-White",
+          "prediction": 4.043225
+        }
+      ]
+    },
+    {
+      "home": "Spurs",
+      "away": "Aston Villa",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Van de Ven",
+          "prediction": 4.767658
+        },
+        {
+          "rank": 2,
+          "name": "Kinsky",
+          "prediction": 4.239608
+        },
+        {
+          "rank": 3,
+          "name": "Lindelöf",
+          "prediction": 3.775545
+        }
+      ]
+    }
+  ]
+}
