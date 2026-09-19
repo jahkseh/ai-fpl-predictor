@@ -713,6 +713,16 @@ body[data-theme="light"] .hero-stat span {
         .player-card::before {
             content: "";
             position: absolute;
+            inset: 0 0 auto 0;
+            height: 3px;
+            border-radius: 16px 16px 0 0;
+            background: var(--player-team-colour);
+            pointer-events: none;
+        }
+
+        .player-card::after {
+            content: "";
+            position: absolute;
             inset: 0;
             padding: 3px;
             border-radius: 16px;
@@ -735,10 +745,10 @@ body[data-theme="light"] .hero-stat span {
             pointer-events: none;
         }
 
-        .player-card:hover::before,
-        .player-card:focus-visible::before {
+        .player-card:hover::after,
+        .player-card:focus-visible::after {
             opacity: 1;
-            animation: playerBorderSweep .7s ease-out forwards;
+            animation: playerBorderSweep .85s cubic-bezier(.22, 1, .36, 1) forwards;
         }
 
         @keyframes playerBorderSweep {
