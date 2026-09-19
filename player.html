@@ -628,6 +628,80 @@
             }
         }
     
+        /* Profile information polish */
+        .profile-team-line {
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            margin:0 0 12px;
+            padding:6px 10px;
+            border:1px solid color-mix(in srgb,var(--profile-team-colour) 38%, rgba(255,255,255,.12));
+            border-radius:999px;
+            background:color-mix(in srgb,var(--profile-team-colour) 10%, rgba(8,15,28,.55));
+            color:#d7e0eb;
+            font-size:11px;
+            font-weight:800;
+            letter-spacing:.06em;
+            text-transform:uppercase;
+        }
+        .profile-team-dot {
+            width:7px;
+            height:7px;
+            border-radius:50%;
+            background:var(--profile-team-colour);
+            box-shadow:0 0 0 3px color-mix(in srgb,var(--profile-team-colour) 14%, transparent);
+        }
+        .profile-hero .fixture-line {
+            display:block;
+        }
+        .projection-meta {
+            flex-direction:column;
+            align-items:stretch;
+            gap:10px;
+        }
+        .projection-meta-row {
+            display:flex;
+            justify-content:space-between;
+            gap:14px;
+        }
+        .projection-meta-row span { color:#aeb9c9; }
+        .projection-meta-row strong { color:white; }
+        .projection-meta-row.highlight strong { color:var(--accent); }
+        .profile-comparison {
+            margin:0 0 32px;
+            padding:20px 22px;
+            border:1px solid var(--border);
+            border-radius:16px;
+            background:var(--surface-raised);
+        }
+        .profile-comparison-head {
+            display:flex;
+            justify-content:space-between;
+            gap:16px;
+            align-items:baseline;
+            margin-bottom:8px;
+        }
+        .profile-comparison-head h2 { font-size:1.05rem; }
+        .profile-comparison-head span {
+            color:var(--text-muted);
+            font-size:11px;
+            font-weight:800;
+            letter-spacing:.06em;
+            text-transform:uppercase;
+        }
+        .profile-comparison p {
+            color:var(--text-muted);
+            font-size:13px;
+            line-height:1.65;
+        }
+        .profile-comparison strong { color:var(--text); }
+        @media (max-width:800px) {
+            .profile-team-line { margin-bottom:10px; }
+        }
+        @media (max-width:520px) {
+            .profile-comparison-head { align-items:flex-start; flex-direction:column; gap:5px; }
+        }
+
                 /* Team identity visuals */
         .team-visual {
             --team-primary: #64748b;
@@ -901,6 +975,23 @@ async function loadPlayerProfile() {
                     throw new Error("Fixture not found");
                 }
 
+                const allPlayers = data.predictions.flatMap(item =>
+                    item.players.map(itemPlayer => ({
+                        ...itemPlayer,
+                        home: item.home,
+                        away: item.away
+                    }))
+                ).sort((a, b) => b.prediction - a.prediction);
+
+                const globalRank = allPlayers.findIndex(item => item.name === player.name) + 1;
+                const nextInFixture = fixture.players
+                    .filter(other => other.name !== player.name)
+                    .sort((a, b) => b.prediction - a.prediction)[0];
+                const gap = nextInFixture ? Number(player.prediction) - Number(nextInFixture.prediction) : 0;
+                const gapText = player.rank === 1
+                    ? "+" + gap.toFixed(2) + " pts"
+                    : "—";
+
                 const related = fixture.players
                     .filter(other => other.name !== player.name)
                     .sort((a, b) => a.rank - b.rank);
@@ -925,6 +1016,10 @@ async function loadPlayerProfile() {
                                     '<path class="line-accent" d="M158 25 L176 14" opacity=".45" />' +
                                 '</svg>' +
                                 '<h1>' + escapeHtml(player.name) + '</h1>' +
+                                '<div class="profile-team-line" style="--profile-team-colour:' + (shirtColours[playerTeams[player.name]]?.[0] || "#27d17f") + '">' +
+                                    '<span class="profile-team-dot"></span>' +
+                                    escapeHtml(shirtMarks[playerTeams[player.name]] || "FPL") + ' · ' + escapeHtml(playerTeams[player.name] || "Team") +
+                                '</div>' +
                                 '<div class="fixture-line">' + escapeHtml(player.home) + ' vs ' + escapeHtml(player.away) + '</div>' +
                             '</div>' +
                             '<div class="hero-projection">' +
@@ -935,8 +1030,18 @@ async function loadPlayerProfile() {
                                 '</div>' +
                                 '<div class="projection-rule"></div>' +
                                 '<div class="projection-meta">' +
-                                    '<span>Fixture rank</span>' +
-                                    '<strong>#' + escapeHtml(player.rank) + '</strong>' +
+                                    '<div class="projection-meta-row">' +
+                                        '<span>Fixture rank</span>' +
+                                        '<strong>#' + escapeHtml(player.rank) + ' of 3</strong>' +
+                                    '</div>' +
+                                    '<div class="projection-meta-row">' +
+                                        '<span>Overall projection rank</span>' +
+                                        '<strong>#' + globalRank + ' of ' + allPlayers.length + '</strong>' +
+                                    '</div>' +
+                                    '<div class="projection-meta-row highlight">' +
+                                        '<span>Gap to next in fixture</span>' +
+                                        '<strong>' + gapText + '</strong>' +
+                                    '</div>' +
                                 '</div>' +
                             '</div>' +
                         '</section>' +
@@ -962,6 +1067,17 @@ async function loadPlayerProfile() {
                                 '</div>' +
                             '</div>' +
 
+                            '<div class="profile-comparison">' +
+                                '<div class="profile-comparison-head">' +
+                                    '<h2>Where this projection sits</h2>' +
+                                    '<span>Across the 30 current predictions</span>' +
+                                '</div>' +
+                                '<p>' +
+                                    (player.rank === 1
+                                        ? '<strong>' + escapeHtml(player.name) + '</strong> is the highest projected player in this fixture, with a ' + gap.toFixed(2) + ' point gap to the next player.' 
+                                        : '<strong>' + escapeHtml(player.name) + '</strong> is ranked #' + escapeHtml(player.rank) + ' in this fixture and #' + globalRank + ' across all ' + allPlayers.length + ' current player projections.') +
+                                '</p>' +
+                            '</div>' +
                             '<div class="model-note">' +
                                 '<h2>How to read this projection</h2>' +
                                 '<p>This is the <strong>Random Forest model’s projected FPL points</strong> for this player in the selected Gameweek. It is a model estimate rather than a guaranteed score or a recommendation. As live player data is connected, this profile can become the home for richer information such as current price, position, recent form, minutes and underlying statistics.</p>' +
