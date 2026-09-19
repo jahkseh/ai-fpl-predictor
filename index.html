@@ -811,6 +811,24 @@ body[data-theme="light"] .hero-stat span {
             box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px rgba(71, 85, 105, .18);
         }
 
+        body:not([data-theme="light"]) .team-badge[data-team="Fulham"],
+        body:not([data-theme="light"]) .player-team-pill[data-team="Fulham"] {
+            --team-colour: #f8fafc;
+            --player-team-colour: #f8fafc;
+        }
+
+        body:not([data-theme="light"]) .team-badge[data-team="Fulham"] {
+            background: rgba(248,250,252,.10);
+            border-color: #f8fafc;
+            color: #f8fafc;
+            box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px rgba(248,250,252,.18);
+        }
+
+        body:not([data-theme="light"]) .player-team-pill[data-team="Fulham"] {
+            border-color: rgba(248,250,252,.35);
+            background: rgba(248,250,252,.08);
+        }
+
         .team-visual {
             border-color: rgba(71, 85, 105, .32);
             box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 0 2px var(--surface);
@@ -1289,7 +1307,7 @@ function renderFeaturedPlayers(fixtures) {
             '</div>' +
             '<h3>' + player.name + '</h3>' +
             '<p>' + player.home + ' vs ' + player.away + '</p>' +
-            '<span class="player-team-pill"><span class="player-team-dot"></span>' + (shirtMarks[playerTeams[player.name]] || "FPL") + ' · ' + (playerTeams[player.name] || "Team") + '</span>' +
+            '<span class="player-team-pill" data-team="' + (playerTeams[player.name] || "Team") + '"><span class="player-team-dot"></span>' + (shirtMarks[playerTeams[player.name]] || "FPL") + ' · ' + (playerTeams[player.name] || "Team") + '</span>' +
             '<div class="player-points">' +
                 '<strong>' + player.prediction.toFixed(2) + '</strong>' +
                 '<span>&nbsp;expected points</span>' +
@@ -1335,11 +1353,11 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
     <div class="fixture-card" style="--home-team-colour:${teamAccentColours[fixture.home] || "var(--accent)"};--away-team-colour:${teamAccentColours[fixture.away] || "var(--accent)"}">
         <div class="fixture-teams">
-            <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.home] || "#27d17f"}" aria-label="${fixture.home}">${teamCodes[fixture.home]}</span>
+            <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.home] || "#27d17f"}" data-team="${fixture.home}" aria-label="${fixture.home}">${teamCodes[fixture.home]}</span>
             <span class="team-name">${fixture.home}</span>
             <span class="vs">VS</span>
             <span class="team-name">${fixture.away}</span>
-            <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.away] || "#27d17f"}" aria-label="${fixture.away}">${teamCodes[fixture.away]}</span>
+            <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.away] || "#27d17f"}" data-team="${fixture.away}" aria-label="${fixture.away}">${teamCodes[fixture.away]}</span>
         </div>
 
         ${fixture.players.map(player => `
