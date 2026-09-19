@@ -628,75 +628,84 @@
             }
         }
     
-        /* Club-inspired shirt graphics */
-        .club-kit {
-            --kit-primary: #64748b;
-            --kit-secondary: #e5e7eb;
-            --kit-accent: #ffffff;
+                /* Team identity visuals */
+        .team-visual {
+            --team-primary: #64748b;
+            --team-secondary: #e5e7eb;
+            --team-accent: #ffffff;
             width: 58px;
             height: 58px;
             flex: 0 0 auto;
             margin-top: -6px;
-            padding: 7px;
-            border: 1px solid rgba(39, 209, 127, .18);
-            border-radius: 14px;
-            background: rgba(39, 209, 127, .045);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 15px;
+            background: var(--team-primary);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
         }
 
-        .club-kit svg {
-            width: 100%;
-            height: 100%;
-            display: block;
+        .team-visual::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--team-primary) 0 52%, var(--team-secondary) 52% 76%, var(--team-accent) 76% 100%);
+            opacity: .96;
         }
 
-        .club-kit .shirt-body {
-            fill: var(--kit-primary);
-            stroke: rgba(255, 255, 255, .18);
-            stroke-width: 1;
-            stroke-linejoin: round;
+        .team-visual::after {
+            content: "";
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            right: -7px;
+            bottom: -7px;
+            border: 2px solid rgba(255,255,255,.55);
+            border-radius: 50%;
+            opacity: .55;
         }
 
-        .club-kit .shirt-panel {
-            fill: var(--kit-secondary);
-            opacity: .88;
-        }
-
-        .club-kit .shirt-trim {
-            fill: var(--kit-accent);
-            opacity: .9;
-        }
-
-        .club-kit .shirt-neck {
-            fill: none;
-            stroke: var(--kit-accent);
-            stroke-width: 1.5;
-            stroke-linecap: round;
-        }
-
-        .club-kit .shirt-mark {
-            fill: var(--kit-accent);
-            font-size: 7px;
+        .team-visual span {
+            position: relative;
+            z-index: 1;
+            min-width: 38px;
+            padding: 5px 4px;
+            border-radius: 7px;
+            background: rgba(10, 18, 32, .78);
+            color: #fff;
+            font-size: 9px;
             font-weight: 900;
-            font-family: Arial, Helvetica, sans-serif;
-            letter-spacing: .3px;
+            letter-spacing: .08em;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0,0,0,.28);
         }
 
-        .club-kit.profile {
+        .team-visual.profile {
             width: 118px;
             height: 118px;
             margin: 4px 0 22px;
-            padding: 13px;
-            border-radius: 22px;
-            background: rgba(255, 255, 255, .035);
-            border-color: rgba(255, 255, 255, .10);
+            border-radius: 24px;
         }
 
-        .club-kit.profile .shirt-mark {
-            font-size: 10px;
+        .team-visual.profile span {
+            min-width: 64px;
+            padding: 9px 8px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .team-visual.profile::after {
+            width: 54px;
+            height: 54px;
+            right: -14px;
+            bottom: -14px;
         }
 
         @media (max-width: 800px) {
-            .club-kit.profile {
+            .team-visual.profile {
                 width: 104px;
                 height: 104px;
                 margin: 0 0 18px;
@@ -843,22 +852,14 @@
             "Spurs": "TOT"
         };
 
-        function getPlayerShirt(playerName, size = "card") {
+        function getTeamVisual(playerName, size = "card") {
             const team = playerTeams[playerName] || "default";
             const colours = shirtColours[team] || ["#64748b", "#e5e7eb", "#ffffff"];
-            const className = size === "profile" ? "club-kit profile" : "club-kit";
-            const label = team === "default" ? "Stylised football shirt" : "Stylised " + team + " inspired shirt";
-            const mark = shirtMarks[team] || "FPL";
+            const className = size === "profile" ? "team-visual profile" : "team-visual";
+            const code = shirtMarks[team] || "FPL";
+            const label = team === "default" ? "Football team visual" : team + " team colours";
 
-            return '<div class="' + className + '" style="--kit-primary:' + colours[0] + ';--kit-secondary:' + colours[1] + ';--kit-accent:' + colours[2] + '" aria-label="' + label + '">' +
-                '<svg viewBox="0 0 78 78" role="img" aria-label="' + label + '">' +
-                    '<path class="shirt-body" d="M27 12 15 19l7 14 7-4v28h24V29l7 4 7-14-12-7-8 8h-6l-8-8Z"/>' +
-                    '<path class="shirt-panel" d="M30 23h18v34H30z"/>' +
-                    '<path class="shirt-trim" d="M15 19l7 14 7-4-5-11-7 1zM63 19l-7 14-7-4 5-11 7 1z"/>' +
-                    '<path class="shirt-neck" d="M29 12c1 5 4 8 9 8s8-3 9-8"/>' +
-                    '<text class="shirt-mark" x="39" y="39" text-anchor="middle">' + mark + '</text>' +
-                '</svg>' +
-            '</div>';
+            return '<div class="' + className + '" style="--team-primary:' + colours[0] + ';--team-secondary:' + colours[1] + ';--team-accent:' + colours[2] + '" role="img" aria-label="' + label + '"><span>' + code + '</span></div>';
         }
 
 async function loadPlayerProfile() {
@@ -911,7 +912,7 @@ async function loadPlayerProfile() {
                         '<section class="profile-hero">' +
                             '<div class="hero-copy">' +
                                 '<div class="profile-kicker">Gameweek ' + escapeHtml(data.gameweek) + ' · Pre-match model</div>' +
-                                '' + getPlayerShirt(player.name, "profile") + '' +
+                                '' + getTeamVisual(player.name, "profile") + '' +
                                 '<svg class="model-graphic" viewBox="0 0 190 120" role="img" aria-label="Stylised model signal graphic">' +
                                     '<path class="line" d="M8 92 H182" />' +
                                     '<path class="line" d="M28 18 V100" />' +
