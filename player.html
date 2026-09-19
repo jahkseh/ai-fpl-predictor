@@ -627,7 +627,82 @@
                 padding: 20px 20px 20px 23px;
             }
         }
-    </style>
+    
+        /* Club-inspired shirt graphics */
+        .club-kit {
+            --kit-primary: #64748b;
+            --kit-secondary: #e5e7eb;
+            --kit-accent: #ffffff;
+            width: 58px;
+            height: 58px;
+            flex: 0 0 auto;
+            margin-top: -6px;
+            padding: 7px;
+            border: 1px solid rgba(39, 209, 127, .18);
+            border-radius: 14px;
+            background: rgba(39, 209, 127, .045);
+        }
+
+        .club-kit svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .club-kit .shirt-body {
+            fill: var(--kit-primary);
+            stroke: rgba(255, 255, 255, .18);
+            stroke-width: 1;
+            stroke-linejoin: round;
+        }
+
+        .club-kit .shirt-panel {
+            fill: var(--kit-secondary);
+            opacity: .88;
+        }
+
+        .club-kit .shirt-trim {
+            fill: var(--kit-accent);
+            opacity: .9;
+        }
+
+        .club-kit .shirt-neck {
+            fill: none;
+            stroke: var(--kit-accent);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+        }
+
+        .club-kit .shirt-mark {
+            fill: var(--kit-accent);
+            font-size: 7px;
+            font-weight: 900;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: .3px;
+        }
+
+        .club-kit.profile {
+            width: 118px;
+            height: 118px;
+            margin: 4px 0 22px;
+            padding: 13px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, .035);
+            border-color: rgba(255, 255, 255, .10);
+        }
+
+        .club-kit.profile .shirt-mark {
+            font-size: 10px;
+        }
+
+        @media (max-width: 800px) {
+            .club-kit.profile {
+                width: 104px;
+                height: 104px;
+                margin: 0 0 18px;
+            }
+        }
+</style>
 </head>
 <body>
     <header>
@@ -638,7 +713,7 @@
                 <a href="index.html#predictions">Predictions</a>
                 <a href="index.html#players">Players</a>
                 <a href="index.html#performance">Performance</a>
-                <button class="theme-toggle" id="theme-toggle" type="button">☀️ Light</button>
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label">Light</span></button>
             </nav>
         </div>
     </header>
@@ -656,21 +731,28 @@
     <script>
         const themeToggle = document.getElementById("theme-toggle");
         const savedTheme = localStorage.getItem("fpl-theme");
-
         if (savedTheme === "light") {
             document.body.dataset.theme = "light";
         }
+
+        const themeLabel = themeToggle.querySelector(".theme-toggle-label");
 
         themeToggle.addEventListener("click", () => {
             const isLight = document.body.dataset.theme === "light";
             if (isLight) {
                 localStorage.setItem("fpl-theme", "dark");
                 document.body.dataset.theme = "";
+                themeLabel.textContent = "Light";
             } else {
                 localStorage.setItem("fpl-theme", "light");
                 document.body.dataset.theme = "light";
+                themeLabel.textContent = "Dark";
             }
         });
+
+        if (savedTheme === "light") {
+            themeLabel.textContent = "Dark";
+        }
 
         const params = new URLSearchParams(window.location.search);
         const playerName = params.get("player");
@@ -683,6 +765,78 @@
                 .replaceAll(">", "&gt;")
                 .replaceAll('"', "&quot;")
                 .replaceAll("'", "&#039;");
+        }
+
+
+        const playerTeams = {
+            "Hill": "Bournemouth",
+            "Wirtz": "Liverpool",
+            "Szoboszlai": "Liverpool",
+            "João Pedro": "Chelsea",
+            "Lewis-Potter": "Brentford",
+            "Palmer": "Chelsea",
+            "Saka": "Arsenal",
+            "Gabriel": "Arsenal",
+            "Dunk": "Brighton",
+            "Branthwaite": "Everton",
+            "Mykolenko": "Everton",
+            "Tarkowski": "Everton",
+            "B.Fernandes": "Man Utd",
+            "Mbeumo": "Man Utd",
+            "Leno": "Fulham",
+            "Bogle": "Leeds",
+            "Calvert-Lewin": "Crystal Palace",
+            "Stach": "Leeds",
+            "Haaland": "Man City",
+            "Mukiele": "Sunderland",
+            "Semenyo": "Man City",
+            "Barnes": "Newcastle",
+            "Horníček": "Hull City",
+            "Wissa": "Newcastle",
+            "Sels": "Nott'm Forest",
+            "Schlager": "Coventry City",
+            "Gibbs-White": "Nott'm Forest",
+            "Van de Ven": "Spurs",
+            "Kinsky": "Spurs",
+            "Lindelöf": "Spurs"
+        };
+
+        const shirtColours = {
+            "Arsenal": ["#d71920", "#ffffff", "#d71920"],
+            "Bournemouth": ["#d71920", "#111111", "#ffffff"],
+            "Brentford": ["#e30613", "#ffffff", "#111111"],
+            "Brighton": ["#0057b8", "#ffffff", "#8fd8ff"],
+            "Chelsea": ["#034694", "#ffffff", "#6fb1ff"],
+            "Coventry City": ["#5b9bd5", "#ffffff", "#ffffff"],
+            "Crystal Palace": ["#1b458f", "#ed2939", "#ffffff"],
+            "Everton": ["#003399", "#ffffff", "#8fb8ff"],
+            "Fulham": ["#ffffff", "#111111", "#111111"],
+            "Hull City": ["#f5a400", "#111111", "#ffffff"],
+            "Leeds": ["#ffffff", "#f4f4f4", "#1d428a"],
+            "Liverpool": ["#c8102e", "#ffffff", "#f6c700"],
+            "Man City": ["#6cabdd", "#ffffff", "#1c2c5b"],
+            "Man Utd": ["#da291c", "#111111", "#fbe122"],
+            "Newcastle": ["#111111", "#ffffff", "#9ca3af"],
+            "Nott'm Forest": ["#e53233", "#ffffff", "#ffffff"],
+            "Sunderland": ["#eb1725", "#ffffff", "#111111"],
+            "Spurs": ["#ffffff", "#132257", "#132257"]
+        };
+
+        function getPlayerShirt(playerName, size = "card") {
+            const team = playerTeams[playerName] || "default";
+            const colours = shirtColours[team] || ["#64748b", "#e5e7eb", "#ffffff"];
+            const className = size === "profile" ? "club-kit profile" : "club-kit";
+            const label = team === "default" ? "Stylised football shirt" : "Stylised " + team + " inspired shirt";
+
+            return '<div class="' + className + '" style="--kit-primary:' + colours[0] + ';--kit-secondary:' + colours[1] + ';--kit-accent:' + colours[2] + '" aria-label="' + label + '">' +
+                '<svg viewBox="0 0 78 78" role="img" aria-label="' + label + '">' +
+                    '<path class="shirt-body" d="M27 12 15 19l7 14 7-4v28h24V29l7 4 7-14-12-7-8 8h-6l-8-8Z"/>' +
+                    '<path class="shirt-panel" d="M30 23h18v34H30z"/>' +
+                    '<path class="shirt-trim" d="M15 19l7 14 7-4-5-11-7 1zM63 19l-7 14-7-4 5-11 7 1z"/>' +
+                    '<path class="shirt-neck" d="M29 12c1 5 4 8 9 8s8-3 9-8"/>' +
+                    '<text class="shirt-mark" x="39" y="39" text-anchor="middle">' + (team === "default" ? "FPL" : (team === "Man City" ? "MC" : team === "Man Utd" ? "MU" : team === "Nott'm Forest" ? "NFO" : team === "Crystal Palace" ? "CP" : team === "Coventry City" ? "COV" : team === "Bournemouth" ? "BOU" : team === "Brentford" ? "BRE" : team === "Brighton" ? "BHA" : team === "Chelsea" ? "CHE" : team === "Everton" ? "EVE" : team === "Fulham" ? "FUL" : team === "Hull City" ? "HUL" : team === "Leeds" ? "LEE" : team === "Liverpool" ? "LIV" : team === "Newcastle" ? "NEW" : team === "Sunderland" ? "SUN" : team === "Spurs" ? "TOT" : "ARS") + '</text>' +
+                '</svg>' +
+            '</div>';
         }
 
         async function loadPlayerProfile() {
@@ -735,14 +889,7 @@
                         '<section class="profile-hero">' +
                             '<div class="hero-copy">' +
                                 '<div class="profile-kicker">Gameweek ' + escapeHtml(data.gameweek) + ' · Pre-match model</div>' +
-                                '<div class="player-kit" aria-label="Stylised FPL player shirt graphic">' +
-                                    '<svg viewBox="0 0 78 78" role="img" aria-label="Stylised FPL player shirt">' +
-                                        '<path class="shirt" d="M27 12 15 19l7 14 7-4v28h24V29l7 4 7-14-12-7-8 8h-6l-8-8Z"/>' +
-                                        '<path class="shirt-detail" d="M29 12c1 5 4 8 9 8s8-3 9-8"/>' +
-                                        '<path class="shirt-detail" d="M29 39h20"/>' +
-                                        '<text class="shirt-mark" x="39" y="35" text-anchor="middle">FPL</text>' +
-                                    '</svg>' +
-                                '</div>' +
+                                '' + getPlayerShirt(player.name, "profile") + '' +
                                 '<svg class="model-graphic" viewBox="0 0 190 120" role="img" aria-label="Stylised model signal graphic">' +
                                     '<path class="line" d="M8 92 H182" />' +
                                     '<path class="line" d="M28 18 V100" />' +
