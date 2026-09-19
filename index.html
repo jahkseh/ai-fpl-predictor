@@ -945,7 +945,7 @@ body[data-theme="light"] .hero-stat span {
                 themeToggle.textContent = "🌙 Dark";
             }
         });    const predictionContainer = document.getElementById("prediction-container");
-
+const predictionsTitle = document.getElementById("predictions-title");
     const teamCodes = {
         "Bournemouth": "BOU",
         "Liverpool": "LIV",
@@ -978,7 +978,7 @@ body[data-theme="light"] .hero-stat span {
             }
 
             const data = await response.json();
-
+predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
     <div class="fixture-card">
         <div class="fixture-teams">
