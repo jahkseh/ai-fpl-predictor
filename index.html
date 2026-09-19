@@ -344,7 +344,26 @@ nav a:hover {
     color: var(--text);
     font-size: 1rem;
 }
+.fixture-prediction.top-pick {
+    position: relative;
+    padding-left: 10px;
+}
 
+.fixture-prediction.top-pick::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--accent);
+}
+
+.fixture-prediction.top-pick .player,
+.fixture-prediction.top-pick strong {
+    font-weight: 700;
+}
 .info-section {
     background: var(--bg);
     border-top: 1px solid var(--border);
@@ -528,7 +547,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-badge">LIV</span>
 </div>
 
-        <div class="fixture-prediction">
+      <div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">Hill</span>
             <strong>4.98</strong>
@@ -557,7 +576,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-badge">CHE</span>
 </div>
 
-        <div class="fixture-prediction">
+        <div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">João Pedro</span>
             <strong>4.57</strong>
@@ -585,8 +604,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-name">Arsenal</span>
     <span class="team-badge">ARS</span>
 </div>
-
-        <div class="fixture-prediction">
+<div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">Saka</span>
             <strong>4.69</strong>
@@ -615,7 +633,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-badge">IPS</span>
 </div>
 
-        <div class="fixture-prediction">
+       <div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">Branthwaite</span>
             <strong>5.45</strong>
@@ -644,7 +662,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-badge">MUN</span>
 </div>
 
-        <div class="fixture-prediction">
+      <div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">B. Fernandes</span>
             <strong>5.00</strong>
@@ -672,8 +690,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-name">Crystal Palace</span>
     <span class="team-badge">CRY</span>
 </div>
-
-        <div class="fixture-prediction">
+<div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">Bogle</span>
             <strong>4.65</strong>
@@ -701,8 +718,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-name">Sunderland</span>
     <span class="team-badge">SUN</span>
 </div>
-
-        <div class="fixture-prediction">
+<div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">Erling Haaland</span>
             <strong>5.87</strong>
@@ -730,8 +746,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-name">Hull City</span>
     <span class="team-badge">HUL</span>
 </div>
-
-        <div class="fixture-prediction">
+<div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">Barnes</span>
             <strong>4.20</strong>
@@ -759,8 +774,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-name">Coventry City</span>
     <span class="team-badge">COV</span>
 </div>
-
-        <div class="fixture-prediction">
+<div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">Sels</span>
             <strong>4.19</strong>
@@ -788,8 +802,7 @@ body[data-theme="light"] .hero-stat span {
     <span class="team-name">Aston Villa</span>
     <span class="team-badge">AVL</span>
 </div>
-
-        <div class="fixture-prediction">
+<div class="fixture-prediction top-pick">
             <span class="rank">1</span>
             <span class="player">Van de Ven</span>
             <strong>4.77</strong>
