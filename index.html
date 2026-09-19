@@ -952,7 +952,49 @@ body[data-theme="light"] .hero-stat span {
                 localStorage.setItem("fpl-theme", "light");
                 themeToggle.textContent = "🌙 Dark";
             }
-        });
+        });    const predictionContainer = document.getElementById("prediction-container");
+
+    const teamCodes = {
+        "Bournemouth": "BOU",
+        "Liverpool": "LIV",
+        "Brentford": "BRE",
+        "Chelsea": "CHE",
+        "Brighton": "BHA",
+        "Arsenal": "ARS",
+        "Everton": "EVE",
+        "Ipswich Town": "IPS",
+        "Fulham": "FUL",
+        "Man Utd": "MUN",
+        "Leeds": "LEE",
+        "Crystal Palace": "CRY",
+        "Man City": "MCI",
+        "Sunderland": "SUN",
+        "Newcastle": "NEW",
+        "Hull City": "HUL",
+        "Nott'm Forest": "NFO",
+        "Coventry City": "COV",
+        "Spurs": "TOT",
+        "Aston Villa": "AVL"
+    };
+
+    async function loadPredictions() {
+        try {
+            const response = await fetch("predictions.json");
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            console.log("Predictions loaded successfully:", data);
+
+        } catch (error) {
+            console.error("Prediction loading error:", error);
+        }
+    }
+
+    loadPredictions();
     </script>
 
 </body>
