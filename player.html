@@ -592,7 +592,8 @@
             gap:8px;
             margin:0 0 12px;
             padding:6px 10px;
-            border:1px solid color-mix(in srgb,var(--profile-team-colour) 38%, rgba(255,255,255,.12));
+            border:1px solid color-mix(in srgb,var(--profile-team-colour) 55%, rgba(255,255,255,.12));
+            box-shadow:0 0 0 2px rgba(255,255,255,.04);
             border-radius:999px;
             background:color-mix(in srgb,var(--profile-team-colour) 10%, rgba(8,15,28,.55));
             color:#d7e0eb;
@@ -862,6 +863,29 @@
             "Spurs": ["#ffffff", "#132257", "#132257"]
         };
 
+        const teamAccentColours = {
+            "Arsenal": "#b3121d",
+            "Bournemouth": "#b3121d",
+            "Brentford": "#c8102e",
+            "Brighton": "#0057b8",
+            "Chelsea": "#034694",
+            "Coventry City": "#2f6fae",
+            "Crystal Palace": "#1b458f",
+            "Everton": "#003399",
+            "Fulham": "#111111",
+            "Hull City": "#a56b00",
+            "Ipswich Town": "#0057b8",
+            "Leeds": "#1d428a",
+            "Liverpool": "#c8102e",
+            "Man City": "#1c2c5b",
+            "Man Utd": "#b91c1c",
+            "Newcastle": "#111111",
+            "Nott'm Forest": "#c81d25",
+            "Sunderland": "#c8102e",
+            "Spurs": "#132257",
+            "Aston Villa": "#670e36"
+        };
+
         const shirtMarks = {
             "Arsenal": "ARS",
             "Bournemouth": "BOU",
@@ -973,7 +997,7 @@ async function loadPlayerProfile() {
                                     '<path class="line-accent" d="M158 25 L176 14" opacity=".45" />' +
                                 '</svg>' +
                                 '<h1>' + escapeHtml(player.name) + '</h1>' +
-                                '<div class="profile-team-line" style="--profile-team-colour:' + (shirtColours[playerTeams[player.name]]?.[0] || "#27d17f") + '">' +
+                                '<div class="profile-team-line" style="--profile-team-colour:' + (teamAccentColours[playerTeams[player.name]] || "#27d17f") + '">' +
                                     '<span class="profile-team-dot"></span>' +
                                     escapeHtml(shirtMarks[playerTeams[player.name]] || "FPL") + ' · ' + escapeHtml(playerTeams[player.name] || "Team") +
                                 '</div>' +
