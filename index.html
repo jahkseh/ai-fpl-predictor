@@ -1128,11 +1128,33 @@ const playerContainer = document.getElementById("player-container");
         };
 
 
+        const shirtMarks = {
+            "Arsenal": "ARS",
+            "Bournemouth": "BOU",
+            "Brentford": "BRE",
+            "Brighton": "BHA",
+            "Chelsea": "CHE",
+            "Coventry City": "COV",
+            "Crystal Palace": "CP",
+            "Everton": "EVE",
+            "Fulham": "FUL",
+            "Hull City": "HUL",
+            "Leeds": "LEE",
+            "Liverpool": "LIV",
+            "Man City": "MC",
+            "Man Utd": "MU",
+            "Newcastle": "NEW",
+            "Nott'm Forest": "NFO",
+            "Sunderland": "SUN",
+            "Spurs": "TOT"
+        };
+
         function getPlayerShirt(playerName, size = "card") {
             const team = playerTeams[playerName] || "default";
             const colours = shirtColours[team] || ["#64748b", "#e5e7eb", "#ffffff"];
             const className = size === "profile" ? "club-kit profile" : "club-kit";
             const label = team === "default" ? "Stylised football shirt" : "Stylised " + team + " inspired shirt";
+            const mark = shirtMarks[team] || "FPL";
 
             return '<div class="' + className + '" style="--kit-primary:' + colours[0] + ';--kit-secondary:' + colours[1] + ';--kit-accent:' + colours[2] + '" aria-label="' + label + '">' +
                 '<svg viewBox="0 0 78 78" role="img" aria-label="' + label + '">' +
@@ -1140,11 +1162,10 @@ const playerContainer = document.getElementById("player-container");
                     '<path class="shirt-panel" d="M30 23h18v34H30z"/>' +
                     '<path class="shirt-trim" d="M15 19l7 14 7-4-5-11-7 1zM63 19l-7 14-7-4 5-11 7 1z"/>' +
                     '<path class="shirt-neck" d="M29 12c1 5 4 8 9 8s8-3 9-8"/>' +
-                    '<text class="shirt-mark" x="39" y="39" text-anchor="middle">' + (team === "default" ? "FPL" : (team === "Man City" ? "MC" : team === "Man Utd" ? "MU" : team === "Nott'm Forest" ? "NFO" : team === "Crystal Palace" ? "CP" : team === "Coventry City" ? "COV" : team === "Bournemouth" ? "BOU" : team === "Brentford" ? "BRE" : team === "Brighton" ? "BHA" : team === "Chelsea" ? "CHE" : team === "Everton" ? "EVE" : team === "Fulham" ? "FUL" : team === "Hull City" ? "HUL" : team === "Leeds" ? "LEE" : team === "Liverpool" ? "LIV" : team === "Newcastle" ? "NEW" : team === "Sunderland" ? "SUN" : team === "Spurs" ? "TOT" : "ARS") + '</text>' +
+                    '<text class="shirt-mark" x="39" y="39" text-anchor="middle">' + mark + '</text>' +
                 '</svg>' +
             '</div>';
         }
-
 
 function renderFeaturedPlayers(fixtures) {
     const players = [];
