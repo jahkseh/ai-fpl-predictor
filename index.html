@@ -699,12 +699,55 @@ body[data-theme="light"] .hero-stat span {
             color: var(--accent);
         }
 
+        .player-card:hover,
+        .player-card:focus-visible {
+            border-color: var(--player-team-colour);
+        }
+
+        @property --player-border-progress {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
+
         .player-card::before {
             content: "";
             position: absolute;
-            inset: 0 0 auto 0;
-            height: 3px;
-            background: var(--accent);
+            inset: 0;
+            padding: 3px;
+            border-radius: 16px;
+            background: conic-gradient(
+                from -90deg,
+                var(--player-team-colour) 0deg,
+                var(--player-team-colour) var(--player-border-progress),
+                transparent var(--player-border-progress),
+                transparent 360deg
+            );
+            -webkit-mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .player-card:hover::before,
+        .player-card:focus-visible::before {
+            opacity: 1;
+            animation: playerBorderSweep .7s ease-out forwards;
+        }
+
+        @keyframes playerBorderSweep {
+            from {
+                --player-border-progress: 0deg;
+            }
+            to {
+                --player-border-progress: 360deg;
+            }
         }
 
         .player-rank {
