@@ -500,9 +500,7 @@ body[data-theme="light"] .hero-stat span {
             flex-wrap: wrap;
         }
 
-        .hero a.hero-secondary,
-        .hero a.hero-secondary:link,
-        .hero a.hero-secondary:visited {
+        .hero .hero-secondary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -510,9 +508,15 @@ body[data-theme="light"] .hero-stat span {
             padding: 0 18px;
             border: 1px solid rgba(255,255,255,.14);
             border-radius: 9px;
+            background: transparent;
             color: #d6dfda !important;
-            text-decoration: none !important;
+            font: inherit;
             font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            text-decoration: none;
             transition: background .2s ease, border-color .2s ease, color .2s ease;
         }
 
@@ -615,10 +619,10 @@ body[data-theme="light"] .hero-stat span {
             padding-top: 18px;
             display: flex;
             align-items: baseline;
-            gap: 10px;
         }
 
         .player-points strong {
+            margin-right: 12px !important;
             font-size: 2rem;
             color: var(--text);
             letter-spacing: -.03em;
@@ -691,7 +695,7 @@ body[data-theme="light"] .hero-stat span {
 
         <div class="hero-actions">
             <a href="#predictions" class="hero-button">View Predictions</a>
-            <a href="#players" class="hero-secondary">Explore Players</a>
+            <button class="hero-secondary" id="explore-players-button" type="button">Explore Players</button>
         </div>
     </section>
 <div class="hero-stats">
@@ -961,6 +965,17 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             section.style.transform = "translateY(10px)";
             section.style.transition = "opacity .5s ease, transform .5s ease";
             revealObserver.observe(section);
+        });
+    }
+
+    const explorePlayersButton = document.getElementById("explore-players-button");
+
+    if (explorePlayersButton) {
+        explorePlayersButton.addEventListener("click", () => {
+            document.getElementById("players").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
         });
     }
 
