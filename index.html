@@ -526,6 +526,15 @@ body[data-theme="light"] .hero-stat span {
         .player-card:hover {
             box-shadow: 0 16px 34px rgba(15, 30, 22, .10);
         }
+        .fixture-card.interactive-fixture{cursor:pointer}.fixture-card.interactive-fixture:hover,.fixture-card.interactive-fixture:focus-visible{border-color:var(--home-team-colour);box-shadow:0 0 0 2px color-mix(in srgb,var(--home-team-colour) 18%,transparent),0 16px 34px rgba(15,30,22,.12);outline:none}.fixture-card.interactive-fixture:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb,var(--home-team-colour) 28%,transparent),0 16px 34px rgba(15,30,22,.12)}
+        .player-card:hover,.player-card:focus-visible{border-color:var(--player-team-colour);box-shadow:0 0 0 2px color-mix(in srgb,var(--player-team-colour) 22%,transparent),0 16px 34px rgba(15,30,22,.12);outline:none}.player-card:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb,var(--player-team-colour) 30%,transparent),0 16px 34px rgba(15,30,22,.12)}
+        .fixture-open-hint{margin-top:14px;color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.72}.fixture-card:hover .fixture-open-hint,.fixture-card:focus-visible .fixture-open-hint{color:var(--home-team-colour);opacity:1}
+        .fixture-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(5,10,18,.68);backdrop-filter:blur(5px)}.fixture-modal[hidden]{display:none}.fixture-modal-panel{width:min(100%,620px);max-height:min(720px,calc(100vh - 48px));overflow:auto;border:1px solid var(--border);border-radius:20px;background:var(--surface);box-shadow:0 28px 80px rgba(0,0,0,.28)}
+        .fixture-modal-head{position:sticky;top:0;z-index:1;padding:22px 24px 18px;background:var(--surface);border-bottom:1px solid var(--border)}.fixture-modal-topline{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}.fixture-modal-kicker{color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.fixture-modal-close{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:50%;background:var(--surface-soft);color:var(--text);font-size:18px;cursor:pointer}.fixture-modal-close:hover,.fixture-modal-close:focus-visible{border-color:var(--accent);outline:none}
+        .fixture-modal-teams{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px}.fixture-modal-teams strong{color:var(--text);font-size:1.15rem}.fixture-modal-vs{color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.08em}.fixture-modal-body{padding:20px 24px 24px}.fixture-modal-summary{margin-bottom:18px;padding:13px 15px;border:1px solid var(--border);border-radius:12px;background:var(--surface-soft);color:var(--text-muted);font-size:12px;line-height:1.55}.fixture-modal-summary strong{color:var(--text)}.fixture-modal-list{display:grid;gap:9px}
+        .fixture-modal-player{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-decoration:none;transition:border-color .2s ease,transform .2s ease}.fixture-modal-player:hover,.fixture-modal-player:focus-visible{transform:translateY(-1px);border-color:var(--player-team-colour);outline:none}.fixture-modal-rank{color:var(--accent-hover);font-size:12px;font-weight:900}.fixture-modal-player-name{display:block;color:var(--text);font-size:14px;font-weight:700}.fixture-modal-player-meta{display:block;margin-top:3px;color:var(--text-muted);font-size:10px}.fixture-modal-points{color:var(--text);font-size:1.05rem;font-weight:800}.fixture-modal-footer{margin-top:18px;color:var(--text-muted);font-size:11px;line-height:1.5}body.modal-open{overflow:hidden}
+        @media(max-width:520px){.fixture-modal{align-items:flex-end;padding:10px}.fixture-modal-panel{max-height:calc(100vh - 20px);border-radius:18px 18px 12px 12px}.fixture-modal-head,.fixture-modal-body{padding-left:18px;padding-right:18px}.fixture-modal-teams strong{font-size:1rem}}
+
 
         .theme-toggle {
             display: inline-flex;
@@ -1136,7 +1145,9 @@ body[data-theme="light"] .hero-stat span {
     </div>
 
 </section>
-       <footer>
+           <div class="fixture-modal" id="fixture-modal" hidden><div class="fixture-modal-panel" role="dialog" aria-modal="true" aria-labelledby="fixture-modal-title"><div class="fixture-modal-head"><div class="fixture-modal-topline"><span class="fixture-modal-kicker">Fixture prediction</span><button class="fixture-modal-close" id="fixture-modal-close" type="button" aria-label="Close fixture details">×</button></div><div class="fixture-modal-teams" id="fixture-modal-title"></div></div><div class="fixture-modal-body"><div class="fixture-modal-summary" id="fixture-modal-summary"></div><div class="fixture-modal-list" id="fixture-modal-list"></div><p class="fixture-modal-footer">These are pre-match model projections. Select a player to open their full profile.</p></div></div></div>
+
+<footer>
         AI FPL Predictor · Machine-learning FPL analysis
     </footer>
 
@@ -1340,6 +1351,39 @@ function renderFeaturedPlayers(fixtures) {
         "Aston Villa": "AVL"
     };
 
+    const fixtureModal = document.getElementById("fixture-modal");
+    const fixtureModalClose = document.getElementById("fixture-modal-close");
+    const fixtureModalTitle = document.getElementById("fixture-modal-title");
+    const fixtureModalSummary = document.getElementById("fixture-modal-summary");
+    const fixtureModalList = document.getElementById("fixture-modal-list");
+    let lastFocusedFixture = null;
+
+    function openFixtureModal(fixture) {
+        lastFocusedFixture = document.activeElement;
+        const topPlayer = fixture.players[0];
+        fixtureModalTitle.innerHTML = '<span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + '" data-team="' + fixture.home + '">' + (teamCodes[fixture.home] || "FPL") + '</span><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '" data-team="' + fixture.away + '">' + (teamCodes[fixture.away] || "FPL") + '</span>';
+        fixtureModalSummary.innerHTML = '<strong>' + topPlayer.name + '</strong> is the highest model projection for this fixture at <strong>' + topPlayer.prediction.toFixed(2) + ' expected points</strong>. These are the three highest projections for this match.';
+        fixtureModalList.innerHTML = fixture.players.map(player => {
+            const team = playerTeams[player.name] || "";
+            const accent = teamAccentColours[team] || "var(--accent)";
+            const code = shirtMarks[team] || "FPL";
+            return '<a class="fixture-modal-player" style="--player-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(player.name) + '"><span class="fixture-modal-rank">#' + player.rank + '</span><span><span class="fixture-modal-player-name">' + player.name + '</span><span class="fixture-modal-player-meta">' + code + (team ? " · " + team : "") + " · View profile →" + '</span></span><span class="fixture-modal-points">' + player.prediction.toFixed(2) + '</span></a>';
+        }).join("");
+        fixtureModal.hidden = false;
+        document.body.classList.add("modal-open");
+        fixtureModalClose.focus();
+    }
+
+    function closeFixtureModal() {
+        fixtureModal.hidden = true;
+        document.body.classList.remove("modal-open");
+        if (lastFocusedFixture) lastFocusedFixture.focus();
+    }
+
+    fixtureModalClose.addEventListener("click", closeFixtureModal);
+    fixtureModal.addEventListener("click", event => { if (event.target === fixtureModal) closeFixtureModal(); });
+    document.addEventListener("keydown", event => { if (event.key === "Escape" && !fixtureModal.hidden) closeFixtureModal(); });
+
     async function loadPredictions() {
         try {
             const response = await fetch("predictions.json");
@@ -1351,7 +1395,7 @@ function renderFeaturedPlayers(fixtures) {
             const data = await response.json();
 predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
-    <div class="fixture-card" style="--home-team-colour:${teamAccentColours[fixture.home] || "var(--accent)"};--away-team-colour:${teamAccentColours[fixture.away] || "var(--accent)"}">
+    <div class="fixture-card interactive-fixture" tabindex="0" role="button" aria-label="View ${fixture.home} versus ${fixture.away} prediction details" style="--home-team-colour:${teamAccentColours[fixture.home] || "var(--accent)"};--away-team-colour:${teamAccentColours[fixture.away] || "var(--accent)"}">
         <div class="fixture-teams">
             <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.home] || "#27d17f"}" data-team="${fixture.home}" aria-label="${fixture.home}">${teamCodes[fixture.home]}</span>
             <span class="team-name">${fixture.home}</span>
@@ -1367,12 +1411,19 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 <strong>${player.prediction.toFixed(2)}</strong>
             </div>
         `).join("")}
+        <div class="fixture-open-hint">Click for fixture details →</div>
     </div>
 `).join("");
         } catch (error) {
             console.error("Prediction loading error:", error);
         }
     }
+
+    predictionContainer.querySelectorAll(".interactive-fixture").forEach((card, index) => {
+        const fixture = data.predictions[index];
+        card.addEventListener("click", () => openFixtureModal(fixture));
+        card.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openFixtureModal(fixture); } });
+    });
 
     
     const revealSections = document.querySelectorAll(".section");
