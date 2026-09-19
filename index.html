@@ -1128,6 +1128,24 @@ const playerContainer = document.getElementById("player-container");
         };
 
 
+        function getPlayerShirt(playerName, size = "card") {
+            const team = playerTeams[playerName] || "default";
+            const colours = shirtColours[team] || ["#64748b", "#e5e7eb", "#ffffff"];
+            const className = size === "profile" ? "club-kit profile" : "club-kit";
+            const label = team === "default" ? "Stylised football shirt" : "Stylised " + team + " inspired shirt";
+
+            return '<div class="' + className + '" style="--kit-primary:' + colours[0] + ';--kit-secondary:' + colours[1] + ';--kit-accent:' + colours[2] + '" aria-label="' + label + '">' +
+                '<svg viewBox="0 0 78 78" role="img" aria-label="' + label + '">' +
+                    '<path class="shirt-body" d="M27 12 15 19l7 14 7-4v28h24V29l7 4 7-14-12-7-8 8h-6l-8-8Z"/>' +
+                    '<path class="shirt-panel" d="M30 23h18v34H30z"/>' +
+                    '<path class="shirt-trim" d="M15 19l7 14 7-4-5-11-7 1zM63 19l-7 14-7-4 5-11 7 1z"/>' +
+                    '<path class="shirt-neck" d="M29 12c1 5 4 8 9 8s8-3 9-8"/>' +
+                    '<text class="shirt-mark" x="39" y="39" text-anchor="middle">' + (team === "default" ? "FPL" : (team === "Man City" ? "MC" : team === "Man Utd" ? "MU" : team === "Nott'm Forest" ? "NFO" : team === "Crystal Palace" ? "CP" : team === "Coventry City" ? "COV" : team === "Bournemouth" ? "BOU" : team === "Brentford" ? "BRE" : team === "Brighton" ? "BHA" : team === "Chelsea" ? "CHE" : team === "Everton" ? "EVE" : team === "Fulham" ? "FUL" : team === "Hull City" ? "HUL" : team === "Leeds" ? "LEE" : team === "Liverpool" ? "LIV" : team === "Newcastle" ? "NEW" : team === "Sunderland" ? "SUN" : team === "Spurs" ? "TOT" : "ARS") + '</text>' +
+                '</svg>' +
+            '</div>';
+        }
+
+
 function renderFeaturedPlayers(fixtures) {
     const players = [];
 
