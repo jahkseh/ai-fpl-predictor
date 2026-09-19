@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile · AI FPL Predictor</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --surface-soft: #eef2f5;
+            --border: #dce3ea;
+            --text: #1f2937;
+            --text-muted: #64748b;
+            --accent: #20b86d;
+            --accent-hover: #17945a;
+            --hero: #0f172a;
+            --header: #0f172a;
+            --footer: #0f172a;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--header);
+            color: white;
+            padding: 20px 40px;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        .theme-toggle {
+            padding: 8px 12px;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            background: transparent;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 54px 20px 70px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 26px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .back-link:hover { color: var(--accent-hover); }
+
+        .profile-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(15, 30, 22, .07);
+        }
+
+        .profile-hero {
+            padding: 34px;
+            background: var(--hero);
+            color: white;
+        }
+
+        .profile-kicker {
+            color: #9fb0aa;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .profile-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 8px;
+        }
+
+        .fixture {
+            color: #b9c4c0;
+            font-size: 15px;
+        }
+
+        .profile-body {
+            padding: 30px;
+        }
+
+        .projection {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(220px, .9fr);
+            gap: 22px;
+            margin-bottom: 28px;
+        }
+
+        .projection-card,
+        .context-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            background: var(--surface);
+        }
+
+        .label {
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .points {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .points strong {
+            font-size: 3rem;
+            letter-spacing: -.04em;
+        }
+
+        .points span {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .context-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .context-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .context-row:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .context-row span:first-child { color: var(--text-muted); }
+        .context-row strong { text-align: right; }
+
+        .explanation {
+            padding: 24px;
+            border-radius: 16px;
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+        }
+
+        .explanation h2 {
+            font-size: 1.2rem;
+            margin-bottom: 9px;
+        }
+
+        .explanation p {
+            color: var(--text-muted);
+            line-height: 1.65;
+            font-size: 14px;
+        }
+
+        .related {
+            margin-top: 28px;
+        }
+
+        .related h2 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+        }
+
+        .related-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .related-player {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--text);
+            background: var(--surface);
+        }
+
+        .related-player:hover {
+            border-color: var(--accent);
+        }
+
+        .related-player strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .related-player span {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-muted);
+        }
+
+        footer {
+            background: var(--footer);
+            color: #aeb6ca;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 800px) {
+            header { padding: 18px 20px; }
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav { gap: 12px; flex-wrap: wrap; justify-content: center; }
+            main { padding-top: 35px; }
+            .profile-hero, .profile-body { padding: 24px; }
+            .projection { grid-template-columns: 1fr; }
+            .related-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">AI FPL <span>Predictor</span></div>
+            <nav>
+                <a href="index.html#home">Home</a>
+                <a href="index.html#predictions">Predictions</a>
+                <a href="index.html#players">Players</a>
+                <a href="index.html#performance">Performance</a>
+                <button class="theme-toggle" id="theme-toggle" type="button">☀️ Light</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a class="back-link" href="index.html#players">← Back to Players</a>
+
+        <div id="player-content">
+            <div class="state">Loading player profile...</div>
+        </div>
+    </main>
+
+    <footer>AI FPL Predictor · Machine-learning FPL analysis</footer>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const savedTheme = localStorage.getItem("fpl-theme");
+
+        if (savedTheme === "dark") {
+            document.documentElement.style.setProperty("--bg", "#0b1220");
+            document.documentElement.style.setProperty("--surface", "#111827");
+            document.documentElement.style.setProperty("--surface-soft", "#162033");
+            document.documentElement.style.setProperty("--border", "#243047");
+            document.documentElement.style.setProperty("--text", "#e5e7eb");
+            document.documentElement.style.setProperty("--text-muted", "#94a3b8");
+            document.documentElement.style.setProperty("--accent", "#27d17f");
+            document.documentElement.style.setProperty("--accent-hover", "#20b86d");
+        }
+
+        themeToggle.addEventListener("click", () => {
+            const isDark = localStorage.getItem("fpl-theme") === "dark";
+            localStorage.setItem("fpl-theme", isDark ? "light" : "dark");
+            window.location.reload();
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        const playerName = params.get("player");
+        const content = document.getElementById("player-content");
+
+        function escapeHtml(value) {
+            return String(value)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        async function loadPlayerProfile() {
+            try {
+                if (!playerName) {
+                    throw new Error("Player not specified");
+                }
+
+                const response = await fetch("predictions.json");
+                if (!response.ok) throw new Error("Prediction data unavailable");
+
+                const data = await response.json();
+                const matches = [];
+
+                data.predictions.forEach(fixture => {
+                    fixture.players.forEach(player => {
+                        if (player.name === playerName) {
+                            matches.push({
+                                ...player,
+                                home: fixture.home,
+                                away: fixture.away
+                            });
+                        }
+                    });
+                });
+
+                if (matches.length === 0) {
+                    throw new Error("Player not found");
+                }
+
+                const player = matches[0];
+                const fixturePlayers = data.predictions.find(
+                    fixture => fixture.home === player.home && fixture.away === player.away
+                ).players;
+
+                const related = fixturePlayers
+                    .filter(other => other.name !== player.name)
+                    .sort((a, b) => a.rank - b.rank);
+
+                document.title = player.name + " · AI FPL Predictor";
+
+                content.innerHTML =
+                    '<article class="profile-card">' +
+                        '<section class="profile-hero">' +
+                            '<div class="profile-kicker">Gameweek ' + escapeHtml(data.gameweek) + ' model projection</div>' +
+                            '<h1>' + escapeHtml(player.name) + '</h1>' +
+                            '<div class="fixture">' + escapeHtml(player.home) + ' vs ' + escapeHtml(player.away) + '</div>' +
+                        '</section>' +
+                        '<section class="profile-body">' +
+                            '<div class="projection">' +
+                                '<div class="projection-card">' +
+                                    '<div class="label">Expected points</div>' +
+                                    '<div class="points"><strong>' + Number(player.prediction).toFixed(2) + '</strong><span>model projection</span></div>' +
+                                '</div>' +
+                                '<div class="context-card">' +
+                                    '<div class="label">Prediction context</div>' +
+                                    '<div class="context-list">' +
+                                        '<div class="context-row"><span>Fixture</span><strong>' + escapeHtml(player.home) + ' vs ' + escapeHtml(player.away) + '</strong></div>' +
+                                        '<div class="context-row"><span>Fixture rank</span><strong>#' + escapeHtml(player.rank) + '</strong></div>' +
+                                        '<div class="context-row"><span>Gameweek</span><strong>GW' + escapeHtml(data.gameweek) + '</strong></div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="explanation">' +
+                                '<h2>What does this number mean?</h2>' +
+                                '<p>This is the Random Forest model’s projected FPL points for this player in the selected Gameweek. It is a model estimate, not a guaranteed score or a recommendation. The current profile uses the same prediction data shown on the main Players and Predictions sections.</p>' +
+                            '</div>' +
+                            '<div class="related">' +
+                                '<h2>Other players in this fixture</h2>' +
+                                '<div class="related-list">' +
+                                    related.map(other =>
+                                        '<a class="related-player" href="player.html?player=' + encodeURIComponent(other.name) + '">' +
+                                            '<strong>#' + escapeHtml(other.rank) + ' · ' + escapeHtml(other.name) + '</strong>' +
+                                            '<span>' + Number(other.prediction).toFixed(2) + ' expected points</span>' +
+                                        '</a>'
+                                    ).join("") +
+                                '</div>' +
+                            '</div>' +
+                        '</section>' +
+                    '</article>';
+            } catch (error) {
+                console.error("Player profile loading error:", error);
+                content.innerHTML =
+                    '<div class="state">This player profile is not available.</div>';
+            }
+        }
+
+        loadPlayerProfile();
+    </script>
+</body>
+</html>
