@@ -470,6 +470,134 @@ body[data-theme="light"] .hero-stat span {
     }
 }
 
+
+        /* Frontend refresh */
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            color: #aebbb5;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .11em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 18px;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 9px;
+            color: #d6dfda;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background .2s ease, border-color .2s ease;
+        }
+
+        .hero-secondary:hover {
+            background: rgba(255,255,255,.07);
+            border-color: rgba(255,255,255,.25);
+        }
+
+        .fixture-card,
+        .info-card,
+        .player-card {
+            box-shadow: 0 10px 28px rgba(15, 30, 22, .06);
+        }
+
+        .fixture-card:hover,
+        .info-card:hover,
+        .player-card:hover {
+            box-shadow: 0 16px 34px rgba(15, 30, 22, .10);
+        }
+
+        .players-section {
+            background: var(--surface-soft);
+        }
+
+        .player-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 3px;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+
+        .player-card:hover::before {
+            opacity: 1;
+        }
+
+        .player-rank {
+            color: var(--accent-hover);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .player-points {
+            margin-top: 16px;
+            display: flex;
+            align-items: baseline;
+            gap: 7px;
+        }
+
+        .player-points strong {
+            font-size: 1.9rem;
+            color: var(--text);
+        }
+
+        .player-points span {
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .loading {
+            min-height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 800px) {
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-button,
+            .hero-secondary {
+                width: min(100%, 280px);
+            }
+        }
+
 </style>
 </head>
 
@@ -493,6 +621,7 @@ body[data-theme="light"] .hero-stat span {
     </header>
 
     <section class="hero" id="home">
+        <div class="eyebrow">Fantasy Premier League analytics</div>
         <h1>AI FPL <span>Predictor</span></h1>
 
         <p>
@@ -501,9 +630,10 @@ body[data-theme="light"] .hero-stat span {
             expected points.
         </p>
 
-        <a href="#predictions" class="hero-button">
-            View Predictions
-        </a>
+        <div class="hero-actions">
+            <a href="#predictions" class="hero-button">View Predictions</a>
+            <a href="#players" class="hero-secondary">Explore Players</a>
+        </div>
     </section>
 <div class="hero-stats">
 
@@ -518,8 +648,8 @@ body[data-theme="light"] .hero-stat span {
     </div>
 
     <div class="hero-stat">
-        <strong>30</strong>
-        <span>GW5 Predictions</span>
+        <strong id="prediction-count">0</strong>
+        <span id="prediction-count-label">Predictions</span>
     </div>
 
 </div>
@@ -533,36 +663,16 @@ body[data-theme="light"] .hero-stat span {
 </div>
 
     </section>
-<section class="section" id="players">
+<section class="section players-section" id="players">
 
     <div class="section-title">
-        <h2>Players</h2>
-        <p>Explore the players currently being analysed by the AI model.</p>
+        <span class="section-kicker">Players to watch</span>
+        <h2>Featured Players</h2>
+        <p>Players currently standing out in the model's Gameweek 5 predictions.</p>
     </div>
 
-    <div class="info-grid">
-
-        <div class="info-card">
-            <h3>Erling Haaland</h3>
-            <p>
-                Manchester City · Forward
-            </p>
-        </div>
-
-        <div class="info-card">
-            <h3>Bruno Fernandes</h3>
-            <p>
-                Man Utd · Midfielder
-            </p>
-        </div>
-
-        <div class="info-card">
-            <h3>Bukayo Saka</h3>
-            <p>
-                Arsenal · Midfielder
-            </p>
-        </div>
-
+    <div class="info-grid" id="player-container">
+        <div class="info-card loading">Loading players...</div>
     </div>
 
 </section>
@@ -671,6 +781,42 @@ body[data-theme="light"] .hero-stat span {
             }
         });    const predictionContainer = document.getElementById("prediction-container");
 const predictionsTitle = document.getElementById("predictions-title");
+
+const predictionCount = document.getElementById("prediction-count");
+const predictionCountLabel = document.getElementById("prediction-count-label");
+const playerContainer = document.getElementById("player-container");
+
+function renderFeaturedPlayers(fixtures) {
+    const players = [];
+
+    fixtures.forEach(fixture => {
+        fixture.players.forEach(player => {
+            players.push({
+                name: player.name,
+                prediction: player.prediction,
+                home: fixture.home,
+                away: fixture.away
+            });
+        });
+    });
+
+    players.sort((a, b) => b.prediction - a.prediction);
+
+    const featured = players.slice(0, 6);
+
+    playerContainer.innerHTML = featured.map((player, index) => {
+        return '<div class="info-card player-card">' +
+            '<div class="player-rank">#' + (index + 1) + ' model projection</div>' +
+            '<h3>' + player.name + '</h3>' +
+            '<p>' + player.home + ' vs ' + player.away + '</p>' +
+            '<div class="player-points">' +
+                '<strong>' + player.prediction.toFixed(2) + '</strong>' +
+                '<span>expected points</span>' +
+            '</div>' +
+        '</div>';
+    }).join("");
+}
+
     const teamCodes = {
         "Bournemouth": "BOU",
         "Liverpool": "LIV",
@@ -726,6 +872,28 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         } catch (error) {
             console.error("Prediction loading error:", error);
         }
+    }
+
+    
+    const revealSections = document.querySelectorAll(".section");
+
+    if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        revealSections.forEach(section => {
+            section.style.opacity = "0";
+            section.style.transform = "translateY(10px)";
+            section.style.transition = "opacity .5s ease, transform .5s ease";
+            revealObserver.observe(section);
+        });
     }
 
     loadPredictions();
