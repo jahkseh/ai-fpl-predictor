@@ -1064,7 +1064,7 @@ body[data-theme="light"] .hero-stat span {
             } else {
                 document.body.setAttribute("data-theme", "light");
                 localStorage.setItem("fpl-theme", "light");
-                themeToggle.textContent = "🌙 Dark";
+                themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
             }
         });    const predictionContainer = document.getElementById("prediction-container");
 const predictionsTitle = document.getElementById("predictions-title");
@@ -1072,6 +1072,61 @@ const predictionsTitle = document.getElementById("predictions-title");
 const predictionCount = document.getElementById("prediction-count");
 const predictionCountLabel = document.getElementById("prediction-count-label");
 const playerContainer = document.getElementById("player-container");
+
+        const playerTeams = {
+            "Hill": "Bournemouth",
+            "Wirtz": "Liverpool",
+            "Szoboszlai": "Liverpool",
+            "João Pedro": "Chelsea",
+            "Lewis-Potter": "Brentford",
+            "Palmer": "Chelsea",
+            "Saka": "Arsenal",
+            "Gabriel": "Arsenal",
+            "Dunk": "Brighton",
+            "Branthwaite": "Everton",
+            "Mykolenko": "Everton",
+            "Tarkowski": "Everton",
+            "B.Fernandes": "Man Utd",
+            "Mbeumo": "Man Utd",
+            "Leno": "Fulham",
+            "Bogle": "Leeds",
+            "Calvert-Lewin": "Crystal Palace",
+            "Stach": "Leeds",
+            "Haaland": "Man City",
+            "Mukiele": "Sunderland",
+            "Semenyo": "Man City",
+            "Barnes": "Newcastle",
+            "Horníček": "Hull City",
+            "Wissa": "Newcastle",
+            "Sels": "Nott'm Forest",
+            "Schlager": "Coventry City",
+            "Gibbs-White": "Nott'm Forest",
+            "Van de Ven": "Spurs",
+            "Kinsky": "Spurs",
+            "Lindelöf": "Spurs"
+        };
+
+        const shirtColours = {
+            "Arsenal": ["#d71920", "#ffffff", "#d71920"],
+            "Bournemouth": ["#d71920", "#111111", "#ffffff"],
+            "Brentford": ["#e30613", "#ffffff", "#111111"],
+            "Brighton": ["#0057b8", "#ffffff", "#8fd8ff"],
+            "Chelsea": ["#034694", "#ffffff", "#6fb1ff"],
+            "Coventry City": ["#5b9bd5", "#ffffff", "#ffffff"],
+            "Crystal Palace": ["#1b458f", "#ed2939", "#ffffff"],
+            "Everton": ["#003399", "#ffffff", "#8fb8ff"],
+            "Fulham": ["#ffffff", "#111111", "#111111"],
+            "Hull City": ["#f5a400", "#111111", "#ffffff"],
+            "Leeds": ["#ffffff", "#f4f4f4", "#1d428a"],
+            "Liverpool": ["#c8102e", "#ffffff", "#f6c700"],
+            "Man City": ["#6cabdd", "#ffffff", "#1c2c5b"],
+            "Man Utd": ["#da291c", "#111111", "#fbe122"],
+            "Newcastle": ["#111111", "#ffffff", "#9ca3af"],
+            "Nott'm Forest": ["#e53233", "#ffffff", "#ffffff"],
+            "Sunderland": ["#eb1725", "#ffffff", "#111111"],
+            "Spurs": ["#ffffff", "#132257", "#132257"]
+        };
+
 
 function renderFeaturedPlayers(fixtures) {
     const players = [];
