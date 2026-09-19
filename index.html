@@ -145,7 +145,44 @@ nav a:hover {
 .hero-button:hover {
     background: var(--accent-hover);
 }
+.hero-stats {
+    max-width: 620px;
+    margin: 34px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+}
 
+.hero-stat {
+    padding: 18px 12px;
+    background: rgba(15, 23, 42, 0.75);
+}
+
+.hero-stat strong {
+    display: block;
+    font-size: 1.35rem;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.hero-stat span {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+@media (max-width: 800px) {
+    .hero-stats {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+    }
+}
 .section {
     max-width: 1200px;
     margin: 0 auto;
@@ -441,7 +478,24 @@ body[data-theme="light"] .prediction-card:hover {
             View Predictions
         </a>
     </section>
+<div class="hero-stats">
 
+    <div class="hero-stat">
+        <strong>18</strong>
+        <span>Model Features</span>
+    </div>
+
+    <div class="hero-stat">
+        <strong>1.0131</strong>
+        <span>Historical MAE</span>
+    </div>
+
+    <div class="hero-stat">
+        <strong>30</strong>
+        <span>GW5 Predictions</span>
+    </div>
+
+</div>
     <section class="section" id="predictions">
 
     <div class="section-title">
