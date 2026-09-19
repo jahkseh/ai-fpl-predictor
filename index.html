@@ -79,6 +79,40 @@ nav a:hover {
     color: white;
     padding: 80px 20px 100px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 28px 8%;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            to right,
+            transparent 49.9%,
+            rgba(255, 255, 255, 0.06) 50%,
+            transparent 50.1%
+        );
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
