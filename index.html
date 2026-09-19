@@ -344,22 +344,15 @@ nav a:hover {
     color: var(--text);
     font-size: 1rem;
 }
-.fixture-prediction.top-pick {
-    position: relative;
-    padding-left: 10px;
+.fixture-prediction.top-pick .rank {
+    font-size: 0.95rem;
+    font-weight: 800;
 }
 
-.fixture-prediction.top-pick::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10px;
-    bottom: 10px;
-    width: 3px;
-    border-radius: 3px;
-    background: var(--accent);
+.fixture-prediction.top-pick .player,
+.fixture-prediction.top-pick strong {
+    font-weight: 700;
 }
-
 .fixture-prediction.top-pick .player,
 .fixture-prediction.top-pick strong {
     font-weight: 700;
