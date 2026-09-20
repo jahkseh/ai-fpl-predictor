@@ -2059,11 +2059,11 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             document.getElementById("live-fixture-count").textContent =
                 liveData && Array.isArray(liveData.fixtures)
                     ? liveData.fixtures.length
-                    : (Array.isArray(predictionData.predictions) ? predictionData.predictions.length : "—");
+                    : (Array.isArray(predictionData?.predictions) ? predictionData.predictions.length : "—");
             document.getElementById("live-next-gameweek").textContent =
-                predictionData.gameweek != null ? "GW" + predictionData.gameweek : "—";
+                predictionData?.gameweek != null ? "GW" + predictionData.gameweek : "—";
             document.getElementById("live-data-status").textContent = "Live model pool loaded";
-            const updatedAt = liveData?.generated_at_utc || predictionData.generated_at_utc;
+            const updatedAt = liveData?.generated_at_utc || predictionData?.generated_at_utc;
             if (updatedAt) {
                 document.getElementById("live-data-updated").textContent =
                     "· updated " + new Date(updatedAt).toLocaleString([], {
