@@ -39,7 +39,7 @@ BASELINE = [
 ]
 PHASE3 = BASELINE + HISTORICAL_FEATURES
 PHASE4 = PHASE3 + TEAM_FEATURES + ["fixture_attack_mismatch", "fixture_defence_mismatch", "fixture_xg_environment"]
-PARAMS = {"n_estimators": 60, "min_samples_leaf": 5, "random_state": 42, "n_jobs": -1}
+PARAMS = {"n_estimators": 30, "min_samples_leaf": 5, "random_state": 42, "n_jobs": -1}
 
 
 def aggregate_weekly(df: pd.DataFrame) -> pd.DataFrame:
