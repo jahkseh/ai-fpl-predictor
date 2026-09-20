@@ -74,4 +74,47 @@ def player_prediction_payload(row: pd.Series) -> dict:
             "fixture_defence_mismatch": safe_json_float(row.get("fixture_defence_mismatch", np.nan)),
             "fixture_xg_environment": safe_json_float(row.get("fixture_xg_environment", np.nan)),
         },
+        # Descriptive model inputs exposed to the player page. These do not
+        # claim causal feature attribution.
+        "model_inputs": {
+            "historical_ability": {
+                "points_per_90": safe_json_float(row.get("historical_points_per_90", np.nan)),
+                "xg_per_90": safe_json_float(row.get("historical_xg_per_90", np.nan)),
+                "xa_per_90": safe_json_float(row.get("historical_xa_per_90", np.nan)),
+                "goals_per_90": safe_json_float(row.get("historical_goals_per_90", np.nan)),
+                "assists_per_90": safe_json_float(row.get("historical_assists_per_90", np.nan)),
+                "start_rate": safe_json_float(row.get("historical_start_rate", np.nan)),
+            },
+            "current_form": {
+                "points_per_90": safe_json_float(
+                    row.get("previous_3_total_points", np.nan)
+                    / (row.get("previous_3_minutes", np.nan) / 90)
+                    if pd.notna(row.get("previous_3_total_points", np.nan))
+                    and pd.notna(row.get("previous_3_minutes", np.nan))
+                    and float(row.get("previous_3_minutes", 0)) > 0
+                    else np.nan
+                ),
+                "recent_3_points": safe_json_float(row.get("previous_3_total_points", np.nan)),
+                "recent_3_minutes": safe_json_float(row.get("previous_3_minutes", np.nan)),
+                "recent_3_xg": safe_json_float(row.get("previous_3_expected_goals", np.nan)),
+                "recent_3_xa": safe_json_float(row.get("previous_3_expected_assists", np.nan)),
+            },
+            "current_club": {
+                "points_per_90": safe_json_float(row.get("club_points_per_90", np.nan)),
+                "xg_per_90": safe_json_float(row.get("club_xg_per_90", np.nan)),
+                "xa_per_90": safe_json_float(row.get("club_xa_per_90", np.nan)),
+                "start_rate": safe_json_float(row.get("club_start_rate", np.nan)),
+            },
+            "team_attack": {
+                "xg_for_per_90": safe_json_float(row.get("team_xg_for_per90", np.nan)),
+                "goals_for_per_90": safe_json_float(row.get("team_goals_for_per90", np.nan)),
+            },
+            "opponent_defence": {
+                "xg_against_per_90": safe_json_float(row.get("opponent_xg_against_per90", np.nan)),
+                "goals_against_per_90": safe_json_float(row.get("opponent_goals_against_per90", np.nan)),
+            },
+            "expected_minutes": safe_json_float(row.get("expected_minutes", np.nan)),
+            "home_away": "home" if bool(row["was_home_gw"]) else "away",
+            "fixture_environment": safe_json_float(row.get("fixture_xg_environment", np.nan)),
+        },
     }
