@@ -397,8 +397,7 @@ body[data-theme="light"] {
 }
 
 body[data-theme="light"] .fixture-card:hover,
-body[data-theme="light"] .prediction-card:hover {
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+body[data-theme="light"] .prediction-card:hover {    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
 }
 body[data-theme="light"] .hero-stats {
     background: #ffffff;
@@ -797,8 +796,7 @@ body[data-theme="light"] .hero-stat span {
         .player-points span {
             margin: 0;
             padding: 0;
-            white-space: nowrap;
-            color: var(--text-muted);
+            white-space: nowrap;            color: var(--text-muted);
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
@@ -827,7 +825,26 @@ body[data-theme="light"] .hero-stat span {
         }
 
 
-                /* Current Gameweek overview */
+                /* Differential picks */
+        .differentials-section { background: var(--bg); border-top: 1px solid var(--border); }
+        .differential-note { max-width:900px; margin:-10px auto 26px; padding:13px 16px; display:flex; align-items:center; gap:12px; border:1px solid var(--border); border-radius:12px; background:var(--surface); }
+        .differential-note-icon { width:32px; height:32px; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; border-radius:9px; background:rgba(32,184,109,.12); color:var(--accent-hover); font-size:12px; font-weight:900; }
+        .differential-note p { margin:0; color:var(--text-muted); font-size:13px; line-height:1.55; }
+        .differential-note strong { color:var(--text); }
+        .differential-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+        .differential-card { min-height:150px; padding:18px; display:flex; flex-direction:column; justify-content:space-between; gap:18px; border:1px solid var(--border); border-radius:16px; background:var(--surface); position:relative; overflow:hidden; }
+        .differential-card::before { content:""; position:absolute; top:0; left:18px; right:18px; height:3px; border-radius:0 0 4px 4px; background:var(--accent); opacity:.8; }
+        .differential-rank { color:var(--accent-hover); font-size:10px; font-weight:900; letter-spacing:.1em; }
+        .differential-card strong { display:block; color:var(--text); font-size:1rem; }
+        .differential-card p { margin-top:5px; color:var(--text-muted); font-size:11px; line-height:1.45; }
+        .differential-status { align-self:flex-start; padding:5px 8px; border:1px solid var(--border); border-radius:999px; color:var(--text-muted); background:var(--surface-soft); font-size:9px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+        .differential-card:not(.differential-pending) { color:inherit; text-decoration:none; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+        .differential-card:not(.differential-pending)::before { background:var(--differential-team-colour); }
+        .differential-card:not(.differential-pending):hover,.differential-card:not(.differential-pending):focus-visible { transform:translateY(-2px); border-color:var(--differential-team-colour); box-shadow:0 0 0 2px color-mix(in srgb,var(--differential-team-colour) 18%,transparent),0 12px 28px rgba(15,30,22,.10); outline:none; }
+        @media(max-width:900px){.differential-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:520px){.differential-grid{grid-template-columns:1fr}.differential-note{align-items:flex-start}}
+        
+        /* Current Gameweek overview */
         .prediction-overview {
             max-width: 1000px;
             margin: -8px auto 30px;
@@ -1017,6 +1034,7 @@ body[data-theme="light"] .hero-stat span {
     <a href="#home">Home</a>
     <a href="#predictions">Predictions</a>
     <a href="#players">Players</a>
+    <a href="#differentials">Differentials</a>
     <a href="#performance">Performance</a>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">
         <span class="theme-toggle-icon" aria-hidden="true"></span>
@@ -1111,6 +1129,24 @@ body[data-theme="light"] .hero-stat span {
     </div>
 
 </section>
+    <section class="section differentials-section" id="differentials">
+        <div class="section-title">
+            <span class="section-kicker">Weekly edge</span>
+            <h2>Differential Picks</h2>
+            <p>Five low-effective-ownership players to watch, combining ownership context with the model projection.</p>
+        </div>
+        <div class="differential-note">
+            <span class="differential-note-icon" aria-hidden="true">%</span>
+            <p><strong>How this works:</strong> these picks are designed to surface players with relatively low effective ownership and meaningful model potential. Ownership data will be connected before the weekly picks are published.</p>
+        </div>
+        <div class="differential-grid" id="differential-container">
+            <div class="differential-card differential-pending"><span class="differential-rank">01</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">02</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">03</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">04</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">05</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
+        </div>
+    </section>
     <section class="info-section">
         <div class="section">
 
@@ -1197,8 +1233,7 @@ body[data-theme="light"] .hero-stat span {
 
     </div>
 
-</section>
-           <div class="fixture-modal" id="fixture-modal" hidden><div class="fixture-modal-panel" role="dialog" aria-modal="true" aria-labelledby="fixture-modal-title"><div class="fixture-modal-head"><div class="fixture-modal-topline"><span class="fixture-modal-kicker">Fixture prediction</span><button class="fixture-modal-close" id="fixture-modal-close" type="button" aria-label="Close fixture details">×</button></div><div class="fixture-modal-teams" id="fixture-modal-title"></div></div><div class="fixture-modal-body"><div class="fixture-modal-summary" id="fixture-modal-summary"></div><div class="fixture-modal-list" id="fixture-modal-list"></div><p class="fixture-modal-footer">These are pre-match model projections. Select a player to open their full profile.</p></div></div></div>
+</section>           <div class="fixture-modal" id="fixture-modal" hidden><div class="fixture-modal-panel" role="dialog" aria-modal="true" aria-labelledby="fixture-modal-title"><div class="fixture-modal-head"><div class="fixture-modal-topline"><span class="fixture-modal-kicker">Fixture prediction</span><button class="fixture-modal-close" id="fixture-modal-close" type="button" aria-label="Close fixture details">×</button></div><div class="fixture-modal-teams" id="fixture-modal-title"></div></div><div class="fixture-modal-body"><div class="fixture-modal-summary" id="fixture-modal-summary"></div><div class="fixture-modal-list" id="fixture-modal-list"></div><p class="fixture-modal-footer">These are pre-match model projections. Select a player to open their full profile.</p></div></div></div>
 
 <footer>
         AI FPL Predictor · Machine-learning FPL analysis
@@ -1225,7 +1260,30 @@ body[data-theme="light"] .hero-stat span {
                 localStorage.setItem("fpl-theme", "light");
                 themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
             }
-        });    const predictionContainer = document.getElementById("prediction-container");
+        });    const differentialContainer = document.getElementById("differential-container");
+
+    async function loadDifferentials() {
+        try {
+            const response = await fetch("differentials.json");
+            if (!response.ok) throw new Error("Differential data unavailable");
+            const data = await response.json();
+            if (!Array.isArray(data.picks) || data.picks.length !== 5) throw new Error("Differential data invalid");
+
+            differentialContainer.innerHTML = data.picks.map((pick, index) => {
+                const team = pick.team || "";
+                const accent = teamAccentColours[team] || "var(--accent)";
+                return '<a class="differential-card" style="--differential-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(pick.name) + '">' +
+                    '<span class="differential-rank">0' + (index + 1) + '</span>' +
+                    '<div><strong>' + pick.name + '</strong><p>' + (pick.ownership ?? "—") + ' effective ownership · ' + (Number(pick.prediction) || 0).toFixed(2) + ' projected points</p></div>' +
+                    '<span class="differential-status">' + (team || "FPL") + '</span>' +
+                '</a>';
+            }).join("");
+        } catch (error) {
+            console.info("Differential picks pending:", error.message);
+        }
+    }
+
+    const predictionContainer = document.getElementById("prediction-container");
 const predictionsTitle = document.getElementById("predictions-title");
 
 const predictionCount = document.getElementById("prediction-count");
@@ -1549,6 +1607,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
     }
 
     populateFeaturedPlayers();
+    loadDifferentials();
     </script>
 
 </body>
