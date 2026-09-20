@@ -12,6 +12,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
+
+from prediction_engine import add_prediction_distribution, player_prediction_payload
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
@@ -348,20 +350,35 @@ def build_fixture_lookup(
         if home not in team_name_to_code or away not in team_name_to_code:
             raise ValueError(f"Fixture team missing from teams.csv: {home}/{away}")
 
+        home_code = team_name_to_code[home]
+        away_code = team_name_to_code[away]
+        team_rows = teams.set_index("code")
         rows.extend([
             {
-                "team_code": team_name_to_code[home],
+                "team_code": home_code,
+                "opponent_team_code": away_code,
+                "opponent": away,
                 "fixture_home_team": home,
                 "fixture_away_team": away,
                 "match_id": fixture["match_id"],
                 "was_home_gw": 1,
+                "home_strength": team_rows.loc[home_code, "strength"],
+                "away_strength": team_rows.loc[away_code, "strength"],
+                "home_elo": team_rows.loc[home_code, "elo"],
+                "away_elo": team_rows.loc[away_code, "elo"],
             },
             {
-                "team_code": team_name_to_code[away],
+                "team_code": away_code,
+                "opponent_team_code": home_code,
+                "opponent": home,
                 "fixture_home_team": home,
                 "fixture_away_team": away,
                 "match_id": fixture["match_id"],
                 "was_home_gw": 0,
+                "home_strength": team_rows.loc[home_code, "strength"],
+                "away_strength": team_rows.loc[away_code, "strength"],
+                "home_elo": team_rows.loc[home_code, "elo"],
+                "away_elo": team_rows.loc[away_code, "elo"],
             },
         ])
 
@@ -418,6 +435,13 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
     rmse = float(np.sqrt(mean_squared_error(y_test, pred)))
     r2 = float(r2_score(y_test, pred))
 
+    baseline_pred = test["previous_3_total_points"].to_numpy()
+    baseline = {
+        "mae": float(mean_absolute_error(y_test, baseline_pred)),
+        "rmse": float(np.sqrt(mean_squared_error(y_test, baseline_pred))),
+        "r2": float(r2_score(y_test, baseline_pred)),
+    }
+
     expected = {"mae": 1.0131, "rmse": 1.9953, "r2": 0.3152}
     if (
         abs(mae - expected["mae"]) > 1e-4
@@ -443,6 +467,11 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
         "expected_mae": expected["mae"],
         "expected_rmse": expected["rmse"],
         "expected_r2": expected["r2"],
+        "recent_3_baseline": {
+            "mae": round(baseline["mae"], 4),
+            "rmse": round(baseline["rmse"], 4),
+            "r2": round(baseline["r2"], 4),
+        },
         "feature_importance": {
             str(k): round(float(v), 6) for k, v in importance.items()
         },
@@ -477,7 +506,19 @@ def generate_target_predictions(
         raise ValueError("Eligible target matrix contains missing values")
 
     model = train_validated_model(weekly_historical)
-    eligible["prediction"] = np.clip(model.predict(eligible[PLAYER_FEATURES]), 0, None)
+    eligible = add_prediction_distribution(
+        model, eligible, PLAYER_FEATURES
+    )
+    eligible["team_strength"] = np.where(
+        eligible["was_home_gw"].astype(bool),
+        eligible["home_strength"],
+        eligible["away_strength"],
+    )
+    eligible["opponent_strength"] = np.where(
+        eligible["was_home_gw"].astype(bool),
+        eligible["away_strength"],
+        eligible["home_strength"],
+    )
     eligible["fixture"] = (
         eligible["fixture_home_team"] + " vs " + eligible["fixture_away_team"]
     )
@@ -500,6 +541,7 @@ def build_predictions_json(top3: pd.DataFrame, gameweek: int) -> dict:
                 "rank": int(row["rank"]),
                 "name": PLAYER_NAME_OVERRIDES.get(str(row["web_name"]), str(row["web_name"])),
                 "prediction": round(float(row["prediction"]), 6),
+                **player_prediction_payload(row),
             }
             for _, row in group.sort_values("rank").iterrows()
         ]
