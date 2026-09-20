@@ -32,10 +32,6 @@ from phase4_features import (
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
-HISTORICAL_URL = (
-    "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/"
-    "master/data/2025-26/gws/merged_gw.csv"
-)
 CURRENT_BASE = (
     "https://raw.githubusercontent.com/olbauday/FPL-Core-Insights/main/"
     "data/2026-2027/By%20Gameweek/GW{gw}/"
@@ -99,10 +95,11 @@ def current_url(gameweek: int, filename: str) -> str:
 
 
 def load_historical_data() -> pd.DataFrame:
-    df = read_csv(HISTORICAL_URL)
+    """Load all completed seasons used by the historical training set."""
+    df = load_completed_seasons()
     required = {
-        "element", "GW", "name", "value", "was_home", "minutes", "starts",
-        "total_points", "goals_scored", "assists", "expected_goals",
+        "element", "GW", "season", "name", "value", "was_home", "minutes",
+        "starts", "total_points", "goals_scored", "assists", "expected_goals",
         "expected_assists",
     }
     missing = required - set(df.columns)
@@ -128,24 +125,21 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
     aggregation.update({c: "first" for c in first_columns})
 
     weekly = (
-        df.groupby(["element", "GW"], as_index=False)
+        df.groupby(["season", "element", "GW"], as_index=False)
         .agg(aggregation)
-        .sort_values(["element", "GW"])
+        .sort_values(["season", "element", "GW"])
         .reset_index(drop=True)
     )
 
-    # Phase 4 team-history joins are season-aware. This pipeline's historical
-    # training source is the completed 2025/26 season, so retain that key on
-    # every weekly player row instead of dropping it during aggregation.
-    weekly["season"] = "2025-26"
-
+    # Keep season explicit so player form and team context never cross a
+    # season boundary.
     if weekly.duplicated(["element", "GW"]).any():
         raise AssertionError("Historical weekly data contains duplicate player/GW rows")
 
     for col in ROLLING_COLUMNS:
         for window in (3, 5, 10):
             weekly[f"previous_{window}_{col}"] = (
-                weekly.groupby("element")[col]
+                weekly.groupby(["season", "element"])[col]
                 .transform(
                     lambda x, w=window:
                     x.shift(1).rolling(w, min_periods=1).mean()
@@ -153,7 +147,7 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
             )
 
     weekly["previous_5_start_rate"] = (
-        weekly.groupby("element")["starts"]
+        weekly.groupby(["season", "element"])["starts"]
         .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean())
     )
     weekly["previous_10_start_rate"] = (
@@ -161,7 +155,7 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
         .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
     )
     weekly["previous_5_minutes_rate"] = (
-        weekly.groupby("element")["minutes"]
+        weekly.groupby(["season", "element"])["minutes"]
         .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean()) / 90
     )
     weekly["previous_10_minutes_rate"] = (
@@ -446,11 +440,15 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
     prepared = attach_team_features(prepared, build_historical_team_features())
     prepared = add_fixture_environment(prepared)
     train = prepared[
-        prepared["GW"].between(2, 32)
+        (
+            (prepared["season"] != "2025-26")
+            | prepared["GW"].between(2, 32)
+        )
         & prepared["previous_3_total_points"].notna()
     ]
     test = prepared[
-        prepared["GW"].between(33, 38)
+        (prepared["season"] == "2025-26")
+        & prepared["GW"].between(33, 38)
         & prepared["previous_3_total_points"].notna()
     ].copy()
 
@@ -474,7 +472,7 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
         "r2": float(r2_score(y_test, baseline_pred)),
     }
 
-    expected = {"mae": 1.0131, "rmse": 1.9953, "r2": 0.3152}
+    expected = {"mae": None, "rmse": None, "r2": None}
 
     importance = (
         pd.Series(model.feature_importances_, index=PLAYER_FEATURES)
