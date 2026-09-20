@@ -82,6 +82,7 @@ def validate_differentials(differentials: list[dict]) -> None:
 
 
 def render_differential_cards(differentials: list[dict]) -> str:
+    """Render compact differential cards for the static homepage."""
     cards = []
     for index, pick in enumerate(differentials, start=1):
         team = pick["team"] or ""
@@ -99,16 +100,16 @@ def render_differential_cards(differentials: list[dict]) -> str:
         cards.append(
             f'<a class="differential-card" style="--differential-team-colour:{accent}" '
             f'href="player.html?player={quote(str(pick["name"]))}">'
-            f'<span class="differential-rank">0{index}</span><div>'
+            f'<span class="differential-rank">0{index}</span>'
+            f'<div class="differential-card-content">'
             f'<div class="differential-card-head"><div><strong>{escape(str(pick["name"]))}</strong>'
             f'<span class="differential-meta">{escape(str(pick.get("position") or "Player"))} · {escape(team)}</span></div>'
             f'<span class="differential-team">{escape(team_code)}</span></div>'
-            f'<div class="differential-stats">'
-            f'<div class="differential-stat"><span>Ownership</span><strong>{ownership:.1f}%</strong></div>'
-            f'<div class="differential-stat"><span>Projection</span><strong>{prediction:.2f}</strong></div>'
-            f'<div class="differential-stat"><span>Price</span><strong>£{price:.1f}</strong></div></div>'
+            f'<div class="differential-projection"><span>Model projection</span><strong>{prediction:.2f}</strong></div>'
+            f'<div class="differential-secondary"><span>{ownership:.1f}% owned</span><span>£{price:.1f}</span></div>'
             f'<p class="differential-fixture">{escape(fixture_text)}</p>'
-            f'<div class="differential-score">Differential score · {score:.2f}</div></div></a>'
+            f'<div class="differential-score">Differential score · {score:.2f}</div>'
+            f'</div></a>'
         )
     return "\n            ".join(cards)
 
