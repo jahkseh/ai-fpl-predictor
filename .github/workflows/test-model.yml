@@ -61,6 +61,17 @@ jobs:
           assert all(player.get("expected_minutes") is not None for player in modelled)
           assert all(player.get("prediction_p10") is not None and player.get("prediction_p90") is not None for player in modelled)
 
+          profiles = json.loads(Path("player_profiles.json").read_text(encoding="utf-8"))
+          assert len(profiles["players"]) >= 30
+          assert all(
+              {"model_inputs", "recent_form", "underlying", "next_fixtures", "why"}.issubset(player)
+              and len(player["recent_form"]) <= 5
+              and len(player["next_fixtures"]) <= 5
+              and len(player["why"]) == 8
+              for player in profiles["players"]
+          )
+          assert any(player["name"] == "Mbeumo" for player in profiles["players"])
+
           data = json.loads(Path("differentials.json").read_text(encoding="utf-8"))
           assert len(data["picks"]) == 5
           assert all(0 <= float(p["ownership"]) <= 10 for p in data["picks"])
@@ -74,7 +85,12 @@ jobs:
           assert 'id="live-max-price"' in html
           assert 'id="live-min-minutes"' in html
           assert 'P10–P90' in html
-          print("Live intelligence, filters and differential publishing validation passed.")
+          assert "Search for a player or add a filter" in html
+          player_html = Path("player.html").read_text(encoding="utf-8")
+          assert "player_profiles.json" in player_html
+          assert "Deterministic model explanation" in player_html
+          assert "Why is the model predicting this?" in player_html
+          print("Live intelligence, filters, player profiles and differential publishing validation passed.")
           PY
 
       - name: Validate generated backtest artifact
