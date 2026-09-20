@@ -491,6 +491,7 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
 
 def generate_target_predictions(
     enriched: pd.DataFrame,
+    current: pd.DataFrame,
     teams: pd.DataFrame,
     weekly_historical: pd.DataFrame,
     gameweek: int,
