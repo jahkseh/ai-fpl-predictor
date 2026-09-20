@@ -76,6 +76,7 @@ class PipelineResult:
     gameweek: int
     eligible_players: int
     predictions: pd.DataFrame
+    all_predictions: pd.DataFrame
     diagnostics: dict
 
 
@@ -556,6 +557,27 @@ def generate_target_predictions(
         eligible["away_strength"],
         eligible["home_strength"],
     )
+
+    # Model-context fixture difficulty: 1 is the easiest opponent-strength bucket,
+    # 5 is the hardest. This is deliberately labelled separately from official FPL FDR.
+    strength_by_team = (
+        teams[["code", "strength"]]
+        .dropna(subset=["strength"])
+        .drop_duplicates("code")
+        .sort_values(["strength", "code"])
+        .reset_index(drop=True)
+    )
+    if len(strength_by_team) >= 5:
+        strength_by_team["fixture_difficulty"] = (
+            np.ceil((strength_by_team.index + 1) / len(strength_by_team) * 5)
+            .clip(1, 5)
+            .astype(int)
+        )
+        difficulty_map = strength_by_team.set_index("code")["fixture_difficulty"].to_dict()
+        eligible["fixture_difficulty"] = eligible["opponent_team_code"].map(difficulty_map)
+    else:
+        eligible["fixture_difficulty"] = np.nan
+
     eligible["fixture"] = (
         eligible["fixture_home_team"] + " vs " + eligible["fixture_away_team"]
     )
@@ -566,10 +588,32 @@ def generate_target_predictions(
     )
     eligible["rank"] = eligible.groupby("fixture").cumcount() + 1
 
-    return eligible[eligible["rank"] <= 3].copy(), len(eligible)
+    return eligible[eligible["rank"] <= 3].copy(), len(eligible), eligible
 
 
-def build_predictions_json(top3: pd.DataFrame, gameweek: int) -> dict:
+def _serialize_prediction_rows(frame: pd.DataFrame) -> list[dict]:
+    rows = []
+    for _, row in frame.iterrows():
+        rows.append({
+            "rank": int(row["rank"]),
+            "name": PLAYER_NAME_OVERRIDES.get(str(row["web_name"]), str(row["web_name"])),
+            "prediction": round(float(row["prediction"]), 6),
+            "price": round(float(row["now_cost"]) / 10, 1) if pd.notna(row.get("now_cost")) else None,
+            "ownership": float(row["selected_by_percent"]) if pd.notna(row.get("selected_by_percent")) else None,
+            "position": str(row.get("position", "")),
+            "team": str(row.get("team_name", "")),
+            "fixture_home": str(row["fixture_home_team"]),
+            "fixture_away": str(row["fixture_away_team"]),
+            **player_prediction_payload(row),
+        })
+    return rows
+
+
+def build_predictions_json(
+    top3: pd.DataFrame,
+    gameweek: int,
+    all_players: pd.DataFrame | None = None,
+) -> dict:
     predictions = []
     for (home, away), group in top3.groupby(
         ["fixture_home_team", "fixture_away_team"], sort=True
@@ -590,7 +634,12 @@ def build_predictions_json(top3: pd.DataFrame, gameweek: int) -> dict:
     if len(predictions) != 10:
         raise AssertionError(f"Expected 10 fixtures, got {len(predictions)}")
 
-    return {"gameweek": gameweek, "predictions": predictions}
+    output = {"gameweek": gameweek, "predictions": predictions}
+    if all_players is not None:
+        output["all_players"] = _serialize_prediction_rows(
+            all_players.sort_values(["fixture", "prediction"], ascending=[True, False])
+        )
+    return output
 
 
 def compare_with_golden(output: dict, golden_path: Path | None) -> dict:
@@ -637,10 +686,10 @@ def run(gameweek: int, golden_path: Path | None = None) -> PipelineResult:
     )
     validate_no_leakage(enriched, gameweek)
 
-    top3, eligible = generate_target_predictions(
+    top3, eligible, all_predictions = generate_target_predictions(
         enriched, fixture_history, teams, weekly, gameweek
     )
-    output = build_predictions_json(top3, gameweek)
+    output = build_predictions_json(top3, gameweek, all_predictions)
 
     checks = compare_with_golden(output, golden_path)
     checks["historical_holdout"] = historical_holdout_diagnostics(weekly)
@@ -657,7 +706,7 @@ def run(gameweek: int, golden_path: Path | None = None) -> PipelineResult:
             + json.dumps(checks, ensure_ascii=False)
         )
 
-    return PipelineResult(gameweek, eligible, top3, checks)
+    return PipelineResult(gameweek, eligible, top3, all_predictions, checks)
 
 
 def main() -> None:
@@ -672,7 +721,7 @@ def main() -> None:
         raise SystemExit("--gameweek must be between 1 and 38")
 
     result = run(args.gameweek, args.golden)
-    output = build_predictions_json(result.predictions, result.gameweek)
+    output = build_predictions_json(result.predictions, result.gameweek, result.all_predictions)
 
     if not args.dry_run:
         args.output.write_text(
