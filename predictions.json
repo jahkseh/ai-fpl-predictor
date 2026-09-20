@@ -17,10 +17,10 @@
           "fixture_context": {
             "opponent": "Leeds",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -35,10 +35,10 @@
           "fixture_context": {
             "opponent": "Leeds",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -53,10 +53,10 @@
           "fixture_context": {
             "opponent": "Arsenal",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -77,10 +77,10 @@
           "fixture_context": {
             "opponent": "Brentford",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -95,10 +95,10 @@
           "fixture_context": {
             "opponent": "Aston Villa",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -113,10 +113,10 @@
           "fixture_context": {
             "opponent": "Aston Villa",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -137,10 +137,10 @@
           "fixture_context": {
             "opponent": "Bournemouth",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -155,10 +155,10 @@
           "fixture_context": {
             "opponent": "Chelsea",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -173,10 +173,10 @@
           "fixture_context": {
             "opponent": "Bournemouth",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -197,10 +197,10 @@
           "fixture_context": {
             "opponent": "Coventry City",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -215,10 +215,10 @@
           "fixture_context": {
             "opponent": "Coventry City",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -233,10 +233,10 @@
           "fixture_context": {
             "opponent": "Newcastle",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -257,10 +257,10 @@
           "fixture_context": {
             "opponent": "Crystal Palace",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -275,10 +275,10 @@
           "fixture_context": {
             "opponent": "Nott'm Forest",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -293,10 +293,10 @@
           "fixture_context": {
             "opponent": "Nott'm Forest",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -317,10 +317,10 @@
           "fixture_context": {
             "opponent": "Hull City",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -335,10 +335,10 @@
           "fixture_context": {
             "opponent": "Hull City",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -353,10 +353,10 @@
           "fixture_context": {
             "opponent": "Hull City",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -377,10 +377,10 @@
           "fixture_context": {
             "opponent": "Ipswich Town",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -395,10 +395,10 @@
           "fixture_context": {
             "opponent": "Fulham",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -413,10 +413,10 @@
           "fixture_context": {
             "opponent": "Fulham",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -437,10 +437,10 @@
           "fixture_context": {
             "opponent": "Liverpool",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -455,10 +455,10 @@
           "fixture_context": {
             "opponent": "Man City",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -473,10 +473,10 @@
           "fixture_context": {
             "opponent": "Liverpool",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -497,10 +497,10 @@
           "fixture_context": {
             "opponent": "Spurs",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -515,10 +515,10 @@
           "fixture_context": {
             "opponent": "Spurs",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -533,10 +533,10 @@
           "fixture_context": {
             "opponent": "Man Utd",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
@@ -557,10 +557,10 @@
           "fixture_context": {
             "opponent": "Brighton",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -575,10 +575,10 @@
           "fixture_context": {
             "opponent": "Brighton",
             "is_home": true,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         },
         {
@@ -593,10 +593,10 @@
           "fixture_context": {
             "opponent": "Sunderland",
             "is_home": false,
-            "team_strength": NaN,
-            "opponent_strength": NaN,
-            "home_elo": NaN,
-            "away_elo": NaN
+            "team_strength": null,
+            "opponent_strength": null,
+            "home_elo": null,
+            "away_elo": null
           }
         }
       ]
