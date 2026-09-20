@@ -384,15 +384,38 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
     model.fit(X_train, y_train)
     pred = model.predict(X_test)
 
+    mae = float(mean_absolute_error(y_test, pred))
+    rmse = float(np.sqrt(mean_squared_error(y_test, pred)))
+    r2 = float(r2_score(y_test, pred))
+
+    expected = {"mae": 1.0131, "rmse": 1.9953, "r2": 0.3152}
+    if (
+        abs(mae - expected["mae"]) > 1e-4
+        or abs(rmse - expected["rmse"]) > 1e-4
+        or abs(r2 - expected["r2"]) > 1e-4
+    ):
+        raise AssertionError(
+            "Historical model regression metrics changed: "
+            + json.dumps({"actual": {"mae": mae, "rmse": rmse, "r2": r2}, "expected": expected})
+        )
+
+    importance = (
+        pd.Series(model.feature_importances_, index=PLAYER_FEATURES)
+        .sort_values(ascending=False)
+    )
+
     return {
         "train_rows": int(len(train)),
         "test_rows": int(len(test)),
-        "mae": round(float(mean_absolute_error(y_test, pred)), 4),
-        "rmse": round(float(np.sqrt(mean_squared_error(y_test, pred))), 4),
-        "r2": round(float(r2_score(y_test, pred)), 4),
-        "expected_mae": 1.0131,
-        "expected_rmse": 1.9953,
-        "expected_r2": 0.3152,
+        "mae": round(mae, 4),
+        "rmse": round(rmse, 4),
+        "r2": round(r2, 4),
+        "expected_mae": expected["mae"],
+        "expected_rmse": expected["rmse"],
+        "expected_r2": expected["r2"],
+        "feature_importance": {
+            str(k): round(float(v), 6) for k, v in importance.items()
+        },
     }
 
 
