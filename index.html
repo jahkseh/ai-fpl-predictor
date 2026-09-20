@@ -1514,16 +1514,13 @@ body[data-theme="light"] .hero-stat span {
 
                 return '<a class="differential-card" style="--differential-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(pick.name) + '">' +
                     '<span class="differential-rank">0' + (index + 1) + '</span>' +
-                    '<div>' +
+                    '<div class="differential-card-content">' +
                         '<div class="differential-card-head">' +
                             '<div><strong>' + escapeDifferentialText(pick.name) + '</strong><span class="differential-meta">' + escapeDifferentialText(position) + ' · ' + escapeDifferentialText(team) + '</span></div>' +
                             '<span class="differential-team">' + teamCode + '</span>' +
                         '</div>' +
-                        '<div class="differential-stats">' +
-                            '<div class="differential-stat"><span>Ownership</span><strong>' + (Number.isFinite(ownership) ? ownership.toFixed(1) + '%' : '—') + '</strong></div>' +
-                            '<div class="differential-stat"><span>Projection</span><strong>' + (Number.isFinite(prediction) ? prediction.toFixed(2) : '—') + '</strong></div>' +
-                            '<div class="differential-stat"><span>Price</span><strong>' + (Number.isFinite(price) ? '£' + price.toFixed(1) : '—') + '</strong></div>' +
-                        '</div>' +
+                        '<div class="differential-projection"><span>Model projection</span><strong>' + (Number.isFinite(prediction) ? prediction.toFixed(2) : '—') + '</strong></div>' +
+                        '<div class="differential-secondary"><span>' + (Number.isFinite(ownership) ? ownership.toFixed(1) + '% owned' : '—') + '</span><span>' + (Number.isFinite(price) ? '£' + price.toFixed(1) : '—') + '</span></div>' +
                         '<p class="differential-fixture">' + escapeDifferentialText(fixtureText) + '</p>' +
                         '<div class="differential-score">Differential score · ' + (Number.isFinite(score) ? score.toFixed(2) : '—') + '</div>' +
                     '</div>' +
@@ -1531,7 +1528,7 @@ body[data-theme="light"] .hero-stat span {
             }).join("");
 
             document.querySelector(".differential-note p").innerHTML =
-                "<strong>How this works:</strong> the weekly list combines the FPL ownership percentage with the model projection. Lower-owned players receive more weight in the differential score." +
+                "<strong>Lower ownership + strong projection = higher differential score.</strong>" +
                 '<span class="differential-note-meta">GW' + (payload.next_gameweek || payload.data_gameweek) + ' · ' + picks.length + ' picks · ownership is FPL team-selected percentage.</span>';
         } catch (error) {
             // The generated cards are already embedded in index.html, so a
