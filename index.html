@@ -1984,6 +1984,40 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             if (!response.ok) throw new Error("Live data unavailable");
             const data = await response.json();
             players = Array.isArray(data.players) ? data.players : [];
+
+            // Keep search useful even when the live snapshot and prediction
+            // snapshot are temporarily out of sync. Predictions contain the
+            // same modelled player pool, so merge any missing names into the
+            // searchable dataset rather than making search depend on one
+            // generated artifact being perfectly synchronised.
+            try {
+                const predictionResponse = await fetch("predictions.json?ts=" + Date.now());
+                if (predictionResponse.ok) {
+                    const predictionData = await predictionResponse.json();
+                    const predictionPlayers = Array.isArray(predictionData.all_players) ? predictionData.all_players : [];
+                    const existingNames = new Set(players.map(player => String(player.name || "").trim().toLowerCase()).filter(Boolean));
+                    predictionPlayers.forEach(player => {
+                        const name = String(player.name || "").trim();
+                        const key = name.toLowerCase();
+                        if (!name || existingNames.has(key)) return;
+                        const context = player.fixture_context || {};
+                        const isHome = context.is_home === true;
+                        players.push({
+                            ...player,
+                            team: player.team || (isHome ? player.fixture_home : player.fixture_away) || "",
+                            fixture: player.fixture || (player.fixture_home && player.fixture_away ? {
+                                home: player.fixture_home,
+                                away: player.fixture_away,
+                                is_home: isHome
+                            } : null)
+                        });
+                        existingNames.add(key);
+                    });
+                }
+            } catch (predictionFallbackError) {
+                console.info("Prediction search fallback unavailable:", predictionFallbackError.message);
+            }
+
             renderTeams();
             document.getElementById("live-gameweek").textContent = data.data_gameweek != null ? "GW" + data.data_gameweek : "—";
             document.getElementById("live-player-count").textContent = Number(data.player_count || 0).toLocaleString();

@@ -466,10 +466,12 @@ def main() -> None:
     for _, row in latest.iterrows():
         player_id = int(row["id"])
         team_code = int(row["team_code"]) if "team_code" in row and pd.notna(row["team_code"]) else None
-        # player_gameweek_stats already carries team_code in most snapshots; use players.csv as fallback.
-        if team_code is None:
+        # Prefer the current players.csv team when the gameweek snapshot has
+        # a missing or stale code. This keeps transferred/newly updated players
+        # in the public player pool instead of silently dropping them.
+        if team_code not in team_map:
             match = players[players["player_id"] == player_id]
-            team_code = int(match.iloc[0]["team_code"]) if not match.empty else None
+            team_code = int(match.iloc[0]["team_code"]) if not match.empty and pd.notna(match.iloc[0]["team_code"]) else None
         fixture = next_fixture.get(team_code)
 
         name = str(row["web_name"])
