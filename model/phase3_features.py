@@ -59,38 +59,49 @@ PHASE3_MODEL_PARAMS = {
 
 
 def prepare_historical_training(weekly: pd.DataFrame) -> pd.DataFrame:
-    """Attach 2025/26 prior-season and club-history features to weekly rows."""
+    """Attach leakage-safe historical priors to every completed season."""
     combined = add_historical_priors(load_completed_seasons())
-    hist = combined[combined["season"] == "2025-26"].copy()
+    hist = combined.copy()
     hist["player_key"] = hist["name"].map(normalize_name)
 
-    # Match the validated weekly aggregation to the detailed historical rows.
-    # The historical priors are already point-in-time at each GW.
+    if "season" not in weekly.columns:
+        raise ValueError("Weekly historical training data must include season")
+
+    # Match each training row to the same player's point-in-time priors in the
+    # same season/gameweek. The priors are calculated only from rows before
+    # the current gameweek, so older seasons expand the sample without target
+    # leakage.
     prior = hist[
-        ["player_key", "GW"] + HISTORICAL_FEATURES
-    ].drop_duplicates(["player_key", "GW"])
+        ["player_key", "season", "GW"] + HISTORICAL_FEATURES
+    ].drop_duplicates(["player_key", "season", "GW"])
 
     out = weekly.copy()
     out["player_key"] = out["name"].map(normalize_name)
     out = out.merge(
-        prior, on=["player_key", "GW"], how="left", validate="one_to_one"
+        prior,
+        on=["player_key", "season", "GW"],
+        how="left",
+        validate="one_to_one",
     )
     return out
 
 
 def add_workload_features(frame: pd.DataFrame, id_col: str) -> pd.DataFrame:
-    """Add recent match/minute load using completed FPL gameweeks only."""
-    out = frame.sort_values([id_col, "GW"]).copy()
+    """Add recent match/minute load without crossing a season boundary."""
+    sort_keys = [id_col, "season", "GW"] if "season" in frame.columns else [id_col, "GW"]
+    group_keys = [id_col, "season"] if "season" in frame.columns else [id_col]
+    out = frame.sort_values(sort_keys).copy()
+
     out["matches_last_3_gw"] = (
-        out.groupby(id_col)["GW"]
+        out.groupby(group_keys)["GW"]
         .transform(lambda s: s.shift(1).rolling(3, min_periods=1).count())
     )
     out["minutes_last_3_gw"] = (
-        out.groupby(id_col)["minutes"]
+        out.groupby(group_keys)["minutes"]
         .transform(lambda s: s.shift(1).rolling(3, min_periods=1).sum())
     )
     out["matches_last_5_gw"] = (
-        out.groupby(id_col)["GW"]
+        out.groupby(group_keys)["GW"]
         .transform(lambda s: s.shift(1).rolling(5, min_periods=1).count())
     )
     out["minutes_last_5_gw"] = (
@@ -98,8 +109,6 @@ def add_workload_features(frame: pd.DataFrame, id_col: str) -> pd.DataFrame:
         .transform(lambda s: s.shift(1).rolling(5, min_periods=1).sum())
     )
     return out
-
-
 def add_target_historical_features(
     target: pd.DataFrame,
     historical: pd.DataFrame,
