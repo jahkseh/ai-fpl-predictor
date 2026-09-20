@@ -140,18 +140,13 @@ def add_historical_priors(df: pd.DataFrame) -> pd.DataFrame:
         )
         .sort_values(["player_key", "season"])
     )
-    season_totals["previous_season_points_per_90"] = _safe_rate(
-        season_totals["season_points"].shift(1),
-        season_totals["season_minutes"].shift(1),
-    )
-    season_totals["previous_season_xg_per_90"] = _safe_rate(
-        season_totals["season_xg"].shift(1),
-        season_totals["season_minutes"].shift(1),
-    )
-    season_totals["previous_season_xa_per_90"] = _safe_rate(
-        season_totals["season_xa"].shift(1),
-        season_totals["season_minutes"].shift(1),
-    )
+    prev_minutes = season_totals.groupby("player_key")["season_minutes"].shift(1)
+    prev_points = season_totals.groupby("player_key")["season_points"].shift(1)
+    prev_xg = season_totals.groupby("player_key")["season_xg"].shift(1)
+    prev_xa = season_totals.groupby("player_key")["season_xa"].shift(1)
+    season_totals["previous_season_points_per_90"] = _safe_rate(prev_points, prev_minutes)
+    season_totals["previous_season_xg_per_90"] = _safe_rate(prev_xg, prev_minutes)
+    season_totals["previous_season_xa_per_90"] = _safe_rate(prev_xa, prev_minutes)
     season_totals = season_totals.drop(columns=["season_minutes", "season_points", "season_xg", "season_xa"])
     out = out.merge(season_totals, on=["player_key", "season"], how="left", validate="many_to_one")
 
