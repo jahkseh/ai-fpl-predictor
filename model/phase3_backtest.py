@@ -53,27 +53,30 @@ def aggregate_weekly(df: pd.DataFrame) -> pd.DataFrame:
     agg["was_home"] = "first"
     agg["team"] = "first"
     agg["opponent_team"] = "first"
-    weekly = df[df["season"] == "2025-26"].groupby(["element", "GW"], as_index=False).agg(agg)
-    weekly["season"] = "2025-26"
-    weekly = weekly.sort_values(["element", "GW"]).reset_index(drop=True)
+    weekly = (
+        df.groupby(["season", "element", "GW"], as_index=False)
+        .agg(agg)
+        .sort_values(["season", "element", "GW"])
+        .reset_index(drop=True)
+    )
     for col in [
         "total_points", "minutes", "expected_goals", "expected_assists",
     ]:
         for window in (3, 5, 10):
             weekly[f"previous_{window}_{col}"] = (
-                weekly.groupby("element")[col]
+                weekly.groupby(["season", "element"])[col]
                 .transform(lambda s, w=window: s.shift(1).rolling(w, min_periods=1).mean())
             )
-    weekly["previous_5_start_rate"] = weekly.groupby("element")["starts"].transform(
+    weekly["previous_5_start_rate"] = weekly.groupby(["season", "element"])["starts"].transform(
         lambda s: s.shift(1).rolling(5, min_periods=1).mean()
     )
-    weekly["previous_10_start_rate"] = weekly.groupby("element")["starts"].transform(
+    weekly["previous_10_start_rate"] = weekly.groupby(["season", "element"])["starts"].transform(
         lambda s: s.shift(1).rolling(10, min_periods=1).mean()
     )
-    weekly["previous_5_minutes_rate"] = weekly.groupby("element")["minutes"].transform(
+    weekly["previous_5_minutes_rate"] = weekly.groupby(["season", "element"])["minutes"].transform(
         lambda s: s.shift(1).rolling(5, min_periods=1).mean()
     ) / 90
-    weekly["previous_10_minutes_rate"] = weekly.groupby("element")["minutes"].transform(
+    weekly["previous_10_minutes_rate"] = weekly.groupby(["season", "element"])["minutes"].transform(
         lambda s: s.shift(1).rolling(10, min_periods=1).mean()
     ) / 90
     return weekly
@@ -101,10 +104,16 @@ def main() -> None:
     rows = []
     for gw in range(11, 39):
         train = prepared[
-            (prepared["GW"] < gw) & prepared["previous_3_total_points"].notna()
+            (
+                (prepared["season"] != "2025-26")
+                | ((prepared["season"] == "2025-26") & (prepared["GW"] < gw))
+            )
+            & prepared["previous_3_total_points"].notna()
         ].copy()
         test = prepared[
-            (prepared["GW"] == gw) & prepared["previous_3_total_points"].notna()
+            (prepared["season"] == "2025-26")
+            & (prepared["GW"] == gw)
+            & prepared["previous_3_total_points"].notna()
         ].copy()
         if len(train) < 500 or test.empty:
             continue
@@ -132,7 +141,7 @@ def main() -> None:
         .to_dict(orient="index")
     )
     output = {
-        "evaluation": "walk-forward 2025/26, GW11-GW38",
+        "evaluation": "walk-forward 2025/26, GW11-GW38; training includes prior completed seasons",
         "models": summary,
         "gameweeks_evaluated": sorted(result["gameweek"].unique().tolist()),
         "detail": result.to_dict(orient="records"),
