@@ -54,6 +54,30 @@ main{max-width:1200px;margin:0 auto;padding:30px 20px 70px}
 .note{margin-top:24px;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface-soft);color:var(--text-muted);font-size:11px;line-height:1.55}.note strong{color:var(--text)}
 footer{background:var(--footer);color:#aeb6ca;text-align:center;padding:25px;font-size:14px}
 .state{padding:50px 20px;text-align:center;color:var(--text-muted)}
+.team-hero:after{
+content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;
+border:1px solid color-mix(in srgb,var(--team-colour) 22%,transparent);
+border-radius:50%;box-shadow:0 0 0 28px color-mix(in srgb,var(--team-colour) 5%,transparent),0 0 0 56px color-mix(in srgb,var(--team-colour) 3%,transparent);
+pointer-events:none;
+}
+.team-colour-line{height:4px;border-radius:999px;background:linear-gradient(90deg,var(--team-colour),color-mix(in srgb,var(--team-colour) 35%,#fff),transparent);margin:0 0 22px}
+.team-status-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px}
+.team-status{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid color-mix(in srgb,var(--team-colour) 24%,var(--border));border-radius:999px;background:color-mix(in srgb,var(--team-colour) 7%,var(--surface));color:var(--text-muted);font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+.team-status-dot{width:6px;height:6px;border-radius:50%;background:var(--team-colour)}
+.team-page-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:18px 0 2px}
+.team-page-nav a{padding:7px 10px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--text-muted);font-size:10px;font-weight:800;text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.team-page-nav a:hover,.team-page-nav a:focus-visible{border-color:var(--team-colour);color:var(--team-colour);outline:none}
+.snapshot-card{position:relative;overflow:hidden}
+.snapshot-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--team-colour)}
+.snapshot-card strong{color:var(--text)}
+.section-panel{padding:22px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}
+.live-ready{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.future-card{position:relative;overflow:hidden;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.future-card:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,color-mix(in srgb,var(--team-colour) 7%,transparent),transparent 55%);pointer-events:none}
+.future-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--team-colour) 45%,var(--border));box-shadow:0 12px 28px rgba(15,30,22,.08)}
+.future-card>*{position:relative;z-index:1}
+@media(max-width:800px){.live-ready{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.live-ready{grid-template-columns:1fr}}
 @media(max-width:800px){header{padding:18px 20px}.navbar{flex-direction:column;gap:15px}nav{justify-content:center;gap:12px}.team-hero{grid-template-columns:1fr;padding:24px}.team-snapshot{grid-template-columns:repeat(2,1fr)}.player-grid,.future-grid{grid-template-columns:1fr}.team-heading h1{font-size:2.2rem}}
 @media(max-width:520px){main{padding-left:14px;padding-right:14px}.team-heading{align-items:flex-start;flex-direction:column}.team-mark{width:70px;height:70px}.team-snapshot{grid-template-columns:1fr 1fr}.snapshot-card{min-height:94px}.snapshot-card strong{font-size:1.25rem}}
 </style>
@@ -134,10 +158,11 @@ content.innerHTML=
 '<div class="snapshot-card"><span>Combined projection</span><strong>'+(picks.length?combined.toFixed(2):"—")+'</strong><small>Sum of the team’s current top-three-listed player projections.</small></div>'+
 '<div class="snapshot-card"><span>Gameweek</span><strong>GW'+escapeHtml(data.gameweek)+'</strong><small>Pre-match model snapshot. Not a live team score.</small></div>'+
 '</div></section>'+
-'<section class="section"><div class="section-title"><span class="eyebrow">Model picks</span><h2>Players to watch</h2><p>Players from this team who appear in the current fixture’s top-three model projections.</p></div>'+
+'<div class="team-page-nav" style="--team-colour:'+colour+'"><a href="#model-picks">Model picks</a><a href="#live-ready">Live-ready data</a></div>'+
+'<section class="section" id="model-picks" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Model picks</span><h2>Players to watch</h2><p>Players from this team who appear in the current fixture’s top-three model projections.</p></div>'+
 (picks.length?'<div class="player-grid">'+picks.map((player,index)=>'<a class="player-card" style="--player-colour:'+playerAccent(player.name)+'" href="player.html?player='+encodeURIComponent(player.name)+'"><span class="player-rank">Fixture projection #'+escapeHtml(player.rank)+'</span><h3>'+escapeHtml(player.name)+'</h3><p>'+escapeHtml(requestedTeam)+' vs '+escapeHtml(opponent)+'</p><div class="player-points"><strong>'+Number(player.prediction).toFixed(2)+'</strong><span>expected points</span></div><span class="player-link">View player profile →</span></a>').join("")+'</div>':'<div class="empty">No player from '+escapeHtml(requestedTeam)+' appears in the current fixture top three. That does not mean the team has no relevant FPL options; the page is currently showing only the frozen top-three prediction layer.</div>')+
 '<div class="note"><strong>How to read this:</strong> the current model predicts individual player points rather than a team result. As live data is added, this page can become the home for richer team-level context without changing the underlying prediction snapshot.</div></section>'+
-'<section class="section"><div class="section-title"><span class="eyebrow">Next layer</span><h2>Built for live team data</h2><p>The structure is ready for information we can source reliably later.</p></div><div class="future-grid">'+
+'<section class="section" id="live-ready" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Next layer</span><h2>Built for live team data</h2><p>The structure is ready for information we can source reliably later.</p></div><div class="live-ready">'+
 '<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">FORM</div><h3>Recent team form</h3><p>Recent results, goals and clean-sheet context can be added once connected to a reliable live source.</p></div>'+
 '<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">FPL</div><h3>Squad & FPL context</h3><p>Current prices, positions, availability and player-level indicators can sit alongside the model projections.</p></div>'+
 '<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">LIVE</div><h3>Live match layer</h3><p>Once a reliable live feed is connected, this can show in-match events and updated player information without altering the pre-match snapshot.</p></div>'+
