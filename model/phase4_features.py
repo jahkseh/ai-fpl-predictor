@@ -93,16 +93,19 @@ def add_current_fixture_team_features(
     latest = fixture.groupby("team_code").tail(1).copy()
     latest = latest.drop(columns=["GW", "opponent_team_code", "xg_for", "goals_for", "xg_against", "goals_against"])
 
-    opponent_latest = fixture.groupby("opponent_team_code").tail(1).copy()
-    opponent_latest = opponent_latest[
-        ["opponent_team_code", "team_xg_for_per90", "team_goals_for_per90",
-         "team_xg_against_per90", "team_goals_against_per90"]
-    ].rename(columns={
+    # Reuse the same latest team-rate table for the opponent. This must be
+    # keyed by the opponent's own team_code; grouping by opponent_team_code
+    # would accidentally attach the opposing team's rates.
+    opponent_latest = latest.rename(columns={
+        "team_code": "opponent_team_code",
         "team_xg_for_per90": "opponent_xg_for_per90",
         "team_goals_for_per90": "opponent_goals_for_per90",
         "team_xg_against_per90": "opponent_xg_against_per90",
         "team_goals_against_per90": "opponent_goals_against_per90",
-    })
+    })[
+        ["opponent_team_code", "opponent_xg_for_per90", "opponent_goals_for_per90",
+         "opponent_xg_against_per90", "opponent_goals_against_per90"]
+    ]
 
     out = target.copy().merge(
         latest, on="team_code", how="left", validate="many_to_one"
