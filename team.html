@@ -199,10 +199,9 @@ content.innerHTML=
 '<div class="snapshot-card"><span>Combined projection</span><strong>'+(picks.length?combined.toFixed(2):"—")+'</strong><small>Sum of the team’s current top-three-listed player projections.</small></div>'+
 '<div class="snapshot-card"><span>Gameweek</span><strong>GW'+escapeHtml(data.gameweek)+'</strong><small>Pre-match model snapshot. Not a live team score.</small></div>'+
 '</div></section>'+
-'<div class="team-page-nav" style="--team-colour:'+colour+'"><a href="#model-picks">Model picks</a><a href="#live-ready">Live-ready data</a></div>'+
+'<div class="team-page-nav" style="--team-colour:'+colour+'"><a href="#model-picks">Model picks</a><a href="#team-context">Squad snapshot</a><a href="#team-fixtures">Fixture context</a></div>'+
 '<section class="section" id="model-picks" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Model picks</span><h2>Players to watch</h2><p>Players from this team who appear in the current fixture’s top-three model projections.</p></div>'+
 (picks.length?'<div class="player-grid">'+picks.map((player,index)=>'<a class="player-card" style="--player-colour:'+playerAccent(player.name)+'" href="player.html?player='+encodeURIComponent(player.name)+'"><span class="player-rank">Fixture projection #'+escapeHtml(player.rank)+'</span><h3>'+escapeHtml(player.name)+'</h3><p>'+escapeHtml(requestedTeam)+' vs '+escapeHtml(opponent)+'</p><div class="player-points"><strong>'+Number(player.prediction).toFixed(2)+'</strong><span>expected points</span></div><span class="player-link">View player profile →</span></a>').join("")+'</div>':'<div class="empty">No player from '+escapeHtml(requestedTeam)+' appears in the current fixture top three. That does not mean the team has no relevant FPL options; the page is currently showing only the frozen top-three prediction layer.</div>')+
-renderTeamContext(teamPlayers, fixture, data, requestedTeam, colour);
 '<div class="note"><strong>How to read this:</strong> these projections describe individual player outcomes, not a predicted team score. The sections below use the published FPL/model snapshot only; they do not invent live events or team results.</div></section>'+
 '<section class="section" id="team-context" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Team context</span><h2>Squad snapshot</h2><p>A compact view of the team’s modelled player pool, ownership and expected minutes.</p></div>'+
 '<div class="team-context-grid">'+
@@ -216,6 +215,7 @@ renderTeamContext(teamPlayers, fixture, data, requestedTeam, colour);
 '<section class="section" id="team-fixtures" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Fixture context</span><h2>Current schedule</h2><p>The next fixture is shown from the prediction snapshot. More fixtures will appear when the published player data contains them.</p></div>'+
 '<div id="team-fixtures-grid" class="team-fixtures-grid"></div>'+
 '</section>';
+renderTeamContext(teamPlayers, fixture, data, requestedTeam, colour);
 }catch(error){console.error("Team profile loading error:",error);content.innerHTML='<div class="state">This team profile is not available.</div>';}
 }
 
