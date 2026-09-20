@@ -108,8 +108,14 @@ jobs:
           assert 'id="live-min-minutes"' in html
           assert 'P10–P90' in html
           assert "Loading picks" not in html
+          assert "<!-- DIFFERENTIAL_CARDS_START -->" in html
+          assert "<!-- DIFFERENTIAL_CARDS_END -->" in html
+          assert html.count('class="differential-card"') >= 5
           assert 'Array.isArray(predictionData.all_players)' in html
           player_html = Path("player.html").read_text(encoding="utf-8")
+          assert "player_profiles.json" in player_html
+          assert "Deterministic model explanation" in player_html
+          assert "Why is the model predicting this?" in player_html
           print("Live intelligence, filters, player profiles and differential publishing validation passed.")
           PY
 
