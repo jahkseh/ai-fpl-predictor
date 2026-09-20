@@ -1983,7 +1983,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const response = await fetch("live_data.json?ts=" + Date.now());
             if (!response.ok) throw new Error("Live data unavailable");
             const data = await response.json();
-            players = Array.isArray(data.players) ? data.players.filter(player => Number.isFinite(Number(player.prediction))) : [];
+            players = Array.isArray(data.players) ? data.players : [];
             renderTeams();
             document.getElementById("live-gameweek").textContent = data.data_gameweek != null ? "GW" + data.data_gameweek : "—";
             document.getElementById("live-player-count").textContent = Number(data.player_count || 0).toLocaleString();
