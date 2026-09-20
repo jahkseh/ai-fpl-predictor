@@ -492,6 +492,7 @@ def main() -> None:
     # Predictions are keyed by player + fixture, not player name alone.
     # This matters because FPL display names are not guaranteed to be unique
     # (for example, there can be more than one player named "Palmer").
+    source_players = []
     predictions_by_fixture = {}
     prediction_details_by_fixture = {}
     if args.predictions.exists():
