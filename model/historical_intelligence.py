@@ -101,16 +101,13 @@ def load_completed_seasons(seasons: dict[str, str] | None = None) -> pd.DataFram
 def add_historical_priors(df: pd.DataFrame) -> pd.DataFrame:
     """Add prior career, club, season and home/away rates without leakage."""
     out = df.sort_values(["player_key", "season", "GW"]).copy()
-    out["_minutes_cum"] = out.groupby("player_key")["minutes"].cumsum().shift(1)
-    out["_points_cum"] = out.groupby("player_key")["total_points"].cumsum().shift(1)
-    out["_xg_cum"] = out.groupby("player_key")["expected_goals"].cumsum().shift(1)
-    out["_xa_cum"] = out.groupby("player_key")["expected_assists"].cumsum().shift(1)
-    out["_goals_cum"] = out.groupby("player_key")["goals_scored"].cumsum().shift(1)
-    out["_assists_cum"] = out.groupby("player_key")["assists"].cumsum().shift(1)
-    out["_starts_cum"] = out.groupby("player_key")["starts"].cumsum().shift(1)
-
-    for source, name in RATE_FEATURES.items():
-        out[name] = _safe_rate(out[f"_{source.replace('total_points','points').replace('expected_goals','xg').replace('expected_assists','xa').replace('goals_scored','goals').replace('assists','assists')}_cum"] if False else pd.Series(dtype=float), pd.Series(dtype=float))
+    out["_minutes_cum"] = out.groupby("player_key")["minutes"].transform(lambda s: s.cumsum().shift(1))
+    out["_points_cum"] = out.groupby("player_key")["total_points"].transform(lambda s: s.cumsum().shift(1))
+    out["_xg_cum"] = out.groupby("player_key")["expected_goals"].transform(lambda s: s.cumsum().shift(1))
+    out["_xa_cum"] = out.groupby("player_key")["expected_assists"].transform(lambda s: s.cumsum().shift(1))
+    out["_goals_cum"] = out.groupby("player_key")["goals_scored"].transform(lambda s: s.cumsum().shift(1))
+    out["_assists_cum"] = out.groupby("player_key")["assists"].transform(lambda s: s.cumsum().shift(1))
+    out["_starts_cum"] = out.groupby("player_key")["starts"].transform(lambda s: s.cumsum().shift(1))
 
     out["historical_points_per_90"] = _safe_rate(out["_points_cum"], out["_minutes_cum"])
     out["historical_xg_per_90"] = _safe_rate(out["_xg_cum"], out["_minutes_cum"])
@@ -122,13 +119,12 @@ def add_historical_priors(df: pd.DataFrame) -> pd.DataFrame:
     # Club-specific history: retain information when a player changes club.
     for metric, prefix in CLUB_RATE_FEATURES.items():
         value_col = {"total_points": "_club_points", "expected_goals": "_club_xg", "expected_assists": "_club_xa"}[metric]
-        group = out.groupby(["player_key", "club_key"])[metric]
-        cumulative = group.cumsum().shift(1)
-        mins = out.groupby(["player_key", "club_key"])["minutes"].cumsum().shift(1)
+        cumulative = out.groupby(["player_key", "club_key"])[metric].transform(lambda s: s.cumsum().shift(1))
+        mins = out.groupby(["player_key", "club_key"])["minutes"].transform(lambda s: s.cumsum().shift(1))
         out[value_col] = cumulative
         out[prefix] = _safe_rate(cumulative, mins)
 
-    club_starts = out.groupby(["player_key", "club_key"])["starts"].cumsum().shift(1)
+    club_starts = out.groupby(["player_key", "club_key"])["starts"].transform(lambda s: s.cumsum().shift(1))
     club_rows = out.groupby(["player_key", "club_key"]).cumcount()
     out["club_start_rate"] = club_starts / club_rows.replace(0, np.nan)
 
@@ -161,10 +157,10 @@ def add_historical_priors(df: pd.DataFrame) -> pd.DataFrame:
 
     # Home/away split history. The split is only calculated from earlier rows.
     split = out.groupby(["player_key", "was_home"])
-    split_points = split["total_points"].cumsum().shift(1)
-    split_xg = split["expected_goals"].cumsum().shift(1)
-    split_xa = split["expected_assists"].cumsum().shift(1)
-    split_minutes = split["minutes"].cumsum().shift(1)
+    split_points = split["total_points"].transform(lambda s: s.cumsum().shift(1))
+    split_xg = split["expected_goals"].transform(lambda s: s.cumsum().shift(1))
+    split_xa = split["expected_assists"].transform(lambda s: s.cumsum().shift(1))
+    split_minutes = split["minutes"].transform(lambda s: s.cumsum().shift(1))
     out["split_points_per_90"] = _safe_rate(split_points, split_minutes)
     out["split_xg_per_90"] = _safe_rate(split_xg, split_minutes)
     out["split_xa_per_90"] = _safe_rate(split_xa, split_minutes)
