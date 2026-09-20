@@ -1088,6 +1088,29 @@ body[data-theme="light"] .hero-stat span {
                 margin: 0 0 18px;
             }
         }
+
+        /* GW5 benchmark */
+        .gw5-results-section { background: var(--surface-soft); border-top: 1px solid var(--border); }
+        .gw5-results-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+        .gw5-result-stat { padding:18px; border:1px solid var(--border); border-radius:15px; background:var(--surface); }
+        .gw5-result-stat span { display:block; color:var(--text-muted); font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; }
+        .gw5-result-stat strong { display:block; margin-top:7px; color:var(--text); font-size:1.65rem; letter-spacing:-.03em; }
+        .gw5-result-stat small { display:block; margin-top:4px; color:var(--text-muted); font-size:10px; line-height:1.4; }
+        .gw5-result-note { margin-bottom:18px; padding:13px 16px; border:1px solid var(--border); border-radius:12px; background:var(--surface); color:var(--text-muted); font-size:12px; line-height:1.55; }
+        .gw5-result-note strong { color:var(--text); }
+        .gw5-fixtures { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+        .gw5-fixture { padding:13px 15px; border:1px solid var(--border); border-radius:12px; background:var(--surface); }
+        .gw5-fixture-top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+        .gw5-fixture-teams { color:var(--text); font-size:12px; font-weight:800; }
+        .gw5-fixture-score { color:var(--accent-hover); font-size:13px; font-weight:900; white-space:nowrap; }
+        .gw5-player-list { margin-top:9px; display:grid; gap:5px; }
+        .gw5-player-row { display:grid; grid-template-columns:1fr auto auto; gap:10px; align-items:center; color:var(--text-muted); font-size:10px; }
+        .gw5-player-row strong { color:var(--text); font-size:10px; }
+        .gw5-delta { font-weight:800; }
+        .gw5-delta.positive { color:var(--accent-hover); }
+        .gw5-delta.negative { color:#dc6b6b; }
+        @media(max-width:900px){.gw5-results-grid{grid-template-columns:repeat(2,1fr)}.gw5-fixtures{grid-template-columns:1fr}}
+        @media(max-width:520px){.gw5-results-grid{grid-template-columns:1fr}}
 </style>
 </head>
 
@@ -1312,6 +1335,22 @@ body[data-theme="light"] .hero-stat span {
 
     </div>
 
+
+<section class="section gw5-results-section" id="gw5-results">
+    <div class="section-title">
+        <span class="section-kicker">Verified gameweek</span>
+        <h2>GW5 Model Benchmark</h2>
+        <p>The frozen Gameweek 5 projections compared with the final player points.</p>
+    </div>
+    <div class="gw5-results-grid" id="gw5-results-grid">
+        <div class="gw5-result-stat"><span>Top-3 hits</span><strong>—</strong><small>Loading benchmark...</small></div>
+        <div class="gw5-result-stat"><span>Hit rate</span><strong>—</strong><small>Of 30 frozen predictions</small></div>
+        <div class="gw5-result-stat"><span>GW5 MAE</span><strong>—</strong><small>Prediction error</small></div>
+        <div class="gw5-result-stat"><span>GW5 RMSE</span><strong>—</strong><small>Larger errors weighted more heavily</small></div>
+    </div>
+    <div class="gw5-result-note" id="gw5-result-note">Loading verified Gameweek 5 results...</div>
+    <div class="gw5-fixtures" id="gw5-fixtures"></div>
+</section>
 </section>           <div class="fixture-modal" id="fixture-modal" hidden><div class="fixture-modal-panel" role="dialog" aria-modal="true" aria-labelledby="fixture-modal-title"><div class="fixture-modal-head"><div class="fixture-modal-topline"><span class="fixture-modal-kicker">Fixture prediction</span><button class="fixture-modal-close" id="fixture-modal-close" type="button" aria-label="Close fixture details">×</button></div><div class="fixture-modal-teams" id="fixture-modal-title"></div></div><div class="fixture-modal-body"><div class="fixture-modal-summary" id="fixture-modal-summary"></div><div class="fixture-modal-list" id="fixture-modal-list"></div><p class="fixture-modal-footer">These are pre-match model projections. Select a player to open their full profile.</p></div></div></div>
 
 <footer>
@@ -1645,6 +1684,34 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
     }
 
     
+
+    async function loadGw5Results() {
+        try {
+            const response = await fetch("gw5_results.json");
+            if (!response.ok) throw new Error("GW5 results unavailable");
+            const data = await response.json();
+            const grid = document.getElementById("gw5-results-grid");
+            const fixtures = document.getElementById("gw5-fixtures");
+            const note = document.getElementById("gw5-result-note");
+            const hitRate = (Number(data.top_3_hit_rate || 0) * 100).toFixed(1);
+            grid.innerHTML =
+                '<div class="gw5-result-stat"><span>Top-3 hits</span><strong>' + data.top_3_hits + ' / ' + data.predictions_evaluated + '</strong><small>Frozen top-three selections</small></div>' +
+                '<div class="gw5-result-stat"><span>Hit rate</span><strong>' + hitRate + '%</strong><small>Predicted players who finished top three in their fixture</small></div>' +
+                '<div class="gw5-result-stat"><span>GW5 MAE</span><strong>' + Number(data.metrics.mae).toFixed(2) + '</strong><small>Average absolute prediction error</small></div>' +
+                '<div class="gw5-result-stat"><span>GW5 RMSE</span><strong>' + Number(data.metrics.rmse).toFixed(2) + '</strong><small>Root mean squared prediction error</small></div>';
+            note.innerHTML = '<strong>Benchmark rule:</strong> predictions were frozen before the fixtures started. Actual points are evaluated only after the fixtures finished; the model itself was not retrained or changed for this comparison.';
+            fixtures.innerHTML = data.fixture_results.map(fixture => {
+                const key = fixture.home + ' vs ' + fixture.away;
+                const players = data.players.filter(player => player.fixture === key);
+                return '<div class="gw5-fixture"><div class="gw5-fixture-top"><span class="gw5-fixture-teams">' + fixture.home + ' vs ' + fixture.away + '</span><span class="gw5-fixture-score">' + fixture.home_score + '–' + fixture.away_score + '</span></div><div class="gw5-player-list">' +
+                    players.map(player => { const delta = player.actual - player.prediction; const cls = delta >= 0 ? 'positive' : 'negative'; return '<div class="gw5-player-row"><span>' + player.name + '</span><strong>' + player.actual + ' pts</strong><span class="gw5-delta ' + cls + '">' + (delta >= 0 ? '+' : '') + delta.toFixed(2) + '</span></div>'; }).join('') +
+                    '</div></div>';
+            }).join('');
+        } catch (error) {
+            console.info("GW5 benchmark pending:", error.message);
+        }
+    }
+
     const revealSections = document.querySelectorAll(".section");
 
     if ("IntersectionObserver" in window) {
@@ -1711,6 +1778,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
 
     populateFeaturedPlayers();
     loadDifferentials();
+    loadGw5Results();
     </script>
 
 </body>
