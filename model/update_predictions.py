@@ -168,7 +168,7 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
 
 def load_current_data(
     gameweek: int,
-) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     frames = []
     for gw in range(1, gameweek + 1):
         frame = read_csv_optional(current_url(gw, "player_gameweek_stats.csv"))
@@ -207,7 +207,13 @@ def load_current_data(
     if missing:
         raise ValueError(f"Current player data missing columns: {sorted(missing)}")
 
-    return current, players, teams
+    fixture_frames = []
+    for gw in range(1, gameweek):
+        fixture = read_csv_optional(current_url(gw, "fixtures.csv"))
+        if fixture is not None:
+            fixture_frames.append(fixture.assign(gameweek=gw))
+    fixture_history = pd.concat(fixture_frames, ignore_index=True) if fixture_frames else pd.DataFrame()
+    return current, players, teams, fixture_history
 
 
 def enrich_current_players(
@@ -491,7 +497,7 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
 
 def generate_target_predictions(
     enriched: pd.DataFrame,
-    current: pd.DataFrame,
+    fixture_history: pd.DataFrame,
     teams: pd.DataFrame,
     weekly_historical: pd.DataFrame,
     gameweek: int,
@@ -514,7 +520,7 @@ def generate_target_predictions(
     # and club-specific history after transfers (e.g. Mbeumo at Brentford).
     combined_history = add_historical_priors(load_completed_seasons())
     target = add_target_historical_features(target, combined_history)
-    target = add_current_fixture_team_features(target, current, gameweek)
+    target = add_current_fixture_team_features(target, fixture_history, gameweek)
     eligible = target.dropna(subset=["previous_3_total_points"]).copy()
 
     for col in PLAYER_FEATURES:
@@ -620,14 +626,14 @@ def run(gameweek: int, golden_path: Path | None = None) -> PipelineResult:
     historical = load_historical_data()
     weekly = build_weekly_historical(historical)
 
-    current, players, teams = load_current_data(gameweek)
+    current, players, teams, fixture_history = load_current_data(gameweek)
     enriched = add_current_rolling_features(
         enrich_current_players(current, players, teams)
     )
     validate_no_leakage(enriched, gameweek)
 
     top3, eligible = generate_target_predictions(
-        enriched, current, teams, weekly, gameweek
+        enriched, fixture_history, teams, weekly, gameweek
     )
     output = build_predictions_json(top3, gameweek)
 
