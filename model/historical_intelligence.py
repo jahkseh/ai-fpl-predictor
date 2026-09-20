@@ -213,93 +213,114 @@ def build_player_history_report(historical: pd.DataFrame) -> pd.DataFrame:
 
 
 
+
 TEAM_FEATURES = [
-    "team_attack_xg_per90", "team_defence_xga_per90",
-    "team_goals_for_per90", "team_goals_against_per90",
-    "team_shots_for_per90", "team_shots_against_per90",
-    "team_home_attack_xg_per90", "team_away_attack_xg_per90",
-    "team_home_defence_xga_per90", "team_away_defence_xga_per90",
-    "opponent_attack_xg_per90", "opponent_defence_xga_per90",
-    "opponent_home_attack_xg_per90", "opponent_away_attack_xg_per90",
+    "team_xg_for_per90", "team_goals_for_per90",
+    "team_xg_against_per90", "team_goals_against_per90",
+    "team_home_xg_for_per90", "team_away_xg_for_per90",
+    "team_home_xg_against_per90", "team_away_xg_against_per90",
+    "opponent_xg_for_per90", "opponent_goals_for_per90",
+    "opponent_xg_against_per90", "opponent_goals_against_per90",
 ]
 
 
-def build_team_match_history(df: pd.DataFrame) -> pd.DataFrame:
-    """Create leakage-safe team/opponent strength features from completed matches."""
-    required = {"season", "GW", "team", "was_home", "goals_scored", "expected_goals"}
+def build_team_weekly_history(df: pd.DataFrame) -> pd.DataFrame:
+    """Build point-in-time team attacking/defensive rates from player rows."""
+    required = {
+        "season", "GW", "team", "opponent_team", "was_home",
+        "goals_scored", "expected_goals", "expected_goals_conceded",
+    }
     missing = required - set(df.columns)
     if missing:
         raise ValueError(f"Team history missing columns: {sorted(missing)}")
 
     work = df.copy()
-    work["team_key"] = work["team"].map(normalize_name)
-    work["opponent_key"] = (
-        work["opponent_team"].map(normalize_name)
-        if "opponent_team" in work.columns
-        else ""
-    )
-    # Player rows are first aggregated to team/gameweek totals.
-    grouped = (
-        work.groupby(["season", "GW", "team_key", "was_home"], as_index=False)
+    for col in ["team", "opponent_team", "was_home"]:
+        work[col] = pd.to_numeric(work[col], errors="coerce")
+    work = work.dropna(subset=["team", "opponent_team"])
+    work["team"] = work["team"].astype(int)
+    work["opponent_team"] = work["opponent_team"].astype(int)
+    work["was_home"] = work["was_home"].astype(int)
+
+    # Each team appears once per GW; aggregate player-level attacking stats.
+    team = (
+        work.groupby(["season", "GW", "team", "was_home"], as_index=False)
         .agg(
             goals_for=("goals_scored", "sum"),
             xg_for=("expected_goals", "sum"),
+            xga_against=("expected_goals_conceded", "sum"),
         )
     )
 
-    # FPL merged_gw data may not carry opponent team; derive the opposing side
-    # from the fixture row when available.
-    if "opponent_key" in work.columns and work["opponent_key"].ne("").any():
-        opp = (
-            work.groupby(["season", "GW", "team_key"])["opponent_key"]
-            .first()
-            .reset_index()
-        )
-        grouped = grouped.merge(opp, on=["season", "GW", "team_key"], how="left")
-    else:
-        grouped["opponent_key"] = ""
-
-    grouped = grouped.sort_values(["team_key", "season", "GW"])
-    grouped["team_attack_xg_per90"] = grouped.groupby("team_key")["xg_for"].transform(
-        lambda s: s.shift(1).rolling(10, min_periods=1).mean()
+    # Team goals against are the opponent's goals for in the same fixture.
+    scores = team[["season", "GW", "team", "goals_for"]].rename(
+        columns={"team": "opponent_team", "goals_for": "goals_against"}
     )
-    grouped["team_goals_for_per90"] = grouped.groupby("team_key")["goals_for"].transform(
-        lambda s: s.shift(1).rolling(10, min_periods=1).mean()
+    team = team.merge(
+        scores,
+        on=["season", "GW", "opponent_team"],
+        how="left",
+    ) if "opponent_team" in team.columns else team
+
+    # The aggregate above doesn't retain opponent_team, so recover it from
+    # the raw rows using the unique team/GW mapping.
+    opponents = (
+        work[["season", "GW", "team", "opponent_team"]]
+        .drop_duplicates()
+    )
+    if opponents.duplicated(["season", "GW", "team"]).any():
+        raise AssertionError("Multiple opponents found for one team/gameweek")
+    team = team.merge(opponents, on=["season", "GW", "team"], how="left")
+
+    # Derive goals against after opponent IDs are attached.
+    opponent_scores = team[["season", "GW", "team", "goals_for"]].rename(
+        columns={"team": "opponent_team", "goals_for": "goals_against"}
+    )
+    team = team.drop(columns=["goals_against"], errors="ignore").merge(
+        opponent_scores, on=["season", "GW", "opponent_team"], how="left"
     )
 
-    # Defence needs opponent output. When player-level opponent xG is available,
-    # aggregate it directly; otherwise keep these values missing rather than
-    # fabricating defensive data.
-    if "expected_goals_conceded" in work.columns:
-        conceded = (
-            work.groupby(["season", "GW", "team_key"], as_index=False)
-            .agg(xga=("expected_goals_conceded", "sum"))
-        )
-        grouped = grouped.merge(conceded, on=["season", "GW", "team_key"], how="left")
-        grouped["team_defence_xga_per90"] = grouped.groupby("team_key")["xga"].transform(
-            lambda s: s.shift(1).rolling(10, min_periods=1).mean()
-        )
-    else:
-        grouped["team_defence_xga_per90"] = np.nan
+    team = team.sort_values(["team", "season", "GW"]).reset_index(drop=True)
 
-    grouped["team_goals_against_per90"] = np.nan
-    grouped["team_shots_for_per90"] = np.nan
-    grouped["team_shots_against_per90"] = np.nan
+    def rolling_prior(group: pd.Series) -> pd.Series:
+        return group.shift(1).rolling(10, min_periods=1).mean()
 
-    for side, label in [(1, "home"), (0, "away")]:
-        subset = grouped["was_home"].eq(side)
-        grouped.loc[subset, f"team_{label}_attack_xg_per90"] = (
-            grouped.loc[subset].groupby("team_key")["xg_for"]
-            .transform(lambda s: s.shift(1).rolling(10, min_periods=1).mean())
-        )
+    for src, dst in [
+        ("xg_for", "team_xg_for_per90"),
+        ("goals_for", "team_goals_for_per90"),
+        ("xga_against", "team_xg_against_per90"),
+        ("goals_against", "team_goals_against_per90"),
+    ]:
+        team[dst] = team.groupby("team")[src].transform(rolling_prior)
 
-    # Home/away defensive splits are only populated when xGA exists.
-    if "xga" in grouped:
-        for side, label in [(1, "home"), (0, "away")]:
-            subset = grouped["was_home"].eq(side)
-            grouped.loc[subset, f"team_{label}_defence_xga_per90"] = (
-                grouped.loc[subset].groupby("team_key")["xga"]
-                .transform(lambda s: s.shift(1).rolling(10, min_periods=1).mean())
+    for home_flag, label in [(1, "home"), (0, "away")]:
+        mask = team["was_home"].eq(home_flag)
+        for src, dst in [
+            ("xg_for", f"team_{label}_xg_for_per90"),
+            ("xga_against", f"team_{label}_xg_against_per90"),
+        ]:
+            team.loc[mask, dst] = (
+                team.loc[mask].groupby("team")[src]
+                .transform(rolling_prior)
             )
 
-    return grouped
+    opponent = team[[
+        "season", "GW", "team",
+        "team_xg_for_per90", "team_goals_for_per90",
+        "team_xg_against_per90", "team_goals_against_per90",
+    ]].copy()
+    opponent = opponent.rename(columns={
+        "team": "opponent_team",
+        "team_xg_for_per90": "opponent_xg_for_per90",
+        "team_goals_for_per90": "opponent_goals_for_per90",
+        "team_xg_against_per90": "opponent_xg_against_per90",
+        "team_goals_against_per90": "opponent_goals_against_per90",
+    })
+
+    team = team.merge(
+        opponent,
+        on=["season", "GW", "opponent_team"],
+        how="left",
+        validate="many_to_one",
+    )
+    return team[["season", "GW", "team", "opponent_team", "was_home"] + TEAM_FEATURES]
