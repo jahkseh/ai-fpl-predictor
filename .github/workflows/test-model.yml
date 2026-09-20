@@ -25,9 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install numpy pandas scikit-learn
 
-      - name: Run GW5 golden regression
+      - name: Run historical validation and prediction regression
         run: |
           python model/update_predictions.py \
-            --gameweek 5 \
+            --gameweek 6 \
             --golden predictions.json \
             --dry-run
