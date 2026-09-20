@@ -1629,7 +1629,15 @@ function renderFeaturedPlayers(fixtures) {
         lastFocusedFixture = document.activeElement;
         const topPlayer = fixture.players[0];
         fixtureModalTitle.innerHTML = '<a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.home) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + '" data-team="' + fixture.home + '">' + (teamCodes[fixture.home] || "FPL") + '</span></a><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.away) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '" data-team="' + fixture.away + '">' + (teamCodes[fixture.away] || "FPL") + '</span></a>';
-        fixtureModalSummary.innerHTML = '<strong>' + topPlayer.name + '</strong> is the highest model projection for this fixture at <strong>' + topPlayer.prediction.toFixed(2) + ' expected points</strong>. The model interval shown below is an uncertainty range, not a guarantee.';
+        const ctx = topPlayer.fixture_context || {};
+        const teamXg = Number(ctx.team_xg_for_per90);
+        const oppXga = Number(ctx.opponent_xg_against_per90);
+        const env = Number(ctx.fixture_xg_environment);
+        const minutes = topPlayer.expected_minutes != null ? Number(topPlayer.expected_minutes).toFixed(0) + ' min' : '—';
+        const contextLine = Number.isFinite(teamXg) && Number.isFinite(oppXga)
+            ? ' Team xG trend: ' + teamXg.toFixed(2) + ' · opponent xGA trend: ' + oppXga.toFixed(2) + (Number.isFinite(env) ? ' · fixture xG environment: ' + env.toFixed(2) : '')
+            : '';
+        fixtureModalSummary.innerHTML = '<strong>' + topPlayer.name + '</strong> is the highest model projection for this fixture at <strong>' + topPlayer.prediction.toFixed(2) + ' expected points</strong>. Expected minutes: <strong>' + minutes + '</strong>.' + contextLine + ' The model interval shown below is an uncertainty range, not a guarantee.';
         fixtureModalList.innerHTML = fixture.players.map(player => {
             const team = playerTeams[player.name] || "";
             const accent = teamAccentColours[team] || "var(--accent)";
