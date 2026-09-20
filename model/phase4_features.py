@@ -50,34 +50,70 @@ def add_fixture_environment(frame: pd.DataFrame) -> pd.DataFrame:
 
 def add_current_fixture_team_features(
     target: pd.DataFrame,
-    current: pd.DataFrame,
+    fixture_history: pd.DataFrame,
     gameweek: int,
 ) -> pd.DataFrame:
-    """Attach current-season team rates using completed fixtures only."""
-    required = {"team_code", "GW", "opponent_team_code", "expected_goals", "goals_scored"}
-    missing = required - set(current.columns)
+    """Attach current-season team rates using completed PL fixtures only."""
+    required = {
+        "gameweek", "home_team", "away_team", "home_score", "away_score",
+        "home_expected_goals_xg", "away_expected_goals_xg", "tournament", "finished",
+    }
+    missing = required - set(fixture_history.columns)
     if missing:
-        raise ValueError(f"Current team history missing columns: {sorted(missing)}")
+        raise ValueError(f"Current fixture history missing columns: {sorted(missing)}")
 
-    completed = current[pd.to_numeric(current["GW"], errors="coerce") < gameweek].copy()
-    completed["GW"] = pd.to_numeric(completed["GW"], errors="coerce")
-    completed["team_code"] = pd.to_numeric(completed["team_code"], errors="coerce")
-    completed["opponent_team_code"] = pd.to_numeric(completed["opponent_team_code"], errors="coerce")
-    completed = completed.dropna(subset=["GW", "team_code", "opponent_team_code"])
-    completed["team_code"] = completed["team_code"].astype(int)
-    completed["opponent_team_code"] = completed["opponent_team_code"].astype(int)
+    fixtures = fixture_history.copy()
+    fixtures["gameweek"] = pd.to_numeric(fixtures["gameweek"], errors="coerce")
+    fixtures = fixtures[
+        (fixtures["tournament"] == "prem")
+        & fixtures["finished"].fillna(False).astype(bool)
+        & (fixtures["gameweek"] < gameweek)
+    ].copy()
+    for col in [
+        "home_team", "away_team", "home_score", "away_score",
+        "home_expected_goals_xg", "away_expected_goals_xg",
+    ]:
+        fixtures[col] = pd.to_numeric(fixtures[col], errors="coerce")
+    fixtures = fixtures.dropna(
+        subset=["gameweek", "home_team", "away_team", "home_score", "away_score",
+                "home_expected_goals_xg", "away_expected_goals_xg"]
+    )
 
-    fixture = (
-        completed.groupby(["GW", "team_code", "opponent_team_code"], as_index=False)
-        .agg(xg_for=("expected_goals", "sum"), goals_for=("goals_scored", "sum"))
-    )
-    opponent = fixture[["GW", "team_code", "xg_for", "goals_for"]].rename(
-        columns={"team_code": "opponent_team_code", "xg_for": "xg_against", "goals_for": "goals_against"}
-    )
-    fixture = fixture.merge(
-        opponent, on=["GW", "opponent_team_code"], how="left", validate="many_to_one"
-    )
-    fixture = fixture.sort_values(["team_code", "GW"]).reset_index(drop=True)
+    home = fixtures[["gameweek", "home_team", "away_team", "home_score",
+                     "home_expected_goals_xg"]].rename(columns={
+        "home_team": "team_code",
+        "away_team": "opponent_team_code",
+        "home_score": "goals_for",
+        "home_expected_goals_xg": "xg_for",
+    })
+    home["was_home"] = 1
+
+    away = fixtures[["gameweek", "home_team", "away_team", "away_score",
+                     "away_expected_goals_xg"]].rename(columns={
+        "away_team": "team_code",
+        "home_team": "opponent_team_code",
+        "away_score": "goals_for",
+        "away_expected_goals_xg": "xg_for",
+    })
+    away["was_home"] = 0
+
+    team_fixtures = pd.concat([home, away], ignore_index=True)
+    team_fixtures["team_code"] = team_fixtures["team_code"].astype(int)
+    team_fixtures["opponent_team_code"] = team_fixtures["opponent_team_code"].astype(int)
+
+    opponent = team_fixtures[
+        ["gameweek", "team_code", "goals_for", "xg_for"]
+    ].rename(columns={
+        "team_code": "opponent_team_code",
+        "goals_for": "goals_against",
+        "xg_for": "xg_against",
+    })
+    team_fixtures = team_fixtures.merge(
+        opponent,
+        on=["gameweek", "opponent_team_code"],
+        how="left",
+        validate="many_to_one",
+    ).sort_values(["team_code", "gameweek"]).reset_index(drop=True)
 
     def rolling_prior(series: pd.Series) -> pd.Series:
         return series.shift(1).rolling(10, min_periods=1).mean()
@@ -88,14 +124,23 @@ def add_current_fixture_team_features(
         ("xg_against", "team_xg_against_per90"),
         ("goals_against", "team_goals_against_per90"),
     ]:
-        fixture[dst] = fixture.groupby("team_code")[src].transform(rolling_prior)
+        team_fixtures[dst] = team_fixtures.groupby("team_code")[src].transform(rolling_prior)
 
-    latest = fixture.groupby("team_code").tail(1).copy()
-    latest = latest.drop(columns=["GW", "opponent_team_code", "xg_for", "goals_for", "xg_against", "goals_against"])
+    for home_flag, label in [(1, "home"), (0, "away")]:
+        subset = team_fixtures[team_fixtures["was_home"].eq(home_flag)].copy()
+        for src, dst in [
+            ("xg_for", f"team_{label}_xg_for_per90"),
+            ("xg_against", f"team_{label}_xg_against_per90"),
+        ]:
+            subset[dst] = subset.groupby("team_code")[src].transform(rolling_prior)
+            team_fixtures.loc[subset.index, dst] = subset[dst]
 
-    # Reuse the same latest team-rate table for the opponent. This must be
-    # keyed by the opponent's own team_code; grouping by opponent_team_code
-    # would accidentally attach the opposing team's rates.
+    latest = team_fixtures.groupby("team_code").tail(1).copy()
+    latest = latest.drop(columns=[
+        "gameweek", "opponent_team_code", "was_home",
+        "xg_for", "goals_for", "xg_against", "goals_against",
+    ])
+
     opponent_latest = latest.rename(columns={
         "team_code": "opponent_team_code",
         "team_xg_for_per90": "opponent_xg_for_per90",
@@ -112,7 +157,6 @@ def add_current_fixture_team_features(
     ).merge(
         opponent_latest, on="opponent_team_code", how="left", validate="many_to_one"
     )
-
     for col in TEAM_FEATURES:
         if col not in out.columns:
             out[col] = np.nan
