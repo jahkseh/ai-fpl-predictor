@@ -78,6 +78,9 @@ def prepare_historical_training(weekly: pd.DataFrame) -> pd.DataFrame:
         how="left",
         validate="one_to_one",
     )
+    # Keep a normalized identity for downstream workload grouping and target
+    # joins after the season-local historical join.
+    out["player_key"] = out["name"].map(normalize_name)
     return out
 def add_workload_features(frame: pd.DataFrame, id_col: str) -> pd.DataFrame:
     """Add recent match/minute load without crossing a season boundary."""
