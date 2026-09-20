@@ -1980,51 +1980,78 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         };
 
         try {
-            const response = await fetch("live_data.json?ts=" + Date.now());
-            if (!response.ok) throw new Error("Live data unavailable");
-            const data = await response.json();
-            players = Array.isArray(data.players) ? data.players : [];
+            // predictions.json is the canonical searchable model pool.  It
+            // contains all_players, whereas live_data.json is a published
+            // presentation snapshot and can temporarily lag behind it.
+            const predictionResponse = await fetch("predictions.json?ts=" + Date.now());
+            if (!predictionResponse.ok) throw new Error("Prediction data unavailable");
+            const predictionData = await predictionResponse.json();
+            const predictionPlayers = Array.isArray(predictionData.all_players) ? predictionData.all_players : [];
 
-            // Keep search useful even when the live snapshot and prediction
-            // snapshot are temporarily out of sync. Predictions contain the
-            // same modelled player pool, so merge any missing names into the
-            // searchable dataset rather than making search depend on one
-            // generated artifact being perfectly synchronised.
+            players = predictionPlayers.map(player => {
+                const context = player.fixture_context || {};
+                const isHome = context.is_home === true;
+                const fixtureHome = player.fixture_home || "";
+                const fixtureAway = player.fixture_away || "";
+                return {
+                    ...player,
+                    team: player.team || (isHome ? fixtureHome : fixtureAway) || "",
+                    fixture: player.fixture || (fixtureHome && fixtureAway ? {
+                        home: fixtureHome,
+                        away: fixtureAway,
+                        is_home: isHome
+                    } : null)
+                };
+            });
+
+            // Enrich the canonical model pool with the latest live snapshot
+            // where available. Search identity remains anchored to the model
+            // pool, so a missing live row can never make a valid player
+            // unsearchable.
             try {
-                const predictionResponse = await fetch("predictions.json?ts=" + Date.now());
-                if (predictionResponse.ok) {
-                    const predictionData = await predictionResponse.json();
-                    const predictionPlayers = Array.isArray(predictionData.all_players) ? predictionData.all_players : [];
-                    const existingNames = new Set(players.map(player => String(player.name || "").trim().toLowerCase()).filter(Boolean));
-                    predictionPlayers.forEach(player => {
-                        const name = String(player.name || "").trim();
-                        const key = name.toLowerCase();
-                        if (!name || existingNames.has(key)) return;
-                        const context = player.fixture_context || {};
-                        const isHome = context.is_home === true;
-                        players.push({
-                            ...player,
-                            team: player.team || (isHome ? player.fixture_home : player.fixture_away) || "",
-                            fixture: player.fixture || (player.fixture_home && player.fixture_away ? {
-                                home: player.fixture_home,
-                                away: player.fixture_away,
-                                is_home: isHome
-                            } : null)
-                        });
-                        existingNames.add(key);
+                const liveResponse = await fetch("live_data.json?ts=" + Date.now());
+                if (liveResponse.ok) {
+                    const liveData = await liveResponse.json();
+                    const livePlayers = Array.isArray(liveData.players) ? liveData.players : [];
+                    const liveByKey = new Map(
+                        livePlayers.map(player => {
+                            const fixture = player.fixture || {};
+                            const key = String(player.name || "").trim().toLowerCase() + "|" +
+                                String(fixture.home || "").trim().toLowerCase() + "|" +
+                                String(fixture.away || "").trim().toLowerCase();
+                            return [key, player];
+                        })
+                    );
+
+                    players = players.map(player => {
+                        const fixture = player.fixture || {};
+                        const key = String(player.name || "").trim().toLowerCase() + "|" +
+                            String(fixture.home || "").trim().toLowerCase() + "|" +
+                            String(fixture.away || "").trim().toLowerCase();
+                        const livePlayer = liveByKey.get(key);
+                        return livePlayer ? { ...player, ...livePlayer } : player;
                     });
                 }
-            } catch (predictionFallbackError) {
-                console.info("Prediction search fallback unavailable:", predictionFallbackError.message);
+            } catch (liveError) {
+                console.info("Live snapshot enrichment unavailable:", liveError.message);
             }
 
             renderTeams();
-            document.getElementById("live-gameweek").textContent = data.data_gameweek != null ? "GW" + data.data_gameweek : "—";
-            document.getElementById("live-player-count").textContent = Number(data.player_count || 0).toLocaleString();
-            document.getElementById("live-fixture-count").textContent = Array.isArray(data.fixtures) ? data.fixtures.length : "—";
-            document.getElementById("live-next-gameweek").textContent = data.next_gameweek != null ? "GW" + data.next_gameweek : "—";
-            document.getElementById("live-data-status").textContent = "Live FPL snapshot loaded";
-            if (data.generated_at_utc) document.getElementById("live-data-updated").textContent = "· updated " + new Date(data.generated_at_utc).toLocaleString([], {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"});
+            document.getElementById("live-gameweek").textContent =
+                predictionData.gameweek != null ? "GW" + predictionData.gameweek : "—";
+            document.getElementById("live-player-count").textContent =
+                players.length.toLocaleString();
+            document.getElementById("live-fixture-count").textContent =
+                Array.isArray(predictionData.predictions) ? predictionData.predictions.length : "—";
+            document.getElementById("live-next-gameweek").textContent =
+                predictionData.gameweek != null ? "GW" + predictionData.gameweek : "—";
+            document.getElementById("live-data-status").textContent = "Live model pool loaded";
+            if (predictionData.generated_at_utc) {
+                document.getElementById("live-data-updated").textContent =
+                    "· updated " + new Date(predictionData.generated_at_utc).toLocaleString([], {
+                        day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"
+                    });
+            }
             render();
         } catch (error) {
             document.getElementById("live-data-status").textContent = "Live data refresh unavailable";
@@ -2032,7 +2059,6 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             table.innerHTML = '<tr><td colspan="12" class="live-empty">Live data could not be refreshed right now.</td></tr>';
             console.info("Live stats refresh unavailable:", error.message);
         }
-
         [search, positionFilter, teamFilter, sortSelect, maxPriceInput, minMinutesInput, maxOwnershipInput].forEach(control => {
             control.addEventListener("input", render);
             control.addEventListener("change", render);
