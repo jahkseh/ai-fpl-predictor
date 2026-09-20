@@ -416,7 +416,7 @@ def generate_target_predictions(
         raise ValueError("Eligible target matrix contains missing values")
 
     model = train_validated_model(weekly_historical)
-    eligible["prediction"] = model.predict(eligible[PLAYER_FEATURES]).clip(min=0)
+    eligible["prediction"] = model.predict(eligible[PLAYER_FEATURES]).clip(lower=0)
     eligible["fixture"] = (
         eligible["fixture_home_team"] + " vs " + eligible["fixture_away_team"]
     )
