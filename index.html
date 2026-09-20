@@ -1338,23 +1338,7 @@ body[data-theme="light"] .hero-stat span {
                 localStorage.setItem("fpl-theme", "light");
                 themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
             }
-        });    const teamDirectory = document.getElementById("team-directory");
-    const teamDirectoryItems = [
-        ["Arsenal","ARS"],["Aston Villa","AVL"],["Bournemouth","BOU"],["Brentford","BRE"],["Brighton","BHA"],
-        ["Chelsea","CHE"],["Coventry City","COV"],["Crystal Palace","CRY"],["Everton","EVE"],["Fulham","FUL"],
-        ["Hull City","HUL"],["Ipswich Town","IPS"],["Leeds","LEE"],["Liverpool","LIV"],["Man City","MCI"],
-        ["Man Utd","MUN"],["Newcastle","NEW"],["Nott'm Forest","NFO"],["Spurs","TOT"],["Sunderland","SUN"]
-    ];
-    teamDirectory.innerHTML = teamDirectoryItems.map(([team,code]) => {
-        const accent = teamAccentColours[team] || "var(--accent)";
-        return '<a class="team-directory-card" style="--directory-team-colour:' + accent + '" href="team.html?team=' + encodeURIComponent(team) + '">' +
-            '<span class="team-directory-mark">' + code + '</span>' +
-            '<span class="team-directory-name">' + team + '</span>' +
-            '<span class="team-directory-arrow" aria-hidden="true">→</span>' +
-        '</a>';
-    }).join("");
-
-    const differentialContainer = document.getElementById("differential-container");
+        });        const differentialContainer = document.getElementById("differential-container");
 
     async function loadDifferentials() {
         try {
@@ -1464,7 +1448,23 @@ const playerContainer = document.getElementById("player-container");
             "Aston Villa": "#670e36"
         };
 
-        const shirtMarks = {
+        const teamDirectory = document.getElementById("team-directory");
+            const teamDirectoryItems = [
+                ["Arsenal","ARS"],["Aston Villa","AVL"],["Bournemouth","BOU"],["Brentford","BRE"],["Brighton","BHA"],
+                ["Chelsea","CHE"],["Coventry City","COV"],["Crystal Palace","CRY"],["Everton","EVE"],["Fulham","FUL"],
+                ["Hull City","HUL"],["Ipswich Town","IPS"],["Leeds","LEE"],["Liverpool","LIV"],["Man City","MCI"],
+                ["Man Utd","MUN"],["Newcastle","NEW"],["Nott'm Forest","NFO"],["Spurs","TOT"],["Sunderland","SUN"]
+            ];
+            teamDirectory.innerHTML = teamDirectoryItems.map(([team,code]) => {
+                const accent = teamAccentColours[team] || "var(--accent)";
+                return '<a class="team-directory-card" style="--directory-team-colour:' + accent + '" href="team.html?team=' + encodeURIComponent(team) + '">' +
+                    '<span class="team-directory-mark">' + code + '</span>' +
+                    '<span class="team-directory-name">' + team + '</span>' +
+                    '<span class="team-directory-arrow" aria-hidden="true">→</span>' +
+                '</a>';
+            }).join("");
+        
+                const shirtMarks = {
             "Arsenal": "ARS",
             "Bournemouth": "BOU",
             "Brentford": "BRE",
