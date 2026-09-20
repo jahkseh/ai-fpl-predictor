@@ -250,9 +250,7 @@ def build_player_profiles(
     future_fixtures = []
     for gw in range(target_gameweek, min(target_gameweek + 4, 38) + 1):
         try:
-            frame = read_csv(
-                BASE.format(gw=gw) + "fixtures.csv"
-            )
+            frame = read_csv(gw, "fixtures.csv")
         except (ValueError, pd.errors.EmptyDataError):
             continue
         frame = frame[
