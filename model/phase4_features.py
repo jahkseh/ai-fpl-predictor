@@ -50,51 +50,62 @@ def add_fixture_environment(frame: pd.DataFrame) -> pd.DataFrame:
 
 def add_current_fixture_team_features(
     target: pd.DataFrame,
-    teams: pd.DataFrame,
+    current: pd.DataFrame,
+    gameweek: int,
 ) -> pd.DataFrame:
-    """Map current FPL team strength into the same feature family."""
+    """Use completed current-season team performance, not team ratings, for targets."""
+    required = {"team_code", "GW", "opponent_team_code", "expected_goals",
+                "expected_goals_conceded", "goals_scored"}
+    missing = required - set(current.columns)
+    if missing:
+        raise ValueError(f"Current team history missing columns: {sorted(missing)}")
+
+    completed = current[current["GW"] < gameweek].copy()
+    team = (
+        completed.groupby(["GW", "team_code"], as_index=False)
+        .agg(
+            xg_for=("expected_goals", "sum"),
+            xga_against=("expected_goals_conceded", "sum"),
+            goals_for=("goals_scored", "sum"),
+        )
+    )
+    team = team.sort_values(["team_code", "GW"])
+    for src, dst in [
+        ("xg_for", "team_xg_for_per90"),
+        ("goals_for", "team_goals_for_per90"),
+        ("xga_against", "team_xg_against_per90"),
+    ]:
+        team[dst] = team.groupby("team_code")[src].transform(
+            lambda s: s.shift(1).rolling(10, min_periods=1).mean()
+        )
+    team["team_goals_against_per90"] = np.nan
+
+    opp = team[[
+        "GW", "team_code", "team_xg_for_per90",
+        "team_goals_for_per90", "team_xg_against_per90",
+        "team_goals_against_per90",
+    ]].rename(columns={
+        "team_code": "opponent_team_code",
+        "team_xg_for_per90": "opponent_xg_for_per90",
+        "team_goals_for_per90": "opponent_goals_for_per90",
+        "team_xg_against_per90": "opponent_xg_against_per90",
+        "team_goals_against_per90": "opponent_goals_against_per90",
+    })
+
+    latest = team.groupby("team_code").tail(1).drop(columns=["GW", "xg_for", "xga_against", "goals_for"])
     out = target.copy()
-    team_lookup = teams.set_index("code")
-
-    def val(code, col):
-        try:
-            return float(team_lookup.loc[code, col])
-        except (KeyError, TypeError, ValueError):
-            return np.nan
-
-    home = out["was_home_gw"].astype(bool)
-    out["team_xg_for_per90"] = np.where(
-        home,
-        [val(c, "strength_attack_home") for c in out["team_code"]],
-        [val(c, "strength_attack_away") for c in out["team_code"]],
+    out = out.merge(
+        latest, on="team_code", how="left", validate="many_to_one"
     )
-    out["team_xg_against_per90"] = np.where(
-        home,
-        [val(c, "strength_defence_home") for c in out["team_code"]],
-        [val(c, "strength_defence_away") for c in out["team_code"]],
+    out = out.merge(
+        opp.groupby("opponent_team_code").tail(1),
+        on="opponent_team_code", how="left", validate="many_to_one"
     )
-    out["opponent_xg_for_per90"] = np.where(
-        home,
-        [val(c, "strength_attack_away") for c in out["opponent_team_code"]],
-        [val(c, "strength_attack_home") for c in out["opponent_team_code"]],
-    )
-    out["opponent_xg_against_per90"] = np.where(
-        home,
-        [val(c, "strength_defence_away") for c in out["opponent_team_code"]],
-        [val(c, "strength_defence_home") for c in out["opponent_team_code"]],
-    )
-
-    # FPL strength values are ratings rather than xG/90. Keep them as a
-    # separate environment signal; we do not pretend they are goals.
-    out["team_goals_for_per90"] = out["team_xg_for_per90"]
-    out["team_goals_against_per90"] = out["team_xg_against_per90"]
-    out["opponent_goals_for_per90"] = out["opponent_xg_for_per90"]
-    out["opponent_goals_against_per90"] = out["opponent_xg_against_per90"]
-
     for col in TEAM_FEATURES:
         if col not in out.columns:
             out[col] = np.nan
     return add_fixture_environment(out)
+
 
 
 def phase4_feature_columns() -> list[str]:
