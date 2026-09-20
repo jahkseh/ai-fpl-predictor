@@ -1133,6 +1133,8 @@ body[data-theme="light"] .hero-stat span {
         .live-summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.live-summary-card{padding:18px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}.live-summary-card span{display:block;color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.live-summary-card strong{display:block;margin-top:7px;color:var(--text);font-size:1.35rem}.live-summary-card small{display:block;margin-top:4px;color:var(--text-muted);font-size:11px}
         .live-tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}.live-search{flex:1 1 280px;min-height:44px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit}.live-search:focus{outline:2px solid rgba(39,209,127,.25);border-color:var(--accent)}.live-select{min-height:44px;padding:0 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit}
         .live-table-wrap{overflow:auto;border:1px solid var(--border);border-radius:16px;background:var(--surface)}.live-table{width:100%;border-collapse:collapse;min-width:820px}.live-table th,.live-table td{padding:13px 14px;border-bottom:1px solid var(--border);text-align:left;font-size:12px;white-space:nowrap}.live-table th{color:var(--text-muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em}.live-table td{color:var(--text)}.live-table tr:last-child td{border-bottom:0}.live-table .player-link{color:var(--text);font-weight:800;text-decoration:none}.live-table .player-link:hover{color:var(--accent)}.live-table .muted{color:var(--text-muted)}.stat-good{color:var(--accent);font-weight:800}.live-empty{padding:28px;text-align:center;color:var(--text-muted)}
+        .live-filter-panel{padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);margin-bottom:16px}.live-filter-row{display:grid;grid-template-columns:minmax(220px,1.5fr) repeat(6,minmax(125px,1fr));gap:9px;align-items:end}.live-filter-field{display:grid;gap:5px}.live-filter-field label{color:var(--text-muted);font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.live-filter-field input,.live-filter-field select{width:100%;height:40px;padding:0 10px;border:1px solid var(--border);border-radius:9px;background:var(--surface-soft);color:var(--text);font:inherit;font-size:12px}.live-filter-field input:focus,.live-filter-field select:focus{outline:2px solid rgba(39,209,127,.22);border-color:var(--accent)}.live-filter-meta{display:flex;justify-content:space-between;gap:12px;margin-top:10px;color:var(--text-muted);font-size:10px}.live-filter-meta strong{color:var(--text)}.live-fdr{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:22px;border-radius:6px;background:var(--surface-soft);font-size:10px;font-weight:900}.live-fdr-1,.live-fdr-2{color:#16a34a}.live-fdr-3{color:#ca8a04}.live-fdr-4,.live-fdr-5{color:#dc2626}.live-range{color:var(--text-muted);font-variant-numeric:tabular-nums}.live-home{font-weight:800}.live-away{color:var(--text-muted);font-weight:700}.live-table th[data-sort]{cursor:pointer}.live-table th[data-sort]:hover{color:var(--accent)}
+        @media(max-width:1100px){.live-filter-row{grid-template-columns:repeat(4,1fr)}}@media(max-width:700px){.live-filter-row{grid-template-columns:repeat(2,1fr)}.live-filter-meta{align-items:flex-start;flex-direction:column}}
         .live-mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:20px}.live-panel{padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}.live-panel h3{margin-bottom:5px}.live-panel>p{color:var(--text-muted);font-size:12px;margin-bottom:15px}.live-list{display:grid;gap:9px}.live-list a{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--border);text-decoration:none}.live-list a:first-child{border-top:0}.live-list strong{color:var(--text);font-size:13px}.live-list span{color:var(--text-muted);font-size:11px}.live-list b{color:var(--text);font-size:13px}
         @media(max-width:800px){.live-summary-grid{grid-template-columns:repeat(2,1fr)}.live-mini-grid{grid-template-columns:1fr}}@media(max-width:520px){.live-summary-grid{grid-template-columns:1fr 1fr}.live-summary-card{padding:14px}.live-banner{align-items:flex-start}}
 </style>
@@ -1230,7 +1232,7 @@ body[data-theme="light"] .hero-stat span {
     <div class="section-title">
         <span class="section-kicker">Live data</span>
         <h2>Live Picks</h2>
-        <p>Current published player data, model projections and ownership context from the latest FPL snapshot.</p>
+        <p>Search, filter and sort the full modelled player pool by projection, price, ownership and expected minutes.</p>
     </div>
 
     <div class="live-banner">
@@ -1245,27 +1247,22 @@ body[data-theme="light"] .hero-stat span {
         <div class="live-summary-card"><span>Next GW</span><strong id="live-next-gameweek">—</strong><small>Upcoming prediction round</small></div>
     </div>
 
-    <div class="live-tools">
-        <input class="live-search" id="live-player-search" type="search" placeholder="Search player or team…" aria-label="Search live players">
-        <select class="live-select" id="live-position-filter" aria-label="Filter live players by position">
-            <option value="">All positions</option>
-            <option value="Goalkeeper">Goalkeepers</option>
-            <option value="Defender">Defenders</option>
-            <option value="Midfielder">Midfielders</option>
-            <option value="Forward">Forwards</option>
-        </select>
+    <div class="live-filter-panel">
+        <div class="live-filter-row">
+            <div class="live-filter-field"><label for="live-player-search">Search</label><input id="live-player-search" type="search" placeholder="Player or team…" aria-label="Search live players"></div>
+            <div class="live-filter-field"><label for="live-position-filter">Position</label><select id="live-position-filter"><option value="">All positions</option><option value="Goalkeeper">Goalkeepers</option><option value="Defender">Defenders</option><option value="Midfielder">Midfielders</option><option value="Forward">Forwards</option></select></div>
+            <div class="live-filter-field"><label for="live-team-filter">Team</label><select id="live-team-filter"><option value="">All teams</option></select></div>
+            <div class="live-filter-field"><label for="live-sort">Sort by</label><select id="live-sort"><option value="prediction-desc">Predicted points ↓</option><option value="price-asc">Price ↑</option><option value="price-desc">Price ↓</option><option value="ownership-asc">Ownership ↑</option><option value="ownership-desc">Ownership ↓</option><option value="confidence">Confidence</option><option value="minutes-desc">Expected minutes ↓</option></select></div>
+            <div class="live-filter-field"><label for="live-max-price">Max price</label><input id="live-max-price" type="number" min="3.5" max="20" step="0.1" placeholder="Any"></div>
+            <div class="live-filter-field"><label for="live-min-minutes">Min expected minutes</label><input id="live-min-minutes" type="number" min="0" max="120" step="1" placeholder="Any"></div>
+            <div class="live-filter-field"><label for="live-min-ownership">Max ownership %</label><input id="live-min-ownership" type="number" min="0" max="100" step="0.1" placeholder="Any"></div>
+        </div>
+        <div class="live-filter-meta"><span><strong id="live-result-count">0</strong> players shown</span><span>Fixture difficulty: <strong>1</strong> easier → <strong>5</strong> harder · home/away is separate</span></div>
     </div>
-
     <div class="live-table-wrap">
         <table class="live-table">
-            <thead>
-                <tr>
-                    <th>Player</th><th>Team</th><th>Position</th><th>Ownership</th><th>Form</th><th>Projection</th><th>Next fixture</th>
-                </tr>
-            </thead>
-            <tbody id="live-player-table">
-                <tr><td colspan="7" class="live-empty">Loading live picks…</td></tr>
-            </tbody>
+            <thead><tr><th>Player</th><th>Team</th><th>Pos</th><th>H/A</th><th>Price</th><th>Ownership</th><th>Expected min</th><th>Projection</th><th>P10–P90</th><th>Confidence</th><th>FDR</th><th>Fixture</th></tr></thead>
+            <tbody id="live-player-table"><tr><td colspan="12" class="live-empty">Loading live picks…</td></tr></tbody>
         </table>
     </div>
 </section>
@@ -1882,37 +1879,88 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         const table = document.getElementById("live-player-table");
         const search = document.getElementById("live-player-search");
         const positionFilter = document.getElementById("live-position-filter");
+        const teamFilter = document.getElementById("live-team-filter");
+        const sortSelect = document.getElementById("live-sort");
+        const maxPriceInput = document.getElementById("live-max-price");
+        const minMinutesInput = document.getElementById("live-min-minutes");
+        const maxOwnershipInput = document.getElementById("live-min-ownership");
+        const resultCount = document.getElementById("live-result-count");
         let players = [];
+
+        const numberOrNull = value => {
+            const number = Number(value);
+            return Number.isFinite(number) ? number : null;
+        };
+        const confidenceRank = { high: 3, medium: 2, low: 1 };
+
+        const renderTeams = () => {
+            const teams = [...new Set(players.map(player => player.team).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+            teamFilter.innerHTML = '<option value="">All teams</option>' + teams.map(team => '<option value="' + escapeDifferentialText(team) + '">' + escapeDifferentialText(team) + '</option>').join("");
+        };
 
         const render = () => {
             const query = (search.value || "").trim().toLowerCase();
             const position = positionFilter.value;
+            const team = teamFilter.value;
+            const maxPrice = numberOrNull(maxPriceInput.value);
+            const minMinutes = numberOrNull(minMinutesInput.value);
+            const maxOwnership = numberOrNull(maxOwnershipInput.value);
+
             const filtered = players
                 .filter(player => !position || player.position === position)
+                .filter(player => !team || player.team === team)
                 .filter(player => !query || [player.name, player.team, player.position].some(value => String(value || "").toLowerCase().includes(query)))
-                .sort((a, b) => Number(b.prediction) - Number(a.prediction));
+                .filter(player => maxPrice == null || (numberOrNull(player.price) != null && Number(player.price) <= maxPrice))
+                .filter(player => minMinutes == null || (numberOrNull(player.expected_minutes) != null && Number(player.expected_minutes) >= minMinutes))
+                .filter(player => maxOwnership == null || (numberOrNull(player.ownership) != null && Number(player.ownership) <= maxOwnership))
+                .sort((a, b) => {
+                    const av = numberOrNull(a.prediction), bv = numberOrNull(b.prediction);
+                    const ap = numberOrNull(a.price), bp = numberOrNull(b.price);
+                    const ao = numberOrNull(a.ownership), bo = numberOrNull(b.ownership);
+                    const am = numberOrNull(a.expected_minutes), bm = numberOrNull(b.expected_minutes);
+                    switch (sortSelect.value) {
+                        case "price-asc": return (ap ?? Infinity) - (bp ?? Infinity);
+                        case "price-desc": return (bp ?? -Infinity) - (ap ?? -Infinity);
+                        case "ownership-asc": return (ao ?? Infinity) - (bo ?? Infinity);
+                        case "ownership-desc": return (bo ?? -Infinity) - (ao ?? -Infinity);
+                        case "confidence": return (confidenceRank[String(b.confidence).toLowerCase()] || 0) - (confidenceRank[String(a.confidence).toLowerCase()] || 0) || (bv ?? -Infinity) - (av ?? -Infinity);
+                        case "minutes-desc": return (bm ?? -Infinity) - (am ?? -Infinity);
+                        default: return (bv ?? -Infinity) - (av ?? -Infinity);
+                    }
+                });
 
+            resultCount.textContent = filtered.length.toLocaleString();
             if (!filtered.length) {
-                table.innerHTML = '<tr><td colspan="7" class="live-empty">No matching projected players.</td></tr>';
+                table.innerHTML = '<tr><td colspan="12" class="live-empty">No players match those filters. Try widening the price or minutes limits.</td></tr>';
                 return;
             }
 
             table.innerHTML = filtered.map(player => {
                 const fixture = player.fixture || {};
-                const fixtureText = fixture.home && fixture.away
-                    ? fixture.home + " " + (fixture.is_home ? "vs" : "at") + " " + fixture.away
-                    : "—";
-                const prediction = Number(player.prediction);
-                const ownership = Number(player.ownership);
-                const form = Number(player.form);
+                const prediction = numberOrNull(player.prediction);
+                const p10 = numberOrNull(player.prediction_p10);
+                const p90 = numberOrNull(player.prediction_p90);
+                const expectedMinutes = numberOrNull(player.expected_minutes);
+                const price = numberOrNull(player.price);
+                const ownership = numberOrNull(player.ownership);
+                const difficulty = numberOrNull(player.fixture_difficulty);
+                const isHome = fixture.is_home === true;
+                const fixtureText = fixture.home && fixture.away ? escapeDifferentialText(fixture.home + " " + (isHome ? "vs" : "at") + " " + fixture.away) : "—";
+                const rangeText = p10 != null && p90 != null ? p10.toFixed(1) + "–" + p90.toFixed(1) : "—";
+                const fdrText = difficulty != null ? '<span class="live-fdr live-fdr-' + Math.round(difficulty) + '">' + Math.round(difficulty) + '</span>' : "—";
                 return '<tr>' +
                     '<td><a class="player-link" href="player.html?player=' + encodeURIComponent(player.name) + '">' + escapeDifferentialText(player.name) + '</a></td>' +
                     '<td>' + escapeDifferentialText(player.team || "—") + '</td>' +
                     '<td class="muted">' + escapeDifferentialText(player.position || "—") + '</td>' +
-                    '<td>' + (Number.isFinite(ownership) ? ownership.toFixed(1) + "%" : "—") + '</td>' +
-                    '<td>' + (Number.isFinite(form) ? form.toFixed(1) : "—") + '</td>' +
-                    '<td class="' + (Number.isFinite(prediction) ? "stat-good" : "muted") + '">' + (Number.isFinite(prediction) ? prediction.toFixed(2) : "—") + '</td>' +
-                    '<td class="muted">' + escapeDifferentialText(fixtureText) + '</td>' +
+                    '<td class="' + (isHome ? "live-home" : "live-away") + '">' + (fixture.home ? (isHome ? "H" : "A") : "—") + '</td>' +
+                    '<td>' + (price != null ? "£" + price.toFixed(1) : "—") + '</td>' +
+                    '<td>' + (ownership != null ? ownership.toFixed(1) + "%" : "—") + '</td>' +
+                    '<td>' + (expectedMinutes != null ? Math.round(expectedMinutes) + " min" : "—") + '</td>' +
+                    '<td class="' + (prediction != null ? "stat-good" : "muted") + '">' + (prediction != null ? prediction.toFixed(2) : "—") + '</td>' +
+                    '<td class="live-range">' + rangeText + '</td>' +
+                    '<td class="muted">' + escapeDifferentialText(player.confidence || "—") + '</td>' +
+                    '<td>' + fdrText + '</td>' +
+                    '<td class="muted">' + fixtureText + '</td>' +
                 '</tr>';
             }).join("");
         };
@@ -1921,29 +1969,26 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const response = await fetch("live_data.json?ts=" + Date.now());
             if (!response.ok) throw new Error("Live data unavailable");
             const data = await response.json();
-
-            players = Array.isArray(data.players)
-                ? data.players.filter(player => Number.isFinite(Number(player.prediction)))
-                : [];
-
+            players = Array.isArray(data.players) ? data.players.filter(player => Number.isFinite(Number(player.prediction))) : [];
+            renderTeams();
             document.getElementById("live-gameweek").textContent = data.data_gameweek != null ? "GW" + data.data_gameweek : "—";
             document.getElementById("live-player-count").textContent = Number(data.player_count || 0).toLocaleString();
             document.getElementById("live-fixture-count").textContent = Array.isArray(data.fixtures) ? data.fixtures.length : "—";
             document.getElementById("live-next-gameweek").textContent = data.next_gameweek != null ? "GW" + data.next_gameweek : "—";
             document.getElementById("live-data-status").textContent = "Live FPL snapshot loaded";
-            if (data.generated_at_utc) {
-                document.getElementById("live-data-updated").textContent = "· updated " + new Date(data.generated_at_utc).toLocaleString([], {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"});
-            }
+            if (data.generated_at_utc) document.getElementById("live-data-updated").textContent = "· updated " + new Date(data.generated_at_utc).toLocaleString([], {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"});
             render();
         } catch (error) {
             document.getElementById("live-data-status").textContent = "Live data refresh unavailable";
             document.getElementById("live-data-updated").textContent = "· published page data is still available";
-            table.innerHTML = '<tr><td colspan="7" class="live-empty">Live data could not be refreshed right now.</td></tr>';
+            table.innerHTML = '<tr><td colspan="12" class="live-empty">Live data could not be refreshed right now.</td></tr>';
             console.info("Live stats refresh unavailable:", error.message);
         }
 
-        search.addEventListener("input", render);
-        positionFilter.addEventListener("change", render);
+        [search, positionFilter, teamFilter, sortSelect, maxPriceInput, minMinutesInput, maxOwnershipInput].forEach(control => {
+            control.addEventListener("input", render);
+            control.addEventListener("change", render);
+        });
     }
 
     loadPredictions();
