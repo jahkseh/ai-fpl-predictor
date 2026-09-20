@@ -112,12 +112,20 @@ def main() -> None:
             "kickoff": row["kickoff_time"], "match_id": row["match_id"],
         }
 
-    predictions = {}
+    # Predictions are keyed by player + fixture, not player name alone.
+    # This matters because FPL display names are not guaranteed to be unique
+    # (for example, there can be more than one player named "Palmer").
+    predictions_by_fixture = {}
     if args.predictions.exists():
         raw = json.loads(args.predictions.read_text(encoding="utf-8"))
-        for fixture in raw.get("predictions", []):
-            for player in fixture.get("players", []):
-                predictions[NAME_ALIASES.get(player["name"], player["name"])] = float(player["prediction"])
+        for fixture_prediction in raw.get("predictions", []):
+            fixture_home = fixture_prediction.get("home")
+            fixture_away = fixture_prediction.get("away")
+            for player in fixture_prediction.get("players", []):
+                canonical_name = NAME_ALIASES.get(player["name"], player["name"])
+                predictions_by_fixture[
+                    (canonical_name, fixture_home, fixture_away)
+                ] = float(player["prediction"])
 
     rows = []
     for _, row in latest.iterrows():
@@ -130,6 +138,12 @@ def main() -> None:
         fixture = next_fixture.get(team_code)
 
         name = str(row["web_name"])
+        canonical_name = NAME_ALIASES.get(name, name)
+        prediction = None
+        if fixture:
+            prediction = predictions_by_fixture.get(
+                (canonical_name, fixture["home"], fixture["away"])
+            )
         item = {
             "id": player_id,
             "name": NAME_ALIASES.get(name, name),
@@ -167,7 +181,7 @@ def main() -> None:
             "defensive_contribution_per_90": safe_float(row.get("defensive_contribution_per_90")),
             "chance_next_round": safe_float(row.get("chance_of_playing_next_round")),
             "news": None if pd.isna(row.get("news")) else str(row.get("news")),
-            "prediction": predictions.get(NAME_ALIASES.get(name, name)),
+            "prediction": prediction,
             "recent_3_points": safe_float(row.get("avg3_total_points")),
             "recent_3_minutes": safe_float(row.get("avg3_minutes")),
             "recent_3_xg": safe_float(row.get("avg3_expected_goals")),
@@ -210,24 +224,40 @@ def main() -> None:
             "away_xg": safe_float(row.get("away_expected_goals_xg")),
         })
 
-    output = {
+    differential_payload = {
         "season": "2026/27",
         "data_gameweek": latest_gw,
         "next_gameweek": args.gameweek,
         "generated_at_utc": pd.Timestamp.utcnow().isoformat(),
-        "player_count": len(player_rows),
-        "fixtures": fixture_output,
-        "differentials": [
+        "picks": [
             {k: r.get(k) for k in [
                 "name", "team", "position", "ownership", "prediction",
                 "differential_score", "price", "form", "fixture"
             ]}
             for r in differentials
         ],
+    }
+
+    output = {
+        "season": "2026/27",
+        "data_gameweek": latest_gw,
+        "next_gameweek": args.gameweek,
+        "generated_at_utc": differential_payload["generated_at_utc"],
+        "player_count": len(player_rows),
+        "fixtures": fixture_output,
+        "differentials": differential_payload["picks"],
         "players": player_rows,
     }
     args.output.write_text(
         json.dumps(output, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    # Keep a small, dedicated payload for the website's Differential Picks section.
+    # The main live_data.json remains the canonical player dataset.
+    differential_output = args.output.with_name("differentials.json")
+    differential_output.write_text(
+        json.dumps(differential_payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     print(f"Wrote {args.output} with {len(player_rows)} players; GW{latest_gw} data / GW{args.gameweek} fixtures.")
