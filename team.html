@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team · AI FPL Predictor</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b1220;--surface:#111827;--surface-soft:#162033;--border:#243047;--text:#e5e7eb;--text-muted:#94a3b8;--accent:#27d17f;--accent-hover:#20b86d;--header:#0f172a;--footer:#0f172a}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);transition:background .25s ease,color .25s ease}
+body[data-theme="light"]{--bg:#f7f8fa;--surface:#fff;--surface-soft:#eef2f5;--border:#dce3ea;--text:#1f2937;--text-muted:#64748b;--accent:#20b86d;--accent-hover:#17945a;--header:#0f172a;--footer:#0f172a}
+header{background:var(--header);color:#fff;padding:20px 40px}
+.navbar{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:700}.logo span{color:var(--accent)}
+nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+nav a{color:#fff;text-decoration:none;font-size:15px}nav a:hover{color:var(--accent)}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-left:4px;padding:8px 12px;border:1px solid #334155;border-radius:20px;background:transparent;color:#fff;font-size:13px;font-weight:600;cursor:pointer}
+.theme-toggle:hover{background:rgba(255,255,255,.08);border-color:var(--accent)}
+.theme-toggle-icon{width:13px;height:13px;display:inline-block;border:1.5px solid currentColor;border-radius:50%;position:relative}.theme-toggle-icon:after{content:"";position:absolute;width:5px;height:5px;top:-3px;right:-3px;border-radius:50%;background:var(--header)}
+main{max-width:1200px;margin:0 auto;padding:30px 20px 70px}
+.back-link{display:inline-block;margin:8px 0 22px;color:var(--text-muted);font-size:12px;font-weight:700;text-decoration:none}.back-link:hover{color:var(--accent)}
+.team-hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;padding:34px;border:1px solid var(--border);border-radius:22px;background:var(--surface);box-shadow:0 18px 50px rgba(0,0,0,.12)}
+.team-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,color-mix(in srgb,var(--team-colour) 9%,transparent),transparent 48%);pointer-events:none}
+.team-copy,.team-snapshot{position:relative;z-index:1}
+.team-kicker{color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.team-heading{display:flex;align-items:center;gap:18px;margin-top:12px}
+.team-mark{width:82px;height:82px;flex:0 0 auto;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid color-mix(in srgb,var(--team-colour) 45%,var(--border));border-radius:22px;background:linear-gradient(135deg,var(--team-colour),color-mix(in srgb,var(--team-colour) 45%,#fff));box-shadow:0 0 0 4px var(--surface),0 0 0 5px color-mix(in srgb,var(--team-colour) 22%,var(--border))}
+.team-mark:after{content:"";position:absolute;width:48px;height:48px;right:-16px;bottom:-16px;border:2px solid rgba(255,255,255,.55);border-radius:50%}
+.team-mark span{position:relative;z-index:1;padding:8px 9px;border-radius:9px;background:rgba(10,18,32,.78);color:#fff;font-size:14px;font-weight:900;letter-spacing:.06em}
+.team-heading h1{font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-.04em}
+.team-subtitle{margin-top:16px;color:var(--text-muted);font-size:14px;line-height:1.65;max-width:650px}
+.team-fixture-line{margin-top:18px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;color:var(--text);font-size:14px;font-weight:700}
+.fixture-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid var(--border);border-radius:999px;background:var(--surface-soft);color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.fixture-pill strong{color:var(--text)}
+.team-snapshot{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:center}
+.snapshot-card{min-height:104px;padding:17px;border:1px solid var(--border);border-radius:15px;background:var(--surface-soft)}
+.snapshot-card span{display:block;color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.snapshot-card strong{display:block;margin-top:8px;color:var(--text);font-size:1.45rem;letter-spacing:-.03em}
+.snapshot-card small{display:block;margin-top:4px;color:var(--text-muted);font-size:10px;line-height:1.4}
+.section{padding:46px 0 0}.section-title{margin-bottom:24px}.eyebrow{display:block;margin-bottom:7px;color:var(--accent-hover);font-size:10px;font-weight:900;letter-spacing:.11em;text-transform:uppercase}.section-title h2{font-size:1.65rem;letter-spacing:-.025em}.section-title p{margin-top:7px;color:var(--text-muted);font-size:13px}
+.player-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.player-card{position:relative;min-height:168px;padding:19px;border:1px solid var(--border);border-radius:16px;background:var(--surface);text-decoration:none;color:inherit;overflow:hidden;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.player-card:before{content:"";position:absolute;top:0;left:18px;right:18px;height:3px;border-radius:0 0 4px 4px;background:var(--player-colour)}
+.player-card:hover,.player-card:focus-visible{transform:translateY(-2px);border-color:var(--player-colour);box-shadow:0 0 0 2px color-mix(in srgb,var(--player-colour) 18%,transparent),0 14px 32px rgba(15,30,22,.12);outline:none}
+.player-rank{color:var(--player-colour);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.player-card h3{margin-top:24px;font-size:1.05rem;color:var(--text)}.player-card p{margin-top:5px;color:var(--text-muted);font-size:11px}
+.player-points{margin-top:20px;display:flex;align-items:baseline;gap:8px}.player-points strong{font-size:1.8rem;letter-spacing:-.04em}.player-points span{color:var(--text-muted);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.player-link{display:block;margin-top:10px;color:var(--accent-hover);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.empty{padding:24px;border:1px solid var(--border);border-radius:15px;background:var(--surface);color:var(--text-muted);font-size:13px;line-height:1.6}
+.future-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.future-card{padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+.future-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;border:1px solid color-mix(in srgb,var(--team-colour) 25%,var(--border));border-radius:10px;background:color-mix(in srgb,var(--team-colour) 8%,var(--surface));color:var(--team-colour);font-size:11px;font-weight:900}
+.future-card h3{font-size:1rem}.future-card p{margin-top:7px;color:var(--text-muted);font-size:12px;line-height:1.55}
+.note{margin-top:24px;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface-soft);color:var(--text-muted);font-size:11px;line-height:1.55}.note strong{color:var(--text)}
+footer{background:var(--footer);color:#aeb6ca;text-align:center;padding:25px;font-size:14px}
+.state{padding:50px 20px;text-align:center;color:var(--text-muted)}
+@media(max-width:800px){header{padding:18px 20px}.navbar{flex-direction:column;gap:15px}nav{justify-content:center;gap:12px}.team-hero{grid-template-columns:1fr;padding:24px}.team-snapshot{grid-template-columns:repeat(2,1fr)}.player-grid,.future-grid{grid-template-columns:1fr}.team-heading h1{font-size:2.2rem}}
+@media(max-width:520px){main{padding-left:14px;padding-right:14px}.team-heading{align-items:flex-start;flex-direction:column}.team-mark{width:70px;height:70px}.team-snapshot{grid-template-columns:1fr 1fr}.snapshot-card{min-height:94px}.snapshot-card strong{font-size:1.25rem}}
+</style>
+</head>
+<body>
+<header>
+<div class="navbar">
+<div class="logo">AI FPL <span>Predictor</span></div>
+<nav>
+<a href="index.html#home">Home</a>
+<a href="index.html#predictions">Predictions</a>
+<a href="index.html#players">Players</a>
+<a href="index.html#differentials">Differentials</a>
+<a href="index.html#performance">Performance</a>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label">Light</span></button>
+</nav>
+</div>
+</header>
+<main>
+<a class="back-link" href="index.html#predictions">← Back to Predictions</a>
+<div id="team-content"><div class="state">Loading team profile...</div></div>
+</main>
+<footer>AI FPL Predictor · Machine-learning FPL analysis</footer>
+<script>
+const themeToggle=document.getElementById("theme-toggle");
+const savedTheme=localStorage.getItem("fpl-theme");
+if(savedTheme==="light"){document.body.dataset.theme="light";themeToggle.querySelector(".theme-toggle-label").textContent="Dark";}
+themeToggle.addEventListener("click",()=>{const light=document.body.dataset.theme==="light";if(light){localStorage.setItem("fpl-theme","dark");document.body.dataset.theme="";themeToggle.querySelector(".theme-toggle-label").textContent="Light";}else{localStorage.setItem("fpl-theme","light");document.body.dataset.theme="light";themeToggle.querySelector(".theme-toggle-label").textContent="Dark";}});
+const params=new URLSearchParams(window.location.search);
+const requestedTeam=params.get("team");
+const content=document.getElementById("team-content");
+
+function escapeHtml(value){return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
+
+const teamCodes={
+"Arsenal":"ARS","Aston Villa":"AVL","Bournemouth":"BOU","Brentford":"BRE","Brighton":"BHA","Chelsea":"CHE","Coventry City":"COV","Crystal Palace":"CRY","Everton":"EVE","Fulham":"FUL","Hull City":"HUL","Ipswich Town":"IPS","Leeds":"LEE","Liverpool":"LIV","Man City":"MCI","Man Utd":"MUN","Newcastle":"NEW","Nott'm Forest":"NFO","Spurs":"TOT","Sunderland":"SUN"
+};
+const teamAccentColours={
+"Arsenal":"#b3121d","Aston Villa":"#670e36","Bournemouth":"#b3121d","Brentford":"#c8102e","Brighton":"#0057b8","Chelsea":"#034694","Coventry City":"#2f6fae","Crystal Palace":"#1b458f","Everton":"#003399","Fulham":"#111111","Hull City":"#a56b00","Ipswich Town":"#0057b8","Leeds":"#1d428a","Liverpool":"#c8102e","Man City":"#1c2c5b","Man Utd":"#b91c1c","Newcastle":"#111111","Nott'm Forest":"#c81d25","Spurs":"#132257","Sunderland":"#c8102e"
+};
+const playerTeams={
+"Hill":"Bournemouth","Wirtz":"Liverpool","Szoboszlai":"Liverpool","João Pedro":"Chelsea","Lewis-Potter":"Brentford","Palmer":"Chelsea","Saka":"Arsenal","Gabriel":"Arsenal","Dunk":"Brighton","Branthwaite":"Everton","Mykolenko":"Everton","Tarkowski":"Everton","B. Fernandes":"Man Utd","Mbeumo":"Man Utd","Leno":"Fulham","Bogle":"Leeds","Calvert-Lewin":"Crystal Palace","Stach":"Leeds","Haaland":"Man City","Mukiele":"Sunderland","Semenyo":"Man City","Barnes":"Newcastle","Horníček":"Hull City","Wissa":"Newcastle","Sels":"Nott'm Forest","Schlager":"Coventry City","Gibbs-White":"Nott'm Forest","Van de Ven":"Spurs","Kinsky":"Spurs","Lindelöf":"Spurs"
+};
+
+function playerAccent(name){return teamAccentColours[playerTeams[name]]||"#20b86d";}
+
+async function loadTeam(){
+try{
+if(!requestedTeam||!teamCodes[requestedTeam])throw new Error("Team not specified");
+const response=await fetch("predictions.json");
+if(!response.ok)throw new Error("Prediction data unavailable");
+const data=await response.json();
+const fixture=data.predictions.find(item=>item.home===requestedTeam||item.away===requestedTeam);
+if(!fixture)throw new Error("Team fixture not found");
+const isHome=fixture.home===requestedTeam;
+const opponent=isHome?fixture.away:fixture.home;
+const picks=fixture.players.filter(player=>playerTeams[player.name]===requestedTeam).sort((a,b)=>a.rank-b.rank);
+const topProjection=picks.length?Math.max(...picks.map(player=>Number(player.prediction))):0;
+const combined=picks.reduce((sum,player)=>sum+Number(player.prediction),0);
+const average=picks.length?combined/picks.length:0;
+const opponentProjection=fixture.players.filter(player=>playerTeams[player.name]===opponent).sort((a,b)=>a.rank-b.rank);
+const opponentTop=opponentProjection.length?Math.max(...opponentProjection.map(player=>Number(player.prediction))):0;
+const colour=teamAccentColours[requestedTeam];
+const code=teamCodes[requestedTeam];
+document.title=requestedTeam+" · AI FPL Predictor";
+
+content.innerHTML=
+'<section class="team-hero" style="--team-colour:'+colour+'">'+
+'<div class="team-copy">'+
+'<span class="team-kicker">Gameweek '+escapeHtml(data.gameweek)+' · Team profile</span>'+
+'<div class="team-heading"><div class="team-mark" aria-label="'+escapeHtml(requestedTeam)+' team colour visual"><span>'+code+'</span></div><h1>'+escapeHtml(requestedTeam)+'</h1></div>'+
+'<p class="team-subtitle">A dedicated view of '+escapeHtml(requestedTeam)+"'s current FPL model context. The page starts with the pre-match prediction layer and is designed to become richer as live team and player data is connected.</p>"+
+'<div class="team-fixture-line"><span class="fixture-pill">Current fixture</span><strong>'+escapeHtml(fixture.home)+'</strong><span>vs</span><strong>'+escapeHtml(fixture.away)+'</strong><span class="fixture-pill">'+(isHome?"Home":"Away")+'</span></div>'+
+'</div>'+
+'<div class="team-snapshot">'+
+'<div class="snapshot-card"><span>Top team projection</span><strong>'+(picks.length?topProjection.toFixed(2):"—")+'</strong><small>Highest projection among this team’s current top-three fixture picks.</small></div>'+
+'<div class="snapshot-card"><span>Top-three picks</span><strong>'+picks.length+'</strong><small>Players from this team appearing in the fixture’s model top three.</small></div>'+
+'<div class="snapshot-card"><span>Combined projection</span><strong>'+(picks.length?combined.toFixed(2):"—")+'</strong><small>Sum of the team’s current top-three-listed player projections.</small></div>'+
+'<div class="snapshot-card"><span>Gameweek</span><strong>GW'+escapeHtml(data.gameweek)+'</strong><small>Pre-match model snapshot. Not a live team score.</small></div>'+
+'</div></section>'+
+'<section class="section"><div class="section-title"><span class="eyebrow">Model picks</span><h2>Players to watch</h2><p>Players from this team who appear in the current fixture’s top-three model projections.</p></div>'+
+(picks.length?'<div class="player-grid">'+picks.map((player,index)=>'<a class="player-card" style="--player-colour:'+playerAccent(player.name)+'" href="player.html?player='+encodeURIComponent(player.name)+'"><span class="player-rank">Fixture projection #'+escapeHtml(player.rank)+'</span><h3>'+escapeHtml(player.name)+'</h3><p>'+escapeHtml(requestedTeam)+' vs '+escapeHtml(opponent)+'</p><div class="player-points"><strong>'+Number(player.prediction).toFixed(2)+'</strong><span>expected points</span></div><span class="player-link">View player profile →</span></a>').join("")+'</div>':'<div class="empty">No player from '+escapeHtml(requestedTeam)+' appears in the current fixture top three. That does not mean the team has no relevant FPL options; the page is currently showing only the frozen top-three prediction layer.</div>')+
+'<div class="note"><strong>How to read this:</strong> the current model predicts individual player points rather than a team result. As live data is added, this page can become the home for richer team-level context without changing the underlying prediction snapshot.</div></section>'+
+'<section class="section"><div class="section-title"><span class="eyebrow">Next layer</span><h2>Built for live team data</h2><p>The structure is ready for information we can source reliably later.</p></div><div class="future-grid">'+
+'<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">FORM</div><h3>Recent team form</h3><p>Recent results, goals and clean-sheet context can be added once connected to a reliable live source.</p></div>'+
+'<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">FPL</div><h3>Squad & FPL context</h3><p>Current prices, positions, availability and player-level indicators can sit alongside the model projections.</p></div>'+
+'<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">LIVE</div><h3>Live match layer</h3><p>Once a reliable live feed is connected, this can show in-match events and updated player information without altering the pre-match snapshot.</p></div>'+
+'</div></section>';
+}catch(error){console.error("Team profile loading error:",error);content.innerHTML='<div class="state">This team profile is not available.</div>';}
+}
+loadTeam();
+</script>
+</body>
+</html>
