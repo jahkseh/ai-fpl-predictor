@@ -53,59 +53,67 @@ def add_current_fixture_team_features(
     current: pd.DataFrame,
     gameweek: int,
 ) -> pd.DataFrame:
-    """Use completed current-season team performance, not team ratings, for targets."""
-    required = {"team_code", "GW", "opponent_team_code", "expected_goals",
-                "expected_goals_conceded", "goals_scored"}
+    """Attach current-season team rates using completed fixtures only."""
+    required = {"team_code", "GW", "opponent_team_code", "expected_goals", "goals_scored"}
     missing = required - set(current.columns)
     if missing:
         raise ValueError(f"Current team history missing columns: {sorted(missing)}")
 
-    completed = current[current["GW"] < gameweek].copy()
-    team = (
-        completed.groupby(["GW", "team_code"], as_index=False)
-        .agg(
-            xg_for=("expected_goals", "sum"),
-            xga_against=("expected_goals_conceded", "sum"),
-            goals_for=("goals_scored", "sum"),
-        )
+    completed = current[pd.to_numeric(current["GW"], errors="coerce") < gameweek].copy()
+    completed["GW"] = pd.to_numeric(completed["GW"], errors="coerce")
+    completed["team_code"] = pd.to_numeric(completed["team_code"], errors="coerce")
+    completed["opponent_team_code"] = pd.to_numeric(completed["opponent_team_code"], errors="coerce")
+    completed = completed.dropna(subset=["GW", "team_code", "opponent_team_code"])
+    completed["team_code"] = completed["team_code"].astype(int)
+    completed["opponent_team_code"] = completed["opponent_team_code"].astype(int)
+
+    fixture = (
+        completed.groupby(["GW", "team_code", "opponent_team_code"], as_index=False)
+        .agg(xg_for=("expected_goals", "sum"), goals_for=("goals_scored", "sum"))
     )
-    team = team.sort_values(["team_code", "GW"])
+    opponent = fixture[["GW", "team_code", "xg_for", "goals_for"]].rename(
+        columns={"team_code": "opponent_team_code", "xg_for": "xg_against", "goals_for": "goals_against"}
+    )
+    fixture = fixture.merge(
+        opponent, on=["GW", "opponent_team_code"], how="left", validate="many_to_one"
+    )
+    fixture = fixture.sort_values(["team_code", "GW"]).reset_index(drop=True)
+
+    def rolling_prior(series: pd.Series) -> pd.Series:
+        return series.shift(1).rolling(10, min_periods=1).mean()
+
     for src, dst in [
         ("xg_for", "team_xg_for_per90"),
         ("goals_for", "team_goals_for_per90"),
-        ("xga_against", "team_xg_against_per90"),
+        ("xg_against", "team_xg_against_per90"),
+        ("goals_against", "team_goals_against_per90"),
     ]:
-        team[dst] = team.groupby("team_code")[src].transform(
-            lambda s: s.shift(1).rolling(10, min_periods=1).mean()
-        )
-    team["team_goals_against_per90"] = np.nan
+        fixture[dst] = fixture.groupby("team_code")[src].transform(rolling_prior)
 
-    opp = team[[
-        "GW", "team_code", "team_xg_for_per90",
-        "team_goals_for_per90", "team_xg_against_per90",
-        "team_goals_against_per90",
-    ]].rename(columns={
-        "team_code": "opponent_team_code",
+    latest = fixture.groupby("team_code").tail(1).copy()
+    latest = latest.drop(columns=["GW", "opponent_team_code", "xg_for", "goals_for", "xg_against", "goals_against"])
+
+    opponent_latest = fixture.groupby("opponent_team_code").tail(1).copy()
+    opponent_latest = opponent_latest[
+        ["opponent_team_code", "team_xg_for_per90", "team_goals_for_per90",
+         "team_xg_against_per90", "team_goals_against_per90"]
+    ].rename(columns={
         "team_xg_for_per90": "opponent_xg_for_per90",
         "team_goals_for_per90": "opponent_goals_for_per90",
         "team_xg_against_per90": "opponent_xg_against_per90",
         "team_goals_against_per90": "opponent_goals_against_per90",
     })
 
-    latest = team.groupby("team_code").tail(1).drop(columns=["GW", "xg_for", "xga_against", "goals_for"])
-    out = target.copy()
-    out = out.merge(
+    out = target.copy().merge(
         latest, on="team_code", how="left", validate="many_to_one"
+    ).merge(
+        opponent_latest, on="opponent_team_code", how="left", validate="many_to_one"
     )
-    out = out.merge(
-        opp.groupby("opponent_team_code").tail(1),
-        on="opponent_team_code", how="left", validate="many_to_one"
-    )
+
     for col in TEAM_FEATURES:
         if col not in out.columns:
             out[col] = np.nan
     return add_fixture_environment(out)
-
 
 
 def phase4_feature_columns() -> list[str]:
