@@ -61,31 +61,24 @@ PHASE3_MODEL_PARAMS = {
 def prepare_historical_training(weekly: pd.DataFrame) -> pd.DataFrame:
     """Attach leakage-safe historical priors to every completed season."""
     combined = add_historical_priors(load_completed_seasons())
-    hist = combined.copy()
-    hist["player_key"] = hist["name"].map(normalize_name)
 
-    if "season" not in weekly.columns:
-        raise ValueError("Weekly historical training data must include season")
+    if "season" not in weekly.columns or "element" not in weekly.columns:
+        raise ValueError("Weekly historical training data must include season and element")
 
-    # Match each training row to the same player's point-in-time priors in the
-    # same season/gameweek. The priors are calculated only from rows before
-    # the current gameweek, so older seasons expand the sample without target
-    # leakage.
-    prior = hist[
-        ["player_key", "season", "GW"] + HISTORICAL_FEATURES
-    ].drop_duplicates(["player_key", "season", "GW"])
+    # Use the season-local FPL element ID for the point-in-time join. Names are
+    # not guaranteed to be unique, so they are not safe as the training key.
+    prior = combined[
+        ["season", "element", "GW"] + HISTORICAL_FEATURES
+    ].drop_duplicates(["season", "element", "GW"])
 
     out = weekly.copy()
-    out["player_key"] = out["name"].map(normalize_name)
     out = out.merge(
         prior,
-        on=["player_key", "season", "GW"],
+        on=["season", "element", "GW"],
         how="left",
         validate="one_to_one",
     )
     return out
-
-
 def add_workload_features(frame: pd.DataFrame, id_col: str) -> pd.DataFrame:
     """Add recent match/minute load without crossing a season boundary."""
     sort_keys = [id_col, "season", "GW"] if "season" in frame.columns else [id_col, "GW"]
