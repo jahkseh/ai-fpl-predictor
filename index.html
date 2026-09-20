@@ -1688,7 +1688,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 <span class="rank">${player.rank}</span>
                 <span class="player">${player.name}</span>
                 <strong>${player.prediction.toFixed(2)}</strong>
-                <span class="prediction-meta">${player.confidence ? player.confidence + " confidence" : ""}${player.prediction_p10 != null ? " · " + player.prediction_p10.toFixed(1) + "–" + player.prediction_p90.toFixed(1) : ""}</span>
+                <span class="prediction-meta">${player.confidence ? player.confidence + " confidence" : ""}${player.prediction_p10 != null ? " · " + player.prediction_p10.toFixed(1) + "–" + player.prediction_p90.toFixed(1) : ""}${player.expected_minutes != null ? " · " + Math.round(player.expected_minutes) + " expected min" : ""}</span>
             </div>
         `).join("")}
         <div class="fixture-open-hint">Click for fixture details →</div>
