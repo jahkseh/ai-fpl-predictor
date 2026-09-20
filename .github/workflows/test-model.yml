@@ -33,6 +33,23 @@ jobs:
         run: |
           python model/update_predictions.py             --gameweek 6             --dry-run
 
+      - name: Validate live differential publishing
+        run: |
+          python model/build_live_data.py --gameweek 6 --predictions predictions.json --output live_data.ci.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("differentials.json").read_text(encoding="utf-8"))
+          assert len(data["picks"]) == 5
+          assert all(0 <= float(p["ownership"]) <= 10 for p in data["picks"])
+          html = Path("index.html").read_text(encoding="utf-8")
+          assert "<!-- DIFFERENTIAL_CARDS_START -->" in html
+          assert "<!-- DIFFERENTIAL_CARDS_END -->" in html
+          assert html.count('class="differential-card"') >= 5
+          assert "Loading picks" not in html
+          print("Live differential publishing validation passed.")
+          PY
+
       - name: Validate generated backtest artifact
         run: |
           python - <<'PY'
