@@ -1390,20 +1390,32 @@ body[data-theme="light"] .hero-stat span {
 
     async function loadDifferentials() {
         try {
-            const response = await fetch("differentials.json");
-            if (!response.ok) throw new Error("Differential data unavailable");
-            const data = await response.json();
-            if (!Array.isArray(data.picks) || data.picks.length !== 5) throw new Error("Differential data invalid");
-
-            differentialContainer.innerHTML = data.picks.map((pick, index) => {
+            let picks = null;
+            try {
+                const response = await fetch("differentials.json?ts=" + Date.now());
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data.picks) && data.picks.length === 5) picks = data.picks;
+                }
+            } catch (_) {}
+            if (!picks) {
+                const response = await fetch("live_data.json?ts=" + Date.now());
+                if (!response.ok) throw new Error("Live differential data unavailable");
+                const data = await response.json();
+                picks = data.differentials;
+            }
+            if (!Array.isArray(picks) || picks.length !== 5) throw new Error("Differential data invalid");
+            differentialContainer.innerHTML = picks.map((pick, index) => {
                 const team = pick.team || "";
                 const accent = teamAccentColours[team] || "var(--accent)";
+                const ownershipLabel = pick.ownership == null ? "Ownership unavailable" : Number(pick.ownership).toFixed(1) + "% ownership";
                 return '<a class="differential-card" style="--differential-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(pick.name) + '">' +
                     '<span class="differential-rank">0' + (index + 1) + '</span>' +
-                    '<div><strong>' + pick.name + '</strong><p>' + (pick.ownership ?? "—") + ' effective ownership · ' + (Number(pick.prediction) || 0).toFixed(2) + ' projected points</p></div>' +
+                    '<div><strong>' + liveEscape(pick.name) + '</strong><p>' + ownershipLabel + ' · ' + (Number(pick.prediction) || 0).toFixed(2) + ' projected points</p></div>' +
                     '<span class="differential-status">' + (team || "FPL") + '</span>' +
                 '</a>';
             }).join("");
+            document.querySelector(".differential-note p").innerHTML = "<strong>How this works:</strong> current ownership is combined with the trained model projection to surface lower-owned players with model upside. Ownership is not effective ownership.";
         } catch (error) {
             console.info("Differential picks pending:", error.message);
         }
