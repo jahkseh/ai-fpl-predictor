@@ -65,5 +65,12 @@ def player_prediction_payload(row: pd.Series) -> dict:
             "opponent_strength": safe_json_float(row["opponent_strength"]),
             "home_elo": safe_json_float(row["home_elo"]),
             "away_elo": safe_json_float(row["away_elo"]),
+            "team_xg_for_per90": safe_json_float(row.get("team_xg_for_per90", np.nan)),
+            "team_xg_against_per90": safe_json_float(row.get("team_xg_against_per90", np.nan)),
+            "opponent_xg_for_per90": safe_json_float(row.get("opponent_xg_for_per90", np.nan)),
+            "opponent_xg_against_per90": safe_json_float(row.get("opponent_xg_against_per90", np.nan)),
+            "fixture_attack_mismatch": safe_json_float(row.get("fixture_attack_mismatch", np.nan)),
+            "fixture_defence_mismatch": safe_json_float(row.get("fixture_defence_mismatch", np.nan)),
+            "fixture_xg_environment": safe_json_float(row.get("fixture_xg_environment", np.nan)),
         },
     }
