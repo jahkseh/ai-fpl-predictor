@@ -147,10 +147,12 @@ document.title=requestedTeam+" · AI FPL Predictor";
 content.innerHTML=
 '<section class="team-hero" style="--team-colour:'+colour+'">'+
 '<div class="team-copy">'+
+'<div class="team-colour-line"></div>'+
 '<span class="team-kicker">Gameweek '+escapeHtml(data.gameweek)+' · Team profile</span>'+
 '<div class="team-heading"><div class="team-mark" aria-label="'+escapeHtml(requestedTeam)+' team colour visual"><span>'+code+'</span></div><h1>'+escapeHtml(requestedTeam)+'</h1></div>'+
 '<p class="team-subtitle">A dedicated view of '+escapeHtml(requestedTeam)+"'s current FPL model context. The page starts with the pre-match prediction layer and is designed to become richer as live team and player data is connected.</p>"+
 '<div class="team-fixture-line"><span class="fixture-pill">Current fixture</span><strong>'+escapeHtml(fixture.home)+'</strong><span>vs</span><strong>'+escapeHtml(fixture.away)+'</strong><span class="fixture-pill">'+(isHome?"Home":"Away")+'</span></div>'+
+'<div class="team-status-row"><span class="team-status"><span class="team-status-dot"></span>Pre-match model</span><span class="team-status">Live data ready</span><span class="team-status">GW'+escapeHtml(data.gameweek)+'</span></div>'+
 '</div>'+
 '<div class="team-snapshot">'+
 '<div class="snapshot-card"><span>Top team projection</span><strong>'+(picks.length?topProjection.toFixed(2):"—")+'</strong><small>Highest projection among this team’s current top-three fixture picks.</small></div>'+
