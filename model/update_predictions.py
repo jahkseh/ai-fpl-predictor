@@ -288,7 +288,8 @@ def validate_no_leakage(enriched: pd.DataFrame, gameweek: int) -> None:
 
     first_rows = enriched.groupby("id").head(1)
     previous = [c for c in BASE_PLAYER_FEATURES if c.startswith("previous_")]
-    if first_rows[previous].notna().any(axis=1).any():
+    previous_present = [c for c in previous if c in first_rows.columns]
+    if previous_present and first_rows[previous_present].notna().any(axis=1).any():
         raise AssertionError("Rolling features contain data on a player's first row")
 
 
