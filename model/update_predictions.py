@@ -133,6 +133,11 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
         .reset_index(drop=True)
     )
 
+    # Phase 4 team-history joins are season-aware. This pipeline's historical
+    # training source is the completed 2025/26 season, so retain that key on
+    # every weekly player row instead of dropping it during aggregation.
+    weekly["season"] = "2025-26"
+
     if weekly.duplicated(["element", "GW"]).any():
         raise AssertionError("Historical weekly data contains duplicate player/GW rows")
 
