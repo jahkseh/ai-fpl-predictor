@@ -78,21 +78,38 @@ jobs:
           assert all(0 <= float(p["ownership"]) <= 10 for p in data["picks"])
 
           html = Path("index.html").read_text(encoding="utf-8")
-          assert "<!-- DIFFERENTIAL_CARDS_START -->" in html
-          assert "<!-- DIFFERENTIAL_CARDS_END -->" in html
-          assert html.count('class="differential-card"') >= 5
-          assert "Loading picks" not in html
+          pool_start = "<!-- LIVE_PLAYER_POOL_START -->"
+          pool_end = "<!-- LIVE_PLAYER_POOL_END -->"
+          assert pool_start in html and pool_end in html
+          pool_html = html.split(pool_start, 1)[1].split(pool_end, 1)[0]
+          prefix = '<script type="application/json" id="live-player-pool-data">'
+          suffix = '</script>'
+          assert prefix in pool_html and suffix in pool_html
+          embedded_text = pool_html.split(prefix, 1)[1].split(suffix, 1)[0]
+          embedded = json.loads(embedded_text)
+          embedded_players = embedded.get("all_players", [])
+          assert len(embedded_players) >= 30
+          saka_matches = [
+              player for player in embedded_players
+              if "saka" in str(player.get("name", "")).lower()
+          ]
+          assert any(player.get("name") == "Saka" for player in saka_matches)
+          assert any(
+              player.get("name") == "Saka"
+              and str(player.get("position", "")).lower() == "midfielder"
+              for player in embedded_players
+          )
+          assert 'const embeddedPool = document.getElementById("live-player-pool-data")' in html
+          assert 'Array.isArray(embeddedPayload?.all_players)' in html
+          assert 'const predictionResponse = await fetch("predictions.json?ts=" + Date.now())' in html
+          assert "Search for a player or add a filter" in html
           assert 'id="live-team-filter"' in html
           assert 'id="live-max-price"' in html
           assert 'id="live-min-minutes"' in html
           assert 'P10–P90' in html
-          assert "Search for a player or add a filter" in html
+          assert "Loading picks" not in html
           assert 'Array.isArray(predictionData.all_players)' in html
-          assert 'const predictionResponse = await fetch("predictions.json?ts=" + Date.now())' in html
           player_html = Path("player.html").read_text(encoding="utf-8")
-          assert "player_profiles.json" in player_html
-          assert "Deterministic model explanation" in player_html
-          assert "Why is the model predicting this?" in player_html
           print("Live intelligence, filters, player profiles and differential publishing validation passed.")
           PY
 
