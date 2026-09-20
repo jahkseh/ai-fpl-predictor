@@ -11,6 +11,11 @@ import numpy as np
 import pandas as pd
 
 
+def safe_json_float(value):
+    value = float(value)
+    return round(value, 6) if np.isfinite(value) else None
+
+
 def add_prediction_distribution(model, frame: pd.DataFrame, features: list[str]) -> pd.DataFrame:
     """Add point prediction, model spread, and a conservative interval."""
     out = frame.copy()
@@ -53,9 +58,9 @@ def player_prediction_payload(row: pd.Series) -> dict:
         "fixture_context": {
             "opponent": str(row["opponent"]),
             "is_home": bool(row["was_home_gw"]),
-            "team_strength": float(row["team_strength"]),
-            "opponent_strength": float(row["opponent_strength"]),
-            "home_elo": float(row["home_elo"]),
-            "away_elo": float(row["away_elo"]),
+            "team_strength": safe_json_float(row["team_strength"]),
+            "opponent_strength": safe_json_float(row["opponent_strength"]),
+            "home_elo": safe_json_float(row["home_elo"]),
+            "away_elo": safe_json_float(row["away_elo"]),
         },
     }
