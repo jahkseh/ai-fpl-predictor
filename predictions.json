@@ -1,213 +1,213 @@
 {
-  "gameweek": 5,
+  "gameweek": 6,
   "predictions": [
     {
-      "home": "Bournemouth",
-      "away": "Liverpool",
-      "players": [
-        {
-          "rank": 1,
-          "name": "Hill",
-          "prediction": 4.976448
-        },
-        {
-          "rank": 2,
-          "name": "Wirtz",
-          "prediction": 4.646962
-        },
-        {
-          "rank": 3,
-          "name": "Szoboszlai",
-          "prediction": 4.500420
-        }
-      ]
-    },
-    {
-      "home": "Brentford",
-      "away": "Chelsea",
-      "players": [
-        {
-          "rank": 1,
-          "name": "João Pedro",
-          "prediction": 4.568837
-        },
-        {
-          "rank": 2,
-          "name": "Lewis-Potter",
-          "prediction": 4.133073
-        },
-        {
-          "rank": 3,
-          "name": "Palmer",
-          "prediction": 4.022160
-        }
-      ]
-    },
-    {
-      "home": "Brighton",
-      "away": "Arsenal",
+      "home": "Arsenal",
+      "away": "Leeds",
       "players": [
         {
           "rank": 1,
           "name": "Saka",
-          "prediction": 4.690652
+          "prediction": 5.241224
         },
         {
           "rank": 2,
           "name": "Gabriel",
-          "prediction": 4.605474
-        },
-        {
-          "rank": 3,
-          "name": "Dunk",
-          "prediction": 4.441516
-        }
-      ]
-    },
-    {
-      "home": "Everton",
-      "away": "Ipswich Town",
-      "players": [
-        {
-          "rank": 1,
-          "name": "Branthwaite",
-          "prediction": 5.453578
-        },
-        {
-          "rank": 2,
-          "name": "Mykolenko",
-          "prediction": 5.275051
-        },
-        {
-          "rank": 3,
-          "name": "Tarkowski",
-          "prediction": 4.613713
-        }
-      ]
-    },
-    {
-      "home": "Fulham",
-      "away": "Man Utd",
-      "players": [
-        {
-          "rank": 1,
-          "name": "B. Fernandes",
-          "prediction": 5.000933
-        },
-        {
-          "rank": 2,
-          "name": "Mbeumo",
-          "prediction": 4.549563
-        },
-        {
-          "rank": 3,
-          "name": "Leno",
-          "prediction": 4.396666
-        }
-      ]
-    },
-    {
-      "home": "Leeds",
-      "away": "Crystal Palace",
-      "players": [
-        {
-          "rank": 1,
-          "name": "Bogle",
-          "prediction": 4.649271
-        },
-        {
-          "rank": 2,
-          "name": "Calvert-Lewin",
-          "prediction": 4.402793
+          "prediction": 4.884253
         },
         {
           "rank": 3,
           "name": "Stach",
-          "prediction": 4.166632
+          "prediction": 4.462562
         }
       ]
     },
     {
-      "home": "Man City",
-      "away": "Sunderland",
+      "home": "Aston Villa",
+      "away": "Brentford",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Suzuki",
+          "prediction": 3.910373
+        },
+        {
+          "rank": 2,
+          "name": "Schuster",
+          "prediction": 3.882696
+        },
+        {
+          "rank": 3,
+          "name": "Ajer",
+          "prediction": 3.709089
+        }
+      ]
+    },
+    {
+      "home": "Chelsea",
+      "away": "Bournemouth",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Rogers",
+          "prediction": 4.507756
+        },
+        {
+          "rank": 2,
+          "name": "Tavernier",
+          "prediction": 4.28876
+        },
+        {
+          "rank": 3,
+          "name": "Palmer",
+          "prediction": 4.112689
+        }
+      ]
+    },
+    {
+      "home": "Coventry City",
+      "away": "Newcastle",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Wissa",
+          "prediction": 4.550491
+        },
+        {
+          "rank": 2,
+          "name": "Barnes",
+          "prediction": 4.277532
+        },
+        {
+          "rank": 3,
+          "name": "Pinnock",
+          "prediction": 3.899856
+        }
+      ]
+    },
+    {
+      "home": "Crystal Palace",
+      "away": "Nott'm Forest",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Gibbs-White",
+          "prediction": 4.509025
+        },
+        {
+          "rank": 2,
+          "name": "Richards",
+          "prediction": 4.268388
+        },
+        {
+          "rank": 3,
+          "name": "Khalaili",
+          "prediction": 4.189945
+        }
+      ]
+    },
+    {
+      "home": "Hull City",
+      "away": "Everton",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Mykolenko",
+          "prediction": 5.032974
+        },
+        {
+          "rank": 2,
+          "name": "Dewsbury-Hall",
+          "prediction": 4.718583
+        },
+        {
+          "rank": 3,
+          "name": "Branthwaite",
+          "prediction": 4.117135
+        }
+      ]
+    },
+    {
+      "home": "Ipswich Town",
+      "away": "Fulham",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Gonzalo",
+          "prediction": 4.142774
+        },
+        {
+          "rank": 2,
+          "name": "O'Shea",
+          "prediction": 3.379914
+        },
+        {
+          "rank": 3,
+          "name": "Davis",
+          "prediction": 3.353474
+        }
+      ]
+    },
+    {
+      "home": "Liverpool",
+      "away": "Man City",
       "players": [
         {
           "rank": 1,
           "name": "Haaland",
-          "prediction": 5.874365
+          "prediction": 6.244939
         },
         {
           "rank": 2,
-          "name": "Mukiele",
-          "prediction": 4.658420
+          "name": "Virgil",
+          "prediction": 4.991032
         },
         {
           "rank": 3,
-          "name": "Semenyo",
-          "prediction": 4.524446
+          "name": "Enzo",
+          "prediction": 4.424777
         }
       ]
     },
     {
-      "home": "Newcastle",
-      "away": "Hull City",
+      "home": "Man Utd",
+      "away": "Spurs",
       "players": [
         {
           "rank": 1,
-          "name": "Barnes",
-          "prediction": 4.197820
+          "name": "B. Fernandes",
+          "prediction": 5.300063
         },
         {
           "rank": 2,
-          "name": "Horníček",
-          "prediction": 4.035230
+          "name": "Mbeumo",
+          "prediction": 5.079234
         },
         {
           "rank": 3,
-          "name": "Wissa",
-          "prediction": 3.782762
-        }
-      ]
-    },
-    {
-      "home": "Nott'm Forest",
-      "away": "Coventry City",
-      "players": [
-        {
-          "rank": 1,
-          "name": "Sels",
-          "prediction": 4.187737
-        },
-        {
-          "rank": 2,
-          "name": "Schlager",
-          "prediction": 4.072924
-        },
-        {
-          "rank": 3,
-          "name": "Gibbs-White",
-          "prediction": 4.043225
-        }
-      ]
-    },
-    {
-      "home": "Spurs",
-      "away": "Aston Villa",
-      "players": [
-        {
-          "rank": 1,
           "name": "Van de Ven",
-          "prediction": 4.767658
+          "prediction": 3.992388
+        }
+      ]
+    },
+    {
+      "home": "Sunderland",
+      "away": "Brighton",
+      "players": [
+        {
+          "rank": 1,
+          "name": "Danso",
+          "prediction": 4.838945
         },
         {
           "rank": 2,
-          "name": "Kinsky",
-          "prediction": 4.239608
+          "name": "Brobbey",
+          "prediction": 4.464283
         },
         {
           "rank": 3,
-          "name": "Lindelöf",
-          "prediction": 3.775545
+          "name": "Ayari",
+          "prediction": 4.329798
         }
       ]
     }
