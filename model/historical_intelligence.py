@@ -210,3 +210,96 @@ def build_player_history_report(historical: pd.DataFrame) -> pd.DataFrame:
     result["xg_per_90"] = _safe_rate(result["xg"], result["minutes"])
     result["xa_per_90"] = _safe_rate(result["xa"], result["minutes"])
     return result.sort_values(["player_key", "season", "club_key"]).reset_index(drop=True)
+
+
+
+TEAM_FEATURES = [
+    "team_attack_xg_per90", "team_defence_xga_per90",
+    "team_goals_for_per90", "team_goals_against_per90",
+    "team_shots_for_per90", "team_shots_against_per90",
+    "team_home_attack_xg_per90", "team_away_attack_xg_per90",
+    "team_home_defence_xga_per90", "team_away_defence_xga_per90",
+    "opponent_attack_xg_per90", "opponent_defence_xga_per90",
+    "opponent_home_attack_xg_per90", "opponent_away_attack_xg_per90",
+]
+
+
+def build_team_match_history(df: pd.DataFrame) -> pd.DataFrame:
+    """Create leakage-safe team/opponent strength features from completed matches."""
+    required = {"season", "GW", "team", "was_home", "goals_scored", "expected_goals"}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"Team history missing columns: {sorted(missing)}")
+
+    work = df.copy()
+    work["team_key"] = work["team"].map(normalize_name)
+    work["opponent_key"] = (
+        work["opponent_team"].map(normalize_name)
+        if "opponent_team" in work.columns
+        else ""
+    )
+    # Player rows are first aggregated to team/gameweek totals.
+    grouped = (
+        work.groupby(["season", "GW", "team_key", "was_home"], as_index=False)
+        .agg(
+            goals_for=("goals_scored", "sum"),
+            xg_for=("expected_goals", "sum"),
+        )
+    )
+
+    # FPL merged_gw data may not carry opponent team; derive the opposing side
+    # from the fixture row when available.
+    if "opponent_key" in work.columns and work["opponent_key"].ne("").any():
+        opp = (
+            work.groupby(["season", "GW", "team_key"])["opponent_key"]
+            .first()
+            .reset_index()
+        )
+        grouped = grouped.merge(opp, on=["season", "GW", "team_key"], how="left")
+    else:
+        grouped["opponent_key"] = ""
+
+    grouped = grouped.sort_values(["team_key", "season", "GW"])
+    grouped["team_attack_xg_per90"] = grouped.groupby("team_key")["xg_for"].transform(
+        lambda s: s.shift(1).rolling(10, min_periods=1).mean()
+    )
+    grouped["team_goals_for_per90"] = grouped.groupby("team_key")["goals_for"].transform(
+        lambda s: s.shift(1).rolling(10, min_periods=1).mean()
+    )
+
+    # Defence needs opponent output. When player-level opponent xG is available,
+    # aggregate it directly; otherwise keep these values missing rather than
+    # fabricating defensive data.
+    if "expected_goals_conceded" in work.columns:
+        conceded = (
+            work.groupby(["season", "GW", "team_key"], as_index=False)
+            .agg(xga=("expected_goals_conceded", "sum"))
+        )
+        grouped = grouped.merge(conceded, on=["season", "GW", "team_key"], how="left")
+        grouped["team_defence_xga_per90"] = grouped.groupby("team_key")["xga"].transform(
+            lambda s: s.shift(1).rolling(10, min_periods=1).mean()
+        )
+    else:
+        grouped["team_defence_xga_per90"] = np.nan
+
+    grouped["team_goals_against_per90"] = np.nan
+    grouped["team_shots_for_per90"] = np.nan
+    grouped["team_shots_against_per90"] = np.nan
+
+    for side, label in [(1, "home"), (0, "away")]:
+        subset = grouped["was_home"].eq(side)
+        grouped.loc[subset, f"team_{label}_attack_xg_per90"] = (
+            grouped.loc[subset].groupby("team_key")["xg_for"]
+            .transform(lambda s: s.shift(1).rolling(10, min_periods=1).mean())
+        )
+
+    # Home/away defensive splits are only populated when xGA exists.
+    if "xga" in grouped:
+        for side, label in [(1, "home"), (0, "away")]:
+            subset = grouped["was_home"].eq(side)
+            grouped.loc[subset, f"team_{label}_defence_xga_per90"] = (
+                grouped.loc[subset].groupby("team_key")["xga"]
+                .transform(lambda s: s.shift(1).rolling(10, min_periods=1).mean())
+            )
+
+    return grouped
