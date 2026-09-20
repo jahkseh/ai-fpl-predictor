@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
-"""
-Automated FPL prediction pipeline.
-
-This script is the production-oriented version of the validated Colab workflow.
-It deliberately keeps the current Random Forest feature set and hyperparameters
-unchanged while adding reproducibility checks and diagnostics for future work.
-
-Usage:
-    python model/update_predictions.py --gameweek 5 --dry-run
-
-A future GitHub Actions job can run the same command without --dry-run and
-commit the generated predictions.json.
-"""
+"""Automated FPL prediction pipeline based on the validated Colab model."""
 
 from __future__ import annotations
 
@@ -20,7 +8,6 @@ import json
 import math
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 import numpy as np
 import pandas as pd
@@ -28,60 +15,38 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
-RAW_BASE = (
+HISTORICAL_URL = (
+    "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/"
+    "master/data/2025-26/gws/merged_gw.csv"
+)
+CURRENT_BASE = (
     "https://raw.githubusercontent.com/olbauday/FPL-Core-Insights/main/"
     "data/2026-2027/By%20Gameweek/GW{gw}/"
 )
 
 PLAYER_FEATURES = [
-    "previous_3_total_points",
-    "previous_5_total_points",
-    "previous_10_total_points",
-    "previous_3_minutes",
-    "previous_5_minutes",
-    "previous_10_minutes",
-    "previous_5_start_rate",
-    "previous_10_start_rate",
-    "previous_5_minutes_rate",
-    "previous_10_minutes_rate",
-    "previous_3_expected_goals",
-    "previous_5_expected_goals",
-    "previous_10_expected_goals",
-    "previous_3_expected_assists",
-    "previous_5_expected_assists",
-    "previous_10_expected_assists",
-    "value",
-    "was_home",
+    "previous_3_total_points", "previous_5_total_points",
+    "previous_10_total_points", "previous_3_minutes",
+    "previous_5_minutes", "previous_10_minutes",
+    "previous_5_start_rate", "previous_10_start_rate",
+    "previous_5_minutes_rate", "previous_10_minutes_rate",
+    "previous_3_expected_goals", "previous_5_expected_goals",
+    "previous_10_expected_goals", "previous_3_expected_assists",
+    "previous_5_expected_assists", "previous_10_expected_assists",
+    "value", "was_home",
 ]
 
-MODEL_PARAMS = dict(
-    n_estimators=300,
-    max_depth=None,
-    min_samples_leaf=5,
-    random_state=42,
-    n_jobs=-1,
-)
-
-TEAM_COLUMNS = [
-    "code",
-    "id",
-    "name",
-    "short_name",
-    "strength",
-    "strength_attack_home",
-    "strength_attack_away",
-    "strength_defence_home",
-    "strength_defence_away",
-    "elo",
-]
+MODEL_PARAMS = {
+    "n_estimators": 300,
+    "max_depth": None,
+    "min_samples_leaf": 5,
+    "random_state": 42,
+    "n_jobs": -1,
+}
 
 ROLLING_COLUMNS = [
-    "total_points",
-    "minutes",
-    "goals_scored",
-    "assists",
-    "expected_goals",
-    "expected_assists",
+    "total_points", "minutes", "goals_scored", "assists",
+    "expected_goals", "expected_assists",
 ]
 
 
@@ -93,10 +58,6 @@ class PipelineResult:
     diagnostics: dict
 
 
-def url_for(gw: int, filename: str) -> str:
-    return RAW_BASE.format(gw=gw) + filename
-
-
 def read_csv(url: str) -> pd.DataFrame:
     df = pd.read_csv(url)
     if df.empty:
@@ -104,33 +65,114 @@ def read_csv(url: str) -> pd.DataFrame:
     return df
 
 
-def load_current_data(gameweek: int) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def current_url(gameweek: int, filename: str) -> str:
+    return CURRENT_BASE.format(gw=gameweek) + filename
+
+
+def load_historical_data() -> pd.DataFrame:
+    df = read_csv(HISTORICAL_URL)
+    required = {
+        "element", "GW", "name", "value", "was_home", "minutes", "starts",
+        "total_points", "goals_scored", "assists", "expected_goals",
+        "expected_assists",
+    }
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"Historical data missing columns: {sorted(missing)}")
+    return df
+
+
+def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
+    sum_columns = [
+        "minutes", "starts", "total_points", "goals_scored", "assists",
+        "expected_goals", "expected_assists", "clean_sheets", "goals_conceded",
+        "saves", "bonus", "bps", "yellow_cards", "red_cards", "own_goals",
+        "penalties_saved", "penalties_missed",
+    ]
+    sum_columns = [c for c in sum_columns if c in df.columns]
+    first_columns = [c for c in ["name", "value", "was_home"] if c in df.columns]
+
+    aggregation = {c: "sum" for c in sum_columns}
+    aggregation.update({c: "first" for c in first_columns})
+
+    weekly = (
+        df.groupby(["element", "GW"], as_index=False)
+        .agg(aggregation)
+        .sort_values(["element", "GW"])
+        .reset_index(drop=True)
+    )
+
+    if weekly.duplicated(["element", "GW"]).any():
+        raise AssertionError("Historical weekly data contains duplicate player/GW rows")
+
+    for col in ROLLING_COLUMNS:
+        for window in (3, 5, 10):
+            weekly[f"previous_{window}_{col}"] = (
+                weekly.groupby("element")[col]
+                .transform(
+                    lambda x, w=window:
+                    x.shift(1).rolling(w, min_periods=1).mean()
+                )
+            )
+
+    weekly["previous_5_start_rate"] = (
+        weekly.groupby("element")["starts"]
+        .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean())
+    )
+    weekly["previous_10_start_rate"] = (
+        weekly.groupby("element")["starts"]
+        .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
+    )
+    weekly["previous_5_minutes_rate"] = (
+        weekly.groupby("element")["minutes"]
+        .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean()) / 90
+    )
+    weekly["previous_10_minutes_rate"] = (
+        weekly.groupby("element")["minutes"]
+        .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean()) / 90
+    )
+
+    return weekly
+
+
+def load_current_data(
+    gameweek: int,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     frames = []
     for gw in range(1, gameweek + 1):
         frames.append(
-            read_csv(url_for(gw, "player_gameweek_stats.csv")).assign(GW=gw)
+            read_csv(current_url(gw, "player_gameweek_stats.csv")).assign(GW=gw)
         )
     current = pd.concat(frames, ignore_index=True)
 
-    players = read_csv(url_for(gameweek, "players.csv"))
-    teams = read_csv(url_for(gameweek, "teams.csv"))
+    players = read_csv(current_url(gameweek, "players.csv"))
+    teams = read_csv(current_url(gameweek, "teams.csv"))
 
-    required_current = {"id", "total_points", "minutes", "starts", "now_cost"}
-    missing = required_current - set(current.columns)
+    required = {"id", "total_points", "minutes", "starts", "now_cost"}
+    missing = required - set(current.columns)
     if missing:
         raise ValueError(f"Current player data missing columns: {sorted(missing)}")
 
     return current, players, teams
 
 
-def enrich_players(
-    current: pd.DataFrame, players: pd.DataFrame, teams: pd.DataFrame
+def enrich_current_players(
+    current: pd.DataFrame,
+    players: pd.DataFrame,
+    teams: pd.DataFrame,
 ) -> pd.DataFrame:
     player_lookup = (
-        players[["player_id", "team_code", "position"]]
+        players[["player_id", "team_code", "position", "web_name"]]
         .drop_duplicates("player_id")
     )
-    team_lookup = teams[TEAM_COLUMNS].drop_duplicates("code")
+    team_lookup = (
+        teams[[
+            "code", "id", "name", "short_name", "strength",
+            "strength_attack_home", "strength_attack_away",
+            "strength_defence_home", "strength_defence_away", "elo",
+        ]]
+        .drop_duplicates("code")
+    )
 
     enriched = current.merge(
         player_lookup,
@@ -149,16 +191,16 @@ def enrich_players(
     )
 
     if len(enriched) != len(current):
-        raise AssertionError("Enrichment changed the number of player-gameweek rows")
+        raise AssertionError("Player enrichment changed row count")
 
-    for col in ("team_code", "position", "name", "short_name"):
+    for col in ["team_code", "position", "web_name", "name", "short_name"]:
         if col in enriched.columns and enriched[col].isna().any():
-            raise ValueError(f"Missing player/team mapping in column: {col}")
+            raise ValueError(f"Missing player/team mapping: {col}")
 
     return enriched
 
 
-def add_rolling_features(enriched: pd.DataFrame) -> pd.DataFrame:
+def add_current_rolling_features(enriched: pd.DataFrame) -> pd.DataFrame:
     enriched = enriched.sort_values(["id", "GW"]).copy()
 
     for col in ROLLING_COLUMNS:
@@ -168,7 +210,8 @@ def add_rolling_features(enriched: pd.DataFrame) -> pd.DataFrame:
             enriched[f"previous_{window}_{col}"] = (
                 enriched.groupby("id")[col]
                 .transform(
-                    lambda x, w=window: x.shift(1).rolling(w, min_periods=1).mean()
+                    lambda x, w=window:
+                    x.shift(1).rolling(w, min_periods=1).mean()
                 )
             )
 
@@ -188,170 +231,192 @@ def add_rolling_features(enriched: pd.DataFrame) -> pd.DataFrame:
         enriched.groupby("id")["minutes"]
         .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean()) / 90
     )
+
     return enriched
 
 
-def assert_no_leakage(features: pd.DataFrame, gameweek: int) -> None:
-    current = features[features["GW"] == gameweek]
-    if current.empty:
-        raise AssertionError(f"No rows for target GW{gameweek}")
+def validate_no_leakage(enriched: pd.DataFrame, gameweek: int) -> None:
+    target = enriched[enriched["GW"] == gameweek]
+    if target.empty:
+        raise AssertionError(f"No target-gameweek rows for GW{gameweek}")
 
-    rolling_cols = [
-        c for c in PLAYER_FEATURES
-        if c.startswith("previous_")
-    ]
-    if current[rolling_cols].isna().all(axis=1).any():
-        # New players legitimately have no prior history; these are excluded later.
-        pass
-
-    eligible = current[current["previous_3_total_points"].notna()]
-    if eligible.empty:
-        raise AssertionError("No eligible players after history check")
-
-    # The first target-gameweek observation must never be used as its own history.
-    # For a player with only one row, previous_3_total_points must remain NaN.
-    one_row_ids = (
-        features.groupby("id")["GW"].size().loc[lambda s: s == 1].index
-    )
-    if len(one_row_ids):
-        first_rows = features[features["id"].isin(one_row_ids)]
-        if first_rows[rolling_cols].notna().any(axis=1).any():
-            raise AssertionError("Detected possible current-row leakage in rolling features")
+    first_rows = enriched.groupby("id").head(1)
+    previous = [c for c in PLAYER_FEATURES if c.startswith("previous_")]
+    if first_rows[previous].notna().any(axis=1).any():
+        raise AssertionError("Rolling features contain data on a player's first row")
 
 
-def load_fixture_data(gameweek: int) -> pd.DataFrame:
-    fixtures = read_csv(url_for(gameweek, "fixtures.csv"))
+def load_fixtures(gameweek: int) -> pd.DataFrame:
+    fixtures = read_csv(current_url(gameweek, "fixtures.csv"))
+    required = {"tournament", "gameweek", "match_id", "home_team", "away_team"}
+    missing = required - set(fixtures.columns)
+    if missing:
+        raise ValueError(f"Fixture data missing columns: {sorted(missing)}")
+
+    fixtures = fixtures[
+        (fixtures["tournament"] == "prem")
+        & (fixtures["gameweek"] == gameweek)
+    ].copy()
+
     if fixtures.empty:
-        raise ValueError("Fixture data is empty")
+        raise ValueError(f"No Premier League fixtures found for GW{gameweek}")
+
     return fixtures
 
 
-def slug_to_team_name(slug: str) -> str:
-    mapping = {
-        "everton": "Everton",
-        "ipswich-town": "Ipswich Town",
-        "nottingham-forest": "Nott'm Forest",
-        "coventry-city": "Coventry City",
-        "leeds-united": "Leeds",
-        "crystal-palace": "Crystal Palace",
-        "manchester-city": "Man City",
-        "sunderland": "Sunderland",
-        "afc-bournemouth": "Bournemouth",
-        "liverpool": "Liverpool",
-        "fulham": "Fulham",
-        "manchester-united": "Man Utd",
-        "brighton-hove-albion": "Brighton",
-        "arsenal": "Arsenal",
-        "tottenham-hotspur": "Spurs",
-        "aston-villa": "Aston Villa",
-        "newcastle-united": "Newcastle",
-        "hull-city": "Hull City",
-        "brentford": "Brentford",
-        "chelsea": "Chelsea",
-    }
-    if slug not in mapping:
-        raise ValueError(f"Unknown fixture team slug: {slug}")
-    return mapping[slug]
+FIXTURE_NAME_TO_TEAM = {
+    "everton": "Everton",
+    "ipswich-town": "Ipswich Town",
+    "nottingham-forest": "Nott'm Forest",
+    "coventry-city": "Coventry City",
+    "leeds-united": "Leeds",
+    "crystal-palace": "Crystal Palace",
+    "manchester-city": "Man City",
+    "sunderland": "Sunderland",
+    "afc-bournemouth": "Bournemouth",
+    "liverpool": "Liverpool",
+    "fulham": "Fulham",
+    "manchester-united": "Man Utd",
+    "brighton-hove-albion": "Brighton",
+    "arsenal": "Arsenal",
+    "tottenham-hotspur": "Spurs",
+    "aston-villa": "Aston Villa",
+    "newcastle-united": "Newcastle",
+    "hull-city": "Hull City",
+    "brentford": "Brentford",
+    "chelsea": "Chelsea",
+}
 
 
-def fixture_lookup(
-    fixtures: pd.DataFrame, teams: pd.DataFrame
+def build_fixture_lookup(
+    fixtures: pd.DataFrame,
+    teams: pd.DataFrame,
 ) -> pd.DataFrame:
-    if "match_id" not in fixtures.columns:
-        raise ValueError("fixtures.csv must contain match_id")
-
-    rows = []
-    team_name_to_code = dict(
-        zip(teams["name"], teams["code"])
+    team_name_to_code = (
+        teams[["name", "code"]]
+        .drop_duplicates("name")
+        .set_index("name")["code"]
+        .to_dict()
     )
 
+    rows = []
     for _, fixture in fixtures.iterrows():
-        parts = str(fixture["match_id"]).split("-vs-")
+        match_id = str(fixture["match_id"]).replace("26-27-prem-", "")
+        parts = match_id.split("-vs-")
         if len(parts) != 2:
-            raise ValueError(f"Unexpected match_id format: {fixture['match_id']}")
-        home = slug_to_team_name(parts[0])
-        away = slug_to_team_name(parts[1])
+            raise ValueError(f"Unexpected match_id: {fixture['match_id']}")
+
+        home = FIXTURE_NAME_TO_TEAM.get(parts[0])
+        away = FIXTURE_NAME_TO_TEAM.get(parts[1])
+        if home is None or away is None:
+            raise ValueError(f"Unknown fixture slug: {fixture['match_id']}")
         if home not in team_name_to_code or away not in team_name_to_code:
-            raise ValueError(f"Fixture team missing from teams.csv: {home} / {away}")
+            raise ValueError(f"Fixture team missing from teams.csv: {home}/{away}")
 
-        rows.extend(
-            [
-                {
-                    "team_code": team_name_to_code[home],
-                    "fixture_home_team": home,
-                    "fixture_away_team": away,
-                    "match_id": fixture["match_id"],
-                    "was_home_gw": True,
-                },
-                {
-                    "team_code": team_name_to_code[away],
-                    "fixture_home_team": home,
-                    "fixture_away_team": away,
-                    "match_id": fixture["match_id"],
-                    "was_home_gw": False,
-                },
-            ]
-        )
+        rows.extend([
+            {
+                "team_code": team_name_to_code[home],
+                "fixture_home_team": home,
+                "fixture_away_team": away,
+                "match_id": fixture["match_id"],
+                "was_home_gw": 1,
+            },
+            {
+                "team_code": team_name_to_code[away],
+                "fixture_home_team": home,
+                "fixture_away_team": away,
+                "match_id": fixture["match_id"],
+                "was_home_gw": 0,
+            },
+        ])
 
-    lookup = pd.DataFrame(rows).drop_duplicates("team_code")
-    if len(lookup) != len(rows):
-        raise AssertionError("A team appears in more than one target-gameweek fixture")
+    lookup = pd.DataFrame(rows)
+    if lookup["team_code"].duplicated().any():
+        raise AssertionError("A team appears in more than one target fixture")
+    if len(lookup) != 20:
+        raise AssertionError(f"Expected 20 team fixture mappings, got {len(lookup)}")
     return lookup
 
 
-def train_model(enriched: pd.DataFrame, target_gameweek: int) -> RandomForestRegressor:
-    train = enriched[
-        (enriched["GW"] < target_gameweek)
-        & enriched["previous_3_total_points"].notna()
+def train_validated_model(weekly: pd.DataFrame) -> RandomForestRegressor:
+    train = weekly[
+        weekly["GW"].between(2, 32)
+        & weekly["previous_3_total_points"].notna()
     ].copy()
 
-    # Preserve the original training approach: target is current total_points,
-    # features are pre-match rolling/current values.
-    X = train[PLAYER_FEATURES].copy()
-    y = train["total_points"].copy()
+    X = train[PLAYER_FEATURES]
+    y = train["total_points"]
 
     if X.isna().any().any():
-        raise ValueError("Training matrix contains NaN values")
+        raise ValueError("Historical training features contain missing values")
     if not np.isfinite(X.to_numpy(dtype=float)).all():
-        raise ValueError("Training matrix contains non-finite values")
+        raise ValueError("Historical training features contain non-finite values")
 
     model = RandomForestRegressor(**MODEL_PARAMS)
     model.fit(X, y)
     return model
 
 
-def predict_target(
+def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
+    train = weekly[
+        weekly["GW"].between(2, 32)
+        & weekly["previous_3_total_points"].notna()
+    ]
+    test = weekly[weekly["GW"].between(33, 38)].copy()
+
+    X_train = train[PLAYER_FEATURES]
+    y_train = train["total_points"]
+    X_test = test[PLAYER_FEATURES]
+    y_test = test["total_points"]
+
+    if X_test.isna().any().any():
+        raise ValueError("Historical holdout contains missing features")
+
+    model = RandomForestRegressor(**MODEL_PARAMS)
+    model.fit(X_train, y_train)
+    pred = model.predict(X_test)
+
+    return {
+        "train_rows": int(len(train)),
+        "test_rows": int(len(test)),
+        "mae": round(float(mean_absolute_error(y_test, pred)), 4),
+        "rmse": round(float(np.sqrt(mean_squared_error(y_test, pred))), 4),
+        "r2": round(float(r2_score(y_test, pred)), 4),
+        "expected_mae": 1.0131,
+        "expected_rmse": 1.9953,
+        "expected_r2": 0.3152,
+    }
+
+
+def generate_target_predictions(
     enriched: pd.DataFrame,
     teams: pd.DataFrame,
-    target_gameweek: int,
+    weekly_historical: pd.DataFrame,
+    gameweek: int,
 ) -> tuple[pd.DataFrame, int]:
-    target = enriched[enriched["GW"] == target_gameweek].copy()
+    target = enriched[enriched["GW"] == gameweek].copy()
     target["value"] = target["now_cost"] * 10
 
-    fixtures = load_fixture_data(target_gameweek)
-    lookup = fixture_lookup(fixtures, teams)
-
+    fixtures = load_fixtures(gameweek)
+    lookup = build_fixture_lookup(fixtures, teams)
     target = target.merge(
-        lookup,
-        on="team_code",
-        how="left",
-        validate="many_to_one",
+        lookup, on="team_code", how="left", validate="many_to_one"
     )
 
     if target["match_id"].isna().any():
-        raise ValueError("Some target-gameweek players could not be mapped to a fixture")
+        raise ValueError("Some target players could not be mapped to a fixture")
 
-    target["was_home"] = target["was_home_gw"].astype(float)
-    eligible = target[target["previous_3_total_points"].notna()].copy()
+    target["was_home"] = target["was_home_gw"].astype(int)
 
-    model = train_model(enriched, target_gameweek)
-    X_target = eligible[PLAYER_FEATURES]
-    if X_target.isna().any().any():
-        raise ValueError("Eligible prediction matrix contains NaN values")
+    # Keep the exact GW5 rule: players without complete pre-gameweek history
+    # are retained in the source data but excluded from model prediction.
+    eligible = target.dropna(subset=["previous_3_total_points"]).copy()
 
-    eligible["prediction"] = model.predict(X_target)
-    eligible["prediction"] = eligible["prediction"].clip(lower=0)
+    if eligible[PLAYER_FEATURES].isna().any().any():
+        raise ValueError("Eligible target matrix contains missing values")
 
+    model = train_validated_model(weekly_historical)
+    eligible["prediction"] = model.predict(eligible[PLAYER_FEATURES]).clip(min=0)
     eligible["fixture"] = (
         eligible["fixture_home_team"] + " vs " + eligible["fixture_away_team"]
     )
@@ -361,116 +426,110 @@ def predict_target(
     )
     eligible["rank"] = eligible.groupby("fixture").cumcount() + 1
 
-    top3 = eligible[eligible["rank"] <= 3].copy()
-    return top3, len(eligible)
+    return eligible[eligible["rank"] <= 3].copy(), len(eligible)
 
 
 def build_predictions_json(top3: pd.DataFrame, gameweek: int) -> dict:
-    fixtures = []
-    for fixture, group in top3.groupby(
+    predictions = []
+    for (home, away), group in top3.groupby(
         ["fixture_home_team", "fixture_away_team"], sort=True
     ):
-        home, away = fixture
         players = [
             {
-                "rank": int(row.rank),
-                "name": str(row["name"]),
-                "prediction": round(float(row.prediction), 6),
+                "rank": int(row["rank"]),
+                "name": str(row["web_name"]),
+                "prediction": round(float(row["prediction"]), 6),
             }
             for _, row in group.sort_values("rank").iterrows()
         ]
-        fixtures.append({"home": home, "away": away, "players": players})
+        if len(players) != 3:
+            raise AssertionError(f"Fixture {home} vs {away} does not have 3 predictions")
+        predictions.append({"home": home, "away": away, "players": players})
 
-    return {"gameweek": gameweek, "predictions": fixtures}
+    if len(predictions) != 10:
+        raise AssertionError(f"Expected 10 fixtures, got {len(predictions)}")
+
+    return {"gameweek": gameweek, "predictions": predictions}
 
 
-def evaluate_predictions(
-    prediction_json: dict,
-    expected_json_path: Path | None = None,
-) -> dict:
-    """Compare against a saved golden GW5 prediction file when supplied."""
-    if expected_json_path is None:
+def compare_with_golden(output: dict, golden_path: Path | None) -> dict:
+    if golden_path is None:
         return {"golden_match": None}
 
-    expected = json.loads(expected_json_path.read_text(encoding="utf-8"))
-    actual_rows = []
-    expected_rows = []
+    golden = json.loads(golden_path.read_text(encoding="utf-8"))
 
-    for fixture in prediction_json["predictions"]:
-        for p in fixture["players"]:
-            actual_rows.append(
-                (fixture["home"], fixture["away"], p["name"], p["prediction"])
-            )
-    for fixture in expected["predictions"]:
-        for p in fixture["players"]:
-            expected_rows.append(
-                (fixture["home"], fixture["away"], p["name"], p["prediction"])
-            )
+    def flatten(data: dict) -> dict:
+        return {
+            (f["home"], f["away"], p["name"]): float(p["prediction"])
+            for f in data["predictions"]
+            for p in f["players"]
+        }
 
-    actual = {(h, a, n): v for h, a, n, v in actual_rows}
-    golden = {(h, a, n): v for h, a, n, v in expected_rows}
-
-    keys_equal = set(actual) == set(golden)
-    max_abs_diff = (
-        max(abs(actual[k] - golden[k]) for k in actual.keys() & golden.keys())
-        if actual.keys() & golden.keys()
-        else math.inf
+    actual = flatten(output)
+    expected = flatten(golden)
+    shared = actual.keys() & expected.keys()
+    max_diff = max(
+        (abs(actual[k] - expected[k]) for k in shared),
+        default=math.inf,
     )
 
-    return {
-        "golden_match": keys_equal and max_abs_diff <= 1e-6,
-        "golden_keys_equal": keys_equal,
-        "golden_max_abs_difference": max_abs_diff,
-        "golden_prediction_count": len(golden),
-        "generated_prediction_count": len(actual),
+    result = {
+        "golden_keys_equal": set(actual) == set(expected),
+        "golden_max_abs_difference": round(max_diff, 9),
+        "golden_prediction_count": len(expected),
     }
-
-
-def diagnostics(top3: pd.DataFrame) -> dict:
-    """Lightweight monitoring metrics useful for future model optimization."""
-    p = top3["prediction"].to_numpy(dtype=float)
-    return {
-        "prediction_count": int(len(top3)),
-        "prediction_mean": round(float(np.mean(p)), 6),
-        "prediction_std": round(float(np.std(p)), 6),
-        "prediction_min": round(float(np.min(p)), 6),
-        "prediction_max": round(float(np.max(p)), 6),
-        "negative_prediction_count_before_clip": 0,
-        "fixture_count": int(top3["fixture"].nunique()),
-        "players_per_fixture_ok": bool(top3.groupby("fixture").size().eq(3).all()),
-    }
+    result["golden_match"] = (
+        result["golden_keys_equal"] and max_diff <= 1e-6
+    )
+    return result
 
 
 def run(gameweek: int, golden_path: Path | None = None) -> PipelineResult:
-    current, players, teams = load_current_data(gameweek)
-    enriched = enrich_players(current, players, teams)
-    enriched = add_rolling_features(enriched)
-    assert_no_leakage(enriched, gameweek)
+    historical = load_historical_data()
+    weekly = build_weekly_historical(historical)
 
-    top3, eligible_count = predict_target(enriched, teams, gameweek)
+    if len(historical) != 29757:
+        raise AssertionError(
+            f"Historical source row count changed: expected 29757, got {len(historical)}"
+        )
+    if len(weekly) != 28497:
+        raise AssertionError(
+            f"Weekly aggregation row count changed: expected 28497, got {len(weekly)}"
+        )
+
+    current, players, teams = load_current_data(gameweek)
+    enriched = add_current_rolling_features(
+        enrich_current_players(current, players, teams)
+    )
+    validate_no_leakage(enriched, gameweek)
+
+    top3, eligible = generate_target_predictions(
+        enriched, teams, weekly, gameweek
+    )
     output = build_predictions_json(top3, gameweek)
 
-    checks = evaluate_predictions(output, golden_path)
-    checks.update(diagnostics(top3))
+    checks = compare_with_golden(output, golden_path)
+    checks["historical_holdout"] = historical_holdout_diagnostics(weekly)
+    checks["eligible_players"] = eligible
+    checks["prediction_count"] = len(top3)
+    checks["prediction_mean"] = round(float(top3["prediction"].mean()), 6)
+    checks["prediction_std"] = round(float(top3["prediction"].std(ddof=0)), 6)
+    checks["prediction_min"] = round(float(top3["prediction"].min()), 6)
+    checks["prediction_max"] = round(float(top3["prediction"].max()), 6)
 
     if checks.get("golden_match") is False:
         raise AssertionError(
-            "Generated predictions do not match the supplied golden dataset. "
-            f"Maximum absolute difference: {checks.get('golden_max_abs_difference')}"
+            "Generated predictions do not match the golden GW dataset: "
+            + json.dumps(checks, ensure_ascii=False)
         )
 
-    return PipelineResult(
-        gameweek=gameweek,
-        eligible_players=eligible_count,
-        predictions=top3,
-        diagnostics=checks,
-    )
+    return PipelineResult(gameweek, eligible, top3, checks)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run the automated FPL prediction pipeline.")
+    parser = argparse.ArgumentParser()
     parser.add_argument("--gameweek", type=int, required=True)
-    parser.add_argument("--golden", type=Path, default=None)
+    parser.add_argument("--golden", type=Path)
     parser.add_argument("--output", type=Path, default=Path("predictions.generated.json"))
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
