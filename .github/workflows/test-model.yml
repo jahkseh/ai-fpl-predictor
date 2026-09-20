@@ -89,6 +89,21 @@ jobs:
           assert "Search for a player or add a filter" in html
           assert 'Array.isArray(predictionData.all_players)' in html
           assert 'const predictionResponse = await fetch("predictions.json?ts=" + Date.now())' in html
+          assert "LIVE_PLAYER_SEARCH_INDEX_START" in html
+          assert "window.__LIVE_PLAYER_SEARCH_INDEX__" in html
+          assert '"name":"Saka"' in html
+          marker = "window.__LIVE_PLAYER_SEARCH_INDEX__="
+          start = html.index(marker) + len(marker)
+          end = html.index(";</script>", start)
+          search_index = json.loads(html[start:end])
+          assert len(search_index) >= 30
+          saka_matches = [
+              player for player in search_index
+              if "saka" in str(player.get("name", "")).lower()
+              or "saka" in str(player.get("team", "")).lower()
+              or "saka" in str(player.get("position", "")).lower()
+          ]
+          assert any(player.get("name") == "Saka" for player in saka_matches)
           player_html = Path("player.html").read_text(encoding="utf-8")
           assert "player_profiles.json" in player_html
           assert "Deterministic model explanation" in player_html

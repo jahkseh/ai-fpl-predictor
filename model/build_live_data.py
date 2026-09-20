@@ -114,6 +114,63 @@ def render_differential_cards(differentials: list[dict]) -> str:
     return "\n            ".join(cards)
 
 
+def build_search_index(source_players: list[dict]) -> list[dict]:
+    """Create the small static player index used for deterministic Live Picks search.
+
+    The index is embedded into index.html so search remains usable even when the
+    browser receives a stale/unavailable JSON snapshot from a static host.
+    """
+    output = []
+    for player in source_players:
+        context = player.get("fixture_context") or {}
+        fixture_home = player.get("fixture_home") or ""
+        fixture_away = player.get("fixture_away") or ""
+        is_home = context.get("is_home") is True
+        output.append({
+            "name": player.get("name") or "",
+            "team": player.get("team") or (fixture_home if is_home else fixture_away),
+            "position": player.get("position") or "",
+            "price": player.get("price"),
+            "ownership": player.get("ownership"),
+            "prediction": player.get("prediction"),
+            "prediction_std": player.get("prediction_std"),
+            "prediction_p10": player.get("prediction_p10"),
+            "prediction_p90": player.get("prediction_p90"),
+            "prediction_range": player.get("prediction_range"),
+            "confidence": player.get("confidence"),
+            "expected_minutes": player.get("expected_minutes"),
+            "start_probability": player.get("start_probability"),
+            "sixty_probability": player.get("sixty_probability"),
+            "fixture_difficulty": player.get("fixture_difficulty"),
+            "fixture_home": fixture_home,
+            "fixture_away": fixture_away,
+            "fixture_context": context,
+        })
+    return output
+
+
+def update_index_search_index(index_path: Path, source_players: list[dict]) -> None:
+    if not index_path.exists():
+        raise FileNotFoundError(f"Website index not found: {index_path}")
+    html = index_path.read_text(encoding="utf-8")
+    start_marker = "        <!-- LIVE_PLAYER_SEARCH_INDEX_START -->"
+    end_marker = "        <!-- LIVE_PLAYER_SEARCH_INDEX_END -->"
+    start = html.find(start_marker)
+    end = html.find(end_marker)
+    if start < 0 or end < 0 or end < start:
+        raise ValueError("Live player search index markers are missing or out of order in index.html")
+    payload = json.dumps(build_search_index(source_players), ensure_ascii=False, separators=(",", ":"))
+    # Escape '<' so player data can never terminate or alter the containing HTML.
+    payload = payload.replace("<", "\\u003c")
+    replacement = (
+        start_marker + "\\n"
+        + "        <script>window.__LIVE_PLAYER_SEARCH_INDEX__=" + payload + ";</script>\\n"
+        + "        " + end_marker
+    )
+    html = html[:start] + replacement + html[end + len(end_marker):]
+    index_path.write_text(html, encoding="utf-8")
+
+
 def update_index_differentials(index_path: Path, differentials: list[dict]) -> None:
     if not index_path.exists():
         raise FileNotFoundError(f"Website index not found: {index_path}")
@@ -193,9 +250,7 @@ def build_player_profiles(
     future_fixtures = []
     for gw in range(target_gameweek, min(target_gameweek + 4, 38) + 1):
         try:
-            frame = read_csv(
-                BASE.format(gw=gw) + "fixtures.csv"
-            )
+            frame = read_csv(gw, "fixtures.csv")
         except (ValueError, pd.errors.EmptyDataError):
             continue
         frame = frame[
@@ -435,6 +490,7 @@ def main() -> None:
     # Predictions are keyed by player + fixture, not player name alone.
     # This matters because FPL display names are not guaranteed to be unique
     # (for example, there can be more than one player named "Palmer").
+    source_players = []
     predictions_by_fixture = {}
     prediction_details_by_fixture = {}
     if args.predictions.exists():
@@ -634,6 +690,8 @@ def main() -> None:
     # The same generated picks are rendered directly into index.html, while the
     # JavaScript loader remains available to refresh the cards when JSON loads.
     update_index_differentials(Path("index.html"), differential_payload["picks"])
+
+    # Embed the full modelled player pool into the page so Live Picks search does\n    # not depend on a separately cached JSON file being perfectly in sync.\n    update_index_search_index(Path("index.html"), source_players)
 
     print(f"Wrote {args.output} with {len(player_rows)} players; GW{latest_gw} data / GW{args.gameweek} fixtures.")
 
