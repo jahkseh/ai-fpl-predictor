@@ -1268,7 +1268,7 @@ body[data-theme="light"] .hero-stat span {
                 <strong>How this works:</strong>
                 the weekly list combines the FPL ownership percentage with the model projection.
                 Lower-owned players receive more weight in the differential score.
-                <span class="differential-note-meta" id="differential-data-meta">Loading the latest differential data...</span>
+                <span class="differential-note-meta" id="differential-data-meta">GW6 · 5 picks · ownership is FPL team-selected percentage.</span>
             </p>
         </div>
         <div class="differential-grid" id="differential-container">
@@ -1491,9 +1491,9 @@ body[data-theme="light"] .hero-stat span {
                 "<strong>How this works:</strong> the weekly list combines the FPL ownership percentage with the model projection. Lower-owned players receive more weight in the differential score." +
                 '<span class="differential-note-meta">GW' + (payload.next_gameweek || payload.data_gameweek) + ' · ' + picks.length + ' picks · ownership is FPL team-selected percentage.</span>';
         } catch (error) {
-            console.info("Differential picks pending:", error.message);
-            const meta = document.getElementById("differential-data-meta");
-            if (meta) meta.textContent = "Differential data is temporarily unavailable.";
+            // The generated cards are already embedded in index.html, so a
+            // blocked JSON request must never replace them with an error state.
+            console.info("Differential JSON refresh unavailable; using published cards:", error.message);
         }
     }
 
