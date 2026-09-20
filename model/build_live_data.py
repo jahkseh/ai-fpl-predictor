@@ -129,6 +129,42 @@ def update_index_differentials(index_path: Path, differentials: list[dict]) -> N
     index_path.write_text(html, encoding="utf-8")
 
 
+def update_index_player_pool(index_path: Path, prediction_payload: dict) -> None:
+    """Embed the full generated model pool so homepage search does not depend on JSON fetches."""
+    if not index_path.exists():
+        raise FileNotFoundError(f"Website index not found: {index_path}")
+    players = prediction_payload.get("all_players")
+    if not isinstance(players, list) or not players:
+        raise ValueError("Prediction payload does not contain a non-empty all_players pool")
+
+    payload = {
+        "gameweek": prediction_payload.get("gameweek"),
+        "generated_at_utc": prediction_payload.get("generated_at_utc"),
+        "all_players": players,
+    }
+    # Prevent a player value from accidentally terminating the application/json
+    # script element while keeping the embedded payload valid JSON.
+    encoded = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+
+    html = index_path.read_text(encoding="utf-8")
+    start_marker = "<!-- LIVE_PLAYER_POOL_START -->"
+    end_marker = "<!-- LIVE_PLAYER_POOL_END -->"
+    start = html.find(start_marker)
+    end = html.find(end_marker)
+    if start < 0 or end < 0 or end < start:
+        raise ValueError("Live player pool markers are missing or out of order in index.html")
+
+    replacement = (
+        start_marker
+        + "\n<script type="application/json" id="live-player-pool-data">"
+        + encoded
+        + "</script>\n"
+        + end_marker
+    )
+    html = html[:start] + replacement + html[end + len(end_marker):]
+    index_path.write_text(html, encoding="utf-8")
+
+
 def read_csv(gw: int, filename: str) -> pd.DataFrame:
     url = BASE.format(gw=gw) + filename
     df = pd.read_csv(url)
@@ -437,8 +473,10 @@ def main() -> None:
     # (for example, there can be more than one player named "Palmer").
     predictions_by_fixture = {}
     prediction_details_by_fixture = {}
+    raw_predictions = {}
     if args.predictions.exists():
-        raw = json.loads(args.predictions.read_text(encoding="utf-8"))
+        raw_predictions = json.loads(args.predictions.read_text(encoding="utf-8"))
+        raw = raw_predictions
         source_players = raw.get("all_players")
         if not isinstance(source_players, list):
             source_players = [
@@ -634,6 +672,7 @@ def main() -> None:
     # The same generated picks are rendered directly into index.html, while the
     # JavaScript loader remains available to refresh the cards when JSON loads.
     update_index_differentials(Path("index.html"), differential_payload["picks"])
+    update_index_player_pool(Path("index.html"), raw_predictions)
 
     print(f"Wrote {args.output} with {len(player_rows)} players; GW{latest_gw} data / GW{args.gameweek} fixtures.")
 
