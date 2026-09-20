@@ -165,7 +165,7 @@ def enrich_current_players(
     teams: pd.DataFrame,
 ) -> pd.DataFrame:
     player_lookup = (
-        players[["player_id", "team_code", "position", "web_name"]]
+        players[["player_id", "team_code", "position"]]
         .drop_duplicates("player_id")
     )
     team_lookup = (
