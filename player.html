@@ -933,10 +933,10 @@ async function loadPlayerProfile() {
                 const matches = [];
 
                 data.predictions.forEach(fixture => {
-                    fixture.players.forEach(player => {
-                        if (player.name === playerName) {
+                    fixture.players.forEach(predictedPlayer => {
+                        if (predictedPlayer.name === playerName) {
                             matches.push({
-                                ...player,
+                                ...predictedPlayer,
                                 home: fixture.home,
                                 away: fixture.away
                             });
@@ -944,21 +944,33 @@ async function loadPlayerProfile() {
                     });
                 });
 
-                if (matches.length === 0) {
-                    throw new Error("Player not found");
-                }
-
-                const player = matches[0];
                 let live = null;
                 try {
                     const liveResponse = await fetch("live_data.json?ts=" + Date.now());
                     if (liveResponse.ok) {
                         const liveData = await liveResponse.json();
-                        live = liveData.players.find(item => item.name === player.name || item.name.replaceAll(" ", "") === player.name.replaceAll(" ", "")) || null;
+                        live = liveData.players.find(item =>
+                            item.name === playerName ||
+                            item.name.replaceAll(" ", "") === playerName.replaceAll(" ", "")
+                        ) || null;
                     }
                 } catch (liveError) {
                     console.info("Live player data unavailable:", liveError);
                 }
+
+                if (matches.length === 0 && !live) {
+                    throw new Error("Player not found");
+                }
+
+                const player = matches.length
+                    ? matches[0]
+                    : {
+                        name: live.name,
+                        rank: null,
+                        prediction: null,
+                        home: live.fixture?.home || "—",
+                        away: live.fixture?.away || "—"
+                    };
                 const fixture = data.predictions.find(
                     item => item.home === player.home && item.away === player.away
                 );
@@ -975,9 +987,14 @@ async function loadPlayerProfile() {
                     }))
                 ).sort((a, b) => b.prediction - a.prediction);
 
-                const globalRank = allPlayers.findIndex(item => item.name === player.name) + 1;
-                const nextInFixture = fixture.players
-                    .filter(other => other.name !== player.name)
+                const globalRank = player.prediction === null ? null : allPlayers.findIndex(item => item.name === player.name) + 1;
+                const predictedFixture = fixture || (live?.fixture ? {
+                    home: live.fixture.home,
+                    away: live.fixture.away,
+                    players: []
+                } : null);
+                const nextInFixture = fixture?.players
+                    ?.filter(other => other.name !== player.name)
                     .sort((a, b) => b.prediction - a.prediction)[0];
                 const gap = nextInFixture ? Number(player.prediction) - Number(nextInFixture.prediction) : 0;
                 const gapText = player.rank === 1
@@ -994,7 +1011,7 @@ async function loadPlayerProfile() {
                     '<article class="profile-shell">' +
                         '<section class="profile-hero">' +
                             '<div class="hero-copy">' +
-                                '<div class="profile-kicker">Gameweek ' + escapeHtml(data.gameweek) + ' · Pre-match model</div>' +
+                                '<div class="profile-kicker">Gameweek ' + escapeHtml(data.gameweek) + ' · ' + (player.prediction === null ? 'Live player profile' : 'Pre-match model') + '</div>' +
                                 '' + getTeamVisual(player.name, "profile") + '' +
                                 '<svg class="model-graphic" viewBox="0 0 190 120" role="img" aria-label="Stylised model signal graphic">' +
                                     '<path class="line" d="M8 92 H182" />' +
@@ -1017,18 +1034,18 @@ async function loadPlayerProfile() {
                             '<div class="hero-projection">' +
                                 '<div class="label">Expected points</div>' +
                                 '<div class="hero-points">' +
-                                    '<strong>' + Number(player.prediction).toFixed(2) + '</strong>' +
-                                    '<span>model projection</span>' +
+                                    '<strong>' + (player.prediction === null ? '—' : Number(player.prediction).toFixed(2)) + '</strong>' +
+                                    '<span>' + (player.prediction === null ? 'no model projection yet' : 'model projection') + '</span>' +
                                 '</div>' +
                                 '<div class="projection-rule"></div>' +
                                 '<div class="projection-meta">' +
                                     '<div class="projection-meta-row">' +
                                         '<span>Fixture rank</span>' +
-                                        '<strong>#' + escapeHtml(player.rank) + ' of 3</strong>' +
+                                        '<strong>' + (player.rank === null ? 'Live profile' : '#' + escapeHtml(player.rank) + ' of 3') + '</strong>' +
                                     '</div>' +
                                     '<div class="projection-meta-row">' +
                                         '<span>Overall projection rank</span>' +
-                                        '<strong>#' + globalRank + ' of ' + allPlayers.length + '</strong>' +
+                                        '<strong>' + (globalRank === null ? '—' : '#' + globalRank + ' of ' + allPlayers.length) + '</strong>' +
                                     '</div>' +
                                     '<div class="projection-meta-row highlight">' +
                                         '<span>Gap to next in fixture</span>' +
@@ -1069,7 +1086,7 @@ async function loadPlayerProfile() {
                                 '<p>' +
                                     (player.rank === 1
                                         ? '<strong>' + escapeHtml(player.name) + '</strong> is the highest projected player in this fixture, with a ' + gap.toFixed(2) + ' point gap to the next player.' 
-                                        : '<strong>' + escapeHtml(player.name) + '</strong> is ranked #' + escapeHtml(player.rank) + ' in this fixture and #' + globalRank + ' across all ' + allPlayers.length + ' current player projections.') +
+                                        : '<strong>' + escapeHtml(player.name) + '</strong> is currently shown as a live player profile. No current model projection is available for this player.') +
                                 '</p>' +
                             '</div>' +
                             '<div class="live-profile-grid">' +
