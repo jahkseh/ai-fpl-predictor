@@ -896,21 +896,22 @@ body[data-theme="light"] .hero-stat span {
         .differential-card:not(.differential-pending):hover,.differential-card:not(.differential-pending):focus-visible { transform:translateY(-2px); border-color:var(--differential-team-colour); box-shadow:0 0 0 2px color-mix(in srgb,var(--differential-team-colour) 18%,transparent),0 12px 28px rgba(15,30,22,.10); outline:none; }
         @media(max-width:900px){.differential-grid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:520px){.differential-grid{grid-template-columns:1fr}.differential-note{align-items:flex-start}}
-        .differential-card { min-height:182px; }
-        .differential-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+        .differential-card { min-height:166px; min-width:0; padding:15px; gap:10px; }
+        .differential-card-content { min-width:0; display:flex; flex-direction:column; gap:0; }
+        .differential-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
         .differential-card-head > div { min-width:0; }
-        .differential-card-head strong { font-size:1.05rem; }
-        .differential-meta { display:block; margin-top:4px; color:var(--text-muted); font-size:10px; font-weight:700; }
-        .differential-team { flex:0 0 auto; padding:5px 7px; border:1px solid var(--differential-team-colour); border-radius:8px; color:var(--differential-team-colour); background:color-mix(in srgb,var(--differential-team-colour) 9%,var(--surface)); font-size:9px; font-weight:900; letter-spacing:.05em; }
-        .differential-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:14px; }
-        .differential-stat { padding:8px 9px; border:1px solid var(--border); border-radius:9px; background:var(--surface-soft); }
-        .differential-stat span { display:block; color:var(--text-muted); font-size:8px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
-        .differential-stat strong { margin-top:3px; font-size:.9rem; }
-        .differential-fixture { margin-top:10px; color:var(--text-muted); font-size:10px; font-weight:700; }
-        .differential-score { margin-top:4px; color:var(--accent-hover); font-size:9px; font-weight:900; letter-spacing:.05em; text-transform:uppercase; }
-        .differential-note-meta { display:block; margin-top:3px; color:var(--text-muted); font-size:10px; }
+        .differential-card-head strong { font-size:1rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .differential-meta { display:block; margin-top:3px; color:var(--text-muted); font-size:9px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .differential-team { flex:0 0 auto; padding:4px 6px; border:1px solid var(--differential-team-colour); border-radius:7px; color:var(--differential-team-colour); background:color-mix(in srgb,var(--differential-team-colour) 9%,var(--surface)); font-size:8px; font-weight:900; letter-spacing:.05em; }
+        .differential-projection { display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-top:13px; padding:9px 10px; border:1px solid var(--border); border-radius:9px; background:var(--surface-soft); }
+        .differential-projection span { color:var(--text-muted); font-size:8px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+        .differential-projection strong { color:var(--text); font-size:1.2rem; line-height:1; }
+        .differential-secondary { display:flex; justify-content:space-between; gap:8px; margin-top:7px; color:var(--text-muted); font-size:9px; font-weight:700; }
+        .differential-fixture { margin-top:9px; color:var(--text-muted); font-size:10px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .differential-score { margin-top:3px; color:var(--accent-hover); font-size:8px; font-weight:900; letter-spacing:.05em; text-transform:uppercase; }
+        .differential-note-meta { display:block; margin-top:2px; color:var(--text-muted); font-size:10px; }
         @media(max-width:900px){.differential-grid{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:520px){.differential-grid{grid-template-columns:1fr}.differential-stats{gap:6px}}
+        @media(max-width:520px){.differential-grid{grid-template-columns:1fr}}
         
         /* Current Gameweek overview */
         .prediction-overview {
@@ -1148,7 +1149,7 @@ body[data-theme="light"] .hero-stat span {
     <a href="#home">Home</a>
     <a href="#predictions">Predictions</a>
     <a href="#players">Players</a>
-    <a href="#live-stats">Live Stats</a>
+    <a href="#live-stats">Live Picks</a>
     <a href="#teams">Teams</a>
     <a href="#differentials">Differentials</a>
     <a href="#performance">Performance</a>
@@ -1172,7 +1173,7 @@ body[data-theme="light"] .hero-stat span {
         <div class="hero-actions">
             <a href="#predictions" class="hero-button">View Predictions</a>
             <a href="#players" class="hero-button">Explore Players</a>
-            <a href="#live-stats" class="hero-button">Live Stats</a>
+            <a href="#live-stats" class="hero-button">Live Picks</a>
             <a href="#teams" class="hero-button">Explore Teams</a>
         </div>
     </section>
@@ -1225,6 +1226,50 @@ body[data-theme="light"] .hero-stat span {
 </div>
 
     </section>
+<section class="section live-intelligence-section" id="live-stats">
+    <div class="section-title">
+        <span class="section-kicker">Live data</span>
+        <h2>Live Picks</h2>
+        <p>Current published player data, model projections and ownership context from the latest FPL snapshot.</p>
+    </div>
+
+    <div class="live-banner">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span><strong id="live-data-status">Loading live FPL data…</strong> <span id="live-data-updated"></span></span>
+    </div>
+
+    <div class="live-summary-grid">
+        <div class="live-summary-card"><span>Gameweek</span><strong id="live-gameweek">—</strong><small>Current data snapshot</small></div>
+        <div class="live-summary-card"><span>Players</span><strong id="live-player-count">—</strong><small>Players in the live dataset</small></div>
+        <div class="live-summary-card"><span>Fixtures</span><strong id="live-fixture-count">—</strong><small>Next-round fixtures</small></div>
+        <div class="live-summary-card"><span>Next GW</span><strong id="live-next-gameweek">—</strong><small>Upcoming prediction round</small></div>
+    </div>
+
+    <div class="live-tools">
+        <input class="live-search" id="live-player-search" type="search" placeholder="Search player or team…" aria-label="Search live players">
+        <select class="live-select" id="live-position-filter" aria-label="Filter live players by position">
+            <option value="">All positions</option>
+            <option value="Goalkeeper">Goalkeepers</option>
+            <option value="Defender">Defenders</option>
+            <option value="Midfielder">Midfielders</option>
+            <option value="Forward">Forwards</option>
+        </select>
+    </div>
+
+    <div class="live-table-wrap">
+        <table class="live-table">
+            <thead>
+                <tr>
+                    <th>Player</th><th>Team</th><th>Position</th><th>Ownership</th><th>Form</th><th>Projection</th><th>Next fixture</th>
+                </tr>
+            </thead>
+            <tbody id="live-player-table">
+                <tr><td colspan="7" class="live-empty">Loading live picks…</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
 <section class="section players-section" id="players">
 
     <div class="section-title">
@@ -1265,19 +1310,17 @@ body[data-theme="light"] .hero-stat span {
         <div class="differential-note">
             <span class="differential-note-icon" aria-hidden="true">%</span>
             <p>
-                <strong>How this works:</strong>
-                the weekly list combines the FPL ownership percentage with the model projection.
-                Lower-owned players receive more weight in the differential score.
+                <strong>Lower ownership + strong projection = higher differential score.</strong>
                 <span class="differential-note-meta" id="differential-data-meta">GW6 · 5 picks · ownership is FPL team-selected percentage.</span>
             </p>
         </div>
         <div class="differential-grid" id="differential-container">
             <!-- DIFFERENTIAL_CARDS_START -->
-            <a class="differential-card" style="--differential-team-colour:#b3121d" href="player.html?player=Havertz"><span class="differential-rank">01</span><div><div class="differential-card-head"><div><strong>Havertz</strong><span class="differential-meta">Forward · Arsenal</span></div><span class="differential-team">ARS</span></div><div class="differential-stats"><div class="differential-stat"><span>Ownership</span><strong>8.5%</strong></div><div class="differential-stat"><span>Projection</span><strong>5.45</strong></div><div class="differential-stat"><span>Price</span><strong>£7.6</strong></div></div><p class="differential-fixture">Arsenal vs Leeds</p><div class="differential-score">Differential score · 4.99</div></div></a>
-            <a class="differential-card" style="--differential-team-colour:#003399" href="player.html?player=Dewsbury-Hall"><span class="differential-rank">02</span><div><div class="differential-card-head"><div><strong>Dewsbury-Hall</strong><span class="differential-meta">Midfielder · Everton</span></div><span class="differential-team">EVE</span></div><div class="differential-stats"><div class="differential-stat"><span>Ownership</span><strong>6.1%</strong></div><div class="differential-stat"><span>Projection</span><strong>5.15</strong></div><div class="differential-stat"><span>Price</span><strong>£6.6</strong></div></div><p class="differential-fixture">Hull City at Everton</p><div class="differential-score">Differential score · 4.84</div></div></a>
-            <a class="differential-card" style="--differential-team-colour:#b91c1c" href="player.html?player=Cunha"><span class="differential-rank">03</span><div><div class="differential-card-head"><div><strong>Cunha</strong><span class="differential-meta">Midfielder · Man Utd</span></div><span class="differential-team">MUN</span></div><div class="differential-stats"><div class="differential-stat"><span>Ownership</span><strong>5.7%</strong></div><div class="differential-stat"><span>Projection</span><strong>5.04</strong></div><div class="differential-stat"><span>Price</span><strong>£7.9</strong></div></div><p class="differential-fixture">Man Utd vs Spurs</p><div class="differential-score">Differential score · 4.76</div></div></a>
-            <a class="differential-card" style="--differential-team-colour:#c8102e" href="player.html?player=Thiago"><span class="differential-rank">04</span><div><div class="differential-card-head"><div><strong>Thiago</strong><span class="differential-meta">Forward · Brentford</span></div><span class="differential-team">BRE</span></div><div class="differential-stats"><div class="differential-stat"><span>Ownership</span><strong>9.0%</strong></div><div class="differential-stat"><span>Projection</span><strong>5.15</strong></div><div class="differential-stat"><span>Price</span><strong>£7.8</strong></div></div><p class="differential-fixture">Aston Villa at Brentford</p><div class="differential-score">Differential score · 4.68</div></div></a>
-            <a class="differential-card" style="--differential-team-colour:#670e36" href="player.html?player=Buend%C3%ADa"><span class="differential-rank">05</span><div><div class="differential-card-head"><div><strong>Buendía</strong><span class="differential-meta">Midfielder · Aston Villa</span></div><span class="differential-team">AVL</span></div><div class="differential-stats"><div class="differential-stat"><span>Ownership</span><strong>0.9%</strong></div><div class="differential-stat"><span>Projection</span><strong>4.61</strong></div><div class="differential-stat"><span>Price</span><strong>£5.9</strong></div></div><p class="differential-fixture">Aston Villa vs Brentford</p><div class="differential-score">Differential score · 4.57</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#b3121d" href="player.html?player=Havertz"><span class="differential-rank">01</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Havertz</strong><span class="differential-meta">Forward · Arsenal</span></div><span class="differential-team">ARS</span></div><div class="differential-projection"><span>Model projection</span><strong>5.45</strong></div><div class="differential-secondary"><span>8.5% owned</span><span>£7.6</span></div><p class="differential-fixture">Arsenal vs Leeds</p><div class="differential-score">Differential score · 4.99</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#003399" href="player.html?player=Dewsbury-Hall"><span class="differential-rank">02</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Dewsbury-Hall</strong><span class="differential-meta">Midfielder · Everton</span></div><span class="differential-team">EVE</span></div><div class="differential-projection"><span>Model projection</span><strong>5.15</strong></div><div class="differential-secondary"><span>6.1% owned</span><span>£6.6</span></div><p class="differential-fixture">Hull City at Everton</p><div class="differential-score">Differential score · 4.84</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#b91c1c" href="player.html?player=Cunha"><span class="differential-rank">03</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Cunha</strong><span class="differential-meta">Midfielder · Man Utd</span></div><span class="differential-team">MUN</span></div><div class="differential-projection"><span>Model projection</span><strong>5.04</strong></div><div class="differential-secondary"><span>5.7% owned</span><span>£7.9</span></div><p class="differential-fixture">Man Utd vs Spurs</p><div class="differential-score">Differential score · 4.76</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#c8102e" href="player.html?player=Thiago"><span class="differential-rank">04</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Thiago</strong><span class="differential-meta">Forward · Brentford</span></div><span class="differential-team">BRE</span></div><div class="differential-projection"><span>Model projection</span><strong>5.15</strong></div><div class="differential-secondary"><span>9.0% owned</span><span>£7.8</span></div><p class="differential-fixture">Aston Villa at Brentford</p><div class="differential-score">Differential score · 4.68</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#670e36" href="player.html?player=Buend%C3%ADa"><span class="differential-rank">05</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Buendía</strong><span class="differential-meta">Midfielder · Aston Villa</span></div><span class="differential-team">AVL</span></div><div class="differential-projection"><span>Model projection</span><strong>4.61</strong></div><div class="differential-secondary"><span>0.9% owned</span><span>£5.9</span></div><p class="differential-fixture">Aston Villa vs Brentford</p><div class="differential-score">Differential score · 4.57</div></div></a>
             <!-- DIFFERENTIAL_CARDS_END -->
         </div>
     </section>
@@ -1838,7 +1881,76 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         });
     }
 
+    async function loadLiveStats() {
+        const table = document.getElementById("live-player-table");
+        const search = document.getElementById("live-player-search");
+        const positionFilter = document.getElementById("live-position-filter");
+        let players = [];
+
+        const render = () => {
+            const query = (search.value || "").trim().toLowerCase();
+            const position = positionFilter.value;
+            const filtered = players
+                .filter(player => !position || player.position === position)
+                .filter(player => !query || [player.name, player.team, player.position].some(value => String(value || "").toLowerCase().includes(query)))
+                .sort((a, b) => Number(b.prediction) - Number(a.prediction));
+
+            if (!filtered.length) {
+                table.innerHTML = '<tr><td colspan="7" class="live-empty">No matching projected players.</td></tr>';
+                return;
+            }
+
+            table.innerHTML = filtered.map(player => {
+                const fixture = player.fixture || {};
+                const fixtureText = fixture.home && fixture.away
+                    ? fixture.home + " " + (fixture.is_home ? "vs" : "at") + " " + fixture.away
+                    : "—";
+                const prediction = Number(player.prediction);
+                const ownership = Number(player.ownership);
+                const form = Number(player.form);
+                return '<tr>' +
+                    '<td><a class="player-link" href="player.html?player=' + encodeURIComponent(player.name) + '">' + escapeDifferentialText(player.name) + '</a></td>' +
+                    '<td>' + escapeDifferentialText(player.team || "—") + '</td>' +
+                    '<td class="muted">' + escapeDifferentialText(player.position || "—") + '</td>' +
+                    '<td>' + (Number.isFinite(ownership) ? ownership.toFixed(1) + "%" : "—") + '</td>' +
+                    '<td>' + (Number.isFinite(form) ? form.toFixed(1) : "—") + '</td>' +
+                    '<td class="' + (Number.isFinite(prediction) ? "stat-good" : "muted") + '">' + (Number.isFinite(prediction) ? prediction.toFixed(2) : "—") + '</td>' +
+                    '<td class="muted">' + escapeDifferentialText(fixtureText) + '</td>' +
+                '</tr>';
+            }).join("");
+        };
+
+        try {
+            const response = await fetch("live_data.json?ts=" + Date.now());
+            if (!response.ok) throw new Error("Live data unavailable");
+            const data = await response.json();
+
+            players = Array.isArray(data.players)
+                ? data.players.filter(player => Number.isFinite(Number(player.prediction)))
+                : [];
+
+            document.getElementById("live-gameweek").textContent = data.data_gameweek != null ? "GW" + data.data_gameweek : "—";
+            document.getElementById("live-player-count").textContent = Number(data.player_count || 0).toLocaleString();
+            document.getElementById("live-fixture-count").textContent = Array.isArray(data.fixtures) ? data.fixtures.length : "—";
+            document.getElementById("live-next-gameweek").textContent = data.next_gameweek != null ? "GW" + data.next_gameweek : "—";
+            document.getElementById("live-data-status").textContent = "Live FPL snapshot loaded";
+            if (data.generated_at_utc) {
+                document.getElementById("live-data-updated").textContent = "· updated " + new Date(data.generated_at_utc).toLocaleString([], {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"});
+            }
+            render();
+        } catch (error) {
+            document.getElementById("live-data-status").textContent = "Live data refresh unavailable";
+            document.getElementById("live-data-updated").textContent = "· published page data is still available";
+            table.innerHTML = '<tr><td colspan="7" class="live-empty">Live data could not be refreshed right now.</td></tr>';
+            console.info("Live stats refresh unavailable:", error.message);
+        }
+
+        search.addEventListener("input", render);
+        positionFilter.addEventListener("change", render);
+    }
+
     loadPredictions();
+    loadLiveStats();
 
     async function populateFeaturedPlayers() {
         try {
