@@ -483,6 +483,8 @@ def compare_with_golden(output: dict, golden_path: Path | None) -> dict:
         "golden_keys_equal": set(actual) == set(expected),
         "golden_max_abs_difference": round(max_diff, 9),
         "golden_prediction_count": len(expected),
+        "golden_missing_keys": sorted(set(expected) - set(actual)),
+        "golden_extra_keys": sorted(set(actual) - set(expected)),
     }
     result["golden_match"] = (
         result["golden_keys_equal"] and max_diff <= 1e-6
