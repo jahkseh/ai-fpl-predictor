@@ -743,7 +743,8 @@
                 margin: 0 0 18px;
             }
         }
-</style>
+
+        .live-profile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.live-profile-stat{padding:16px;border:1px solid var(--border);border-radius:13px;background:var(--surface)}.live-profile-stat span{display:block;color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.live-profile-stat strong{display:block;margin-top:7px;color:var(--text);font-size:1.12rem}.live-profile-stat small{display:block;margin-top:4px;color:var(--text-muted);font-size:10px}.live-profile-wide{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.live-profile-panel{padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}.live-profile-panel h3{margin-bottom:12px}.live-profile-panel p{color:var(--text-muted);font-size:12px;line-height:1.6}.live-profile-panel strong{color:var(--text)}@media(max-width:760px){.live-profile-grid{grid-template-columns:repeat(2,1fr)}.live-profile-wide{grid-template-columns:1fr}}</style>
 </head>
 <body>
     <header>
@@ -948,6 +949,16 @@ async function loadPlayerProfile() {
                 }
 
                 const player = matches[0];
+                let live = null;
+                try {
+                    const liveResponse = await fetch("live_data.json?ts=" + Date.now());
+                    if (liveResponse.ok) {
+                        const liveData = await liveResponse.json();
+                        live = liveData.players.find(item => item.name === player.name || item.name.replaceAll(" ", "") === player.name.replaceAll(" ", "")) || null;
+                    }
+                } catch (liveError) {
+                    console.info("Live player data unavailable:", liveError);
+                }
                 const fixture = data.predictions.find(
                     item => item.home === player.home && item.away === player.away
                 );
@@ -1047,6 +1058,8 @@ async function loadPlayerProfile() {
                                     '<strong>#' + escapeHtml(player.rank) + ' of 3</strong>' +
                                 '</div>' +
                             '</div>' +
+                            '<div class="live-profile-grid" id="live-profile-stats"></div>' +
+                            '<div class="live-profile-wide" id="live-profile-context"></div>' +
 
                             '<div class="profile-comparison">' +
                                 '<div class="profile-comparison-head">' +
@@ -1058,6 +1071,20 @@ async function loadPlayerProfile() {
                                         ? '<strong>' + escapeHtml(player.name) + '</strong> is the highest projected player in this fixture, with a ' + gap.toFixed(2) + ' point gap to the next player.' 
                                         : '<strong>' + escapeHtml(player.name) + '</strong> is ranked #' + escapeHtml(player.rank) + ' in this fixture and #' + globalRank + ' across all ' + allPlayers.length + ' current player projections.') +
                                 '</p>' +
+                            '</div>' +
+                            '<div class="live-profile-grid">' +
+                                '<div class="live-profile-stat"><span>Price</span><strong>' + (live ? '£' + Number(live.price / 10).toFixed(1) + 'm' : '—') + '</strong><small>Latest published price</small></div>' +
+                                '<div class="live-profile-stat"><span>Ownership</span><strong>' + (live && live.ownership !== null ? Number(live.ownership).toFixed(1) + '%' : '—') + '</strong><small>Current selected-by rate</small></div>' +
+                                '<div class="live-profile-stat"><span>Form</span><strong>' + (live && live.form !== null ? Number(live.form).toFixed(1) : '—') + '</strong><small>Latest FPL form</small></div>' +
+                                '<div class="live-profile-stat"><span>Points</span><strong>' + (live ? live.total_points : '—') + '</strong><small>Season points in snapshot</small></div>' +
+                                '<div class="live-profile-stat"><span>Minutes</span><strong>' + (live ? live.minutes : '—') + '</strong><small>Season minutes</small></div>' +
+                                '<div class="live-profile-stat"><span>xG</span><strong>' + (live && live.xg !== null ? Number(live.xg).toFixed(2) : '—') + '</strong><small>Expected goals</small></div>' +
+                                '<div class="live-profile-stat"><span>xA</span><strong>' + (live && live.xa !== null ? Number(live.xa).toFixed(2) : '—') + '</strong><small>Expected assists</small></div>' +
+                                '<div class="live-profile-stat"><span>xGI</span><strong>' + (live && live.xgi !== null ? Number(live.xgi).toFixed(2) : '—') + '</strong><small>Expected goal involvements</small></div>' +
+                            '</div>' +
+                            '<div class="live-profile-wide">' +
+                                '<div class="live-profile-panel"><h3>Underlying profile</h3><p><strong>Influence:</strong> ' + (live?.influence ?? "—") + ' · <strong>Creativity:</strong> ' + (live?.creativity ?? "—") + ' · <strong>Threat:</strong> ' + (live?.threat ?? "—") + ' · <strong>ICT index:</strong> ' + (live?.ict_index ?? "—") + '</p><p style="margin-top:10px"><strong>Recent 3 GW:</strong> ' + (live?.recent_3_points !== null && live?.recent_3_points !== undefined ? Number(live.recent_3_points).toFixed(2) : "—") + ' pts avg · ' + (live?.recent_3_minutes !== null && live?.recent_3_minutes !== undefined ? Number(live.recent_3_minutes).toFixed(0) : "—") + ' min avg</p></div>' +
+                                '<div class="live-profile-panel"><h3>Availability & status</h3><p><strong>Chance next round:</strong> ' + (live?.chance_next_round !== null && live?.chance_next_round !== undefined ? Number(live.chance_next_round).toFixed(0) + "%" : "—") + '</p><p style="margin-top:10px">' + escapeHtml(live?.news || "No current availability note published.") + '</p></div>' +
                             '</div>' +
                             '<div class="model-note">' +
                                 '<h2>How to read this projection</h2>' +
