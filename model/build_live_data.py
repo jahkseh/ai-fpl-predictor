@@ -148,6 +148,231 @@ def safe_float(value):
     value = float(value)
     return value if np.isfinite(value) else None
 
+def build_player_profiles(
+    current: pd.DataFrame,
+    players: pd.DataFrame,
+    teams: pd.DataFrame,
+    target_gameweek: int,
+    prediction_details_by_fixture: dict,
+) -> dict:
+    """Build a deterministic player-profile dataset from published model inputs.
+
+    This is presentation data only: it does not retrain the model or add new
+    predictive features. Recent form is gameweek-level current-season data;
+    model_inputs mirrors the feature groups exposed by prediction_engine.
+    """
+    team_map = teams.set_index("code")["name"].to_dict()
+    position_map = (
+        players[["player_id", "position"]]
+        .drop_duplicates("player_id")
+        .set_index("player_id")["position"]
+        .to_dict()
+    )
+    player_team_map = (
+        players[["player_id", "team_code"]]
+        .drop_duplicates("player_id")
+        .set_index("player_id")["team_code"]
+        .to_dict()
+    )
+    team_strength = (
+        teams[["code", "strength"]]
+        .dropna(subset=["strength"])
+        .drop_duplicates("code")
+        .sort_values(["strength", "code"])
+        .reset_index(drop=True)
+    )
+    difficulty_map = {}
+    if len(team_strength) >= 5:
+        difficulty_map = dict(zip(
+            team_strength["code"].astype(int),
+            np.ceil((np.arange(len(team_strength)) + 1) / len(team_strength) * 5)
+            .clip(1, 5)
+            .astype(int),
+        ))
+
+    future_fixtures = []
+    for gw in range(target_gameweek, min(target_gameweek + 4, 38) + 1):
+        try:
+            frame = read_csv(
+                BASE.format(gw=gw) + "fixtures.csv"
+            )
+        except (ValueError, pd.errors.EmptyDataError):
+            continue
+        frame = frame[
+            (frame["tournament"] == "prem")
+            & (frame["gameweek"] == gw)
+        ].copy()
+        for _, fixture in frame.sort_values("kickoff_time").iterrows():
+            home, away = fixture_names(fixture["match_id"])
+            home_code = int(fixture["home_team"])
+            away_code = int(fixture["away_team"])
+            future_fixtures.extend([
+                {
+                    "gw": gw,
+                    "team_code": home_code,
+                    "opponent": away,
+                    "is_home": True,
+                    "home": home,
+                    "away": away,
+                    "kickoff": fixture["kickoff_time"],
+                    "match_id": fixture["match_id"],
+                    "difficulty": difficulty_map.get(away_code),
+                },
+                {
+                    "gw": gw,
+                    "team_code": away_code,
+                    "opponent": home,
+                    "is_home": False,
+                    "home": home,
+                    "away": away,
+                    "kickoff": fixture["kickoff_time"],
+                    "match_id": fixture["match_id"],
+                    "difficulty": difficulty_map.get(home_code),
+                },
+            ])
+
+    latest_gw = target_gameweek - 1
+    latest = current[current["gw"] == latest_gw].drop_duplicates("id", keep="last")
+    profiles = []
+
+    for _, player in latest.iterrows():
+        player_id = int(player["id"])
+        team_code = (
+            int(player["team_code"])
+            if "team_code" in player and pd.notna(player["team_code"])
+            else int(player_team_map[player_id])
+            if player_id in player_team_map and pd.notna(player_team_map[player_id])
+            else None
+        )
+        team = team_map.get(team_code)
+        name = NAME_ALIASES.get(str(player["web_name"]), str(player["web_name"]))
+        position = position_map.get(player_id)
+        if not team:
+            continue
+
+        season_rows = current[current["id"] == player_id].sort_values("gw")
+        recent_rows = season_rows.tail(5)
+        season_minutes = float(pd.to_numeric(season_rows["minutes"], errors="coerce").fillna(0).sum())
+        season_points = float(pd.to_numeric(season_rows["total_points"], errors="coerce").fillna(0).sum())
+        season_xg = float(pd.to_numeric(season_rows["expected_goals"], errors="coerce").fillna(0).sum())
+        season_xa = float(pd.to_numeric(season_rows["expected_assists"], errors="coerce").fillna(0).sum())
+        season_starts = float(pd.to_numeric(season_rows["starts"], errors="coerce").fillna(0).sum())
+        points_per_90 = season_points / season_minutes * 90 if season_minutes > 0 else None
+        xg_per_90 = season_xg / season_minutes * 90 if season_minutes > 0 else None
+        xa_per_90 = season_xa / season_minutes * 90 if season_minutes > 0 else None
+
+        fixture = None
+        team_fixtures = [f for f in future_fixtures if f["team_code"] == team_code]
+        if team_fixtures:
+            fixture = min(team_fixtures, key=lambda f: (f["gw"], f["kickoff"]))
+
+        prediction_details = {}
+        if fixture:
+            key = (name, fixture["home"], fixture["away"])
+            prediction_details = prediction_details_by_fixture.get(key, {})
+
+        model_inputs = prediction_details.get("model_inputs", {})
+        fixture_context = prediction_details.get("fixture_context", {})
+        recent_form = []
+        for _, gw_row in recent_rows.iterrows():
+            gw = int(gw_row["gw"])
+            gw_team_code = (
+                int(gw_row["team_code"])
+                if "team_code" in gw_row and pd.notna(gw_row["team_code"])
+                else team_code
+            )
+            opponent_code = gw_row.get("opponent_team")
+            opponent = team_map.get(int(opponent_code)) if pd.notna(opponent_code) else None
+            was_home = bool(gw_row.get("was_home", False))
+            recent_form.append({
+                "gw": gw,
+                "points": safe_float(gw_row.get("total_points")),
+                "minutes": safe_float(gw_row.get("minutes")),
+                "starts": safe_float(gw_row.get("starts")),
+                "xg": safe_float(gw_row.get("expected_goals")),
+                "xa": safe_float(gw_row.get("expected_assists")),
+                "fixture": (
+                    (team_map.get(gw_team_code, team) + " vs " + opponent)
+                    if was_home and opponent
+                    else ((team_map.get(gw_team_code, team) + " at " + opponent) if opponent else "GW" + str(gw))
+                ),
+                "is_home": was_home,
+            })
+
+        def fmt(value, suffix=""):
+            return (f"{float(value):.2f}{suffix}" if value is not None and np.isfinite(float(value)) else "n/a")
+
+        why = [
+            {"label": "Historical ability", "value": fmt(model_inputs.get("historical_ability", {}).get("points_per_90"), " pts/90"),
+             "detail": "Career historical points per 90 used as the long-term player prior."},
+            {"label": "Current form", "value": fmt(model_inputs.get("current_form", {}).get("recent_3_points"), " pts/GW"),
+             "detail": "Average points across the previous three completed gameweeks."},
+            {"label": "Club history", "value": fmt(model_inputs.get("current_club", {}).get("points_per_90"), " pts/90"),
+             "detail": "Most recent player-at-club historical rate; after a transfer this can refer to the previous club."},
+            {"label": "Team attack", "value": fmt(model_inputs.get("team_attack", {}).get("xg_for_per_90"), " xG/90"),
+             "detail": "Current team attacking environment from completed fixtures."},
+            {"label": "Opponent defence", "value": fmt(model_inputs.get("opponent_defence", {}).get("xg_against_per_90"), " xGA/90"),
+             "detail": "Opponent defensive environment from completed fixtures."},
+            {"label": "Expected minutes", "value": fmt(model_inputs.get("expected_minutes"), " min"),
+             "detail": "Separate expected-minutes model output."},
+            {"label": "Home / away", "value": "Home" if model_inputs.get("home_away") == "home" else "Away",
+             "detail": "Fixture location supplied to the points model."},
+            {"label": "Fixture environment", "value": fmt(model_inputs.get("fixture_environment"), " combined xG"),
+             "detail": "Team and opponent attacking/defensive fixture environment."},
+        ]
+
+        profiles.append({
+            "id": player_id,
+            "name": name,
+            "position": position,
+            "team": team,
+            "price": safe_float(player.get("now_cost")) / 10 if pd.notna(player.get("now_cost")) else None,
+            "ownership": safe_float(player.get("selected_by_percent")),
+            "form": safe_float(player.get("form")),
+            "prediction": safe_float(prediction_details.get("prediction")),
+            "prediction_p10": safe_float(prediction_details.get("prediction_p10")),
+            "prediction_p90": safe_float(prediction_details.get("prediction_p90")),
+            "prediction_range": safe_float(prediction_details.get("prediction_range")),
+            "confidence": prediction_details.get("confidence"),
+            "expected_minutes": safe_float(prediction_details.get("expected_minutes")),
+            "start_probability": safe_float(prediction_details.get("start_probability")),
+            "sixty_probability": safe_float(prediction_details.get("sixty_probability")),
+            "fixture": fixture,
+            "model_inputs": model_inputs,
+            "fixture_context": fixture_context,
+            "why": why,
+            "recent_form": recent_form,
+            "underlying": {
+                "xg_per_90": xg_per_90,
+                "xa_per_90": xa_per_90,
+                "points_per_90": points_per_90,
+                "starts": int(season_starts),
+                "minutes": int(season_minutes),
+                "goals": int(pd.to_numeric(season_rows["goals_scored"], errors="coerce").fillna(0).sum()),
+                "assists": int(pd.to_numeric(season_rows["assists"], errors="coerce").fillna(0).sum()),
+            },
+            "next_fixtures": [
+                {
+                    "gw": f["gw"],
+                    "opponent": f["opponent"],
+                    "is_home": f["is_home"],
+                    "fixture": f["home"] + (" vs " if f["is_home"] else " at ") + f["away"],
+                    "kickoff": f["kickoff"],
+                    "difficulty": f["difficulty"],
+                    "match_id": f["match_id"],
+                }
+                for f in sorted(team_fixtures, key=lambda item: (item["gw"], item["kickoff"]))
+            ],
+        })
+
+    return {
+        "season": "2026/27",
+        "data_gameweek": latest_gw,
+        "next_gameweek": target_gameweek,
+        "generated_at_utc": pd.Timestamp.utcnow().isoformat(),
+        "players": profiles,
+    }
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--gameweek", type=int, required=True)
@@ -379,6 +604,19 @@ def main() -> None:
     }
     args.output.write_text(
         json.dumps(output, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    profile_payload = build_player_profiles(
+        current,
+        players,
+        teams,
+        args.gameweek,
+        prediction_details_by_fixture,
+    )
+    profile_output = args.output.with_name("player_profiles.json")
+    profile_output.write_text(
+        json.dumps(profile_payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
 
