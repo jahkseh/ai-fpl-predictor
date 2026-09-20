@@ -16,6 +16,8 @@ from urllib.parse import quote
 import numpy as np
 import pandas as pd
 
+from historical_intelligence import load_completed_seasons, normalize_name
+
 BASE = (
     "https://raw.githubusercontent.com/olbauday/FPL-Core-Insights/main/"
     "data/2026-2027/By%20Gameweek/GW{gw}/"
@@ -154,6 +156,7 @@ def build_player_profiles(
     teams: pd.DataFrame,
     target_gameweek: int,
     prediction_details_by_fixture: dict,
+    historical: pd.DataFrame | None = None,
 ) -> dict:
     """Build a deterministic player-profile dataset from published model inputs.
 
@@ -161,6 +164,13 @@ def build_player_profiles(
     predictive features. Recent form is gameweek-level current-season data;
     model_inputs mirrors the feature groups exposed by prediction_engine.
     """
+    if historical is None:
+        historical = load_completed_seasons()
+
+    historical = historical.copy()
+    if "player_key" not in historical.columns:
+        historical["player_key"] = historical["name"].map(normalize_name)
+
     team_map = teams.set_index("code")["name"].to_dict()
     position_map = (
         players[["player_id", "position"]]
@@ -302,6 +312,58 @@ def build_player_profiles(
         def fmt(value, suffix=""):
             return (f"{float(value):.2f}{suffix}" if value is not None and np.isfinite(float(value)) else "n/a")
 
+        player_history = historical[historical["player_key"].eq(normalize_name(name))].copy()
+        history_seasons = []
+        if not player_history.empty:
+            grouped_history = (
+                player_history.groupby(["season", "club_key", "team"], as_index=False)
+                .agg(
+                    minutes=("minutes", "sum"),
+                    starts=("starts", "sum"),
+                    points=("total_points", "sum"),
+                    goals=("goals_scored", "sum"),
+                    assists=("assists", "sum"),
+                    xg=("expected_goals", "sum"),
+                    xa=("expected_assists", "sum"),
+                )
+                .sort_values(["season", "club_key"])
+            )
+            for _, history_row in grouped_history.iterrows():
+                minutes = float(history_row["minutes"])
+                history_seasons.append({
+                    "season": str(history_row["season"]),
+                    "club": str(history_row["team"]),
+                    "minutes": int(minutes),
+                    "starts": int(history_row["starts"]),
+                    "points": int(history_row["points"]),
+                    "goals": int(history_row["goals"]),
+                    "assists": int(history_row["assists"]),
+                    "xg": safe_float(history_row["xg"]),
+                    "xa": safe_float(history_row["xa"]),
+                    "points_per_90": safe_float(history_row["points"] / minutes * 90 if minutes > 0 else None),
+                    "xg_per_90": safe_float(history_row["xg"] / minutes * 90 if minutes > 0 else None),
+                    "xa_per_90": safe_float(history_row["xa"] / minutes * 90 if minutes > 0 else None),
+                })
+
+        career_minutes = int(sum(item["minutes"] for item in history_seasons))
+        career_points = int(sum(item["points"] for item in history_seasons))
+        career_goals = int(sum(item["goals"] for item in history_seasons))
+        career_assists = int(sum(item["assists"] for item in history_seasons))
+        career_xg = float(sum(item["xg"] or 0 for item in history_seasons))
+        career_xa = float(sum(item["xa"] or 0 for item in history_seasons))
+        career = {
+            "minutes": career_minutes,
+            "starts": int(sum(item["starts"] for item in history_seasons)),
+            "points": career_points,
+            "goals": career_goals,
+            "assists": career_assists,
+            "xg": safe_float(career_xg),
+            "xa": safe_float(career_xa),
+            "points_per_90": safe_float(career_points / career_minutes * 90 if career_minutes > 0 else None),
+            "xg_per_90": safe_float(career_xg / career_minutes * 90 if career_minutes > 0 else None),
+            "xa_per_90": safe_float(career_xa / career_minutes * 90 if career_minutes > 0 else None),
+        }
+
         why = [
             {"label": "Historical ability", "value": fmt(model_inputs.get("historical_ability", {}).get("points_per_90"), " pts/90"),
              "detail": "Career historical points per 90 used as the long-term player prior."},
@@ -350,6 +412,10 @@ def build_player_profiles(
                 "minutes": int(season_minutes),
                 "goals": int(pd.to_numeric(season_rows["goals_scored"], errors="coerce").fillna(0).sum()),
                 "assists": int(pd.to_numeric(season_rows["assists"], errors="coerce").fillna(0).sum()),
+            },
+            "historical_record": {
+                "career": career,
+                "seasons": history_seasons,
             },
             "next_fixtures": [
                 {
@@ -609,12 +675,14 @@ def main() -> None:
         encoding="utf-8",
     )
 
+    historical = load_completed_seasons()
     profile_payload = build_player_profiles(
         current,
         players,
         teams,
         args.gameweek,
         prediction_details_by_fixture,
+        historical,
     )
     profile_output = args.output.with_name("player_profiles.json")
     profile_output.write_text(
