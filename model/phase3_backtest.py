@@ -19,6 +19,12 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 from historical_intelligence import load_completed_seasons
 from phase3_features import HISTORICAL_FEATURES, prepare_historical_training
+from phase4_features import (
+    TEAM_FEATURES,
+    build_historical_team_features,
+    attach_team_features,
+    add_fixture_environment,
+)
 
 BASELINE = [
     "previous_3_total_points", "previous_5_total_points",
@@ -32,6 +38,7 @@ BASELINE = [
     "value", "was_home",
 ]
 PHASE3 = BASELINE + HISTORICAL_FEATURES
+PHASE4 = PHASE3 + TEAM_FEATURES + ["fixture_attack_mismatch", "fixture_defence_mismatch", "fixture_xg_environment"]
 PARAMS = {"n_estimators": 120, "min_samples_leaf": 5, "random_state": 42, "n_jobs": -1}
 
 
@@ -85,6 +92,8 @@ def main() -> None:
     combined = load_completed_seasons()
     weekly = aggregate_weekly(combined)
     prepared = prepare_historical_training(weekly)
+    prepared = attach_team_features(prepared, build_historical_team_features())
+    prepared = add_fixture_environment(prepared)
 
     rows = []
     for gw in range(11, 39):
@@ -100,7 +109,7 @@ def main() -> None:
         y_train = train["total_points"].to_numpy()
         y_test = test["total_points"].to_numpy()
 
-        for label, features in [("baseline", BASELINE), ("phase3", PHASE3)]:
+        for label, features in [("baseline", BASELINE), ("phase3", PHASE3), ("phase4", PHASE4)]:
             X = train[features].replace([np.inf, -np.inf], np.nan).fillna(0)
             Xt = test[features].replace([np.inf, -np.inf], np.nan).fillna(0)
             model = RandomForestRegressor(**PARAMS)
@@ -124,7 +133,7 @@ def main() -> None:
         "models": summary,
         "gameweeks_evaluated": sorted(result["gameweek"].unique().tolist()),
         "detail": result.to_dict(orient="records"),
-        "feature_count": {"baseline": len(BASELINE), "phase3": len(PHASE3)},
+        "feature_count": {"baseline": len(BASELINE), "phase3": len(PHASE3), "phase4": len(PHASE4)},
     }
     args.output.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(output, indent=2))
