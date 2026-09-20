@@ -975,7 +975,7 @@ async function loadPlayerProfile() {
                     item => item.home === player.home && item.away === player.away
                 );
 
-                if (!fixture) {
+                if (!fixture && !live?.fixture) {
                     throw new Error("Fixture not found");
                 }
 
@@ -1001,7 +1001,7 @@ async function loadPlayerProfile() {
                     ? "+" + gap.toFixed(2) + " pts"
                     : "—";
 
-                const related = fixture.players
+                const related = (fixture?.players || [])
                     .filter(other => other.name !== player.name)
                     .sort((a, b) => a.rank - b.rank);
 
