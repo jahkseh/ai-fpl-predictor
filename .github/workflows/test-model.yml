@@ -5,6 +5,7 @@ on:
     paths:
       - "model/**"
       - "predictions.json"
+      - "index.html"
       - ".github/workflows/test-model.yml"
   workflow_dispatch:
 
@@ -86,6 +87,8 @@ jobs:
           assert 'id="live-min-minutes"' in html
           assert 'P10–P90' in html
           assert "Search for a player or add a filter" in html
+          assert 'Array.isArray(predictionData.all_players)' in html
+          assert 'const predictionResponse = await fetch("predictions.json?ts=" + Date.now())' in html
           player_html = Path("player.html").read_text(encoding="utf-8")
           assert "player_profiles.json" in player_html
           assert "Deterministic model explanation" in player_html
