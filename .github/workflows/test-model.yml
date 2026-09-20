@@ -89,6 +89,8 @@ jobs:
           assert "Search for a player or add a filter" in html
           assert 'Array.isArray(predictionData.all_players)' in html
           assert 'const predictionResponse = await fetch("predictions.json?ts=" + Date.now())' in html
+          assert "LIVE_PLAYER_SEARCH_INDEX_START" in html
+          assert "window.__LIVE_PLAYER_SEARCH_INDEX__" in html
           player_html = Path("player.html").read_text(encoding="utf-8")
           assert "player_profiles.json" in player_html
           assert "Deterministic model explanation" in player_html
