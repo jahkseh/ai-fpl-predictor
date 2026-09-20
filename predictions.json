@@ -8,17 +8,56 @@
         {
           "rank": 1,
           "name": "Saka",
-          "prediction": 5.241224
+          "prediction": 5.241224,
+          "prediction_std": 3.442,
+          "prediction_p10": 1.411,
+          "prediction_p90": 10.35,
+          "prediction_range": 8.939,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Leeds",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Gabriel",
-          "prediction": 4.884253
+          "prediction": 4.884253,
+          "prediction_std": 2.933,
+          "prediction_p10": 1.249,
+          "prediction_p90": 9.0,
+          "prediction_range": 7.751,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Leeds",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Stach",
-          "prediction": 4.462562
+          "prediction": 4.462562,
+          "prediction_std": 2.984,
+          "prediction_p10": 1.199,
+          "prediction_p90": 8.821,
+          "prediction_range": 7.622,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Arsenal",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -29,17 +68,56 @@
         {
           "rank": 1,
           "name": "Suzuki",
-          "prediction": 3.910373
+          "prediction": 3.910373,
+          "prediction_std": 2.382,
+          "prediction_p10": 1.153,
+          "prediction_p90": 7.379,
+          "prediction_range": 6.226,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Brentford",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Schuster",
-          "prediction": 3.882696
+          "prediction": 3.882696,
+          "prediction_std": 2.584,
+          "prediction_p10": 0.994,
+          "prediction_p90": 7.558,
+          "prediction_range": 6.565,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Aston Villa",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Ajer",
-          "prediction": 3.709089
+          "prediction": 3.709089,
+          "prediction_std": 2.764,
+          "prediction_p10": 0.5,
+          "prediction_p90": 7.714,
+          "prediction_range": 7.214,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Aston Villa",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -50,17 +128,56 @@
         {
           "rank": 1,
           "name": "Rogers",
-          "prediction": 4.507756
+          "prediction": 4.507756,
+          "prediction_std": 2.6,
+          "prediction_p10": 1.7,
+          "prediction_p90": 8.254,
+          "prediction_range": 6.554,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Bournemouth",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Tavernier",
-          "prediction": 4.28876
+          "prediction": 4.28876,
+          "prediction_std": 2.318,
+          "prediction_p10": 1.625,
+          "prediction_p90": 7.751,
+          "prediction_range": 6.126,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Chelsea",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Palmer",
-          "prediction": 4.112689
+          "prediction": 4.112689,
+          "prediction_std": 2.631,
+          "prediction_p10": 1.5,
+          "prediction_p90": 8.0,
+          "prediction_range": 6.5,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Bournemouth",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -71,17 +188,56 @@
         {
           "rank": 1,
           "name": "Wissa",
-          "prediction": 4.550491
+          "prediction": 4.550491,
+          "prediction_std": 2.908,
+          "prediction_p10": 1.393,
+          "prediction_p90": 8.718,
+          "prediction_range": 7.325,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Coventry City",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Barnes",
-          "prediction": 4.277532
+          "prediction": 4.277532,
+          "prediction_std": 2.875,
+          "prediction_p10": 1.333,
+          "prediction_p90": 8.78,
+          "prediction_range": 7.447,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Coventry City",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Pinnock",
-          "prediction": 3.899856
+          "prediction": 3.899856,
+          "prediction_std": 2.812,
+          "prediction_p10": 0.624,
+          "prediction_p90": 7.925,
+          "prediction_range": 7.301,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Newcastle",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -92,17 +248,56 @@
         {
           "rank": 1,
           "name": "Gibbs-White",
-          "prediction": 4.509025
+          "prediction": 4.509025,
+          "prediction_std": 3.034,
+          "prediction_p10": 1.413,
+          "prediction_p90": 9.202,
+          "prediction_range": 7.79,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Crystal Palace",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Richards",
-          "prediction": 4.268388
+          "prediction": 4.268388,
+          "prediction_std": 2.855,
+          "prediction_p10": 1.139,
+          "prediction_p90": 8.607,
+          "prediction_range": 7.468,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Nott'm Forest",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Khalaili",
-          "prediction": 4.189945
+          "prediction": 4.189945,
+          "prediction_std": 2.728,
+          "prediction_p10": 1.165,
+          "prediction_p90": 8.252,
+          "prediction_range": 7.087,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Nott'm Forest",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -113,17 +308,56 @@
         {
           "rank": 1,
           "name": "Mykolenko",
-          "prediction": 5.032974
+          "prediction": 5.032974,
+          "prediction_std": 2.631,
+          "prediction_p10": 1.325,
+          "prediction_p90": 8.402,
+          "prediction_range": 7.077,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Hull City",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Dewsbury-Hall",
-          "prediction": 4.718583
+          "prediction": 4.718583,
+          "prediction_std": 2.856,
+          "prediction_p10": 1.635,
+          "prediction_p90": 9.225,
+          "prediction_range": 7.59,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Hull City",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Branthwaite",
-          "prediction": 4.117135
+          "prediction": 4.117135,
+          "prediction_std": 2.601,
+          "prediction_p10": 1.363,
+          "prediction_p90": 8.0,
+          "prediction_range": 6.637,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Hull City",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -134,17 +368,56 @@
         {
           "rank": 1,
           "name": "Gonzalo",
-          "prediction": 4.142774
+          "prediction": 4.142774,
+          "prediction_std": 2.931,
+          "prediction_p10": 0.994,
+          "prediction_p90": 8.503,
+          "prediction_range": 7.51,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Ipswich Town",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "O'Shea",
-          "prediction": 3.379914
+          "prediction": 3.379914,
+          "prediction_std": 2.159,
+          "prediction_p10": 0.645,
+          "prediction_p90": 6.114,
+          "prediction_range": 5.469,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Fulham",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Davis",
-          "prediction": 3.353474
+          "prediction": 3.353474,
+          "prediction_std": 2.434,
+          "prediction_p10": 0.697,
+          "prediction_p90": 6.667,
+          "prediction_range": 5.97,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Fulham",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -155,17 +428,56 @@
         {
           "rank": 1,
           "name": "Haaland",
-          "prediction": 6.244939
+          "prediction": 6.244939,
+          "prediction_std": 3.554,
+          "prediction_p10": 1.899,
+          "prediction_p90": 11.307,
+          "prediction_range": 9.408,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Liverpool",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Virgil",
-          "prediction": 4.991032
+          "prediction": 4.991032,
+          "prediction_std": 2.761,
+          "prediction_p10": 1.571,
+          "prediction_p90": 8.859,
+          "prediction_range": 7.288,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Man City",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Enzo",
-          "prediction": 4.424777
+          "prediction": 4.424777,
+          "prediction_std": 2.773,
+          "prediction_p10": 1.197,
+          "prediction_p90": 8.521,
+          "prediction_range": 7.325,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Liverpool",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -176,17 +488,56 @@
         {
           "rank": 1,
           "name": "B. Fernandes",
-          "prediction": 5.300063
+          "prediction": 5.300063,
+          "prediction_std": 3.742,
+          "prediction_p10": 1.427,
+          "prediction_p90": 11.111,
+          "prediction_range": 9.684,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Spurs",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Mbeumo",
-          "prediction": 5.079234
+          "prediction": 5.079234,
+          "prediction_std": 3.291,
+          "prediction_p10": 1.727,
+          "prediction_p90": 10.0,
+          "prediction_range": 8.273,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Spurs",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Van de Ven",
-          "prediction": 3.992388
+          "prediction": 3.992388,
+          "prediction_std": 2.948,
+          "prediction_p10": 0.855,
+          "prediction_p90": 8.78,
+          "prediction_range": 7.925,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Man Utd",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     },
@@ -197,17 +548,56 @@
         {
           "rank": 1,
           "name": "Danso",
-          "prediction": 4.838945
+          "prediction": 4.838945,
+          "prediction_std": 3.095,
+          "prediction_p10": 1.3,
+          "prediction_p90": 9.084,
+          "prediction_range": 7.784,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Brighton",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 2,
           "name": "Brobbey",
-          "prediction": 4.464283
+          "prediction": 4.464283,
+          "prediction_std": 2.791,
+          "prediction_p10": 1.143,
+          "prediction_p90": 8.459,
+          "prediction_range": 7.316,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Brighton",
+            "is_home": true,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         },
         {
           "rank": 3,
           "name": "Ayari",
-          "prediction": 4.329798
+          "prediction": 4.329798,
+          "prediction_std": 3.009,
+          "prediction_p10": 1.089,
+          "prediction_p90": 8.88,
+          "prediction_range": 7.791,
+          "confidence": "low",
+          "fixture_context": {
+            "opponent": "Sunderland",
+            "is_home": false,
+            "team_strength": NaN,
+            "opponent_strength": NaN,
+            "home_elo": NaN,
+            "away_elo": NaN
+          }
         }
       ]
     }
