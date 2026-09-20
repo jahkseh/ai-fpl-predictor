@@ -80,6 +80,35 @@ pointer-events:none;
 @media(max-width:520px){.live-ready{grid-template-columns:1fr}}
 @media(max-width:800px){header{padding:18px 20px}.navbar{flex-direction:column;gap:15px}nav{justify-content:center;gap:12px}.team-hero{grid-template-columns:1fr;padding:24px}.team-snapshot{grid-template-columns:repeat(2,1fr)}.player-grid,.future-grid{grid-template-columns:1fr}.team-heading h1{font-size:2.2rem}}
 @media(max-width:520px){main{padding-left:14px;padding-right:14px}.team-heading{align-items:flex-start;flex-direction:column}.team-mark{width:70px;height:70px}.team-snapshot{grid-template-columns:1fr 1fr}.snapshot-card{min-height:94px}.snapshot-card strong{font-size:1.25rem}}
+
+        /* Team page UI upgrade */
+        .team-page-nav{position:sticky;top:0;z-index:8;display:flex;gap:8px;padding:10px 0;margin-bottom:28px;background:linear-gradient(var(--bg),rgba(247,248,250,.92));backdrop-filter:blur(10px)}
+        .team-page-nav a{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--text-muted);font-size:11px;font-weight:800;text-decoration:none;transition:.2s ease}
+        .team-page-nav a:hover{border-color:var(--team-colour);color:var(--text);transform:translateY(-1px)}
+        .team-context-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 30px}
+        .team-context-card{padding:18px;border:1px solid var(--border);border-radius:15px;background:var(--surface);box-shadow:0 8px 24px rgba(15,23,42,.05)}
+        .team-context-card span{display:block;color:var(--text-muted);font-size:9px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+        .team-context-card strong{display:block;margin-top:8px;color:var(--text);font-size:1.25rem}
+        .team-context-card small{display:block;margin-top:5px;color:var(--text-muted);font-size:10px;line-height:1.45}
+        .team-squad-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:30px}
+        .team-squad-card{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:12px;padding:14px;border:1px solid var(--border);border-radius:13px;background:var(--surface);text-decoration:none;transition:.2s ease}
+        .team-squad-card:hover{border-color:color-mix(in srgb,var(--team-colour) 55%,var(--border));transform:translateY(-2px);box-shadow:0 8px 22px rgba(15,23,42,.07)}
+        .team-squad-rank{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:color-mix(in srgb,var(--team-colour) 12%,var(--surface-soft));color:var(--team-colour);font-size:10px;font-weight:900}
+        .team-squad-card strong{display:block;color:var(--text);font-size:13px}
+        .team-squad-card small{display:block;margin-top:3px;color:var(--text-muted);font-size:10px}
+        .team-squad-points{text-align:right}.team-squad-points strong{font-size:17px}.team-squad-points small{white-space:nowrap}
+        .team-fixtures-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:30px}
+        .team-fixture-card{padding:15px;border:1px solid var(--border);border-radius:13px;background:var(--surface)}
+        .team-fixture-card .gw{color:var(--team-colour);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+        .team-fixture-card strong{display:block;margin-top:10px;color:var(--text);font-size:12px;line-height:1.35}
+        .team-fixture-card small{display:block;margin-top:5px;color:var(--text-muted);font-size:9px}
+        .team-fixture-difficulty{float:right;padding:3px 6px;border-radius:6px;background:var(--surface-soft);color:var(--text-muted);font-size:9px;font-weight:900}
+        .team-section-note{margin:-6px 0 16px;color:var(--text-muted);font-size:11px;line-height:1.5}
+        .team-data-empty{display:flex;gap:12px;align-items:flex-start;padding:18px;border:1px dashed var(--border);border-radius:14px;background:var(--surface-soft);color:var(--text-muted);font-size:12px;line-height:1.55}
+        .team-data-empty b{color:var(--text)}
+        @media(max-width:900px){.team-context-grid{grid-template-columns:repeat(2,1fr)}.team-fixtures-grid{grid-template-columns:repeat(3,1fr)}}
+        @media(max-width:650px){.team-squad-grid{grid-template-columns:1fr}.team-fixtures-grid{grid-template-columns:repeat(2,1fr)}.team-page-nav{overflow-x:auto;white-space:nowrap}.team-page-nav a{flex:0 0 auto}}
+        @media(max-width:480px){.team-context-grid{grid-template-columns:1fr 1fr}.team-fixtures-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -140,6 +169,16 @@ const combined=picks.reduce((sum,player)=>sum+Number(player.prediction),0);
 const average=picks.length?combined/picks.length:0;
 const opponentProjection=fixture.players.filter(player=>playerTeams[player.name]===opponent).sort((a,b)=>a.rank-b.rank);
 const opponentTop=opponentProjection.length?Math.max(...opponentProjection.map(player=>Number(player.prediction))):0;
+const allPlayers=Array.isArray(data.all_players)?data.all_players:[];
+const teamPlayers=allPlayers.filter(player=>{
+    const context=player.fixture_context||{};
+    const home=player.fixture_home||"";
+    const away=player.fixture_away||"";
+    return (player.team===requestedTeam) ||
+        (home===requestedTeam && context.is_home===true) ||
+        (away===requestedTeam && context.is_home===false);
+}).sort((a,b)=>(Number(b.prediction)||-Infinity)-(Number(a.prediction)||-Infinity));
+
 const colour=teamAccentColours[requestedTeam];
 const code=teamCodes[requestedTeam];
 document.title=requestedTeam+" · AI FPL Predictor";
@@ -160,17 +199,42 @@ content.innerHTML=
 '<div class="snapshot-card"><span>Combined projection</span><strong>'+(picks.length?combined.toFixed(2):"—")+'</strong><small>Sum of the team’s current top-three-listed player projections.</small></div>'+
 '<div class="snapshot-card"><span>Gameweek</span><strong>GW'+escapeHtml(data.gameweek)+'</strong><small>Pre-match model snapshot. Not a live team score.</small></div>'+
 '</div></section>'+
-'<div class="team-page-nav" style="--team-colour:'+colour+'"><a href="#model-picks">Model picks</a><a href="#live-ready">Live-ready data</a></div>'+
+'<div class="team-page-nav" style="--team-colour:'+colour+'"><a href="#model-picks">Model picks</a><a href="#team-context">Squad snapshot</a><a href="#team-fixtures">Fixture context</a></div>'+
 '<section class="section" id="model-picks" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Model picks</span><h2>Players to watch</h2><p>Players from this team who appear in the current fixture’s top-three model projections.</p></div>'+
 (picks.length?'<div class="player-grid">'+picks.map((player,index)=>'<a class="player-card" style="--player-colour:'+playerAccent(player.name)+'" href="player.html?player='+encodeURIComponent(player.name)+'"><span class="player-rank">Fixture projection #'+escapeHtml(player.rank)+'</span><h3>'+escapeHtml(player.name)+'</h3><p>'+escapeHtml(requestedTeam)+' vs '+escapeHtml(opponent)+'</p><div class="player-points"><strong>'+Number(player.prediction).toFixed(2)+'</strong><span>expected points</span></div><span class="player-link">View player profile →</span></a>').join("")+'</div>':'<div class="empty">No player from '+escapeHtml(requestedTeam)+' appears in the current fixture top three. That does not mean the team has no relevant FPL options; the page is currently showing only the frozen top-three prediction layer.</div>')+
-'<div class="note"><strong>How to read this:</strong> the current model predicts individual player points rather than a team result. As live data is added, this page can become the home for richer team-level context without changing the underlying prediction snapshot.</div></section>'+
-'<section class="section" id="live-ready" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Next layer</span><h2>Built for live team data</h2><p>The structure is ready for information we can source reliably later.</p></div><div class="live-ready">'+
-'<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">FORM</div><h3>Recent team form</h3><p>Recent results, goals and clean-sheet context can be added once connected to a reliable live source.</p></div>'+
-'<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">FPL</div><h3>Squad & FPL context</h3><p>Current prices, positions, availability and player-level indicators can sit alongside the model projections.</p></div>'+
-'<div class="future-card" style="--team-colour:'+colour+'"><div class="future-icon">LIVE</div><h3>Live match layer</h3><p>Once a reliable live feed is connected, this can show in-match events and updated player information without altering the pre-match snapshot.</p></div>'+
-'</div></section>';
+'<div class="note"><strong>How to read this:</strong> these projections describe individual player outcomes, not a predicted team score. The sections below use the published FPL/model snapshot only; they do not invent live events or team results.</div></section>'+
+'<section class="section" id="team-context" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Team context</span><h2>Squad snapshot</h2><p>A compact view of the team’s modelled player pool, ownership and expected minutes.</p></div>'+
+'<div class="team-context-grid">'+
+'<div class="team-context-card"><span>Modelled players</span><strong id="team-player-count">—</strong><small>Players available in the current model pool.</small></div>'+
+'<div class="team-context-card"><span>Average projection</span><strong id="team-average-projection">—</strong><small>Average expected points across available team players.</small></div>'+
+'<div class="team-context-card"><span>Highest projection</span><strong id="team-highest-projection">—</strong><small>Highest individual projection for this fixture.</small></div>'+
+'<div class="team-context-card"><span>Next fixture</span><strong>'+escapeHtml(isHome?"Home":"Away")+'</strong><small>'+escapeHtml(opponent)+' · GW'+escapeHtml(data.gameweek)+'</small></div>'+
+'</div>'+
+'<div id="team-squad-grid" class="team-squad-grid"></div>'+
+'</section>'+
+'<section class="section" id="team-fixtures" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Fixture context</span><h2>Current schedule</h2><p>The next fixture is shown from the prediction snapshot. More fixtures will appear when the published player data contains them.</p></div>'+
+'<div id="team-fixtures-grid" class="team-fixtures-grid"></div>'+
+'</section>';
+renderTeamContext(teamPlayers, fixture, data, requestedTeam, colour);
 }catch(error){console.error("Team profile loading error:",error);content.innerHTML='<div class="state">This team profile is not available.</div>';}
 }
+
+function renderTeamContext(teamPlayers, fixture, data, requestedTeam, colour){
+    const count=document.getElementById("team-player-count");
+    const avg=document.getElementById("team-average-projection");
+    const high=document.getElementById("team-highest-projection");
+    const grid=document.getElementById("team-squad-grid");
+    const fixtures=document.getElementById("team-fixtures-grid");
+    const valid=teamPlayers.filter(p=>Number.isFinite(Number(p.prediction)));
+    count.textContent=teamPlayers.length.toLocaleString();
+    avg.textContent=valid.length?(valid.reduce((sum,p)=>sum+Number(p.prediction),0)/valid.length).toFixed(2):"—";
+    high.textContent=valid.length?Math.max(...valid.map(p=>Number(p.prediction))).toFixed(2):"—";
+    grid.innerHTML=teamPlayers.slice(0,8).map((p,index)=>{
+        const pos=p.position||"Player"; const mins=Number.isFinite(Number(p.expected_minutes))?Math.round(Number(p.expected_minutes))+" min":"—";
+        return '<a class="team-squad-card" style="--team-colour:'+colour+'" href="player.html?player='+encodeURIComponent(p.name)+'"><span class="team-squad-rank">'+(index+1)+'</span><span><strong>'+escapeHtml(p.name)+'</strong><small>'+escapeHtml(pos)+' · '+mins+' · '+(Number.isFinite(Number(p.ownership))?Number(p.ownership).toFixed(1)+"% owned":"ownership —")+'</small></span><span class="team-squad-points"><strong>'+ (Number.isFinite(Number(p.prediction))?Number(p.prediction).toFixed(2):"—")+'</strong><small>expected pts</small></span></a>';}).join("") || '<div class="team-data-empty"><b>No squad rows</b><span>The published model snapshot does not currently contain player rows for this team.</span></div>';
+    fixtures.innerHTML='<div class="team-fixture-card" style="--team-colour:'+colour+'"><span class="gw">GW'+escapeHtml(data.gameweek)+'</span><span class="team-fixture-difficulty">Current</span><strong>'+escapeHtml(fixture.home)+' vs '+escapeHtml(fixture.away)+'</strong><small>'+escapeHtml(requestedTeam===fixture.home?"Home":"Away")+' · '+escapeHtml(requestedTeam===fixture.home?fixture.away:fixture.home)+'</small></div>';
+}
+
 loadTeam();
 </script>
 </body>

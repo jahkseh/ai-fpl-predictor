@@ -782,6 +782,22 @@
         @media(max-width:900px){.profile-model-grid{grid-template-columns:repeat(2,1fr)}.profile-form-list{grid-template-columns:repeat(3,1fr)}.profile-underlying-grid{grid-template-columns:repeat(3,1fr)}.profile-fixture-list{grid-template-columns:repeat(3,1fr)}}
         @media(max-width:760px){.profile-why-row{grid-template-columns:1fr 1fr}.profile-why-detail{grid-column:1 / -1}}
         @media(max-width:560px){.profile-model-grid,.profile-form-list,.profile-underlying-grid,.profile-fixture-list{grid-template-columns:1fr 1fr}.profile-why-row{grid-template-columns:1fr}.profile-why-detail{grid-column:auto}}
+
+        /* Player page UI upgrade */
+        .profile-quick-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:0 0 30px}
+        .profile-quick-stat{padding:13px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface-raised)}
+        .profile-quick-stat span{display:block;color:var(--text-muted);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+        .profile-quick-stat strong{display:block;margin-top:6px;color:var(--text);font-size:1rem}
+        .profile-data-strip{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 24px}
+        .profile-data-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid var(--border);border-radius:999px;background:var(--surface-soft);color:var(--text-muted);font-size:10px;font-weight:800}
+        .profile-data-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+        .projection-meter{height:7px;margin:16px 0 5px;border-radius:999px;background:rgba(148,163,184,.16);overflow:hidden}
+        .projection-meter-fill{height:100%;border-radius:inherit;background:var(--accent);box-shadow:0 0 12px rgba(39,209,127,.24)}
+        .projection-meter-label{display:flex;justify-content:space-between;color:#8391a5;font-size:9px}
+        .profile-data-empty{display:flex;gap:10px;align-items:flex-start;grid-column:1/-1;padding:16px;border:1px dashed var(--border);border-radius:13px;background:var(--surface-soft);color:var(--text-muted);font-size:11px;line-height:1.55}
+        .profile-data-empty strong{display:block;color:var(--text);margin-bottom:2px}
+        @media(max-width:900px){.profile-quick-stats{grid-template-columns:repeat(3,1fr)}}
+        @media(max-width:560px){.profile-quick-stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -1026,6 +1042,8 @@
                             '<div class="label">Expected points</div>' +
                             '<div class="hero-points"><strong>' + (Number.isFinite(prediction) ? prediction.toFixed(2) : '—') + '</strong><span>model projection</span></div>' +
                             '<div class="projection-rule"></div>' +
+                            '<div class="projection-meter" aria-label="Projection position within P10 to P90"><div class="projection-meter-fill" style="width:' + rangeScale + '%"></div></div>' +
+                            '<div class="projection-meter-label"><span>P10</span><span>P90</span></div>' +
                             '<div class="projection-meta">' +
                                 '<div class="projection-meta-row highlight"><span>P10–P90</span><strong>' + (Number.isFinite(p10) && Number.isFinite(p90) ? p10.toFixed(1) + '–' + p90.toFixed(1) : '—') + '</strong></div>' +
                                 '<div class="projection-meta-row"><span>Confidence</span><strong>' + escapeHtml(confidence) + '</strong></div>' +
@@ -1036,6 +1054,18 @@
                     '</section>' +
 
                     '<section class="profile-body">' +
+                        '<div class="profile-quick-stats">' +
+                            '<div class="profile-quick-stat"><span>Position</span><strong>' + escapeHtml(profile.position || "—") + '</strong></div>' +
+                            '<div class="profile-quick-stat"><span>Price</span><strong>' + (Number.isFinite(Number(profile.price)) ? "£" + Number(profile.price).toFixed(1) + "m" : "—") + '</strong></div>' +
+                            '<div class="profile-quick-stat"><span>Ownership</span><strong>' + (Number.isFinite(Number(profile.ownership)) ? Number(profile.ownership).toFixed(1) + "%" : "—") + '</strong></div>' +
+                            '<div class="profile-quick-stat"><span>Expected min</span><strong>' + metric(profile.expected_minutes, " min", 0) + '</strong></div>' +
+                            '<div class="profile-quick-stat"><span>Start chance</span><strong>' + percent(profile.start_probability) + '</strong></div>' +
+                        '</div>' +
+                        '<div class="profile-data-strip">' +
+                            '<span class="profile-data-chip">Pre-match model snapshot</span>' +
+                            '<span class="profile-data-chip">' + (recent.length ? recent.length + " recent GWs" : "Recent form pending") + '</span>' +
+                            '<span class="profile-data-chip">' + (fixtures.length ? fixtures.length + " upcoming fixtures" : "Fixture schedule pending") + '</span>' +
+                        '</div>' +
                         '<div class="section-heading"><span class="eyebrow">Model breakdown</span><h2>What the prediction is built from</h2></div>' +
                         '<p class="profile-section-note">These are the model inputs and context values used for this player and fixture. They are not feature-importance scores.</p>' +
                         '<div class="profile-model-grid">' +
@@ -1053,7 +1083,7 @@
                         '<div class="profile-form-list">' +
                             (recent.length ? recent.map(item =>
                                 '<div class="profile-form-card"><span class="gw">GW' + escapeHtml(item.gw) + '</span><strong>' + metric(item.points, "", 0) + ' pts</strong><small>' + metric(item.minutes, " min", 0) + ' · ' + (item.starts ? 'Started' : 'Bench') + '</small><p>' + escapeHtml(item.fixture || "Fixture unavailable") + '</p></div>'
-                            ).join("") : '<div class="profile-model-card"><strong>Recent gameweek data is not yet published.</strong></div>') +
+                            ).join("") : '<div class="profile-data-empty"><span>↗</span><div><strong>Recent form snapshot not published</strong>Recent completed-gameweek rows are not present in the current published profile data.</div></div>') +
                         '</div>' +
 
                         '<div class="section-heading"><span class="eyebrow">Underlying numbers</span><h2>Season-to-date profile</h2></div>' +
@@ -1071,7 +1101,7 @@
                         '<div class="profile-fixture-list">' +
                             (fixtures.length ? fixtures.slice(0,5).map(item =>
                                 '<div class="profile-fixture"><div class="profile-fixture-top"><span class="profile-fixture-gw">GW' + escapeHtml(item.gw) + '</span><span class="profile-fixture-difficulty">D' + (item.difficulty ?? "—") + '</span></div><strong>' + escapeHtml(item.opponent || "—") + ' · ' + (item.is_home ? 'Home' : 'Away') + '</strong><small>' + escapeHtml(item.kickoff ? new Date(item.kickoff).toLocaleDateString([], {day:"numeric",month:"short"}) : "Date TBC") + '</small></div>'
-                            ).join("") : '<div class="profile-model-card"><strong>Upcoming fixture data is not yet published.</strong></div>') +
+                            ).join("") : '<div class="profile-data-empty"><span>→</span><div><strong>Upcoming schedule not published</strong>The current player snapshot does not contain the next-fixture rows yet.</div></div>') +
                         '</div>' +
 
                         '<div class="section-heading"><span class="eyebrow">Why is the model predicting this?</span><h2>Deterministic model explanation</h2></div>' +
@@ -1134,8 +1164,21 @@
                     start_probability: predicted.start_probability ?? live.start_probability,
                     sixty_probability: predicted.sixty_probability ?? live.sixty_probability,
                     fixture: live.fixture,
-                    model_inputs: predicted.model_inputs || {},
-                    why: makeWhyRows({model_inputs:predicted.model_inputs || {}})
+                    model_inputs: predicted.model_inputs || {
+                        team_attack: {xg_for_per_90: predicted.fixture_context?.team_xg_for_per90, goals_for_per_90: predicted.fixture_context?.team_goals_for_per90},
+                        opponent_defence: {xg_against_per_90: predicted.fixture_context?.opponent_xg_against_per90, goals_against_per_90: predicted.fixture_context?.opponent_goals_against_per90},
+                        expected_minutes: predicted.expected_minutes ?? live.expected_minutes,
+                        home_away: predicted.fixture_context?.is_home ? "home" : "away",
+                        fixture_environment: predicted.fixture_context?.fixture_xg_environment,
+                    },
+                    fixture_context: predicted.fixture_context || live.fixture_context || {},
+                    why: makeWhyRows({model_inputs: predicted.model_inputs || {
+                        team_attack: {xg_for_per_90: predicted.fixture_context?.team_xg_for_per90},
+                        opponent_defence: {xg_against_per_90: predicted.fixture_context?.opponent_xg_against_per90},
+                        expected_minutes: predicted.expected_minutes ?? live.expected_minutes,
+                        home_away: predicted.fixture_context?.is_home ? "home" : "away",
+                        fixture_environment: predicted.fixture_context?.fixture_xg_environment
+                    }})
                 };
                 renderPlayerProfile(fallback, predictionData.gameweek, predictionData.gameweek);
             } catch (error) {
