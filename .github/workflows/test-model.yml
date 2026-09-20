@@ -35,7 +35,7 @@ jobs:
 
       - name: Validate live differential publishing
         run: |
-          python model/build_live_data.py --gameweek 6 --predictions predictions.json --output /tmp/live_data.json
+          python model/build_live_data.py --gameweek 6 --predictions predictions.json --output live_data.ci.json
           python - <<'PY'
           import json
           from pathlib import Path
