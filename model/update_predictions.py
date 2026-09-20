@@ -627,7 +627,7 @@ def run(gameweek: int, golden_path: Path | None = None) -> PipelineResult:
     validate_no_leakage(enriched, gameweek)
 
     top3, eligible = generate_target_predictions(
-        enriched, teams, weekly, gameweek
+        enriched, current, teams, weekly, gameweek
     )
     output = build_predictions_json(top3, gameweek)
 
