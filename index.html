@@ -879,6 +879,21 @@ body[data-theme="light"] .hero-stat span {
             border-radius:0 0 3px 3px;
             background:linear-gradient(90deg,var(--home-team-colour),var(--away-team-colour)); opacity:.85;
         }
+        .team-badge-link {
+            display:inline-flex;
+            text-decoration:none;
+            border-radius:50%;
+        }
+        .team-badge-link:hover .team-badge,
+        .team-badge-link:focus-visible .team-badge {
+            transform:scale(1.06);
+            box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--team-colour);
+            outline:none;
+        }
+        .team-badge {
+            transition:transform .18s ease, box-shadow .18s ease;
+        }
+
         .team-badge {
             background: color-mix(in srgb, var(--team-colour) 10%, var(--surface));
             border: 1.5px solid var(--team-colour);
@@ -1472,7 +1487,7 @@ function renderFeaturedPlayers(fixtures) {
     function openFixtureModal(fixture) {
         lastFocusedFixture = document.activeElement;
         const topPlayer = fixture.players[0];
-        fixtureModalTitle.innerHTML = '<span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + '" data-team="' + fixture.home + '">' + (teamCodes[fixture.home] || "FPL") + '</span><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '" data-team="' + fixture.away + '">' + (teamCodes[fixture.away] || "FPL") + '</span>';
+        fixtureModalTitle.innerHTML = '<a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.home) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + '" data-team="' + fixture.home + '">' + (teamCodes[fixture.home] || "FPL") + '</span></a><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.away) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '" data-team="' + fixture.away + '">' + (teamCodes[fixture.away] || "FPL") + '</span></a>';
         fixtureModalSummary.innerHTML = '<strong>' + topPlayer.name + '</strong> is the highest model projection for this fixture at <strong>' + topPlayer.prediction.toFixed(2) + ' expected points</strong>. These are the three highest projections for this match.';
         fixtureModalList.innerHTML = fixture.players.map(player => {
             const team = playerTeams[player.name] || "";
@@ -1508,11 +1523,15 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
     <div class="fixture-card interactive-fixture" tabindex="0" role="button" aria-label="View ${fixture.home} versus ${fixture.away} prediction details" style="--home-team-colour:${teamAccentColours[fixture.home] || "var(--accent)"};--away-team-colour:${teamAccentColours[fixture.away] || "var(--accent)"}">
         <div class="fixture-teams">
-            <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.home] || "#27d17f"}" data-team="${fixture.home}" aria-label="${fixture.home}">${teamCodes[fixture.home]}</span>
+            <a class="team-badge-link" href="team.html?team=${encodeURIComponent(fixture.home)}" aria-label="Open ${fixture.home} team page" data-team-link>
+                <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.home] || "#27d17f"}" data-team="${fixture.home}" aria-label="${fixture.home}">${teamCodes[fixture.home]}</span>
+            </a>
             <span class="team-name">${fixture.home}</span>
             <span class="vs">VS</span>
             <span class="team-name">${fixture.away}</span>
-            <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.away] || "#27d17f"}" data-team="${fixture.away}" aria-label="${fixture.away}">${teamCodes[fixture.away]}</span>
+            <a class="team-badge-link" href="team.html?team=${encodeURIComponent(fixture.away)}" aria-label="Open ${fixture.away} team page" data-team-link>
+                <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.away] || "#27d17f"}" data-team="${fixture.away}" aria-label="${fixture.away}">${teamCodes[fixture.away]}</span>
+            </a>
         </div>
 
         ${fixture.players.map(player => `
@@ -1525,6 +1544,10 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         <div class="fixture-open-hint">Click for fixture details →</div>
     </div>
 `).join("");
+
+            predictionContainer.querySelectorAll(".team-badge-link").forEach(link => {
+                link.addEventListener("click", event => event.stopPropagation());
+            });
 
             predictionContainer.querySelectorAll(".interactive-fixture").forEach((card, index) => {
                 const fixture = data.predictions[index];
