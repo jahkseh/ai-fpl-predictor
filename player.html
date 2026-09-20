@@ -983,7 +983,7 @@
             return [
                 {label:"Historical ability",value:metric(history.points_per_90," pts/90"),detail:"Career historical points per 90 used as the long-term player prior."},
                 {label:"Current form",value:metric(current.recent_3_points," pts/GW"),detail:"Average points across the previous three completed gameweeks."},
-                {label:"Current club",value:metric(club.points_per_90," pts/90"),detail:"Player-at-club historical points per 90 where available."},
+                {label:"Current club",value:metric(club.points_per_90," pts/90"),detail:"Most recent player-at-club historical rate; after a transfer this can refer to the previous club."},
                 {label:"Team attack",value:metric(attack.xg_for_per_90," xG/90"),detail:"Current team attacking environment from completed fixtures."},
                 {label:"Opponent defence",value:metric(defence.xg_against_per_90," xGA/90"),detail:"Opponent defensive environment from completed fixtures."},
                 {label:"Expected minutes",value:metric(inputs.expected_minutes," min",1),detail:"Separate expected-minutes model output."},
@@ -1041,7 +1041,7 @@
                         '<div class="profile-model-grid">' +
                             '<div class="profile-model-card"><span>Historical ability</span><strong>' + metric(profile.model_inputs?.historical_ability?.points_per_90, " pts/90") + '</strong><small>Career prior · xG/90 ' + metric(profile.model_inputs?.historical_ability?.xg_per_90) + ' · xA/90 ' + metric(profile.model_inputs?.historical_ability?.xa_per_90) + '</small></div>' +
                             '<div class="profile-model-card"><span>Current form</span><strong>' + metric(profile.model_inputs?.current_form?.recent_3_points, " pts/GW") + '</strong><small>Previous 3 GW · ' + metric(profile.model_inputs?.current_form?.recent_3_minutes, " min", 0) + ' avg · xG ' + metric(profile.model_inputs?.current_form?.recent_3_xg) + '</small></div>' +
-                            '<div class="profile-model-card"><span>Current club</span><strong>' + metric(profile.model_inputs?.current_club?.points_per_90, " pts/90") + '</strong><small>Club history · start rate ' + percent(profile.model_inputs?.current_club?.start_rate) + '</small></div>' +
+                            '<div class="profile-model-card"><span>Club history</span><strong>' + metric(profile.model_inputs?.current_club?.points_per_90, " pts/90") + '</strong><small>Club history · start rate ' + percent(profile.model_inputs?.current_club?.start_rate) + '</small></div>' +
                             '<div class="profile-model-card"><span>Team attack</span><strong>' + metric(profile.model_inputs?.team_attack?.xg_for_per_90, " xG/90") + '</strong><small>Goals/90 ' + metric(profile.model_inputs?.team_attack?.goals_for_per_90) + '</small></div>' +
                             '<div class="profile-model-card"><span>Opponent defence</span><strong>' + metric(profile.model_inputs?.opponent_defence?.xg_against_per_90, " xGA/90") + '</strong><small>Goals conceded/90 ' + metric(profile.model_inputs?.opponent_defence?.goals_against_per_90) + '</small></div>' +
                             '<div class="profile-model-card"><span>Expected minutes</span><strong>' + metric(profile.model_inputs?.expected_minutes, " min", 0) + '</strong><small>Start ' + percent(profile.start_probability) + ' · 60+ min ' + percent(profile.sixty_probability) + '</small></div>' +
