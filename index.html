@@ -2008,10 +2008,11 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             // where available. Search identity remains anchored to the model
             // pool, so a missing live row can never make a valid player
             // unsearchable.
+            let liveData = null;
             try {
                 const liveResponse = await fetch("live_data.json?ts=" + Date.now());
                 if (liveResponse.ok) {
-                    const liveData = await liveResponse.json();
+                    liveData = await liveResponse.json();
                     const livePlayers = Array.isArray(liveData.players) ? liveData.players : [];
                     const liveByKey = new Map(
                         livePlayers.map(player => {
@@ -2038,17 +2039,20 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
 
             renderTeams();
             document.getElementById("live-gameweek").textContent =
-                predictionData.gameweek != null ? "GW" + predictionData.gameweek : "—";
+                liveData?.data_gameweek != null ? "GW" + liveData.data_gameweek : "—";
             document.getElementById("live-player-count").textContent =
                 players.length.toLocaleString();
             document.getElementById("live-fixture-count").textContent =
-                Array.isArray(predictionData.predictions) ? predictionData.predictions.length : "—";
+                liveData && Array.isArray(liveData.fixtures)
+                    ? liveData.fixtures.length
+                    : (Array.isArray(predictionData.predictions) ? predictionData.predictions.length : "—");
             document.getElementById("live-next-gameweek").textContent =
                 predictionData.gameweek != null ? "GW" + predictionData.gameweek : "—";
             document.getElementById("live-data-status").textContent = "Live model pool loaded";
-            if (predictionData.generated_at_utc) {
+            const updatedAt = liveData?.generated_at_utc || predictionData.generated_at_utc;
+            if (updatedAt) {
                 document.getElementById("live-data-updated").textContent =
-                    "· updated " + new Date(predictionData.generated_at_utc).toLocaleString([], {
+                    "· updated " + new Date(updatedAt).toLocaleString([], {
                         day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"
                     });
             }
