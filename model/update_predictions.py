@@ -109,7 +109,7 @@ def load_historical_data() -> pd.DataFrame:
 
 
 def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
-    # The validated Colab model covers GW1-GW38 only. Ignore later upstream rows.
+    # Use completed-season rows only for the historical training archive.
     df = df[df["GW"].between(1, 38)].copy()
 
     sum_columns = [
@@ -133,7 +133,7 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
 
     # Keep season explicit so player form and team context never cross a
     # season boundary.
-    if weekly.duplicated(["element", "GW"]).any():
+    if weekly.duplicated(["season", "element", "GW"]).any():
         raise AssertionError("Historical weekly data contains duplicate player/GW rows")
 
     for col in ROLLING_COLUMNS:
@@ -151,7 +151,7 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
         .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean())
     )
     weekly["previous_10_start_rate"] = (
-        weekly.groupby("element")["starts"]
+        weekly.groupby(["season", "element"])["starts"]
         .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
     )
     weekly["previous_5_minutes_rate"] = (
@@ -159,7 +159,7 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
         .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean()) / 90
     )
     weekly["previous_10_minutes_rate"] = (
-        weekly.groupby("element")["minutes"]
+        weekly.groupby(["season", "element"])["minutes"]
         .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean()) / 90
     )
 
