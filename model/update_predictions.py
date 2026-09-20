@@ -411,6 +411,8 @@ def build_fixture_lookup(
 def train_validated_model(weekly: pd.DataFrame) -> RandomForestRegressor:
     train = prepare_historical_training(weekly)
     train = add_workload_features(train, "player_key")
+    train = attach_team_features(train, build_historical_team_features())
+    train = add_fixture_environment(train)
     train = train[
         train["GW"].between(2, 32)
         & train["previous_3_total_points"].notna()
@@ -511,7 +513,7 @@ def generate_target_predictions(
     # and club-specific history after transfers (e.g. Mbeumo at Brentford).
     combined_history = add_historical_priors(load_completed_seasons())
     target = add_target_historical_features(target, combined_history)
-    target = add_current_fixture_team_features(target, teams)
+    target = add_current_fixture_team_features(target, current, gameweek)
     eligible = target.dropna(subset=["previous_3_total_points"]).copy()
 
     for col in PLAYER_FEATURES:
