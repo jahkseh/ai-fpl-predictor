@@ -67,6 +67,13 @@ def read_csv(url: str) -> pd.DataFrame:
     return df
 
 
+def read_csv_optional(url: str) -> pd.DataFrame | None:
+    try:
+        return read_csv(url)
+    except (ValueError, pd.errors.EmptyDataError):
+        return None
+
+
 def current_url(gameweek: int, filename: str) -> str:
     return CURRENT_BASE.format(gw=gameweek) + filename
 
@@ -145,10 +152,33 @@ def load_current_data(
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     frames = []
     for gw in range(1, gameweek + 1):
-        frames.append(
-            read_csv(current_url(gw, "player_gameweek_stats.csv")).assign(GW=gw)
-        )
+        frame = read_csv_optional(current_url(gw, "player_gameweek_stats.csv"))
+        if frame is not None:
+            frames.append(frame.assign(GW=gw))
+    if not frames:
+        raise ValueError("No current player gameweek data could be loaded")
     current = pd.concat(frames, ignore_index=True)
+
+    if not (current["GW"] == gameweek).any():
+        # Some upstream feeds publish next-GW metadata before the gameweek
+        # stat file is populated. Use the latest player snapshot as a target
+        # shell and reset performance fields to prevent target leakage.
+        latest = current.sort_values(["id", "GW"]).groupby("id").tail(1).copy()
+        zero_columns = [
+            "total_points", "minutes", "starts", "goals_scored", "assists",
+            "clean_sheets", "goals_conceded", "own_goals", "penalties_saved",
+            "penalties_missed", "yellow_cards", "red_cards", "saves", "bonus",
+            "bps", "transfers_in", "transfers_out", "expected_goals",
+            "expected_assists", "expected_goal_involvements",
+            "expected_goals_conceded", "influence", "creativity", "threat",
+            "ict_index", "tackles", "clearances_blocks_interceptions",
+            "recoveries", "defensive_contribution",
+        ]
+        for col in zero_columns:
+            if col in latest.columns:
+                latest[col] = 0
+        latest["GW"] = gameweek
+        current = pd.concat([current, latest], ignore_index=True)
 
     players = read_csv(current_url(gameweek, "players.csv"))
     teams = read_csv(current_url(gameweek, "teams.csv"))
