@@ -211,16 +211,31 @@ def main() -> None:
     # This matters because FPL display names are not guaranteed to be unique
     # (for example, there can be more than one player named "Palmer").
     predictions_by_fixture = {}
+    prediction_details_by_fixture = {}
     if args.predictions.exists():
         raw = json.loads(args.predictions.read_text(encoding="utf-8"))
-        for fixture_prediction in raw.get("predictions", []):
-            fixture_home = fixture_prediction.get("home")
-            fixture_away = fixture_prediction.get("away")
-            for player in fixture_prediction.get("players", []):
-                canonical_name = NAME_ALIASES.get(player["name"], player["name"])
-                predictions_by_fixture[
-                    (canonical_name, fixture_home, fixture_away)
-                ] = float(player["prediction"])
+        source_players = raw.get("all_players")
+        if not isinstance(source_players, list):
+            source_players = [
+                {
+                    **player,
+                    "fixture_home": fixture_prediction.get("home"),
+                    "fixture_away": fixture_prediction.get("away"),
+                }
+                for fixture_prediction in raw.get("predictions", [])
+                for player in fixture_prediction.get("players", [])
+            ]
+        for player in source_players:
+            fixture_home = player.get("fixture_home")
+            fixture_away = player.get("fixture_away")
+            if not fixture_home or not fixture_away:
+                continue
+            canonical_name = NAME_ALIASES.get(player["name"], player["name"])
+            key = (canonical_name, fixture_home, fixture_away)
+            prediction_value = player.get("prediction")
+            if prediction_value is not None:
+                predictions_by_fixture[key] = float(prediction_value)
+                prediction_details_by_fixture[key] = player
 
     rows = []
     for _, row in latest.iterrows():
@@ -235,10 +250,11 @@ def main() -> None:
         name = str(row["web_name"])
         canonical_name = NAME_ALIASES.get(name, name)
         prediction = None
+        prediction_details = {}
         if fixture:
-            prediction = predictions_by_fixture.get(
-                (canonical_name, fixture["home"], fixture["away"])
-            )
+            key = (canonical_name, fixture["home"], fixture["away"])
+            prediction = predictions_by_fixture.get(key)
+            prediction_details = prediction_details_by_fixture.get(key, {})
         item = {
             "id": player_id,
             "name": NAME_ALIASES.get(name, name),
@@ -277,6 +293,16 @@ def main() -> None:
             "chance_next_round": safe_float(row.get("chance_of_playing_next_round")),
             "news": None if pd.isna(row.get("news")) else str(row.get("news")),
             "prediction": prediction,
+            "prediction_std": safe_float(prediction_details.get("prediction_std")),
+            "prediction_p10": safe_float(prediction_details.get("prediction_p10")),
+            "prediction_p90": safe_float(prediction_details.get("prediction_p90")),
+            "prediction_range": safe_float(prediction_details.get("prediction_range")),
+            "confidence": prediction_details.get("confidence"),
+            "expected_minutes": safe_float(prediction_details.get("expected_minutes")),
+            "start_probability": safe_float(prediction_details.get("start_probability")),
+            "sixty_probability": safe_float(prediction_details.get("sixty_probability")),
+            "fixture_difficulty": prediction_details.get("fixture_difficulty"),
+            "fixture_context": prediction_details.get("fixture_context"),
             "recent_3_points": safe_float(row.get("avg3_total_points")),
             "recent_3_minutes": safe_float(row.get("avg3_minutes")),
             "recent_3_xg": safe_float(row.get("avg3_expected_goals")),
