@@ -9,7 +9,9 @@ from __future__ import annotations
 
 import argparse
 import json
+from html import escape
 from pathlib import Path
+from urllib.parse import quote
 
 import numpy as np
 import pandas as pd
@@ -33,6 +35,98 @@ SLUGS = {
 }
 
 NAME_ALIASES = {"B.Fernandes": "B. Fernandes"}
+
+
+TEAM_CODES = {
+    "Arsenal": "ARS", "Bournemouth": "BOU", "Brentford": "BRE",
+    "Brighton": "BHA", "Chelsea": "CHE", "Coventry City": "COV",
+    "Crystal Palace": "CRY", "Everton": "EVE", "Fulham": "FUL",
+    "Hull City": "HUL", "Ipswich Town": "IPS", "Leeds": "LEE",
+    "Liverpool": "LIV", "Man City": "MCI", "Man Utd": "MUN",
+    "Newcastle": "NEW", "Nott'm Forest": "NFO", "Sunderland": "SUN",
+    "Spurs": "TOT", "Aston Villa": "AVL",
+}
+
+TEAM_ACCENTS = {
+    "Arsenal": "#b3121d", "Bournemouth": "#b3121d", "Brentford": "#c8102e",
+    "Brighton": "#0057b8", "Chelsea": "#034694", "Coventry City": "#2f6fae",
+    "Crystal Palace": "#1b458f", "Everton": "#003399", "Fulham": "#111111",
+    "Hull City": "#a56b00", "Ipswich Town": "#0057b8", "Leeds": "#1d428a",
+    "Liverpool": "#c8102e", "Man City": "#1c2c5b", "Man Utd": "#b91c1c",
+    "Newcastle": "#111111", "Nott'm Forest": "#c81d25", "Sunderland": "#c8102e",
+    "Spurs": "#132257", "Aston Villa": "#670e36",
+}
+
+
+def validate_differentials(differentials: list[dict]) -> None:
+    if len(differentials) != 5:
+        raise AssertionError(f"Expected exactly 5 differential picks, found {len(differentials)}")
+    seen = set()
+    required = {"name", "team", "position", "ownership", "prediction", "differential_score", "price", "fixture"}
+    for pick in differentials:
+        missing = required - set(pick)
+        if missing:
+            raise AssertionError(f"Differential pick missing fields: {sorted(missing)}")
+        fixture = pick["fixture"]
+        identity = (pick["name"], pick["team"], fixture.get("match_id"))
+        if identity in seen:
+            raise AssertionError(f"Duplicate differential pick: {identity}")
+        seen.add(identity)
+        values = np.array([float(pick["ownership"]), float(pick["prediction"]), float(pick["differential_score"])])
+        if not np.isfinite(values).all():
+            raise AssertionError(f"Non-finite differential values for {pick['name']}")
+        if not 0 <= float(pick["ownership"]) <= 10:
+            raise AssertionError(f"Differential ownership outside 0-10% for {pick['name']}")
+        if not fixture.get("home") or not fixture.get("away") or not fixture.get("match_id"):
+            raise AssertionError(f"Incomplete fixture for differential pick {pick['name']}")
+
+
+def render_differential_cards(differentials: list[dict]) -> str:
+    cards = []
+    for index, pick in enumerate(differentials, start=1):
+        team = pick["team"] or ""
+        accent = TEAM_ACCENTS.get(team, "#27d17f")
+        team_code = TEAM_CODES.get(team, "FPL")
+        ownership = float(pick["ownership"])
+        prediction = float(pick["prediction"])
+        price = float(pick["price"])
+        score = float(pick["differential_score"])
+        fixture = pick.get("fixture") or {}
+        fixture_text = (
+            f"{fixture['home']} {'vs' if fixture.get('is_home') else 'at'} {fixture['away']}"
+            if fixture.get("home") and fixture.get("away") else "Next fixture unavailable"
+        )
+        cards.append(
+            f'<a class="differential-card" style="--differential-team-colour:{accent}" '
+            f'href="player.html?player={quote(str(pick["name"]))}">'
+            f'<span class="differential-rank">0{index}</span><div>'
+            f'<div class="differential-card-head"><div><strong>{escape(str(pick["name"]))}</strong>'
+            f'<span class="differential-meta">{escape(str(pick.get("position") or "Player"))} · {escape(team)}</span></div>'
+            f'<span class="differential-team">{escape(team_code)}</span></div>'
+            f'<div class="differential-stats">'
+            f'<div class="differential-stat"><span>Ownership</span><strong>{ownership:.1f}%</strong></div>'
+            f'<div class="differential-stat"><span>Projection</span><strong>{prediction:.2f}</strong></div>'
+            f'<div class="differential-stat"><span>Price</span><strong>£{price:.1f}</strong></div></div>'
+            f'<p class="differential-fixture">{escape(fixture_text)}</p>'
+            f'<div class="differential-score">Differential score · {score:.2f}</div></div></a>'
+        )
+    return "\n            ".join(cards)
+
+
+def update_index_differentials(index_path: Path, differentials: list[dict]) -> None:
+    if not index_path.exists():
+        raise FileNotFoundError(f"Website index not found: {index_path}")
+    html = index_path.read_text(encoding="utf-8")
+    start_marker = "            <!-- DIFFERENTIAL_CARDS_START -->"
+    end_marker = "            <!-- DIFFERENTIAL_CARDS_END -->"
+    start = html.find(start_marker)
+    end = html.find(end_marker)
+    if start < 0 or end < 0 or end < start:
+        raise ValueError("Differential card markers are missing or out of order in index.html")
+    replacement = start_marker + "\n            " + render_differential_cards(differentials) + "\n            " + end_marker
+    html = html[:start] + replacement + html[end + len(end_marker):]
+    index_path.write_text(html, encoding="utf-8")
+
 
 def read_csv(gw: int, filename: str) -> pd.DataFrame:
     url = BASE.format(gw=gw) + filename
@@ -224,6 +318,14 @@ def main() -> None:
             "away_xg": safe_float(row.get("away_expected_goals_xg")),
         })
 
+    validate_differentials([
+        {k: r.get(k) for k in [
+            "name", "team", "position", "ownership", "prediction",
+            "differential_score", "price", "fixture"
+        ]}
+        for r in differentials
+    ])
+
     differential_payload = {
         "season": "2026/27",
         "data_gameweek": latest_gw,
@@ -260,6 +362,12 @@ def main() -> None:
         json.dumps(differential_payload, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+
+    # Keep the published page usable even if a browser/CDN blocks JSON fetches.
+    # The same generated picks are rendered directly into index.html, while the
+    # JavaScript loader remains available to refresh the cards when JSON loads.
+    update_index_differentials(Path("index.html"), differential_payload["picks"])
+
     print(f"Wrote {args.output} with {len(player_rows)} players; GW{latest_gw} data / GW{args.gameweek} fixtures.")
 
 if __name__ == "__main__":
