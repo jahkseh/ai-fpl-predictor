@@ -55,6 +55,9 @@ def player_prediction_payload(row: pd.Series) -> dict:
         "prediction_p90": round(float(row["prediction_p90"]), 3),
         "prediction_range": round(float(row["prediction_range"]), 3),
         "confidence": str(row["confidence"]),
+        "expected_minutes": safe_json_float(row.get("expected_minutes", np.nan)),
+        "start_probability": safe_json_float(row.get("start_probability", np.nan)),
+        "sixty_probability": safe_json_float(row.get("sixty_probability", np.nan)),
         "fixture_context": {
             "opponent": str(row["opponent"]),
             "is_home": bool(row["was_home_gw"]),
