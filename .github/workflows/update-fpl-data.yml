@@ -33,7 +33,7 @@ jobs:
         id: gw
         shell: bash
         run: |
-          echo "gameweek=\${{ inputs.gameweek || '6' }}" >> "$GITHUB_OUTPUT"
+          echo "gameweek=${{ inputs.gameweek || '6' }}" >> "$GITHUB_OUTPUT"
 
       - name: Install model dependencies
         run: |
@@ -42,11 +42,11 @@ jobs:
 
       - name: Generate model predictions
         run: |
-          python model/update_predictions.py --gameweek "\${{ steps.gw.outputs.gameweek }}" --output predictions.generated.json
+          python model/update_predictions.py --gameweek "${{ steps.gw.outputs.gameweek }}" --output predictions.generated.json
 
       - name: Generate live intelligence dataset
         run: |
-          python model/build_live_data.py --gameweek "\${{ steps.gw.outputs.gameweek }}" --predictions predictions.generated.json --output live_data.json
+          python model/build_live_data.py --gameweek "${{ steps.gw.outputs.gameweek }}" --predictions predictions.generated.json --output live_data.json
 
       - name: Publish generated prediction data
         run: mv predictions.generated.json predictions.json
