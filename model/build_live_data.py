@@ -168,6 +168,12 @@ def build_player_profiles(
         .set_index("player_id")["position"]
         .to_dict()
     )
+    player_team_map = (
+        players[["player_id", "team_code"]]
+        .drop_duplicates("player_id")
+        .set_index("player_id")["team_code"]
+        .to_dict()
+    )
     team_strength = (
         teams[["code", "strength"]]
         .dropna(subset=["strength"])
@@ -231,7 +237,13 @@ def build_player_profiles(
 
     for _, player in latest.iterrows():
         player_id = int(player["id"])
-        team_code = int(player["team_code"]) if "team_code" in player and pd.notna(player["team_code"]) else None
+        team_code = (
+            int(player["team_code"])
+            if "team_code" in player and pd.notna(player["team_code"])
+            else int(player_team_map[player_id])
+            if player_id in player_team_map and pd.notna(player_team_map[player_id])
+            else None
+        )
         team = team_map.get(team_code)
         name = NAME_ALIASES.get(str(player["web_name"]), str(player["web_name"]))
         position = position_map.get(player_id)
@@ -264,7 +276,11 @@ def build_player_profiles(
         recent_form = []
         for _, gw_row in recent_rows.iterrows():
             gw = int(gw_row["gw"])
-            gw_team_code = int(gw_row["team_code"]) if "team_code" in gw_row and pd.notna(gw_row["team_code"]) else team_code
+            gw_team_code = (
+                int(gw_row["team_code"])
+                if "team_code" in gw_row and pd.notna(gw_row["team_code"])
+                else team_code
+            )
             opponent_code = gw_row.get("opponent_team")
             opponent = team_map.get(int(opponent_code)) if pd.notna(opponent_code) else None
             was_home = bool(gw_row.get("was_home", False))
