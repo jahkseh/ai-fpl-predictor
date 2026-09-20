@@ -210,3 +210,82 @@ def build_player_history_report(historical: pd.DataFrame) -> pd.DataFrame:
     result["xg_per_90"] = _safe_rate(result["xg"], result["minutes"])
     result["xa_per_90"] = _safe_rate(result["xa"], result["minutes"])
     return result.sort_values(["player_key", "season", "club_key"]).reset_index(drop=True)
+
+
+
+
+TEAM_FEATURES = [
+    "team_xg_for_per90", "team_goals_for_per90",
+    "team_xg_against_per90", "team_goals_against_per90",
+    "team_home_xg_for_per90", "team_away_xg_for_per90",
+    "team_home_xg_against_per90", "team_away_xg_against_per90",
+    "opponent_xg_for_per90", "opponent_goals_for_per90",
+    "opponent_xg_against_per90", "opponent_goals_against_per90",
+]
+
+
+def build_team_weekly_history(df: pd.DataFrame) -> pd.DataFrame:
+    """Build leakage-safe point-in-time team rates from fixture-level team rows."""
+    required = {"season", "GW", "team", "opponent_team", "was_home", "goals_scored", "expected_goals"}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"Team history missing columns: {sorted(missing)}")
+
+    work = df.copy()
+    for col in ["team", "opponent_team", "was_home", "GW"]:
+        work[col] = pd.to_numeric(work[col], errors="coerce")
+    work = work.dropna(subset=["season", "GW", "team", "opponent_team"])
+    work["team"] = work["team"].astype(int)
+    work["opponent_team"] = work["opponent_team"].astype(int)
+    work["was_home"] = work["was_home"].astype(int)
+
+    fixture = (
+        work.groupby(["season", "GW", "team", "opponent_team", "was_home"], as_index=False)
+        .agg(goals_for=("goals_scored", "sum"), xg_for=("expected_goals", "sum"))
+    )
+
+    # xGA/goals-against come from the opponent's team-level fixture totals.
+    opponent = fixture[["season", "GW", "team", "goals_for", "xg_for"]].rename(
+        columns={"team": "opponent_team", "goals_for": "goals_against", "xg_for": "xg_against"}
+    )
+    fixture = fixture.merge(
+        opponent, on=["season", "GW", "opponent_team"], how="left", validate="many_to_one"
+    )
+    fixture = fixture.sort_values(["team", "season", "GW"]).reset_index(drop=True)
+
+    def rolling_prior(series: pd.Series) -> pd.Series:
+        return series.shift(1).rolling(10, min_periods=1).mean()
+
+    for src, dst in [
+        ("xg_for", "team_xg_for_per90"),
+        ("goals_for", "team_goals_for_per90"),
+        ("xg_against", "team_xg_against_per90"),
+        ("goals_against", "team_goals_against_per90"),
+    ]:
+        fixture[dst] = fixture.groupby("team")[src].transform(rolling_prior)
+
+    for home_flag, label in [(1, "home"), (0, "away")]:
+        subset = fixture.loc[fixture["was_home"].eq(home_flag)].copy()
+        for src, dst in [
+            ("xg_for", f"team_{label}_xg_for_per90"),
+            ("xg_against", f"team_{label}_xg_against_per90"),
+        ]:
+            subset[dst] = subset.groupby("team")[src].transform(rolling_prior)
+            fixture.loc[subset.index, dst] = subset[dst]
+
+    opponent_rates = fixture[
+        ["season", "GW", "team", "team_xg_for_per90", "team_goals_for_per90",
+         "team_xg_against_per90", "team_goals_against_per90"]
+    ].rename(columns={
+        "team": "opponent_team",
+        "team_xg_for_per90": "opponent_xg_for_per90",
+        "team_goals_for_per90": "opponent_goals_for_per90",
+        "team_xg_against_per90": "opponent_xg_against_per90",
+        "team_goals_against_per90": "opponent_goals_against_per90",
+    })
+    fixture = fixture.merge(
+        opponent_rates, on=["season", "GW", "opponent_team"], how="left", validate="many_to_one"
+    )
+    return fixture[["season", "GW", "team", "opponent_team", "was_home"] + TEAM_FEATURES]
+
+
