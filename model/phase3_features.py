@@ -94,7 +94,7 @@ def add_workload_features(frame: pd.DataFrame, id_col: str) -> pd.DataFrame:
         .transform(lambda s: s.shift(1).rolling(5, min_periods=1).count())
     )
     out["minutes_last_5_gw"] = (
-        out.groupby(id_col)["minutes"]
+        out.groupby(group_keys)["minutes"]
         .transform(lambda s: s.shift(1).rolling(5, min_periods=1).sum())
     )
     return out
