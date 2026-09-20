@@ -25,9 +25,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install numpy pandas scikit-learn
 
-      - name: Run historical validation and prediction regression
+      - name: Run Phase 3 walk-forward backtest
         run: |
-          python model/update_predictions.py \
-            --gameweek 6 \
-            --golden predictions.json \
-            --dry-run
+          python model/phase3_backtest.py --output phase3_backtest.json
+
+      - name: Validate production prediction pipeline
+        run: |
+          python model/update_predictions.py             --gameweek 6             --dry-run
+
+      - name: Validate generated backtest artifact
+        run: |
+          python - <<'PY'
+          import json
+          with open("phase3_backtest.json", encoding="utf-8") as f:
+              data = json.load(f)
+          assert data["models"]["baseline"]
+          assert data["models"]["phase3"]
+          assert len(data["gameweeks_evaluated"]) >= 10
+          print("Phase 3 backtest validation passed.")
+          PY
