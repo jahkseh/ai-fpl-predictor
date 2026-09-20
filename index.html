@@ -896,6 +896,21 @@ body[data-theme="light"] .hero-stat span {
         .differential-card:not(.differential-pending):hover,.differential-card:not(.differential-pending):focus-visible { transform:translateY(-2px); border-color:var(--differential-team-colour); box-shadow:0 0 0 2px color-mix(in srgb,var(--differential-team-colour) 18%,transparent),0 12px 28px rgba(15,30,22,.10); outline:none; }
         @media(max-width:900px){.differential-grid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:520px){.differential-grid{grid-template-columns:1fr}.differential-note{align-items:flex-start}}
+        .differential-card { min-height:182px; }
+        .differential-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+        .differential-card-head > div { min-width:0; }
+        .differential-card-head strong { font-size:1.05rem; }
+        .differential-meta { display:block; margin-top:4px; color:var(--text-muted); font-size:10px; font-weight:700; }
+        .differential-team { flex:0 0 auto; padding:5px 7px; border:1px solid var(--differential-team-colour); border-radius:8px; color:var(--differential-team-colour); background:color-mix(in srgb,var(--differential-team-colour) 9%,var(--surface)); font-size:9px; font-weight:900; letter-spacing:.05em; }
+        .differential-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:14px; }
+        .differential-stat { padding:8px 9px; border:1px solid var(--border); border-radius:9px; background:var(--surface-soft); }
+        .differential-stat span { display:block; color:var(--text-muted); font-size:8px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+        .differential-stat strong { margin-top:3px; font-size:.9rem; }
+        .differential-fixture { margin-top:10px; color:var(--text-muted); font-size:10px; font-weight:700; }
+        .differential-score { margin-top:4px; color:var(--accent-hover); font-size:9px; font-weight:900; letter-spacing:.05em; text-transform:uppercase; }
+        .differential-note-meta { display:block; margin-top:3px; color:var(--text-muted); font-size:10px; }
+        @media(max-width:900px){.differential-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:520px){.differential-grid{grid-template-columns:1fr}.differential-stats{gap:6px}}
         
         /* Current Gameweek overview */
         .prediction-overview {
@@ -1249,14 +1264,19 @@ body[data-theme="light"] .hero-stat span {
         </div>
         <div class="differential-note">
             <span class="differential-note-icon" aria-hidden="true">%</span>
-            <p><strong>How this works:</strong> these picks are designed to surface players with relatively low effective ownership and meaningful model potential. Ownership data will be connected before the weekly picks are published.</p>
+            <p>
+                <strong>How this works:</strong>
+                the weekly list combines the FPL ownership percentage with the model projection.
+                Lower-owned players receive more weight in the differential score.
+                <span class="differential-note-meta" id="differential-data-meta">Loading the latest differential data...</span>
+            </p>
         </div>
         <div class="differential-grid" id="differential-container">
-            <div class="differential-card differential-pending"><span class="differential-rank">01</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
-            <div class="differential-card differential-pending"><span class="differential-rank">02</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
-            <div class="differential-card differential-pending"><span class="differential-rank">03</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
-            <div class="differential-card differential-pending"><span class="differential-rank">04</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
-            <div class="differential-card differential-pending"><span class="differential-rank">05</span><div><strong>Ownership data</strong><p>Weekly differential picks will appear here.</p></div><span class="differential-status">Coming soon</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">01</span><div><strong>Loading picks</strong><p>Fetching the latest model and ownership data.</p></div><span class="differential-status">Loading</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">02</span><div><strong>Loading picks</strong><p>Fetching the latest model and ownership data.</p></div><span class="differential-status">Loading</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">03</span><div><strong>Loading picks</strong><p>Fetching the latest model and ownership data.</p></div><span class="differential-status">Loading</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">04</span><div><strong>Loading picks</strong><p>Fetching the latest model and ownership data.</p></div><span class="differential-status">Loading</span></div>
+            <div class="differential-card differential-pending"><span class="differential-rank">05</span><div><strong>Loading picks</strong><p>Fetching the latest model and ownership data.</p></div><span class="differential-status">Loading</span></div>
         </div>
     </section>
     <section class="info-section">
@@ -1392,34 +1412,77 @@ body[data-theme="light"] .hero-stat span {
 
     async function loadDifferentials() {
         try {
-            let picks = null;
+            let payload = null;
+
             try {
                 const response = await fetch("differentials.json?ts=" + Date.now());
                 if (response.ok) {
                     const data = await response.json();
-                    if (Array.isArray(data.picks) && data.picks.length === 5) picks = data.picks;
+                    if (Array.isArray(data.picks) && data.picks.length === 5) payload = data;
                 }
             } catch (_) {}
-            if (!picks) {
+
+            if (!payload) {
                 const response = await fetch("live_data.json?ts=" + Date.now());
                 if (!response.ok) throw new Error("Live differential data unavailable");
                 const data = await response.json();
-                picks = data.differentials;
+                if (!Array.isArray(data.differentials) || data.differentials.length !== 5) {
+                    throw new Error("Differential data invalid");
+                }
+                payload = {
+                    data_gameweek: data.data_gameweek,
+                    next_gameweek: data.next_gameweek,
+                    generated_at_utc: data.generated_at_utc,
+                    picks: data.differentials
+                };
             }
-            if (!Array.isArray(picks) || picks.length !== 5) throw new Error("Differential data invalid");
+
+            const picks = payload.picks;
+            const meta = document.getElementById("differential-data-meta");
+            if (meta) {
+                const gw = payload.next_gameweek || payload.data_gameweek;
+                meta.textContent = "GW" + gw + " · " + picks.length + " picks · ownership is FPL team-selected percentage.";
+            }
+
             differentialContainer.innerHTML = picks.map((pick, index) => {
                 const team = pick.team || "";
                 const accent = teamAccentColours[team] || "var(--accent)";
-                const ownershipLabel = pick.ownership == null ? "Ownership unavailable" : Number(pick.ownership).toFixed(1) + "% ownership";
+                const ownership = Number(pick.ownership);
+                const prediction = Number(pick.prediction);
+                const score = Number(pick.differential_score);
+                const price = Number(pick.price);
+                const fixture = pick.fixture || {};
+                const fixtureText = fixture.home && fixture.away
+                    ? fixture.home + " " + (fixture.is_home ? "vs" : "at") + " " + fixture.away
+                    : "Next fixture unavailable";
+                const position = pick.position || "Player";
+                const teamCode = teamCodes[team] || "FPL";
+
                 return '<a class="differential-card" style="--differential-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(pick.name) + '">' +
                     '<span class="differential-rank">0' + (index + 1) + '</span>' +
-                    '<div><strong>' + liveEscape(pick.name) + '</strong><p>' + ownershipLabel + ' · ' + (Number(pick.prediction) || 0).toFixed(2) + ' projected points</p></div>' +
-                    '<span class="differential-status">' + (team || "FPL") + '</span>' +
+                    '<div>' +
+                        '<div class="differential-card-head">' +
+                            '<div><strong>' + liveEscape(pick.name) + '</strong><span class="differential-meta">' + liveEscape(position) + ' · ' + liveEscape(team) + '</span></div>' +
+                            '<span class="differential-team">' + teamCode + '</span>' +
+                        '</div>' +
+                        '<div class="differential-stats">' +
+                            '<div class="differential-stat"><span>Ownership</span><strong>' + (Number.isFinite(ownership) ? ownership.toFixed(1) + '%' : '—') + '</strong></div>' +
+                            '<div class="differential-stat"><span>Projection</span><strong>' + (Number.isFinite(prediction) ? prediction.toFixed(2) : '—') + '</strong></div>' +
+                            '<div class="differential-stat"><span>Price</span><strong>' + (Number.isFinite(price) ? '£' + price.toFixed(1) : '—') + '</strong></div>' +
+                        '</div>' +
+                        '<p class="differential-fixture">' + liveEscape(fixtureText) + '</p>' +
+                        '<div class="differential-score">Differential score · ' + (Number.isFinite(score) ? score.toFixed(2) : '—') + '</div>' +
+                    '</div>' +
                 '</a>';
             }).join("");
-            document.querySelector(".differential-note p").innerHTML = "<strong>How this works:</strong> current ownership is combined with the trained model projection to surface lower-owned players with model upside. Ownership is not effective ownership.";
+
+            document.querySelector(".differential-note p").innerHTML =
+                "<strong>How this works:</strong> the weekly list combines the FPL ownership percentage with the model projection. Lower-owned players receive more weight in the differential score." +
+                '<span class="differential-note-meta">GW' + (payload.next_gameweek || payload.data_gameweek) + ' · ' + picks.length + ' picks · ownership is FPL team-selected percentage.</span>';
         } catch (error) {
             console.info("Differential picks pending:", error.message);
+            const meta = document.getElementById("differential-data-meta");
+            if (meta) meta.textContent = "Differential data is temporarily unavailable.";
         }
     }
 
