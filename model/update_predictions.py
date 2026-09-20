@@ -44,6 +44,8 @@ MODEL_PARAMS = {
     "n_jobs": -1,
 }
 
+PLAYER_NAME_OVERRIDES = {"B.Fernandes": "B. Fernandes"}
+
 ROLLING_COLUMNS = [
     "total_points", "minutes", "goals_scored", "assists",
     "expected_goals", "expected_assists",
@@ -443,7 +445,7 @@ def build_predictions_json(top3: pd.DataFrame, gameweek: int) -> dict:
         players = [
             {
                 "rank": int(row["rank"]),
-                "name": str(row["web_name"]),
+                "name": PLAYER_NAME_OVERRIDES.get(str(row["web_name"]), str(row["web_name"])),
                 "prediction": round(float(row["prediction"]), 6),
             }
             for _, row in group.sort_values("rank").iterrows()
