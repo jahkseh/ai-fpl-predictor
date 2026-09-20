@@ -1,0 +1,93 @@
+{
+  "season": "2026/27",
+  "data_gameweek": 5,
+  "next_gameweek": 6,
+  "generated_at_utc": "2026-09-20T19:47:59.321541+00:00",
+  "picks": [
+    {
+      "name": "Havertz",
+      "team": "Arsenal",
+      "position": "Forward",
+      "ownership": 8.5,
+      "prediction": 5.453401,
+      "differential_score": 4.99,
+      "price": 7.6,
+      "form": 3.8,
+      "fixture": {
+        "home": "Arsenal",
+        "away": "Leeds",
+        "is_home": true,
+        "kickoff": "2026-10-10T11:30:00",
+        "match_id": "26-27-prem-arsenal-vs-leeds-united"
+      }
+    },
+    {
+      "name": "Dewsbury-Hall",
+      "team": "Everton",
+      "position": "Midfielder",
+      "ownership": 6.1,
+      "prediction": 5.154873,
+      "differential_score": 4.84,
+      "price": 6.6,
+      "form": 4,
+      "fixture": {
+        "home": "Hull City",
+        "away": "Everton",
+        "is_home": false,
+        "kickoff": "2026-10-11T13:00:00",
+        "match_id": "26-27-prem-hull-city-vs-everton"
+      }
+    },
+    {
+      "name": "Cunha",
+      "team": "Man Utd",
+      "position": "Midfielder",
+      "ownership": 5.7,
+      "prediction": 5.044653,
+      "differential_score": 4.757,
+      "price": 7.9,
+      "form": 3.6,
+      "fixture": {
+        "home": "Man Utd",
+        "away": "Spurs",
+        "is_home": true,
+        "kickoff": "2026-10-10T16:30:00",
+        "match_id": "26-27-prem-manchester-united-vs-tottenham-hotspur"
+      }
+    },
+    {
+      "name": "Thiago",
+      "team": "Brentford",
+      "position": "Forward",
+      "ownership": 9,
+      "prediction": 5.146852,
+      "differential_score": 4.684,
+      "price": 7.8,
+      "form": 2,
+      "fixture": {
+        "home": "Aston Villa",
+        "away": "Brentford",
+        "is_home": false,
+        "kickoff": "2026-10-10T14:00:00",
+        "match_id": "26-27-prem-aston-villa-vs-brentford"
+      }
+    },
+    {
+      "name": "Buendía",
+      "team": "Aston Villa",
+      "position": "Midfielder",
+      "ownership": 0.9,
+      "prediction": 4.610459,
+      "differential_score": 4.569,
+      "price": 5.9,
+      "form": 4.2,
+      "fixture": {
+        "home": "Aston Villa",
+        "away": "Brentford",
+        "is_home": true,
+        "kickoff": "2026-10-10T14:00:00",
+        "match_id": "26-27-prem-aston-villa-vs-brentford"
+      }
+    }
+  ]
+}
