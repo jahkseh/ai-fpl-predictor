@@ -51,6 +51,8 @@ def aggregate_weekly(df: pd.DataFrame) -> pd.DataFrame:
     agg["name"] = "first"
     agg["value"] = "first"
     agg["was_home"] = "first"
+    agg["team"] = "first"
+    agg["opponent_team"] = "first"
     weekly = df[df["season"] == "2025-26"].groupby(["element", "GW"], as_index=False).agg(agg)
     weekly = weekly.sort_values(["element", "GW"]).reset_index(drop=True)
     for col in [
