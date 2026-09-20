@@ -365,7 +365,10 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
         weekly["GW"].between(2, 32)
         & weekly["previous_3_total_points"].notna()
     ]
-    test = weekly[weekly["GW"].between(33, 38)].copy()
+    test = weekly[
+        weekly["GW"].between(33, 38)
+        & weekly["previous_3_total_points"].notna()
+    ].copy()
 
     X_train = train[PLAYER_FEATURES]
     y_train = train["total_points"]
