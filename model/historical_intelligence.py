@@ -75,6 +75,7 @@ def _prepare(df: pd.DataFrame, season: str) -> pd.DataFrame:
     numeric_defaults = [
         "minutes", "starts", "total_points", "goals_scored", "assists",
         "expected_goals", "expected_assists",
+        "ict_index", "influence", "creativity", "threat", "bps", "bonus",
     ]
     for col in numeric_defaults:
         if col not in out.columns:

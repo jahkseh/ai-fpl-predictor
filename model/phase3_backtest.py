@@ -18,7 +18,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 from historical_intelligence import load_completed_seasons
-from phase3_features import HISTORICAL_FEATURES, prepare_historical_training
+from phase3_features import (
+    HISTORICAL_FEATURES,
+    PERFORMANCE_FEATURES,
+    PERFORMANCE_SOURCE_COLUMNS,
+    add_performance_features,
+    prepare_historical_training,
+)
 from phase4_features import (
     TEAM_FEATURES,
     build_historical_team_features,
@@ -37,7 +43,7 @@ BASELINE = [
     "previous_5_expected_assists", "previous_10_expected_assists",
     "value", "was_home",
 ]
-PHASE3 = BASELINE + HISTORICAL_FEATURES
+PHASE3 = BASELINE + HISTORICAL_FEATURES + PERFORMANCE_FEATURES
 PHASE4 = PHASE3 + TEAM_FEATURES + ["fixture_attack_mismatch", "fixture_defence_mismatch", "fixture_xg_environment"]
 PARAMS = {"n_estimators": 120, "min_samples_leaf": 5, "random_state": 42, "n_jobs": -1}
 
@@ -46,6 +52,7 @@ def aggregate_weekly(df: pd.DataFrame) -> pd.DataFrame:
     numeric = [
         "minutes", "starts", "total_points", "goals_scored", "assists",
         "expected_goals", "expected_assists",
+        "ict_index", "influence", "creativity", "threat", "bps", "bonus",
     ]
     agg = {c: "sum" for c in numeric if c in df.columns}
     agg["name"] = "first"
@@ -53,27 +60,30 @@ def aggregate_weekly(df: pd.DataFrame) -> pd.DataFrame:
     agg["was_home"] = "first"
     agg["team"] = "first"
     agg["opponent_team"] = "first"
-    weekly = df[df["season"] == "2025-26"].groupby(["element", "GW"], as_index=False).agg(agg)
-    weekly["season"] = "2025-26"
-    weekly = weekly.sort_values(["element", "GW"]).reset_index(drop=True)
+    weekly = (
+        df.groupby(["season", "element", "GW"], as_index=False)
+        .agg(agg)
+        .sort_values(["season", "element", "GW"])
+        .reset_index(drop=True)
+    )
     for col in [
         "total_points", "minutes", "expected_goals", "expected_assists",
     ]:
         for window in (3, 5, 10):
             weekly[f"previous_{window}_{col}"] = (
-                weekly.groupby("element")[col]
+                weekly.groupby(["season", "element"])[col]
                 .transform(lambda s, w=window: s.shift(1).rolling(w, min_periods=1).mean())
             )
-    weekly["previous_5_start_rate"] = weekly.groupby("element")["starts"].transform(
+    weekly["previous_5_start_rate"] = weekly.groupby(["season", "element"])["starts"].transform(
         lambda s: s.shift(1).rolling(5, min_periods=1).mean()
     )
-    weekly["previous_10_start_rate"] = weekly.groupby("element")["starts"].transform(
+    weekly["previous_10_start_rate"] = weekly.groupby(["season", "element"])["starts"].transform(
         lambda s: s.shift(1).rolling(10, min_periods=1).mean()
     )
-    weekly["previous_5_minutes_rate"] = weekly.groupby("element")["minutes"].transform(
+    weekly["previous_5_minutes_rate"] = weekly.groupby(["season", "element"])["minutes"].transform(
         lambda s: s.shift(1).rolling(5, min_periods=1).mean()
     ) / 90
-    weekly["previous_10_minutes_rate"] = weekly.groupby("element")["minutes"].transform(
+    weekly["previous_10_minutes_rate"] = weekly.groupby(["season", "element"])["minutes"].transform(
         lambda s: s.shift(1).rolling(10, min_periods=1).mean()
     ) / 90
     return weekly
@@ -95,16 +105,23 @@ def main() -> None:
     combined = load_completed_seasons()
     weekly = aggregate_weekly(combined)
     prepared = prepare_historical_training(weekly)
+    prepared = add_performance_features(prepared, "element")
     prepared = attach_team_features(prepared, build_historical_team_features())
     prepared = add_fixture_environment(prepared)
 
     rows = []
     for gw in range(11, 39):
         train = prepared[
-            (prepared["GW"] < gw) & prepared["previous_3_total_points"].notna()
+            (
+                (prepared["season"] != "2025-26")
+                | ((prepared["season"] == "2025-26") & (prepared["GW"] < gw))
+            )
+            & prepared["previous_3_total_points"].notna()
         ].copy()
         test = prepared[
-            (prepared["GW"] == gw) & prepared["previous_3_total_points"].notna()
+            (prepared["season"] == "2025-26")
+            & (prepared["GW"] == gw)
+            & prepared["previous_3_total_points"].notna()
         ].copy()
         if len(train) < 500 or test.empty:
             continue
@@ -132,7 +149,7 @@ def main() -> None:
         .to_dict(orient="index")
     )
     output = {
-        "evaluation": "walk-forward 2025/26, GW11-GW38",
+        "evaluation": "walk-forward 2025/26, GW11-GW38; training includes prior completed seasons",
         "models": summary,
         "gameweeks_evaluated": sorted(result["gameweek"].unique().tolist()),
         "detail": result.to_dict(orient="records"),

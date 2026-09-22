@@ -2,66 +2,15 @@
   "season": "2026/27",
   "data_gameweek": 5,
   "next_gameweek": 6,
-  "generated_at_utc": "2026-09-20T20:46:18.383251+00:00",
+  "generated_at_utc": "2026-09-20T21:59:46.814223+00:00",
   "picks": [
-    {
-      "name": "Havertz",
-      "team": "Arsenal",
-      "position": "Forward",
-      "ownership": 8.5,
-      "prediction": 5.487524,
-      "differential_score": 5.021,
-      "price": 7.6,
-      "form": 3.8,
-      "fixture": {
-        "home": "Arsenal",
-        "away": "Leeds",
-        "is_home": true,
-        "kickoff": "2026-10-10T11:30:00",
-        "match_id": "26-27-prem-arsenal-vs-leeds-united"
-      }
-    },
-    {
-      "name": "Wirtz",
-      "team": "Liverpool",
-      "position": "Midfielder",
-      "ownership": 5.9,
-      "prediction": 5.2423,
-      "differential_score": 4.933,
-      "price": 7.3,
-      "form": 3.6,
-      "fixture": {
-        "home": "Liverpool",
-        "away": "Man City",
-        "is_home": true,
-        "kickoff": "2026-10-11T15:30:00",
-        "match_id": "26-27-prem-liverpool-vs-manchester-city"
-      }
-    },
-    {
-      "name": "Dewsbury-Hall",
-      "team": "Everton",
-      "position": "Midfielder",
-      "ownership": 6.1,
-      "prediction": 5.158288,
-      "differential_score": 4.844,
-      "price": 6.6,
-      "form": 4.0,
-      "fixture": {
-        "home": "Hull City",
-        "away": "Everton",
-        "is_home": false,
-        "kickoff": "2026-10-11T13:00:00",
-        "match_id": "26-27-prem-hull-city-vs-everton"
-      }
-    },
     {
       "name": "Cunha",
       "team": "Man Utd",
       "position": "Midfielder",
       "ownership": 5.7,
-      "prediction": 5.071455,
-      "differential_score": 4.782,
+      "prediction": 5.851064,
+      "differential_score": 5.518,
       "price": 7.9,
       "form": 3.6,
       "fixture": {
@@ -73,18 +22,69 @@
       }
     },
     {
-      "name": "Thiago",
-      "team": "Brentford",
+      "name": "Wirtz",
+      "team": "Liverpool",
+      "position": "Midfielder",
+      "ownership": 5.9,
+      "prediction": 5.785456,
+      "differential_score": 5.444,
+      "price": 7.3,
+      "form": 3.6,
+      "fixture": {
+        "home": "Liverpool",
+        "away": "Man City",
+        "is_home": true,
+        "kickoff": "2026-10-11T15:30:00",
+        "match_id": "26-27-prem-liverpool-vs-manchester-city"
+      }
+    },
+    {
+      "name": "Xhaka",
+      "team": "Sunderland",
+      "position": "Midfielder",
+      "ownership": 3.7,
+      "prediction": 5.443051,
+      "differential_score": 5.242,
+      "price": 5.5,
+      "form": 4.2,
+      "fixture": {
+        "home": "Sunderland",
+        "away": "Brighton",
+        "is_home": true,
+        "kickoff": "2026-10-10T14:00:00",
+        "match_id": "26-27-prem-sunderland-vs-brighton-hove-albion"
+      }
+    },
+    {
+      "name": "Havertz",
+      "team": "Arsenal",
       "position": "Forward",
-      "ownership": 9.0,
-      "prediction": 5.159305,
-      "differential_score": 4.695,
-      "price": 7.8,
-      "form": 2.0,
+      "ownership": 8.5,
+      "prediction": 5.71939,
+      "differential_score": 5.233,
+      "price": 7.6,
+      "form": 3.8,
+      "fixture": {
+        "home": "Arsenal",
+        "away": "Leeds",
+        "is_home": true,
+        "kickoff": "2026-10-10T11:30:00",
+        "match_id": "26-27-prem-arsenal-vs-leeds-united"
+      }
+    },
+    {
+      "name": "Buendía",
+      "team": "Aston Villa",
+      "position": "Midfielder",
+      "ownership": 0.9,
+      "prediction": 5.262972,
+      "differential_score": 5.216,
+      "price": 5.9,
+      "form": 4.2,
       "fixture": {
         "home": "Aston Villa",
         "away": "Brentford",
-        "is_home": false,
+        "is_home": true,
         "kickoff": "2026-10-10T14:00:00",
         "match_id": "26-27-prem-aston-villa-vs-brentford"
       }

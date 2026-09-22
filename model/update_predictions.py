@@ -20,6 +20,7 @@ from phase3_features import (
     add_workload_features,
     fit_expected_minutes_models,
     prepare_historical_training,
+    add_performance_features,
 )
 from historical_intelligence import add_historical_priors, load_completed_seasons
 from phase4_features import (
@@ -32,10 +33,6 @@ from phase4_features import (
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
-HISTORICAL_URL = (
-    "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/"
-    "master/data/2025-26/gws/merged_gw.csv"
-)
 CURRENT_BASE = (
     "https://raw.githubusercontent.com/olbauday/FPL-Core-Insights/main/"
     "data/2026-2027/By%20Gameweek/GW{gw}/"
@@ -51,6 +48,10 @@ BASE_PLAYER_FEATURES = [
     "previous_10_expected_goals", "previous_3_expected_assists",
     "previous_5_expected_assists", "previous_10_expected_assists",
     "value", "was_home",
+] + [
+    f"previous_{window}_{metric}_per90"
+    for metric in ("ict_index", "influence", "creativity", "threat", "bps", "bonus")
+    for window in (3, 5, 10)
 ]
 PHASE4_FEATURES = phase4_feature_columns()
 PLAYER_FEATURES = BASE_PLAYER_FEATURES + HISTORICAL_FEATURES + PHASE4_FEATURES
@@ -99,10 +100,11 @@ def current_url(gameweek: int, filename: str) -> str:
 
 
 def load_historical_data() -> pd.DataFrame:
-    df = read_csv(HISTORICAL_URL)
+    """Load all completed seasons used by the historical training set."""
+    df = load_completed_seasons()
     required = {
-        "element", "GW", "name", "value", "was_home", "minutes", "starts",
-        "total_points", "goals_scored", "assists", "expected_goals",
+        "element", "GW", "season", "name", "value", "was_home", "minutes",
+        "starts", "total_points", "goals_scored", "assists", "expected_goals",
         "expected_assists",
     }
     missing = required - set(df.columns)
@@ -112,7 +114,7 @@ def load_historical_data() -> pd.DataFrame:
 
 
 def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
-    # The validated Colab model covers GW1-GW38 only. Ignore later upstream rows.
+    # Use completed-season rows only for the historical training archive.
     df = df[df["GW"].between(1, 38)].copy()
 
     sum_columns = [
@@ -128,24 +130,21 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
     aggregation.update({c: "first" for c in first_columns})
 
     weekly = (
-        df.groupby(["element", "GW"], as_index=False)
+        df.groupby(["season", "element", "GW"], as_index=False)
         .agg(aggregation)
-        .sort_values(["element", "GW"])
+        .sort_values(["season", "element", "GW"])
         .reset_index(drop=True)
     )
 
-    # Phase 4 team-history joins are season-aware. This pipeline's historical
-    # training source is the completed 2025/26 season, so retain that key on
-    # every weekly player row instead of dropping it during aggregation.
-    weekly["season"] = "2025-26"
-
-    if weekly.duplicated(["element", "GW"]).any():
+    # Keep season explicit so player form and team context never cross a
+    # season boundary.
+    if weekly.duplicated(["season", "element", "GW"]).any():
         raise AssertionError("Historical weekly data contains duplicate player/GW rows")
 
     for col in ROLLING_COLUMNS:
         for window in (3, 5, 10):
             weekly[f"previous_{window}_{col}"] = (
-                weekly.groupby("element")[col]
+                weekly.groupby(["season", "element"])[col]
                 .transform(
                     lambda x, w=window:
                     x.shift(1).rolling(w, min_periods=1).mean()
@@ -153,19 +152,19 @@ def build_weekly_historical(df: pd.DataFrame) -> pd.DataFrame:
             )
 
     weekly["previous_5_start_rate"] = (
-        weekly.groupby("element")["starts"]
+        weekly.groupby(["season", "element"])["starts"]
         .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean())
     )
     weekly["previous_10_start_rate"] = (
-        weekly.groupby("element")["starts"]
+        weekly.groupby(["season", "element"])["starts"]
         .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
     )
     weekly["previous_5_minutes_rate"] = (
-        weekly.groupby("element")["minutes"]
+        weekly.groupby(["season", "element"])["minutes"]
         .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean()) / 90
     )
     weekly["previous_10_minutes_rate"] = (
-        weekly.groupby("element")["minutes"]
+        weekly.groupby(["season", "element"])["minutes"]
         .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean()) / 90
     )
 
@@ -298,6 +297,7 @@ def add_current_rolling_features(enriched: pd.DataFrame) -> pd.DataFrame:
         .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean()) / 90
     )
 
+    enriched = add_performance_features(enriched, "id")
     return enriched
 
 
@@ -423,6 +423,7 @@ def build_fixture_lookup(
 def train_validated_model(weekly: pd.DataFrame) -> RandomForestRegressor:
     train = prepare_historical_training(weekly)
     train = add_workload_features(train, "player_key")
+    train = add_performance_features(train, "player_key")
     train = attach_team_features(train, build_historical_team_features())
     train = add_fixture_environment(train)
     train = train[
@@ -443,14 +444,19 @@ def train_validated_model(weekly: pd.DataFrame) -> RandomForestRegressor:
 
 def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
     prepared = add_workload_features(prepare_historical_training(weekly), "player_key")
+    prepared = add_performance_features(prepared, "player_key")
     prepared = attach_team_features(prepared, build_historical_team_features())
     prepared = add_fixture_environment(prepared)
     train = prepared[
-        prepared["GW"].between(2, 32)
+        (
+            (prepared["season"] != "2025-26")
+            | prepared["GW"].between(2, 32)
+        )
         & prepared["previous_3_total_points"].notna()
     ]
     test = prepared[
-        prepared["GW"].between(33, 38)
+        (prepared["season"] == "2025-26")
+        & prepared["GW"].between(33, 38)
         & prepared["previous_3_total_points"].notna()
     ].copy()
 
@@ -474,7 +480,7 @@ def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
         "r2": float(r2_score(y_test, baseline_pred)),
     }
 
-    expected = {"mae": 1.0131, "rmse": 1.9953, "r2": 0.3152}
+    expected = {"mae": None, "rmse": None, "r2": None}
 
     importance = (
         pd.Series(model.feature_importances_, index=PLAYER_FEATURES)
