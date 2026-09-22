@@ -133,5 +133,11 @@ jobs:
           assert "prior completed seasons" in data["evaluation"]
           assert data["feature_count"]["phase3"] > data["feature_count"]["baseline"]
           assert len(data["gameweeks_evaluated"]) >= 10
+          history = json.loads(Path("prediction_history.json").read_text(encoding="utf-8"))
+          assert isinstance(history.get("gameweeks"), list)
+          assert history["gameweek_count"] == len(history["gameweeks"])
+          assert all(len(gw["predictions"]) == 10 for gw in history["gameweeks"])
+          print("Prediction history validation passed.")
+
           print("Phase 3 backtest validation passed.")
           PY
