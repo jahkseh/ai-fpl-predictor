@@ -40,12 +40,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install numpy pandas scikit-learn
 
-      - name: Generate model predictions
-        run: |
+      - name: Preserve previous predictions for model audit\n        run: |\n          if [ -f predictions.json ]; then cp predictions.json predictions.previous.json; fi\n\n      - name: Generate model predictions\n        run: |
           python model/update_predictions.py --gameweek "${{ steps.gw.outputs.gameweek }}" --output predictions.generated.json
 
-      - name: Generate live intelligence dataset
-        run: |
+      - name: Audit prediction changes\n        run: |\n          python model/audit_prediction_changes.py \\\n            --previous predictions.previous.json \\\n            --current predictions.generated.json \\\n            --output prediction_audit.json\n\n      - name: Generate live intelligence dataset\n        run: |
           python model/build_live_data.py --gameweek "${{ steps.gw.outputs.gameweek }}" --predictions predictions.generated.json --output live_data.json
 
       - name: Publish generated prediction data
@@ -62,7 +60,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json index.html
+          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json index.html
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0
