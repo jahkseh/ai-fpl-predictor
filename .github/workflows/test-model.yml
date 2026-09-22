@@ -38,6 +38,21 @@ jobs:
         run: |
           python model/phase3_backtest.py --output phase3_backtest.json
 
+      - name: Validate browser JavaScript syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for filename in ["index.html", "player.html", "team.html"]:
+              html = Path(filename).read_text(encoding="utf-8")
+              scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+              assert scripts, f"No script blocks found in {filename}"
+              Path(f"/tmp/{filename}.js").write_text("\n".join(scripts), encoding="utf-8")
+          PY
+          node --check /tmp/index.html.js
+          node --check /tmp/player.html.js
+          node --check /tmp/team.html.js
+
       - name: Validate production prediction pipeline
         run: |
           python model/update_predictions.py --gameweek 6 --output predictions.ci.json
