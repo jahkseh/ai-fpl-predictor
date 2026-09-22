@@ -313,7 +313,15 @@ def build_player_profiles(
         def fmt(value, suffix=""):
             return (f"{float(value):.2f}{suffix}" if value is not None and np.isfinite(float(value)) else "n/a")
 
-        player_history = historical[historical["player_key"].eq(normalize_name(name))].copy()
+        # Match current-season display names to historical full names robustly.
+        # FPL web_name values can be shortened (e.g. "Rice" vs "Declan Rice"),
+        # so prefer the current first/second-name combination when available.
+        history_candidates = {
+            normalize_name(name),
+            normalize_name(str(player.get("first_name", "")) + " " + str(player.get("second_name", ""))),
+        }
+        history_candidates = {key for key in history_candidates if key and key != "nan"}
+        player_history = historical[historical["player_key"].isin(history_candidates)].copy()
         history_seasons = []
         if not player_history.empty:
             grouped_history = (
