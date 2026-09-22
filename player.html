@@ -1043,7 +1043,7 @@
             ];
         }
 
-        function renderPlayerProfile(profile, dataGameweek, nextGameweek) {
+        function renderPlayerProfile(profile, dataGameweek, nextGameweek, predictionHistory = []) {
             const team = profile.team || playerTeams[profile.name] || "Team";
             const fixture = profile.fixture || {};
             const prediction = Number(profile.prediction);
@@ -1146,7 +1146,7 @@
                             '<div class="profile-performance"><span>Bonus / 90</span><strong>' + metric(underlying.bonus_per_90) + '</strong><small>FPL bonus points</small></div>' +
                         '</div>' +
                         
-                        '<div class="section-heading"><span class="eyebrow">Historical record</span><h2>Completed-season history</h2></div>'
+                        '<div class="section-heading"><span class="eyebrow">Historical record</span><h2>Completed-season history</h2></div>' +
                         '<p class="profile-section-note">Historical FPL record across the completed seasons used by the model. This is descriptive history, not a forecast.</p>' +
                         (historicalSeasons.length ? (
                             '<div class="profile-history-grid">' +
@@ -1164,6 +1164,14 @@
                             '</tbody></table></div>'
                         ) : '<div class="profile-data-empty"><span>↗</span><div><strong>Historical record not published</strong>Completed-season history is not present in the current profile snapshot.</div></div>') +
                         
+                        '<div class="section-heading"><span class="eyebrow">Prediction history</span><h2>Previous model snapshots</h2></div>' +
+                        '<p class="profile-section-note">These are the model projections previously published for this player. They are snapshots, not realised FPL points.</p>' +
+                        '<div class="profile-form-list">' +
+                            (predictionHistory.length ? predictionHistory.map(item =>
+                                '<div class="profile-form-card"><span class="gw">GW' + escapeHtml(item.gameweek) + '</span><strong>' + metric(item.prediction) + ' pts</strong><small>' + (item.confidence ? escapeHtml(item.confidence) + ' confidence' : 'Published projection') + '</small><p>' + (item.p10 != null && item.p90 != null ? 'P10–P90 ' + metric(item.p10, '', 1) + '–' + metric(item.p90, '', 1) : 'Range unavailable') + '</p></div>'
+                            ).join("") : '<div class="profile-data-empty"><span>↗</span><div><strong>Prediction history will build automatically</strong>Each new published gameweek snapshot will appear here.</div></div>') +
+                        '</div>' +
+
                         '<div class="section-heading"><span class="eyebrow">Next fixtures</span><h2>Upcoming schedule</h2></div>' +
                         '<p class="profile-section-note">Difficulty is the model-context 1–5 scale used by this site, not official FPL FDR.</p>' +
                         '<div class="profile-fixture-list">' +
@@ -1189,8 +1197,27 @@
 
                 let profileData = null;
                 try {
-                    const profileResponse = await fetch("player_profiles.json?ts=" + Date.now());
+                    const [profileResponse, historyResponse] = await Promise.all([
+                        fetch("player_profiles.json?ts=" + Date.now()),
+                        fetch("prediction_history.json?ts=" + Date.now())
+                    ]);
                     if (profileResponse.ok) profileData = await profileResponse.json();
+                    const predictionHistoryData = historyResponse.ok ? await historyResponse.json() : {gameweeks: []};
+                    const playerHistory = Array.isArray(predictionHistoryData.gameweeks)
+                        ? predictionHistoryData.gameweeks.flatMap(gameweek =>
+                            (gameweek.predictions || []).flatMap(fixture =>
+                                (fixture.players || [])
+                                    .filter(player => player.name === playerName)
+                                    .map(player => ({
+                                        gameweek: gameweek.gameweek,
+                                        prediction: player.prediction,
+                                        p10: player.prediction_p10,
+                                        p90: player.prediction_p90,
+                                        confidence: player.confidence
+                                    }))
+                            )
+                        ).sort((a, b) => Number(b.gameweek) - Number(a.gameweek)).slice(0, 5)
+                        : [];
                 } catch (error) {
                     console.info("Player profile dataset unavailable; using live fallback:", error);
                 }
@@ -1201,7 +1228,7 @@
                         item.name.replaceAll(" ", "") === playerName.replaceAll(" ", "")
                     );
                     if (!profile) throw new Error("Player not found");
-                    renderPlayerProfile(profile, profileData.data_gameweek, profileData.next_gameweek);
+                    renderPlayerProfile(profile, profileData.data_gameweek, profileData.next_gameweek, playerHistory);
                     return;
                 }
 
@@ -1248,7 +1275,7 @@
                         fixture_environment: predicted.fixture_context?.fixture_xg_environment
                     }})
                 };
-                renderPlayerProfile(fallback, predictionData.gameweek, predictionData.gameweek);
+                renderPlayerProfile(fallback, predictionData.gameweek, predictionData.gameweek, []);
             } catch (error) {
                 console.error("Player profile loading error:", error);
                 content.innerHTML = '<div class="state">This player profile is not available.</div>';
