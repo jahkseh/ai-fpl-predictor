@@ -125,6 +125,7 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          from pathlib import Path
           with open("phase3_backtest.json", encoding="utf-8") as f:
               data = json.load(f)
           assert data["models"]["baseline"]
