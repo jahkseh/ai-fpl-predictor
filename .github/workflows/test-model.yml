@@ -59,7 +59,16 @@ jobs:
           }
           assert required_model_fields.issubset(all_players[0]), "Full player model payload is missing fields"
           assert all(
-              0 <= float(player["prediction_p10"]) <= float(player["prediction"]) <= float(player["prediction_p90"])
+              float(player["prediction_p10"]) <= float(player["prediction"]) <= float(player["prediction_p90"])
+              and all(
+                  value == value
+                  and value not in (float("inf"), float("-inf"))
+                  for value in (
+                      float(player["prediction_p10"]),
+                      float(player["prediction"]),
+                      float(player["prediction_p90"]),
+                  )
+              )
               for player in all_players
           )
           assert all(1 <= int(player["fixture_difficulty"]) <= 5 for player in all_players)
