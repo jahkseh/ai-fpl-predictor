@@ -98,6 +98,21 @@ def player_prediction_payload(row: pd.Series) -> dict:
                 "recent_3_minutes": safe_json_float(row.get("previous_3_minutes", np.nan)),
                 "recent_3_xg": safe_json_float(row.get("previous_3_expected_goals", np.nan)),
                 "recent_3_xa": safe_json_float(row.get("previous_3_expected_assists", np.nan)),
+                "ict_index_per_90": safe_json_float(row.get("previous_5_ict_index_per90", np.nan)),
+                "influence_per_90": safe_json_float(row.get("previous_5_influence_per90", np.nan)),
+                "creativity_per_90": safe_json_float(row.get("previous_5_creativity_per90", np.nan)),
+                "threat_per_90": safe_json_float(row.get("previous_5_threat_per90", np.nan)),
+                "bps_per_90": safe_json_float(row.get("previous_5_bps_per90", np.nan)),
+                "bonus_per_90": safe_json_float(row.get("previous_5_bonus_per90", np.nan)),
+                "xgi_per_90": safe_json_float(
+                    (row.get("previous_5_expected_goals", np.nan) + row.get("previous_5_expected_assists", np.nan))
+                    / (row.get("previous_5_minutes", np.nan) / 90)
+                    if pd.notna(row.get("previous_5_expected_goals", np.nan))
+                    and pd.notna(row.get("previous_5_expected_assists", np.nan))
+                    and pd.notna(row.get("previous_5_minutes", np.nan))
+                    and float(row.get("previous_5_minutes", 0)) > 0
+                    else np.nan
+                ),
             },
             "current_club": {
                 "points_per_90": safe_json_float(row.get("club_points_per_90", np.nan)),
