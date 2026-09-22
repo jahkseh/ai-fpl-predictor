@@ -51,12 +51,18 @@ jobs:
       - name: Publish generated prediction data
         run: mv predictions.generated.json predictions.json
 
+      - name: Update prediction history
+        run: |
+          python model/publish_prediction_history.py \
+            --predictions predictions.json \
+            --history prediction_history.json
+
       - name: Commit generated data
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add predictions.json live_data.json differentials.json player_profiles.json index.html
+          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json index.html
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0
