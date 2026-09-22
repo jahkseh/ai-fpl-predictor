@@ -234,7 +234,8 @@ def enrich_current_players(
         teams[[
             "code", "id", "name", "short_name", "strength",
             "strength_attack_home", "strength_attack_away",
-            "strength_defence_home", "strength_defence_away", "elo",
+            "strength_defence_home", "strength_defence_away",
+            "strength_overall_home", "strength_overall_away", "elo",
         ]]
         .drop_duplicates("code")
     )
@@ -261,6 +262,18 @@ def enrich_current_players(
     for col in ["team_code", "position", "web_name", "name", "short_name"]:
         if col in enriched.columns and enriched[col].isna().any():
             raise ValueError(f"Missing player/team mapping: {col}")
+
+    # The current FPL-Core-Insights feed stores player/team metadata separately
+    # from the player gameweek rows. Keep the team display name explicit so
+    # downstream JSON cannot silently lose it.
+    if "name_team" in enriched.columns:
+        enriched["team_name"] = enriched["name_team"]
+
+    # The upstream strength field is currently blank in the 2026/27 feed.
+    # Use the published home/away overall strength values as a safe fallback.
+    if "strength" in enriched.columns:
+        fallback_strength = enriched[["strength_overall_home", "strength_overall_away"]].mean(axis=1)
+        enriched["strength"] = enriched["strength"].where(enriched["strength"].notna(), fallback_strength)
 
     return enriched
 
@@ -392,8 +405,8 @@ def build_fixture_lookup(
                 "fixture_away_team": away,
                 "match_id": fixture["match_id"],
                 "was_home_gw": 1,
-                "home_strength": team_rows.loc[home_code, "strength"],
-                "away_strength": team_rows.loc[away_code, "strength"],
+                "home_strength": team_rows.loc[home_code, "strength_overall_home"],
+                "away_strength": team_rows.loc[away_code, "strength_overall_away"],
                 "home_elo": team_rows.loc[home_code, "elo"],
                 "away_elo": team_rows.loc[away_code, "elo"],
             },
@@ -405,8 +418,8 @@ def build_fixture_lookup(
                 "fixture_away_team": away,
                 "match_id": fixture["match_id"],
                 "was_home_gw": 0,
-                "home_strength": team_rows.loc[home_code, "strength"],
-                "away_strength": team_rows.loc[away_code, "strength"],
+                "home_strength": team_rows.loc[home_code, "strength_overall_home"],
+                "away_strength": team_rows.loc[away_code, "strength_overall_away"],
                 "home_elo": team_rows.loc[home_code, "elo"],
                 "away_elo": team_rows.loc[away_code, "elo"],
             },
@@ -566,23 +579,11 @@ def generate_target_predictions(
 
     # Model-context fixture difficulty: 1 is the easiest opponent-strength bucket,
     # 5 is the hardest. This is deliberately labelled separately from official FPL FDR.
-    strength_by_team = (
-        teams[["code", "strength"]]
-        .dropna(subset=["strength"])
-        .drop_duplicates("code")
-        .sort_values(["strength", "code"])
-        .reset_index(drop=True)
-    )
-    if len(strength_by_team) >= 5:
-        strength_by_team["fixture_difficulty"] = (
-            np.ceil((strength_by_team.index + 1) / len(strength_by_team) * 5)
-            .clip(1, 5)
-            .astype(int)
-        )
-        difficulty_map = strength_by_team.set_index("code")["fixture_difficulty"].to_dict()
-        eligible["fixture_difficulty"] = eligible["opponent_team_code"].map(difficulty_map)
-    else:
-        eligible["fixture_difficulty"] = np.nan
+    # Model FDR is derived from the opponent's published home/away strength.
+    # The feed's generic strength field is currently blank, so use the same
+    # venue-specific values that drive the fixture context above.
+    opponent_strength = eligible["opponent_strength"].astype(float)
+    eligible["fixture_difficulty"] = np.ceil(opponent_strength).clip(1, 5)
 
     eligible["fixture"] = (
         eligible["fixture_home_team"] + " vs " + eligible["fixture_away_team"]
@@ -604,7 +605,9 @@ def _serialize_prediction_rows(frame: pd.DataFrame) -> list[dict]:
             "rank": int(row["rank"]),
             "name": PLAYER_NAME_OVERRIDES.get(str(row["web_name"]), str(row["web_name"])),
             "prediction": round(float(row["prediction"]), 6),
-            "price": round(float(row["now_cost"]) / 10, 1) if pd.notna(row.get("now_cost")) else None,
+            # The 2026/27 upstream feed stores now_cost directly in £m (e.g. 9.5),
+            # while the model feature value remains in FPL tenths (95).
+            "price": round(float(row["now_cost"]), 1) if pd.notna(row.get("now_cost")) else None,
             "ownership": float(row["selected_by_percent"]) if pd.notna(row.get("selected_by_percent")) else None,
             "position": str(row.get("position", "")),
             "team": str(row.get("team_name", "")),
