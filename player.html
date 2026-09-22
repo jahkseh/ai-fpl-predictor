@@ -765,6 +765,12 @@
         .profile-underlying{padding:15px;border:1px solid var(--border);border-radius:13px;background:var(--surface-raised)}
         .profile-underlying span{display:block;color:var(--text-muted);font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
         .profile-underlying strong{display:block;margin-top:7px;color:var(--text);font-size:1.08rem}
+        .profile-performance-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:30px}
+        .profile-performance{padding:15px;border:1px solid var(--border);border-radius:13px;background:var(--surface-raised)}
+        .profile-performance span{display:block;color:var(--text-muted);font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+        .profile-performance strong{display:block;margin-top:7px;color:var(--text);font-size:1.08rem}
+        .profile-performance small{display:block;margin-top:4px;color:var(--text-muted);font-size:9px}
+
         .profile-fixture-list{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:30px}
         .profile-fixture{padding:15px;border:1px solid var(--border);border-radius:13px;background:var(--surface-raised)}
         .profile-fixture-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -779,7 +785,8 @@
         .profile-why-detail{color:var(--text-muted);font-size:11px;line-height:1.45}
         .profile-disclaimer{margin-top:-18px;margin-bottom:30px;color:var(--text-muted);font-size:10px;line-height:1.55}
         .profile-section-note{margin:-7px 0 16px;color:var(--text-muted);font-size:11px;line-height:1.5}
-        @media(max-width:900px){.profile-model-grid{grid-template-columns:repeat(2,1fr)}.profile-form-list{grid-template-columns:repeat(3,1fr)}.profile-underlying-grid{grid-template-columns:repeat(3,1fr)}.profile-fixture-list{grid-template-columns:repeat(3,1fr)}}
+        @media(max-width:1000px){.profile-performance-grid{grid-template-columns:repeat(4,1fr)}}
+        @media(max-width:900px){.profile-model-grid{grid-template-columns:repeat(2,1fr)}.profile-form-list{grid-template-columns:repeat(3,1fr)}.profile-underlying-grid{grid-template-columns:repeat(3,1fr)}.profile-performance-grid{grid-template-columns:repeat(3,1fr)}.profile-fixture-list{grid-template-columns:repeat(3,1fr)}}
         @media(max-width:760px){.profile-why-row{grid-template-columns:1fr 1fr}.profile-why-detail{grid-column:1 / -1}}
         .profile-history-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px}
         .profile-history-stat{padding:14px;border:1px solid var(--border);border-radius:13px;background:var(--surface-raised)}
@@ -793,7 +800,7 @@
         .profile-history-table td strong{color:var(--text)}
         .profile-history-table tr:last-child td{border-bottom:0}
         @media(max-width:900px){.profile-history-grid{grid-template-columns:repeat(3,1fr)}}
-        @media(max-width:560px){.profile-history-grid{grid-template-columns:repeat(2,1fr)}.profile-model-grid,.profile-form-list,.profile-underlying-grid,.profile-fixture-list{grid-template-columns:1fr 1fr}.profile-why-row{grid-template-columns:1fr}.profile-why-detail{grid-column:auto}}
+        @media(max-width:560px){.profile-history-grid{grid-template-columns:repeat(2,1fr)}.profile-model-grid,.profile-form-list,.profile-underlying-grid,.profile-performance-grid,.profile-fixture-list{grid-template-columns:1fr 1fr}.profile-why-row{grid-template-columns:1fr}.profile-why-detail{grid-column:auto}}
 
         /* Player page UI upgrade */
         .profile-quick-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:0 0 30px}
@@ -1111,7 +1118,19 @@
                             '<div class="profile-underlying"><span>Goals / assists</span><strong>' + (underlying.goals ?? '—') + ' / ' + (underlying.assists ?? '—') + '</strong></div>' +
                         '</div>' +
 
-                        '<div class="section-heading"><span class="eyebrow">Historical record</span><h2>Completed-season history</h2></div>' +
+                        '<div class="section-heading"><span class="eyebrow">Performance signals</span><h2>Recent underlying quality</h2></div>' +
+                        '<p class="profile-section-note">Rolling five-gameweek per-90 signals from the same pre-match data used by the model. ICT is FPL\'s Influence, Creativity and Threat index.</p>' +
+                        '<div class="profile-performance-grid">' +
+                            '<div class="profile-performance"><span>xGI / 90</span><strong>' + metric(underlying.xgi_per_90) + '</strong><small>xG + xA</small></div>' +
+                            '<div class="profile-performance"><span>ICT / 90</span><strong>' + metric(underlying.ict_index_per_90) + '</strong><small>FPL performance index</small></div>' +
+                            '<div class="profile-performance"><span>Influence / 90</span><strong>' + metric(underlying.influence_per_90) + '</strong><small>Match impact</small></div>' +
+                            '<div class="profile-performance"><span>Creativity / 90</span><strong>' + metric(underlying.creativity_per_90) + '</strong><small>Chance creation</small></div>' +
+                            '<div class="profile-performance"><span>Threat / 90</span><strong>' + metric(underlying.threat_per_90) + '</strong><small>Goal threat</small></div>' +
+                            '<div class="profile-performance"><span>BPS / 90</span><strong>' + metric(underlying.bps_per_90) + '</strong><small>Bonus system signal</small></div>' +
+                            '<div class="profile-performance"><span>Bonus / 90</span><strong>' + metric(underlying.bonus_per_90) + '</strong><small>FPL bonus points</small></div>' +
+                        '</div>' +
+                        
+                        '<div class="section-heading"><span class="eyebrow">Historical record</span><h2>Completed-season history</h2></div>'
                         '<p class="profile-section-note">Historical FPL record across the completed seasons used by the model. This is descriptive history, not a forecast.</p>' +
                         (historicalSeasons.length ? (
                             '<div class="profile-history-grid">' +
@@ -1122,9 +1141,9 @@
                                 '<div class="profile-history-stat"><span>Career xA</span><strong>' + metric(careerHistory.xa) + '</strong></div>' +
                                 '<div class="profile-history-stat"><span>Goals / assists</span><strong>' + (careerHistory.goals ?? '—') + ' / ' + (careerHistory.assists ?? '—') + '</strong></div>' +
                             '</div>' +
-                            '<div class="profile-history-table-wrap"><table class="profile-history-table"><thead><tr><th>Season</th><th>Club</th><th>Minutes</th><th>Starts</th><th>Points</th><th>xG</th><th>xA</th><th>Pts / 90</th></tr></thead><tbody>' +
+                            '<div class="profile-history-table-wrap"><table class="profile-history-table"><thead><tr><th>Season</th><th>Club</th><th>Minutes</th><th>Starts</th><th>Points</th><th>xG</th><th>xA</th><th>Pts / 90</th><th>ICT / 90</th><th>BPS / 90</th></tr></thead><tbody>' +
                                 historicalSeasons.map(item =>
-                                    '<tr><td><strong>' + escapeHtml(item.season || '—') + '</strong></td><td>' + escapeHtml(item.club || '—') + '</td><td>' + (item.minutes ?? '—') + '</td><td>' + (item.starts ?? '—') + '</td><td>' + (item.points ?? '—') + '</td><td>' + metric(item.xg) + '</td><td>' + metric(item.xa) + '</td><td>' + metric(item.points_per_90) + '</td></tr>'
+                                    '<tr><td><strong>' + escapeHtml(item.season || '—') + '</strong></td><td>' + escapeHtml(item.club || '—') + '</td><td>' + (item.minutes ?? '—') + '</td><td>' + (item.starts ?? '—') + '</td><td>' + (item.points ?? '—') + '</td><td>' + metric(item.xg) + '</td><td>' + metric(item.xa) + '</td><td>' + metric(item.points_per_90) + '</td><td>' + metric(item.ict_index_per_90) + '</td><td>' + metric(item.bps_per_90) + '</td></tr>'
                                 ).join('') +
                             '</tbody></table></div>'
                         ) : '<div class="profile-data-empty"><span>↗</span><div><strong>Historical record not published</strong>Completed-season history is not present in the current profile snapshot.</div></div>') +
