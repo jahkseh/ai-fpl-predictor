@@ -299,6 +299,9 @@ def build_player_profiles(
                 "starts": safe_float(gw_row.get("starts")),
                 "xg": safe_float(gw_row.get("expected_goals")),
                 "xa": safe_float(gw_row.get("expected_assists")),
+                "ict_index": safe_float(gw_row.get("ict_index")),
+                "bps": safe_float(gw_row.get("bps")),
+                "bonus": safe_float(gw_row.get("bonus")),
                 "fixture": (
                     (team_map.get(gw_team_code, team) + " vs " + opponent)
                     if was_home and opponent
@@ -323,6 +326,9 @@ def build_player_profiles(
                     assists=("assists", "sum"),
                     xg=("expected_goals", "sum"),
                     xa=("expected_assists", "sum"),
+                    ict_index=("ict_index", "sum"),
+                    bps=("bps", "sum"),
+                    bonus=("bonus", "sum"),
                 )
                 .sort_values(["season", "club_key"])
             )
@@ -341,6 +347,9 @@ def build_player_profiles(
                     "points_per_90": safe_float(history_row["points"] / minutes * 90 if minutes > 0 else None),
                     "xg_per_90": safe_float(history_row["xg"] / minutes * 90 if minutes > 0 else None),
                     "xa_per_90": safe_float(history_row["xa"] / minutes * 90 if minutes > 0 else None),
+                    "ict_index_per_90": safe_float(history_row["ict_index"] / minutes * 90 if minutes > 0 else None),
+                    "bps_per_90": safe_float(history_row["bps"] / minutes * 90 if minutes > 0 else None),
+                    "bonus_per_90": safe_float(history_row["bonus"] / minutes * 90 if minutes > 0 else None),
                 })
 
         career_minutes = int(sum(item["minutes"] for item in history_seasons))
@@ -349,6 +358,9 @@ def build_player_profiles(
         career_assists = int(sum(item["assists"] for item in history_seasons))
         career_xg = float(sum(item["xg"] or 0 for item in history_seasons))
         career_xa = float(sum(item["xa"] or 0 for item in history_seasons))
+        career_ict = float(sum((item.get("ict_index") or 0) for item in history_seasons))
+        career_bps = float(sum((item.get("bps") or 0) for item in history_seasons))
+        career_bonus = float(sum((item.get("bonus") or 0) for item in history_seasons))
         career = {
             "minutes": career_minutes,
             "starts": int(sum(item["starts"] for item in history_seasons)),
@@ -360,6 +372,12 @@ def build_player_profiles(
             "points_per_90": safe_float(career_points / career_minutes * 90 if career_minutes > 0 else None),
             "xg_per_90": safe_float(career_xg / career_minutes * 90 if career_minutes > 0 else None),
             "xa_per_90": safe_float(career_xa / career_minutes * 90 if career_minutes > 0 else None),
+            "ict_index": safe_float(career_ict),
+            "bps": safe_float(career_bps),
+            "bonus": safe_float(career_bonus),
+            "ict_index_per_90": safe_float(career_ict / career_minutes * 90 if career_minutes > 0 else None),
+            "bps_per_90": safe_float(career_bps / career_minutes * 90 if career_minutes > 0 else None),
+            "bonus_per_90": safe_float(career_bonus / career_minutes * 90 if career_minutes > 0 else None),
         }
 
         why = [
@@ -410,6 +428,13 @@ def build_player_profiles(
                 "minutes": int(season_minutes),
                 "goals": int(pd.to_numeric(season_rows["goals_scored"], errors="coerce").fillna(0).sum()),
                 "assists": int(pd.to_numeric(season_rows["assists"], errors="coerce").fillna(0).sum()),
+                "ict_index_per_90": safe_float(model_inputs.get("current_form", {}).get("ict_index_per_90")),
+                "bps_per_90": safe_float(model_inputs.get("current_form", {}).get("bps_per_90")),
+                "bonus_per_90": safe_float(model_inputs.get("current_form", {}).get("bonus_per_90")),
+                "influence_per_90": safe_float(model_inputs.get("current_form", {}).get("influence_per_90")),
+                "creativity_per_90": safe_float(model_inputs.get("current_form", {}).get("creativity_per_90")),
+                "threat_per_90": safe_float(model_inputs.get("current_form", {}).get("threat_per_90")),
+                "xgi_per_90": safe_float(model_inputs.get("current_form", {}).get("xgi_per_90")),
             },
             "historical_record": {
                 "career": career,
