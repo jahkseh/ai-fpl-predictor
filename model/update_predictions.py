@@ -20,6 +20,7 @@ from phase3_features import (
     add_workload_features,
     fit_expected_minutes_models,
     prepare_historical_training,
+    add_performance_features,
 )
 from historical_intelligence import add_historical_priors, load_completed_seasons
 from phase4_features import (
@@ -47,6 +48,10 @@ BASE_PLAYER_FEATURES = [
     "previous_10_expected_goals", "previous_3_expected_assists",
     "previous_5_expected_assists", "previous_10_expected_assists",
     "value", "was_home",
+] + [
+    f"previous_{window}_{metric}_per90"
+    for metric in ("ict_index", "influence", "creativity", "threat", "bps", "bonus")
+    for window in (3, 5, 10)
 ]
 PHASE4_FEATURES = phase4_feature_columns()
 PLAYER_FEATURES = BASE_PLAYER_FEATURES + HISTORICAL_FEATURES + PHASE4_FEATURES
@@ -292,6 +297,7 @@ def add_current_rolling_features(enriched: pd.DataFrame) -> pd.DataFrame:
         .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean()) / 90
     )
 
+    enriched = add_performance_features(enriched, "id")
     return enriched
 
 
@@ -417,6 +423,7 @@ def build_fixture_lookup(
 def train_validated_model(weekly: pd.DataFrame) -> RandomForestRegressor:
     train = prepare_historical_training(weekly)
     train = add_workload_features(train, "player_key")
+    train = add_performance_features(train, "player_key")
     train = attach_team_features(train, build_historical_team_features())
     train = add_fixture_environment(train)
     train = train[
@@ -437,6 +444,7 @@ def train_validated_model(weekly: pd.DataFrame) -> RandomForestRegressor:
 
 def historical_holdout_diagnostics(weekly: pd.DataFrame) -> dict:
     prepared = add_workload_features(prepare_historical_training(weekly), "player_key")
+    prepared = add_performance_features(prepared, "player_key")
     prepared = attach_team_features(prepared, build_historical_team_features())
     prepared = add_fixture_environment(prepared)
     train = prepared[
