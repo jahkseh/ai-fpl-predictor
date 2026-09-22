@@ -137,6 +137,10 @@ jobs:
           assert isinstance(history.get("gameweeks"), list)
           assert history["gameweek_count"] == len(history["gameweeks"])
           assert all(len(gw["predictions"]) == 10 for gw in history["gameweeks"])
+          assert all(
+              all(len(fixture["players"]) == 3 for fixture in gw["predictions"])
+              for gw in history["gameweeks"]
+          )
           print("Prediction history validation passed.")
 
           print("Phase 3 backtest validation passed.")
