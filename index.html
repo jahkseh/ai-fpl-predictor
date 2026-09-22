@@ -913,6 +913,24 @@ body[data-theme="light"] .hero-stat span {
         @media(max-width:900px){.differential-grid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:520px){.differential-grid{grid-template-columns:1fr}}
         
+        /* Fixture difficulty calendar */
+        .fixture-difficulty-section{background:var(--surface-soft)}
+        .fixture-difficulty-note{max-width:980px;margin:0 auto 18px;padding:13px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text-muted);font-size:11px;line-height:1.55}
+        .fixture-difficulty-note strong{color:var(--text)}
+        .fixture-difficulty-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+        .fixture-difficulty-card{padding:16px;border:1px solid var(--border);border-radius:15px;background:var(--surface);position:relative;overflow:hidden}
+        .fixture-difficulty-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--home-team-colour),var(--away-team-colour))}
+        .fixture-difficulty-gw{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;color:var(--text-muted);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+        .fixture-difficulty-teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px}
+        .fixture-difficulty-team{display:flex;align-items:center;gap:8px;min-width:0;color:var(--text);font-size:12px;font-weight:800}
+        .fixture-difficulty-team.away{justify-content:flex-end;text-align:right}
+        .fixture-difficulty-vs{color:var(--text-muted);font-size:9px;font-weight:900}
+        .fixture-difficulty-score{display:flex;align-items:center;gap:6px;white-space:nowrap}
+        .fixture-difficulty-badge{min-width:25px;height:24px;padding:0 7px;display:inline-flex;align-items:center;justify-content:center;border-radius:7px;font-size:10px;font-weight:900}
+        .fixture-difficulty-badge.easy{background:rgba(34,197,94,.12);color:#16a34a}.fixture-difficulty-badge.mid{background:rgba(234,179,8,.13);color:#ca8a04}.fixture-difficulty-badge.hard{background:rgba(220,38,38,.11);color:#dc2626}
+        .fixture-difficulty-label{color:var(--text-muted);font-size:9px;font-weight:800}
+        @media(max-width:700px){.fixture-difficulty-grid{grid-template-columns:1fr}.fixture-difficulty-teams{grid-template-columns:1fr auto 1fr}}
+
         /* Current Gameweek overview */
         .prediction-overview {
             max-width: 1000px;
@@ -1190,7 +1208,7 @@ body[data-theme="light"] .hero-stat span {
     <a href="#home">Home</a>
     <a href="#predictions">Predictions</a>
     <a href="#players">Players</a>
-    <a href="#live-stats">Live Picks</a>
+    <a href="#live-stats">Live Picks</a>\n    <a href="#fixture-difficulty">Fixtures</a>
     <a href="#teams">Teams</a>
     <a href="#differentials">Differentials</a>
     <a href="#performance">Performance</a>
@@ -1267,6 +1285,16 @@ body[data-theme="light"] .hero-stat span {
 </div>
 
     </section>
+<section class="section fixture-difficulty-section" id="fixture-difficulty">
+    <div class="section-title">
+        <span class="section-kicker">Fixture context</span>
+        <h2>Fixture Difficulty</h2>
+        <p>How difficult each current Gameweek fixture is according to the model's opponent-strength scale.</p>
+    </div>
+    <div class="fixture-difficulty-note"><strong>Model FDR:</strong> 1 = easier opponent, 5 = harder opponent. This is the site's model-context scale, not the official FPL Fixture Difficulty Rating.</div>
+    <div class="fixture-difficulty-grid" id="fixture-difficulty-grid"><div class="live-empty">Loading fixture difficulty…</div></div>
+</section>
+
 <section class="section live-intelligence-section" id="live-stats">
     <div class="section-title">
         <span class="section-kicker">Live data</span>
@@ -1811,6 +1839,42 @@ function renderFeaturedPlayers(fixtures) {
     fixtureModal.addEventListener("click", event => { if (event.target === fixtureModal) closeFixtureModal(); });
     document.addEventListener("keydown", event => { if (event.key === "Escape" && !fixtureModal.hidden) closeFixtureModal(); });
 
+    function renderFixtureDifficulty(fixtures, allPlayers) {
+        const grid = document.getElementById("fixture-difficulty-grid");
+        if (!grid) return;
+        const difficultyByFixture = new Map();
+        (Array.isArray(allPlayers) ? allPlayers : []).forEach(player => {
+            const home = player.fixture_home || "";
+            const away = player.fixture_away || "";
+            const difficulty = Number(player.fixture_difficulty);
+            if (!home || !away || !Number.isFinite(difficulty)) return;
+            const key = home + " vs " + away;
+            if (!difficultyByFixture.has(key)) difficultyByFixture.set(key, {});
+            const record = difficultyByFixture.get(key);
+            const team = player.team || "";
+            if (team === home) record.home = difficulty;
+            if (team === away) record.away = difficulty;
+        });
+
+        const difficultyClass = value => value <= 2 ? "easy" : value >= 4 ? "hard" : "mid";
+        const difficultyLabel = value => value <= 2 ? "Easier" : value >= 4 ? "Harder" : "Balanced";
+        grid.innerHTML = (fixtures || []).map(fixture => {
+            const values = difficultyByFixture.get(fixture.home + " vs " + fixture.away) || {};
+            const homeDifficulty = Number.isFinite(values.home) ? values.home : null;
+            const awayDifficulty = Number.isFinite(values.away) ? values.away : null;
+            const homeText = homeDifficulty != null ? '<span class="fixture-difficulty-score"><span class="fixture-difficulty-badge ' + difficultyClass(homeDifficulty) + '">' + Math.round(homeDifficulty) + '</span><span class="fixture-difficulty-label">' + difficultyLabel(homeDifficulty) + '</span></span>' : '<span class="fixture-difficulty-label">—</span>';
+            const awayText = awayDifficulty != null ? '<span class="fixture-difficulty-score"><span class="fixture-difficulty-badge ' + difficultyClass(awayDifficulty) + '">' + Math.round(awayDifficulty) + '</span><span class="fixture-difficulty-label">' + difficultyLabel(awayDifficulty) + '</span></span>' : '<span class="fixture-difficulty-label">—</span>';
+            return '<div class="fixture-difficulty-card" style="--home-team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + ';--away-team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '">' +
+                '<div class="fixture-difficulty-gw"><span>GW' + escapeDifferentialText(window.currentPredictionGameweek || "—") + '</span><span>Model FDR</span></div>' +
+                '<div class="fixture-difficulty-teams">' +
+                    '<div class="fixture-difficulty-team"><span>' + escapeDifferentialText(fixture.home) + '</span>' + homeText + '</div>' +
+                    '<span class="fixture-difficulty-vs">VS</span>' +
+                    '<div class="fixture-difficulty-team away">' + awayText + '<span>' + escapeDifferentialText(fixture.away) + '</span></div>' +
+                '</div>' +
+            '</div>';
+        }).join("") || '<div class="live-empty">Fixture difficulty is not available yet.</div>';
+    }
+
     async function loadPredictions() {
         try {
             const response = await fetch("predictions.json");
@@ -1820,6 +1884,8 @@ function renderFeaturedPlayers(fixtures) {
             }
 
             const data = await response.json();
+            window.currentPredictionGameweek = data.gameweek;
+            renderFixtureDifficulty(data.predictions, data.all_players || []);
 predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
     <div class="fixture-card interactive-fixture" tabindex="0" role="button" aria-label="View ${fixture.home} versus ${fixture.away} prediction details" style="--home-team-colour:${teamAccentColours[fixture.home] || "var(--accent)"};--away-team-colour:${teamAccentColours[fixture.away] || "var(--accent)"}">
