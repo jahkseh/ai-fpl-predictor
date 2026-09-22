@@ -55,12 +55,24 @@ jobs:
             --predictions predictions.json \
             --history prediction_history.json
 
+      - name: Measure latest realized prediction accuracy
+        run: |
+          GW="${{ steps.gw.outputs.gameweek }}"
+          if [ "$GW" -gt 1 ]; then
+            python model/measure_prediction_accuracy.py \
+              --history prediction_history.json \
+              --gameweek "$((GW - 1))" \
+              --output prediction_accuracy.json
+          else
+            printf '{"available":false,"reason":"no completed gameweek yet"}\n' > prediction_accuracy.json
+          fi
+
       - name: Commit generated data
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json index.html
+          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json prediction_accuracy.json index.html
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0
