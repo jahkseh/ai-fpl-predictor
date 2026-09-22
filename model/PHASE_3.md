@@ -7,6 +7,7 @@ Phase 3 upgrades the predictor from short-term form only to a leakage-safe playe
 ### Historical player intelligence
 - 2022/23, 2023/24, 2024/25 and 2025/26 history.
 - Career points, xG, xA, goals and assists per 90.
+- Production training now spans all four completed seasons in the historical archive, while the 2025/26 walk-forward test remains unseen.
 - Historical start rate.
 - Previous completed-season points/xG/xA per 90.
 - Player-at-club points/xG/xA per 90 and club start rate.
@@ -23,13 +24,21 @@ A separate Random Forest estimates:
 
 These are exposed in prediction JSON and do not use the target gameweek's minutes or points.
 
-### Workload
-Recent gameweek match/minute load is available as leakage-safe modelling features. European/cup workload is not fabricated when the underlying source does not provide reliable player appearance data.
+### Workload and performance signals
+Recent gameweek match/minute load is available as leakage-safe modelling features. The points model now also uses lagged per-90 rolling signals for:
+- ICT Index;
+- Influence;
+- Creativity;
+- Threat;
+- Bonus Points System (BPS);
+- bonus points.
+
+These are calculated only from completed player gameweeks. They are supplementary performance signals, not post-match target values. The current data source also contains richer cup/European coverage, but that workload is kept separate until it can be joined and validated consistently across the historical training set.
 
 ### Controlled backtesting
 phase3_backtest.py performs a walk-forward comparison on the same unseen 2025/26 gameweeks:
 - baseline = existing recent-form feature set;
-- phase3 = recent form + historical player intelligence.
+- phase3 = recent form + historical player intelligence + lagged ICT/BPS/bonus performance signals.
 
 The pipeline reports MAE, RMSE and R² per gameweek and averaged across the evaluation window.
 
