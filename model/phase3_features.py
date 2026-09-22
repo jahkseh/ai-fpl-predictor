@@ -38,7 +38,20 @@ WORKLOAD_FEATURES = [
     "matches_last_5_gw", "minutes_last_5_gw",
 ]
 
-MODEL_FEATURES = HISTORICAL_FEATURES + [
+# FPL's ICT/BPS signals add information beyond raw points and xG/xA.
+# They are all lagged and converted to per-90 rates so playing time does not
+# dominate the signal. These fields are present across the historical FPL
+# gameweek archive and in the current FPL-Core-Insights feed.
+PERFORMANCE_SOURCE_COLUMNS = [
+    "ict_index", "influence", "creativity", "threat", "bps", "bonus",
+]
+PERFORMANCE_FEATURES = [
+    f"previous_{window}_{metric}_per90"
+    for metric in PERFORMANCE_SOURCE_COLUMNS
+    for window in (3, 5, 10)
+]
+
+MODEL_FEATURES = HISTORICAL_FEATURES + PERFORMANCE_FEATURES + [
     "previous_3_total_points", "previous_5_total_points",
     "previous_10_total_points", "previous_3_minutes",
     "previous_5_minutes", "previous_10_minutes",
@@ -57,6 +70,35 @@ PHASE3_MODEL_PARAMS = {
     "n_jobs": -1,
 }
 
+
+
+def add_performance_features(frame: pd.DataFrame, id_col: str) -> pd.DataFrame:
+    """Add leakage-safe rolling ICT/BPS/bonus performance signals."""
+    sort_keys = [id_col, "season", "GW"] if "season" in frame.columns else [id_col, "GW"]
+    group_keys = [id_col, "season"] if "season" in frame.columns else [id_col]
+    out = frame.sort_values(sort_keys).copy()
+
+    for source in PERFORMANCE_SOURCE_COLUMNS:
+        if source not in out.columns:
+            out[source] = 0.0
+        values = pd.to_numeric(out[source], errors="coerce").fillna(0.0)
+        minutes = pd.to_numeric(out["minutes"], errors="coerce").fillna(0.0)
+        per90 = values.div(minutes.replace(0, np.nan)).mul(90)
+        # A zero-minute row contains no performance signal. Treat it as
+        # missing for the rolling calculation rather than manufacturing a
+        # zero-performance appearance.
+        per90 = per90.where(minutes > 0)
+        out[f"_tmp_{source}_per90"] = per90
+        for window in (3, 5, 10):
+            out[f"previous_{window}_{source}_per90"] = (
+                out.groupby(group_keys)[f"_tmp_{source}_per90"]
+                .transform(
+                    lambda x, w=window:
+                    x.shift(1).rolling(w, min_periods=1).mean()
+                )
+            )
+
+    return out.drop(columns=[c for c in out.columns if c.startswith("_tmp_")])
 
 def prepare_historical_training(weekly: pd.DataFrame) -> pd.DataFrame:
     """Attach leakage-safe historical priors to every completed season."""
