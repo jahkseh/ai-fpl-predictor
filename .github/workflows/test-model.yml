@@ -65,6 +65,10 @@ jobs:
           from pathlib import Path
 
           predictions = json.loads(Path("predictions.ci.json").read_text(encoding="utf-8"))
+          audit = json.loads(Path("prediction_audit.json").read_text(encoding="utf-8")) if Path("prediction_audit.json").exists() else None
+          if audit is not None:
+              assert isinstance(audit.get("largest_changes"), list)
+              assert int(audit.get("players_compared", 0)) >= 0
           all_players = predictions.get("all_players", [])
           assert len(all_players) >= 30
           required_model_fields = {
