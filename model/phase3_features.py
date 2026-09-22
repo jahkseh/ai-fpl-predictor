@@ -151,11 +151,54 @@ def add_target_historical_features(
     target: pd.DataFrame,
     historical: pd.DataFrame,
 ) -> pd.DataFrame:
-    """Attach the latest completed historical profile to current-season players."""
+    """Attach the latest completed historical profile to current-season players.
+
+    Current FPL web_name values are often shortened (for example, "Rice"),
+    while the historical archive may store the player's full name
+    (for example, "Declan Rice"). Match on the current first/second name
+    combination when it is available, with web_name as a fallback. This keeps
+    historical ability and club-history features populated after transfers or
+    display-name changes.
+    """
     lookup = build_current_history_lookup(historical)
     out = target.copy()
-    name_col = "web_name" if "web_name" in out.columns else "name"
-    out["player_key"] = out[name_col].map(normalize_name)
+    lookup_keys = set(lookup["player_key"])
+
+    if {"first_name", "second_name"} <= set(out.columns):
+        full_name = (
+            out["first_name"].fillna("").astype(str).str.strip()
+            + " "
+            + out["second_name"].fillna("").astype(str).str.strip()
+        ).str.strip()
+        out["player_key"] = full_name.map(normalize_name)
+        web_keys = (
+            out["web_name"].map(normalize_name)
+            if "web_name" in out.columns
+            else pd.Series(index=out.index, dtype=object)
+        )
+    else:
+        name_col = "web_name" if "web_name" in out.columns else "name"
+        out["player_key"] = out[name_col].map(normalize_name)
+        web_keys = pd.Series(index=out.index, dtype=object)
+
+    # If the full-name key is unavailable, use a unique surname match. This is
+    # only a fallback because web_name is not guaranteed to be globally unique.
+    surname_candidates = {}
+    for key in lookup_keys:
+        parts = key.split()
+        if parts:
+            surname_candidates.setdefault(parts[-1], []).append(key)
+
+    resolved = []
+    for idx, key in out["player_key"].items():
+        if key in lookup_keys:
+            resolved.append(key)
+            continue
+        web_key = web_keys.loc[idx] if idx in web_keys.index else ""
+        candidates = surname_candidates.get(web_key, [])
+        resolved.append(candidates[0] if len(candidates) == 1 else key)
+
+    out["player_key"] = resolved
     out = out.merge(
         lookup,
         on="player_key",
@@ -164,7 +207,6 @@ def add_target_historical_features(
         suffixes=("", "_history"),
     )
     return out
-
 
 def fit_expected_minutes_models(
     training: pd.DataFrame,
