@@ -109,6 +109,17 @@ pointer-events:none;
         @media(max-width:900px){.team-context-grid{grid-template-columns:repeat(2,1fr)}.team-fixtures-grid{grid-template-columns:repeat(3,1fr)}}
         @media(max-width:650px){.team-squad-grid{grid-template-columns:1fr}.team-fixtures-grid{grid-template-columns:repeat(2,1fr)}.team-page-nav{overflow-x:auto;white-space:nowrap}.team-page-nav a{flex:0 0 auto}}
         @media(max-width:480px){.team-context-grid{grid-template-columns:1fr 1fr}.team-fixtures-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:560px){
+            header{padding:14px}.navbar{gap:10px}.logo{font-size:21px}
+            nav{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+            nav a{padding:8px 5px;border:1px solid rgba(255,255,255,.08);border-radius:9px;text-align:center;font-size:11px}
+            .theme-toggle{grid-column:span 2;width:100%;margin:0;min-height:36px}
+            main{padding:20px 12px 55px}.team-hero{padding:20px 16px}.team-heading h1{font-size:2rem}
+            .team-snapshot{gap:7px}.snapshot-card{padding:12px}.team-context-grid{gap:7px}
+            .team-context-card{padding:13px}.team-context-card strong{font-size:1.05rem}
+            .team-squad-card{grid-template-columns:30px minmax(0,1fr) auto;padding:11px;gap:8px}
+            .team-fixture-card{padding:12px}
+        }
 </style>
 </head>
 <body>
@@ -156,9 +167,13 @@ function playerAccent(name){return teamAccentColours[playerTeams[name]]||"#20b86
 async function loadTeam(){
 try{
 if(!requestedTeam||!teamCodes[requestedTeam])throw new Error("Team not specified");
-const response=await fetch("predictions.json");
-if(!response.ok)throw new Error("Prediction data unavailable");
-const data=await response.json();
+const [predictionResponse, profileResponse]=await Promise.all([
+    fetch("predictions.json?ts="+Date.now()),
+    fetch("player_profiles.json?ts="+Date.now())
+]);
+if(!predictionResponse.ok)throw new Error("Prediction data unavailable");
+const data=await predictionResponse.json();
+const profileData=profileResponse.ok?await profileResponse.json():{players:[]};
 const fixture=data.predictions.find(item=>item.home===requestedTeam||item.away===requestedTeam);
 if(!fixture)throw new Error("Team fixture not found");
 const isHome=fixture.home===requestedTeam;
@@ -170,6 +185,8 @@ const average=picks.length?combined/picks.length:0;
 const opponentProjection=fixture.players.filter(player=>playerTeams[player.name]===opponent).sort((a,b)=>a.rank-b.rank);
 const opponentTop=opponentProjection.length?Math.max(...opponentProjection.map(player=>Number(player.prediction))):0;
 const allPlayers=Array.isArray(data.all_players)?data.all_players:[];
+const allProfiles=Array.isArray(profileData.players)?profileData.players:[];
+const teamProfiles=allProfiles.filter(player=>player.team===requestedTeam);
 const teamPlayers=allPlayers.filter(player=>{
     const context=player.fixture_context||{};
     const home=player.fixture_home||"";
@@ -208,31 +225,47 @@ content.innerHTML=
 '<div class="team-context-card"><span>Modelled players</span><strong id="team-player-count">—</strong><small>Players available in the current model pool.</small></div>'+
 '<div class="team-context-card"><span>Average projection</span><strong id="team-average-projection">—</strong><small>Average expected points across available team players.</small></div>'+
 '<div class="team-context-card"><span>Highest projection</span><strong id="team-highest-projection">—</strong><small>Highest individual projection for this fixture.</small></div>'+
-'<div class="team-context-card"><span>Next fixture</span><strong>'+escapeHtml(isHome?"Home":"Away")+'</strong><small>'+escapeHtml(opponent)+' · GW'+escapeHtml(data.gameweek)+'</small></div>'+
+'<div class="team-context-card"><span>Team xG / 90</span><strong id="team-xg">—</strong><small>Recent attacking environment used by the model.</small></div>'+
+'<div class="team-context-card"><span>Opponent xGA / 90</span><strong id="team-xga">—</strong><small>Opponent defensive environment for the current fixture.</small></div>'+
+'<div class="team-context-card"><span>Expected minutes</span><strong id="team-expected-minutes">—</strong><small>Average expected minutes across the top projected team players.</small></div>'+
 '</div>'+
 '<div id="team-squad-grid" class="team-squad-grid"></div>'+
 '</section>'+
 '<section class="section" id="team-fixtures" style="--team-colour:'+colour+'"><div class="section-title"><span class="eyebrow">Fixture context</span><h2>Current schedule</h2><p>The next fixture is shown from the prediction snapshot. More fixtures will appear when the published player data contains them.</p></div>'+
 '<div id="team-fixtures-grid" class="team-fixtures-grid"></div>'+
 '</section>';
-renderTeamContext(teamPlayers, fixture, data, requestedTeam, colour);
+renderTeamContext(teamPlayers, teamProfiles, fixture, data, requestedTeam, colour);
 }catch(error){console.error("Team profile loading error:",error);content.innerHTML='<div class="state">This team profile is not available.</div>';}
 }
 
-function renderTeamContext(teamPlayers, fixture, data, requestedTeam, colour){
+function renderTeamContext(teamPlayers, teamProfiles, fixture, data, requestedTeam, colour){
     const count=document.getElementById("team-player-count");
     const avg=document.getElementById("team-average-projection");
     const high=document.getElementById("team-highest-projection");
+    const xg=document.getElementById("team-xg");
+    const xga=document.getElementById("team-xga");
+    const mins=document.getElementById("team-expected-minutes");
     const grid=document.getElementById("team-squad-grid");
     const fixtures=document.getElementById("team-fixtures-grid");
     const valid=teamPlayers.filter(p=>Number.isFinite(Number(p.prediction)));
     count.textContent=teamPlayers.length.toLocaleString();
     avg.textContent=valid.length?(valid.reduce((sum,p)=>sum+Number(p.prediction),0)/valid.length).toFixed(2):"—";
     high.textContent=valid.length?Math.max(...valid.map(p=>Number(p.prediction))).toFixed(2):"—";
+    const lead=teamPlayers.find(p=>p.fixture_context) || teamProfiles.find(p=>p.model_inputs);
+    const leadContext=lead?.fixture_context || {};
+    xg.textContent=Number.isFinite(Number(leadContext.team_xg_for_per90))?Number(leadContext.team_xg_for_per90).toFixed(2):"—";
+    xga.textContent=Number.isFinite(Number(leadContext.opponent_xg_against_per90))?Number(leadContext.opponent_xg_against_per90).toFixed(2):"—";
+    const minuteValues=teamPlayers.slice(0,5).map(p=>Number(p.expected_minutes)).filter(Number.isFinite);
+    mins.textContent=minuteValues.length?(minuteValues.reduce((a,b)=>a+b,0)/minuteValues.length).toFixed(0)+" min":"—";
     grid.innerHTML=teamPlayers.slice(0,8).map((p,index)=>{
         const pos=p.position||"Player"; const mins=Number.isFinite(Number(p.expected_minutes))?Math.round(Number(p.expected_minutes))+" min":"—";
         return '<a class="team-squad-card" style="--team-colour:'+colour+'" href="player.html?player='+encodeURIComponent(p.name)+'"><span class="team-squad-rank">'+(index+1)+'</span><span><strong>'+escapeHtml(p.name)+'</strong><small>'+escapeHtml(pos)+' · '+mins+' · '+(Number.isFinite(Number(p.ownership))?Number(p.ownership).toFixed(1)+"% owned":"ownership —")+'</small></span><span class="team-squad-points"><strong>'+ (Number.isFinite(Number(p.prediction))?Number(p.prediction).toFixed(2):"—")+'</strong><small>expected pts</small></span></a>';}).join("") || '<div class="team-data-empty"><b>No squad rows</b><span>The published model snapshot does not currently contain player rows for this team.</span></div>';
-    fixtures.innerHTML='<div class="team-fixture-card" style="--team-colour:'+colour+'"><span class="gw">GW'+escapeHtml(data.gameweek)+'</span><span class="team-fixture-difficulty">Current</span><strong>'+escapeHtml(fixture.home)+' vs '+escapeHtml(fixture.away)+'</strong><small>'+escapeHtml(requestedTeam===fixture.home?"Home":"Away")+' · '+escapeHtml(requestedTeam===fixture.home?fixture.away:fixture.home)+'</small></div>';
+    const fixtureSource=teamProfiles.find(p=>Array.isArray(p.next_fixtures)&&p.next_fixtures.length)?.next_fixtures || [];
+    const future=[{gw:data.gameweek,opponent:requestedTeam===fixture.home?fixture.away:fixture.home,is_home:requestedTeam===fixture.home,difficulty:null,kickoff:fixture.kickoff,home:fixture.home,away:fixture.away}, ...fixtureSource.filter(item=>String(item.gw)!==String(data.gameweek))].slice(0,5);
+    fixtures.innerHTML=future.map(item=>{
+        const opponentText=item.opponent || (item.is_home?item.away:item.home) || "—";
+        return '<div class="team-fixture-card" style="--team-colour:'+colour+'"><span class="gw">GW'+escapeHtml(item.gw)+'</span><span class="team-fixture-difficulty">'+(item.difficulty!=null?"D"+item.difficulty:"Current")+'</span><strong>'+escapeHtml(opponentText)+'</strong><small>'+escapeHtml(item.is_home?"Home":"Away")+(item.kickoff?' · '+new Date(item.kickoff).toLocaleDateString([], {day:"numeric",month:"short"}):"")+'</small></div>';
+    }).join("");
 }
 
 loadTeam();
