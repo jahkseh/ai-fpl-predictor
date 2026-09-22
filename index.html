@@ -1137,6 +1137,45 @@ body[data-theme="light"] .hero-stat span {
         @media(max-width:1100px){.live-filter-row{grid-template-columns:repeat(4,1fr)}}@media(max-width:700px){.live-filter-row{grid-template-columns:repeat(2,1fr)}.live-filter-meta{align-items:flex-start;flex-direction:column}}
         .live-mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:20px}.live-panel{padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}.live-panel h3{margin-bottom:5px}.live-panel>p{color:var(--text-muted);font-size:12px;margin-bottom:15px}.live-list{display:grid;gap:9px}.live-list a{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--border);text-decoration:none}.live-list a:first-child{border-top:0}.live-list strong{color:var(--text);font-size:13px}.live-list span{color:var(--text-muted);font-size:11px}.live-list b{color:var(--text);font-size:13px}
         @media(max-width:800px){.live-summary-grid{grid-template-columns:repeat(2,1fr)}.live-mini-grid{grid-template-columns:1fr}}@media(max-width:520px){.live-summary-grid{grid-template-columns:1fr 1fr}.live-summary-card{padding:14px}.live-banner{align-items:flex-start}}
+
+        /* Mobile layout polish */
+        @media(max-width:700px){
+            header{padding:14px}
+            .navbar{align-items:center;gap:12px}
+            .logo{font-size:21px}
+            nav{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+            nav a{margin:0;padding:8px 5px;border:1px solid rgba(255,255,255,.08);border-radius:9px;text-align:center;font-size:11px}
+            .theme-toggle{grid-column:span 3;margin:0;width:100%;min-height:36px}
+            .hero{padding:54px 16px 60px}
+            .hero h1{font-size:36px}
+            .hero p{font-size:15px;line-height:1.5}
+            .hero-actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:9px}
+            .hero-button{width:100%;min-height:44px;padding:0 10px;font-size:12px}
+            .section{padding:42px 14px}
+            .section-title{margin-bottom:24px}
+            .section-title h2{font-size:25px}
+            .fixture-grid{grid-template-columns:1fr!important;gap:12px}
+            .fixture-card{padding:16px}
+            .fixture-teams{gap:7px}
+            .team-name{font-size:12px}
+            .fixture-prediction{grid-template-columns:24px minmax(0,1fr) auto;gap:8px}
+            .prediction-meta{font-size:8px}
+            .live-filter-panel{padding:12px}
+            .live-filter-row{grid-template-columns:1fr!important;gap:8px}
+            .live-filter-meta{font-size:9px}
+            .live-table{min-width:760px}
+            .live-table th,.live-table td{padding:10px 9px;font-size:11px}
+            .featured-note{align-items:flex-start;padding:12px}
+            .player-card{min-height:0}
+            .team-directory{grid-template-columns:1fr 1fr!important}
+        }
+        @media(max-width:430px){
+            nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+            .theme-toggle{grid-column:span 2}
+            .hero-actions{grid-template-columns:1fr}
+            .team-directory{grid-template-columns:1fr!important}
+            .live-summary-grid{grid-template-columns:1fr!important}
+        }
 </style>
 </head>
 
@@ -1556,6 +1595,8 @@ const playerContainer = document.getElementById("player-container");
             "Tarkowski": "Everton",
             "B. Fernandes": "Man Utd",
             "Mbeumo": "Man Utd",
+            "Rice": "Arsenal",
+            "Isak": "Newcastle",
             "Leno": "Fulham",
             "Bogle": "Leeds",
             "Calvert-Lewin": "Crystal Palace",
