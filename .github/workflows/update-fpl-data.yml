@@ -8,14 +8,18 @@ on:
   workflow_dispatch:
     inputs:
       gameweek:
-        description: "Gameweek to prepare"
+        description: "Gameweek to prepare (use the next unstarted gameweek)"
         required: true
-        default: "6"
+        default: "8"
   schedule:
     - cron: "17 */3 * * *"
 
 permissions:
   contents: write
+
+concurrency:
+  group: fpl-data-update
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -32,18 +36,35 @@ jobs:
       - name: Resolve target gameweek
         id: gw
         shell: bash
+        env:
+          REQUESTED_GAMEWEEK: ${{ inputs.gameweek || '8' }}
         run: |
-          echo "gameweek=${{ inputs.gameweek || '6' }}" >> "$GITHUB_OUTPUT"
+          echo "gameweek=$REQUESTED_GAMEWEEK" >> "$GITHUB_OUTPUT"
 
       - name: Install model dependencies
         run: |
           python -m pip install --upgrade pip
           pip install numpy pandas scikit-learn
 
-      - name: Preserve previous predictions for model audit\n        run: |\n          if [ -f predictions.json ]; then cp predictions.json predictions.previous.json; fi\n\n      - name: Generate model predictions\n        run: |
+      - name: Preserve previous predictions for audit
+        run: |
+          if [ -f predictions.json ]; then
+            cp predictions.json predictions.previous.json
+          fi
+
+      - name: Generate model predictions
+        run: |
           python model/update_predictions.py --gameweek "${{ steps.gw.outputs.gameweek }}" --output predictions.generated.json
 
-      - name: Audit prediction changes\n        run: |\n          python model/audit_prediction_changes.py \\\n            --previous predictions.previous.json \\\n            --current predictions.generated.json \\\n            --output prediction_audit.json\n\n      - name: Generate live intelligence dataset\n        run: |
+      - name: Audit prediction changes
+        run: |
+          python model/audit_prediction_changes.py \
+            --previous predictions.previous.json \
+            --current predictions.generated.json \
+            --output prediction_audit.json
+
+      - name: Generate live intelligence dataset
+        run: |
           python model/build_live_data.py --gameweek "${{ steps.gw.outputs.gameweek }}" --predictions predictions.generated.json --output live_data.json
 
       - name: Publish generated prediction data
@@ -56,6 +77,7 @@ jobs:
             --history prediction_history.json
 
       - name: Measure latest realized prediction accuracy
+        shell: bash
         run: |
           GW="${{ steps.gw.outputs.gameweek }}"
           if [ "$GW" -gt 1 ]; then
@@ -64,8 +86,39 @@ jobs:
               --gameweek "$((GW - 1))" \
               --output prediction_accuracy.json
           else
-            printf '{"available":false,"reason":"no completed gameweek yet"}\n' > prediction_accuracy.json
+            printf '{"available":false,"reason":"no completed gameweek yet}\n' > prediction_accuracy.json
           fi
+
+      - name: Validate generated data
+        run: |
+          python - <<'PY'
+          import json
+          import math
+          from pathlib import Path
+
+          predictions = json.loads(Path("predictions.json").read_text(encoding="utf-8"))
+          players = predictions.get("all_players", [])
+          assert len(players) >= 30, f"Expected at least 30 player predictions, got {len(players)}"
+          required = {
+              "prediction", "prediction_p10", "prediction_p90",
+              "prediction_range", "confidence", "expected_minutes",
+              "fixture_difficulty", "fixture_home", "fixture_away",
+          }
+          for player in players:
+              missing = required - set(player)
+              assert not missing, f"{player.get('name', 'Unknown')} missing fields: {sorted(missing)}"
+              low, point, high = (float(player[k]) for k in
+                                  ("prediction_p10", "prediction", "prediction_p90"))
+              assert all(math.isfinite(v) for v in (low, point, high)), player.get("name")
+              assert low <= point <= high, player.get("name")
+              assert 1 <= int(player["fixture_difficulty"]) <= 5, player.get("name")
+
+          live = json.loads(Path("live_data.json").read_text(encoding="utf-8"))
+          assert len(live.get("players", [])) >= 30, "Live dataset has too few players"
+          profiles = json.loads(Path("player_profiles.json").read_text(encoding="utf-8"))
+          assert len(profiles.get("players", [])) >= 30, "Player profile dataset has too few players"
+          print(f"Validated {len(players)} player predictions and {len(live['players'])} live player records.")
+          PY
 
       - name: Commit generated data
         shell: bash
@@ -77,5 +130,5 @@ jobs:
             echo "No data changes to commit."
             exit 0
           fi
-          git commit -m "Update live FPL predictions and statistics"
+          git commit -m "Update Gameweek ${{ steps.gw.outputs.gameweek }} predictions and player data"
           git push
