@@ -57,10 +57,10 @@ def add_prediction_distribution(model, frame: pd.DataFrame, features: list[str])
 def player_prediction_payload(row: pd.Series) -> dict:
     """Return JSON-safe model context without changing legacy fields."""
     return {
-        "prediction_std": round(float(row["prediction_std"]), 3),
-        "prediction_p10": round(float(row["prediction_p10"]), 3),
-        "prediction_p90": round(float(row["prediction_p90"]), 3),
-        "prediction_range": round(float(row["prediction_range"]), 3),
+        "prediction_std": round(float(row["prediction_std"]), 6),
+        "prediction_p10": round(float(row["prediction_p10"]), 6),
+        "prediction_p90": round(float(row["prediction_p90"]), 6),
+        "prediction_range": round(float(row["prediction_range"]), 6),
         "confidence": str(row["confidence"]),
         "fixture_difficulty": int(row["fixture_difficulty"]) if pd.notna(row.get("fixture_difficulty", np.nan)) else None,
         "expected_minutes": safe_json_float(row.get("expected_minutes", np.nan)),
