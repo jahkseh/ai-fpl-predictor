@@ -239,7 +239,7 @@ def build_player_profiles(
                 },
             ])
 
-    latest_gw = target_gameweek - 1
+    latest_gw = int(current["gw"].max()) if not current.empty else target_gameweek - 1
     latest = current[current["gw"] == latest_gw].drop_duplicates("id", keep="last")
     profiles = []
 
@@ -483,12 +483,36 @@ def main() -> None:
     if not 2 <= args.gameweek <= 38:
         raise SystemExit("--gameweek must be between 2 and 38")
 
-    latest_gw = args.gameweek - 1
-    current = pd.concat(
-        [read_csv(gw, "player_gameweek_stats.csv").assign(gw=gw)
-         for gw in range(1, latest_gw + 1)],
-        ignore_index=True,
-    )
+    requested_latest_gw = args.gameweek - 1
+    available_stats = []
+    skipped_gameweeks = []
+    for gw in range(1, requested_latest_gw + 1):
+        try:
+            frame = read_csv(gw, "player_gameweek_stats.csv")
+        except ValueError as exc:
+            if "Empty source:" not in str(exc):
+                raise
+            skipped_gameweeks.append(gw)
+            continue
+        frame = frame.assign(gw=gw)
+        if frame.empty:
+            skipped_gameweeks.append(gw)
+            continue
+        available_stats.append(frame)
+
+    if not available_stats:
+        raise ValueError(
+            f"No non-empty player_gameweek_stats.csv files found before GW{args.gameweek}"
+        )
+    current = pd.concat(available_stats, ignore_index=True)
+    latest_gw = int(current["gw"].max())
+    if skipped_gameweeks:
+        print(
+            "Warning: skipping empty gameweek stats for "
+            + ", ".join(f"GW{gw}" for gw in skipped_gameweeks)
+            + f"; latest usable player data is GW{latest_gw}."
+        )
+
     players = read_csv(args.gameweek, "players.csv")
     teams = read_csv(args.gameweek, "teams.csv")
     fixtures = read_csv(args.gameweek, "fixtures.csv")
