@@ -2595,23 +2595,24 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         };
         const pointsOf = player => number(player.prediction ?? player.expected_points ?? player.predicted_points ?? player.points_projection) ?? 0;
         const positionOf = player => {
-            const raw = String(player.position ?? player.element_type_name ?? player.position_name ?? "").toLowerCase();
+            const raw = String(player.position ?? player.element_type_name ?? player.position_name ?? player.element_type ?? player.position_id ?? "").toLowerCase();
             if (raw.includes("goal") || raw === "gk" || raw === "1") return "Goalkeeper";
             if (raw.includes("def") || raw === "2") return "Defender";
             if (raw.includes("mid") || raw === "3") return "Midfielder";
             if (raw.includes("forward") || raw.includes("striker") || raw === "fwd" || raw === "4") return "Forward";
             return "";
         };
-        const idOf = (player, index) => String(player.id ?? player.player_id ?? player.code ?? (String(player.name || "player") + "-" + index));
+        const playerName = player => String(player.name ?? player.web_name ?? [player.first_name, player.second_name].filter(Boolean).join(" ") ?? player.full_name ?? "").trim();
+        const idOf = (player, index) => String(player.id ?? player.player_id ?? player.code ?? ((playerName(player) || "player") + "-" + index));
         const priceText = player => { const p = priceOf(player); return p == null ? "Price n/a" : "£" + p.toFixed(1) + "m"; };
         const squadCost = () => squad.reduce((sum, player) => sum + (priceOf(player) ?? 0), 0);
         const squadPoints = () => squad.reduce((sum, player) => sum + pointsOf(player), 0);
         function render() {
-            const query = search.value.trim().toLowerCase();
+            const query = String(search.value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase().replace(/\s+/g, " ");
             const position = positionFilter.value;
             const chosen = new Set(squad.map(p => p._builderId));
             const filtered = pool.filter(p => (!position || p._builderPosition === position) &&
-                (!query || [p.name, p.team, p._builderPosition].some(v => String(v || "").toLowerCase().includes(query))))
+                (!query || p._builderSearchText.includes(query)))
                 .sort((a,b) => {
                     if (sort.value === "price-low") return (priceOf(a) ?? Infinity) - (priceOf(b) ?? Infinity);
                     if (sort.value === "price-high") return (priceOf(b) ?? -Infinity) - (priceOf(a) ?? -Infinity);
@@ -2694,10 +2695,16 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             if (!response.ok) throw new Error("Live player data is unavailable");
             return response.json();
         }).then(data => {
-            const source = Array.isArray(data.players) ? data.players : [];
+            const candidates = [data.players, data.elements, data.data?.players, data.data?.elements, data.results, data];
+            const source = candidates.find(Array.isArray) || [];
             const seen = new Set();
-            pool = source.map((player,index) => ({ ...player, _builderId:idOf(player,index), _builderPosition:positionOf(player) }))
-                .filter(player => {
+            pool = source.map((player,index) => {
+                const name = playerName(player);
+                const team = player.team_name ?? player.team_short_name ?? player.team ?? player.club ?? "";
+                const ownership = player.ownership ?? player.selected_by_percent ?? player.selected_by_percentage;
+                const price = player.price ?? player.now_cost ?? player.cost;
+                return { ...player, name, team, ownership, price, _builderId:idOf(player,index), _builderPosition:positionOf(player), _builderSearchText:[name, player.first_name, player.second_name, player.web_name, team, player.position, positionOf(player)].filter(Boolean).join(" ").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim() };
+            }).filter(player => {
                     const key = player._builderId;
                     if (seen.has(key) || !player.name || !player._builderPosition) return false;
                     seen.add(key);
