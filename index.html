@@ -1389,6 +1389,68 @@ body[data-theme="light"] .hero-stat span {
         @media(max-width:760px) { header { padding:0 16px; } .navbar { min-height:0; } nav { gap:12px 16px; } nav a { font-size:11px; } .hero { grid-template-columns:1fr; padding:42px 20px 30px; gap:30px; } .hero-art { max-width:560px; width:100%; transform:none; } .hero-stats { padding:0 20px 14px; gap:8px; } .hero-stat { padding:14px; } .hero-stat strong { font-size:20px; } .section { padding:40px 20px; } }
         @media(max-width:460px) { .hero h1 { font-size:42px; } .hero-stats { grid-template-columns:1fr; } .hero-stat { display:flex; align-items:center; justify-content:space-between; gap:12px; } .hero-stat strong { margin:0; } .hero-stat span { text-align:right; } .pitch-placeholder { min-height:225px; } }
 
+    
+        /* Squad builder: same restrained green-on-ink visual system */
+        .team-builder-section { max-width: 1320px; }
+        .builder-layout { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(310px,.85fr); gap:22px; align-items:start; }
+        .panel-surface { background:var(--surface); border:1px solid var(--border); border-radius:18px; box-shadow:0 14px 36px rgba(0,0,0,.08); }
+        .builder-main { min-width:0; padding:20px; }
+        .builder-toolbar { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:12px; }
+        .builder-search-wrap { display:flex; flex-direction:column; gap:7px; min-width:0; }
+        .builder-search-wrap label { font-size:11px; color:var(--text-muted); font-weight:800; text-transform:uppercase; letter-spacing:.07em; }
+        .builder-search-wrap input,.builder-search-wrap select { width:100%; min-height:43px; border:1px solid var(--border); border-radius:9px; padding:0 12px; background:var(--bg); color:var(--text); font:inherit; font-size:13px; outline:none; }
+        .builder-search-wrap input:focus,.builder-search-wrap select:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(39,209,127,.12); }
+        .builder-player-count { display:flex; justify-content:space-between; gap:12px; padding:18px 2px 12px; color:var(--text-muted); font-size:11px; }
+        .builder-player-count strong { color:var(--text); }
+        .builder-player-list { display:flex; flex-direction:column; max-height:610px; overflow:auto; }
+        .builder-player-row { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:14px; align-items:center; padding:13px 8px; border-top:1px solid var(--border); }
+        .builder-player-row:hover { background:var(--surface-soft); }
+        .builder-player-name { display:block; color:var(--text); font-size:13px; font-weight:800; }
+        .builder-player-meta { display:block; margin-top:5px; color:var(--text-muted); font-size:11px; }
+        .builder-player-points { text-align:right; min-width:60px; }
+        .builder-player-points strong { display:block; font-size:14px; color:var(--text); }
+        .builder-player-points span { display:block; margin-top:3px; color:var(--text-muted); font-size:10px; }
+        .builder-add,.builder-remove,.builder-captain { border:1px solid var(--border); border-radius:8px; padding:8px 10px; font:inherit; font-size:11px; font-weight:800; cursor:pointer; transition:all .18s ease; }
+        .builder-add { background:var(--accent); border-color:var(--accent); color:#102018; }
+        .builder-add:hover:not(:disabled) { transform:translateY(-1px); background:var(--accent-hover); }
+        .builder-add:disabled { cursor:not-allowed; opacity:.38; }
+        .builder-sidebar { display:grid; gap:16px; }
+        .builder-budget-card,.builder-squad-card { padding:20px; }
+        .builder-budget-head,.builder-budget-foot,.builder-squad-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+        .builder-budget-head span,.builder-budget-foot { color:var(--text-muted); font-size:12px; }
+        .builder-budget-head strong { color:var(--accent); font-size:24px; letter-spacing:-.04em; }
+        .builder-budget-track { height:8px; background:var(--surface-soft); border-radius:99px; overflow:hidden; margin:16px 0 10px; }
+        .builder-budget-track span { display:block; height:100%; width:0; background:var(--accent); border-radius:99px; transition:width .25s ease; }
+        .builder-budget-track span.over-budget { background:#f87171; }
+        .builder-budget-foot strong { color:var(--text); }
+        .builder-squad-status { margin-top:15px; padding:11px 12px; border-radius:9px; background:var(--surface-soft); color:var(--text-muted); font-size:11px; line-height:1.5; }
+        .builder-squad-status.is-good { color:var(--accent); }
+        .builder-squad-heading { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:16px; }
+        .builder-squad-heading h3 { color:var(--text); font-size:18px; margin-top:4px; }
+        .builder-text-button { border:0; background:transparent; color:var(--text-muted); cursor:pointer; font-size:11px; font-weight:700; }
+        .builder-text-button:hover { color:var(--accent); }
+        .builder-position-progress { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; margin-bottom:14px; }
+        .builder-position-chip { padding:9px 5px; border:1px solid var(--border); border-radius:8px; text-align:center; color:var(--text-muted); font-size:10px; }
+        .builder-position-chip strong { display:block; color:var(--text); font-size:14px; margin-bottom:3px; }
+        .builder-selected-list { display:grid; gap:7px; max-height:340px; overflow:auto; }
+        .builder-selected-row { display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; gap:8px; padding:10px; border:1px solid var(--border); border-radius:9px; }
+        .builder-selected-row.is-captain { border-color:var(--accent); background:rgba(39,209,127,.06); }
+        .builder-selected-name { font-size:11px; font-weight:800; color:var(--text); display:block; }
+        .builder-selected-meta { display:block; color:var(--text-muted); font-size:10px; margin-top:4px; }
+        .builder-selected-price { color:var(--text); font-size:11px; font-weight:800; white-space:nowrap; }
+        .builder-remove { padding:6px 8px; color:var(--text-muted); background:transparent; }
+        .builder-remove:hover { border-color:#f87171; color:#f87171; }
+        .builder-captain { padding:6px 8px; background:transparent; color:var(--text-muted); }
+        .builder-captain.is-active { background:rgba(39,209,127,.12); color:var(--accent); border-color:var(--accent); }
+        .builder-squad-footer { border-top:1px solid var(--border); padding-top:16px; margin-top:16px; color:var(--text-muted); font-size:12px; }
+        .builder-squad-footer strong { color:var(--accent); font-size:20px; }
+        .builder-disclaimer { margin-top:14px; font-size:10px; color:var(--text-muted); line-height:1.6; }
+        .builder-empty { color:var(--text-muted); padding:22px 12px; text-align:center; font-size:12px; line-height:1.6; }
+        body[data-theme="light"] .panel-surface { box-shadow:0 14px 36px rgba(15,23,42,.045); }
+        @media(max-width:1000px) { .builder-layout { grid-template-columns:1fr; } .builder-sidebar { grid-template-columns:1fr 1fr; align-items:start; } }
+        @media(max-width:700px) { .builder-toolbar { grid-template-columns:1fr 1fr; } .builder-search-wrap:first-child { grid-column:1/-1; } .builder-sidebar { grid-template-columns:1fr; } .builder-main,.builder-budget-card,.builder-squad-card { padding:15px; } .builder-player-row { gap:8px; grid-template-columns:minmax(0,1fr) auto auto; } .builder-player-points { min-width:48px; } .builder-player-name { font-size:12px; } .builder-position-progress { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+        @media(max-width:420px) { .builder-toolbar { grid-template-columns:1fr; } .builder-search-wrap:first-child { grid-column:auto; } .builder-player-row { grid-template-columns:minmax(0,1fr) auto; } .builder-player-points { display:none; } }
+
     </style>
 </head>
 
@@ -1406,6 +1468,7 @@ body[data-theme="light"] .hero-stat span {
     <a href="#predictions">Predictions</a>
     <a href="#players">Players</a>
     <a href="#live-stats">Live Picks</a>
+    <a href="#team-builder">Team Builder</a>
     <a href="#fixture-difficulty">Fixtures</a>
     <a href="#teams">Teams</a>
     <a href="#differentials">Differentials</a>
@@ -1492,6 +1555,40 @@ body[data-theme="light"] .hero-stat span {
 </div>
 
     </section>
+<section class="section team-builder-section" id="team-builder">
+    <div class="section-title">
+        <span class="section-kicker">Build your squad</span>
+        <h2>Your FPL Team Builder</h2>
+        <p>Build a 15-player squad using the published player pool. Track your budget, position slots and club limits as you go.</p>
+    </div>
+    <div class="builder-layout">
+        <div class="builder-main panel-surface">
+            <div class="builder-toolbar">
+                <div class="builder-search-wrap"><label for="builder-search">Find a player</label><input id="builder-search" type="search" placeholder="Search name or club…" autocomplete="off"></div>
+                <div class="builder-search-wrap"><label for="builder-position">Position</label><select id="builder-position"><option value="">All positions</option><option value="Goalkeeper">Goalkeepers</option><option value="Defender">Defenders</option><option value="Midfielder">Midfielders</option><option value="Forward">Forwards</option></select></div>
+                <div class="builder-search-wrap"><label for="builder-sort">Sort players</label><select id="builder-sort"><option value="points">Expected points</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="ownership">Ownership</option></select></div>
+            </div>
+            <div class="builder-player-count"><span id="builder-results-count">Loading players…</span><span>Tap Add to select a player</span></div>
+            <div class="builder-player-list" id="builder-player-list"><div class="builder-empty">Loading the current player pool…</div></div>
+        </div>
+        <aside class="builder-sidebar">
+            <div class="builder-budget-card panel-surface">
+                <div class="builder-budget-head"><span>Squad budget</span><strong id="builder-budget-remaining">£100.0m</strong></div>
+                <div class="builder-budget-track"><span id="builder-budget-bar"></span></div>
+                <div class="builder-budget-foot"><span><strong id="builder-spent">£0.0m</strong> spent</span><span><strong id="builder-picked-count">0/15</strong> players</span></div>
+                <div class="builder-squad-status" id="builder-status" aria-live="polite">Add players to start building your squad.</div>
+            </div>
+            <div class="builder-squad-card panel-surface">
+                <div class="builder-squad-heading"><div><span class="section-kicker">Your picks</span><h3>Squad overview</h3></div><button type="button" class="builder-text-button" id="builder-clear">Clear squad</button></div>
+                <div class="builder-position-progress" id="builder-position-progress"></div>
+                <div class="builder-selected-list" id="builder-selected-list"><div class="builder-empty">Your selected players will appear here.</div></div>
+                <div class="builder-squad-footer"><span>Squad expected points</span><strong id="builder-total-points">—</strong></div>
+                <p class="builder-disclaimer">Estimates use the site's published model data. This is a planning tool, not an official FPL squad submission or a guarantee of points.</p>
+            </div>
+        </aside>
+    </div>
+</section>
+
 <section class="section fixture-difficulty-section" id="fixture-difficulty">
     <div class="section-title">
         <span class="section-kicker">Fixture context</span>
@@ -2475,6 +2572,147 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
     loadDifferentials();
     loadGw5Results();
     loadCurrentAccuracy();
+
+    // Interactive squad builder, independent from the prediction-page rendering state.
+    (function initSquadBuilder() {
+        const list = document.getElementById("builder-player-list");
+        if (!list) return;
+        const search = document.getElementById("builder-search");
+        const positionFilter = document.getElementById("builder-position");
+        const sort = document.getElementById("builder-sort");
+        const selectedList = document.getElementById("builder-selected-list");
+        const budgetLimit = 100;
+        const limits = { Goalkeeper: 2, Defender: 5, Midfielder: 5, Forward: 3 };
+        let pool = [];
+        let squad = [];
+        let captainId = null;
+        const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
+        const number = value => { const n = Number(value); return Number.isFinite(n) ? n : null; };
+        const priceOf = player => {
+            const value = number(player.price ?? player.now_cost);
+            if (value == null) return null;
+            return value > 20 ? value / 10 : value;
+        };
+        const pointsOf = player => number(player.prediction ?? player.expected_points ?? player.predicted_points ?? player.points_projection) ?? 0;
+        const positionOf = player => {
+            const raw = String(player.position ?? player.element_type_name ?? player.position_name ?? "").toLowerCase();
+            if (raw.includes("goal") || raw === "gk" || raw === "1") return "Goalkeeper";
+            if (raw.includes("def") || raw === "2") return "Defender";
+            if (raw.includes("mid") || raw === "3") return "Midfielder";
+            if (raw.includes("forward") || raw.includes("striker") || raw === "fwd" || raw === "4") return "Forward";
+            return "";
+        };
+        const idOf = (player, index) => String(player.id ?? player.player_id ?? player.code ?? (String(player.name || "player") + "-" + index));
+        const priceText = player => { const p = priceOf(player); return p == null ? "Price n/a" : "£" + p.toFixed(1) + "m"; };
+        const squadCost = () => squad.reduce((sum, player) => sum + (priceOf(player) ?? 0), 0);
+        const squadPoints = () => squad.reduce((sum, player) => sum + pointsOf(player), 0);
+        function render() {
+            const query = search.value.trim().toLowerCase();
+            const position = positionFilter.value;
+            const chosen = new Set(squad.map(p => p._builderId));
+            const filtered = pool.filter(p => (!position || p._builderPosition === position) &&
+                (!query || [p.name, p.team, p._builderPosition].some(v => String(v || "").toLowerCase().includes(query))))
+                .sort((a,b) => {
+                    if (sort.value === "price-low") return (priceOf(a) ?? Infinity) - (priceOf(b) ?? Infinity);
+                    if (sort.value === "price-high") return (priceOf(b) ?? -Infinity) - (priceOf(a) ?? -Infinity);
+                    if (sort.value === "ownership") return (number(b.ownership) ?? -1) - (number(a.ownership) ?? -1);
+                    return pointsOf(b) - pointsOf(a);
+                });
+            document.getElementById("builder-results-count").textContent = filtered.length.toLocaleString() + " players";
+            list.innerHTML = filtered.slice(0,100).map(player => {
+                const added = chosen.has(player._builderId);
+                const positionName = player._builderPosition || "Position n/a";
+                const club = player.team || player.team_name || "Club n/a";
+                const own = number(player.ownership);
+                const meta = positionName + " · " + club + (own == null ? "" : " · " + own.toFixed(1) + "% owned");
+                const reason = added ? "Added" : (squad.length >= 15 ? "Squad full" : "Add");
+                return '<div class="builder-player-row"><div><span class="builder-player-name">' + esc(player.name || "Unknown player") + '</span><span class="builder-player-meta">' + esc(meta) + '</span></div><div class="builder-player-points"><strong>' + pointsOf(player).toFixed(2) + '</strong><span>expected pts</span><span>' + esc(priceText(player)) + '</span></div><button class="builder-add" type="button" data-builder-add="' + esc(player._builderId) + '"' + (added || squad.length >= 15 || priceOf(player) == null ? " disabled" : "") + '>' + reason + '</button></div>';
+            }).join("") || '<div class="builder-empty">No players match this search. Try a different name or position.</div>';
+            if (filtered.length > 100) list.insertAdjacentHTML("beforeend", '<div class="builder-empty">Showing the top 100 matches. Refine your search to see more.</div>');
+            const spent = squadCost();
+            const remaining = budgetLimit - spent;
+            document.getElementById("builder-spent").textContent = "£" + spent.toFixed(1) + "m";
+            document.getElementById("builder-budget-remaining").textContent = "£" + remaining.toFixed(1) + "m";
+            document.getElementById("builder-budget-bar").style.width = Math.min(100, spent / budgetLimit * 100) + "%";
+            document.getElementById("builder-budget-bar").classList.toggle("over-budget", remaining < -0.001);
+            document.getElementById("builder-picked-count").textContent = squad.length + "/15";
+            const counts = Object.fromEntries(Object.keys(limits).map(pos => [pos, squad.filter(p => p._builderPosition === pos).length]));
+            document.getElementById("builder-position-progress").innerHTML = Object.entries(limits).map(([pos, limit]) => '<div class="builder-position-chip"><strong>' + counts[pos] + '/' + limit + '</strong>' + ({Goalkeeper:"GK",Defender:"DEF",Midfielder:"MID",Forward:"FWD"}[pos]) + '</div>').join("");
+            const teams = {};
+            squad.forEach(p => { const t = p.team || p.team_name || "Unknown"; teams[t] = (teams[t] || 0) + 1; });
+            const overTeam = Object.entries(teams).find(([,count]) => count > 3);
+            const complete = squad.length === 15 && Object.keys(limits).every(pos => counts[pos] === limits[pos]);
+            const withinBudget = remaining >= -0.001;
+            const status = document.getElementById("builder-status");
+            status.classList.toggle("is-good", complete && withinBudget && !overTeam);
+            status.textContent = overTeam ? overTeam[0] + " has " + overTeam[1] + " players. The FPL club limit is three." :
+                !withinBudget ? "You are £" + Math.abs(remaining).toFixed(1) + "m over budget. Remove a player or choose cheaper options." :
+                complete ? "Squad complete — all 15 slots and position quotas are filled within budget." :
+                "Squad progress: " + squad.length + "/15 players. Position quotas and the £100.0m budget are tracked as you build.";
+            selectedList.innerHTML = squad.length ? squad.map(player => '<div class="builder-selected-row ' + (player._builderId === captainId ? "is-captain" : "") + '"><div><span class="builder-selected-name">' + esc(player.name || "Unknown player") + '</span><span class="builder-selected-meta">' + esc(({Goalkeeper:"GK",Defender:"DEF",Midfielder:"MID",Forward:"FWD"}[player._builderPosition] || "—") + " · " + (player.team || player.team_name || "Club n/a")) + '</span></div><span class="builder-selected-price">' + esc(priceText(player)) + '</span><span style="display:flex;gap:5px"><button type="button" class="builder-captain ' + (player._builderId === captainId ? "is-active" : "") + '" data-builder-captain="' + esc(player._builderId) + '" aria-label="Set ' + esc(player.name) + ' as captain">' + (player._builderId === captainId ? "C" : "Cap") + '</button><button type="button" class="builder-remove" data-builder-remove="' + esc(player._builderId) + '" aria-label="Remove ' + esc(player.name) + '">×</button></span></div>').join("") : '<div class="builder-empty">Your selected players will appear here.</div>';
+            document.getElementById("builder-total-points").textContent = squad.length ? squadPoints().toFixed(2) + " pts" : "—";
+        }
+        list.addEventListener("click", event => {
+            const button = event.target.closest("[data-builder-add]");
+            if (!button || button.disabled) return;
+            const player = pool.find(p => p._builderId === button.dataset.builderAdd);
+            if (!player || squad.length >= 15 || squad.some(p => p._builderId === player._builderId)) return;
+            if (priceOf(player) == null) return;
+            const positionCount = squad.filter(p => p._builderPosition === player._builderPosition).length;
+            if (player._builderPosition && positionCount >= limits[player._builderPosition]) {
+                document.getElementById("builder-status").textContent = "Your " + player._builderPosition.toLowerCase() + " slots are full. Remove one before adding another.";
+                return;
+            }
+            const club = player.team || player.team_name || "Unknown";
+            if (squad.filter(p => (p.team || p.team_name || "Unknown") === club).length >= 3) {
+                document.getElementById("builder-status").textContent = "You already have three players from " + club + ".";
+                return;
+            }
+            if (squadCost() + priceOf(player) > budgetLimit + 0.001) {
+                document.getElementById("builder-status").textContent = "That would exceed the £100.0m budget. Try a cheaper option.";
+                return;
+            }
+            squad.push(player);
+            if (!captainId) captainId = player._builderId;
+            render();
+        });
+        selectedList.addEventListener("click", event => {
+            const remove = event.target.closest("[data-builder-remove]");
+            const captain = event.target.closest("[data-builder-captain]");
+            if (remove) {
+                squad = squad.filter(p => p._builderId !== remove.dataset.builderRemove);
+                if (captainId === remove.dataset.builderRemove) captainId = squad[0]?._builderId || null;
+                render();
+            } else if (captain) {
+                captainId = captain.dataset.builderCaptain;
+                render();
+            }
+        });
+        document.getElementById("builder-clear").addEventListener("click", () => { squad = []; captainId = null; render(); });
+        [search, positionFilter, sort].forEach(control => { control.addEventListener("input", render); control.addEventListener("change", render); });
+        fetch("live_data.json?ts=" + Date.now()).then(response => {
+            if (!response.ok) throw new Error("Live player data is unavailable");
+            return response.json();
+        }).then(data => {
+            const source = Array.isArray(data.players) ? data.players : [];
+            const seen = new Set();
+            pool = source.map((player,index) => ({ ...player, _builderId:idOf(player,index), _builderPosition:positionOf(player) }))
+                .filter(player => {
+                    const key = player._builderId;
+                    if (seen.has(key) || !player.name || !player._builderPosition) return false;
+                    seen.add(key);
+                    return true;
+                });
+            if (!pool.length) throw new Error("No usable player records were found");
+            render();
+        }).catch(error => {
+            list.innerHTML = '<div class="builder-empty">The player pool could not be loaded right now. Please try again after the site data refreshes.</div>';
+            document.getElementById("builder-results-count").textContent = "Player data unavailable";
+            document.getElementById("builder-status").textContent = "Team Builder needs the published live_data.json player pool to be available.";
+            console.info("Squad builder loading error:", error.message);
+        });
+    })();
+
     </script>
 
 </body>
