@@ -5,9 +5,9 @@ Phase 3 upgrades the predictor from short-term form only to a leakage-safe playe
 ## Implemented
 
 ### Historical player intelligence
-- 2022/23, 2023/24, 2024/25 and 2025/26 history.
+- 2019/20 through 2025/26 history (seven completed seasons).
 - Career points, xG, xA, goals and assists per 90.
-- Production training now spans all four completed seasons in the historical archive, while the 2025/26 walk-forward test remains unseen.
+- Production training now spans seven completed seasons in the historical archive. The 2025/26 walk-forward evaluation uses earlier gameweeks only for each prediction row.
 - Historical start rate.
 - Previous completed-season points/xG/xA per 90.
 - Player-at-club points/xG/xA per 90 and club start rate.
