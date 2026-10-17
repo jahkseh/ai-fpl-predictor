@@ -1314,6 +1314,8 @@ body[data-theme="light"] .hero-stat span {
         .model-data-card span { display:block; color:var(--text-muted); font-size:9px; font-weight:850; letter-spacing:.08em; text-transform:uppercase; }
         .model-data-card strong { display:block; margin:10px 0 7px; color:var(--text); font-size:clamp(17px,2vw,23px); letter-spacing:-.04em; }
         .model-data-card small { display:block; color:var(--text-muted); font-size:10px; line-height:1.65; }
+        .model-backtest-context { margin-top:10px; color:var(--text-muted); font-size:11px; line-height:1.7; }
+        .model-backtest-context strong { color:var(--text); }
         .model-accuracy-note { margin-top:14px; padding:12px 14px; border-left:3px solid var(--accent); border-radius:0 8px 8px 0; background:var(--surface-soft); color:var(--text-muted); font-size:11px; line-height:1.65; }
         @media(max-width:700px) { .model-data-panel { padding:16px; } .model-data-heading { flex-direction:column; } .model-data-grid { grid-template-columns:1fr; } }
 
@@ -1647,7 +1649,7 @@ body[data-theme="light"] .hero-stat span {
 
         <div class="section-title">
             <h2>Model Performance</h2>
-            <p>How the AI model performed on historical FPL data.</p>
+            <p>Latest controlled walk-forward backtest: 2025/26 Gameweeks 11–38. Each round was predicted using only earlier data.</p>
         </div>
 
         <div class="model-data-panel">
@@ -1665,6 +1667,7 @@ body[data-theme="light"] .hero-stat span {
                 <article class="model-data-card"><span>Latest completed GW score</span><strong id="current-accuracy-value">Awaiting results</strong><small id="current-accuracy-detail">A score appears after a frozen prediction snapshot can be matched to actual points.</small></article>
             </div>
             <div class="model-accuracy-note" id="model-accuracy-note" role="status">Accuracy tracking is separate from the historical benchmark below. No new improvement is claimed until realized results are available.</div>
+            <div class="model-backtest-context"><strong>What the latest backtest says:</strong> compared with the rolling-form baseline (MAE 0.9871, RMSE 1.9365, R² 0.3111), the Phase 4 model has a slightly higher MAE (0.9884) but lower RMSE (1.9296) and higher R² (0.3160). That is a mixed result, not proof of a universal accuracy improvement.</div>
         </div>
 
         <div class="info-grid">
@@ -1672,23 +1675,21 @@ body[data-theme="light"] .hero-stat span {
             <div class="info-card">
                 <h3>MAE</h3>
                 <p>
-                    1.0131 average absolute prediction error.
+                    0.9884 average absolute prediction error across 28 unseen gameweeks.
                 </p>
             </div>
 
             <div class="info-card">
                 <h3>RMSE</h3>
                 <p>
-                    1.9953, measuring the size of prediction errors
-                    while giving larger errors more weight.
+                    1.9296, with larger prediction errors weighted more heavily.
                 </p>
             </div>
 
             <div class="info-card">
                 <h3>R²</h3>
                 <p>
-                    0.3152, showing how much variation in player
-                    points was explained by the model on the test data.
+                    0.3160 on the same walk-forward evaluation window.
                 </p>
             </div>
 
