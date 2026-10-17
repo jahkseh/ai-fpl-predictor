@@ -1391,6 +1391,34 @@ body[data-theme="light"] .hero-stat span {
 
     
         /* Squad builder: same restrained green-on-ink visual system */
+
+        .builder-ai-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:0 0 18px; }
+        .builder-ai-card { padding:15px; border:1px solid var(--border); background:var(--surface-soft); border-radius:13px; min-width:0; }
+        .builder-ai-card span { display:block; color:var(--text-muted); font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.07em; margin-bottom:7px; }
+        .builder-ai-card strong { display:block; color:var(--text); font-size:14px; overflow-wrap:anywhere; }
+        .builder-ai-card small { display:block; color:var(--text-muted); font-size:11px; margin-top:5px; line-height:1.45; }
+        .builder-pitch-card { padding:16px; margin-bottom:16px; }
+        .builder-pitch-head { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px; }
+        .builder-pitch-head h3 { font-size:15px; }
+        .builder-pitch-head span { color:var(--text-muted); font-size:11px; }
+        .builder-pitch { position:relative; overflow:hidden; border:1px solid rgba(210,255,224,.25); border-radius:12px; padding:18px 10px 12px; background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 40px,rgba(0,0,0,.015) 40px,rgba(0,0,0,.015) 80px),linear-gradient(135deg,#1d6b43,#145332); }
+        .builder-pitch:before { content:""; position:absolute; inset:8px; border:1px solid rgba(235,255,241,.25); border-radius:7px; pointer-events:none; }
+        .builder-pitch-line { position:absolute; top:50%; left:8px; right:8px; border-top:1px solid rgba(235,255,241,.23); }
+        .builder-pitch-circle { position:absolute; width:72px; height:72px; border:1px solid rgba(235,255,241,.23); border-radius:50%; left:50%; top:50%; transform:translate(-50%,-50%); }
+        .builder-pitch-row { position:relative; display:flex; justify-content:space-evenly; align-items:flex-start; gap:5px; margin:3px 0 17px; min-height:60px; }
+        .builder-pitch-player { display:flex; flex-direction:column; align-items:center; text-align:center; width:20%; max-width:94px; min-width:0; color:#fff; }
+        .builder-pitch-shirt { width:29px; height:29px; display:grid; place-items:center; border-radius:9px 9px 6px 6px; background:#e5fff0; color:#12623b; font-size:10px; font-weight:900; border:1px solid rgba(0,0,0,.15); box-shadow:0 3px 8px rgba(0,0,0,.18); }
+        .builder-pitch-player.is-captain .builder-pitch-shirt { background:#c5f36c; color:#183b22; }
+        .builder-pitch-name { display:block; width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:10px; font-weight:800; margin-top:4px; }
+        .builder-pitch-points { font-size:10px; color:#c9f8d9; margin-top:2px; }
+        .builder-bench { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; margin-top:12px; }
+        .builder-bench-slot { padding:9px 6px; background:var(--surface-soft); border:1px solid var(--border); border-radius:9px; min-width:0; text-align:center; }
+        .builder-bench-slot strong { display:block; color:var(--text); font-size:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .builder-bench-slot span { display:block; color:var(--text-muted); font-size:10px; margin-top:3px; }
+        .builder-pitch-empty { color:#d8f4e2; font-size:12px; text-align:center; padding:38px 12px; position:relative; }
+        @media(max-width:1000px) { .builder-ai-grid { grid-template-columns:1fr; } }
+        @media(max-width:760px) { .builder-layout { grid-template-columns:1fr; } .builder-toolbar { grid-template-columns:1fr; } .builder-player-row { grid-template-columns:minmax(0,1fr) auto; gap:8px; } .builder-player-points { grid-column:1; grid-row:2; text-align:left; display:flex; gap:8px; align-items:center; } .builder-player-points span { margin-top:0; } .builder-add { grid-column:2; grid-row:1 / span 2; } .builder-bench { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+
         .team-builder-section { max-width: 1320px; }
         .builder-layout { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(310px,.85fr); gap:22px; align-items:start; }
         .panel-surface { background:var(--surface); border:1px solid var(--border); border-radius:18px; box-shadow:0 14px 36px rgba(0,0,0,.08); }
@@ -1560,6 +1588,16 @@ body[data-theme="light"] .hero-stat span {
         <span class="section-kicker">Build your squad</span>
         <h2>Your FPL Team Builder</h2>
         <p>Build a 15-player squad using the published player pool. Track your budget, position slots and club limits as you go.</p>
+    </div>
+    <div class="builder-ai-grid" aria-label="AI squad insights">
+        <div class="builder-ai-card"><span>AI captain pick</span><strong id="builder-ai-captain">Build your squad</strong><small id="builder-ai-captain-detail">Your strongest projected pick will appear here.</small></div>
+        <div class="builder-ai-card"><span>Best value in squad</span><strong id="builder-ai-value">Awaiting picks</strong><small id="builder-ai-value-detail">Expected points relative to player price.</small></div>
+        <div class="builder-ai-card"><span>Potential differential</span><strong id="builder-ai-differential">Awaiting picks</strong><small id="builder-ai-differential-detail">A lower-owned pick with a useful projection.</small></div>
+    </div>
+    <div class="builder-pitch-card panel-surface">
+        <div class="builder-pitch-head"><h3>Squad pitch view</h3><span id="builder-pitch-caption">15-player squad · grouped by position</span></div>
+        <div class="builder-pitch" id="builder-pitch"><div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div><div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div></div>
+        <div class="builder-bench" id="builder-bench"></div>
     </div>
     <div class="builder-layout">
         <div class="builder-main panel-surface">
@@ -2652,6 +2690,29 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 "Squad progress: " + squad.length + "/15 players. Position quotas and the £100.0m budget are tracked as you build.";
             selectedList.innerHTML = squad.length ? squad.map(player => '<div class="builder-selected-row ' + (player._builderId === captainId ? "is-captain" : "") + '"><div><span class="builder-selected-name">' + esc(player.name || "Unknown player") + '</span><span class="builder-selected-meta">' + esc(({Goalkeeper:"GK",Defender:"DEF",Midfielder:"MID",Forward:"FWD"}[player._builderPosition] || "—") + " · " + (player.team || player.team_name || "Club n/a")) + '</span></div><span class="builder-selected-price">' + esc(priceText(player)) + '</span><span style="display:flex;gap:5px"><button type="button" class="builder-captain ' + (player._builderId === captainId ? "is-active" : "") + '" data-builder-captain="' + esc(player._builderId) + '" aria-label="Set ' + esc(player.name) + ' as captain">' + (player._builderId === captainId ? "C" : "Cap") + '</button><button type="button" class="builder-remove" data-builder-remove="' + esc(player._builderId) + '" aria-label="Remove ' + esc(player.name) + '">×</button></span></div>').join("") : '<div class="builder-empty">Your selected players will appear here.</div>';
             document.getElementById("builder-total-points").textContent = squad.length ? squadPoints().toFixed(2) + " pts" : "—";
+            const insights = [
+                ["builder-ai-captain","builder-ai-captain-detail", [...squad].sort((a,b)=>pointsOf(b)-pointsOf(a))[0], p => p ? pointsOf(p).toFixed(2) + " expected points" : "Add players to start"],
+                ["builder-ai-value","builder-ai-value-detail", [...squad].filter(p => (priceOf(p) ?? 0) > 0).sort((a,b)=>(pointsOf(b)/(priceOf(b)||1))-(pointsOf(a)/(priceOf(a)||1)))[0], p => p ? (pointsOf(p)/(priceOf(p)||1)).toFixed(2) + " expected points per £1m · " + priceText(p) : "Price and projection needed"],
+                ["builder-ai-differential","builder-ai-differential-detail", [...squad].filter(p => number(p.ownership ?? p.selected_by_percent) != null).sort((a,b)=>(pointsOf(b)/(1+Number(b.ownership ?? b.selected_by_percent)))-(pointsOf(a)/(1+Number(a.ownership ?? a.selected_by_percent))))[0], p => p ? (number(p.ownership ?? p.selected_by_percent) ?? 0).toFixed(1) + "% ownership · " + pointsOf(p).toFixed(2) + " expected points" : "Ownership data is not available for these picks"]
+            ];
+            insights.forEach(([titleId,detailId,player,detail]) => {
+                document.getElementById(titleId).textContent = player ? (player.name || "Selected player") : (squad.length ? "No data available" : "Build your squad");
+                document.getElementById(detailId).textContent = detail(player);
+            });
+            const posRows = ["Forward","Midfielder","Defender","Goalkeeper"];
+            const starters = [...squad].sort((a,b)=>pointsOf(b)-pointsOf(a));
+            const startingIds = new Set();
+            const gk = starters.filter(p=>p._builderPosition==="Goalkeeper").slice(0,1);
+            const defs = starters.filter(p=>p._builderPosition==="Defender").slice(0,4);
+            const mids = starters.filter(p=>p._builderPosition==="Midfielder").slice(0,4);
+            const fwds = starters.filter(p=>p._builderPosition==="Forward").slice(0,2);
+            [...gk,...defs,...mids,...fwds].forEach(p=>startingIds.add(p._builderId));
+            const rows = [fwds,mids,defs,gk];
+            const pitch = document.getElementById("builder-pitch");
+            pitch.innerHTML = '<div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div>' + (squad.length ? rows.map(row => '<div class="builder-pitch-row">' + (row.length ? row.map(p => '<div class="builder-pitch-player ' + (p._builderId===captainId?'is-captain':'') + '"><span class="builder-pitch-shirt">' + (p._builderId===captainId?'C':({Goalkeeper:"GK",Defender:"D",Midfielder:"M",Forward:"F"}[p._builderPosition]||"•")) + '</span><span class="builder-pitch-name" title="' + esc(p.name) + '">' + esc(p.name) + '</span><span class="builder-pitch-points">' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-pitch-empty">No ' + row + '</div>') + '</div>').join("") : '<div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div>');
+            document.getElementById("builder-pitch-caption").textContent = "Best projected XI preview · captain marked C";
+            const bench = starters.filter(p=>!startingIds.has(p._builderId)).sort((a,b)=>pointsOf(b)-pointsOf(a));
+            document.getElementById("builder-bench").innerHTML = bench.length ? bench.map((p,i)=>'<div class="builder-bench-slot"><strong>' + esc(p.name) + '</strong><span>' + (i===0?"Bench GK / 1": "Bench "+(i+1)) + ' · ' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-bench-slot"><strong>Bench</strong><span>Complete squad to see bench options</span></div>';
         }
         list.addEventListener("click", event => {
             const button = event.target.closest("[data-builder-add]");
