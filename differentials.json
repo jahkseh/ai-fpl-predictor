@@ -2,15 +2,15 @@
   "season": "2026/27",
   "data_gameweek": 7,
   "next_gameweek": 8,
-  "generated_at_utc": "2026-10-17T18:50:19.649462+00:00",
+  "generated_at_utc": "2026-10-17T20:17:54.088215+00:00",
   "picks": [
     {
       "name": "Iwobi",
       "team": "Fulham",
       "position": "Midfielder",
       "ownership": 0.8,
-      "prediction": 5.015786,
-      "differential_score": 4.976,
+      "prediction": 4.961484,
+      "differential_score": 4.922,
       "price": 5.4,
       "form": 6.7,
       "fixture": {
@@ -22,46 +22,12 @@
       }
     },
     {
-      "name": "Mac Allister",
-      "team": "Liverpool",
-      "position": "Midfielder",
-      "ownership": 1.3,
-      "prediction": 4.716848,
-      "differential_score": 4.656,
-      "price": 5.4,
-      "form": 2.7,
-      "fixture": {
-        "home": "Liverpool",
-        "away": "Brighton",
-        "is_home": true,
-        "kickoff": "2026-10-25T14:00:00",
-        "match_id": "26-27-prem-liverpool-vs-brighton-hove-albion"
-      }
-    },
-    {
-      "name": "Ouattara",
-      "team": "Ipswich Town",
-      "position": "Defender",
-      "ownership": 0.9,
-      "prediction": 4.599092,
-      "differential_score": 4.558,
-      "price": 4.0,
-      "form": 5.0,
-      "fixture": {
-        "home": "Ipswich Town",
-        "away": "Nott'm Forest",
-        "is_home": true,
-        "kickoff": "2026-10-23T19:00:00",
-        "match_id": "26-27-prem-ipswich-town-vs-nottingham-forest"
-      }
-    },
-    {
       "name": "Thiago",
       "team": "Brentford",
       "position": "Forward",
       "ownership": 8.9,
-      "prediction": 4.994734,
-      "differential_score": 4.55,
+      "prediction": 5.312553,
+      "differential_score": 4.84,
       "price": 7.8,
       "form": 4.3,
       "fixture": {
@@ -73,20 +39,54 @@
       }
     },
     {
-      "name": "Barcola",
-      "team": "Liverpool",
+      "name": "Manzambi",
+      "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 2.9,
-      "prediction": 4.60562,
-      "differential_score": 4.472,
-      "price": 8.0,
-      "form": 3.0,
+      "ownership": 2.1,
+      "prediction": 4.726337,
+      "differential_score": 4.627,
+      "price": 5.9,
+      "form": 6.3,
       "fixture": {
-        "home": "Liverpool",
-        "away": "Brighton",
+        "home": "Aston Villa",
+        "away": "Man City",
+        "is_home": true,
+        "kickoff": "2026-10-24T11:30:00",
+        "match_id": "26-27-prem-aston-villa-vs-manchester-city"
+      }
+    },
+    {
+      "name": "Ouattara",
+      "team": "Ipswich Town",
+      "position": "Defender",
+      "ownership": 0.9,
+      "prediction": 4.586852,
+      "differential_score": 4.546,
+      "price": 4.0,
+      "form": 5.0,
+      "fixture": {
+        "home": "Ipswich Town",
+        "away": "Nott'm Forest",
+        "is_home": true,
+        "kickoff": "2026-10-23T19:00:00",
+        "match_id": "26-27-prem-ipswich-town-vs-nottingham-forest"
+      }
+    },
+    {
+      "name": "Belloumi",
+      "team": "Hull City",
+      "position": "Midfielder",
+      "ownership": 8.9,
+      "prediction": 4.901892,
+      "differential_score": 4.466,
+      "price": 5.2,
+      "form": 4.0,
+      "fixture": {
+        "home": "Hull City",
+        "away": "Brentford",
         "is_home": true,
         "kickoff": "2026-10-25T14:00:00",
-        "match_id": "26-27-prem-liverpool-vs-brighton-hove-albion"
+        "match_id": "26-27-prem-hull-city-vs-brentford"
       }
     }
   ]
