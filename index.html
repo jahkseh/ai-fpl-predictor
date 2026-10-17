@@ -1649,7 +1649,7 @@ body[data-theme="light"] .hero-stat span {
 
         <div class="section-title">
             <h2>Model Performance</h2>
-            <p>Latest controlled walk-forward backtest: 2025/26 Gameweeks 11–38. Each round was predicted using only earlier data.</p>
+            <p>Previous controlled walk-forward backtest: 2025/26 Gameweeks 11–38, using the four-season archive before expansion. The seven-season archive is being re-evaluated now.</p>
         </div>
 
         <div class="model-data-panel">
@@ -1662,12 +1662,12 @@ body[data-theme="light"] .hero-stat span {
                 <span class="model-data-badge"><span class="status-dot"></span> Validation-led</span>
             </div>
             <div class="model-data-grid">
-                <article class="model-data-card"><span>Historical training archive</span><strong>4 seasons</strong><small>2022/23–2025/26 completed-season player data</small></article>
+                <article class="model-data-card"><span>Historical training archive</span><strong>4 seasons</strong><small>2019/20–2025/26 completed-season player data (7 seasons)</small></article>
                 <article class="model-data-card"><span>Model inputs</span><strong>Player + fixture</strong><small>Recent form, minutes, xG/xA, historical ability, team strength and opponent context</small></article>
                 <article class="model-data-card"><span>Latest completed GW score</span><strong id="current-accuracy-value">Awaiting results</strong><small id="current-accuracy-detail">A score appears after a frozen prediction snapshot can be matched to actual points.</small></article>
             </div>
             <div class="model-accuracy-note" id="model-accuracy-note" role="status">Accuracy tracking is separate from the historical benchmark below. No new improvement is claimed until realized results are available.</div>
-            <div class="model-backtest-context"><strong>What the latest backtest says:</strong> compared with the rolling-form baseline (MAE 0.9871, RMSE 1.9365, R² 0.3111), the Phase 4 model has a slightly higher MAE (0.9884) but lower RMSE (1.9296) and higher R² (0.3160). That is a mixed result, not proof of a universal accuracy improvement.</div>
+            <div class="model-backtest-context"><strong>What the previous four-season backtest said:</strong> compared with the rolling-form baseline (MAE 0.9871, RMSE 1.9365, R² 0.3111), the Phase 4 model has a slightly higher MAE (0.9884) but lower RMSE (1.9296) and higher R² (0.3160). That is a mixed result, not proof of a universal accuracy improvement.</div>
         </div>
 
         <div class="info-grid">
