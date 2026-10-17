@@ -1,5 +1,311 @@
 {
   "season": "2026/27",
-  "gameweek_count": 0,
-  "gameweeks": []
+  "gameweek_count": 1,
+  "gameweeks": [
+    {
+      "gameweek": 8,
+      "predictions": [
+        {
+          "home": "Arsenal",
+          "away": "Everton",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Rice",
+              "prediction": 4.344498,
+              "prediction_p10": 1.0,
+              "prediction_p90": 8.685714,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Raya",
+              "prediction": 3.872767,
+              "prediction_p10": 0.569841,
+              "prediction_p90": 8.0,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Pickford",
+              "prediction": 3.844462,
+              "prediction_p10": 0.886667,
+              "prediction_p90": 7.633929,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Aston Villa",
+          "away": "Man City",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Haaland",
+              "prediction": 5.293072,
+              "prediction_p10": 1.712857,
+              "prediction_p90": 12.014286,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Semenyo",
+              "prediction": 4.379905,
+              "prediction_p10": 0.915909,
+              "prediction_p90": 8.635227,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Manzambi",
+              "prediction": 3.825433,
+              "prediction_p10": 0.613846,
+              "prediction_p90": 8.252273,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Chelsea",
+          "away": "Spurs",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Palmer",
+              "prediction": 4.993711,
+              "prediction_p10": 1.0,
+              "prediction_p90": 10.285714,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Rogers",
+              "prediction": 4.784881,
+              "prediction_p10": 1.555556,
+              "prediction_p90": 9.3775,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Lacroix",
+              "prediction": 4.440663,
+              "prediction_p10": 1.0,
+              "prediction_p90": 8.705,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Coventry City",
+          "away": "Fulham",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Iwobi",
+              "prediction": 5.015786,
+              "prediction_p10": 1.0,
+              "prediction_p90": 9.720635,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "King",
+              "prediction": 4.318036,
+              "prediction_p10": 1.134454,
+              "prediction_p90": 8.826364,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Gonzalo",
+              "prediction": 4.313473,
+              "prediction_p10": 1.0,
+              "prediction_p90": 9.0,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Crystal Palace",
+          "away": "Newcastle",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Strand Larsen",
+              "prediction": 3.52983,
+              "prediction_p10": 0.419048,
+              "prediction_p90": 8.01,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Barnes",
+              "prediction": 3.426961,
+              "prediction_p10": 0.5,
+              "prediction_p90": 7.606667,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Khalaili",
+              "prediction": 3.32793,
+              "prediction_p10": 0.293277,
+              "prediction_p90": 7.629167,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Hull City",
+          "away": "Brentford",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Thiago",
+              "prediction": 4.994734,
+              "prediction_p10": 1.0,
+              "prediction_p90": 10.156109,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Belloumi",
+              "prediction": 4.477195,
+              "prediction_p10": 0.555556,
+              "prediction_p90": 9.112222,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "McBurnie",
+              "prediction": 4.39534,
+              "prediction_p10": 1.05,
+              "prediction_p90": 9.303333,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Ipswich Town",
+          "away": "Nott'm Forest",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Ouattara",
+              "prediction": 4.599092,
+              "prediction_p10": 0.856044,
+              "prediction_p90": 9.0,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Emersonn",
+              "prediction": 4.360502,
+              "prediction_p10": 0.919658,
+              "prediction_p90": 8.661905,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Davis",
+              "prediction": 4.038468,
+              "prediction_p10": 1.0,
+              "prediction_p90": 7.6,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Liverpool",
+          "away": "Brighton",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Mac Allister",
+              "prediction": 4.716848,
+              "prediction_p10": 1.0,
+              "prediction_p90": 10.232692,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Barcola",
+              "prediction": 4.60562,
+              "prediction_p10": 1.0,
+              "prediction_p90": 9.355556,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Isak",
+              "prediction": 4.576434,
+              "prediction_p10": 1.194286,
+              "prediction_p90": 9.253571,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Man Utd",
+          "away": "Bournemouth",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Cunha",
+              "prediction": 4.258872,
+              "prediction_p10": 0.666667,
+              "prediction_p90": 9.223077,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "B. Fernandes",
+              "prediction": 4.107994,
+              "prediction_p10": 0.25,
+              "prediction_p90": 9.435714,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Mbeumo",
+              "prediction": 3.101346,
+              "prediction_p10": 0.333333,
+              "prediction_p90": 6.925214,
+              "confidence": "low"
+            }
+          ]
+        },
+        {
+          "home": "Sunderland",
+          "away": "Leeds",
+          "players": [
+            {
+              "rank": 1,
+              "name": "E.Le Fée",
+              "prediction": 3.507535,
+              "prediction_p10": 0.496154,
+              "prediction_p90": 8.018182,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Muharemović",
+              "prediction": 3.334359,
+              "prediction_p10": 0.161111,
+              "prediction_p90": 8.01,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "Bogle",
+              "prediction": 3.322115,
+              "prediction_p10": 0.1625,
+              "prediction_p90": 7.222222,
+              "confidence": "low"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
