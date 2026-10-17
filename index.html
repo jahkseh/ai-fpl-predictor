@@ -1301,6 +1301,77 @@ body[data-theme="light"] .hero-stat span {
             *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
         }
 
+
+        /* DepositScout-inspired visual refresh: clear hierarchy, calm surfaces and data-first layouts. */
+        :root {
+            --bg: #f5f7f6; --surface: #ffffff; --surface-soft: #f0f5f2;
+            --border: #dfe7e2; --text: #17251f; --text-muted: #65756d;
+            --accent: #168451; --accent-hover: #0f6d41; --hero: #f5f7f6;
+            --header: #ffffff; --footer: #10271d;
+        }
+        body { background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+        body[data-theme="dark"] { --bg:#0b1220; --surface:#111827; --surface-soft:#162033; --border:#243047; --text:#e5e7eb; --text-muted:#94a3b8; --accent:#27d17f; --accent-hover:#20b86d; --hero:#0f172a; --header:#0f172a; --footer:#0f172a; }
+        header { position:sticky; top:0; z-index:30; padding:0 28px; background:var(--header); border-bottom:1px solid var(--border); box-shadow:0 4px 18px rgba(20,40,28,.035); }
+        .navbar { max-width:1320px; min-height:76px; gap:24px; }
+        .logo { color:var(--text); font-size:21px; letter-spacing:-.045em; }
+        nav { display:flex; align-items:center; gap:clamp(10px,1.5vw,22px); flex-wrap:wrap; justify-content:flex-end; }
+        nav a { margin:0; color:var(--text-muted); font-size:12px; font-weight:700; transition:color .2s ease; }
+        nav a:hover { color:var(--accent); }
+        .theme-toggle { border-color:var(--border); color:var(--text); }
+        .hero { max-width:1320px; margin:0 auto; padding:72px 34px 58px; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr); gap:clamp(30px,5vw,78px); align-items:center; text-align:left; background:var(--bg); }
+        .hero::before,.hero::after { display:none; }
+        .hero-copy { min-width:0; }
+        .eyebrow { display:inline-flex; align-items:center; gap:9px; padding:8px 11px; border:1px solid var(--border); border-radius:999px; background:var(--surface); color:var(--text-muted); font-size:10px; font-weight:850; letter-spacing:.09em; text-transform:uppercase; }
+        .status-dot { width:7px; height:7px; border-radius:50%; background:#1baf68; box-shadow:0 0 0 4px rgba(27,175,104,.11); }
+        .hero h1 { margin:23px 0 17px; color:var(--text); font-size:clamp(42px,5.2vw,70px); line-height:1.02; letter-spacing:-.065em; font-weight:850; }
+        .hero h1 span { color:var(--accent); }
+        .hero p { max-width:560px; margin:0 0 27px; color:var(--text-muted); font-size:16px; line-height:1.8; }
+        .hero-actions { display:flex; flex-wrap:wrap; gap:10px; }
+        .hero-button { display:inline-flex; align-items:center; justify-content:center; gap:12px; padding:13px 17px; border-radius:9px; text-decoration:none; font-size:12px; font-weight:800; transition:transform .18s ease,background .18s ease,border-color .18s ease; }
+        .hero-button:hover { transform:translateY(-2px); }
+        .hero-button.primary { background:#147a49; color:#fff; border:1px solid #147a49; }
+        .hero-button.primary:hover { background:#0d663b; }
+        .hero-button.secondary { background:var(--surface); color:var(--text); border:1px solid var(--border); }
+        .hero-trustline { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:22px; color:var(--text-muted); font-size:10px; font-weight:650; }
+        .hero-trustline span { color:var(--accent); font-weight:900; }.hero-trustline i { width:3px;height:3px;border-radius:50%;background:#9aa9a1; }
+        .hero-art { padding:17px; border:1px solid var(--border); border-radius:20px; background:var(--surface); box-shadow:0 24px 60px rgba(23,53,37,.08); transform:rotate(.5deg); }
+        .art-topline { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:13px; color:var(--text-muted); font-size:9px; font-weight:900; letter-spacing:.12em; }
+        .art-pending { padding:5px 7px; border:1px dashed #c6a66a; border-radius:5px; color:#9a7634; letter-spacing:.07em; }
+        .pitch-placeholder { position:relative; min-height:270px; overflow:hidden; border:1px solid rgba(255,255,255,.24); border-radius:13px; background:linear-gradient(135deg,#e3f2e8,#c7e5d2); }
+        .pitch-placeholder:before { content:""; position:absolute; inset:13px; border:1px solid rgba(20,105,61,.26); border-radius:5px; }
+        .pitch-line { position:absolute; z-index:1; background:rgba(20,105,61,.22); }
+        .pitch-line.halfway { top:13px; bottom:13px; left:50%; width:1px; }
+        .pitch-circle { position:absolute; top:50%; left:50%; width:72px; height:72px; border:1px solid rgba(20,105,61,.26); border-radius:50%; transform:translate(-50%,-50%); }
+        .pitch-box { position:absolute; left:50%; width:82px; height:25px; border:1px solid rgba(20,105,61,.24); transform:translateX(-50%); }
+        .pitch-box-top { top:13px; border-top:0; }.pitch-box-bottom { bottom:13px; border-bottom:0; }
+        .player-token { position:absolute; z-index:2; display:flex; align-items:center; justify-content:center; width:42px;height:42px;border:3px solid rgba(255,255,255,.88);border-radius:50%; background:#163f2d;color:white;box-shadow:0 5px 12px rgba(16,54,32,.18);font-size:9px;font-weight:900; }
+        .token-one { left:42%;top:22%; }.token-two { left:24%;top:42%; }.token-three { right:23%;top:42%; }.token-four { left:42%;bottom:22%; }.token-five { right:13%;bottom:15%;background:#d9a441;color:#243322; }
+        .pitch-caption { position:absolute; z-index:3; left:18px; bottom:17px; display:flex; flex-direction:column; gap:3px; padding:10px 12px; border:1px solid rgba(255,255,255,.7); border-radius:8px; background:rgba(255,255,255,.84); backdrop-filter:blur(8px); }
+        .pitch-caption strong { color:#183a28; font-size:12px; }.pitch-caption span { color:#607968; font-size:9px; }
+        .art-foot { display:flex; align-items:center; gap:11px; padding:15px 4px 2px; }.art-foot-mark { display:flex;align-items:center;justify-content:center;width:35px;height:35px;border-radius:10px;background:var(--surface-soft);color:var(--accent);font-size:20px; }
+        .art-foot strong,.art-foot small { display:block; }.art-foot strong { color:var(--text);font-size:11px; }.art-foot small { margin-top:4px;color:var(--text-muted);font-size:10px; }
+        .hero-stats { max-width:1320px; margin:0 auto; padding:0 34px 25px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; background:transparent; border:0; overflow:visible; }
+        .hero-stat { padding:19px 22px; border:1px solid var(--border); border-radius:13px; background:var(--surface); }
+        .hero-stat strong { color:var(--text); font-size:25px; letter-spacing:-.04em; }.hero-stat span { color:var(--text-muted); font-size:9px; }
+        .section { max-width:1320px; padding:56px 34px; }
+        .section-title { text-align:left; margin-bottom:25px; }
+        .section-title h2 { color:var(--text); font-size:clamp(23px,2.5vw,31px); letter-spacing:-.045em; }
+        .section-title p { max-width:720px; color:var(--text-muted); font-size:13px; line-height:1.7; }
+        .prediction-overview,.live-summary-card,.prediction-card,.fixture-card,.info-card,.future-card,.live-filter-panel,.fixture-difficulty-note,.live-banner { box-shadow:0 5px 18px rgba(20,40,28,.025); }
+        .prediction-card,.fixture-card,.info-card,.future-card { border-radius:13px; }
+        .prediction-card:hover,.fixture-card:hover { transform:translateY(-2px); }
+        .info-section { background:transparent; }
+        footer { padding:26px 20px; text-align:center; font-size:11px; color:#c7d8ce; }
+        body[data-theme="dark"] .hero-art { box-shadow:0 24px 60px rgba(0,0,0,.22); }
+        body[data-theme="dark"] .pitch-placeholder { background:linear-gradient(135deg,#193d2b,#214c36); }
+        body[data-theme="dark"] .pitch-placeholder:before, body[data-theme="dark"] .pitch-line, body[data-theme="dark"] .pitch-circle, body[data-theme="dark"] .pitch-box { border-color:rgba(200,235,210,.24); background-color:transparent; }
+        body[data-theme="dark"] .pitch-line.halfway { background:rgba(200,235,210,.24); }
+        body[data-theme="dark"] .pitch-caption { background:rgba(12,28,20,.86); border-color:rgba(255,255,255,.12); }
+        body[data-theme="dark"] .pitch-caption strong { color:#e5f5eb; } body[data-theme="dark"] .pitch-caption span { color:#a8c4b2; }
+        @media(max-width:1000px) { .navbar { padding:15px 0; align-items:flex-start; flex-direction:column; gap:13px; } nav { justify-content:flex-start; } .hero { grid-template-columns:1fr 0.9fr; padding-top:52px; } }
+        @media(max-width:760px) { header { padding:0 16px; } .navbar { min-height:0; } nav { gap:12px 16px; } nav a { font-size:11px; } .hero { grid-template-columns:1fr; padding:42px 20px 30px; gap:30px; } .hero-art { max-width:560px; width:100%; transform:none; } .hero-stats { padding:0 20px 14px; gap:8px; } .hero-stat { padding:14px; } .hero-stat strong { font-size:20px; } .section { padding:40px 20px; } }
+        @media(max-width:460px) { .hero h1 { font-size:42px; } .hero-stats { grid-template-columns:1fr; } .hero-stat { display:flex; align-items:center; justify-content:space-between; gap:12px; } .hero-stat strong { margin:0; } .hero-stat span { text-align:right; } .pitch-placeholder { min-height:225px; } }
+
     </style>
 </head>
 
@@ -1331,19 +1402,28 @@ body[data-theme="light"] .hero-stat span {
     </header>
 
     <section class="hero" id="home">
-        <div class="eyebrow">Fantasy Premier League analytics</div>
-        <h1>AI FPL <span>Predictor</span></h1>
-
-        <p>
-            Data-driven Fantasy Premier League analysis using historical player
-            performance, fixture context and machine-learning predictions.
-        </p>
-
-        <div class="hero-actions">
-            <a href="#predictions" class="hero-button">View Predictions</a>
-            <a href="#players" class="hero-button">Explore Players</a>
-            <a href="#live-stats" class="hero-button">Live Picks</a>
-            <a href="#teams" class="hero-button">Explore Teams</a>
+        <div class="hero-copy">
+            <div class="eyebrow"><span class="status-dot"></span> FPL intelligence · 2026/27 season</div>
+            <h1>Make your next<br><span>FPL move count.</span></h1>
+            <p>
+                Explore data-led player projections, fixture insights and differential picks —
+                powered by a model built to help you think one Gameweek ahead.
+            </p>
+            <div class="hero-actions">
+                <a href="#predictions" class="hero-button primary">Explore predictions <span aria-hidden="true">↗</span></a>
+                <a href="#live-stats" class="hero-button secondary">Browse all players</a>
+            </div>
+            <div class="hero-trustline"><span aria-hidden="true">✓</span> Transparent projections <i></i> Player-level detail <i></i> Free to explore</div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Placeholder for custom FPL hero artwork, to be added later">
+            <div class="art-topline"><span>YOUR NEXT EDGE</span><span class="art-pending">ARTWORK PENDING</span></div>
+            <div class="pitch-placeholder">
+                <div class="pitch-line halfway"></div><div class="pitch-circle"></div>
+                <div class="pitch-box pitch-box-top"></div><div class="pitch-box pitch-box-bottom"></div>
+                <div class="player-token token-one">FWD</div><div class="player-token token-two">MID</div><div class="player-token token-three">MID</div><div class="player-token token-four">DEF</div><div class="player-token token-five">GK</div>
+                <div class="pitch-caption"><strong>FPL, with a data edge.</strong><span>Custom illustration slot · replace when ready</span></div>
+            </div>
+            <div class="art-foot"><span class="art-foot-mark">✳</span><span><strong>Built around the numbers</strong><small>Expected points · minutes · fixtures · form</small></span></div>
         </div>
     </section>
 <div class="hero-stats">
@@ -1610,22 +1690,24 @@ body[data-theme="light"] .hero-stat span {
         const themeToggle = document.getElementById("theme-toggle");
         const savedTheme = localStorage.getItem("fpl-theme");
 
-        if (savedTheme === "light") {
-            document.body.setAttribute("data-theme", "light");
+        if (savedTheme === "dark") {
+            document.body.setAttribute("data-theme", "dark");
+            themeToggle.querySelector(".theme-toggle-label").textContent = "Light";
+        } else {
             themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
         }
 
         themeToggle.addEventListener("click", () => {
-            const isLight = document.body.getAttribute("data-theme") === "light";
+            const isDark = document.body.getAttribute("data-theme") === "dark";
 
-            if (isLight) {
+            if (isDark) {
                 document.body.removeAttribute("data-theme");
-                localStorage.setItem("fpl-theme", "dark");
-                themeToggle.querySelector(".theme-toggle-label").textContent = "Light";
-            } else {
-                document.body.setAttribute("data-theme", "light");
                 localStorage.setItem("fpl-theme", "light");
                 themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
+            } else {
+                document.body.setAttribute("data-theme", "dark");
+                localStorage.setItem("fpl-theme", "dark");
+                themeToggle.querySelector(".theme-toggle-label").textContent = "Light";
             }
         });        const differentialContainer = document.getElementById("differential-container");
 
