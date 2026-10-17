@@ -31,7 +31,14 @@ def add_prediction_distribution(model, frame: pd.DataFrame, features: list[str])
     lower = np.percentile(tree_predictions, 10, axis=1)
     upper = np.percentile(tree_predictions, 90, axis=1)
 
-    out["prediction"] = np.clip(point, 0, None)
+    point = np.clip(point, 0, None)
+    # Percentiles of a skewed tree ensemble can occasionally fail to bracket
+    # its mean. Keep the displayed interval valid and ensure it contains the
+    # point estimate, including for players whose raw estimate is below zero.
+    lower = np.minimum(lower, point)
+    upper = np.maximum(upper, point)
+
+    out["prediction"] = point
     out["prediction_std"] = np.maximum(spread, 0)
     out["prediction_p10"] = np.clip(lower, 0, None)
     out["prediction_p90"] = np.clip(upper, 0, None)
