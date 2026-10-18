@@ -2,15 +2,15 @@
   "season": "2026/27",
   "data_gameweek": 7,
   "next_gameweek": 8,
-  "generated_at_utc": "2026-10-18T15:49:13.132527+00:00",
+  "generated_at_utc": "2026-10-18T18:50:53.057857+00:00",
   "picks": [
     {
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 2.4,
+      "ownership": 2.5,
       "prediction": 5.224138,
-      "differential_score": 5.099,
+      "differential_score": 5.094,
       "price": 6.0,
       "form": 9.7,
       "fixture": {
@@ -56,6 +56,23 @@
       }
     },
     {
+      "name": "Mukiele",
+      "team": "Sunderland",
+      "position": "Defender",
+      "ownership": 1.8,
+      "prediction": 4.856131,
+      "differential_score": 4.769,
+      "price": 5.4,
+      "form": 2.0,
+      "fixture": {
+        "home": "Sunderland",
+        "away": "Leeds",
+        "is_home": true,
+        "kickoff": "2026-10-25T16:30:00",
+        "match_id": "26-27-prem-sunderland-vs-leeds-united"
+      }
+    },
+    {
       "name": "Ouattara",
       "team": "Ipswich Town",
       "position": "Defender",
@@ -70,23 +87,6 @@
         "is_home": true,
         "kickoff": "2026-10-23T19:00:00",
         "match_id": "26-27-prem-ipswich-town-vs-nottingham-forest"
-      }
-    },
-    {
-      "name": "Belloumi",
-      "team": "Hull City",
-      "position": "Midfielder",
-      "ownership": 9.0,
-      "prediction": 4.950083,
-      "differential_score": 4.505,
-      "price": 5.2,
-      "form": 4.0,
-      "fixture": {
-        "home": "Hull City",
-        "away": "Brentford",
-        "is_home": true,
-        "kickoff": "2026-10-25T14:00:00",
-        "match_id": "26-27-prem-hull-city-vs-brentford"
       }
     }
   ]

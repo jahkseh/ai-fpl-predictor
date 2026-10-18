@@ -12,25 +12,25 @@
             {
               "rank": 1,
               "name": "Rice",
-              "prediction": 4.515584,
-              "prediction_p10": 1.0,
-              "prediction_p90": 9.17,
+              "prediction": 5.170402,
+              "prediction_p10": 1.816364,
+              "prediction_p90": 10.0,
               "confidence": "low"
             },
             {
               "rank": 2,
-              "name": "Pickford",
-              "prediction": 4.008858,
-              "prediction_p10": 1.0,
-              "prediction_p90": 7.601538,
+              "name": "Gabriel",
+              "prediction": 4.5495,
+              "prediction_p10": 0.908182,
+              "prediction_p90": 9.591667,
               "confidence": "low"
             },
             {
               "rank": 3,
-              "name": "Raya",
-              "prediction": 4.005407,
-              "prediction_p10": 0.712088,
-              "prediction_p90": 7.639394,
+              "name": "Saka",
+              "prediction": 4.155927,
+              "prediction_p10": 0.747222,
+              "prediction_p90": 9.50625,
               "confidence": "low"
             }
           ]
@@ -139,18 +139,18 @@
             },
             {
               "rank": 2,
-              "name": "Botman",
-              "prediction": 4.156603,
-              "prediction_p10": 0.746429,
-              "prediction_p90": 8.34,
+              "name": "Richards",
+              "prediction": 4.262103,
+              "prediction_p10": 1.0,
+              "prediction_p90": 7.878409,
               "confidence": "low"
             },
             {
               "rank": 3,
-              "name": "Thiaw",
-              "prediction": 3.705943,
-              "prediction_p10": 0.8975,
-              "prediction_p90": 7.461538,
+              "name": "Botman",
+              "prediction": 4.156603,
+              "prediction_p10": 0.746429,
+              "prediction_p90": 8.34,
               "confidence": "low"
             }
           ]
@@ -237,10 +237,10 @@
             },
             {
               "rank": 3,
-              "name": "Vuskovic",
-              "prediction": 4.369229,
-              "prediction_p10": 0.689744,
-              "prediction_p90": 8.133929,
+              "name": "Kostoulas",
+              "prediction": 4.032614,
+              "prediction_p10": 0.854762,
+              "prediction_p90": 8.386154,
               "confidence": "low"
             }
           ]
@@ -252,25 +252,25 @@
             {
               "rank": 1,
               "name": "B. Fernandes",
-              "prediction": 3.947634,
-              "prediction_p10": 0.35098,
-              "prediction_p90": 9.23,
+              "prediction": 5.055608,
+              "prediction_p10": 1.156391,
+              "prediction_p90": 10.45,
               "confidence": "low"
             },
             {
               "rank": 2,
-              "name": "Cunha",
-              "prediction": 3.829223,
-              "prediction_p10": 0.422078,
-              "prediction_p90": 8.172222,
+              "name": "Evanilson",
+              "prediction": 4.598481,
+              "prediction_p10": 1.425714,
+              "prediction_p90": 9.225,
               "confidence": "low"
             },
             {
               "rank": 3,
-              "name": "Tavernier",
-              "prediction": 3.205577,
-              "prediction_p10": 0.31498,
-              "prediction_p90": 7.0,
+              "name": "Cunha",
+              "prediction": 3.9019,
+              "prediction_p10": 0.624038,
+              "prediction_p90": 8.202222,
               "confidence": "low"
             }
           ]
@@ -281,26 +281,26 @@
           "players": [
             {
               "rank": 1,
-              "name": "Muharemović",
-              "prediction": 3.765253,
-              "prediction_p10": 0.375,
-              "prediction_p90": 7.601538,
+              "name": "Mukiele",
+              "prediction": 4.856131,
+              "prediction_p10": 1.136264,
+              "prediction_p90": 8.78,
               "confidence": "low"
             },
             {
               "rank": 2,
-              "name": "Bogle",
-              "prediction": 3.311316,
-              "prediction_p10": 0.229121,
-              "prediction_p90": 7.310256,
+              "name": "Xhaka",
+              "prediction": 4.44284,
+              "prediction_p10": 1.152747,
+              "prediction_p90": 8.720635,
               "confidence": "low"
             },
             {
               "rank": 3,
-              "name": "Fofana",
-              "prediction": 3.118608,
-              "prediction_p10": 0.333333,
-              "prediction_p90": 5.777778,
+              "name": "E.Le Fée",
+              "prediction": 4.17623,
+              "prediction_p10": 1.0,
+              "prediction_p90": 8.297143,
               "confidence": "low"
             }
           ]
