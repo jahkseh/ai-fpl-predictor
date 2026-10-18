@@ -1223,13 +1223,18 @@
                 }
 
                 if (profileData && Array.isArray(profileData.players)) {
+                    const normalizedPlayerName = value => String(value || "").normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").replace(/[^a-z0-9]/gi, "").toLowerCase();
+                    const requestedName = normalizedPlayerName(playerName);
                     const profile = profileData.players.find(item =>
-                        item.name === playerName ||
-                        item.name.replaceAll(" ", "") === playerName.replaceAll(" ", "")
+                        normalizedPlayerName(item.name) === requestedName
                     );
-                    if (!profile) throw new Error("Player not found");
-                    renderPlayerProfile(profile, profileData.data_gameweek, profileData.next_gameweek, playerHistory);
-                    return;
+                    if (profile) {
+                        renderPlayerProfile(profile, profileData.data_gameweek, profileData.next_gameweek, playerHistory);
+                        return;
+                    }
+                    // Profiles may lag behind live player data after transfers, new signings or a data refresh.
+                    // Continue to the live-data fallback instead of failing the page immediately.
+                    console.info("No prebuilt profile for " + playerName + "; trying live player data.");
                 }
 
                 const [predictionResponse, liveResponse] = await Promise.all([
