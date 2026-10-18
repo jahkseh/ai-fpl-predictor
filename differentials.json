@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 7,
   "next_gameweek": 8,
-  "generated_at_utc": "2026-10-18T09:55:21.988370+00:00",
+  "generated_at_utc": "2026-10-18T12:55:18.696988+00:00",
   "picks": [
     {
       "name": "Manzambi",
@@ -42,9 +42,9 @@
       "name": "Iwobi",
       "team": "Fulham",
       "position": "Midfielder",
-      "ownership": 0.8,
+      "ownership": 0.9,
       "prediction": 4.854824,
-      "differential_score": 4.816,
+      "differential_score": 4.811,
       "price": 5.4,
       "form": 6.7,
       "fixture": {
