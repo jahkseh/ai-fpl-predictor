@@ -1244,16 +1244,36 @@
                 if (!predictionResponse.ok || !liveResponse.ok) throw new Error("Player data unavailable");
                 const predictionData = await predictionResponse.json();
                 const liveData = await liveResponse.json();
-                const live = liveData.players.find(item =>
-                    item.name === playerName ||
-                    item.name.replaceAll(" ", "") === playerName.replaceAll(" ", "")
-                );
-                if (!live) throw new Error("Player not found");
+                const normalizePlayerName = value => String(value || "")
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .replace(/[^a-z0-9]/gi, "")
+                    .toLowerCase();
+                const requestedPlayerKey = normalizePlayerName(playerName);
+                const livePlayers = Array.isArray(liveData.players) ? liveData.players : [];
+                const live = livePlayers.find(item => normalizePlayerName(item.name) === requestedPlayerKey);
+                if (!live) {
+                    console.error("Player profile not found in live_data.json", {
+                        requestedPlayer: playerName,
+                        availablePlayerCount: livePlayers.length
+                    });
+                    throw new Error("Player not found in live data");
+                }
 
-                const allPredictions = Array.isArray(predictionData.all_players) ? predictionData.all_players : predictionData.predictions.flatMap(item =>
-                    item.players.map(itemPlayer => ({...itemPlayer, fixture_home:item.home, fixture_away:item.away}))
-                );
-                const predicted = allPredictions.find(item => item.name === playerName && item.fixture_home === live.fixture?.home && item.fixture_away === live.fixture?.away) || {};
+                const allPredictions = Array.isArray(predictionData.all_players)
+                    ? predictionData.all_players
+                    : (Array.isArray(predictionData.predictions) ? predictionData.predictions : []).flatMap(fixture =>
+                        (Array.isArray(fixture.players) ? fixture.players : []).map(itemPlayer => ({
+                            ...itemPlayer,
+                            fixture_home: itemPlayer.fixture_home || fixture.home,
+                            fixture_away: itemPlayer.fixture_away || fixture.away
+                        }))
+                    );
+                const predicted = allPredictions.find(item =>
+                    normalizePlayerName(item.name) === requestedPlayerKey &&
+                    (!item.fixture_home || !live.fixture?.home || item.fixture_home === live.fixture.home) &&
+                    (!item.fixture_away || !live.fixture?.away || item.fixture_away === live.fixture.away)
+                ) || allPredictions.find(item => normalizePlayerName(item.name) === requestedPlayerKey) || {};
                 const fallback = {
                     ...live,
                     prediction: predicted.prediction ?? live.prediction,
