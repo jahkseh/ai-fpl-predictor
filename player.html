@@ -1196,6 +1196,7 @@
                 if (!playerName) throw new Error("Player not specified");
 
                 let profileData = null;
+                let playerHistory = [];
                 try {
                     const [profileResponse, historyResponse] = await Promise.all([
                         fetch("player_profiles.json?ts=" + Date.now()),
@@ -1203,11 +1204,16 @@
                     ]);
                     if (profileResponse.ok) profileData = await profileResponse.json();
                     const predictionHistoryData = historyResponse.ok ? await historyResponse.json() : {gameweeks: []};
-                    const playerHistory = Array.isArray(predictionHistoryData.gameweeks)
+                    const normalizeHistoryName = value => String(value || "")
+                        .normalize("NFD")
+                        .replace(/[\\u0300-\\u036f]/g, "")
+                        .replace(/[^a-z0-9]/gi, "")
+                        .toLowerCase();
+                    playerHistory = Array.isArray(predictionHistoryData.gameweeks)
                         ? predictionHistoryData.gameweeks.flatMap(gameweek =>
-                            (gameweek.predictions || []).flatMap(fixture =>
-                                (fixture.players || [])
-                                    .filter(player => player.name === playerName)
+                            (Array.isArray(gameweek.predictions) ? gameweek.predictions : []).flatMap(fixture =>
+                                (Array.isArray(fixture.players) ? fixture.players : [])
+                                    .filter(player => normalizeHistoryName(player.name) === normalizeHistoryName(playerName))
                                     .map(player => ({
                                         gameweek: gameweek.gameweek,
                                         prediction: player.prediction,
