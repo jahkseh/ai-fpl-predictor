@@ -12,6 +12,7 @@ import json
 from html import escape
 from pathlib import Path
 from urllib.parse import quote
+from urllib.request import Request, urlopen
 
 import numpy as np
 import pandas as pd
@@ -144,6 +145,54 @@ def fixture_names(match_id: str) -> tuple[str, str]:
         raise ValueError(f"Unknown fixture slug: {match_id}")
     return SLUGS[parts[0]], SLUGS[parts[1]]
 
+def load_official_fpl_fixture_difficulties() -> dict[tuple[int, str, str], tuple[int, int]]:
+    """Fetch official FPL home/away FDR values keyed by gameweek and fixture names.
+
+    Returns an empty mapping if the official API is temporarily unavailable; callers
+    can then retain the clearly labelled model-based estimate as a fallback.
+    """
+    try:
+        headers = {"User-Agent": "AI-FPL-Predictor/1.0 (public fixture difficulty lookup)"}
+
+        def fetch_json(url: str):
+            request = Request(url, headers=headers)
+            with urlopen(request, timeout=12) as response:
+                return json.loads(response.read().decode("utf-8"))
+
+        bootstrap = fetch_json("https://fantasy.premierleague.com/api/bootstrap-static/")
+        fixtures = fetch_json("https://fantasy.premierleague.com/api/fixtures/")
+        api_names = {int(team["id"]): str(team["name"]) for team in bootstrap.get("teams", [])}
+        canonical = {normalize_name(name): name for name in SLUGS.values()}
+        aliases = {
+            "nottinghamforest": "Nott'm Forest",
+            "tottenhamhotspur": "Spurs",
+            "brightonandhovealbion": "Brighton",
+            "manchesterunited": "Man Utd",
+            "manchestercity": "Man City",
+            "afcbournemouth": "Bournemouth",
+            "leedsunited": "Leeds",
+        }
+        for alias, display_name in aliases.items():
+            canonical[normalize_name(alias)] = display_name
+
+        result = {}
+        for fixture in fixtures:
+            event = fixture.get("event")
+            home_name = canonical.get(normalize_name(api_names.get(fixture.get("team_h"), "")))
+            away_name = canonical.get(normalize_name(api_names.get(fixture.get("team_a"), "")))
+            home_rating = fixture.get("team_h_difficulty")
+            away_rating = fixture.get("team_a_difficulty")
+            if event is None or not home_name or not away_name:
+                continue
+            if home_rating not in (1, 2, 3, 4, 5) or away_rating not in (1, 2, 3, 4, 5):
+                continue
+            result[(int(event), home_name, away_name)] = (int(home_rating), int(away_rating))
+        return result
+    except Exception as exc:
+        print(f"Official FPL fixture difficulty unavailable; using labelled model estimates: {exc}")
+        return {}
+
+
 def safe_float(value):
     if pd.isna(value):
         return None
@@ -199,6 +248,7 @@ def build_player_profiles(
             .clip(1, 5)
             .astype(int),
         ))
+    official_fdr = load_official_fpl_fixture_difficulties()
 
     future_fixtures = []
     for gw in range(target_gameweek, min(target_gameweek + 4, 38) + 1):
@@ -214,6 +264,10 @@ def build_player_profiles(
             home, away = fixture_names(fixture["match_id"])
             home_code = int(fixture["home_team"])
             away_code = int(fixture["away_team"])
+            official_pair = official_fdr.get((gw, home, away))
+            home_difficulty = official_pair[0] if official_pair else difficulty_map.get(away_code)
+            away_difficulty = official_pair[1] if official_pair else difficulty_map.get(home_code)
+            difficulty_source = "official_fpl" if official_pair else "model_estimate"
             future_fixtures.extend([
                 {
                     "gw": gw,
@@ -224,7 +278,8 @@ def build_player_profiles(
                     "away": away,
                     "kickoff": fixture["kickoff_time"],
                     "match_id": fixture["match_id"],
-                    "difficulty": difficulty_map.get(away_code),
+                    "difficulty": home_difficulty,
+                    "difficulty_source": difficulty_source,
                 },
                 {
                     "gw": gw,
@@ -235,7 +290,8 @@ def build_player_profiles(
                     "away": away,
                     "kickoff": fixture["kickoff_time"],
                     "match_id": fixture["match_id"],
-                    "difficulty": difficulty_map.get(home_code),
+                    "difficulty": away_difficulty,
+                    "difficulty_source": difficulty_source,
                 },
             ])
 
@@ -459,6 +515,7 @@ def build_player_profiles(
                     "fixture": f["home"] + (" vs " if f["is_home"] else " at ") + f["away"],
                     "kickoff": f["kickoff"],
                     "difficulty": f["difficulty"],
+                    "difficulty_source": f["difficulty_source"],
                     "match_id": f["match_id"],
                 }
                 for f in sorted(team_fixtures, key=lambda item: (item["gw"], item["kickoff"]))
