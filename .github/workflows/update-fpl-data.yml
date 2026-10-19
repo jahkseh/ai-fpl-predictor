@@ -131,4 +131,9 @@ jobs:
             exit 0
           fi
           git commit -m "Update Gameweek ${{ steps.gw.outputs.gameweek }} predictions and player data"
+          # UI commits can land while this long-running model job is generating data.
+          # Rebase the generated-data commit onto the latest main before pushing so
+          # the data refresh does not fail solely because main advanced meanwhile.
+          git fetch origin main
+          git rebase origin/main
           git push
