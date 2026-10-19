@@ -1574,7 +1574,77 @@ body[data-theme="light"] .hero-stat span {
 @media(max-width:800px){ .player-compare-shell{grid-template-columns:1fr;} .player-compare-controls,.player-compare-results{padding:16px;} }
 @media(max-width:480px){ .player-compare-selects{grid-template-columns:1fr;} .player-compare-results{grid-template-columns:1fr;} .player-compare-player{padding:15px;} }
 
-</style>
+
+        /* Compact homepage pass: fewer oversized gaps, faster access to core tools. */
+        .home-quick-nav {
+            width: min(1240px, calc(100% - 40px));
+            margin: 22px auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .home-quick-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            padding: 15px 16px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: var(--surface);
+            color: var(--text);
+            text-decoration: none;
+            transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+        }
+        .home-quick-nav a:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(15, 35, 25, .07);
+        }
+        .quick-nav-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 36px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+            color: var(--accent);
+            font-size: 20px;
+            font-weight: 800;
+        }
+        .home-quick-nav strong, .home-quick-nav small { display:block; }
+        .home-quick-nav strong { font-size: 12px; letter-spacing: -.01em; }
+        .home-quick-nav small { margin-top: 3px; color: var(--text-muted); font-size: 10px; line-height: 1.4; }
+        .hero { padding-top: clamp(38px, 5vw, 62px); padding-bottom: clamp(38px, 5vw, 60px); }
+        .hero-copy { max-width: 620px; }
+        .hero h1 { margin-bottom: 12px; }
+        .hero p { margin-bottom: 20px; }
+        .hero-stats { margin-top: 0; }
+        .section { padding-top: clamp(30px, 3.5vw, 46px); padding-bottom: clamp(30px, 3.5vw, 46px); }
+        .section-title { margin-bottom: 20px; }
+        .section-title h2 { margin-bottom: 6px; }
+        .section-title p { font-size: 13px; }
+        .prediction-overview { margin-bottom: 16px; }
+        .fixture-grid, .prediction-grid, .info-grid, .differential-grid { gap: 12px; }
+        .fixture-card, .prediction-card, .info-card, .player-card, .differential-card { padding: 18px; }
+        .players-section, .live-intelligence-section, .gw5-results-section { padding-top: 34px; padding-bottom: 34px; }
+        #performance .model-data-panel { margin-bottom: 16px; }
+        @media (max-width: 900px) {
+            .home-quick-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 560px) {
+            .home-quick-nav { width: calc(100% - 28px); grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+            .home-quick-nav a { padding: 11px 10px; gap: 8px; align-items: flex-start; }
+            .quick-nav-icon { flex-basis: 30px; width: 30px; height: 30px; font-size: 17px; }
+            .home-quick-nav strong { font-size: 11px; }
+            .home-quick-nav small { font-size: 9px; }
+            .section { padding-top: 28px; padding-bottom: 28px; }
+            .fixture-card, .prediction-card, .info-card, .player-card, .differential-card { padding: 14px; }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -1647,6 +1717,12 @@ body[data-theme="light"] .hero-stat span {
     </div>
 
 </div>
+    <nav class="home-quick-nav" aria-label="Quick access">
+        <a href="#predictions"><span class="quick-nav-icon">↗</span><span><strong>Gameweek predictions</strong><small>Fixture-by-fixture picks</small></span></a>
+        <a href="#live-stats"><span class="quick-nav-icon">⌕</span><span><strong>Player explorer</strong><small>Search the full player pool</small></span></a>
+        <a href="#compare-players"><span class="quick-nav-icon">⇄</span><span><strong>Compare players</strong><small>Choose between two options</small></span></a>
+        <a href="#team-builder"><span class="quick-nav-icon">▦</span><span><strong>Squad builder</strong><small>Build within your budget</small></span></a>
+    </nav>
     <section class="section" id="predictions">
 
     <div class="section-title">
