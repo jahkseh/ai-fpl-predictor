@@ -1844,107 +1844,7 @@ body[data-theme="light"] .hero-stat span {
             }
         }
 
-    
-/* Dashboard navigation and image-ready feature tiles */
-.dashboard-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; max-width:1240px; margin:28px auto 16px; padding:0 24px; }
-.dashboard-heading h2 { margin:5px 0 0; font-family:'Manrope',sans-serif; font-size:clamp(1.3rem,2vw,1.8rem); letter-spacing:-.045em; }
-.dashboard-heading p { margin:0 0 4px; color:var(--muted); font-size:.9rem; }
-.dashboard-kicker,.feature-category { color:var(--accent); font-size:.68rem; font-weight:800; letter-spacing:.14em; }
-.home-quick-nav { max-width:1240px; margin:0 auto 48px; padding:0 24px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
-.home-quick-nav a.feature-tile { display:flex; flex-direction:column; min-width:0; overflow:hidden; border:1px solid var(--border); border-radius:20px; background:var(--surface); color:var(--text); text-decoration:none; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
-.home-quick-nav a.feature-tile:hover { transform:translateY(-4px); border-color:var(--accent); box-shadow:0 16px 36px rgba(0,0,0,.12); }
-.feature-image-slot { position:relative; display:flex; align-items:center; justify-content:center; min-height:150px; overflow:hidden; background:radial-gradient(ellipse at 75% 15%,color-mix(in srgb,var(--accent) 35%,transparent),transparent 48%),linear-gradient(135deg,color-mix(in srgb,var(--surface) 80%,var(--accent)),var(--surface-2,var(--surface))); border-bottom:1px solid var(--border); }
-.feature-image-slot::before,.feature-image-slot::after { content:""; position:absolute; border:1px solid color-mix(in srgb,var(--accent) 45%,transparent); border-radius:50%; width:145px; height:145px; transform:rotate(-24deg) scaleX(1.35); }
-.feature-image-slot::after { width:95px; height:95px; transform:rotate(24deg) scaleX(1.35); }
-.feature-image-slot>span { position:absolute; left:13px; top:12px; z-index:1; color:var(--muted); font-size:.55rem; font-weight:800; letter-spacing:.15em; opacity:.8; }
-.feature-image-slot>b { z-index:1; display:grid; place-items:center; width:68px; height:68px; border-radius:20px; border:1px solid color-mix(in srgb,var(--accent) 45%,var(--border)); background:color-mix(in srgb,var(--surface) 82%,transparent); color:var(--accent); font:800 1.4rem 'Manrope',sans-serif; letter-spacing:-.06em; box-shadow:0 8px 24px rgba(0,0,0,.08); }
-.feature-tile-copy { display:flex; flex:1; flex-direction:column; align-items:flex-start; padding:19px 20px 20px; gap:7px; }
-.feature-tile-copy>strong { font:750 1.12rem 'Manrope',sans-serif; letter-spacing:-.035em; }
-.feature-tile-copy>small:not(.feature-category) { color:var(--muted); line-height:1.55; font-size:.82rem; }
-.feature-open { margin-top:10px; color:var(--accent); font-size:.8rem; font-weight:800; }
-body[data-view]:not([data-view="home"]) .hero,body[data-view]:not([data-view="home"]) .hero-stats,body[data-view]:not([data-view="home"]) .dashboard-heading,body[data-view]:not([data-view="home"]) .home-quick-nav { display:none!important; }
-body[data-view] > .section,body[data-view] > .info-section { display:none; }
-body[data-view] > .section.route-active,body[data-view] > .info-section.route-active { display:block; animation:workspace-enter .24s ease both; }
-body[data-view]:not([data-view="home"]) main,body[data-view]:not([data-view="home"]) .section.route-active { scroll-margin-top:90px; }
-body[data-view]:not([data-view="home"]) .section.route-active,body[data-view]:not([data-view="home"]) .info-section.route-active { max-width:1240px; margin-left:auto; margin-right:auto; }
-header { position:sticky; top:0; z-index:100; backdrop-filter:blur(18px); }
-header nav a[aria-current="page"] { color:var(--accent); font-weight:800; }
-@keyframes workspace-enter { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
-@media(max-width:900px) { .home-quick-nav { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; } .feature-image-slot { min-height:125px; } }
-@media(max-width:560px) { .dashboard-heading { display:block; margin-top:22px; } .dashboard-heading p { margin-top:7px; } .home-quick-nav { padding:0 16px; gap:12px; margin-bottom:30px; } .feature-image-slot { min-height:92px; } .feature-image-slot>b { width:52px; height:52px; border-radius:15px; font-size:1.05rem; } .feature-tile-copy { padding:14px; } .feature-tile-copy>strong { font-size:.98rem; } .feature-tile-copy>small:not(.feature-category) { font-size:.76rem; } .feature-category { font-size:.57rem; } .feature-open { font-size:.72rem; } }
-@media(prefers-reduced-motion:reduce) { .home-quick-nav a.feature-tile,.home-quick-nav a.feature-tile:hover { transition:none; transform:none; } }
-
-
-/* Softer neutral palette: reduce competing green surfaces and reserve sage for accents. */
-:root {
-    --bg: #15191b;
-    --surface: #1d2225;
-    --surface-soft: #252c2f;
-    --border: #343d40;
-    --text: #edf1ef;
-    --text-muted: #a5b0ad;
-    --muted: #a5b0ad;
-    --accent: #82b9a5;
-    --accent-hover: #9bcdb9;
-    --hero: #171c1e;
-    --header: rgba(23, 28, 30, .94);
-    --footer: #171c1e;
-}
-body {
-    background: var(--bg);
-}
-.hero {
-    background: radial-gradient(ellipse at 78% 48%, rgba(130,185,165,.055), transparent 28rem), var(--bg);
-}
-.hero-art, .feature-image-slot {
-    background-color: var(--surface);
-}
-.feature-image-slot {
-    background: radial-gradient(ellipse at 78% 15%, rgba(130,185,165,.13), transparent 52%), linear-gradient(135deg, #242b2e, #1b2023);
-}
-.home-quick-nav a.feature-tile:hover {
-    border-color: color-mix(in srgb, var(--accent) 62%, var(--border));
-}
-.hero-button.primary {
-    color: #17211d;
-    box-shadow: 0 8px 24px rgba(130,185,165,.10);
-}
-.hero-button.secondary {
-    color: var(--text) !important;
-    background: var(--surface) !important;
-    border-color: var(--border) !important;
-}
-.dashboard-heading h2, .dashboard-heading p,
-.feature-tile-copy > small:not(.feature-category) {
-    color: var(--text-muted);
-}
-.dashboard-heading h2 { color: var(--text); }
-.feature-category, .dashboard-kicker { color: var(--accent); }
-.hero-button.primary:hover {
-    box-shadow: 0 12px 28px rgba(130,185,165,.16);
-}
-body[data-theme="light"] {
-    --bg: #f4f6f5;
-    --surface: #ffffff;
-    --surface-soft: #edf1ef;
-    --border: #dce3e0;
-    --text: #202927;
-    --text-muted: #687671;
-    --muted: #687671;
-    --accent: #4d806d;
-    --accent-hover: #3e6c5a;
-    --hero: #f4f6f5;
-    --header: rgba(255,255,255,.94);
-    --footer: #e9efec;
-}
-body[data-theme="light"] .hero {
-    background: radial-gradient(ellipse at 78% 48%, rgba(77,128,109,.055), transparent 28rem), var(--bg);
-}
-body[data-theme="light"] .feature-image-slot {
-    background: radial-gradient(ellipse at 78% 15%, rgba(77,128,109,.10), transparent 52%), linear-gradient(135deg,#eef2f0,#f8faf9);
-}
-
-</style>
+    </style>
 </head>
 
 <body>
@@ -2017,17 +1917,11 @@ body[data-theme="light"] .feature-image-slot {
     </div>
 
 </div>
-    <div class="dashboard-heading">
-        <div><span class="dashboard-kicker">YOUR FPL WORKSPACE</span><h2>Where do you want to start?</h2></div>
-        <p>Choose a tool to open a focused workspace.</p>
-    </div>
     <nav class="home-quick-nav" aria-label="Quick access">
-        <a href="#predictions" class="feature-tile feature-predictions"><span class="feature-image-slot" data-image-slot="predictions" aria-hidden="true"><span>IMAGE SLOT</span><b>GW</b></span><span class="feature-tile-copy"><small class="feature-category">PLAN YOUR GAMEWEEK</small><strong>Gameweek predictions</strong><small>Fixture-by-fixture picks and expected points</small><span class="feature-open">Open predictions ↗</span></span></a>
-        <a href="#team-builder" class="feature-tile feature-builder"><span class="feature-image-slot" data-image-slot="squad-builder" aria-hidden="true"><span>IMAGE SLOT</span><b>XI</b></span><span class="feature-tile-copy"><small class="feature-category">BUILD YOUR SQUAD</small><strong>Squad Builder</strong><small>Shape a team around budget and projections</small><span class="feature-open">Build your squad ↗</span></span></a>
-        <a href="#live-stats" class="feature-tile feature-players"><span class="feature-image-slot" data-image-slot="player-explorer" aria-hidden="true"><span>IMAGE SLOT</span><b>↗</b></span><span class="feature-tile-copy"><small class="feature-category">FIND YOUR EDGE</small><strong>Player Explorer</strong><small>Discover picks, form and player data</small><span class="feature-open">Explore players ↗</span></span></a>
-        <a href="#compare-players" class="feature-tile feature-compare"><span class="feature-image-slot" data-image-slot="player-comparison" aria-hidden="true"><span>IMAGE SLOT</span><b>VS</b></span><span class="feature-tile-copy"><small class="feature-category">MAKE THE CALL</small><strong>Compare players</strong><small>Compare projections, value and minutes</small><span class="feature-open">Compare options ↗</span></span></a>
-        <a href="#fixture-difficulty" class="feature-tile feature-fixtures"><span class="feature-image-slot" data-image-slot="fixtures" aria-hidden="true"><span>IMAGE SLOT</span><b>FDR</b></span><span class="feature-tile-copy"><small class="feature-category">LOOK AHEAD</small><strong>Fixture planner</strong><small>See the schedule and difficulty ahead</small><span class="feature-open">View fixtures ↗</span></span></a>
-        <a href="#performance" class="feature-tile feature-performance"><span class="feature-image-slot" data-image-slot="performance" aria-hidden="true"><span>IMAGE SLOT</span><b>↗</b></span><span class="feature-tile-copy"><small class="feature-category">TRACK THE MODEL</small><strong>Model performance</strong><small>Review historical results and accuracy</small><span class="feature-open">View performance ↗</span></span></a>
+        <a href="#predictions"><span class="quick-nav-icon">↗</span><span><strong>Gameweek predictions</strong><small>Fixture-by-fixture picks</small></span></a>
+        <a href="#live-stats"><span class="quick-nav-icon">⌕</span><span><strong>Player explorer</strong><small>Search the full player pool</small></span></a>
+        <a href="#compare-players"><span class="quick-nav-icon">⇄</span><span><strong>Compare players</strong><small>Choose between two options</small></span></a>
+        <a href="#team-builder"><span class="quick-nav-icon">▦</span><span><strong>Squad builder</strong><small>Build within your budget</small></span></a>
     </nav>
     <section class="section" id="predictions">
 
@@ -2079,7 +1973,6 @@ body[data-theme="light"] .feature-image-slot {
             <div class="player-compare-empty">Player projections will appear here when the current Gameweek data has loaded.</div>
         </div>
     </div>
-</section>
 <section class="section team-builder-section" id="team-builder">
     <div class="section-title">
         <span class="section-kicker">Build your squad</span>
@@ -3358,42 +3251,6 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
     })();
 
     </script>
-
-
-<script>
-/* Focused workspaces: keep all existing feature logic loaded, but show one section at a time. */
-(function () {
-  const routeIds = new Set(["home","predictions","compare-players","team-builder","fixture-difficulty","live-stats","players","teams","differentials","performance","gw5-results"]);
-  function activateView(id, updateHistory) {
-    if (!routeIds.has(id)) return false;
-    document.body.dataset.view = id;
-    document.querySelectorAll(".section.route-active,.info-section.route-active").forEach(el => el.classList.remove("route-active"));
-    const target = document.getElementById(id);
-    if (id !== "home" && target && (target.classList.contains("section") || target.classList.contains("info-section"))) target.classList.add("route-active");
-    document.querySelectorAll("header nav a[href^='#']").forEach(link => {
-      const current = link.getAttribute("href") === "#" + id;
-      if (current) link.setAttribute("aria-current","page"); else link.removeAttribute("aria-current");
-    });
-    if (updateHistory) history.pushState({view:id},"","#"+id);
-    window.scrollTo({top:0,behavior:"auto"});
-    return true;
-  }
-  document.addEventListener("click", function(event) {
-    const link = event.target.closest('a[href^="#"]');
-    if (!link) return;
-    const id = link.getAttribute("href").slice(1);
-    if (!routeIds.has(id)) return;
-    event.preventDefault();
-    activateView(id,true);
-  });
-  window.addEventListener("popstate", function() {
-    const id = location.hash.slice(1);
-    activateView(routeIds.has(id) ? id : "home",false);
-  });
-  const initial = location.hash.slice(1);
-  activateView(routeIds.has(initial) ? initial : "home",false);
-})();
-</script>
 
 </body>
 </html>
