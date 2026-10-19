@@ -42,8 +42,8 @@
             {
               "rank": 1,
               "name": "Haaland",
-              "prediction": 6.31313,
-              "prediction_p10": 1.915909,
+              "prediction": 6.225171,
+              "prediction_p10": 1.909091,
               "prediction_p90": 13.253571,
               "confidence": "low"
             },
@@ -110,9 +110,9 @@
             {
               "rank": 2,
               "name": "Rudoni",
-              "prediction": 4.347033,
-              "prediction_p10": 0.791429,
-              "prediction_p90": 8.8375,
+              "prediction": 4.330757,
+              "prediction_p10": 0.495455,
+              "prediction_p90": 9.081731,
               "confidence": "low"
             },
             {
@@ -200,8 +200,8 @@
             {
               "rank": 2,
               "name": "Emersonn",
-              "prediction": 4.374312,
-              "prediction_p10": 0.747727,
+              "prediction": 4.433527,
+              "prediction_p10": 0.846429,
               "prediction_p90": 8.379167,
               "confidence": "low"
             },

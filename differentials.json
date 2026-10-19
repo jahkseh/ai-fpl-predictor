@@ -2,15 +2,15 @@
   "season": "2026/27",
   "data_gameweek": 7,
   "next_gameweek": 8,
-  "generated_at_utc": "2026-10-19T19:07:07.043136+00:00",
+  "generated_at_utc": "2026-10-19T21:32:12.948475+00:00",
   "picks": [
     {
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 2.6,
+      "ownership": 2.7,
       "prediction": 5.224138,
-      "differential_score": 5.088,
+      "differential_score": 5.083,
       "price": 6.0,
       "form": 8.0,
       "fixture": {
@@ -80,7 +80,7 @@
       "prediction": 4.586852,
       "differential_score": 4.546,
       "price": 4.0,
-      "form": 5.0,
+      "form": 6.5,
       "fixture": {
         "home": "Ipswich Town",
         "away": "Nott'm Forest",
