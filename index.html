@@ -1547,7 +1547,34 @@ body[data-theme="light"] .hero-stat span {
             *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
         }
 
-    </style>
+    
+/* Player comparison: compact, decision-first layout inspired by modern FPL tools. */
+.player-compare-section { padding-top: 26px; }
+.player-compare-shell { display:grid; grid-template-columns:minmax(0, .85fr) minmax(0, 1.15fr); gap:22px; align-items:stretch; }
+.player-compare-controls, .player-compare-results { background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:22px; min-width:0; }
+.player-compare-controls { display:flex; flex-direction:column; gap:16px; }
+.player-compare-selects { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.player-compare-field { display:flex; flex-direction:column; gap:7px; min-width:0; }
+.player-compare-field label { color:var(--text-muted); font-size:12px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
+.player-compare-field select { width:100%; min-width:0; background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:12px 10px; font:inherit; }
+.player-compare-hint { color:var(--text-muted); font-size:13px; line-height:1.5; }
+.player-compare-results { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.player-compare-player { padding:18px; border:1px solid var(--border); border-radius:15px; background:linear-gradient(150deg,var(--surface-soft),var(--surface)); min-width:0; }
+.player-compare-player.is-leading { border-color:var(--accent); box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 24%,transparent); }
+.player-compare-player-head { display:flex; justify-content:space-between; gap:8px; align-items:flex-start; margin-bottom:17px; }
+.player-compare-player h3 { font-size:17px; line-height:1.25; overflow-wrap:anywhere; }
+.player-compare-team { display:block; color:var(--text-muted); font-size:12px; margin-top:5px; }
+.player-compare-points { color:var(--accent); font-size:32px; font-weight:800; letter-spacing:-.04em; line-height:1; }
+.player-compare-points-label { display:block; color:var(--text-muted); font-size:11px; margin-top:6px; }
+.player-compare-metrics { display:grid; gap:0; }
+.player-compare-metric { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 0; border-top:1px solid var(--border); font-size:13px; }
+.player-compare-metric span { color:var(--text-muted); }
+.player-compare-metric strong { text-align:right; overflow-wrap:anywhere; }
+.player-compare-empty { grid-column:1/-1; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--text-muted); min-height:180px; padding:20px; }
+@media(max-width:800px){ .player-compare-shell{grid-template-columns:1fr;} .player-compare-controls,.player-compare-results{padding:16px;} }
+@media(max-width:480px){ .player-compare-selects{grid-template-columns:1fr;} .player-compare-results{grid-template-columns:1fr;} .player-compare-player{padding:15px;} }
+
+</style>
 </head>
 
 <body>
@@ -1651,6 +1678,25 @@ body[data-theme="light"] .hero-stat span {
 </div>
 
     </section>
+<section class="section player-compare-section" id="compare-players">
+    <div class="section-title">
+        <span class="section-kicker">Make the call</span>
+        <h2>Compare players</h2>
+        <p>Put two players side by side using this Gameweek's model projection, expected minutes and value. Use the numbers to inform your decision — not as a guarantee.</p>
+    </div>
+    <div class="player-compare-shell">
+        <div class="player-compare-controls">
+            <div class="player-compare-selects">
+                <div class="player-compare-field"><label for="compare-player-a">Player A</label><select id="compare-player-a"><option value="">Loading players…</option></select></div>
+                <div class="player-compare-field"><label for="compare-player-b">Player B</label><select id="compare-player-b"><option value="">Loading players…</option></select></div>
+            </div>
+            <p class="player-compare-hint" id="compare-player-status" aria-live="polite">Loading the latest published player projections…</p>
+            <a class="hero-button secondary" href="#live-stats">Explore all players <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="player-compare-results" id="player-compare-results" aria-live="polite">
+            <div class="player-compare-empty">Player projections will appear here when the current Gameweek data has loaded.</div>
+        </div>
+    </div>
 <section class="section team-builder-section" id="team-builder">
     <div class="section-title">
         <span class="section-kicker">Build your squad</span>
@@ -2303,6 +2349,84 @@ function renderFeaturedPlayers(fixtures) {
         }).join("") || '<div class="live-empty">Fixture difficulty is not available yet.</div>';
     }
 
+    function renderPlayerComparison(players, gameweek) {
+        const firstSelect = document.getElementById("compare-player-a");
+        const secondSelect = document.getElementById("compare-player-b");
+        const results = document.getElementById("player-compare-results");
+        const status = document.getElementById("compare-player-status");
+        if (!firstSelect || !secondSelect || !results || !status) return;
+
+        const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
+        const num = value => {
+            if (value === null || value === undefined || value === "") return null;
+            const parsed = Number(value);
+            return Number.isFinite(parsed) ? parsed : null;
+        };
+        const points = player => num(player.prediction ?? player.expected_points ?? player.predicted_points ?? player.points_projection) ?? 0;
+        const name = player => String(player.name ?? player.web_name ?? [player.first_name, player.second_name].filter(Boolean).join(" ") ?? "Unknown player").trim();
+        const price = player => {
+            const value = num(player.price ?? player.now_cost);
+            return value == null ? null : (value > 20 ? value / 10 : value);
+        };
+        const usable = (Array.isArray(players) ? players : []).filter(player => name(player) && num(player.prediction ?? player.expected_points ?? player.predicted_points ?? player.points_projection) !== null);
+        usable.sort((a,b) => points(b)-points(a));
+        if (!usable.length) {
+            firstSelect.innerHTML = secondSelect.innerHTML = '<option value="">No player data available</option>';
+            results.innerHTML = '<div class="player-compare-empty">The published player pool does not contain usable projections yet. Please try again after the next data refresh.</div>';
+            status.textContent = "Player comparison is waiting for published projections.";
+            return;
+        }
+        const options = usable.map((player,index) => '<option value="' + index + '">' + esc(name(player)) + (player.team ? ' · ' + esc(player.team) : '') + '</option>').join("");
+        firstSelect.innerHTML = options;
+        secondSelect.innerHTML = options;
+        firstSelect.value = "0";
+        secondSelect.value = String(Math.min(1, usable.length-1));
+
+        const metric = (label,value) => '<div class="player-compare-metric"><span>' + label + '</span><strong>' + value + '</strong></div>';
+        const render = () => {
+            const a = usable[Number(firstSelect.value)];
+            const b = usable[Number(secondSelect.value)];
+            if (!a || !b) {
+                results.innerHTML = '<div class="player-compare-empty">Choose two players to compare their projections.</div>';
+                return;
+            }
+            const aPoints = points(a), bPoints = points(b);
+            const aPrice = price(a), bPrice = price(b);
+            const aMinutes = num(a.expected_minutes ?? a.minutes_expected);
+            const bMinutes = num(b.expected_minutes ?? b.minutes_expected);
+            const aOwnership = num(a.ownership ?? a.selected_by_percent);
+            const bOwnership = num(b.ownership ?? b.selected_by_percent);
+            const fixtureText = player => {
+                const home = player.fixture_home || player.fixture?.home;
+                const away = player.fixture_away || player.fixture?.away;
+                if (home && away) return esc(home) + ' vs ' + esc(away);
+                return esc(player.fixture || player.opponent || "Fixture n/a");
+            };
+            const card = (player, index, isLeading) => {
+                const p = points(player), cost = price(player);
+                const minutes = num(player.expected_minutes ?? player.minutes_expected);
+                const ownership = num(player.ownership ?? player.selected_by_percent);
+                const value = cost && cost > 0 ? (p / cost).toFixed(2) : "—";
+                const team = player.team || player.team_name || player.club || "Club n/a";
+                return '<article class="player-compare-player ' + (isLeading ? 'is-leading' : '') + '">' +
+                    '<div class="player-compare-player-head"><div><h3>' + esc(name(player)) + '</h3><span class="player-compare-team">' + esc(team) + ' · ' + fixtureText(player) + '</span></div></div>' +
+                    '<div class="player-compare-points">' + p.toFixed(2) + '</div><span class="player-compare-points-label">expected points · GW' + esc(gameweek || "—") + '</span>' +
+                    '<div class="player-compare-metrics">' +
+                    metric("Price", cost == null ? "—" : "£" + cost.toFixed(1) + "m") +
+                    metric("Expected minutes", minutes == null ? "—" : Math.round(minutes) + " min") +
+                    metric("Points / £m", value) +
+                    metric("Ownership", ownership == null ? "—" : ownership.toFixed(1) + "%") +
+                    '</div></article>';
+            };
+            results.innerHTML = card(a,0,aPoints>bPoints) + card(b,1,bPoints>aPoints);
+            status.textContent = a === b ? "Choose two different players for a more useful comparison." :
+                (Math.abs(aPoints-bPoints).toFixed(2) + " expected-point difference this Gameweek. A projection is an estimate, not a promise.");
+        };
+        firstSelect.addEventListener("change", render);
+        secondSelect.addEventListener("change", render);
+        render();
+    }
+
     async function loadPredictions() {
         try {
             const response = await fetch("predictions.json");
@@ -2313,6 +2437,7 @@ function renderFeaturedPlayers(fixtures) {
 
             const data = await response.json();
             window.currentPredictionGameweek = data.gameweek;
+            renderPlayerComparison(data.all_players || [], data.gameweek);
             renderFixtureDifficulty(data.predictions, data.all_players || []);
 predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
