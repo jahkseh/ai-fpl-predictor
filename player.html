@@ -1173,10 +1173,10 @@
                         '</div>' +
 
                         '<div class="section-heading"><span class="eyebrow">Next fixtures</span><h2>Upcoming schedule</h2></div>' +
-                        '<p class="profile-section-note">Difficulty is the model-context 1–5 scale used by this site, not official FPL FDR.</p>' +
+                        '<p class="profile-section-note">FPL FDR uses the official Fantasy Premier League 1–5 rating when available. If the official feed is unavailable for a fixture, an estimated model difficulty is shown instead.</p>' +
                         '<div class="profile-fixture-list">' +
                             (fixtures.length ? fixtures.slice(0,5).map(item =>
-                                '<div class="profile-fixture"><div class="profile-fixture-top"><span class="profile-fixture-gw">GW' + escapeHtml(item.gw) + '</span><span class="profile-fixture-difficulty">D' + (item.difficulty ?? "—") + '</span></div><strong>' + escapeHtml(item.opponent || "—") + ' · ' + (item.is_home ? 'Home' : 'Away') + '</strong><small>' + escapeHtml(item.kickoff ? new Date(item.kickoff).toLocaleDateString([], {day:"numeric",month:"short"}) : "Date TBC") + '</small></div>'
+                                '<div class="profile-fixture"><div class="profile-fixture-top"><span class="profile-fixture-gw">GW' + escapeHtml(item.gw) + '</span><span class="profile-fixture-difficulty">' + (item.difficulty_source === "official_fpl" ? "FPL FDR " : "Est. D") + (item.difficulty ?? "—") + '</span></div><strong>' + escapeHtml(item.opponent || "—") + ' · ' + (item.is_home ? 'Home' : 'Away') + '</strong><small>' + escapeHtml(item.kickoff ? new Date(item.kickoff).toLocaleDateString([], {day:"numeric",month:"short"}) : "Date TBC") + '</small></div>'
                             ).join("") : '<div class="profile-data-empty"><span>→</span><div><strong>Upcoming schedule not published</strong>The current player snapshot does not contain the next-fixture rows yet.</div></div>') +
                         '</div>' +
 
