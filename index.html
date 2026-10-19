@@ -1644,6 +1644,206 @@ body[data-theme="light"] .hero-stat span {
             .fixture-card, .prediction-card, .info-card, .player-card, .differential-card { padding: 14px; }
         }
 
+
+        /* Visual refresh: editorial typography, calmer contrast and cleaner surfaces. */
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg: #0b1511;
+            --surface: #111e18;
+            --surface-soft: #172820;
+            --border: #263b30;
+            --text: #edf5ef;
+            --text-muted: #9aafa2;
+            --accent: #48d58a;
+            --accent-hover: #31bd75;
+            --hero: #0d1913;
+            --header: #0d1913;
+            --footer: #0d1913;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: -0.012em;
+            background:
+                radial-gradient(ellipse at 12% 0%, rgba(72, 213, 138, 0.055), transparent 32rem),
+                var(--bg);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        h1, h2, h3, h4, .logo, .section-title, .hero-button, button {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        header {
+            padding: 16px clamp(18px, 4vw, 48px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.10);
+            backdrop-filter: blur(16px);
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.055em;
+        }
+
+        nav a {
+            margin-left: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            opacity: .88;
+            transition: color .18s ease, opacity .18s ease;
+        }
+
+        nav a:hover { opacity: 1; }
+
+        .hero {
+            padding-top: clamp(54px, 7vw, 86px);
+            padding-bottom: clamp(42px, 5vw, 64px);
+            background:
+                radial-gradient(ellipse at 78% 48%, rgba(72, 213, 138, .075), transparent 28rem),
+                var(--bg);
+        }
+
+        .hero h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(42px, 5.5vw, 72px);
+            line-height: .99;
+            font-weight: 800;
+            letter-spacing: -.075em;
+        }
+
+        .hero p {
+            font-size: clamp(15px, 1.35vw, 17px);
+            line-height: 1.75;
+            letter-spacing: -.015em;
+        }
+
+        .eyebrow {
+            letter-spacing: .075em;
+            font-size: 10px;
+            border-color: color-mix(in srgb, var(--border) 78%, var(--accent));
+        }
+
+        .hero-button {
+            min-height: 46px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 750;
+            letter-spacing: -.015em;
+            transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+        }
+
+        .hero-button.primary {
+            box-shadow: 0 8px 24px rgba(35, 185, 108, .18);
+        }
+
+        .hero-button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(35, 185, 108, .24);
+        }
+
+        .hero-stats {
+            border-radius: 14px;
+            border-color: var(--border);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, .10);
+        }
+
+        .section {
+            padding-top: clamp(30px, 4vw, 48px);
+            padding-bottom: clamp(30px, 4vw, 48px);
+        }
+
+        .section-title {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(23px, 2.6vw, 30px);
+            font-weight: 800;
+            letter-spacing: -.055em;
+            line-height: 1.15;
+        }
+
+        .section-title p {
+            font-size: 14px;
+            line-height: 1.65;
+            max-width: 680px;
+        }
+
+        .prediction-card, .fixture-card, .info-card, .player-card,
+        .differential-card, .hero-art, .home-quick-nav a {
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .07);
+        }
+
+        .prediction-card, .fixture-card, .info-card, .player-card, .differential-card {
+            transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+        }
+
+        .prediction-card:hover, .fixture-card:hover, .info-card:hover,
+        .player-card:hover, .differential-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, .13);
+        }
+
+        input, select, textarea, button {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        input, select, textarea {
+            border-radius: 10px;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        body[data-theme="light"] {
+            --bg: #f5f8f5;
+            --surface: #ffffff;
+            --surface-soft: #edf4ef;
+            --border: #dce7df;
+            --text: #17251d;
+            --text-muted: #65776b;
+            --accent: #16834d;
+            --accent-hover: #116b3e;
+            --hero: #f5f8f5;
+            --header: rgba(255, 255, 255, .92);
+            --footer: #10251a;
+        }
+
+        body[data-theme="light"] header {
+            color: var(--text);
+            border-bottom-color: #e1e9e3;
+        }
+
+        body[data-theme="light"] nav a { color: var(--text); }
+        body[data-theme="light"] .hero { background: radial-gradient(ellipse at 78% 48%, rgba(22, 131, 77, .08), transparent 28rem), var(--bg); }
+        body[data-theme="light"] .hero h1,
+        body[data-theme="light"] .hero p { color: var(--text); }
+        body[data-theme="light"] .hero-trustline { color: var(--text-muted); }
+        body[data-theme="light"] .home-quick-nav a:hover { box-shadow: 0 12px 28px rgba(20, 50, 30, .09); }
+
+        @media (max-width: 800px) {
+            .section-title { margin-bottom: 18px; }
+            .section-title h2 { font-size: 25px; }
+            nav a { margin-left: 12px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+
     </style>
 </head>
 
