@@ -8,9 +8,8 @@ on:
   workflow_dispatch:
     inputs:
       gameweek:
-        description: "Gameweek to prepare (use the next unstarted gameweek)"
-        required: true
-        default: "8"
+        description: "Gameweek to prepare (leave blank to auto-detect the next unstarted gameweek)"
+        required: false
   schedule:
     - cron: "17 */3 * * *"
 
@@ -37,9 +36,45 @@ jobs:
         id: gw
         shell: bash
         env:
-          REQUESTED_GAMEWEEK: ${{ inputs.gameweek || '8' }}
+          REQUESTED_GAMEWEEK: ${{ inputs.gameweek }}
         run: |
-          echo "gameweek=$REQUESTED_GAMEWEEK" >> "$GITHUB_OUTPUT"
+          if [ -n "$REQUESTED_GAMEWEEK" ]; then
+            GAMEWEEK="$REQUESTED_GAMEWEEK"
+          else
+            GAMEWEEK="$(python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from urllib.request import Request, urlopen
+
+          url = "https://fantasy.premierleague.com/api/bootstrap-static/"
+          request = Request(url, headers={"User-Agent": "AI-FPL-Predictor/1.0"})
+          with urlopen(request, timeout=20) as response:
+              payload = json.load(response)
+
+          now = datetime.now(timezone.utc)
+          upcoming = []
+          for event in payload.get("events", []):
+              deadline = event.get("deadline_time")
+              if event.get("finished") or not deadline:
+                  continue
+              deadline_dt = datetime.fromisoformat(deadline.replace("Z", "+00:00"))
+              if deadline_dt > now:
+                  upcoming.append((deadline_dt, event["id"]))
+
+          if not upcoming:
+              raise SystemExit("Could not find a future, unstarted FPL gameweek; refusing to publish stale predictions.")
+
+          print(min(upcoming)[1])
+          PY
+          )"
+          fi
+
+          if ! [[ "$GAMEWEEK" =~ ^[0-9]+$ ]] || [ "$GAMEWEEK" -lt 1 ] || [ "$GAMEWEEK" -gt 38 ]; then
+            echo "Invalid gameweek: '$GAMEWEEK' (expected 1-38)." >&2
+            exit 1
+          fi
+          echo "Resolved target Gameweek $GAMEWEEK"
+          echo "gameweek=$GAMEWEEK" >> "$GITHUB_OUTPUT"
 
       - name: Install model dependencies
         run: |
