@@ -11,26 +11,26 @@
           "players": [
             {
               "rank": 1,
-              "name": "Rice",
-              "prediction": 5.170402,
-              "prediction_p10": 1.816364,
-              "prediction_p90": 10.0,
+              "name": "Gabriel",
+              "prediction": 4.760648,
+              "prediction_p10": 1.09,
+              "prediction_p90": 9.6,
               "confidence": "low"
             },
             {
               "rank": 2,
-              "name": "Gabriel",
-              "prediction": 4.5495,
-              "prediction_p10": 0.908182,
-              "prediction_p90": 9.591667,
+              "name": "Rice",
+              "prediction": 4.555909,
+              "prediction_p10": 1.142857,
+              "prediction_p90": 8.784615,
               "confidence": "low"
             },
             {
               "rank": 3,
-              "name": "Saka",
-              "prediction": 4.155927,
-              "prediction_p10": 0.747222,
-              "prediction_p90": 9.50625,
+              "name": "Ødegaard",
+              "prediction": 4.422051,
+              "prediction_p10": 0.908182,
+              "prediction_p90": 9.171429,
               "confidence": "low"
             }
           ]
@@ -131,18 +131,18 @@
           "players": [
             {
               "rank": 1,
-              "name": "Wissa",
-              "prediction": 4.38649,
-              "prediction_p10": 1.075,
-              "prediction_p90": 8.937912,
-              "confidence": "low"
-            },
-            {
-              "rank": 2,
               "name": "Richards",
               "prediction": 4.262103,
               "prediction_p10": 1.0,
               "prediction_p90": 7.878409,
+              "confidence": "low"
+            },
+            {
+              "rank": 2,
+              "name": "Wissa",
+              "prediction": 4.234427,
+              "prediction_p10": 0.939367,
+              "prediction_p90": 8.542308,
               "confidence": "low"
             },
             {
@@ -298,9 +298,9 @@
             {
               "rank": 3,
               "name": "E.Le Fée",
-              "prediction": 4.17623,
-              "prediction_p10": 1.0,
-              "prediction_p90": 8.297143,
+              "prediction": 4.107731,
+              "prediction_p10": 1.069231,
+              "prediction_p90": 8.17,
               "confidence": "low"
             }
           ]
