@@ -439,10 +439,15 @@ def train_validated_model(weekly: pd.DataFrame) -> RandomForestRegressor:
     train = add_performance_features(train, "player_key")
     train = attach_team_features(train, build_historical_team_features())
     train = add_fixture_environment(train)
-    train = train[
-        train["GW"].between(2, 32)
-        & train["previous_3_total_points"].notna()
-    ].copy()
+    # Use every historical gameweek that has the lagged features required
+    # for prediction. Do not apply the GW 2-32 holdout window here: that
+    # window belongs only to historical_holdout_diagnostics(), where the
+    # final six GWs of 2025-26 are held out for evaluation. Applying it to
+    # production training silently discarded GW1 and GW33-38 from every
+    # completed season.
+    train = train[train["previous_3_total_points"].notna()].copy()
+    if train.empty:
+        raise ValueError("No eligible historical rows available to train the production model")
 
     X = train[PLAYER_FEATURES].replace([np.inf, -np.inf], np.nan).fillna(0)
     y = train["total_points"]
