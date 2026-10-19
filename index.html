@@ -1863,8 +1863,8 @@ body[data-theme="light"] .hero-stat span {
 .feature-tile-copy>small:not(.feature-category) { color:var(--muted); line-height:1.55; font-size:.82rem; }
 .feature-open { margin-top:10px; color:var(--accent); font-size:.8rem; font-weight:800; }
 body[data-view]:not([data-view="home"]) .hero,body[data-view]:not([data-view="home"]) .hero-stats,body[data-view]:not([data-view="home"]) .dashboard-heading,body[data-view]:not([data-view="home"]) .home-quick-nav { display:none!important; }
-body[data-view] .section,body[data-view] .info-section { display:none; }
-body[data-view] .section.route-active,body[data-view] .info-section.route-active { display:block; animation:workspace-enter .24s ease both; }
+body[data-view] > .section,body[data-view] > .info-section { display:none; }
+body[data-view] > .section.route-active,body[data-view] > .info-section.route-active { display:block; animation:workspace-enter .24s ease both; }
 body[data-view]:not([data-view="home"]) main,body[data-view]:not([data-view="home"]) .section.route-active { scroll-margin-top:90px; }
 body[data-view]:not([data-view="home"]) .section.route-active,body[data-view]:not([data-view="home"]) .info-section.route-active { max-width:1240px; margin-left:auto; margin-right:auto; }
 header { position:sticky; top:0; z-index:100; backdrop-filter:blur(18px); }
@@ -2065,6 +2065,7 @@ body[data-theme="light"] .feature-image-slot {
             <div class="player-compare-empty">Player projections will appear here when the current Gameweek data has loaded.</div>
         </div>
     </div>
+</section>
 <section class="section team-builder-section" id="team-builder">
     <div class="section-title">
         <span class="section-kicker">Build your squad</span>
