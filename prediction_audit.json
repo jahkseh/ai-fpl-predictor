@@ -5,6 +5,86 @@
   "players_compared": 648,
   "largest_changes": [
     {
+      "name": "Andrey Santos",
+      "old_prediction": 1.368,
+      "new_prediction": 1.288,
+      "change": -0.08,
+      "old_confidence": "medium",
+      "new_confidence": "medium",
+      "expected_minutes": 43.320097,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Martinez",
+      "old_prediction": 2.063,
+      "new_prediction": 2.085,
+      "change": 0.022,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 63.754011,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Mbeumo",
+      "old_prediction": 3.641,
+      "new_prediction": 3.626,
+      "change": -0.015,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 84.728335,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Justin",
+      "old_prediction": 2.2,
+      "new_prediction": 2.214,
+      "change": 0.014,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 65.773495,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Mount",
+      "old_prediction": 1.366,
+      "new_prediction": 1.377,
+      "change": 0.011,
+      "old_confidence": "medium",
+      "new_confidence": "medium",
+      "expected_minutes": 25.437448,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Stach",
+      "old_prediction": 3.857,
+      "new_prediction": 3.845,
+      "change": -0.011,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 80.971151,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Amad",
+      "old_prediction": 1.989,
+      "new_prediction": 1.983,
+      "change": -0.006,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 39.962226,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "B. Fernandes",
+      "old_prediction": 5.056,
+      "new_prediction": 5.058,
+      "change": 0.002,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 89.514202,
+      "fixture_difficulty": 3
+    },
+    {
       "name": "Gabriel",
       "old_prediction": 4.761,
       "new_prediction": 4.761,
@@ -172,86 +252,6 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 53.805575,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Maitland-Niles",
-      "old_prediction": 2.62,
-      "new_prediction": 2.62,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 52.480507,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Konsa",
-      "old_prediction": 2.53,
-      "new_prediction": 2.53,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 69.811566,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Madueke",
-      "old_prediction": 2.481,
-      "new_prediction": 2.481,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 63.462708,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Mykolenko",
-      "old_prediction": 2.465,
-      "new_prediction": 2.465,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 51.927523,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "J.Timber",
-      "old_prediction": 2.374,
-      "new_prediction": 2.374,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 44.733209,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Johnson",
-      "old_prediction": 0.449,
-      "new_prediction": 0.449,
-      "change": 0.0,
-      "old_confidence": "high",
-      "new_confidence": "high",
-      "expected_minutes": 2.981055,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "George",
-      "old_prediction": 1.98,
-      "new_prediction": 1.98,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 25.098425,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "White",
-      "old_prediction": 1.922,
-      "new_prediction": 1.922,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 28.23026,
       "fixture_difficulty": 3
     }
   ]

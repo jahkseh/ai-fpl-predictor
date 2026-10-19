@@ -252,8 +252,8 @@
             {
               "rank": 1,
               "name": "B. Fernandes",
-              "prediction": 5.055608,
-              "prediction_p10": 1.156391,
+              "prediction": 5.058108,
+              "prediction_p10": 1.223482,
               "prediction_p90": 10.45,
               "confidence": "low"
             },
