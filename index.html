@@ -1874,6 +1874,62 @@ header nav a[aria-current="page"] { color:var(--accent); font-weight:800; }
 @media(max-width:560px) { .dashboard-heading { display:block; margin-top:22px; } .dashboard-heading p { margin-top:7px; } .home-quick-nav { padding:0 16px; gap:12px; margin-bottom:30px; } .feature-image-slot { min-height:92px; } .feature-image-slot>b { width:52px; height:52px; border-radius:15px; font-size:1.05rem; } .feature-tile-copy { padding:14px; } .feature-tile-copy>strong { font-size:.98rem; } .feature-tile-copy>small:not(.feature-category) { font-size:.76rem; } .feature-category { font-size:.57rem; } .feature-open { font-size:.72rem; } }
 @media(prefers-reduced-motion:reduce) { .home-quick-nav a.feature-tile,.home-quick-nav a.feature-tile:hover { transition:none; transform:none; } }
 
+
+/* Softer neutral palette: reduce competing green surfaces and reserve sage for accents. */
+:root {
+    --bg: #15191b;
+    --surface: #1d2225;
+    --surface-soft: #252c2f;
+    --border: #343d40;
+    --text: #edf1ef;
+    --text-muted: #a5b0ad;
+    --accent: #82b9a5;
+    --accent-hover: #9bcdb9;
+    --hero: #171c1e;
+    --header: rgba(23, 28, 30, .94);
+    --footer: #171c1e;
+}
+body {
+    background: var(--bg);
+}
+.hero {
+    background: radial-gradient(ellipse at 78% 48%, rgba(130,185,165,.055), transparent 28rem), var(--bg);
+}
+.hero-art, .feature-image-slot {
+    background-color: var(--surface);
+}
+.feature-image-slot {
+    background: radial-gradient(ellipse at 78% 15%, rgba(130,185,165,.13), transparent 52%), linear-gradient(135deg, #242b2e, #1b2023);
+}
+.home-quick-nav a.feature-tile:hover {
+    border-color: color-mix(in srgb, var(--accent) 62%, var(--border));
+}
+.hero-button.primary {
+    box-shadow: 0 8px 24px rgba(130,185,165,.10);
+}
+.hero-button.primary:hover {
+    box-shadow: 0 12px 28px rgba(130,185,165,.16);
+}
+body[data-theme="light"] {
+    --bg: #f4f6f5;
+    --surface: #ffffff;
+    --surface-soft: #edf1ef;
+    --border: #dce3e0;
+    --text: #202927;
+    --text-muted: #687671;
+    --accent: #4d806d;
+    --accent-hover: #3e6c5a;
+    --hero: #f4f6f5;
+    --header: rgba(255,255,255,.94);
+    --footer: #e9efec;
+}
+body[data-theme="light"] .hero {
+    background: radial-gradient(ellipse at 78% 48%, rgba(77,128,109,.055), transparent 28rem), var(--bg);
+}
+body[data-theme="light"] .feature-image-slot {
+    background: radial-gradient(ellipse at 78% 15%, rgba(77,128,109,.10), transparent 52%), linear-gradient(135deg,#eef2f0,#f8faf9);
+}
+
 </style>
 </head>
 
