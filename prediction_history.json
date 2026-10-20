@@ -72,8 +72,8 @@
             {
               "rank": 1,
               "name": "Rogers",
-              "prediction": 5.541053,
-              "prediction_p10": 1.706494,
+              "prediction": 5.534746,
+              "prediction_p10": 1.746429,
               "prediction_p90": 11.216364,
               "confidence": "low"
             },
@@ -109,18 +109,18 @@
             },
             {
               "rank": 2,
-              "name": "Rudoni",
-              "prediction": 4.330757,
-              "prediction_p10": 0.495455,
-              "prediction_p90": 9.081731,
-              "confidence": "low"
-            },
-            {
-              "rank": 3,
               "name": "Gonzalo",
               "prediction": 4.180338,
               "prediction_p10": 0.666667,
               "prediction_p90": 9.516667,
+              "confidence": "low"
+            },
+            {
+              "rank": 3,
+              "name": "King",
+              "prediction": 4.121146,
+              "prediction_p10": 1.0,
+              "prediction_p90": 8.857143,
               "confidence": "low"
             }
           ]
