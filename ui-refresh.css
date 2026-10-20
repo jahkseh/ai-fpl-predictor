@@ -383,5 +383,3 @@ body .team-squad-card:hover,
 body .team-directory-card:hover {
   color: var(--accent) !important;
 }
-body .scroll-reveal { opacity: 1; transform: none; }
-body .scroll-reveal.is-visible { opacity: 1; transform: none; }
