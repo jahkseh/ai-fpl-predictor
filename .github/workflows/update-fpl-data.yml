@@ -152,7 +152,16 @@ jobs:
           assert len(live.get("players", [])) >= 30, "Live dataset has too few players"
           profiles = json.loads(Path("player_profiles.json").read_text(encoding="utf-8"))
           assert len(profiles.get("players", [])) >= 30, "Player profile dataset has too few players"
-          print(f"Validated {len(players)} player predictions and {len(live['players'])} live player records.")
+          fixture_data = json.loads(Path("fixture_difficulty.json").read_text(encoding="utf-8"))
+          ranked_teams = fixture_data.get("teams", [])
+          assert len(ranked_teams) == 20, f"Expected fixture schedules for 20 clubs, got {len(ranked_teams)}"
+          for team in ranked_teams:
+              assert team.get("fixtures"), f"No upcoming fixtures for {team.get('team')}"
+              for fixture in team["fixtures"]:
+                  rating = fixture.get("difficulty")
+                  assert rating is None or 1 <= int(rating) <= 5, f"Invalid FDR for {team.get('team')}"
+                  assert fixture.get("source") in {"official_fpl", "model_estimate", "unavailable"}, f"Unknown FDR source: {fixture.get('source')}"
+          print(f"Validated {len(players)} player predictions, {len(live['players'])} live player records and {len(ranked_teams)} fixture schedules.")
           PY
 
       - name: Commit generated data
@@ -160,7 +169,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json prediction_accuracy.json index.html
+          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json prediction_accuracy.json fixture_difficulty.json index.html
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0
