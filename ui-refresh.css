@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
 /* AI FPL Predictor — unified visual system
    Presentation only: prediction data, filters, and application logic are unchanged. */
 :root {
   color-scheme: dark;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --page: #0b1220;
   --surface: #111a2b;
   --surface-raised: #142036;
@@ -21,7 +24,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 body, body[data-theme="dark"] {
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: var(--font-sans) !important;
   background: var(--page) !important;
   color: var(--text) !important;
   line-height: 1.55;
@@ -382,4 +385,29 @@ body .back-link:hover,
 body .team-squad-card:hover,
 body .team-directory-card:hover {
   color: var(--accent) !important;
+}
+
+
+/* Typography pass: one consistent, modern face across every page and component. */
+body, body[data-theme="dark"], body[data-theme="light"] {
+  font-family: var(--font-sans) !important;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans) !important;
+  text-wrap: balance;
+}
+p, li, label, button, input, select, textarea, table, th, td, nav a,
+.logo, .hero-button, .back-link, .eyebrow, .profile-kicker, .team-kicker {
+  font-family: var(--font-sans) !important;
+}
+button, input, select, textarea { letter-spacing: inherit; }
+.hero h1, .team-heading h1, .profile-hero h1, .section-title h2, .section-heading h2 {
+  font-weight: 800 !important;
+}
+.hero-stat strong, .overview-stat strong, .player-points strong, .prediction-card .points,
+.profile-model-card strong, .profile-quick-stat strong, .profile-performance strong {
+  font-variant-numeric: tabular-nums;
 }
