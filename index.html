@@ -1992,26 +1992,7 @@ body[data-theme="light"] .hero-stat span {
             themeLabel.textContent = isLight ? "Dark" : "Light";
         });
 
-        if (savedTheme === "dark") {
-            document.body.setAttribute("data-theme", "dark");
-            themeToggle.querySelector(".theme-toggle-label").textContent = "Light";
-        } else {
-            themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
-        }
-
-        themeToggle.addEventListener("click", () => {
-            const isDark = document.body.getAttribute("data-theme") === "dark";
-
-            if (isDark) {
-                document.body.removeAttribute("data-theme");
-                localStorage.setItem("fpl-theme", "light");
-                themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
-            } else {
-                document.body.setAttribute("data-theme", "dark");
-                localStorage.setItem("fpl-theme", "dark");
-                themeToggle.querySelector(".theme-toggle-label").textContent = "Light";
-            }
-        });        const differentialContainer = document.getElementById("differential-container");
+        const differentialContainer = document.getElementById("differential-container");
 
     function escapeDifferentialText(value) {
         return String(value == null ? "" : value)
