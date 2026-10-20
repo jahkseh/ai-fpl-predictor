@@ -1754,12 +1754,35 @@ body[data-theme="light"] .hero-stat span {
 
 <section class="section fixture-difficulty-section" id="fixture-difficulty">
     <div class="section-title">
-        <span class="section-kicker">Fixture context</span>
-        <h2>Fixture Difficulty</h2>
-        <p>How difficult each current Gameweek fixture is according to the model's opponent-strength scale.</p>
+        <span class="section-kicker">Fixture planner</span>
+        <h2>Fixture Difficulty Rankings</h2>
+        <p>Compare every club’s upcoming run and find the best schedules for transfers, captaincy and planning ahead.</p>
     </div>
-    <div class="fixture-difficulty-note"><strong>Model FDR:</strong> 1 = easier opponent, 5 = harder opponent. This is the site's model-context scale, not the official FPL Fixture Difficulty Rating.</div>
-    <div class="fixture-difficulty-grid" id="fixture-difficulty-grid"><div class="live-empty">Loading fixture difficulty…</div></div>
+    <div class="fixture-difficulty-toolbar">
+        <div class="fixture-difficulty-note">
+            <strong>Official FPL Fixture Difficulty Rating (FDR).</strong>
+            Ratings run from 1 (easiest) to 5 (hardest). Clubs are ranked by their average opponent rating over the selected horizon.
+        </div>
+        <div class="fixture-difficulty-horizons" role="group" aria-label="Rank teams across upcoming gameweeks">
+            <span>Rank next</span>
+            <button type="button" data-fdr-horizon="3" aria-pressed="false">3 GWs</button>
+            <button type="button" data-fdr-horizon="5" aria-pressed="true">5 GWs</button>
+        </div>
+    </div>
+    <div class="fixture-difficulty-summary" id="fixture-difficulty-summary" aria-live="polite">
+        <div class="fixture-difficulty-summary-card"><span>Loading schedule</span><strong>—</strong><small>Reading published fixture data</small></div>
+    </div>
+    <div class="fixture-difficulty-table-wrap">
+        <table class="fixture-difficulty-table">
+            <thead id="fixture-difficulty-head">
+                <tr><th>Rank</th><th>Club</th><th>Average FDR</th><th>Easy (1–2)</th><th>Hard (4–5)</th></tr>
+            </thead>
+            <tbody id="fixture-difficulty-body">
+                <tr><td colspan="10" class="fixture-difficulty-loading">Loading upcoming fixture metrics…</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="fixture-difficulty-footnote" id="fixture-difficulty-footnote">Lower average FDR is better. The ranking includes one score per scheduled fixture; any model-based estimate is marked EST.</p>
 </section>
 
 <section class="section live-intelligence-section" id="live-stats">
@@ -2343,41 +2366,137 @@ function renderFeaturedPlayers(fixtures) {
     fixtureModal.addEventListener("click", event => { if (event.target === fixtureModal) closeFixtureModal(); });
     document.addEventListener("keydown", event => { if (event.key === "Escape" && !fixtureModal.hidden) closeFixtureModal(); });
 
-    function renderFixtureDifficulty(fixtures, allPlayers) {
-        const grid = document.getElementById("fixture-difficulty-grid");
-        if (!grid) return;
-        const difficultyByFixture = new Map();
-        (Array.isArray(allPlayers) ? allPlayers : []).forEach(player => {
-            const home = player.fixture_home || "";
-            const away = player.fixture_away || "";
-            const difficulty = Number(player.fixture_difficulty);
-            if (!home || !away || !Number.isFinite(difficulty)) return;
-            const key = home + " vs " + away;
-            if (!difficultyByFixture.has(key)) difficultyByFixture.set(key, {});
-            const record = difficultyByFixture.get(key);
-            const team = player.team || "";
-            if (team === home) record.home = difficulty;
-            if (team === away) record.away = difficulty;
-        });
+    let fixtureDifficultyData = null;
+    let fixtureDifficultyHorizon = 5;
 
-        const difficultyClass = value => value <= 2 ? "easy" : value >= 4 ? "hard" : "mid";
-        const difficultyLabel = value => value <= 2 ? "Easier" : value >= 4 ? "Harder" : "Balanced";
-        grid.innerHTML = (fixtures || []).map(fixture => {
-            const values = difficultyByFixture.get(fixture.home + " vs " + fixture.away) || {};
-            const homeDifficulty = Number.isFinite(values.home) ? values.home : null;
-            const awayDifficulty = Number.isFinite(values.away) ? values.away : null;
-            const homeText = homeDifficulty != null ? '<span class="fixture-difficulty-score"><span class="fixture-difficulty-badge ' + difficultyClass(homeDifficulty) + '">' + Math.round(homeDifficulty) + '</span><span class="fixture-difficulty-label">' + difficultyLabel(homeDifficulty) + '</span></span>' : '<span class="fixture-difficulty-label">—</span>';
-            const awayText = awayDifficulty != null ? '<span class="fixture-difficulty-score"><span class="fixture-difficulty-badge ' + difficultyClass(awayDifficulty) + '">' + Math.round(awayDifficulty) + '</span><span class="fixture-difficulty-label">' + difficultyLabel(awayDifficulty) + '</span></span>' : '<span class="fixture-difficulty-label">—</span>';
-            return '<div class="fixture-difficulty-card" style="--home-team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + ';--away-team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '">' +
-                '<div class="fixture-difficulty-gw"><span>GW' + escapeDifferentialText(window.currentPredictionGameweek || "—") + '</span><span>Model FDR</span></div>' +
-                '<div class="fixture-difficulty-teams">' +
-                    '<div class="fixture-difficulty-team"><span>' + escapeDifferentialText(fixture.home) + '</span>' + homeText + '</div>' +
-                    '<span class="fixture-difficulty-vs">VS</span>' +
-                    '<div class="fixture-difficulty-team away">' + awayText + '<span>' + escapeDifferentialText(fixture.away) + '</span></div>' +
-                '</div>' +
-            '</div>';
-        }).join("") || '<div class="live-empty">Fixture difficulty is not available yet.</div>';
+    function renderFixtureDifficultyRankings(payload) {
+        const head = document.getElementById("fixture-difficulty-head");
+        const body = document.getElementById("fixture-difficulty-body");
+        const summary = document.getElementById("fixture-difficulty-summary");
+        const footnote = document.getElementById("fixture-difficulty-footnote");
+        if (!head || !body || !summary || !footnote) return;
+
+        const esc = value => String(value == null ? "" : value).replace(/[&<>"']/g, ch => ({
+            "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+        }[ch]));
+        const teams = Array.isArray(payload && payload.teams) ? payload.teams : [];
+        const availableGameweeks = [...new Set(teams.flatMap(team =>
+            (Array.isArray(team.fixtures) ? team.fixtures : []).map(fixture => Number(fixture.gw))
+        ))].filter(Number.isFinite).sort((a,b) => a-b);
+        const gameweeks = availableGameweeks.slice(0, fixtureDifficultyHorizon);
+        const selectedGameweeks = new Set(gameweeks);
+
+        if (!teams.length || !gameweeks.length) {
+            head.innerHTML = "<tr><th>Fixture difficulty</th></tr>";
+            body.innerHTML = '<tr><td class="fixture-difficulty-loading">Published fixture metrics are not available yet. They will appear after the next data refresh.</td></tr>';
+            summary.innerHTML = "";
+            footnote.textContent = "No fixture ratings were available in the published dataset, so no ranking has been invented.";
+            return;
+        }
+
+        const ranked = teams.map(team => {
+            const fixtures = (Array.isArray(team.fixtures) ? team.fixtures : [])
+                .filter(fixture => selectedGameweeks.has(Number(fixture.gw)))
+                .sort((a,b) => Number(a.gw)-Number(b.gw) || String(a.kickoff || "").localeCompare(String(b.kickoff || "")));
+            const rated = fixtures.filter(fixture => {
+                const difficulty = Number(fixture.difficulty);
+                return fixture.difficulty !== null && fixture.difficulty !== "" && Number.isFinite(difficulty) && difficulty >= 1 && difficulty <= 5;
+            });
+            const scores = rated.map(fixture => Number(fixture.difficulty));
+            return {
+                team: String(team.team || "Unknown club"),
+                fixtures,
+                scores,
+                average: scores.length ? scores.reduce((sum,value)=>sum+value,0)/scores.length : null,
+                easy: scores.filter(value=>value<=2).length,
+                hard: scores.filter(value=>value>=4).length,
+                official: rated.filter(fixture=>fixture.source==="official_fpl").length,
+                estimated: rated.filter(fixture=>fixture.source!=="official_fpl").length,
+                total: fixtures.length
+            };
+        }).filter(team => team.total > 0);
+        ranked.sort((a,b) => {
+            if (a.average == null && b.average != null) return 1;
+            if (b.average == null && a.average != null) return -1;
+            return (a.average ?? 99)-(b.average ?? 99) || b.easy-a.easy || a.hard-b.hard || a.team.localeCompare(b.team);
+        });
+        ranked.forEach((team,index)=>{ team.rank=index+1; });
+
+        const fixtureCell = (team, gw) => {
+            const fixtures = team.fixtures.filter(fixture=>Number(fixture.gw)===gw);
+            if (!fixtures.length) return '<span class="fixture-difficulty-empty">—</span>';
+            return fixtures.map(fixture => {
+                const difficulty = fixture.difficulty === null || fixture.difficulty === "" || !Number.isFinite(Number(fixture.difficulty)) ? null : Number(fixture.difficulty);
+                const difficultyClass = difficulty == null ? "unknown" : difficulty <= 2 ? "low" : difficulty >= 4 ? "high" : "mid";
+                const venue = fixture.is_home ? "H" : "A";
+                const venueLabel = fixture.is_home ? "Home" : "Away";
+                const sourceTag = fixture.source && fixture.source !== "official_fpl" ? '<span class="fixture-difficulty-estimate" title="Model-based estimate, not an official FPL rating">EST</span>' : "";
+                return '<div class="fixture-difficulty-match" title="' + esc(venueLabel + " vs " + fixture.opponent + (difficulty == null ? "" : " · FDR " + difficulty)) + '">' +
+                    '<span class="fixture-difficulty-venue">' + venue + '</span>' +
+                    '<span class="fixture-difficulty-opponent">' + esc(fixture.opponent || "Opponent n/a") + '</span>' +
+                    '<span class="fixture-difficulty-fdr ' + difficultyClass + '">' + (difficulty == null ? "—" : difficulty.toFixed(0)) + '</span>' +
+                    sourceTag + '</div>';
+            }).join("");
+        };
+
+        head.innerHTML = '<tr><th class="fdr-rank-heading">#</th><th class="fdr-team-heading">Club</th>' +
+            gameweeks.map(gw=>'<th class="fdr-gw-heading">GW' + gw + '</th>').join("") +
+            '<th>Avg FDR</th><th>Easy<br><span>1–2</span></th><th>Hard<br><span>4–5</span></th></tr>';
+
+        body.innerHTML = ranked.map(team =>
+            '<tr>' +
+                '<td class="fixture-difficulty-rank">' + String(team.rank).padStart(2,"0") + '</td>' +
+                '<td class="fixture-difficulty-team-cell"><a href="team.html?team=' + encodeURIComponent(team.team) + '">' + esc(team.team) + '</a></td>' +
+                gameweeks.map(gw=>'<td class="fixture-difficulty-gw-cell">' + fixtureCell(team,gw) + '</td>').join("") +
+                '<td class="fixture-difficulty-average">' + (team.average == null ? "—" : team.average.toFixed(2)) + '</td>' +
+                '<td><span class="fixture-difficulty-count easy-count">' + team.easy + '</span></td>' +
+                '<td><span class="fixture-difficulty-count hard-count">' + team.hard + '</span></td>' +
+            '</tr>'
+        ).join("") || '<tr><td colspan="' + (gameweeks.length+5) + '" class="fixture-difficulty-loading">No scheduled fixtures found for this window.</td></tr>';
+
+        const easiest = ranked.find(team=>team.average!=null);
+        const hardest = [...ranked].reverse().find(team=>team.average!=null);
+        const ratedFixtures = ranked.reduce((sum,team)=>sum+team.scores.length,0);
+        const officialFixtures = ranked.reduce((sum,team)=>sum+team.official,0);
+        const estimatedFixtures = ranked.reduce((sum,team)=>sum+team.estimated,0);
+        const windowLabel = "GW" + gameweeks[0] + (gameweeks.length>1 ? "–GW" + gameweeks[gameweeks.length-1] : "");
+        summary.innerHTML =
+            '<div class="fixture-difficulty-summary-card"><span>Easiest run</span><strong>' + esc(easiest ? easiest.team : "—") + '</strong><small>' + (easiest && easiest.average!=null ? easiest.average.toFixed(2) + ' average FDR' : 'No ratings') + '</small></div>' +
+            '<div class="fixture-difficulty-summary-card"><span>Hardest run</span><strong>' + esc(hardest ? hardest.team : "—") + '</strong><small>' + (hardest && hardest.average!=null ? hardest.average.toFixed(2) + ' average FDR' : 'No ratings') + '</small></div>' +
+            '<div class="fixture-difficulty-summary-card"><span>Fixtures rated</span><strong>' + ratedFixtures + '</strong><small>' + officialFixtures + ' official' + (estimatedFixtures ? ' · ' + estimatedFixtures + ' estimated' : '') + ' · ' + windowLabel + '</small></div>';
+
+        footnote.textContent = 'Ranked easiest first by average opponent FDR across ' + windowLabel +
+            '. Each scheduled match counts once; 1 is easiest and 5 is hardest. ' +
+            (estimatedFixtures ? 'EST marks model-based estimates where official FPL difficulty was unavailable.' : 'All ratings shown in this window are official FPL difficulty ratings.');
     }
+
+    async function loadFixtureDifficulty() {
+        const body = document.getElementById("fixture-difficulty-body");
+        try {
+            const response = await fetch("fixture_difficulty.json?ts=" + Date.now());
+            if (!response.ok) throw new Error("Fixture difficulty data unavailable");
+            fixtureDifficultyData = await response.json();
+            renderFixtureDifficultyRankings(fixtureDifficultyData);
+        } catch (error) {
+            if (body) body.innerHTML = '<tr><td class="fixture-difficulty-loading">Could not load fixture rankings right now. Please try again after the site data refreshes.</td></tr>';
+            const summary = document.getElementById("fixture-difficulty-summary");
+            if (summary) summary.innerHTML = "";
+            console.warn("Fixture difficulty loading error:", error.message);
+        }
+    }
+
+    document.querySelectorAll("[data-fdr-horizon]").forEach(button => {
+        button.addEventListener("click", () => {
+            const requested = Number(button.dataset.fdrHorizon);
+            if (![3,5].includes(requested)) return;
+            fixtureDifficultyHorizon = requested;
+            document.querySelectorAll("[data-fdr-horizon]").forEach(control => {
+                control.setAttribute("aria-pressed", String(Number(control.dataset.fdrHorizon)===requested));
+            });
+            if (fixtureDifficultyData) renderFixtureDifficultyRankings(fixtureDifficultyData);
+        });
+    });
+    loadFixtureDifficulty();
 
     function renderPlayerComparison(players, gameweek) {
         const firstSelect = document.getElementById("compare-player-a");
@@ -2468,7 +2587,6 @@ function renderFeaturedPlayers(fixtures) {
             const data = await response.json();
             window.currentPredictionGameweek = data.gameweek;
             renderPlayerComparison(data.all_players || [], data.gameweek);
-            renderFixtureDifficulty(data.predictions, data.all_players || []);
 predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
     <div class="fixture-card interactive-fixture" tabindex="0" role="button" aria-label="View ${fixture.home} versus ${fixture.away} prediction details" style="--home-team-colour:${teamAccentColours[fixture.home] || "var(--accent)"};--away-team-colour:${teamAccentColours[fixture.away] || "var(--accent)"}">
