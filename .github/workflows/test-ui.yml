@@ -1,0 +1,39 @@
+name: Test website UI
+
+on:
+  push:
+    paths:
+      - "index.html"
+      - "player.html"
+      - "team.html"
+      - ".github/workflows/test-ui.yml"
+  pull_request:
+    paths:
+      - "index.html"
+      - "player.html"
+      - "team.html"
+      - ".github/workflows/test-ui.yml"
+  workflow_dispatch:
+
+jobs:
+  browser-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate browser JavaScript syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          for filename in ["index.html", "player.html", "team.html"]:
+              html = Path(filename).read_text(encoding="utf-8")
+              scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+              assert scripts, f"No script blocks found in {filename}"
+              Path(f"/tmp/{filename}.js").write_text("\n".join(scripts), encoding="utf-8")
+          PY
+          node --check /tmp/index.html.js
+          node --check /tmp/player.html.js
+          node --check /tmp/team.html.js
