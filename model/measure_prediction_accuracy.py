@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
-"""Measure realized accuracy for published gameweek predictions when results exist."""
+"""Measure realized accuracy for frozen pre-match FPL predictions.
 
+The external source may expose FPL's web_name instead of a generic name column.
+If realized results are missing, publish an explicit unavailable status rather
+than inventing metrics or failing the entire data-refresh workflow.
+"""
 from __future__ import annotations
 
 import argparse
@@ -16,6 +20,10 @@ CURRENT_BASE = (
 )
 
 
+def unavailable(reason: str, gameweek: int) -> dict:
+    return {"available": False, "gameweek": gameweek, "reason": reason}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--history", required=True, type=Path)
@@ -25,51 +33,96 @@ def main() -> None:
 
     history = json.loads(args.history.read_text(encoding="utf-8"))
     snapshot = next(
-        (item for item in history.get("gameweeks", []) if int(item.get("gameweek", -1)) == args.gameweek),
+        (item for item in history.get("gameweeks", [])
+         if int(item.get("gameweek", -1)) == args.gameweek),
         None,
     )
     if snapshot is None:
-        args.output.write_text(json.dumps({"available": False, "reason": "no published snapshot"}) + "\n")
+        result = unavailable("no frozen prediction snapshot for this Gameweek", args.gameweek)
+        args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
         return
 
-    stats = pd.read_csv(CURRENT_BASE.format(gw=args.gameweek))
-    if "name" not in stats.columns or "total_points" not in stats.columns:
-        raise ValueError("Current gameweek stats do not contain name/total_points")
+    try:
+        stats = pd.read_csv(CURRENT_BASE.format(gw=args.gameweek))
+    except Exception as exc:
+        result = unavailable(f"realized results could not be loaded ({type(exc).__name__})", args.gameweek)
+        args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        return
+
+    if "total_points" not in stats.columns:
+        result = unavailable("results source has no total_points column", args.gameweek)
+        args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        return
+
+    if "name" in stats.columns:
+        name_column = "name"
+    elif "web_name" in stats.columns:
+        name_column = "web_name"
+    elif {"first_name", "second_name"}.issubset(stats.columns):
+        stats = stats.copy()
+        stats["__player_name"] = (
+            stats["first_name"].fillna("").astype(str).str.strip() + " " +
+            stats["second_name"].fillna("").astype(str).str.strip()
+        ).str.strip()
+        name_column = "__player_name"
+    else:
+        result = unavailable("results source has no supported player-name column", args.gameweek)
+        args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        return
+
+    stats = stats.dropna(subset=[name_column, "total_points"])
+    if stats.empty:
+        result = unavailable("results source contains no realized player rows yet", args.gameweek)
+        args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        return
 
     actual = (
-        stats[["name", "total_points"]]
-        .dropna(subset=["name"])
-        .drop_duplicates("name")
-        .set_index("name")["total_points"]
+        stats[[name_column, "total_points"]]
+        .drop_duplicates(name_column)
+        .set_index(name_column)["total_points"]
         .to_dict()
     )
 
     rows = []
-    for fixture in snapshot["predictions"]:
-        for player in fixture["players"]:
-            name = player["name"]
+    for fixture in snapshot.get("predictions", []):
+        for player in fixture.get("players", []):
+            name = str(player.get("name", "")).strip()
             if name not in actual:
                 continue
-            rows.append({
-                "name": name,
-                "prediction": float(player["prediction"]),
-                "actual": float(actual[name]),
-                "p10": float(player["prediction_p10"]) if player.get("prediction_p10") is not None else None,
-                "p90": float(player["prediction_p90"]) if player.get("prediction_p90") is not None else None,
-            })
+            try:
+                prediction = float(player["prediction"])
+                realized = float(actual[name])
+            except (KeyError, TypeError, ValueError):
+                continue
+            if not np.isfinite(prediction) or not np.isfinite(realized):
+                continue
+            p10 = player.get("prediction_p10")
+            p90 = player.get("prediction_p90")
+            try:
+                p10 = float(p10) if p10 is not None else None
+                p90 = float(p90) if p90 is not None else None
+            except (TypeError, ValueError):
+                p10 = p90 = None
+            rows.append({"name": name, "prediction": prediction, "actual": realized,
+                         "p10": p10, "p90": p90})
 
     if not rows:
-        args.output.write_text(json.dumps({"available": False, "reason": "no matching realized players"}) + "\n")
+        result = unavailable(
+            "no frozen top-three picks matched realized player names; check source naming",
+            args.gameweek,
+        )
+        args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
         return
 
     frame = pd.DataFrame(rows)
     errors = frame["prediction"] - frame["actual"]
-    coverage = [
-        p["p10"] <= p["actual"] <= p["p90"]
-        for p in rows
-        if p["p10"] is not None and p["p90"] is not None
+    covered = [
+        row["p10"] <= row["actual"] <= row["p90"]
+        for row in rows
+        if row["p10"] is not None and row["p90"] is not None
+        and np.isfinite(row["p10"]) and np.isfinite(row["p90"])
+        and row["p10"] <= row["p90"]
     ]
-
     result = {
         "available": True,
         "gameweek": args.gameweek,
@@ -77,8 +130,8 @@ def main() -> None:
         "mae": round(float(errors.abs().mean()), 3),
         "rmse": round(float(np.sqrt((errors ** 2).mean())), 3),
         "mean_error": round(float(errors.mean()), 3),
-        "p10_p90_coverage": round(float(np.mean(coverage)), 3) if coverage else None,
-        "note": "Measured only against the published top-three predictions per fixture; this is not full-squad accuracy.",
+        "p10_p90_coverage": round(float(np.mean(covered)), 3) if covered else None,
+        "note": "Only frozen top-three picks per fixture are evaluated; this is not full-squad accuracy.",
     }
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
 
