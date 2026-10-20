@@ -805,6 +805,65 @@ def main() -> None:
         encoding="utf-8",
     )
 
+    # Publish a compact fixture-only dataset so the homepage can rank upcoming
+    # schedules without downloading the multi-megabyte player profile payload.
+    fixtures_by_team = {}
+    for profile in profile_payload.get("players", []):
+        team = str(profile.get("team") or "").strip()
+        profile_fixtures = profile.get("next_fixtures")
+        if not team or team in fixtures_by_team or not isinstance(profile_fixtures, list):
+            continue
+        clean_fixtures = []
+        for fixture in profile_fixtures:
+            if not isinstance(fixture, dict):
+                continue
+            try:
+                gw = int(fixture.get("gw"))
+            except (TypeError, ValueError):
+                continue
+            opponent = str(fixture.get("opponent") or "").strip()
+            if not opponent:
+                continue
+            difficulty_value = safe_float(fixture.get("difficulty"))
+            difficulty = int(round(difficulty_value)) if difficulty_value is not None else None
+            if difficulty is not None and not 1 <= difficulty <= 5:
+                difficulty = None
+            clean_fixtures.append({
+                "gw": gw,
+                "opponent": opponent,
+                "is_home": bool(fixture.get("is_home")),
+                "difficulty": difficulty,
+                "source": str(fixture.get("difficulty_source") or (
+                    "model_estimate" if difficulty is not None else "unavailable"
+                )),
+                "kickoff": fixture.get("kickoff"),
+            })
+        clean_fixtures.sort(key=lambda item: (item["gw"], item.get("kickoff") or ""))
+        if clean_fixtures:
+            fixtures_by_team[team] = clean_fixtures
+
+    fixture_difficulty_payload = {
+        "season": profile_payload.get("season", "2026/27"),
+        "data_gameweek": profile_payload.get("data_gameweek"),
+        "next_gameweek": profile_payload.get("next_gameweek"),
+        "generated_at_utc": profile_payload.get("generated_at_utc"),
+        "difficulty_scale": {"min": 1, "max": 5, "easier": 1, "harder": 5},
+        "teams": [
+            {"team": team, "fixtures": team_fixtures}
+            for team, team_fixtures in sorted(fixtures_by_team.items())
+        ],
+    }
+    if len(fixture_difficulty_payload["teams"]) < 20:
+        raise ValueError(
+            "Fixture difficulty export requires upcoming schedules for all 20 clubs; "
+            f"found {len(fixture_difficulty_payload['teams'])}."
+        )
+    fixture_difficulty_output = args.output.with_name("fixture_difficulty.json")
+    fixture_difficulty_output.write_text(
+        json.dumps(fixture_difficulty_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
     # Keep a small, dedicated payload for the website's Differential Picks section.
     # The main live_data.json remains the canonical player dataset.
     differential_output = args.output.with_name("differentials.json")
