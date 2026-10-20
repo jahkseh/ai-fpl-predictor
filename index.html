@@ -2551,28 +2551,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             console.info("GW5 benchmark pending:", error.message);
         }
     }
-
-    const revealSections = document.querySelectorAll(".section");
-
-    if ("IntersectionObserver" in window) {
-        const revealObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
-
-        revealSections.forEach(section => {
-            section.style.opacity = "0";
-            section.style.transform = "translateY(10px)";
-            section.style.transition = "opacity .5s ease, transform .5s ease";
-            revealObserver.observe(section);
-        });
-    }
-
+    /* Shared scroll-reveal behaviour is handled by ui-refresh.css and the observer below. */
     async function loadLiveStats() {
         const table = document.getElementById("live-player-table");
         const search = document.getElementById("live-player-search");
