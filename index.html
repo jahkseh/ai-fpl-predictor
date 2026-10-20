@@ -1584,7 +1584,8 @@ body[data-theme="light"] .hero-stat span {
 .fixture-modal-summary{line-height:1.55}
 
 </style>
-    <link rel="stylesheet" href="ui-refresh.css">\n</head>
+    <link rel="stylesheet" href="ui-refresh.css">
+</head>
 
 <body>
 <!-- Pages deployment verification -->
@@ -1600,7 +1601,8 @@ body[data-theme="light"] .hero-stat span {
     <a href="#predictions">Predictions</a>
     <a href="#players">Players</a>
     <a href="#live-stats">Live Picks</a>
-    <a href="#team-builder">Team Builder</a>\n
+    <a href="#team-builder">Team Builder</a>
+
     <a href="#fixture-difficulty">Fixtures</a>
     <a href="#teams">Teams</a>
     <a href="#differentials">Differentials</a>
@@ -1980,6 +1982,15 @@ body[data-theme="light"] .hero-stat span {
     <script>
         const themeToggle = document.getElementById("theme-toggle");
         const savedTheme = localStorage.getItem("fpl-theme");
+        const themeLabel = themeToggle.querySelector(".theme-toggle-label");
+        document.body.dataset.theme = savedTheme === "light" ? "light" : "dark";
+        themeLabel.textContent = document.body.dataset.theme === "light" ? "Dark" : "Light";
+        themeToggle.addEventListener("click", () => {
+            const isLight = document.body.dataset.theme === "light";
+            document.body.dataset.theme = isLight ? "dark" : "light";
+            localStorage.setItem("fpl-theme", document.body.dataset.theme);
+            themeLabel.textContent = isLight ? "Dark" : "Light";
+        });
 
         if (savedTheme === "dark") {
             document.body.setAttribute("data-theme", "dark");
