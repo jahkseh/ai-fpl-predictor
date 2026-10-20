@@ -113,3 +113,36 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .hero h1{font-size:2.35rem!important}
   .navbar{padding:10px 0}
 }
+
+
+/* Keep the existing theme toggle working in dark mode. */
+body[data-theme="dark"]{
+  --bg:#0b1220;--surface:#111827;--surface-soft:#162033;--border:#243047;
+  --text:#e5e7eb;--text-muted:#94a3b8;--accent:#27d17f;--accent-hover:#20b86d;
+  --hero:#0f172a;--header:rgba(15,23,42,.96);--footer:#0f172a;
+  background:#0b1220!important;color:#e5e7eb!important;
+}
+body[data-theme="dark"] header{
+  background:rgba(15,23,42,.96)!important;color:#e5e7eb!important;border-bottom-color:#243047!important;
+}
+body[data-theme="dark"] .logo{color:#fff!important}
+body[data-theme="dark"] .logo span{color:#27d17f!important}
+body[data-theme="dark"] nav a{color:#cbd5e1!important}
+body[data-theme="dark"] nav a:hover,body[data-theme="dark"] nav a:focus-visible{background:#162033!important;color:#fff!important}
+body[data-theme="dark"] .theme-toggle{background:#111827!important;color:#e5e7eb!important;border-color:#334155!important}
+body[data-theme="dark"] .hero{background:transparent!important;color:#e5e7eb!important}
+body[data-theme="dark"] .hero-stat,body[data-theme="dark"] .overview-stat,
+body[data-theme="dark"] .overview-intro,body[data-theme="dark"] .panel-surface,
+body[data-theme="dark"] .player-compare-shell,body[data-theme="dark"] .builder-ai-card,
+body[data-theme="dark"] .fixture-card,body[data-theme="dark"] .prediction-card,
+body[data-theme="dark"] .team-card,body[data-theme="dark"] .prediction-overview{
+  background:#111827!important;border-color:#243047!important;
+}
+body[data-theme="dark"] .hero-stat strong,body[data-theme="dark"] .overview-stat strong,
+body[data-theme="dark"] .section-title h2{color:#e5e7eb!important}
+body[data-theme="dark"] .hero-copy>p,body[data-theme="dark"] .section-title p,
+body[data-theme="dark"] footer{color:#94a3b8!important}
+body[data-theme="dark"] input,body[data-theme="dark"] select,body[data-theme="dark"] textarea{
+  background:#111827!important;color:#e5e7eb!important;border-color:#334155!important;
+}
+body[data-theme="dark"] footer{border-top-color:#243047!important}
