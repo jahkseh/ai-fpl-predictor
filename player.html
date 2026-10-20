@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player Profile · AI FPL Predictor</title>
+    <title>Player Profile · ScoutXI</title>
+    <meta name="description" content="Explore player predictions, form, underlying stats and upcoming fixtures with ScoutXI FPL analytics.">
+    <meta name="theme-color" content="#155eef">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23155eef'/%3E%3Cpath d='M17 18h30v7H28v6h19v15H17v-7h19v-2H17z' fill='white'/%3E%3C/svg%3E">
     <style>
         * {
             box-sizing: border-box;
@@ -837,7 +840,7 @@
 <body>
     <header>
         <div class="navbar">
-            <div class="logo">AI FPL <span>Predictor</span></div>
+            <a class="logo brand-logo" href="index.html#home" aria-label="ScoutXI home"><span class="brand-symbol" aria-hidden="true">XI</span><span class="brand-name">Scout<span>XI</span></span></a>
             <nav>
                 <a href="index.html#home">Home</a>
                 <a href="index.html#predictions">Predictions</a>
@@ -857,7 +860,7 @@
         </div>
     </main>
 
-    <footer>AI FPL Predictor · Machine-learning FPL analysis</footer>
+    <footer>ScoutXI · AI-powered Fantasy Premier League analytics</footer>
 
     <script>
         const themeToggle = document.getElementById("theme-toggle");
@@ -1049,7 +1052,7 @@
             const why = makeWhyRows(profile);
             const rangeScale = Number.isFinite(prediction) && rangeWidth > 0 ? Math.min(100, Math.max(8, ((prediction - p10) / rangeWidth) * 100)) : 50;
 
-            document.title = profile.name + " · AI FPL Predictor";
+            document.title = profile.name + " · ScoutXI";
 
             content.innerHTML =
                 '<article class="profile-shell">' +
