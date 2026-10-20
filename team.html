@@ -270,5 +270,39 @@ function renderTeamContext(teamPlayers, teamProfiles, fixture, data, requestedTe
 
 loadTeam();
 </script>
+
+<script>
+/* Lightweight scroll-in motion; respects reduced-motion preferences and supports dynamic content. */
+(function(){
+  if(!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const selector=".section,.section-title,.hero-stat,.prediction-card,.fixture-card,.player-card,.panel-surface,.player-compare-shell,.prediction-overview,.overview-stat,.overview-intro,.builder-ai-card,.snapshot-card,.team-hero,.profile-shell";
+  const seen=new WeakSet();
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:"0px 0px -35px 0px"});
+  function prepare(root){
+    if(root.nodeType!==1) return;
+    if(root.matches(selector) && !seen.has(root)){
+      seen.add(root);
+      root.classList.add("scroll-reveal");
+      observer.observe(root);
+    }
+    root.querySelectorAll?.(selector).forEach(el=>{
+      if(seen.has(el)) return;
+      seen.add(el);
+      el.classList.add("scroll-reveal");
+      observer.observe(el);
+    });
+  }
+  prepare(document.documentElement);
+  new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(prepare))).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
 </body>
 </html>
