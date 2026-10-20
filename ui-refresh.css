@@ -256,3 +256,132 @@ td { color: var(--text); }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .scroll-reveal, .scroll-reveal.is-visible { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+
+/* Final theme normalization: override legacy page-level tokens consistently. */
+body:not([data-theme="light"]) {
+  color-scheme: dark;
+  --page: #0b1220;
+  --bg: #0b1220;
+  --surface: #111a2b;
+  --surface-raised: #162238;
+  --surface-soft: #19263b;
+  --hero: #101b2e;
+  --header: rgba(11,18,32,.94);
+  --footer: #0b1220;
+  --border: #2a3850;
+  --text: #edf2fa;
+  --text-muted: #a5b2c5;
+  --muted: #a5b2c5;
+  --soft-text: #d0d8e5;
+  --accent: #83a8ff;
+  --accent-strong: #5e8bff;
+  --accent-hover: #5e8bff;
+  --accent-wash: rgba(113,153,255,.14);
+  --shadow: 0 18px 48px rgba(0,0,0,.22);
+  background: var(--page) !important;
+  color: var(--text) !important;
+}
+body[data-theme="light"] {
+  --bg: #f4f6fb;
+  --hero: #ffffff;
+  --footer: #f4f6fb;
+  --text-muted: #68758a;
+  --accent-hover: #2448d8;
+}
+body:not([data-theme="light"]) .hero,
+body:not([data-theme="light"]) .hero-stat,
+body:not([data-theme="light"]) .overview-stat,
+body:not([data-theme="light"]) .prediction-card,
+body:not([data-theme="light"]) .prediction-overview,
+body:not([data-theme="light"]) .panel-surface,
+body:not([data-theme="light"]) .player-card,
+body:not([data-theme="light"]) .team-card,
+body:not([data-theme="light"]) .team-hero,
+body:not([data-theme="light"]) .team-squad-card,
+body:not([data-theme="light"]) .team-fixture-card,
+body:not([data-theme="light"]) .profile-shell,
+body:not([data-theme="light"]) .profile-hero,
+body:not([data-theme="light"]) .profile-body,
+body:not([data-theme="light"]) .profile-quick-stat,
+body:not([data-theme="light"]) .profile-model-card,
+body:not([data-theme="light"]) .profile-form-card,
+body:not([data-theme="light"]) .profile-underlying,
+body:not([data-theme="light"]) .profile-performance,
+body:not([data-theme="light"]) .profile-history-stat,
+body:not([data-theme="light"]) .profile-fixture,
+body:not([data-theme="light"]) .profile-why-row,
+body:not([data-theme="light"]) .snapshot-card,
+body:not([data-theme="light"]) .future-card,
+body:not([data-theme="light"]) .info-card {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+body:not([data-theme="light"]) .hero {
+  background: radial-gradient(ellipse at 88% 8%, var(--accent-wash), transparent 38%), var(--surface) !important;
+}
+body:not([data-theme="light"]) .profile-hero {
+  background: radial-gradient(ellipse at 85% 20%, var(--accent-wash), transparent 35%), var(--surface-raised) !important;
+}
+body:not([data-theme="light"]) .pitch-placeholder {
+  background: linear-gradient(135deg,#152b50,#1d3766) !important;
+}
+body:not([data-theme="light"]) .theme-toggle {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+body[data-theme="light"] .hero,
+body[data-theme="light"] .hero-stat,
+body[data-theme="light"] .overview-stat,
+body[data-theme="light"] .prediction-card,
+body[data-theme="light"] .prediction-overview,
+body[data-theme="light"] .panel-surface,
+body[data-theme="light"] .player-card,
+body[data-theme="light"] .team-card,
+body[data-theme="light"] .team-hero,
+body[data-theme="light"] .team-squad-card,
+body[data-theme="light"] .team-fixture-card,
+body[data-theme="light"] .profile-shell,
+body[data-theme="light"] .profile-hero,
+body[data-theme="light"] .profile-quick-stat,
+body[data-theme="light"] .profile-model-card,
+body[data-theme="light"] .profile-form-card,
+body[data-theme="light"] .profile-underlying,
+body[data-theme="light"] .profile-performance,
+body[data-theme="light"] .profile-history-stat,
+body[data-theme="light"] .profile-fixture,
+body[data-theme="light"] .profile-why-row,
+body[data-theme="light"] .snapshot-card,
+body[data-theme="light"] .future-card,
+body[data-theme="light"] .info-card {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+body[data-theme="light"] .hero {
+  background: radial-gradient(ellipse at 88% 8%, var(--accent-wash), transparent 38%), var(--surface) !important;
+}
+body[data-theme="light"] .profile-hero {
+  background: radial-gradient(ellipse at 85% 20%, var(--accent-wash), transparent 35%), var(--surface-raised) !important;
+}
+body[data-theme="light"] .pitch-placeholder {
+  background: linear-gradient(135deg,#dce7ff,#eef3ff) !important;
+}
+body[data-theme="light"] .theme-toggle {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+body .hero h1 span,
+body .profile-kicker,
+body .eyebrow,
+body .team-kicker,
+body .back-link:hover,
+body .team-squad-card:hover,
+body .team-directory-card:hover {
+  color: var(--accent) !important;
+}
+body .scroll-reveal { opacity: 1; transform: none; }
+body .scroll-reveal.is-visible { opacity: 1; transform: none; }
