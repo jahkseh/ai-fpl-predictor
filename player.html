@@ -872,25 +872,6 @@
             themeLabel.textContent = isLight ? "Dark" : "Light";
         });
 
-        const themeLabel = themeToggle.querySelector(".theme-toggle-label");
-
-        themeToggle.addEventListener("click", () => {
-            const isLight = document.body.dataset.theme === "light";
-            if (isLight) {
-                localStorage.setItem("fpl-theme", "dark");
-                document.body.dataset.theme = "";
-                themeLabel.textContent = "Light";
-            } else {
-                localStorage.setItem("fpl-theme", "light");
-                document.body.dataset.theme = "light";
-                themeLabel.textContent = "Dark";
-            }
-        });
-
-        if (savedTheme === "light") {
-            themeLabel.textContent = "Dark";
-        }
-
         const params = new URLSearchParams(window.location.search);
         const playerName = params.get("player");
         const content = document.getElementById("player-content");
