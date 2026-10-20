@@ -5,16 +5,10 @@ on:
     paths:
       - "model/**"
       - "predictions.json"
-      - "index.html"
-      - "player.html"
-      - ".github/workflows/test-model.yml"
   pull_request:
     paths:
       - "model/**"
       - "predictions.json"
-      - "index.html"
-      - "player.html"
-      - ".github/workflows/test-model.yml"
   workflow_dispatch:
 
 jobs:
