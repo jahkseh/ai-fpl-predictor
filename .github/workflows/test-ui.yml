@@ -14,6 +14,8 @@ on:
       - "index.html"
       - "player.html"
       - "team.html"
+      - "ui-refresh.css"
+      - "fixture_difficulty.json"
       - ".github/workflows/test-ui.yml"
   workflow_dispatch:
 
