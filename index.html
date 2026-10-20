@@ -2325,7 +2325,7 @@ function renderFeaturedPlayers(fixtures) {
         }
 
         fixtureModalSummary.innerHTML =
-            '<p><strong>' + esc(topPlayer.name) + '</strong> is projected to score <strong>' + Number(topPlayer.prediction).toFixed(1) + points</strong> in this fixture.</p>' +
+            '<p><strong>' + esc(topPlayer.name) + '</strong> is projected to score <strong>' + Number(topPlayer.prediction).toFixed(1) + ' points</strong> in this fixture.</p>' +
             '<div class="prediction-explanation"><h4>Why this prediction?</h4><p>Here are a few simple factors behind the estimate. FPL points can always vary, so use this as a guide rather than a guarantee.</p><ul>' + reasons.join("") + '</ul></div>';
         fixtureModalList.innerHTML = fixture.players.map(player => {
             const team = playerTeams[player.name] || "";
