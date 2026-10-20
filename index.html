@@ -2304,28 +2304,29 @@ function renderFeaturedPlayers(fixtures) {
         const esc = value => String(value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
         const reasons = [];
         if (minutes != null && Number.isFinite(minutes)) {
-            const level = minutes >= 80 ? "A high expected-minutes estimate supports the projection." : minutes >= 55 ? "Expected minutes are moderate, so playing time remains a factor." : "Limited expected minutes are a key risk to this projection.";
-            reasons.push('<li><strong>Expected minutes:</strong> ' + Math.round(minutes) + ' min. ' + level + '</li>');
+            const level = minutes >= 80 ? "A likely regular role is a positive sign." : minutes >= 55 ? "There is some uncertainty around playing time." : "Playing time is a concern and could limit the score.";
+            reasons.push('<li><strong>Playing time:</strong> Around ' + Math.round(minutes) + ' minutes expected. ' + level + '</li>');
         }
         if (Number.isFinite(teamXg) && Number.isFinite(oppXga)) {
-            reasons.push('<li><strong>Attacking matchup:</strong> team xG trend ' + teamXg.toFixed(2) + ' per 90; opponent xGA trend ' + oppXga.toFixed(2) + ' per 90. These provide context for the fixture, not a guarantee of chances or goals.</li>');
+            const matchup = teamXg >= 1.5 && oppXga >= 1.3 ? "This looks like a promising attacking matchup." : teamXg < 1.0 || oppXga < 0.9 ? "The attacking matchup may be more challenging." : "The matchup looks fairly balanced.";
+            reasons.push('<li><strong>Fixture:</strong> ' + matchup + '</li>');
         }
         if (Number.isFinite(env)) {
-            reasons.push('<li><strong>Fixture environment:</strong> model context value ' + env.toFixed(2) + ', summarising the available fixture-level expected-goals context.</li>');
+            reasons.push('<li><strong>Game conditions:</strong> The model also considers the expected-goal outlook for this fixture.</li>');
         }
         if (p10 != null && p90 != null && Number.isFinite(p10) && Number.isFinite(p90)) {
-            reasons.push('<li><strong>Uncertainty range:</strong> ' + p10.toFixed(1) + '–' + p90.toFixed(1) + ' points (P10–P90). A wider range means a less certain outcome; it is not a promise that the score will fall inside it.</li>');
+            reasons.push('<li><strong>Possible score range:</strong> ' + p10.toFixed(1) + '–' + p90.toFixed(1) + ' points. This gives a sense of how much the result could vary.</li>');
         }
         if (confidence) {
-            reasons.push('<li><strong>Model confidence:</strong> ' + esc(confidence) + '. Treat this as a model signal rather than a probability of success.</li>');
+            reasons.push('<li><strong>Confidence:</strong> ' + esc(confidence) + ' — a guide to how sure the model is, not a guarantee.</li>');
         }
         if (!reasons.length) {
-            reasons.push('<li>The available fixture data does not contain enough detail to explain individual factors reliably. Open the player profile for the stats currently available.</li>');
+            reasons.push('<li>The model uses player and fixture information, but there is not enough detail available here to explain this prediction further.</li>');
         }
 
         fixtureModalSummary.innerHTML =
-            '<p><strong>' + esc(topPlayer.name) + '</strong> has the highest projection shown for this fixture at <strong>' + Number(topPlayer.prediction).toFixed(2) + ' expected points</strong>.</p>' +
-            '<div class="prediction-explanation"><h4>Why this projection?</h4><p>The model combines player and fixture information. The available fields below show some of the context behind this estimate; they are not a guarantee or a complete causal breakdown.</p><ul>' + reasons.join("") + '</ul></div>';
+            '<p><strong>' + esc(topPlayer.name) + '</strong> is projected to score <strong>' + Number(topPlayer.prediction).toFixed(1) + points</strong> in this fixture.</p>' +
+            '<div class="prediction-explanation"><h4>Why this prediction?</h4><p>Here are a few simple factors behind the estimate. FPL points can always vary, so use this as a guide rather than a guarantee.</p><ul>' + reasons.join("") + '</ul></div>';
         fixtureModalList.innerHTML = fixture.players.map(player => {
             const team = playerTeams[player.name] || "";
             const accent = teamAccentColours[team] || "var(--accent)";
