@@ -34,3 +34,82 @@ img{max-width:100%}
 @media(max-width:1000px){.navbar{align-items:flex-start;padding:12px 0;flex-wrap:wrap}.navbar nav{width:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:thin;padding-bottom:3px}nav a{white-space:nowrap}.hero{padding-top:34px!important;gap:24px}.section{padding-top:36px!important}}
 @media(max-width:640px){.navbar,main,.section,.hero,.hero-stats,footer{width:calc(100% - 24px)}.navbar{gap:8px}.hero{padding-top:26px!important}.hero h1{font-size:2.2rem!important}.hero-trustline{font-size:.78rem;line-height:1.6}.hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}.hero-stat{padding:13px!important}.section{padding-top:28px!important}.section-title{margin-bottom:16px!important}.panel-surface,.player-compare-shell{padding:13px!important}.prediction-overview{padding:13px!important}.fixture-grid{grid-template-columns:1fr!important}.hero-actions{flex-wrap:wrap}.hero-button{min-height:42px;justify-content:center}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Premium finance-style visual pass: calm surfaces, clear hierarchy, minimal decoration. */
+:root{
+  --ui-content:1240px;
+  --ui-radius:16px;
+  --bg:#f5f7fb;
+  --surface:#ffffff;
+  --surface-soft:#f0f3f9;
+  --border:#e4e9f1;
+  --text:#111827;
+  --text-muted:#667085;
+  --accent:#315cf5;
+  --accent-hover:#2448d8;
+  --hero:#ffffff;
+  --header:rgba(255,255,255,.94);
+  --footer:#ffffff;
+}
+body{
+  font-family:Inter,"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  background:#f5f7fb!important;
+  color:#111827!important;
+  background-image:none!important;
+  letter-spacing:-.01em;
+}
+body[data-theme="light"]{
+  --bg:#f5f7fb;--surface:#fff;--surface-soft:#f0f3f9;--border:#e4e9f1;
+  --text:#111827;--text-muted:#667085;--accent:#315cf5;--accent-hover:#2448d8;
+  --hero:#fff;--header:rgba(255,255,255,.94);--footer:#fff;
+  background:#f5f7fb!important;color:#111827!important;
+}
+header{
+  background:rgba(255,255,255,.94)!important;
+  color:#111827!important;
+  border-bottom:1px solid #e7ebf2!important;
+  box-shadow:0 2px 12px rgba(16,24,40,.025);
+  backdrop-filter:blur(16px);
+}
+.navbar{min-height:72px;gap:24px}
+.logo{font-size:1.12rem!important;font-weight:750!important;letter-spacing:-.045em!important;color:#111827!important}
+.logo span{color:#315cf5!important}
+nav a{color:#596579!important;font-size:.88rem!important;font-weight:600!important}
+nav a:hover,nav a:focus-visible{background:#eef2ff!important;color:#2448d8!important}
+.theme-toggle{border:1px solid #e1e6ef!important;background:#fff!important;color:#344054!important}
+.hero{
+  background:transparent!important;color:#111827!important;
+  padding-top:54px!important;padding-bottom:26px!important;
+}
+.hero h1{font-size:clamp(2.3rem,4vw,3.35rem)!important;letter-spacing:-.065em!important;font-weight:750!important}
+.hero-copy>p,.section-title p{color:#667085!important}
+.hero-stat,.overview-stat,.overview-intro,.panel-surface,.player-compare-shell,
+.builder-ai-card,.fixture-card,.prediction-card,.team-card,.prediction-overview{
+  background:#fff!important;border:1px solid #e7ebf2!important;
+  box-shadow:0 3px 12px rgba(16,24,40,.025)!important;
+}
+.hero-stat{padding:19px 21px!important}
+.hero-stat strong,.overview-stat strong{color:#111827!important;letter-spacing:-.045em!important}
+.section{padding-top:40px!important}
+.section-title h2{font-weight:720!important;letter-spacing:-.05em!important;color:#111827!important}
+.section-title p{font-size:.93rem!important}
+button,.hero-button{
+  border-radius:11px!important;font-weight:650!important;
+  box-shadow:none!important;
+}
+input,select,textarea{
+  background:#fff!important;color:#111827!important;border:1px solid #dfe5ee!important;
+  box-shadow:none!important;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#315cf5!important;outline:3px solid rgba(49,92,245,.12)!important;
+}
+footer{border-top-color:#e4e9f1!important;color:#667085!important}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline-color:#315cf5!important;
+}
+@media(max-width:640px){
+  .hero{padding-top:34px!important}
+  .hero h1{font-size:2.35rem!important}
+  .navbar{padding:10px 0}
+}
