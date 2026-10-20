@@ -6,6 +6,8 @@ on:
       - "index.html"
       - "player.html"
       - "team.html"
+      - "ui-refresh.css"
+      - "fixture_difficulty.json"
       - ".github/workflows/test-ui.yml"
   pull_request:
     paths:
@@ -37,3 +39,32 @@ jobs:
           node --check /tmp/index.html.js
           node --check /tmp/player.html.js
           node --check /tmp/team.html.js
+
+      - name: Validate fixture difficulty data and UI hooks
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          html = Path("index.html").read_text(encoding="utf-8")
+          assert 'id="fixture-difficulty-body"' in html, "Fixture table body is missing"
+          assert 'id="fixture-difficulty-summary"' in html, "Fixture summary is missing"
+          assert 'data-fdr-horizon="3"' in html and 'data-fdr-horizon="5"' in html, "3- and 5-GW horizon controls are required"
+          assert 'fixture_difficulty.json' in html, "Homepage does not load published fixture difficulty data"
+
+          payload = json.loads(Path("fixture_difficulty.json").read_text(encoding="utf-8"))
+          teams = payload.get("teams", [])
+          assert len(teams) == 20, f"Expected 20 club schedules, got {len(teams)}"
+          assert len({team.get("team") for team in teams}) == 20, "Club schedules must be unique"
+          assert payload.get("next_gameweek"), "Next gameweek is missing"
+          for team in teams:
+              fixtures = team.get("fixtures", [])
+              assert fixtures, f"No upcoming fixtures for {team.get('team')}"
+              for fixture in fixtures:
+                  assert fixture.get("gw"), f"Missing gameweek for {team.get('team')}"
+                  assert fixture.get("opponent"), f"Missing opponent for {team.get('team')}"
+                  rating = fixture.get("difficulty")
+                  assert rating is None or 1 <= int(rating) <= 5, f"Invalid FDR for {team.get('team')}"
+                  assert fixture.get("source") in {"official_fpl", "model_estimate", "unavailable"}, f"Unknown rating source for {team.get('team')}"
+          print(f"Validated fixture ranking UI and {sum(len(team['fixtures']) for team in teams)} club-fixture ratings across {len(teams)} clubs.")
+          PY
