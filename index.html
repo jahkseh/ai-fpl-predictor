@@ -1574,6 +1574,15 @@ body[data-theme="light"] .hero-stat span {
 @media(max-width:800px){ .player-compare-shell{grid-template-columns:1fr;} .player-compare-controls,.player-compare-results{padding:16px;} }
 @media(max-width:480px){ .player-compare-selects{grid-template-columns:1fr;} .player-compare-results{grid-template-columns:1fr;} .player-compare-player{padding:15px;} }
 
+
+.prediction-explanation{margin-top:14px;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--surface-soft,rgba(255,255,255,.03));text-align:left}
+.prediction-explanation h4{font-size:1rem;margin-bottom:7px;color:var(--text)}
+.prediction-explanation p{font-size:.86rem;line-height:1.55;color:var(--text-muted);margin-bottom:10px}
+.prediction-explanation ul{padding-left:20px;display:grid;gap:8px}
+.prediction-explanation li{font-size:.86rem;line-height:1.5;color:var(--text-muted)}
+.prediction-explanation li strong{color:var(--text)}
+.fixture-modal-summary{line-height:1.55}
+
 </style>
 </head>
 
@@ -2283,20 +2292,49 @@ function renderFeaturedPlayers(fixtures) {
         lastFocusedFixture = document.activeElement;
         const topPlayer = fixture.players[0];
         fixtureModalTitle.innerHTML = '<a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.home) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + '" data-team="' + fixture.home + '">' + (teamCodes[fixture.home] || "FPL") + '</span></a><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.away) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '" data-team="' + fixture.away + '">' + (teamCodes[fixture.away] || "FPL") + '</span></a>';
+
         const ctx = topPlayer.fixture_context || {};
         const teamXg = Number(ctx.team_xg_for_per90);
         const oppXga = Number(ctx.opponent_xg_against_per90);
         const env = Number(ctx.fixture_xg_environment);
-        const minutes = topPlayer.expected_minutes != null ? Number(topPlayer.expected_minutes).toFixed(0) + ' min' : '—';
-        const contextLine = Number.isFinite(teamXg) && Number.isFinite(oppXga)
-            ? ' Team xG trend: ' + teamXg.toFixed(2) + ' · opponent xGA trend: ' + oppXga.toFixed(2) + (Number.isFinite(env) ? ' · fixture xG environment: ' + env.toFixed(2) : '')
-            : '';
-        fixtureModalSummary.innerHTML = '<strong>' + topPlayer.name + '</strong> is the highest model projection for this fixture at <strong>' + topPlayer.prediction.toFixed(2) + ' expected points</strong>. Expected minutes: <strong>' + minutes + '</strong>.' + contextLine + ' The model interval shown below is an uncertainty range, not a guarantee.';
+        const minutes = topPlayer.expected_minutes != null ? Number(topPlayer.expected_minutes) : null;
+        const p10 = topPlayer.prediction_p10 != null ? Number(topPlayer.prediction_p10) : null;
+        const p90 = topPlayer.prediction_p90 != null ? Number(topPlayer.prediction_p90) : null;
+        const confidence = topPlayer.confidence ? String(topPlayer.confidence) : "";
+        const esc = value => String(value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
+        const reasons = [];
+        if (minutes != null && Number.isFinite(minutes)) {
+            const level = minutes >= 80 ? "A likely regular role is a positive sign." : minutes >= 55 ? "There is some uncertainty around playing time." : "Playing time is a concern and could limit the score.";
+            reasons.push('<li><strong>Playing time:</strong> Around ' + Math.round(minutes) + ' minutes expected. ' + level + '</li>');
+        }
+        if (Number.isFinite(teamXg) && Number.isFinite(oppXga)) {
+            const matchup = teamXg >= 1.5 && oppXga >= 1.3 ? "This looks like a promising attacking matchup." : teamXg < 1.0 || oppXga < 0.9 ? "The attacking matchup may be more challenging." : "The matchup looks fairly balanced.";
+            reasons.push('<li><strong>Fixture:</strong> ' + matchup + '</li>');
+        }
+        if (Number.isFinite(env)) {
+            reasons.push('<li><strong>Game conditions:</strong> The model also considers the expected-goal outlook for this fixture.</li>');
+        }
+        if (p10 != null && p90 != null && Number.isFinite(p10) && Number.isFinite(p90)) {
+            reasons.push('<li><strong>Possible score range:</strong> ' + p10.toFixed(1) + '–' + p90.toFixed(1) + ' points. This gives a sense of how much the result could vary.</li>');
+        }
+        if (confidence) {
+            reasons.push('<li><strong>Confidence:</strong> ' + esc(confidence) + ' — a guide to how sure the model is, not a guarantee.</li>');
+        }
+        if (!reasons.length) {
+            reasons.push('<li>The model uses player and fixture information, but there is not enough detail available here to explain this prediction further.</li>');
+        }
+
+        fixtureModalSummary.innerHTML =
+            '<p><strong>' + esc(topPlayer.name) + '</strong> is projected to score <strong>' + Number(topPlayer.prediction).toFixed(1) + points</strong> in this fixture.</p>' +
+            '<div class="prediction-explanation"><h4>Why this prediction?</h4><p>Here are a few simple factors behind the estimate. FPL points can always vary, so use this as a guide rather than a guarantee.</p><ul>' + reasons.join("") + '</ul></div>';
         fixtureModalList.innerHTML = fixture.players.map(player => {
             const team = playerTeams[player.name] || "";
             const accent = teamAccentColours[team] || "var(--accent)";
             const code = shirtMarks[team] || "FPL";
-            return '<a class="fixture-modal-player" style="--player-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(player.name) + '"><span class="fixture-modal-rank">#' + player.rank + '</span><span><span class="fixture-modal-player-name">' + player.name + '</span><span class="fixture-modal-player-meta">' + code + (team ? " · " + team : "") + " · View profile →" + '</span></span><span class="fixture-modal-points">' + player.prediction.toFixed(2) + '</span></a>';
+            const playerMinutes = player.expected_minutes != null ? Math.round(Number(player.expected_minutes)) + ' min expected' : 'minutes n/a';
+            const playerRange = player.prediction_p10 != null && player.prediction_p90 != null ? ' · ' + Number(player.prediction_p10).toFixed(1) + '–' + Number(player.prediction_p90).toFixed(1) + ' range' : '';
+            const playerConfidence = player.confidence ? ' · ' + esc(player.confidence) + ' confidence' : '';
+            return '<a class="fixture-modal-player" style="--player-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(player.name) + '"><span class="fixture-modal-rank">#' + player.rank + '</span><span><span class="fixture-modal-player-name">' + esc(player.name) + '</span><span class="fixture-modal-player-meta">' + esc(code + (team ? " · " + team : "") + " · " + playerMinutes) + playerRange + playerConfidence + ' · View profile →</span></span><span class="fixture-modal-points">' + Number(player.prediction).toFixed(2) + '</span></a>';
         }).join("");
         fixtureModal.hidden = false;
         document.body.classList.add("modal-open");
