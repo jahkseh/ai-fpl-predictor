@@ -1,0 +1,36 @@
+/* Shared UI refresh: visual-only layer; model/data logic remains unchanged. */
+:root{--ui-content:1200px;--ui-radius:14px}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;font-variant-numeric:tabular-nums}
+header{position:sticky;top:0;z-index:100;background:var(--header,rgba(11,18,32,.96));backdrop-filter:blur(14px);border-bottom:1px solid var(--border,#243047)}
+.navbar{width:min(var(--ui-content),calc(100% - 36px));min-height:68px;margin:0 auto;gap:22px}
+.logo{white-space:nowrap;font-size:1.08rem;letter-spacing:-.035em}
+nav{gap:5px!important;align-items:center}
+nav a{border-radius:9px;padding:9px 11px!important;font-size:.86rem!important;font-weight:600;transition:background .18s,color .18s}
+nav a:hover,nav a:focus-visible{background:var(--surface-soft,#162033);text-decoration:none;outline:none}
+.theme-toggle{border-radius:9px!important;padding:8px 11px!important}
+main,.section,.hero,.hero-stats,footer{width:min(var(--ui-content),calc(100% - 36px));margin-left:auto;margin-right:auto}
+.section{padding-top:44px!important;padding-bottom:10px!important}
+.section-title{margin-bottom:22px!important;max-width:760px}
+.section-title h2{font-size:clamp(1.45rem,2.4vw,2rem)!important;letter-spacing:-.04em;line-height:1.2}
+.section-title p{font-size:.96rem!important;line-height:1.65;max-width:680px}
+.hero{padding-top:48px!important;padding-bottom:24px!important;gap:32px}
+.hero h1{font-size:clamp(2.25rem,4.5vw,3.65rem)!important;letter-spacing:-.055em;line-height:1.04}
+.hero-copy>p{max-width:560px;line-height:1.7}
+.hero-stats{margin-top:0!important;margin-bottom:18px!important;gap:12px}
+.hero-stat,.overview-stat,.overview-intro,.panel-surface,.player-compare-shell,.builder-ai-card,.fixture-card,.prediction-card,.team-card{border-radius:var(--ui-radius)!important;box-shadow:none!important}
+.hero-stat{padding:17px 20px!important}
+.hero-stat strong,.overview-stat strong{font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.prediction-overview{border-radius:var(--ui-radius)!important;padding:18px!important;gap:12px!important}
+.fixture-grid{gap:14px!important}
+.panel-surface,.player-compare-shell{padding:18px!important}
+input,select,textarea,button{font:inherit}
+input,select,textarea{border-radius:10px!important;min-height:42px}
+button,.hero-button{transition:background-color .16s,border-color .16s,color .16s!important}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent,#27d17f)!important;outline-offset:3px}
+footer{padding:24px 0 32px!important;margin-top:48px!important;border-top:1px solid var(--border,#243047);font-size:.85rem}
+#players,#live-stats,#team-builder,#fixture-difficulty,#teams,#differentials,#performance{scroll-margin-top:92px}
+img{max-width:100%}
+@media(max-width:1000px){.navbar{align-items:flex-start;padding:12px 0;flex-wrap:wrap}.navbar nav{width:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:thin;padding-bottom:3px}nav a{white-space:nowrap}.hero{padding-top:34px!important;gap:24px}.section{padding-top:36px!important}}
+@media(max-width:640px){.navbar,main,.section,.hero,.hero-stats,footer{width:calc(100% - 24px)}.navbar{gap:8px}.hero{padding-top:26px!important}.hero h1{font-size:2.2rem!important}.hero-trustline{font-size:.78rem;line-height:1.6}.hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}.hero-stat{padding:13px!important}.section{padding-top:28px!important}.section-title{margin-bottom:16px!important}.panel-surface,.player-compare-shell{padding:13px!important}.prediction-overview{padding:13px!important}.fixture-grid{grid-template-columns:1fr!important}.hero-actions{flex-wrap:wrap}.hero-button{min-height:42px;justify-content:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
