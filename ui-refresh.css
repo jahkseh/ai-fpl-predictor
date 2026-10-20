@@ -580,3 +580,44 @@ body[data-theme="light"] .builder-pitch-points { color: #375aab !important; }
   .fixture-difficulty-horizons button { flex:0 0 auto; }
   .fixture-difficulty-table { min-width:1000px; }
 }
+
+
+/* ScoutXI brand system */
+.brand-logo {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  color: var(--text) !important;
+  text-decoration: none !important;
+  letter-spacing: -.045em !important;
+}
+.brand-logo:hover { opacity: .94; }
+.brand-logo .brand-symbol {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 10px;
+  background: linear-gradient(145deg,#3975ff,#1744cf);
+  box-shadow: 0 5px 14px rgba(21,94,239,.22);
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+.brand-logo .brand-name {
+  color: var(--text) !important;
+  font-size: inherit;
+  font-weight: 850;
+  letter-spacing: -.055em;
+}
+.brand-logo .brand-name span { color: #5d8cff !important; }
+body[data-theme="light"] .brand-logo .brand-name span { color: #2458e8 !important; }
+.brand-logo:focus-visible { outline: 2px solid #5d8cff; outline-offset: 5px; border-radius: 8px; }
+@media (max-width: 800px) {
+  .brand-logo { gap: 8px; }
+  .brand-logo .brand-symbol { width: 31px; height: 31px; flex-basis: 31px; }
+}
