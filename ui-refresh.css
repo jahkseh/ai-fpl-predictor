@@ -819,3 +819,31 @@ body:not([data-theme="light"]) .fixture-difficulty-horizons button[aria-pressed=
   border-color: #385ca1 !important;
   color: #9bb8ff !important;
 }
+
+
+/* Weekly XI decision notes: readable in both themes and clear about risk signals. */
+.builder-selection-insights {
+  margin-top: 14px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+.builder-selection-insights-head h4 { margin: 0; color: var(--text); font-size: 14px; }
+.builder-selection-insights-head p { margin: 5px 0 12px; color: var(--text-muted); font-size: 12px; line-height: 1.5; }
+.builder-selection-reasons { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.builder-selection-reason { min-width: 0; padding: 10px 11px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+.builder-selection-reason.is-bench { opacity: .88; }
+.builder-selection-reason-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.builder-selection-reason-top strong { min-width: 0; color: var(--text); font-size: 12px; overflow-wrap: anywhere; }
+.builder-selection-reason-top > span { flex-shrink: 0; color: var(--text-muted); font-size: 10px; }
+.builder-selection-reason p { margin: 6px 0; color: var(--text-muted); font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+.builder-selection-reason-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 9px; color: var(--text-muted); font-size: 10px; }
+.builder-reason-flag { padding: 2px 6px; border-radius: 5px; font-weight: 700; }
+.builder-reason-flag.is-risk { background: #48232f; color: #ffc6d0; }
+.builder-reason-flag.is-watch { background: #3b321d; color: #ffe6a3; }
+.builder-selection-empty { margin: 0; color: var(--text-muted); font-size: 12px; }
+@media(max-width:760px) {
+  .builder-selection-insights { padding: 11px; }
+  .builder-selection-reasons { grid-template-columns: 1fr; }
+}
