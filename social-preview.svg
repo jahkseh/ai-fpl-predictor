@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07152e"/><stop offset="1" stop-color="#102b5b"/></linearGradient>
+ <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5d8cff"/><stop offset="1" stop-color="#155eef"/></linearGradient>
+ <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#9bbcff" stroke-opacity=".08"/></pattern>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/><rect width="1200" height="630" fill="url(#grid)"/>
+<circle cx="1000" cy="120" r="300" fill="#155eef" opacity=".13"/><circle cx="1070" cy="80" r="190" fill="#5d8cff" opacity=".09"/>
+<rect x="86" y="84" width="68" height="68" rx="19" fill="url(#blue)"/><text x="120" y="127" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="900" fill="white">XI</text>
+<text x="176" y="130" font-family="Arial,sans-serif" font-size="46" font-weight="800" letter-spacing="-2" fill="white">Scout<tspan fill="#76a0ff">XI</tspan></text>
+<text x="88" y="268" font-family="Arial,sans-serif" font-size="67" font-weight="800" letter-spacing="-2.5" fill="white">Make your next</text>
+<text x="88" y="344" font-family="Arial,sans-serif" font-size="67" font-weight="800" letter-spacing="-2.5" fill="#76a0ff">FPL move count.</text>
+<text x="91" y="399" font-family="Arial,sans-serif" font-size="24" fill="#c7d7f6">AI-powered predictions. Player insights. Smarter squad planning.</text>
+<rect x="88" y="455" width="238" height="57" rx="15" fill="#155eef"/><text x="207" y="491" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="white">Scout your next move ↗</text>
+<g transform="translate(790 192)">
+ <rect width="320" height="270" rx="24" fill="#10264b" stroke="#8db1ff" stroke-opacity=".35"/>
+ <text x="28" y="42" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#8db1ff">GAMEWEEK INTELLIGENCE</text>
+ <text x="28" y="84" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="white">Player projections</text>
+ <rect x="24" y="105" width="272" height="54" rx="12" fill="#1a3765"/>
+ <circle cx="51" cy="132" r="13" fill="#3975ff"/><text x="51" y="137" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="white">1</text>
+ <text x="75" y="128" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="white">Expected points</text><text x="75" y="146" font-family="Arial,sans-serif" font-size="11" fill="#a8bee8">Form · minutes · fixtures</text><text x="267" y="139" text-anchor="end" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#8db1ff">7.8</text>
+ <rect x="24" y="171" width="272" height="54" rx="12" fill="#1a3765"/>
+ <circle cx="51" cy="198" r="13" fill="#3975ff"/><text x="51" y="203" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="white">2</text>
+ <text x="75" y="194" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="white">Fixture difficulty</text><text x="75" y="212" font-family="Arial,sans-serif" font-size="11" fill="#a8bee8">Compare upcoming runs</text><text x="267" y="205" text-anchor="end" font-family="Arial,sans-serif" font-size="18" font-weight="800" fill="#8db1ff">FDR</text>
+ <text x="28" y="250" font-family="Arial,sans-serif" font-size="11" fill="#a8bee8">Illustrative interface · not live data</text>
+</g>
+<text x="88" y="580" font-family="Arial,sans-serif" font-size="16" letter-spacing="1" fill="#9bbcff">SCOUTXI.COMING SOON? NO — FANTASY PREMIER LEAGUE ANALYTICS</text>
+</svg>
