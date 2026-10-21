@@ -5,6 +5,76 @@
   "players_compared": 648,
   "largest_changes": [
     {
+      "name": "Jacquet",
+      "old_prediction": 3.257,
+      "new_prediction": 3.618,
+      "change": 0.361,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 79.885042,
+      "fixture_difficulty": 4
+    },
+    {
+      "name": "Gy\u00f6keres",
+      "old_prediction": 3.0,
+      "new_prediction": 2.858,
+      "change": -0.142,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 42.420385,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Hudson-Odoi",
+      "old_prediction": 1.157,
+      "new_prediction": 1.24,
+      "change": 0.083,
+      "old_confidence": "medium",
+      "new_confidence": "medium",
+      "expected_minutes": 35.894011,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Ruggeri",
+      "old_prediction": 2.295,
+      "new_prediction": 2.219,
+      "change": -0.077,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 43.324683,
+      "fixture_difficulty": 5
+    },
+    {
+      "name": "Muniz",
+      "old_prediction": 1.028,
+      "new_prediction": 0.985,
+      "change": -0.043,
+      "old_confidence": "medium",
+      "new_confidence": "medium",
+      "expected_minutes": 9.391724,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Endo",
+      "old_prediction": 0.054,
+      "new_prediction": 0.071,
+      "change": 0.016,
+      "old_confidence": "high",
+      "new_confidence": "high",
+      "expected_minutes": 0.0,
+      "fixture_difficulty": 4
+    },
+    {
+      "name": "Nmecha",
+      "old_prediction": 1.439,
+      "new_prediction": 1.427,
+      "change": -0.011,
+      "old_confidence": "medium",
+      "new_confidence": "medium",
+      "expected_minutes": 26.750493,
+      "fixture_difficulty": 3
+    },
+    {
       "name": "Gabriel",
       "old_prediction": 4.761,
       "new_prediction": 4.761,
@@ -155,16 +225,6 @@
       "fixture_difficulty": 4
     },
     {
-      "name": "Gy\u00f6keres",
-      "old_prediction": 3.0,
-      "new_prediction": 3.0,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 42.420385,
-      "fixture_difficulty": 3
-    },
-    {
       "name": "Havertz",
       "old_prediction": 2.948,
       "new_prediction": 2.948,
@@ -192,66 +252,6 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 69.811566,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Madueke",
-      "old_prediction": 2.481,
-      "new_prediction": 2.481,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 63.462708,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Mykolenko",
-      "old_prediction": 2.465,
-      "new_prediction": 2.465,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 51.927523,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "J.Timber",
-      "old_prediction": 2.374,
-      "new_prediction": 2.374,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 44.733209,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Johnson",
-      "old_prediction": 0.449,
-      "new_prediction": 0.449,
-      "change": 0.0,
-      "old_confidence": "high",
-      "new_confidence": "high",
-      "expected_minutes": 2.981055,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "George",
-      "old_prediction": 1.98,
-      "new_prediction": 1.98,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 25.098425,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "White",
-      "old_prediction": 1.922,
-      "new_prediction": 1.922,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 28.23026,
       "fixture_difficulty": 3
     }
   ]
