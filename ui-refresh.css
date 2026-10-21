@@ -847,3 +847,112 @@ body:not([data-theme="light"]) .fixture-difficulty-horizons button[aria-pressed=
   .builder-selection-insights { padding: 11px; }
   .builder-selection-reasons { grid-template-columns: 1fr; }
 }
+
+
+/* ScoutXI visual refinement: restrained colour, clearer hierarchy and consistent rhythm.
+   Keep the existing layout and FPL data intact; this is a presentation-only pass. */
+:root {
+  --accent: #7da2ff;
+  --accent-strong: #4d7fff;
+  --accent-wash: rgba(91, 132, 255, .12);
+  --border: #2a3850;
+  --radius: 14px;
+}
+body[data-theme="light"] {
+  --accent: #315fe8;
+  --accent-strong: #244dcc;
+  --accent-wash: rgba(49, 95, 232, .08);
+  --border: #dce3ee;
+}
+html { scroll-behavior: smooth; }
+header {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 1px 0 rgba(120,145,185,.06) !important;
+}
+.hero,
+body:not([data-theme="light"]) .hero,
+body[data-theme="light"] .hero {
+  background: var(--surface) !important;
+  box-shadow: none !important;
+  border-color: var(--border) !important;
+}
+.profile-hero,
+body:not([data-theme="light"]) .profile-hero,
+body[data-theme="light"] .profile-hero {
+  background: var(--surface-raised) !important;
+}
+.hero h1 span { color: var(--accent) !important; }
+.hero-stat, .overview-stat, .overview-intro, .panel-surface,
+.player-compare-shell, .builder-ai-card, .fixture-card, .prediction-card,
+.team-card, .player-card, .snapshot-card, .team-hero, .profile-shell,
+.future-card, .info-card, .differential-card, .fixture-difficulty-card,
+.gw5-fixture {
+  border-color: var(--border) !important;
+  box-shadow: none !important;
+}
+.prediction-card, .fixture-card, .player-card, .team-card, .panel-surface,
+.player-compare-shell, .builder-ai-card, .snapshot-card, .future-card,
+.info-card, .differential-card, .fixture-difficulty-card {
+  transition: transform .16s ease, box-shadow .16s ease !important;
+}
+.prediction-card:hover, .fixture-card:hover, .player-card:hover,
+.team-card:hover, .team-directory-card:hover,
+.differential-card:not(.differential-pending):hover {
+  transform: translateY(-2px);
+  border-color: var(--border) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.09) !important;
+}
+body[data-theme="light"] .prediction-card:hover,
+body[data-theme="light"] .fixture-card:hover,
+body[data-theme="light"] .player-card:hover,
+body[data-theme="light"] .team-card:hover,
+body[data-theme="light"] .team-directory-card:hover,
+body[data-theme="light"] .differential-card:not(.differential-pending):hover {
+  box-shadow: 0 8px 20px rgba(30,50,90,.08) !important;
+}
+.section { padding-top: 44px !important; }
+.section-title { margin-bottom: 20px !important; }
+.prediction-grid, .fixture-grid, .player-grid, .future-grid, .info-grid {
+  gap: 14px !important;
+}
+.section-title h2, .section-heading h2, .hero h1, .team-heading h1,
+.profile-hero h1 {
+  text-wrap: balance;
+}
+.section-title p, .hero p, .profile-section-note {
+  max-width: 68ch;
+}
+button, .hero-button, .theme-toggle, nav a {
+  transition: background-color .16s ease, color .16s ease, border-color .16s ease !important;
+}
+button:hover, .hero-button:hover { transform: none !important; }
+button:active, .hero-button:active { transform: translateY(1px) !important; }
+input, select, textarea { border-color: var(--border) !important; }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent-strong) !important;
+  outline-color: var(--accent-wash) !important;
+}
+/* Reveal animations can make long data pages feel delayed; show useful content immediately. */
+.scroll-reveal, .scroll-reveal.is-visible,
+.scroll-reveal.reveal-delay-1, .scroll-reveal.reveal-delay-2,
+.scroll-reveal.reveal-delay-3 {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+@media (max-width: 620px) {
+  .section { padding-top: 32px !important; }
+  .section-title { margin-bottom: 16px !important; }
+  .prediction-grid, .fixture-grid, .player-grid, .future-grid, .info-grid {
+    gap: 10px !important;
+  }
+}
