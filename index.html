@@ -2055,6 +2055,10 @@ body[data-theme="light"] .hero-stat span {
         <div class="builder-pitch-head"><h3>Squad pitch view</h3><span id="builder-pitch-caption">15-player squad · grouped by position</span></div>
         <div class="builder-pitch" id="builder-pitch"><div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div><div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div></div>
         <div class="builder-bench" id="builder-bench"></div>
+        <div class="builder-selection-insights" id="builder-selection-insights" aria-live="polite">
+            <div class="builder-selection-insights-head"><h4>Why these players?</h4><p>Selection notes based on projected points, expected minutes and any available availability flags.</p></div>
+            <div class="builder-selection-reasons" id="builder-selection-reasons"><p class="builder-selection-empty">Add players to see the reasoning behind your weekly XI and bench.</p></div>
+        </div>
     </div>
     <div class="builder-layout">
         <div class="builder-main panel-surface">
@@ -3302,6 +3306,39 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             return value > 20 ? value / 10 : value;
         };
         const pointsOf = player => number(player.prediction ?? player.expected_points ?? player.predicted_points ?? player.points_projection) ?? 0;
+        const minutesOf = player => number(player.expected_minutes ?? player.minutes_expected ?? player.minutes);
+        const availabilityOf = player => {
+            const rawStatus = String(player.status ?? player.availability_status ?? player.injury_status ?? "").trim().toLowerCase();
+            const chance = number(player.chance_of_playing_next_round ?? player.chance_of_playing ?? player.availability_percent);
+            const news = String(player.news ?? player.availability_note ?? "").trim();
+            const unavailable = ["i", "s", "u", "injured", "suspended", "unavailable", "out"].includes(rawStatus) || chance === 0;
+            const doubtful = ["d", "doubtful", "questionable"].includes(rawStatus) || (chance != null && chance > 0 && chance <= 50);
+            const limited = chance != null && chance > 50 && chance < 100;
+            // Use only explicit availability signals; absence of data is not treated as a clean bill of health.
+            const factor = unavailable ? 0.05 : doubtful ? 0.72 : limited ? 0.88 : 1;
+            const label = unavailable ? "Availability flag" : doubtful ? "Doubtful" : limited ? "Reduced availability" : rawStatus ? "Status: " + rawStatus : "";
+            return { factor, unavailable, doubtful, limited, chance, news, label };
+        };
+        const selectionScore = player => {
+            const minutes = minutesOf(player);
+            const minutesFactor = minutes == null ? 1 : minutes < 20 ? 0.55 : minutes < 40 ? 0.72 : minutes < 60 ? 0.86 : minutes < 75 ? 0.94 : 1;
+            return pointsOf(player) * minutesFactor * availabilityOf(player).factor;
+        };
+        const selectionReason = (player, isStarter) => {
+            const pts = pointsOf(player);
+            const minutes = minutesOf(player);
+            const availability = availabilityOf(player);
+            const reasons = [];
+            if (availability.unavailable) reasons.push("availability is flagged as a major concern");
+            else if (availability.doubtful) reasons.push("availability is uncertain" + (availability.chance != null ? " (" + availability.chance + "% chance)" : ""));
+            else if (availability.limited) reasons.push("availability is not fully certain" + (availability.chance != null ? " (" + availability.chance + "% chance)" : ""));
+            if (minutes != null) reasons.push("about " + Math.round(minutes) + " expected minutes");
+            if (pts > 0) reasons.push(pts.toFixed(2) + " projected points");
+            if (!reasons.length) reasons.push("limited minutes or availability data is available, so use this as a provisional recommendation");
+            const prefix = isStarter ? "Selected for the XI" : "Bench option";
+            const note = availability.news ? " Note: " + availability.news : "";
+            return prefix + " — " + reasons.join("; ") + "." + note;
+        };
         const positionOf = player => {
             const raw = String(player.position ?? player.element_type_name ?? player.position_name ?? player.element_type ?? player.position_id ?? "").toLowerCase();
             if (raw.includes("goal") || raw === "gk" || raw === "1") return "Goalkeeper";
@@ -3370,7 +3407,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 document.getElementById(detailId).textContent = detail(player);
             });
             // Pick the highest-projection legal FPL starting XI across valid formations.
-            const byPosition = pos => squad.filter(p => p._builderPosition === pos).sort((a,b)=>pointsOf(b)-pointsOf(a));
+            const byPosition = pos => squad.filter(p => p._builderPosition === pos).sort((a,b)=>selectionScore(b)-selectionScore(a));
             const goalkeepers = byPosition("Goalkeeper");
             const defenders = byPosition("Defender");
             const midfielders = byPosition("Midfielder");
@@ -3384,7 +3421,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                     const defs = defenders.slice(0, defCount);
                     const mids = midfielders.slice(0, midCount);
                     const fwds = forwards.slice(0, fwdCount);
-                    const score = [...defs, ...mids, ...fwds].reduce((sum,p)=>sum+pointsOf(p),0);
+                    const score = [...defs, ...mids, ...fwds].reduce((sum,p)=>sum+selectionScore(p),0);
                     if (score > bestOutfield.score) bestOutfield = { score, defs, mids, fwds };
                 }
             }
@@ -3394,7 +3431,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const fwds = bestOutfield.fwds;
             const startingPlayers = [...gk, ...defs, ...mids, ...fwds];
             const startingIds = new Set(startingPlayers.map(p=>p._builderId));
-            const aiCaptain = [...startingPlayers].sort((a,b)=>pointsOf(b)-pointsOf(a))[0];
+            const aiCaptain = [...startingPlayers].sort((a,b)=>selectionScore(b)-selectionScore(a))[0];
             if (!captainManuallySet || !squad.some(p=>p._builderId===captainId)) captainId = aiCaptain?._builderId || null;
             const effectiveCaptainId = captainId;
             const rows = [fwds,mids,defs,gk];
@@ -3405,6 +3442,16 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const outfieldBench = squad.filter(p=>!startingIds.has(p._builderId) && p._builderPosition!=="Goalkeeper").sort((a,b)=>pointsOf(b)-pointsOf(a));
             const bench = [...outfieldBench, ...benchGoalkeeper];
             document.getElementById("builder-bench").innerHTML = bench.length ? bench.map((p,i)=>'<div class="builder-bench-slot"><strong>' + esc(p.name) + '</strong><span>' + (p._builderPosition==="Goalkeeper" ? "Bench goalkeeper" : "Bench "+(outfieldBench.indexOf(p)+1)) + ' · ' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-bench-slot"><strong>Bench</strong><span>Complete squad to see bench options</span></div>';
+            const reasonRows = [
+                ...startingPlayers.map(p => ({player:p, starter:true})),
+                ...bench.map(p => ({player:p, starter:false}))
+            ];
+            document.getElementById("builder-selection-reasons").innerHTML = reasonRows.length ? reasonRows.map(({player,starter}) => {
+                const av = availabilityOf(player);
+                const flags = av.unavailable ? '<span class="builder-reason-flag is-risk">Availability risk</span>' : av.doubtful ? '<span class="builder-reason-flag is-risk">Doubtful</span>' : av.limited ? '<span class="builder-reason-flag is-watch">Check status</span>' : '';
+                const label = starter ? (player._builderId===effectiveCaptainId ? "Captain" : "Starting XI") : (player._builderPosition==="Goalkeeper" ? "Bench goalkeeper" : "Bench "+(outfieldBench.indexOf(player)+1));
+                return '<article class="builder-selection-reason ' + (starter ? 'is-starter' : 'is-bench') + '"><div class="builder-selection-reason-top"><strong>' + esc(player.name || "Unknown player") + '</strong><span>' + label + '</span></div><p>' + esc(selectionReason(player,starter)) + '</p><div class="builder-selection-reason-meta"><span>' + pointsOf(player).toFixed(2) + ' projected pts</span><span>Selection score ' + selectionScore(player).toFixed(2) + '</span>' + (minutesOf(player)==null ? '' : '<span>' + Math.round(minutesOf(player)) + ' min</span>') + flags + '</div></article>';
+            }).join("") : '<p class="builder-selection-empty">Add players to see the reasoning behind your weekly XI and bench.</p>';
         }
         list.addEventListener("click", event => {
             const button = event.target.closest("[data-builder-add]");
