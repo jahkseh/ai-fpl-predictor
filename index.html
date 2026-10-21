@@ -6,6 +6,17 @@
 
     <title>ScoutXI · AI-powered FPL analytics</title>
     <meta name="description" content="ScoutXI uses AI-powered predictions, player analytics, fixture difficulty and squad planning to help Fantasy Premier League managers make smarter decisions.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ScoutXI — Make your next FPL move count">
+    <meta property="og:description" content="AI-powered FPL predictions, player insights, fixture difficulty and smarter squad planning.">
+    <meta property="og:url" content="https://jahkseh.github.io/ai-fpl-predictor/">
+    <meta property="og:image" content="https://jahkseh.github.io/ai-fpl-predictor/social-preview.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ScoutXI — Make your next FPL move count">
+    <meta name="twitter:description" content="AI-powered FPL predictions, player insights and smarter squad planning.">
+    <meta name="twitter:image" content="https://jahkseh.github.io/ai-fpl-predictor/social-preview.svg">
     <meta name="theme-color" content="#155eef">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23155eef'/%3E%3Cpath d='M17 18h30v7H28v6h19v15H17v-7h19v-2H17z' fill='white'/%3E%3C/svg%3E">
 
@@ -1630,15 +1641,16 @@ body[data-theme="light"] .hero-stat span {
             </div>
             <div class="hero-trustline"><span aria-hidden="true">✓</span> Transparent projections <i></i> Player-level detail <i></i> Free to explore</div>
         </div>
-        <div class="hero-art" role="img" aria-label="Placeholder for custom FPL hero artwork, to be added later">
-            <div class="art-topline"><span>YOUR NEXT EDGE</span><span class="art-pending">ARTWORK PENDING</span></div>
-            <div class="pitch-placeholder">
-                <div class="pitch-line halfway"></div><div class="pitch-circle"></div>
-                <div class="pitch-box pitch-box-top"></div><div class="pitch-box pitch-box-bottom"></div>
-                <div class="player-token token-one">FWD</div><div class="player-token token-two">MID</div><div class="player-token token-three">MID</div><div class="player-token token-four">DEF</div><div class="player-token token-five">GK</div>
-                <div class="pitch-caption"><strong>FPL, with a data edge.</strong><span>Custom illustration slot · replace when ready</span></div>
+        <div class="hero-art scout-hero-art" aria-label="ScoutXI analytics preview">
+            <div class="scout-art-heading"><span class="scout-live-dot"></span><span>GAMEWEEK INTELLIGENCE</span><span class="scout-art-tag">SCOUTXI AI</span></div>
+            <div class="scout-art-title">Your next edge<br><span>starts with data.</span></div>
+            <div class="scout-art-metric-grid">
+                <div class="scout-art-metric"><span class="scout-art-icon"><span class="scout-bars">▂▅▇</span></span><span class="scout-art-metric-copy"><small>PLAYER PROJECTIONS</small><strong>Expected points</strong></span><span class="scout-art-arrow">↗</span></div>
+                <div class="scout-art-metric"><span class="scout-art-icon"><span class="scout-pitch-icon">⌖</span></span><span class="scout-art-metric-copy"><small>FIXTURE ANALYSIS</small><strong>Find the best runs</strong></span><span class="scout-art-arrow">↗</span></div>
+                <div class="scout-art-metric"><span class="scout-art-icon"><span class="scout-squad-icon">XI</span></span><span class="scout-art-metric-copy"><small>SQUAD PLANNING</small><strong>Build with confidence</strong></span><span class="scout-art-arrow">↗</span></div>
             </div>
-            <div class="art-foot"><span class="art-foot-mark">✳</span><span><strong>Built around the numbers</strong><small>Expected points · minutes · fixtures · form</small></span></div>
+            <div class="scout-art-foot"><span class="scout-art-mark">XI</span><span><strong>Scout smarter every Gameweek</strong><small>Form · minutes · fixtures · model projections</small></span></div>
+            <div class="scout-art-glow" aria-hidden="true"></div>
         </div>
     </section>
 <div class="hero-stats">
@@ -1999,8 +2011,10 @@ body[data-theme="light"] .hero-stat span {
 </section>
 </section>           <div class="fixture-modal" id="fixture-modal" hidden><div class="fixture-modal-panel" role="dialog" aria-modal="true" aria-labelledby="fixture-modal-title"><div class="fixture-modal-head"><div class="fixture-modal-topline"><span class="fixture-modal-kicker">Fixture prediction</span><button class="fixture-modal-close" id="fixture-modal-close" type="button" aria-label="Close fixture details">×</button></div><div class="fixture-modal-teams" id="fixture-modal-title"></div></div><div class="fixture-modal-body"><div class="fixture-modal-summary" id="fixture-modal-summary"></div><div class="fixture-modal-list" id="fixture-modal-list"></div><p class="fixture-modal-footer">These are pre-match model projections. Select a player to open their full profile.</p></div></div></div>
 
-<footer>
-        ScoutXI · AI-powered Fantasy Premier League analytics
+<footer class="scout-footer">
+        <a class="logo brand-logo" href="#home" aria-label="ScoutXI home"><span class="brand-symbol" aria-hidden="true">XI</span><span class="brand-name">Scout<span>XI</span></span></a>
+        <span>AI-powered Fantasy Premier League analytics</span>
+        <a class="scout-footer-top" href="#home">Back to top ↑</a>
     </footer>
 
     <script>
