@@ -956,3 +956,16 @@ input:focus, select:focus, textarea:focus {
     gap: 10px !important;
   }
 }
+
+
+/* Player comparison upgrade: scale from two to three player cards cleanly. */
+.player-compare-third-field label span { color:var(--text-muted); font-weight:500; letter-spacing:0; text-transform:none; }
+.player-compare-results { grid-template-columns:repeat(var(--compare-count, 2), minmax(0,1fr)); align-content:start; }
+.player-compare-player { min-width:0; overflow-wrap:anywhere; }
+.player-compare-player-head { flex-wrap:wrap; }
+.player-compare-leader { display:inline-flex; align-items:center; padding:5px 7px; border-radius:999px; background:var(--accent-wash); color:var(--accent); font-size:10px; font-weight:800; line-height:1.2; }
+.player-compare-range { margin:9px 0 3px; color:var(--text-muted); font-size:12px; }
+.player-compare-value-note { margin:12px 0 0; color:var(--accent); font-size:11px; line-height:1.4; font-weight:700; }
+.player-compare-metric strong { max-width:58%; }
+@media(max-width:1000px) { .player-compare-results { grid-template-columns:repeat(min(var(--compare-count, 2), 2), minmax(0,1fr)); } }
+@media(max-width:560px) { .player-compare-results { grid-template-columns:1fr; } }
