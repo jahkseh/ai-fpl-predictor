@@ -3293,6 +3293,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         let pool = [];
         let squad = [];
         let captainId = null;
+        let captainManuallySet = false;
         const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
         const number = value => { const n = Number(value); return Number.isFinite(n) ? n : null; };
         const priceOf = player => {
@@ -3368,20 +3369,42 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 document.getElementById(titleId).textContent = player ? (player.name || "Selected player") : (squad.length ? "No data available" : "Build your squad");
                 document.getElementById(detailId).textContent = detail(player);
             });
-            const posRows = ["Forward","Midfielder","Defender","Goalkeeper"];
-            const starters = [...squad].sort((a,b)=>pointsOf(b)-pointsOf(a));
-            const startingIds = new Set();
-            const gk = starters.filter(p=>p._builderPosition==="Goalkeeper").slice(0,1);
-            const defs = starters.filter(p=>p._builderPosition==="Defender").slice(0,4);
-            const mids = starters.filter(p=>p._builderPosition==="Midfielder").slice(0,4);
-            const fwds = starters.filter(p=>p._builderPosition==="Forward").slice(0,2);
-            [...gk,...defs,...mids,...fwds].forEach(p=>startingIds.add(p._builderId));
+            // Pick the highest-projection legal FPL starting XI across valid formations.
+            const byPosition = pos => squad.filter(p => p._builderPosition === pos).sort((a,b)=>pointsOf(b)-pointsOf(a));
+            const goalkeepers = byPosition("Goalkeeper");
+            const defenders = byPosition("Defender");
+            const midfielders = byPosition("Midfielder");
+            const forwards = byPosition("Forward");
+            let bestOutfield = { score: -Infinity, defs: [], mids: [], fwds: [] };
+            for (let defCount = 3; defCount <= 5; defCount++) {
+                for (let midCount = 2; midCount <= 5; midCount++) {
+                    const fwdCount = 10 - defCount - midCount;
+                    if (fwdCount < 1 || fwdCount > 3) continue;
+                    if (defenders.length < defCount || midfielders.length < midCount || forwards.length < fwdCount) continue;
+                    const defs = defenders.slice(0, defCount);
+                    const mids = midfielders.slice(0, midCount);
+                    const fwds = forwards.slice(0, fwdCount);
+                    const score = [...defs, ...mids, ...fwds].reduce((sum,p)=>sum+pointsOf(p),0);
+                    if (score > bestOutfield.score) bestOutfield = { score, defs, mids, fwds };
+                }
+            }
+            const gk = goalkeepers.slice(0,1);
+            const defs = bestOutfield.defs;
+            const mids = bestOutfield.mids;
+            const fwds = bestOutfield.fwds;
+            const startingPlayers = [...gk, ...defs, ...mids, ...fwds];
+            const startingIds = new Set(startingPlayers.map(p=>p._builderId));
+            const aiCaptain = [...startingPlayers].sort((a,b)=>pointsOf(b)-pointsOf(a))[0];
+            if (!captainManuallySet || !squad.some(p=>p._builderId===captainId)) captainId = aiCaptain?._builderId || null;
+            const effectiveCaptainId = captainId;
             const rows = [fwds,mids,defs,gk];
             const pitch = document.getElementById("builder-pitch");
-            pitch.innerHTML = '<div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div>' + (squad.length ? rows.map(row => '<div class="builder-pitch-row">' + (row.length ? row.map(p => '<div class="builder-pitch-player ' + (p._builderId===captainId?'is-captain':'') + '"><span class="builder-pitch-shirt">' + (p._builderId===captainId?'C':({Goalkeeper:"GK",Defender:"D",Midfielder:"M",Forward:"F"}[p._builderPosition]||"•")) + '</span><span class="builder-pitch-name" title="' + esc(p.name) + '">' + esc(p.name) + '</span><span class="builder-pitch-points">' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-pitch-empty">No ' + row + '</div>') + '</div>').join("") : '<div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div>');
-            document.getElementById("builder-pitch-caption").textContent = "Best projected XI preview · captain marked C";
-            const bench = starters.filter(p=>!startingIds.has(p._builderId)).sort((a,b)=>pointsOf(b)-pointsOf(a));
-            document.getElementById("builder-bench").innerHTML = bench.length ? bench.map((p,i)=>'<div class="builder-bench-slot"><strong>' + esc(p.name) + '</strong><span>' + (i===0?"Bench GK / 1": "Bench "+(i+1)) + ' · ' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-bench-slot"><strong>Bench</strong><span>Complete squad to see bench options</span></div>';
+            pitch.innerHTML = '<div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div>' + (squad.length ? rows.map(row => '<div class="builder-pitch-row">' + (row.length ? row.map(p => '<div class="builder-pitch-player ' + (p._builderId===effectiveCaptainId?'is-captain':'') + '"><span class="builder-pitch-shirt">' + (p._builderId===effectiveCaptainId?'C':({Goalkeeper:"GK",Defender:"D",Midfielder:"M",Forward:"F"}[p._builderPosition]||"•")) + '</span><span class="builder-pitch-name" title="' + esc(p.name) + '">' + esc(p.name) + '</span><span class="builder-pitch-points">' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-pitch-empty">No players in this line</div>') + '</div>').join("") : '<div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div>');
+            document.getElementById("builder-pitch-caption").textContent = bestOutfield.score > -Infinity ? "AI-selected XI · " + defs.length + "-" + mids.length + "-" + fwds.length + " · captain marked C" : "Add a valid mix of defenders, midfielders and forwards to generate a legal XI";
+            const benchGoalkeeper = goalkeepers.slice(1);
+            const outfieldBench = squad.filter(p=>!startingIds.has(p._builderId) && p._builderPosition!=="Goalkeeper").sort((a,b)=>pointsOf(b)-pointsOf(a));
+            const bench = [...outfieldBench, ...benchGoalkeeper];
+            document.getElementById("builder-bench").innerHTML = bench.length ? bench.map((p,i)=>'<div class="builder-bench-slot"><strong>' + esc(p.name) + '</strong><span>' + (p._builderPosition==="Goalkeeper" ? "Bench goalkeeper" : "Bench "+(outfieldBench.indexOf(p)+1)) + ' · ' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-bench-slot"><strong>Bench</strong><span>Complete squad to see bench options</span></div>';
         }
         list.addEventListener("click", event => {
             const button = event.target.closest("[data-builder-add]");
@@ -3412,14 +3435,15 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const captain = event.target.closest("[data-builder-captain]");
             if (remove) {
                 squad = squad.filter(p => p._builderId !== remove.dataset.builderRemove);
-                if (captainId === remove.dataset.builderRemove) captainId = squad[0]?._builderId || null;
+                if (captainId === remove.dataset.builderRemove) { captainId = null; captainManuallySet = false; }
                 render();
             } else if (captain) {
                 captainId = captain.dataset.builderCaptain;
+                captainManuallySet = true;
                 render();
             }
         });
-        document.getElementById("builder-clear").addEventListener("click", () => { squad = []; captainId = null; render(); });
+        document.getElementById("builder-clear").addEventListener("click", () => { squad = []; captainId = null; captainManuallySet = false; render(); });
         [search, positionFilter, sort].forEach(control => { control.addEventListener("input", render); control.addEventListener("change", render); });
         fetch("live_data.json?ts=" + Date.now()).then(response => {
             if (!response.ok) throw new Error("Live player data is unavailable");
