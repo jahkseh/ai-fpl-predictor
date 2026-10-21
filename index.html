@@ -1597,7 +1597,69 @@ body[data-theme="light"] .hero-stat span {
 .prediction-explanation li strong{color:var(--text)}
 .fixture-modal-summary{line-height:1.55}
 
-</style>
+
+        /* Fixture rankings: improve breathing room instead of squeezing five GWs into one viewport */
+        .fixture-difficulty-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+            -webkit-overflow-scrolling: touch;
+        }
+        .fixture-difficulty-table {
+            width: 100%;
+            min-width: 1320px;
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: auto;
+            font-size: 12px;
+        }
+        .fixture-difficulty-table th,
+        .fixture-difficulty-table td {
+            padding: 15px 14px;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.4;
+        }
+        .fixture-difficulty-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: var(--surface-soft);
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .045em;
+            text-transform: uppercase;
+        }
+        .fixture-difficulty-table tbody tr:last-child td { border-bottom: 0; }
+        .fixture-difficulty-table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-soft) 52%, transparent); }
+        .fixture-difficulty-table tbody tr:hover { background: color-mix(in srgb, #155eef 7%, var(--surface)); }
+        .fixture-difficulty-table th:nth-child(2),
+        .fixture-difficulty-table td:nth-child(2) {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            min-width: 150px;
+            background: var(--surface);
+            box-shadow: 8px 0 12px -12px rgba(15,23,42,.45);
+        }
+        .fixture-difficulty-table thead th:nth-child(2) { z-index: 3; background: var(--surface-soft); }
+        .fixture-difficulty-table tbody tr:nth-child(even) td:nth-child(2) { background: var(--surface-soft); }
+        .fixture-difficulty-table td { color: var(--text); }
+        .fixture-difficulty-table .fixture-difficulty-loading,
+        .fixture-difficulty-table .fixture-difficulty-empty { padding: 28px 18px; text-align: center; color: var(--text-muted); }
+        @media (max-width: 700px) {
+            .fixture-difficulty-table { min-width: 1220px; font-size: 11px; }
+            .fixture-difficulty-table th,
+            .fixture-difficulty-table td { padding: 13px 11px; }
+            .fixture-difficulty-table th:nth-child(2),
+            .fixture-difficulty-table td:nth-child(2) { min-width: 130px; }
+        }
+
+    </style>
     <link rel="stylesheet" href="ui-refresh.css">
 </head>
 
