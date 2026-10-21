@@ -1861,6 +1861,61 @@ body[data-theme="light"] .hero-stat span {
             .fixture-difficulty-match { grid-template-columns: 22px minmax(48px,1fr) 27px auto; gap: 6px; padding: 6px; }
         }
 
+    
+        /* Fixture planner: screenshot-inspired team crests and at-a-glance FDR colours */
+        .fixture-difficulty-table td.fixture-difficulty-team-cell a {
+            display: flex; align-items: center; gap: 9px; min-height: 42px;
+            color: var(--text); white-space: nowrap;
+        }
+        .fixture-difficulty-team-logo {
+            width: 27px; height: 27px; flex: 0 0 27px; object-fit: contain;
+            filter: drop-shadow(0 1px 1px rgba(15,23,42,.10));
+        }
+        .fixture-difficulty-team-monogram {
+            width: 27px; height: 27px; flex: 0 0 27px; display: inline-flex;
+            align-items: center; justify-content: center; border-radius: 50%;
+            background: #eaf2ff; color: #155eef; font-size: 9px; font-weight: 900;
+        }
+        .fixture-difficulty-table td.fixture-difficulty-gw-cell { padding: 6px; }
+        .fixture-difficulty-match {
+            min-height: 48px;
+            grid-template-columns: 23px minmax(52px,1fr) 27px auto;
+            gap: 6px; padding: 6px 7px;
+            border-radius: 8px; border: 1px solid transparent;
+            box-shadow: none;
+        }
+        .fixture-difficulty-match.low {
+            background: #00e98b; border-color: #00d982; color: #062b20;
+        }
+        .fixture-difficulty-match.mid {
+            background: #4b586b; border-color: #4b586b; color: #fff;
+        }
+        .fixture-difficulty-match.high {
+            background: #ff354d; border-color: #ff354d; color: #fff;
+        }
+        .fixture-difficulty-match.unknown {
+            background: #eef2f7; border-color: #e1e7ef; color: #475569;
+        }
+        .fixture-difficulty-match .fixture-difficulty-opponent { color: inherit; font-weight: 850; }
+        .fixture-difficulty-match .fixture-difficulty-venue {
+            width: 22px; height: 22px; border-radius: 5px;
+            background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.35);
+            color: inherit;
+        }
+        .fixture-difficulty-match.low .fixture-difficulty-venue { background: rgba(255,255,255,.38); border-color: rgba(0,80,45,.16); }
+        .fixture-difficulty-match .fixture-difficulty-fdr {
+            width: 25px; height: 25px; border-radius: 6px;
+            background: rgba(255,255,255,.17); border-color: rgba(255,255,255,.3); color: inherit;
+        }
+        .fixture-difficulty-match.low .fixture-difficulty-fdr { background: rgba(255,255,255,.38); border-color: rgba(0,80,45,.16); }
+        .fixture-difficulty-match .fixture-difficulty-estimate { color: inherit; opacity: .8; }
+        .fixture-difficulty-match:hover { transform: translateY(-1px); filter: brightness(.97); box-shadow: 0 4px 10px rgba(15,23,42,.10); }
+        body:not([data-theme="light"]) .fixture-difficulty-team-monogram { background: #1b2b45; color: #c6d7f4; }
+        body:not([data-theme="light"]) .fixture-difficulty-match.unknown { background: #263246; border-color: #3b4a60; color: #d2dceb; }
+        @media (max-width: 700px) {
+            .fixture-difficulty-match { grid-template-columns: 21px minmax(45px,1fr) 25px auto; gap: 5px; padding: 6px; }
+        }
+
     </style>
     <link rel="stylesheet" href="ui-refresh.css">
 </head>
@@ -2710,13 +2765,26 @@ function renderFeaturedPlayers(fixtures) {
                 const venue = fixture.is_home ? "H" : "A";
                 const venueLabel = fixture.is_home ? "Home" : "Away";
                 const sourceTag = fixture.source && fixture.source !== "official_fpl" ? '<span class="fixture-difficulty-estimate" title="Model-based estimate, not an official FPL rating">EST</span>' : "";
-                return '<div class="fixture-difficulty-match" title="' + esc(venueLabel + " vs " + fixture.opponent + (difficulty == null ? "" : " · FDR " + difficulty)) + '">' +
+                return '<div class="fixture-difficulty-match ' + difficultyClass + '" title="' + esc(venueLabel + " vs " + fixture.opponent + (difficulty == null ? "" : " · FDR " + difficulty)) + '">' +
                     '<span class="fixture-difficulty-venue">' + venue + '</span>' +
                     '<span class="fixture-difficulty-opponent">' + esc(fixture.opponent || "Opponent n/a") + '</span>' +
-                    '<span class="fixture-difficulty-fdr ' + difficultyClass + '">' + (difficulty == null ? "—" : difficulty.toFixed(0)) + '</span>' +
+                    '<span class="fixture-difficulty-fdr">' + (difficulty == null ? "—" : difficulty.toFixed(0)) + '</span>' +
                     sourceTag + '</div>';
             }).join("");
         };
+
+        const teamBadgeCodes = {
+            "Arsenal":3,"Aston Villa":7,"Bournemouth":91,"Brentford":94,"Brighton":36,"Brighton and Hove Albion":36,
+            "Burnley":90,"Chelsea":8,"Crystal Palace":31,"Everton":11,"Fulham":54,"Leeds":2,"Leeds United":2,
+            "Liverpool":14,"Manchester City":43,"Man City":43,"Manchester United":1,"Man Utd":1,"Newcastle":4,"Newcastle United":4,
+            "Nottingham Forest":17,"Nott'm Forest":17,"Sunderland":56,"Tottenham":6,"Spurs":6,"West Ham":21,"Wolves":39,
+            "Wolverhampton Wanderers":39,"Coventry City":45,"Ipswich Town":40,"Leicester City":13,"Southampton":20,"Norwich City":18
+        };
+        const teamLogo = name => {
+            const code = teamBadgeCodes[String(name || "").trim()];
+            return code ? 'https://resources.premierleague.com/premierleague/badges/50/t' + code + '.png' : "";
+        };
+        const teamMonogram = name => String(name || "?").split(/\\s+/).filter(Boolean).slice(0,2).map(word=>word[0]).join("").toUpperCase();
 
         head.innerHTML = '<tr><th class="fdr-rank-heading">#</th><th class="fdr-team-heading">Club</th>' +
             gameweeks.map(gw=>'<th class="fdr-gw-heading">GW' + gw + '</th>').join("") +
@@ -2725,7 +2793,9 @@ function renderFeaturedPlayers(fixtures) {
         body.innerHTML = ranked.map(team =>
             '<tr>' +
                 '<td class="fixture-difficulty-rank">' + String(team.rank).padStart(2,"0") + '</td>' +
-                '<td class="fixture-difficulty-team-cell"><a href="team.html?team=' + encodeURIComponent(team.team) + '">' + esc(team.team) + '</a></td>' +
+                '<td class="fixture-difficulty-team-cell"><a href="team.html?team=' + encodeURIComponent(team.team) + '">' +
+                    (teamLogo(team.team) ? '<img class="fixture-difficulty-team-logo" src="' + teamLogo(team.team) + '" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'fixture-difficulty-team-monogram\',textContent:\'' + esc(teamMonogram(team.team)) + '\'}))">' : '<span class="fixture-difficulty-team-monogram">' + esc(teamMonogram(team.team)) + '</span>') +
+                    '<span>' + esc(team.team) + '</span></a></td>' +
                 gameweeks.map(gw=>'<td class="fixture-difficulty-gw-cell">' + fixtureCell(team,gw) + '</td>').join("") +
                 '<td class="fixture-difficulty-average">' + (team.average == null ? "—" : team.average.toFixed(2)) + '</td>' +
                 '<td><span class="fixture-difficulty-count easy-count">' + team.easy + '</span></td>' +
