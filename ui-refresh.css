@@ -621,3 +621,62 @@ body[data-theme="light"] .brand-logo .brand-name span { color: #2458e8 !importan
   .brand-logo { gap: 8px; }
   .brand-logo .brand-symbol { width: 31px; height: 31px; flex-basis: 31px; }
 }
+
+
+/* ScoutXI homepage signature artwork */
+.scout-hero-art {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 26px !important;
+  border: 1px solid rgba(133,170,255,.28) !important;
+  border-radius: 24px !important;
+  background: radial-gradient(ellipse at 95% 5%,rgba(52,105,240,.28),transparent 42%),linear-gradient(145deg,#101e37,#0a1427) !important;
+  box-shadow: 0 26px 70px rgba(2,8,23,.28),inset 0 1px 0 rgba(255,255,255,.07) !important;
+  color: #fff !important;
+}
+.scout-hero-art::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -120px;
+  bottom: -150px;
+  border: 1px solid rgba(112,154,255,.16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(112,154,255,.035),0 0 0 58px rgba(112,154,255,.025);
+  pointer-events: none;
+}
+.scout-art-heading { position:relative;z-index:1;display:flex;align-items:center;gap:9px;color:#a8c2ff;font-size:10px;font-weight:850;letter-spacing:.14em; }
+.scout-live-dot { width:7px;height:7px;border-radius:50%;background:#5d8cff;box-shadow:0 0 0 4px rgba(93,140,255,.15); }
+.scout-art-tag { margin-left:auto;padding:6px 8px;border:1px solid rgba(126,162,255,.24);border-radius:7px;background:rgba(47,92,194,.13);font-size:9px;letter-spacing:.08em; }
+.scout-art-title { position:relative;z-index:1;margin:26px 0 20px;color:#fff;font-size:clamp(24px,2.6vw,34px);font-weight:850;line-height:1.12;letter-spacing:-.045em; }
+.scout-art-title span { color:#82a8ff; }
+.scout-art-metric-grid { position:relative;z-index:1;display:grid;gap:9px; }
+.scout-art-metric { display:flex;align-items:center;gap:12px;min-width:0;padding:12px;border:1px solid rgba(155,184,255,.13);border-radius:13px;background:rgba(27,48,82,.68); }
+.scout-art-icon { display:flex;align-items:center;justify-content:center;flex:0 0 38px;height:38px;border-radius:11px;background:linear-gradient(145deg,#3169ed,#1a47b7);color:white;font-weight:900; }
+.scout-bars { font-size:14px;letter-spacing:-2px; }
+.scout-pitch-icon { font-size:25px; }
+.scout-squad-icon { font-size:12px;letter-spacing:-1px; }
+.scout-art-metric-copy { display:grid;gap:4px;min-width:0; }
+.scout-art-metric-copy small { color:#8fa9d8;font-size:9px;font-weight:800;letter-spacing:.1em; }
+.scout-art-metric-copy strong { color:#f6f8ff;font-size:13px;font-weight:750; }
+.scout-art-arrow { margin-left:auto;color:#82a8ff;font-size:18px; }
+.scout-art-foot { position:relative;z-index:1;display:flex;align-items:center;gap:11px;margin-top:19px;padding-top:17px;border-top:1px solid rgba(155,184,255,.14); }
+.scout-art-mark { display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:#155eef;color:#fff;font-size:11px;font-weight:900; }
+.scout-art-foot strong,.scout-art-foot small { display:block; }
+.scout-art-foot strong { color:#f6f8ff;font-size:12px; }
+.scout-art-foot small { margin-top:4px;color:#8fa9d8;font-size:10px;line-height:1.45; }
+.scout-footer { display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:22px !important;padding-bottom:26px !important;border-top:1px solid var(--border);color:var(--muted);font-size:12px; }
+.scout-footer .brand-logo { flex:0 0 auto; }
+.scout-footer .brand-symbol { width:29px;height:29px;flex-basis:29px; }
+.scout-footer .brand-name { font-size:18px !important; }
+.scout-footer-top { color:var(--accent);font-weight:700;text-decoration:none;white-space:nowrap; }
+.scout-footer-top:hover { text-decoration:underline; }
+@media(max-width:700px) {
+  .scout-hero-art { padding:20px !important; }
+  .scout-art-title { margin:22px 0 17px; }
+  .scout-art-metric { padding:10px; }
+  .scout-footer { flex-wrap:wrap;justify-content:center;text-align:center; }
+  .scout-footer > span { order:3;width:100%; }
+}
