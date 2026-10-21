@@ -680,3 +680,142 @@ body[data-theme="light"] .brand-logo .brand-name span { color: #2458e8 !importan
   .scout-footer { flex-wrap:wrap;justify-content:center;text-align:center; }
   .scout-footer > span { order:3;width:100%; }
 }
+
+
+/* ScoutXI dark-mode polish: keep data sections dark, text legible and FDR colours semantic. */
+body:not([data-theme="light"]) .section,
+body:not([data-theme="light"]) .players-section,
+body:not([data-theme="light"]) .teams-section,
+body:not([data-theme="light"]) .differentials-section,
+body:not([data-theme="light"]) .fixture-difficulty-section,
+body:not([data-theme="light"]) .live-intelligence-section,
+body:not([data-theme="light"]) .team-builder-section {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+body:not([data-theme="light"]) .section-title,
+body:not([data-theme="light"]) .section-title h2,
+body:not([data-theme="light"]) .section-title p,
+body:not([data-theme="light"]) .fixture-difficulty-section h2,
+body:not([data-theme="light"]) .fixture-difficulty-section h3,
+body:not([data-theme="light"]) .fixture-difficulty-section p {
+  color: var(--text);
+}
+body:not([data-theme="light"]) .fixture-difficulty-note {
+  background: linear-gradient(135deg, #121f35, #172844) !important;
+  border-color: #2b4164 !important;
+  color: #bdcbe2 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-note strong { color: #edf3ff !important; }
+body:not([data-theme="light"]) .fixture-difficulty-summary-card,
+body:not([data-theme="light"]) .fixture-difficulty-table-wrap,
+body:not([data-theme="light"]) .fixture-difficulty-table {
+  background: #111827 !important;
+  border-color: #293953 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-table thead th,
+body:not([data-theme="light"]) .fixture-difficulty-table thead th:nth-child(2) {
+  background: #19263d !important;
+  color: #aebfe0 !important;
+  border-color: #2b3d59 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr,
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:nth-child(even),
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:hover,
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr td:nth-child(2),
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:nth-child(even) td:nth-child(2),
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:hover td:nth-child(2) {
+  background: #111c2e !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:nth-child(even) td,
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:nth-child(even) td:nth-child(2) {
+  background: #152239 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:hover td,
+body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:hover td:nth-child(2) {
+  background: #1b2d49 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-table td,
+body:not([data-theme="light"]) .fixture-difficulty-table td a,
+body:not([data-theme="light"]) .fixture-difficulty-opponent {
+  color: #e7eefc !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-table td.fixture-difficulty-rank,
+body:not([data-theme="light"]) .fixture-difficulty-estimate,
+body:not([data-theme="light"]) .fixture-difficulty-summary-card > span,
+body:not([data-theme="light"]) .fixture-difficulty-summary-card > small {
+  color: #9aacc9 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match {
+  border-color: #31425e !important;
+  box-shadow: none !important;
+}
+/* FDR: easy = green, medium = amber, hard = red, in both themes. */
+body:not([data-theme="light"]) .fixture-difficulty-match.low {
+  background: #123b32 !important;
+  border-color: #216b57 !important;
+  color: #b8f5dc !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match.mid {
+  background: #3b321d !important;
+  border-color: #74602c !important;
+  color: #ffe6a3 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match.high {
+  background: #48232f !important;
+  border-color: #87384b !important;
+  color: #ffc6d0 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match.unknown {
+  background: #202c40 !important;
+  border-color: #35445b !important;
+  color: #b8c5da !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match .fixture-difficulty-opponent,
+body:not([data-theme="light"]) .fixture-difficulty-match .fixture-difficulty-venue,
+body:not([data-theme="light"]) .fixture-difficulty-match .fixture-difficulty-fdr,
+body:not([data-theme="light"]) .fixture-difficulty-match .fixture-difficulty-estimate {
+  color: inherit !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match .fixture-difficulty-venue,
+body:not([data-theme="light"]) .fixture-difficulty-match .fixture-difficulty-fdr {
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.2) !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match.low .fixture-difficulty-venue,
+body:not([data-theme="light"]) .fixture-difficulty-match.low .fixture-difficulty-fdr {
+  background: rgba(72,231,173,.13) !important;
+  border-color: rgba(112,245,194,.25) !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match.mid .fixture-difficulty-venue,
+body:not([data-theme="light"]) .fixture-difficulty-match.mid .fixture-difficulty-fdr {
+  background: rgba(255,211,104,.12) !important;
+  border-color: rgba(255,211,104,.25) !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-match.high .fixture-difficulty-venue,
+body:not([data-theme="light"]) .fixture-difficulty-match.high .fixture-difficulty-fdr {
+  background: rgba(255,139,158,.12) !important;
+  border-color: rgba(255,139,158,.25) !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-table td.fixture-difficulty-gw-cell {
+  border-bottom-color: #273852 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-table th:nth-child(2),
+body:not([data-theme="light"]) .fixture-difficulty-table td:nth-child(2) {
+  border-right-color: #2b3d59 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-horizons {
+  background: #111827 !important;
+  border-color: #293953 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-horizons > span {
+  color: #9aacc9 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-horizons button {
+  color: #b8c7e2 !important;
+}
+body:not([data-theme="light"]) .fixture-difficulty-horizons button[aria-pressed="true"] {
+  background: #20345a !important;
+  border-color: #385ca1 !important;
+  color: #9bb8ff !important;
+}
