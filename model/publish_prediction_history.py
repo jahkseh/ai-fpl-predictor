@@ -9,7 +9,9 @@ from pathlib import Path
 
 
 def build_snapshot(predictions: dict) -> dict:
-    return {
+    # Keep the existing fixture/top-three format for the website, and preserve
+    # the full player pool separately for honest whole-pool evaluation.
+    snapshot = {
         "gameweek": int(predictions["gameweek"]),
         "predictions": [
             {
@@ -30,6 +32,30 @@ def build_snapshot(predictions: dict) -> dict:
             for fixture in predictions["predictions"]
         ],
     }
+
+    all_players = predictions.get("all_players")
+    if isinstance(all_players, list):
+        snapshot["all_players"] = [
+            {
+                "rank": int(player["rank"]) if player.get("rank") is not None else None,
+                "name": str(player.get("name", "")).strip(),
+                "prediction": float(player["prediction"]),
+                "prediction_p10": player.get("prediction_p10"),
+                "prediction_p90": player.get("prediction_p90"),
+                "confidence": player.get("confidence"),
+                "expected_minutes": player.get("expected_minutes"),
+                "position": player.get("position"),
+                "team": player.get("team"),
+                "fixture_home": player.get("fixture_home"),
+                "fixture_away": player.get("fixture_away"),
+                "price": player.get("price"),
+                "ownership": player.get("ownership"),
+            }
+            for player in all_players
+            if str(player.get("name", "")).strip() and player.get("prediction") is not None
+        ]
+
+    return snapshot
 
 
 def update_history(predictions_path: Path, history_path: Path) -> None:
