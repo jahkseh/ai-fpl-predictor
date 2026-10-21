@@ -1728,6 +1728,139 @@ body[data-theme="light"] .hero-stat span {
             .fixture-difficulty-match { grid-template-columns: 22px minmax(62px,1fr) 26px auto; gap: 5px; padding: 6px; }
         }
 
+    
+        /* ScoutXI fixture planner: compact, readable match tiles in the white-and-blue brand */
+        .fixture-difficulty-section { --fdr-blue: #155eef; }
+        .fixture-difficulty-toolbar { gap: 16px; align-items: stretch; }
+        .fixture-difficulty-note {
+            border-color: #dbe6fb;
+            background: linear-gradient(135deg, #f8fbff, #eef4ff);
+            color: #475569;
+        }
+        .fixture-difficulty-note strong { color: #173b7a; }
+        .fixture-difficulty-table-wrap {
+            border-color: #dbe3ef;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 12px 30px rgba(21, 56, 112, .06);
+        }
+        .fixture-difficulty-table {
+            min-width: 1450px;
+            border-spacing: 0 5px;
+            background: #fff;
+        }
+        .fixture-difficulty-table thead th {
+            background: #f3f7ff;
+            color: #64748b;
+            border-bottom: 1px solid #dbe6f5;
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+        .fixture-difficulty-table th.fdr-gw-heading {
+            min-width: 142px;
+            text-align: center;
+            color: #234b91;
+        }
+        .fixture-difficulty-table tbody tr { background: #fff; }
+        .fixture-difficulty-table tbody tr:nth-child(even) { background: #f8faff; }
+        .fixture-difficulty-table tbody tr:hover { background: #eef4ff; }
+        .fixture-difficulty-table th:nth-child(2),
+        .fixture-difficulty-table td:nth-child(2) {
+            min-width: 174px;
+            border-right: 1px solid #e5ebf5;
+            box-shadow: 8px 0 14px -13px rgba(21, 56, 112, .42);
+        }
+        .fixture-difficulty-table thead th:nth-child(2) { background: #f3f7ff; }
+        .fixture-difficulty-table tbody tr:nth-child(even) td:nth-child(2) { background: #f8faff; }
+        .fixture-difficulty-table tbody tr:hover td:nth-child(2) { background: #eef4ff; }
+        .fixture-difficulty-table td.fixture-difficulty-gw-cell {
+            min-width: 142px;
+            padding: 7px 6px;
+            border-bottom: 1px solid #edf1f7;
+        }
+        .fixture-difficulty-match {
+            min-height: 48px;
+            grid-template-columns: 25px minmax(55px,1fr) 29px auto;
+            gap: 8px;
+            padding: 7px 9px;
+            border: 1px solid #e1e8f3;
+            border-radius: 11px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(30, 64, 115, .035);
+            transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+        }
+        .fixture-difficulty-match:hover {
+            transform: translateY(-1px);
+            border-color: #b9cdfa;
+            box-shadow: 0 5px 12px rgba(21, 94, 239, .08);
+        }
+        .fixture-difficulty-venue {
+            border-color: #dce6f5;
+            border-radius: 7px;
+            background: #f3f7ff;
+            color: #365b9d;
+        }
+        .fixture-difficulty-opponent { color: #24344d; font-size: 11px; }
+        .fixture-difficulty-fdr {
+            width: 28px;
+            height: 28px;
+            border-radius: 9px;
+            font-size: 11px;
+        }
+        .fixture-difficulty-fdr.low {
+            background: #eaf2ff;
+            color: #155eef;
+            border-color: #cbdcff;
+        }
+        .fixture-difficulty-fdr.mid {
+            background: #f1f5f9;
+            color: #475569;
+            border-color: #dce4ee;
+        }
+        .fixture-difficulty-fdr.high {
+            background: #fff0f1;
+            color: #c2414d;
+            border-color: #ffd5d9;
+        }
+        .fixture-difficulty-fdr.unknown {
+            color: #64748b;
+            background: #f8fafc;
+            border-color: #e2e8f0;
+        }
+        .fixture-difficulty-estimate { color: #64748b; }
+        .fixture-difficulty-summary-card {
+            border-color: #dce6f5;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(21, 56, 112, .045);
+        }
+        body:not([data-theme="light"]) .fixture-difficulty-note { background: #111f36; border-color: #263e64; color: #bdc9dc; }
+        body:not([data-theme="light"]) .fixture-difficulty-note strong { color: #dce8ff; }
+        body:not([data-theme="light"]) .fixture-difficulty-table-wrap,
+        body:not([data-theme="light"]) .fixture-difficulty-table { background: var(--surface); }
+        body:not([data-theme="light"]) .fixture-difficulty-table thead th { background: #17243a; color: #b9c7dc; border-color: #293a55; }
+        body:not([data-theme="light"]) .fixture-difficulty-table th.fdr-gw-heading { color: #d3e1ff; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr,
+        body:not([data-theme="light"]) .fixture-difficulty-match { background: #111c2e; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:nth-child(even) { background: #142137; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:hover { background: #1b2b45; }
+        body:not([data-theme="light"]) .fixture-difficulty-table thead th:nth-child(2) { background: #17243a; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:nth-child(even) td:nth-child(2) { background: #142137; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:hover td:nth-child(2) { background: #1b2b45; }
+        body:not([data-theme="light"]) .fixture-difficulty-match { border-color: #2b3c57; }
+        body:not([data-theme="light"]) .fixture-difficulty-opponent { color: #e5edf9; }
+        body:not([data-theme="light"]) .fixture-difficulty-venue { background: #1b2b45; border-color: #334765; color: #c6d7f4; }
+        body:not([data-theme="light"]) .fixture-difficulty-fdr.low { background: #17345e; color: #b7d0ff; border-color: #2d5288; }
+        body:not([data-theme="light"]) .fixture-difficulty-fdr.mid { background: #263246; color: #d2dceb; border-color: #3b4a60; }
+        body:not([data-theme="light"]) .fixture-difficulty-fdr.high { background: #482630; color: #ffc5cb; border-color: #713742; }
+        @media (max-width: 700px) {
+            .fixture-difficulty-table { min-width: 1320px; }
+            .fixture-difficulty-table th.fdr-gw-heading,
+            .fixture-difficulty-table td.fixture-difficulty-gw-cell { min-width: 128px; }
+            .fixture-difficulty-table th:nth-child(2),
+            .fixture-difficulty-table td:nth-child(2) { min-width: 140px; }
+            .fixture-difficulty-match { grid-template-columns: 22px minmax(48px,1fr) 27px auto; gap: 6px; padding: 6px; }
+        }
+
     </style>
     <link rel="stylesheet" href="ui-refresh.css">
 </head>
