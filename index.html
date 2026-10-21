@@ -1659,6 +1659,75 @@ body[data-theme="light"] .hero-stat span {
             .fixture-difficulty-table td:nth-child(2) { min-width: 130px; }
         }
 
+    
+        /* Fixture difficulty: present each club's run as a sequence of readable match chips */
+        .fixture-difficulty-table { min-width: 1460px; }
+        .fixture-difficulty-table th.fdr-gw-heading { min-width: 148px; text-align: center; }
+        .fixture-difficulty-table td.fixture-difficulty-gw-cell { min-width: 148px; padding: 10px 9px; }
+        .fixture-difficulty-match {
+            min-height: 44px;
+            display: grid;
+            grid-template-columns: 24px minmax(70px,1fr) 28px auto;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 8px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            box-shadow: 0 1px 2px rgba(15,23,42,.035);
+        }
+        .fixture-difficulty-venue {
+            width: 22px; height: 22px;
+            display: inline-flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--surface-soft);
+            color: var(--text-muted);
+            font-size: 9px; font-weight: 900;
+        }
+        .fixture-difficulty-opponent {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 750;
+        }
+        .fixture-difficulty-fdr {
+            width: 27px; height: 27px;
+            display: inline-flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 11px; font-weight: 900;
+        }
+        .fixture-difficulty-fdr.low { background: rgba(34,197,94,.13); color: #15803d; border-color: rgba(34,197,94,.28); }
+        .fixture-difficulty-fdr.mid { background: rgba(234,179,8,.13); color: #a16207; border-color: rgba(234,179,8,.28); }
+        .fixture-difficulty-fdr.high { background: rgba(220,38,38,.10); color: #b91c1c; border-color: rgba(220,38,38,.24); }
+        .fixture-difficulty-fdr.unknown { color: var(--text-muted); background: var(--surface-soft); }
+        .fixture-difficulty-estimate { align-self: center; color: var(--text-muted); font-size: 8px; font-weight: 900; }
+        .fixture-difficulty-table td.fixture-difficulty-average {
+            min-width: 92px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 900;
+            font-variant-numeric: tabular-nums;
+            color: var(--primary, #315efb);
+        }
+        .fixture-difficulty-table td.fixture-difficulty-rank { color: var(--text-muted); font-size: 11px; font-weight: 800; }
+        .fixture-difficulty-table td.fixture-difficulty-team-cell { font-weight: 850; }
+        .fixture-difficulty-table td.fixture-difficulty-team-cell a { text-decoration: none; }
+        .fixture-difficulty-table td.fixture-difficulty-team-cell a:hover { text-decoration: underline; }
+        .fixture-difficulty-summary { gap: 12px; margin: 16px 0; }
+        .fixture-difficulty-summary-card { padding: 16px 18px; border-radius: 14px; }
+        .fixture-difficulty-summary-card span { font-size: 10px; letter-spacing: .07em; }
+        .fixture-difficulty-summary-card strong { margin: 7px 0 4px; }
+        @media (max-width: 700px) {
+            .fixture-difficulty-table { min-width: 1320px; }
+            .fixture-difficulty-table th.fdr-gw-heading,
+            .fixture-difficulty-table td.fixture-difficulty-gw-cell { min-width: 132px; }
+            .fixture-difficulty-match { grid-template-columns: 22px minmax(62px,1fr) 26px auto; gap: 5px; padding: 6px; }
+        }
+
     </style>
     <link rel="stylesheet" href="ui-refresh.css">
 </head>
