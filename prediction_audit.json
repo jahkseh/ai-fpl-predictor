@@ -5,16 +5,6 @@
   "players_compared": 648,
   "largest_changes": [
     {
-      "name": "Calvert-Lewin",
-      "old_prediction": 3.049,
-      "new_prediction": 3.053,
-      "change": 0.004,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 81.179191,
-      "fixture_difficulty": 3
-    },
-    {
       "name": "Gabriel",
       "old_prediction": 4.761,
       "new_prediction": 4.761,
@@ -253,6 +243,16 @@
       "new_confidence": "low",
       "expected_minutes": 25.098425,
       "fixture_difficulty": 4
+    },
+    {
+      "name": "White",
+      "old_prediction": 1.922,
+      "new_prediction": 1.922,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 28.23026,
+      "fixture_difficulty": 3
     }
   ]
 }
