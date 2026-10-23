@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 7,
   "next_gameweek": 8,
-  "generated_at_utc": "2026-10-22T21:50:00.646705+00:00",
+  "generated_at_utc": "2026-10-23T04:58:11.146086+00:00",
   "picks": [
     {
       "name": "Manzambi",
@@ -76,9 +76,9 @@
       "name": "Ouattara",
       "team": "Ipswich Town",
       "position": "Defender",
-      "ownership": 0.9,
+      "ownership": 1.0,
       "prediction": 4.586852,
-      "differential_score": 4.546,
+      "differential_score": 4.541,
       "price": 4.0,
       "form": 6.5,
       "fixture": {

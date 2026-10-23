@@ -5,6 +5,36 @@
   "players_compared": 648,
   "largest_changes": [
     {
+      "name": "Ampadu",
+      "old_prediction": 3.835,
+      "new_prediction": 3.758,
+      "change": -0.077,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 86.968342,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Maguire",
+      "old_prediction": 2.406,
+      "new_prediction": 2.418,
+      "change": 0.012,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 85.992476,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Mbeumo",
+      "old_prediction": 3.626,
+      "new_prediction": 3.62,
+      "change": -0.006,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 84.728335,
+      "fixture_difficulty": 3
+    },
+    {
       "name": "Gabriel",
       "old_prediction": 4.761,
       "new_prediction": 4.761,
@@ -222,36 +252,6 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 44.733209,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Johnson",
-      "old_prediction": 0.449,
-      "new_prediction": 0.449,
-      "change": 0.0,
-      "old_confidence": "high",
-      "new_confidence": "high",
-      "expected_minutes": 2.981055,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "George",
-      "old_prediction": 1.98,
-      "new_prediction": 1.98,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 25.098425,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "White",
-      "old_prediction": 1.922,
-      "new_prediction": 1.922,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 28.23026,
       "fixture_difficulty": 3
     }
   ]
