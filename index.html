@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AI FPL Predictor</title>
+    <title>ScoutXI · AI-powered FPL analytics</title>
+    <meta name="description" content="ScoutXI uses AI-powered predictions, player analytics, fixture difficulty and squad planning to help Fantasy Premier League managers make smarter decisions.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ScoutXI — Make your next FPL move count">
+    <meta property="og:description" content="AI-powered FPL predictions, player insights, fixture difficulty and smarter squad planning.">
+    <meta property="og:url" content="https://jahkseh.github.io/ai-fpl-predictor/">
+    <meta property="og:image" content="https://jahkseh.github.io/ai-fpl-predictor/social-preview.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ScoutXI — Make your next FPL move count">
+    <meta name="twitter:description" content="AI-powered FPL predictions, player insights and smarter squad planning.">
+    <meta name="twitter:image" content="https://jahkseh.github.io/ai-fpl-predictor/social-preview.svg">
+    <meta name="theme-color" content="#155eef">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23155eef'/%3E%3Cpath d='M17 18h30v7H28v6h19v15H17v-7h19v-2H17z' fill='white'/%3E%3C/svg%3E">
 
     <style>
         * {
@@ -1574,8 +1588,335 @@ body[data-theme="light"] .hero-stat span {
 @media(max-width:800px){ .player-compare-shell{grid-template-columns:1fr;} .player-compare-controls,.player-compare-results{padding:16px;} }
 @media(max-width:480px){ .player-compare-selects{grid-template-columns:1fr;} .player-compare-results{grid-template-columns:1fr;} .player-compare-player{padding:15px;} }
 
- 
-        .history-explorer{margin-top:24px;padding:22px;border:1px solid var(--border);border-radius:20px;background:var(--surface)}
+
+.prediction-explanation{margin-top:14px;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--surface-soft,rgba(255,255,255,.03));text-align:left}
+.prediction-explanation h4{font-size:1rem;margin-bottom:7px;color:var(--text)}
+.prediction-explanation p{font-size:.86rem;line-height:1.55;color:var(--text-muted);margin-bottom:10px}
+.prediction-explanation ul{padding-left:20px;display:grid;gap:8px}
+.prediction-explanation li{font-size:.86rem;line-height:1.5;color:var(--text-muted)}
+.prediction-explanation li strong{color:var(--text)}
+.fixture-modal-summary{line-height:1.55}
+
+
+        /* Fixture rankings: improve breathing room instead of squeezing five GWs into one viewport */
+        .fixture-difficulty-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+            -webkit-overflow-scrolling: touch;
+        }
+        .fixture-difficulty-table {
+            width: 100%;
+            min-width: 1320px;
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: auto;
+            font-size: 12px;
+        }
+        .fixture-difficulty-table th,
+        .fixture-difficulty-table td {
+            padding: 15px 14px;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.4;
+        }
+        .fixture-difficulty-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: var(--surface-soft);
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .045em;
+            text-transform: uppercase;
+        }
+        .fixture-difficulty-table tbody tr:last-child td { border-bottom: 0; }
+        .fixture-difficulty-table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-soft) 52%, transparent); }
+        .fixture-difficulty-table tbody tr:hover { background: color-mix(in srgb, #155eef 7%, var(--surface)); }
+        .fixture-difficulty-table th:nth-child(2),
+        .fixture-difficulty-table td:nth-child(2) {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            min-width: 150px;
+            background: var(--surface);
+            box-shadow: 8px 0 12px -12px rgba(15,23,42,.45);
+        }
+        .fixture-difficulty-table thead th:nth-child(2) { z-index: 3; background: var(--surface-soft); }
+        .fixture-difficulty-table tbody tr:nth-child(even) td:nth-child(2) { background: var(--surface-soft); }
+        .fixture-difficulty-table td { color: var(--text); }
+        .fixture-difficulty-table .fixture-difficulty-loading,
+        .fixture-difficulty-table .fixture-difficulty-empty { padding: 28px 18px; text-align: center; color: var(--text-muted); }
+        @media (max-width: 700px) {
+            .fixture-difficulty-table { min-width: 1220px; font-size: 11px; }
+            .fixture-difficulty-table th,
+            .fixture-difficulty-table td { padding: 13px 11px; }
+            .fixture-difficulty-table th:nth-child(2),
+            .fixture-difficulty-table td:nth-child(2) { min-width: 130px; }
+        }
+
+    
+        /* Fixture difficulty: present each club's run as a sequence of readable match chips */
+        .fixture-difficulty-table { min-width: 1460px; }
+        .fixture-difficulty-table th.fdr-gw-heading { min-width: 148px; text-align: center; }
+        .fixture-difficulty-table td.fixture-difficulty-gw-cell { min-width: 148px; padding: 10px 9px; }
+        .fixture-difficulty-match {
+            min-height: 44px;
+            display: grid;
+            grid-template-columns: 24px minmax(70px,1fr) 28px auto;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 8px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            box-shadow: 0 1px 2px rgba(15,23,42,.035);
+        }
+        .fixture-difficulty-venue {
+            width: 22px; height: 22px;
+            display: inline-flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--surface-soft);
+            color: var(--text-muted);
+            font-size: 9px; font-weight: 900;
+        }
+        .fixture-difficulty-opponent {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 750;
+        }
+        .fixture-difficulty-fdr {
+            width: 27px; height: 27px;
+            display: inline-flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 11px; font-weight: 900;
+        }
+        .fixture-difficulty-fdr.low { background: rgba(34,197,94,.13); color: #15803d; border-color: rgba(34,197,94,.28); }
+        .fixture-difficulty-fdr.mid { background: rgba(234,179,8,.13); color: #a16207; border-color: rgba(234,179,8,.28); }
+        .fixture-difficulty-fdr.high { background: rgba(220,38,38,.10); color: #b91c1c; border-color: rgba(220,38,38,.24); }
+        .fixture-difficulty-fdr.unknown { color: var(--text-muted); background: var(--surface-soft); }
+        .fixture-difficulty-estimate { align-self: center; color: var(--text-muted); font-size: 8px; font-weight: 900; }
+        .fixture-difficulty-table td.fixture-difficulty-average {
+            min-width: 92px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 900;
+            font-variant-numeric: tabular-nums;
+            color: var(--primary, #315efb);
+        }
+        .fixture-difficulty-table td.fixture-difficulty-rank { color: var(--text-muted); font-size: 11px; font-weight: 800; }
+        .fixture-difficulty-table td.fixture-difficulty-team-cell { font-weight: 850; }
+        .fixture-difficulty-table td.fixture-difficulty-team-cell a { text-decoration: none; }
+        .fixture-difficulty-table td.fixture-difficulty-team-cell a:hover { text-decoration: underline; }
+        .fixture-difficulty-summary { gap: 12px; margin: 16px 0; }
+        .fixture-difficulty-summary-card { padding: 16px 18px; border-radius: 14px; }
+        .fixture-difficulty-summary-card span { font-size: 10px; letter-spacing: .07em; }
+        .fixture-difficulty-summary-card strong { margin: 7px 0 4px; }
+        @media (max-width: 700px) {
+            .fixture-difficulty-table { min-width: 1320px; }
+            .fixture-difficulty-table th.fdr-gw-heading,
+            .fixture-difficulty-table td.fixture-difficulty-gw-cell { min-width: 132px; }
+            .fixture-difficulty-match { grid-template-columns: 22px minmax(62px,1fr) 26px auto; gap: 5px; padding: 6px; }
+        }
+
+    
+        /* ScoutXI fixture planner: compact, readable match tiles in the white-and-blue brand */
+        .fixture-difficulty-section { --fdr-blue: #155eef; }
+        .fixture-difficulty-toolbar { gap: 16px; align-items: stretch; }
+        .fixture-difficulty-note {
+            border-color: #dbe6fb;
+            background: linear-gradient(135deg, #f8fbff, #eef4ff);
+            color: #475569;
+        }
+        .fixture-difficulty-note strong { color: #173b7a; }
+        .fixture-difficulty-table-wrap {
+            border-color: #dbe3ef;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 12px 30px rgba(21, 56, 112, .06);
+        }
+        .fixture-difficulty-table {
+            min-width: 1450px;
+            border-spacing: 0 5px;
+            background: #fff;
+        }
+        .fixture-difficulty-table thead th {
+            background: #f3f7ff;
+            color: #64748b;
+            border-bottom: 1px solid #dbe6f5;
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+        .fixture-difficulty-table th.fdr-gw-heading {
+            min-width: 142px;
+            text-align: center;
+            color: #234b91;
+        }
+        .fixture-difficulty-table tbody tr { background: #fff; }
+        .fixture-difficulty-table tbody tr:nth-child(even) { background: #f8faff; }
+        .fixture-difficulty-table tbody tr:hover { background: #eef4ff; }
+        .fixture-difficulty-table th:nth-child(2),
+        .fixture-difficulty-table td:nth-child(2) {
+            min-width: 174px;
+            border-right: 1px solid #e5ebf5;
+            box-shadow: 8px 0 14px -13px rgba(21, 56, 112, .42);
+        }
+        .fixture-difficulty-table thead th:nth-child(2) { background: #f3f7ff; }
+        .fixture-difficulty-table tbody tr:nth-child(even) td:nth-child(2) { background: #f8faff; }
+        .fixture-difficulty-table tbody tr:hover td:nth-child(2) { background: #eef4ff; }
+        .fixture-difficulty-table td.fixture-difficulty-gw-cell {
+            min-width: 142px;
+            padding: 7px 6px;
+            border-bottom: 1px solid #edf1f7;
+        }
+        .fixture-difficulty-match {
+            min-height: 48px;
+            grid-template-columns: 25px minmax(55px,1fr) 29px auto;
+            gap: 8px;
+            padding: 7px 9px;
+            border: 1px solid #e1e8f3;
+            border-radius: 11px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(30, 64, 115, .035);
+            transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+        }
+        .fixture-difficulty-match:hover {
+            transform: translateY(-1px);
+            border-color: #b9cdfa;
+            box-shadow: 0 5px 12px rgba(21, 94, 239, .08);
+        }
+        .fixture-difficulty-venue {
+            border-color: #dce6f5;
+            border-radius: 7px;
+            background: #f3f7ff;
+            color: #365b9d;
+        }
+        .fixture-difficulty-opponent { color: #24344d; font-size: 11px; }
+        .fixture-difficulty-fdr {
+            width: 28px;
+            height: 28px;
+            border-radius: 9px;
+            font-size: 11px;
+        }
+        .fixture-difficulty-fdr.low {
+            background: #eaf2ff;
+            color: #155eef;
+            border-color: #cbdcff;
+        }
+        .fixture-difficulty-fdr.mid {
+            background: #f1f5f9;
+            color: #475569;
+            border-color: #dce4ee;
+        }
+        .fixture-difficulty-fdr.high {
+            background: #fff0f1;
+            color: #c2414d;
+            border-color: #ffd5d9;
+        }
+        .fixture-difficulty-fdr.unknown {
+            color: #64748b;
+            background: #f8fafc;
+            border-color: #e2e8f0;
+        }
+        .fixture-difficulty-estimate { color: #64748b; }
+        .fixture-difficulty-summary-card {
+            border-color: #dce6f5;
+            background: #fff;
+            box-shadow: 0 5px 18px rgba(21, 56, 112, .045);
+        }
+        body:not([data-theme="light"]) .fixture-difficulty-note { background: #111f36; border-color: #263e64; color: #bdc9dc; }
+        body:not([data-theme="light"]) .fixture-difficulty-note strong { color: #dce8ff; }
+        body:not([data-theme="light"]) .fixture-difficulty-table-wrap,
+        body:not([data-theme="light"]) .fixture-difficulty-table { background: var(--surface); }
+        body:not([data-theme="light"]) .fixture-difficulty-table thead th { background: #17243a; color: #b9c7dc; border-color: #293a55; }
+        body:not([data-theme="light"]) .fixture-difficulty-table th.fdr-gw-heading { color: #d3e1ff; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr,
+        body:not([data-theme="light"]) .fixture-difficulty-match { background: #111c2e; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:nth-child(even) { background: #142137; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:hover { background: #1b2b45; }
+        body:not([data-theme="light"]) .fixture-difficulty-table thead th:nth-child(2) { background: #17243a; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:nth-child(even) td:nth-child(2) { background: #142137; }
+        body:not([data-theme="light"]) .fixture-difficulty-table tbody tr:hover td:nth-child(2) { background: #1b2b45; }
+        body:not([data-theme="light"]) .fixture-difficulty-match { border-color: #2b3c57; }
+        body:not([data-theme="light"]) .fixture-difficulty-opponent { color: #e5edf9; }
+        body:not([data-theme="light"]) .fixture-difficulty-venue { background: #1b2b45; border-color: #334765; color: #c6d7f4; }
+        body:not([data-theme="light"]) .fixture-difficulty-fdr.low { background: #17345e; color: #b7d0ff; border-color: #2d5288; }
+        body:not([data-theme="light"]) .fixture-difficulty-fdr.mid { background: #263246; color: #d2dceb; border-color: #3b4a60; }
+        body:not([data-theme="light"]) .fixture-difficulty-fdr.high { background: #482630; color: #ffc5cb; border-color: #713742; }
+        @media (max-width: 700px) {
+            .fixture-difficulty-table { min-width: 1320px; }
+            .fixture-difficulty-table th.fdr-gw-heading,
+            .fixture-difficulty-table td.fixture-difficulty-gw-cell { min-width: 128px; }
+            .fixture-difficulty-table th:nth-child(2),
+            .fixture-difficulty-table td:nth-child(2) { min-width: 140px; }
+            .fixture-difficulty-match { grid-template-columns: 22px minmax(48px,1fr) 27px auto; gap: 6px; padding: 6px; }
+        }
+
+    
+        /* Fixture planner: screenshot-inspired team crests and at-a-glance FDR colours */
+        .fixture-difficulty-table td.fixture-difficulty-team-cell a {
+            display: flex; align-items: center; gap: 9px; min-height: 42px;
+            color: var(--text); white-space: nowrap;
+        }
+        .fixture-difficulty-team-logo {
+            width: 27px; height: 27px; flex: 0 0 27px; object-fit: contain;
+            filter: drop-shadow(0 1px 1px rgba(15,23,42,.10));
+        }
+        .fixture-difficulty-team-monogram {
+            width: 27px; height: 27px; flex: 0 0 27px; display: inline-flex;
+            align-items: center; justify-content: center; border-radius: 50%;
+            background: #eaf2ff; color: #155eef; font-size: 9px; font-weight: 900;
+        }
+        .fixture-difficulty-table td.fixture-difficulty-gw-cell { padding: 6px; }
+        .fixture-difficulty-match {
+            min-height: 48px;
+            grid-template-columns: 23px minmax(52px,1fr) 27px auto;
+            gap: 6px; padding: 6px 7px;
+            border-radius: 8px; border: 1px solid transparent;
+            box-shadow: none;
+        }
+        .fixture-difficulty-match.low {
+            background: #00e98b; border-color: #00d982; color: #062b20;
+        }
+        .fixture-difficulty-match.mid {
+            background: #4b586b; border-color: #4b586b; color: #fff;
+        }
+        .fixture-difficulty-match.high {
+            background: #ff354d; border-color: #ff354d; color: #fff;
+        }
+        .fixture-difficulty-match.unknown {
+            background: #eef2f7; border-color: #e1e7ef; color: #475569;
+        }
+        .fixture-difficulty-match .fixture-difficulty-opponent { color: inherit; font-weight: 850; }
+        .fixture-difficulty-match .fixture-difficulty-venue {
+            width: 22px; height: 22px; border-radius: 5px;
+            background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.35);
+            color: inherit;
+        }
+        .fixture-difficulty-match.low .fixture-difficulty-venue { background: rgba(255,255,255,.38); border-color: rgba(0,80,45,.16); }
+        .fixture-difficulty-match .fixture-difficulty-fdr {
+            width: 25px; height: 25px; border-radius: 6px;
+            background: rgba(255,255,255,.17); border-color: rgba(255,255,255,.3); color: inherit;
+        }
+        .fixture-difficulty-match.low .fixture-difficulty-fdr { background: rgba(255,255,255,.38); border-color: rgba(0,80,45,.16); }
+        .fixture-difficulty-match .fixture-difficulty-estimate { color: inherit; opacity: .8; }
+        .fixture-difficulty-match:hover { transform: translateY(-1px); filter: brightness(.97); box-shadow: 0 4px 10px rgba(15,23,42,.10); }
+        body:not([data-theme="light"]) .fixture-difficulty-team-monogram { background: #1b2b45; color: #c6d7f4; }
+        body:not([data-theme="light"]) .fixture-difficulty-match.unknown { background: #263246; border-color: #3b4a60; color: #d2dceb; }
+        @media (max-width: 700px) {
+            .fixture-difficulty-match { grid-template-columns: 21px minmax(45px,1fr) 25px auto; gap: 5px; padding: 6px; }
+        }
+
+    .history-explorer{margin-top:24px;padding:22px;border:1px solid var(--border);border-radius:20px;background:var(--surface)}
         .history-explorer-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:12px}
         .history-explorer-head h3{margin:5px 0 6px;font-size:1.2rem}
         .history-explorer-head p{margin:0;max-width:650px;color:var(--text-muted);font-size:.9rem;line-height:1.5}
@@ -1593,6 +1934,7 @@ body[data-theme="light"] .hero-stat span {
         .history-player-range{grid-column:2/4;color:var(--text-muted);font-size:.74rem;margin-top:-5px}
         @media(max-width:700px){.history-explorer-head{align-items:stretch;flex-direction:column}.history-gameweek-label{max-width:none}.history-explorer-grid{grid-template-columns:1fr}.history-explorer{padding:16px}}
 </style>
+    <link rel="stylesheet" href="ui-refresh.css">
 </head>
 
 <body>
@@ -1600,9 +1942,7 @@ body[data-theme="light"] .hero-stat span {
 <!-- Deployment health check -->
     <header>
         <div class="navbar">
-            <div class="logo">
-                AI FPL <span>Predictor</span>
-            </div>
+            <a class="logo brand-logo" href="index.html#home" aria-label="ScoutXI home"><span class="brand-symbol" aria-hidden="true">XI</span><span class="brand-name">Scout<span>XI</span></span></a>
 
           <nav>
     <a href="#home">Home</a>
@@ -1610,6 +1950,7 @@ body[data-theme="light"] .hero-stat span {
     <a href="#players">Players</a>
     <a href="#live-stats">Live Picks</a>
     <a href="#team-builder">Team Builder</a>
+
     <a href="#fixture-difficulty">Fixtures</a>
     <a href="#teams">Teams</a>
     <a href="#differentials">Differentials</a>
@@ -1636,15 +1977,16 @@ body[data-theme="light"] .hero-stat span {
             </div>
             <div class="hero-trustline"><span aria-hidden="true">✓</span> Transparent projections <i></i> Player-level detail <i></i> Free to explore</div>
         </div>
-        <div class="hero-art" role="img" aria-label="Placeholder for custom FPL hero artwork, to be added later">
-            <div class="art-topline"><span>YOUR NEXT EDGE</span><span class="art-pending">ARTWORK PENDING</span></div>
-            <div class="pitch-placeholder">
-                <div class="pitch-line halfway"></div><div class="pitch-circle"></div>
-                <div class="pitch-box pitch-box-top"></div><div class="pitch-box pitch-box-bottom"></div>
-                <div class="player-token token-one">FWD</div><div class="player-token token-two">MID</div><div class="player-token token-three">MID</div><div class="player-token token-four">DEF</div><div class="player-token token-five">GK</div>
-                <div class="pitch-caption"><strong>FPL, with a data edge.</strong><span>Custom illustration slot · replace when ready</span></div>
+        <div class="hero-art scout-hero-art" aria-label="ScoutXI analytics preview">
+            <div class="scout-art-heading"><span class="scout-live-dot"></span><span>GAMEWEEK INTELLIGENCE</span><span class="scout-art-tag">SCOUTXI AI</span></div>
+            <div class="scout-art-title">Your next edge<br><span>starts with data.</span></div>
+            <div class="scout-art-metric-grid">
+                <div class="scout-art-metric"><span class="scout-art-icon"><span class="scout-bars">▂▅▇</span></span><span class="scout-art-metric-copy"><small>PLAYER PROJECTIONS</small><strong>Expected points</strong></span><span class="scout-art-arrow">↗</span></div>
+                <div class="scout-art-metric"><span class="scout-art-icon"><span class="scout-pitch-icon">⌖</span></span><span class="scout-art-metric-copy"><small>FIXTURE ANALYSIS</small><strong>Find the best runs</strong></span><span class="scout-art-arrow">↗</span></div>
+                <div class="scout-art-metric"><span class="scout-art-icon"><span class="scout-squad-icon">XI</span></span><span class="scout-art-metric-copy"><small>SQUAD PLANNING</small><strong>Build with confidence</strong></span><span class="scout-art-arrow">↗</span></div>
             </div>
-            <div class="art-foot"><span class="art-foot-mark">✳</span><span><strong>Built around the numbers</strong><small>Expected points · minutes · fixtures · form</small></span></div>
+            <div class="scout-art-foot"><span class="scout-art-mark">XI</span><span><strong>Scout smarter every Gameweek</strong><small>Form · minutes · fixtures · model projections</small></span></div>
+            <div class="scout-art-glow" aria-hidden="true"></div>
         </div>
     </section>
 <div class="hero-stats">
@@ -1722,6 +2064,7 @@ body[data-theme="light"] .hero-stat span {
             <div class="player-compare-selects">
                 <div class="player-compare-field"><label for="compare-player-a">Player A</label><select id="compare-player-a"><option value="">Loading players…</option></select></div>
                 <div class="player-compare-field"><label for="compare-player-b">Player B</label><select id="compare-player-b"><option value="">Loading players…</option></select></div>
+                <div class="player-compare-field player-compare-third-field"><label for="compare-player-c">Player C <span>(optional)</span></label><select id="compare-player-c"><option value="">Add a third player</option></select></div>
             </div>
             <p class="player-compare-hint" id="compare-player-status" aria-live="polite">Loading the latest published player projections…</p>
             <a class="hero-button secondary" href="#live-stats">Explore all players <span aria-hidden="true">↗</span></a>
@@ -1745,6 +2088,10 @@ body[data-theme="light"] .hero-stat span {
         <div class="builder-pitch-head"><h3>Squad pitch view</h3><span id="builder-pitch-caption">15-player squad · grouped by position</span></div>
         <div class="builder-pitch" id="builder-pitch"><div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div><div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div></div>
         <div class="builder-bench" id="builder-bench"></div>
+        <div class="builder-selection-insights" id="builder-selection-insights" aria-live="polite">
+            <div class="builder-selection-insights-head"><h4>Why these players?</h4><p>Selection notes based on projected points, expected minutes and any available availability flags.</p></div>
+            <div class="builder-selection-reasons" id="builder-selection-reasons"><p class="builder-selection-empty">Add players to see the reasoning behind your weekly XI and bench.</p></div>
+        </div>
     </div>
     <div class="builder-layout">
         <div class="builder-main panel-surface">
@@ -1776,12 +2123,35 @@ body[data-theme="light"] .hero-stat span {
 
 <section class="section fixture-difficulty-section" id="fixture-difficulty">
     <div class="section-title">
-        <span class="section-kicker">Fixture context</span>
-        <h2>Fixture Difficulty</h2>
-        <p>How difficult each current Gameweek fixture is according to the model's opponent-strength scale.</p>
+        <span class="section-kicker">Fixture planner</span>
+        <h2>Fixture Difficulty Rankings</h2>
+        <p>Compare every club’s upcoming run and find the best schedules for transfers, captaincy and planning ahead.</p>
     </div>
-    <div class="fixture-difficulty-note"><strong>Model FDR:</strong> 1 = easier opponent, 5 = harder opponent. This is the site's model-context scale, not the official FPL Fixture Difficulty Rating.</div>
-    <div class="fixture-difficulty-grid" id="fixture-difficulty-grid"><div class="live-empty">Loading fixture difficulty…</div></div>
+    <div class="fixture-difficulty-toolbar">
+        <div class="fixture-difficulty-note">
+            <strong>Official FPL Fixture Difficulty Rating (FDR).</strong>
+            Ratings run from 1 (easiest) to 5 (hardest). Clubs are ranked by their average opponent rating over the selected horizon.
+        </div>
+        <div class="fixture-difficulty-horizons" role="group" aria-label="Rank teams across upcoming gameweeks">
+            <span>Rank next</span>
+            <button type="button" data-fdr-horizon="3" aria-pressed="false">3 GWs</button>
+            <button type="button" data-fdr-horizon="5" aria-pressed="true">5 GWs</button>
+        </div>
+    </div>
+    <div class="fixture-difficulty-summary" id="fixture-difficulty-summary" aria-live="polite">
+        <div class="fixture-difficulty-summary-card"><span>Loading schedule</span><strong>—</strong><small>Reading published fixture data</small></div>
+    </div>
+    <div class="fixture-difficulty-table-wrap">
+        <table class="fixture-difficulty-table">
+            <thead id="fixture-difficulty-head">
+                <tr><th>Rank</th><th>Club</th><th>Average FDR</th><th>Easy (1–2)</th><th>Hard (4–5)</th></tr>
+            </thead>
+            <tbody id="fixture-difficulty-body">
+                <tr><td colspan="10" class="fixture-difficulty-loading">Loading upcoming fixture metrics…</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="fixture-difficulty-footnote" id="fixture-difficulty-footnote">Lower average FDR is better. The ranking includes one score per scheduled fixture; any model-based estimate is marked EST.</p>
 </section>
 
 <section class="section live-intelligence-section" id="live-stats">
@@ -1869,11 +2239,11 @@ body[data-theme="light"] .hero-stat span {
         </div>
         <div class="differential-grid" id="differential-container">
             <!-- DIFFERENTIAL_CARDS_START -->
-            <a class="differential-card" style="--differential-team-colour:#670e36" href="player.html?player=Manzambi"><span class="differential-rank">01</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Manzambi</strong><span class="differential-meta">Midfielder · Aston Villa</span></div><span class="differential-team">AVL</span></div><div class="differential-projection"><span>Model projection</span><strong>5.22</strong></div><div class="differential-secondary"><span>2.7% owned</span><span>£6.0</span></div><p class="differential-fixture">Aston Villa vs Man City</p><div class="differential-score">Differential score · 5.08</div></div></a>
-            <a class="differential-card" style="--differential-team-colour:#c8102e" href="player.html?player=Thiago"><span class="differential-rank">02</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Thiago</strong><span class="differential-meta">Forward · Brentford</span></div><span class="differential-team">BRE</span></div><div class="differential-projection"><span>Model projection</span><strong>5.34</strong></div><div class="differential-secondary"><span>8.8% owned</span><span>£7.8</span></div><p class="differential-fixture">Hull City at Brentford</p><div class="differential-score">Differential score · 4.87</div></div></a>
-            <a class="differential-card" style="--differential-team-colour:#111111" href="player.html?player=Iwobi"><span class="differential-rank">03</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Iwobi</strong><span class="differential-meta">Midfielder · Fulham</span></div><span class="differential-team">FUL</span></div><div class="differential-projection"><span>Model projection</span><strong>4.85</strong></div><div class="differential-secondary"><span>1.1% owned</span><span>£5.4</span></div><p class="differential-fixture">Coventry City at Fulham</p><div class="differential-score">Differential score · 4.80</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#670e36" href="player.html?player=Manzambi"><span class="differential-rank">01</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Manzambi</strong><span class="differential-meta">Midfielder · Aston Villa</span></div><span class="differential-team">AVL</span></div><div class="differential-projection"><span>Model projection</span><strong>5.22</strong></div><div class="differential-secondary"><span>2.9% owned</span><span>£6.0</span></div><p class="differential-fixture">Aston Villa vs Man City</p><div class="differential-score">Differential score · 5.07</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#c8102e" href="player.html?player=Thiago"><span class="differential-rank">02</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Thiago</strong><span class="differential-meta">Forward · Brentford</span></div><span class="differential-team">BRE</span></div><div class="differential-projection"><span>Model projection</span><strong>5.34</strong></div><div class="differential-secondary"><span>8.7% owned</span><span>£7.8</span></div><p class="differential-fixture">Hull City at Brentford</p><div class="differential-score">Differential score · 4.88</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#111111" href="player.html?player=Iwobi"><span class="differential-rank">03</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Iwobi</strong><span class="differential-meta">Midfielder · Fulham</span></div><span class="differential-team">FUL</span></div><div class="differential-projection"><span>Model projection</span><strong>4.85</strong></div><div class="differential-secondary"><span>1.3% owned</span><span>£5.4</span></div><p class="differential-fixture">Coventry City at Fulham</p><div class="differential-score">Differential score · 4.79</div></div></a>
             <a class="differential-card" style="--differential-team-colour:#c8102e" href="player.html?player=Mukiele"><span class="differential-rank">04</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Mukiele</strong><span class="differential-meta">Defender · Sunderland</span></div><span class="differential-team">SUN</span></div><div class="differential-projection"><span>Model projection</span><strong>4.86</strong></div><div class="differential-secondary"><span>1.8% owned</span><span>£5.4</span></div><p class="differential-fixture">Sunderland vs Leeds</p><div class="differential-score">Differential score · 4.77</div></div></a>
-            <a class="differential-card" style="--differential-team-colour:#0057b8" href="player.html?player=Ouattara"><span class="differential-rank">05</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Ouattara</strong><span class="differential-meta">Defender · Ipswich Town</span></div><span class="differential-team">IPS</span></div><div class="differential-projection"><span>Model projection</span><strong>4.59</strong></div><div class="differential-secondary"><span>0.9% owned</span><span>£4.0</span></div><p class="differential-fixture">Ipswich Town vs Nott&#x27;m Forest</p><div class="differential-score">Differential score · 4.55</div></div></a>
+            <a class="differential-card" style="--differential-team-colour:#0057b8" href="player.html?player=Ouattara"><span class="differential-rank">05</span><div class="differential-card-content"><div class="differential-card-head"><div><strong>Ouattara</strong><span class="differential-meta">Defender · Ipswich Town</span></div><span class="differential-team">IPS</span></div><div class="differential-projection"><span>Model projection</span><strong>4.59</strong></div><div class="differential-secondary"><span>1.0% owned</span><span>£4.0</span></div><p class="differential-fixture">Ipswich Town vs Nott&#x27;m Forest</p><div class="differential-score">Differential score · 4.54</div></div></a>
                         <!-- DIFFERENTIAL_CARDS_END -->
         </div>
     </section>
@@ -1997,34 +2367,26 @@ body[data-theme="light"] .hero-stat span {
 </section>
 </section>           <div class="fixture-modal" id="fixture-modal" hidden><div class="fixture-modal-panel" role="dialog" aria-modal="true" aria-labelledby="fixture-modal-title"><div class="fixture-modal-head"><div class="fixture-modal-topline"><span class="fixture-modal-kicker">Fixture prediction</span><button class="fixture-modal-close" id="fixture-modal-close" type="button" aria-label="Close fixture details">×</button></div><div class="fixture-modal-teams" id="fixture-modal-title"></div></div><div class="fixture-modal-body"><div class="fixture-modal-summary" id="fixture-modal-summary"></div><div class="fixture-modal-list" id="fixture-modal-list"></div><p class="fixture-modal-footer">These are pre-match model projections. Select a player to open their full profile.</p></div></div></div>
 
-<footer>
-        AI FPL Predictor · Machine-learning FPL analysis
+<footer class="scout-footer">
+        <a class="logo brand-logo" href="#home" aria-label="ScoutXI home"><span class="brand-symbol" aria-hidden="true">XI</span><span class="brand-name">Scout<span>XI</span></span></a>
+        <span>AI-powered Fantasy Premier League analytics</span>
+        <a class="scout-footer-top" href="#home">Back to top ↑</a>
     </footer>
 
     <script>
         const themeToggle = document.getElementById("theme-toggle");
         const savedTheme = localStorage.getItem("fpl-theme");
-
-        if (savedTheme === "dark") {
-            document.body.setAttribute("data-theme", "dark");
-            themeToggle.querySelector(".theme-toggle-label").textContent = "Light";
-        } else {
-            themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
-        }
-
+        const themeLabel = themeToggle.querySelector(".theme-toggle-label");
+        document.body.dataset.theme = savedTheme === "light" ? "light" : "dark";
+        themeLabel.textContent = document.body.dataset.theme === "light" ? "Dark" : "Light";
         themeToggle.addEventListener("click", () => {
-            const isDark = document.body.getAttribute("data-theme") === "dark";
+            const isLight = document.body.dataset.theme === "light";
+            document.body.dataset.theme = isLight ? "dark" : "light";
+            localStorage.setItem("fpl-theme", document.body.dataset.theme);
+            themeLabel.textContent = isLight ? "Dark" : "Light";
+        });
 
-            if (isDark) {
-                document.body.removeAttribute("data-theme");
-                localStorage.setItem("fpl-theme", "light");
-                themeToggle.querySelector(".theme-toggle-label").textContent = "Dark";
-            } else {
-                document.body.setAttribute("data-theme", "dark");
-                localStorage.setItem("fpl-theme", "dark");
-                themeToggle.querySelector(".theme-toggle-label").textContent = "Light";
-            }
-        });        const differentialContainer = document.getElementById("differential-container");
+        const differentialContainer = document.getElementById("differential-container");
 
     function escapeDifferentialText(value) {
         return String(value == null ? "" : value)
@@ -2316,20 +2678,49 @@ function renderFeaturedPlayers(fixtures) {
         lastFocusedFixture = document.activeElement;
         const topPlayer = fixture.players[0];
         fixtureModalTitle.innerHTML = '<a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.home) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + '" data-team="' + fixture.home + '">' + (teamCodes[fixture.home] || "FPL") + '</span></a><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.away) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '" data-team="' + fixture.away + '">' + (teamCodes[fixture.away] || "FPL") + '</span></a>';
+
         const ctx = topPlayer.fixture_context || {};
         const teamXg = Number(ctx.team_xg_for_per90);
         const oppXga = Number(ctx.opponent_xg_against_per90);
         const env = Number(ctx.fixture_xg_environment);
-        const minutes = topPlayer.expected_minutes != null ? Number(topPlayer.expected_minutes).toFixed(0) + ' min' : '—';
-        const contextLine = Number.isFinite(teamXg) && Number.isFinite(oppXga)
-            ? ' Team xG trend: ' + teamXg.toFixed(2) + ' · opponent xGA trend: ' + oppXga.toFixed(2) + (Number.isFinite(env) ? ' · fixture xG environment: ' + env.toFixed(2) : '')
-            : '';
-        fixtureModalSummary.innerHTML = '<strong>' + topPlayer.name + '</strong> is the highest model projection for this fixture at <strong>' + topPlayer.prediction.toFixed(2) + ' expected points</strong>. Expected minutes: <strong>' + minutes + '</strong>.' + contextLine + ' The model interval shown below is an uncertainty range, not a guarantee.';
+        const minutes = topPlayer.expected_minutes != null ? Number(topPlayer.expected_minutes) : null;
+        const p10 = topPlayer.prediction_p10 != null ? Number(topPlayer.prediction_p10) : null;
+        const p90 = topPlayer.prediction_p90 != null ? Number(topPlayer.prediction_p90) : null;
+        const confidence = topPlayer.confidence ? String(topPlayer.confidence) : "";
+        const esc = value => String(value).replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
+        const reasons = [];
+        if (minutes != null && Number.isFinite(minutes)) {
+            const level = minutes >= 80 ? "A likely regular role is a positive sign." : minutes >= 55 ? "There is some uncertainty around playing time." : "Playing time is a concern and could limit the score.";
+            reasons.push('<li><strong>Playing time:</strong> Around ' + Math.round(minutes) + ' minutes expected. ' + level + '</li>');
+        }
+        if (Number.isFinite(teamXg) && Number.isFinite(oppXga)) {
+            const matchup = teamXg >= 1.5 && oppXga >= 1.3 ? "This looks like a promising attacking matchup." : teamXg < 1.0 || oppXga < 0.9 ? "The attacking matchup may be more challenging." : "The matchup looks fairly balanced.";
+            reasons.push('<li><strong>Fixture:</strong> ' + matchup + '</li>');
+        }
+        if (Number.isFinite(env)) {
+            reasons.push('<li><strong>Game conditions:</strong> The model also considers the expected-goal outlook for this fixture.</li>');
+        }
+        if (p10 != null && p90 != null && Number.isFinite(p10) && Number.isFinite(p90)) {
+            reasons.push('<li><strong>Possible score range:</strong> ' + p10.toFixed(1) + '–' + p90.toFixed(1) + ' points. This gives a sense of how much the result could vary.</li>');
+        }
+        if (confidence) {
+            reasons.push('<li><strong>Confidence:</strong> ' + esc(confidence) + ' — a guide to how sure the model is, not a guarantee.</li>');
+        }
+        if (!reasons.length) {
+            reasons.push('<li>The model uses player and fixture information, but there is not enough detail available here to explain this prediction further.</li>');
+        }
+
+        fixtureModalSummary.innerHTML =
+            '<p><strong>' + esc(topPlayer.name) + '</strong> is projected to score <strong>' + Number(topPlayer.prediction).toFixed(1) + ' points</strong> in this fixture.</p>' +
+            '<div class="prediction-explanation"><h4>Why this prediction?</h4><p>Here are a few simple factors behind the estimate. FPL points can always vary, so use this as a guide rather than a guarantee.</p><ul>' + reasons.join("") + '</ul></div>';
         fixtureModalList.innerHTML = fixture.players.map(player => {
             const team = playerTeams[player.name] || "";
             const accent = teamAccentColours[team] || "var(--accent)";
             const code = shirtMarks[team] || "FPL";
-            return '<a class="fixture-modal-player" style="--player-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(player.name) + '"><span class="fixture-modal-rank">#' + player.rank + '</span><span><span class="fixture-modal-player-name">' + player.name + '</span><span class="fixture-modal-player-meta">' + code + (team ? " · " + team : "") + " · View profile →" + '</span></span><span class="fixture-modal-points">' + player.prediction.toFixed(2) + '</span></a>';
+            const playerMinutes = player.expected_minutes != null ? Math.round(Number(player.expected_minutes)) + ' min expected' : 'minutes n/a';
+            const playerRange = player.prediction_p10 != null && player.prediction_p90 != null ? ' · ' + Number(player.prediction_p10).toFixed(1) + '–' + Number(player.prediction_p90).toFixed(1) + ' range' : '';
+            const playerConfidence = player.confidence ? ' · ' + esc(player.confidence) + ' confidence' : '';
+            return '<a class="fixture-modal-player" style="--player-team-colour:' + accent + '" href="player.html?player=' + encodeURIComponent(player.name) + '"><span class="fixture-modal-rank">#' + player.rank + '</span><span><span class="fixture-modal-player-name">' + esc(player.name) + '</span><span class="fixture-modal-player-meta">' + esc(code + (team ? " · " + team : "") + " · " + playerMinutes) + playerRange + playerConfidence + ' · View profile →</span></span><span class="fixture-modal-points">' + Number(player.prediction).toFixed(2) + '</span></a>';
         }).join("");
         fixtureModal.hidden = false;
         document.body.classList.add("modal-open");
@@ -2346,54 +2737,173 @@ function renderFeaturedPlayers(fixtures) {
     fixtureModal.addEventListener("click", event => { if (event.target === fixtureModal) closeFixtureModal(); });
     document.addEventListener("keydown", event => { if (event.key === "Escape" && !fixtureModal.hidden) closeFixtureModal(); });
 
-    function renderFixtureDifficulty(fixtures, allPlayers) {
-        const grid = document.getElementById("fixture-difficulty-grid");
-        if (!grid) return;
-        const difficultyByFixture = new Map();
-        (Array.isArray(allPlayers) ? allPlayers : []).forEach(player => {
-            const home = player.fixture_home || "";
-            const away = player.fixture_away || "";
-            const difficulty = Number(player.fixture_difficulty);
-            if (!home || !away || !Number.isFinite(difficulty)) return;
-            const key = home + " vs " + away;
-            if (!difficultyByFixture.has(key)) difficultyByFixture.set(key, {});
-            const record = difficultyByFixture.get(key);
-            const team = player.team || "";
-            if (team === home) record.home = difficulty;
-            if (team === away) record.away = difficulty;
-        });
+    let fixtureDifficultyData = null;
+    let fixtureDifficultyHorizon = 5;
 
-        const difficultyClass = value => value <= 2 ? "easy" : value >= 4 ? "hard" : "mid";
-        const difficultyLabel = value => value <= 2 ? "Easier" : value >= 4 ? "Harder" : "Balanced";
-        grid.innerHTML = (fixtures || []).map(fixture => {
-            const values = difficultyByFixture.get(fixture.home + " vs " + fixture.away) || {};
-            const homeDifficulty = Number.isFinite(values.home) ? values.home : null;
-            const awayDifficulty = Number.isFinite(values.away) ? values.away : null;
-            const homeText = homeDifficulty != null ? '<span class="fixture-difficulty-score"><span class="fixture-difficulty-badge ' + difficultyClass(homeDifficulty) + '">' + Math.round(homeDifficulty) + '</span><span class="fixture-difficulty-label">' + difficultyLabel(homeDifficulty) + '</span></span>' : '<span class="fixture-difficulty-label">—</span>';
-            const awayText = awayDifficulty != null ? '<span class="fixture-difficulty-score"><span class="fixture-difficulty-badge ' + difficultyClass(awayDifficulty) + '">' + Math.round(awayDifficulty) + '</span><span class="fixture-difficulty-label">' + difficultyLabel(awayDifficulty) + '</span></span>' : '<span class="fixture-difficulty-label">—</span>';
-            return '<div class="fixture-difficulty-card" style="--home-team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + ';--away-team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '">' +
-                '<div class="fixture-difficulty-gw"><span>GW' + escapeDifferentialText(window.currentPredictionGameweek || "—") + '</span><span>Model FDR</span></div>' +
-                '<div class="fixture-difficulty-teams">' +
-                    '<div class="fixture-difficulty-team"><span>' + escapeDifferentialText(fixture.home) + '</span>' + homeText + '</div>' +
-                    '<span class="fixture-difficulty-vs">VS</span>' +
-                    '<div class="fixture-difficulty-team away">' + awayText + '<span>' + escapeDifferentialText(fixture.away) + '</span></div>' +
-                '</div>' +
-            '</div>';
-        }).join("") || '<div class="live-empty">Fixture difficulty is not available yet.</div>';
+    function renderFixtureDifficultyRankings(payload) {
+        const head = document.getElementById("fixture-difficulty-head");
+        const body = document.getElementById("fixture-difficulty-body");
+        const summary = document.getElementById("fixture-difficulty-summary");
+        const footnote = document.getElementById("fixture-difficulty-footnote");
+        if (!head || !body || !summary || !footnote) return;
+
+        const esc = value => String(value == null ? "" : value).replace(/[&<>"']/g, ch => ({
+            "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+        }[ch]));
+        const teams = Array.isArray(payload && payload.teams) ? payload.teams : [];
+        const availableGameweeks = [...new Set(teams.flatMap(team =>
+            (Array.isArray(team.fixtures) ? team.fixtures : []).map(fixture => Number(fixture.gw))
+        ))].filter(Number.isFinite).sort((a,b) => a-b);
+        const gameweeks = availableGameweeks.slice(0, fixtureDifficultyHorizon);
+        const selectedGameweeks = new Set(gameweeks);
+
+        if (!teams.length || !gameweeks.length) {
+            head.innerHTML = "<tr><th>Fixture difficulty</th></tr>";
+            body.innerHTML = '<tr><td class="fixture-difficulty-loading">Published fixture metrics are not available yet. They will appear after the next data refresh.</td></tr>';
+            summary.innerHTML = "";
+            footnote.textContent = "No fixture ratings were available in the published dataset, so no ranking has been invented.";
+            return;
+        }
+
+        const ranked = teams.map(team => {
+            const fixtures = (Array.isArray(team.fixtures) ? team.fixtures : [])
+                .filter(fixture => selectedGameweeks.has(Number(fixture.gw)))
+                .sort((a,b) => Number(a.gw)-Number(b.gw) || String(a.kickoff || "").localeCompare(String(b.kickoff || "")));
+            const rated = fixtures.filter(fixture => {
+                const difficulty = Number(fixture.difficulty);
+                return fixture.difficulty !== null && fixture.difficulty !== "" && Number.isFinite(difficulty) && difficulty >= 1 && difficulty <= 5;
+            });
+            const scores = rated.map(fixture => Number(fixture.difficulty));
+            return {
+                team: String(team.team || "Unknown club"),
+                fixtures,
+                scores,
+                average: scores.length ? scores.reduce((sum,value)=>sum+value,0)/scores.length : null,
+                easy: scores.filter(value=>value<=2).length,
+                hard: scores.filter(value=>value>=4).length,
+                official: rated.filter(fixture=>fixture.source==="official_fpl").length,
+                estimated: rated.filter(fixture=>fixture.source!=="official_fpl").length,
+                total: fixtures.length
+            };
+        }).filter(team => team.total > 0);
+        ranked.sort((a,b) => {
+            if (a.average == null && b.average != null) return 1;
+            if (b.average == null && a.average != null) return -1;
+            return (a.average ?? 99)-(b.average ?? 99) || b.easy-a.easy || a.hard-b.hard || a.team.localeCompare(b.team);
+        });
+        ranked.forEach((team,index)=>{ team.rank=index+1; });
+
+        const fixtureCell = (team, gw) => {
+            const fixtures = team.fixtures.filter(fixture=>Number(fixture.gw)===gw);
+            if (!fixtures.length) return '<span class="fixture-difficulty-empty">—</span>';
+            return fixtures.map(fixture => {
+                const difficulty = fixture.difficulty === null || fixture.difficulty === "" || !Number.isFinite(Number(fixture.difficulty)) ? null : Number(fixture.difficulty);
+                const difficultyClass = difficulty == null ? "unknown" : difficulty <= 2 ? "low" : difficulty >= 4 ? "high" : "mid";
+                const venue = fixture.is_home ? "H" : "A";
+                const venueLabel = fixture.is_home ? "Home" : "Away";
+                const sourceTag = fixture.source && fixture.source !== "official_fpl" ? '<span class="fixture-difficulty-estimate" title="Model-based estimate, not an official FPL rating">EST</span>' : "";
+                return '<div class="fixture-difficulty-match ' + difficultyClass + '" title="' + esc(venueLabel + " vs " + fixture.opponent + (difficulty == null ? "" : " · FDR " + difficulty)) + '">' +
+                    '<span class="fixture-difficulty-venue">' + venue + '</span>' +
+                    '<span class="fixture-difficulty-opponent">' + esc(fixture.opponent || "Opponent n/a") + '</span>' +
+                    '<span class="fixture-difficulty-fdr">' + (difficulty == null ? "—" : difficulty.toFixed(0)) + '</span>' +
+                    sourceTag + '</div>';
+            }).join("");
+        };
+
+        const teamBadgeCodes = {
+            "Arsenal":3,"Aston Villa":7,"Bournemouth":91,"Brentford":94,"Brighton":36,"Brighton and Hove Albion":36,
+            "Burnley":90,"Chelsea":8,"Crystal Palace":31,"Everton":11,"Fulham":54,"Leeds":2,"Leeds United":2,
+            "Liverpool":14,"Manchester City":43,"Man City":43,"Manchester United":1,"Man Utd":1,"Newcastle":4,"Newcastle United":4,
+            "Nottingham Forest":17,"Nott'm Forest":17,"Sunderland":56,"Tottenham":6,"Spurs":6,"West Ham":21,"Wolves":39,
+            "Wolverhampton Wanderers":39,"Coventry City":9,"Hull City":88,"Ipswich Town":40,"Leicester City":13,"Southampton":20,"Norwich City":18
+        };
+        const teamLogo = name => {
+            const code = teamBadgeCodes[String(name || "").trim()];
+            return code ? 'https://resources.premierleague.com/premierleague/badges/50/t' + code + '.png' : "";
+        };
+        const teamMonogram = name => String(name || "?").split(/\\s+/).filter(Boolean).slice(0,2).map(word=>word[0]).join("").toUpperCase();
+
+        head.innerHTML = '<tr><th class="fdr-rank-heading">#</th><th class="fdr-team-heading">Club</th>' +
+            gameweeks.map(gw=>'<th class="fdr-gw-heading">GW' + gw + '</th>').join("") +
+            '<th>Avg FDR</th><th>Easy<br><span>1–2</span></th><th>Hard<br><span>4–5</span></th></tr>';
+
+        body.innerHTML = ranked.map(team =>
+            '<tr>' +
+                '<td class="fixture-difficulty-rank">' + String(team.rank).padStart(2,"0") + '</td>' +
+                '<td class="fixture-difficulty-team-cell"><a href="team.html?team=' + encodeURIComponent(team.team) + '">' +
+                    (teamLogo(team.team) ? '<img class="fixture-difficulty-team-logo" src="' + teamLogo(team.team) + '" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:\'fixture-difficulty-team-monogram\',textContent:\'' + esc(teamMonogram(team.team)) + '\'}))">' : '<span class="fixture-difficulty-team-monogram">' + esc(teamMonogram(team.team)) + '</span>') +
+                    '<span>' + esc(team.team) + '</span></a></td>' +
+                gameweeks.map(gw=>'<td class="fixture-difficulty-gw-cell">' + fixtureCell(team,gw) + '</td>').join("") +
+                '<td class="fixture-difficulty-average">' + (team.average == null ? "—" : team.average.toFixed(2)) + '</td>' +
+                '<td><span class="fixture-difficulty-count easy-count">' + team.easy + '</span></td>' +
+                '<td><span class="fixture-difficulty-count hard-count">' + team.hard + '</span></td>' +
+            '</tr>'
+        ).join("") || '<tr><td colspan="' + (gameweeks.length+5) + '" class="fixture-difficulty-loading">No scheduled fixtures found for this window.</td></tr>';
+
+        const easiest = ranked.find(team=>team.average!=null);
+        const hardest = [...ranked].reverse().find(team=>team.average!=null);
+        const ratedFixtures = ranked.reduce((sum,team)=>sum+team.scores.length,0);
+        const officialFixtures = ranked.reduce((sum,team)=>sum+team.official,0);
+        const estimatedFixtures = ranked.reduce((sum,team)=>sum+team.estimated,0);
+        const windowLabel = "GW" + gameweeks[0] + (gameweeks.length>1 ? "–GW" + gameweeks[gameweeks.length-1] : "");
+        summary.innerHTML =
+            '<div class="fixture-difficulty-summary-card"><span>Easiest run</span><strong>' + esc(easiest ? easiest.team : "—") + '</strong><small>' + (easiest && easiest.average!=null ? easiest.average.toFixed(2) + ' average FDR' : 'No ratings') + '</small></div>' +
+            '<div class="fixture-difficulty-summary-card"><span>Hardest run</span><strong>' + esc(hardest ? hardest.team : "—") + '</strong><small>' + (hardest && hardest.average!=null ? hardest.average.toFixed(2) + ' average FDR' : 'No ratings') + '</small></div>' +
+            '<div class="fixture-difficulty-summary-card"><span>Fixtures rated</span><strong>' + ratedFixtures + '</strong><small>' + officialFixtures + ' official' + (estimatedFixtures ? ' · ' + estimatedFixtures + ' estimated' : '') + ' · ' + windowLabel + '</small></div>';
+
+        footnote.textContent = 'Ranked easiest first by average opponent FDR across ' + windowLabel +
+            '. Each scheduled match counts once; 1 is easiest and 5 is hardest. ' +
+            (estimatedFixtures ? 'EST marks model-based estimates where official FPL difficulty was unavailable.' : 'All ratings shown in this window are official FPL difficulty ratings.');
     }
+
+    async function loadFixtureDifficulty() {
+        const body = document.getElementById("fixture-difficulty-body");
+        try {
+            const response = await fetch("fixture_difficulty.json?ts=" + Date.now());
+            if (!response.ok) throw new Error("Fixture difficulty data unavailable");
+            fixtureDifficultyData = await response.json();
+            renderFixtureDifficultyRankings(fixtureDifficultyData);
+        } catch (error) {
+            if (body) body.innerHTML = '<tr><td class="fixture-difficulty-loading">Could not load fixture rankings right now. Please try again after the site data refreshes.</td></tr>';
+            const summary = document.getElementById("fixture-difficulty-summary");
+            if (summary) summary.innerHTML = "";
+            console.warn("Fixture difficulty loading error:", error.message);
+        }
+    }
+
+    document.querySelectorAll("[data-fdr-horizon]").forEach(button => {
+        button.addEventListener("click", () => {
+            const requested = Number(button.dataset.fdrHorizon);
+            if (![3,5].includes(requested)) return;
+            fixtureDifficultyHorizon = requested;
+            document.querySelectorAll("[data-fdr-horizon]").forEach(control => {
+                control.setAttribute("aria-pressed", String(Number(control.dataset.fdrHorizon)===requested));
+            });
+            if (fixtureDifficultyData) renderFixtureDifficultyRankings(fixtureDifficultyData);
+        });
+    });
+    loadFixtureDifficulty();
 
     function renderPlayerComparison(players, gameweek) {
         const firstSelect = document.getElementById("compare-player-a");
         const secondSelect = document.getElementById("compare-player-b");
+        const thirdSelect = document.getElementById("compare-player-c");
         const results = document.getElementById("player-compare-results");
         const status = document.getElementById("compare-player-status");
-        if (!firstSelect || !secondSelect || !results || !status) return;
+        if (!firstSelect || !secondSelect || !thirdSelect || !results || !status) return;
 
         const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
         const num = value => {
             if (value === null || value === undefined || value === "") return null;
             const parsed = Number(value);
             return Number.isFinite(parsed) ? parsed : null;
+        };
+        const firstAvailable = (player, keys) => {
+            for (const key of keys) {
+                const value = player?.[key];
+                if (value !== null && value !== undefined && value !== "" && Number.isFinite(Number(value))) return Number(value);
+            }
+            return null;
         };
         const points = player => num(player.prediction ?? player.expected_points ?? player.predicted_points ?? player.points_projection) ?? 0;
         const name = player => String(player.name ?? player.web_name ?? [player.first_name, player.second_name].filter(Boolean).join(" ") ?? "Unknown player").trim();
@@ -2405,6 +2915,7 @@ function renderFeaturedPlayers(fixtures) {
         usable.sort((a,b) => points(b)-points(a));
         if (!usable.length) {
             firstSelect.innerHTML = secondSelect.innerHTML = '<option value="">No player data available</option>';
+            thirdSelect.innerHTML = '<option value="">No player data available</option>';
             results.innerHTML = '<div class="player-compare-empty">The published player pool does not contain usable projections yet. Please try again after the next data refresh.</div>';
             status.textContent = "Player comparison is waiting for published projections.";
             return;
@@ -2412,51 +2923,83 @@ function renderFeaturedPlayers(fixtures) {
         const options = usable.map((player,index) => '<option value="' + index + '">' + esc(name(player)) + (player.team ? ' · ' + esc(player.team) : '') + '</option>').join("");
         firstSelect.innerHTML = options;
         secondSelect.innerHTML = options;
+        thirdSelect.innerHTML = '<option value="">Add a third player</option>' + options;
         firstSelect.value = "0";
         secondSelect.value = String(Math.min(1, usable.length-1));
+        thirdSelect.value = "";
 
-        const metric = (label,value) => '<div class="player-compare-metric"><span>' + label + '</span><strong>' + value + '</strong></div>';
+        const metric = (label,value) => '<div class="player-compare-metric"><span>' + esc(label) + '</span><strong>' + value + '</strong></div>';
         const render = () => {
-            const a = usable[Number(firstSelect.value)];
-            const b = usable[Number(secondSelect.value)];
-            if (!a || !b) {
-                results.innerHTML = '<div class="player-compare-empty">Choose two players to compare their projections.</div>';
+            const selected = [firstSelect.value, secondSelect.value, thirdSelect.value]
+                .filter(value => value !== "")
+                .map(value => usable[Number(value)])
+                .filter(Boolean);
+            const unique = selected.filter((player,index) => selected.findIndex(other => other === player) === index);
+            if (unique.length !== selected.length) {
+                status.textContent = "You have selected the same player more than once. Choose different players for a fair comparison.";
+            }
+            if (!selected.length) {
+                results.innerHTML = '<div class="player-compare-empty">Choose players to compare their projections.</div>';
                 return;
             }
-            const aPoints = points(a), bPoints = points(b);
-            const aPrice = price(a), bPrice = price(b);
-            const aMinutes = num(a.expected_minutes ?? a.minutes_expected);
-            const bMinutes = num(b.expected_minutes ?? b.minutes_expected);
-            const aOwnership = num(a.ownership ?? a.selected_by_percent);
-            const bOwnership = num(b.ownership ?? b.selected_by_percent);
             const fixtureText = player => {
                 const home = player.fixture_home || player.fixture?.home;
                 const away = player.fixture_away || player.fixture?.away;
                 if (home && away) return esc(home) + ' vs ' + esc(away);
                 return esc(player.fixture || player.opponent || "Fixture n/a");
             };
-            const card = (player, index, isLeading) => {
+            const cards = selected.map(player => {
                 const p = points(player), cost = price(player);
                 const minutes = num(player.expected_minutes ?? player.minutes_expected);
                 const ownership = num(player.ownership ?? player.selected_by_percent);
+                const low = firstAvailable(player, ["prediction_p10","p10","points_p10","lower_bound"]);
+                const high = firstAvailable(player, ["prediction_p90","p90","points_p90","upper_bound"]);
+                const confidence = player.confidence ?? player.confidence_label;
+                const form = firstAvailable(player, ["form","recent_form","points_last_5","last_five_points"]);
+                const fdr = firstAvailable(player, ["fixture_difficulty","fdr","opponent_fdr","difficulty"]);
+                const position = player.position ?? player.position_name ?? player.element_type_name;
                 const value = cost && cost > 0 ? (p / cost).toFixed(2) : "—";
                 const team = player.team || player.team_name || player.club || "Club n/a";
+                const metrics = [
+                    metric("Position", position ? esc(position) : "—"),
+                    metric("Price", cost == null ? "—" : "£" + cost.toFixed(1) + "m"),
+                    metric("Expected minutes", minutes == null ? "—" : Math.round(minutes) + " min"),
+                    metric("Points / £m", value),
+                    metric("Ownership", ownership == null ? "—" : ownership.toFixed(1) + "%")
+                ];
+                if (form !== null) metrics.push(metric("Recent form", form.toFixed(1)));
+                if (fdr !== null) metrics.push(metric("Fixture difficulty", fdr.toFixed(1) + " / 5"));
+                if (confidence !== undefined && confidence !== null && confidence !== "") metrics.push(metric("Model confidence", esc(confidence)));
+                if (low !== null && high !== null) metrics.push(metric("Expected range", low.toFixed(1) + "–" + high.toFixed(1)));
+                return { player, p, cost, team, metrics, low, high };
+            });
+            const bestPoints = Math.max(...cards.map(card => card.p));
+            const bestValue = Math.max(...cards.map(card => card.cost && card.cost > 0 ? card.p / card.cost : -Infinity));
+            results.style.setProperty("--compare-count", String(cards.length));
+            results.innerHTML = cards.map(({player,p,cost,team,metrics,low,high}) => {
+                const isLeading = p === bestPoints;
+                const value = cost && cost > 0 ? p / cost : null;
                 return '<article class="player-compare-player ' + (isLeading ? 'is-leading' : '') + '">' +
-                    '<div class="player-compare-player-head"><div><h3>' + esc(name(player)) + '</h3><span class="player-compare-team">' + esc(team) + ' · ' + fixtureText(player) + '</span></div></div>' +
+                    '<div class="player-compare-player-head"><div><h3>' + esc(name(player)) + '</h3><span class="player-compare-team">' + esc(team) + ' · ' + fixtureText(player) + '</span></div>' +
+                    (isLeading ? '<span class="player-compare-leader">Highest projection</span>' : '') + '</div>' +
                     '<div class="player-compare-points">' + p.toFixed(2) + '</div><span class="player-compare-points-label">expected points · GW' + esc(gameweek || "—") + '</span>' +
-                    '<div class="player-compare-metrics">' +
-                    metric("Price", cost == null ? "—" : "£" + cost.toFixed(1) + "m") +
-                    metric("Expected minutes", minutes == null ? "—" : Math.round(minutes) + " min") +
-                    metric("Points / £m", value) +
-                    metric("Ownership", ownership == null ? "—" : ownership.toFixed(1) + "%") +
-                    '</div></article>';
-            };
-            results.innerHTML = card(a,0,aPoints>bPoints) + card(b,1,bPoints>aPoints);
-            status.textContent = a === b ? "Choose two different players for a more useful comparison." :
-                (Math.abs(aPoints-bPoints).toFixed(2) + " expected-point difference this Gameweek. A projection is an estimate, not a promise.");
+                    (low !== null && high !== null ? '<div class="player-compare-range">Model range ' + low.toFixed(1) + '–' + high.toFixed(1) + '</div>' : '') +
+                    '<div class="player-compare-metrics">' + metrics.join("") + '</div>' +
+                    (value !== null && value === bestValue ? '<p class="player-compare-value-note">Best projected points per £m in this comparison</p>' : '') +
+                    '</article>';
+            }).join("");
+            if (unique.length === selected.length) {
+                const sorted = [...cards].sort((a,b) => b.p-a.p);
+                const gap = sorted.length > 1 ? (sorted[0].p-sorted[1].p).toFixed(2) : "0.00";
+                status.textContent = selected.length === 1 ? "Select another player to compare projections." :
+                    (sorted[0].p === sorted[1].p ? "The top two players have equal expected points in this Gameweek." :
+                    sorted[0].player === sorted[1].player ? "Choose two different players for a more useful comparison." :
+                    sorted[0].p + " expected points leads the next-best option by " + gap + ". Projections are estimates, not guarantees.");
+            }
         };
         firstSelect.addEventListener("change", render);
         secondSelect.addEventListener("change", render);
+        thirdSelect.addEventListener("change", render);
         render();
     }
 
@@ -2471,7 +3014,6 @@ function renderFeaturedPlayers(fixtures) {
             const data = await response.json();
             window.currentPredictionGameweek = data.gameweek;
             renderPlayerComparison(data.all_players || [], data.gameweek);
-            renderFixtureDifficulty(data.predictions, data.all_players || []);
 predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             predictionContainer.innerHTML = data.predictions.map(fixture => `
     <div class="fixture-card interactive-fixture" tabindex="0" role="button" aria-label="View ${fixture.home} versus ${fixture.away} prediction details" style="--home-team-colour:${teamAccentColours[fixture.home] || "var(--accent)"};--away-team-colour:${teamAccentColours[fixture.away] || "var(--accent)"}">
@@ -2606,28 +3148,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             console.info("GW5 benchmark pending:", error.message);
         }
     }
-
-    const revealSections = document.querySelectorAll(".section");
-
-    if ("IntersectionObserver" in window) {
-        const revealObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
-
-        revealSections.forEach(section => {
-            section.style.opacity = "0";
-            section.style.transform = "translateY(10px)";
-            section.style.transition = "opacity .5s ease, transform .5s ease";
-            revealObserver.observe(section);
-        });
-    }
-
+    /* Shared scroll-reveal behaviour is handled by ui-refresh.css and the observer below. */
     async function loadLiveStats() {
         const table = document.getElementById("live-player-table");
         const search = document.getElementById("live-player-search");
@@ -2911,6 +3432,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         let pool = [];
         let squad = [];
         let captainId = null;
+        let captainManuallySet = false;
         const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
         const number = value => { const n = Number(value); return Number.isFinite(n) ? n : null; };
         const priceOf = player => {
@@ -2919,6 +3441,39 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             return value > 20 ? value / 10 : value;
         };
         const pointsOf = player => number(player.prediction ?? player.expected_points ?? player.predicted_points ?? player.points_projection) ?? 0;
+        const minutesOf = player => number(player.expected_minutes ?? player.minutes_expected ?? player.minutes);
+        const availabilityOf = player => {
+            const rawStatus = String(player.status ?? player.availability_status ?? player.injury_status ?? "").trim().toLowerCase();
+            const chance = number(player.chance_of_playing_next_round ?? player.chance_of_playing ?? player.availability_percent);
+            const news = String(player.news ?? player.availability_note ?? "").trim();
+            const unavailable = ["i", "s", "u", "injured", "suspended", "unavailable", "out"].includes(rawStatus) || chance === 0;
+            const doubtful = ["d", "doubtful", "questionable"].includes(rawStatus) || (chance != null && chance > 0 && chance <= 50);
+            const limited = chance != null && chance > 50 && chance < 100;
+            // Use only explicit availability signals; absence of data is not treated as a clean bill of health.
+            const factor = unavailable ? 0.05 : doubtful ? 0.72 : limited ? 0.88 : 1;
+            const label = unavailable ? "Availability flag" : doubtful ? "Doubtful" : limited ? "Reduced availability" : rawStatus ? "Status: " + rawStatus : "";
+            return { factor, unavailable, doubtful, limited, chance, news, label };
+        };
+        const selectionScore = player => {
+            const minutes = minutesOf(player);
+            const minutesFactor = minutes == null ? 1 : minutes < 20 ? 0.55 : minutes < 40 ? 0.72 : minutes < 60 ? 0.86 : minutes < 75 ? 0.94 : 1;
+            return pointsOf(player) * minutesFactor * availabilityOf(player).factor;
+        };
+        const selectionReason = (player, isStarter) => {
+            const pts = pointsOf(player);
+            const minutes = minutesOf(player);
+            const availability = availabilityOf(player);
+            const reasons = [];
+            if (availability.unavailable) reasons.push("availability is flagged as a major concern");
+            else if (availability.doubtful) reasons.push("availability is uncertain" + (availability.chance != null ? " (" + availability.chance + "% chance)" : ""));
+            else if (availability.limited) reasons.push("availability is not fully certain" + (availability.chance != null ? " (" + availability.chance + "% chance)" : ""));
+            if (minutes != null) reasons.push("about " + Math.round(minutes) + " expected minutes");
+            if (pts > 0) reasons.push(pts.toFixed(2) + " projected points");
+            if (!reasons.length) reasons.push("limited minutes or availability data is available, so use this as a provisional recommendation");
+            const prefix = isStarter ? "Selected for the XI" : "Bench option";
+            const note = availability.news ? " Note: " + availability.news : "";
+            return prefix + " — " + reasons.join("; ") + "." + note;
+        };
         const positionOf = player => {
             const raw = String(player.position ?? player.element_type_name ?? player.position_name ?? player.element_type ?? player.position_id ?? "").toLowerCase();
             if (raw.includes("goal") || raw === "gk" || raw === "1") return "Goalkeeper";
@@ -2986,20 +3541,52 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 document.getElementById(titleId).textContent = player ? (player.name || "Selected player") : (squad.length ? "No data available" : "Build your squad");
                 document.getElementById(detailId).textContent = detail(player);
             });
-            const posRows = ["Forward","Midfielder","Defender","Goalkeeper"];
-            const starters = [...squad].sort((a,b)=>pointsOf(b)-pointsOf(a));
-            const startingIds = new Set();
-            const gk = starters.filter(p=>p._builderPosition==="Goalkeeper").slice(0,1);
-            const defs = starters.filter(p=>p._builderPosition==="Defender").slice(0,4);
-            const mids = starters.filter(p=>p._builderPosition==="Midfielder").slice(0,4);
-            const fwds = starters.filter(p=>p._builderPosition==="Forward").slice(0,2);
-            [...gk,...defs,...mids,...fwds].forEach(p=>startingIds.add(p._builderId));
+            // Pick the highest-projection legal FPL starting XI across valid formations.
+            const byPosition = pos => squad.filter(p => p._builderPosition === pos).sort((a,b)=>selectionScore(b)-selectionScore(a));
+            const goalkeepers = byPosition("Goalkeeper");
+            const defenders = byPosition("Defender");
+            const midfielders = byPosition("Midfielder");
+            const forwards = byPosition("Forward");
+            let bestOutfield = { score: -Infinity, defs: [], mids: [], fwds: [] };
+            for (let defCount = 3; defCount <= 5; defCount++) {
+                for (let midCount = 2; midCount <= 5; midCount++) {
+                    const fwdCount = 10 - defCount - midCount;
+                    if (fwdCount < 1 || fwdCount > 3) continue;
+                    if (defenders.length < defCount || midfielders.length < midCount || forwards.length < fwdCount) continue;
+                    const defs = defenders.slice(0, defCount);
+                    const mids = midfielders.slice(0, midCount);
+                    const fwds = forwards.slice(0, fwdCount);
+                    const score = [...defs, ...mids, ...fwds].reduce((sum,p)=>sum+selectionScore(p),0);
+                    if (score > bestOutfield.score) bestOutfield = { score, defs, mids, fwds };
+                }
+            }
+            const gk = goalkeepers.slice(0,1);
+            const defs = bestOutfield.defs;
+            const mids = bestOutfield.mids;
+            const fwds = bestOutfield.fwds;
+            const startingPlayers = [...gk, ...defs, ...mids, ...fwds];
+            const startingIds = new Set(startingPlayers.map(p=>p._builderId));
+            const aiCaptain = [...startingPlayers].sort((a,b)=>selectionScore(b)-selectionScore(a))[0];
+            if (!captainManuallySet || !squad.some(p=>p._builderId===captainId)) captainId = aiCaptain?._builderId || null;
+            const effectiveCaptainId = captainId;
             const rows = [fwds,mids,defs,gk];
             const pitch = document.getElementById("builder-pitch");
-            pitch.innerHTML = '<div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div>' + (squad.length ? rows.map(row => '<div class="builder-pitch-row">' + (row.length ? row.map(p => '<div class="builder-pitch-player ' + (p._builderId===captainId?'is-captain':'') + '"><span class="builder-pitch-shirt">' + (p._builderId===captainId?'C':({Goalkeeper:"GK",Defender:"D",Midfielder:"M",Forward:"F"}[p._builderPosition]||"•")) + '</span><span class="builder-pitch-name" title="' + esc(p.name) + '">' + esc(p.name) + '</span><span class="builder-pitch-points">' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-pitch-empty">No ' + row + '</div>') + '</div>').join("") : '<div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div>');
-            document.getElementById("builder-pitch-caption").textContent = "Best projected XI preview · captain marked C";
-            const bench = starters.filter(p=>!startingIds.has(p._builderId)).sort((a,b)=>pointsOf(b)-pointsOf(a));
-            document.getElementById("builder-bench").innerHTML = bench.length ? bench.map((p,i)=>'<div class="builder-bench-slot"><strong>' + esc(p.name) + '</strong><span>' + (i===0?"Bench GK / 1": "Bench "+(i+1)) + ' · ' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-bench-slot"><strong>Bench</strong><span>Complete squad to see bench options</span></div>';
+            pitch.innerHTML = '<div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div>' + (squad.length ? rows.map(row => '<div class="builder-pitch-row">' + (row.length ? row.map(p => '<div class="builder-pitch-player ' + (p._builderId===effectiveCaptainId?'is-captain':'') + '"><span class="builder-pitch-shirt">' + (p._builderId===effectiveCaptainId?'C':({Goalkeeper:"GK",Defender:"D",Midfielder:"M",Forward:"F"}[p._builderPosition]||"•")) + '</span><span class="builder-pitch-name" title="' + esc(p.name) + '">' + esc(p.name) + '</span><span class="builder-pitch-points">' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-pitch-empty">No players in this line</div>') + '</div>').join("") : '<div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div>');
+            document.getElementById("builder-pitch-caption").textContent = bestOutfield.score > -Infinity ? "AI-selected XI · " + defs.length + "-" + mids.length + "-" + fwds.length + " · captain marked C" : "Add a valid mix of defenders, midfielders and forwards to generate a legal XI";
+            const benchGoalkeeper = goalkeepers.slice(1);
+            const outfieldBench = squad.filter(p=>!startingIds.has(p._builderId) && p._builderPosition!=="Goalkeeper").sort((a,b)=>pointsOf(b)-pointsOf(a));
+            const bench = [...outfieldBench, ...benchGoalkeeper];
+            document.getElementById("builder-bench").innerHTML = bench.length ? bench.map((p,i)=>'<div class="builder-bench-slot"><strong>' + esc(p.name) + '</strong><span>' + (p._builderPosition==="Goalkeeper" ? "Bench goalkeeper" : "Bench "+(outfieldBench.indexOf(p)+1)) + ' · ' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-bench-slot"><strong>Bench</strong><span>Complete squad to see bench options</span></div>';
+            const reasonRows = [
+                ...startingPlayers.map(p => ({player:p, starter:true})),
+                ...bench.map(p => ({player:p, starter:false}))
+            ];
+            document.getElementById("builder-selection-reasons").innerHTML = reasonRows.length ? reasonRows.map(({player,starter}) => {
+                const av = availabilityOf(player);
+                const flags = av.unavailable ? '<span class="builder-reason-flag is-risk">Availability risk</span>' : av.doubtful ? '<span class="builder-reason-flag is-risk">Doubtful</span>' : av.limited ? '<span class="builder-reason-flag is-watch">Check status</span>' : '';
+                const label = starter ? (player._builderId===effectiveCaptainId ? "Captain" : "Starting XI") : (player._builderPosition==="Goalkeeper" ? "Bench goalkeeper" : "Bench "+(outfieldBench.indexOf(player)+1));
+                return '<article class="builder-selection-reason ' + (starter ? 'is-starter' : 'is-bench') + '"><div class="builder-selection-reason-top"><strong>' + esc(player.name || "Unknown player") + '</strong><span>' + label + '</span></div><p>' + esc(selectionReason(player,starter)) + '</p><div class="builder-selection-reason-meta"><span>' + pointsOf(player).toFixed(2) + ' projected pts</span><span>Selection score ' + selectionScore(player).toFixed(2) + '</span>' + (minutesOf(player)==null ? '' : '<span>' + Math.round(minutesOf(player)) + ' min</span>') + flags + '</div></article>';
+            }).join("") : '<p class="builder-selection-empty">Add players to see the reasoning behind your weekly XI and bench.</p>';
         }
         list.addEventListener("click", event => {
             const button = event.target.closest("[data-builder-add]");
@@ -3030,14 +3617,15 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const captain = event.target.closest("[data-builder-captain]");
             if (remove) {
                 squad = squad.filter(p => p._builderId !== remove.dataset.builderRemove);
-                if (captainId === remove.dataset.builderRemove) captainId = squad[0]?._builderId || null;
+                if (captainId === remove.dataset.builderRemove) { captainId = null; captainManuallySet = false; }
                 render();
             } else if (captain) {
                 captainId = captain.dataset.builderCaptain;
+                captainManuallySet = true;
                 render();
             }
         });
-        document.getElementById("builder-clear").addEventListener("click", () => { squad = []; captainId = null; render(); });
+        document.getElementById("builder-clear").addEventListener("click", () => { squad = []; captainId = null; captainManuallySet = false; render(); });
         [search, positionFilter, sort].forEach(control => { control.addEventListener("input", render); control.addEventListener("change", render); });
         fetch("live_data.json?ts=" + Date.now()).then(response => {
             if (!response.ok) throw new Error("Live player data is unavailable");
@@ -3069,6 +3657,40 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
     })();
 
     </script>
+
+
+<script>
+/* Lightweight scroll-in motion; respects reduced-motion preferences and supports dynamic content. */
+(function(){
+  if(!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const selector=".section,.section-title,.hero-stat,.prediction-card,.fixture-card,.player-card,.panel-surface,.player-compare-shell,.prediction-overview,.overview-stat,.overview-intro,.builder-ai-card,.snapshot-card,.team-hero,.profile-shell";
+  const seen=new WeakSet();
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:"0px 0px -35px 0px"});
+  function prepare(root){
+    if(root.nodeType!==1) return;
+    if(root.matches(selector) && !seen.has(root)){
+      seen.add(root);
+      root.classList.add("scroll-reveal");
+      observer.observe(root);
+    }
+    root.querySelectorAll?.(selector).forEach(el=>{
+      if(seen.has(el)) return;
+      seen.add(el);
+      el.classList.add("scroll-reveal");
+      observer.observe(el);
+    });
+  }
+  prepare(document.documentElement);
+  new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(prepare))).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
 
 </body>
 </html>
