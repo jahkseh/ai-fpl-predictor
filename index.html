@@ -2092,6 +2092,11 @@ body[data-theme="light"] .hero-stat span {
             <div class="builder-selection-insights-head"><h4>Why these players?</h4><p>Selection notes based on projected points, expected minutes and any available availability flags.</p></div>
             <div class="builder-selection-reasons" id="builder-selection-reasons"><p class="builder-selection-empty">Add players to see the reasoning behind your weekly XI and bench.</p></div>
         </div>
+        <div class="builder-fixture-outlook">
+            <div class="builder-fixture-outlook-head"><div><span class="section-kicker">Plan ahead</span><h4>Fixture outlook for your squad</h4></div><span class="builder-fixture-window">Next 3 GWs</span></div>
+            <p class="builder-fixture-outlook-note">See the upcoming opponents for clubs in your squad. Lower FDR means an easier fixture; H = home, A = away.</p>
+            <div id="builder-fixture-outlook-list" class="builder-fixture-outlook-list" aria-live="polite"><div class="builder-empty">Add players to see your squad's upcoming fixtures.</div></div>
+        </div>
     </div>
     <div class="builder-layout">
         <div class="builder-main panel-surface">
@@ -3595,7 +3600,63 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 const label = starter ? (player._builderId===effectiveCaptainId ? "Captain" : "Starting XI") : (player._builderPosition==="Goalkeeper" ? "Bench goalkeeper" : "Bench "+(outfieldBench.indexOf(player)+1));
                 return '<article class="builder-selection-reason ' + (starter ? 'is-starter' : 'is-bench') + '"><div class="builder-selection-reason-top"><strong>' + esc(player.name || "Unknown player") + '</strong><span>' + label + '</span></div><p>' + esc(selectionReason(player,starter)) + '</p><div class="builder-selection-reason-meta"><span>' + pointsOf(player).toFixed(2) + ' projected pts</span><span>Selection score ' + selectionScore(player).toFixed(2) + '</span>' + (minutesOf(player)==null ? '' : '<span>' + Math.round(minutesOf(player)) + ' min</span>') + flags + '</div></article>';
             }).join("") : '<p class="builder-selection-empty">Add players to see the reasoning behind your weekly XI and bench.</p>';
+            renderBuilderFixtureOutlook();
         }
+        const fixtureTeamAliases = {
+            "man city":"manchester city", "man utd":"manchester united", "spurs":"tottenham",
+            "brighton and hove albion":"brighton", "newcastle united":"newcastle",
+            "nott'm forest":"nottingham forest", "wolves":"wolverhampton wanderers"
+        };
+        const normaliseFixtureTeam = value => {
+            const key = String(value || "").trim().toLowerCase().replace(/\s+/g," ");
+            return fixtureTeamAliases[key] || key;
+        };
+        let builderFixtureTeams = [];
+        let builderFixtureLoaded = false;
+        function renderBuilderFixtureOutlook() {
+            const target = document.getElementById("builder-fixture-outlook-list");
+            if (!target) return;
+            if (!squad.length) {
+                target.innerHTML = '<div class="builder-empty">Add players to see your squad\'s upcoming fixtures.</div>';
+                return;
+            }
+            if (!builderFixtureLoaded) {
+                target.innerHTML = '<div class="builder-empty">Loading published fixture ratings…</div>';
+                return;
+            }
+            const selectedTeams = [...new Set(squad.map(p => p.team || p.team_name || "").filter(Boolean))];
+            const teamRows = selectedTeams.map(teamName => {
+                const fixtureTeam = builderFixtureTeams.find(team => normaliseFixtureTeam(team.team) === normaliseFixtureTeam(teamName));
+                const fixtures = (fixtureTeam?.fixtures || []).slice().sort((a,b) => Number(a.gw)-Number(b.gw))
+                    .filter(fixture => Number.isFinite(Number(fixture.gw))).slice(0,3);
+                const rated = fixtures.filter(f => f.difficulty !== null && f.difficulty !== "" && Number.isFinite(Number(f.difficulty)) && Number(f.difficulty)>=1 && Number(f.difficulty)<=5);
+                const average = rated.length ? rated.reduce((sum,f)=>sum+Number(f.difficulty),0)/rated.length : null;
+                return {teamName,fixtures,average};
+            }).sort((a,b) => (a.average ?? 99)-(b.average ?? 99) || a.teamName.localeCompare(b.teamName));
+            target.innerHTML = teamRows.map(row => {
+                const fixtureHtml = row.fixtures.map(f => {
+                    const d = f.difficulty === null || f.difficulty === "" || !Number.isFinite(Number(f.difficulty)) ? null : Number(f.difficulty);
+                    const level = d == null ? "unknown" : d <= 2 ? "easy" : d >= 4 ? "hard" : "medium";
+                    const opponent = esc(f.opponent || "Opponent n/a");
+                    const venue = f.is_home ? "H" : "A";
+                    const source = f.source && f.source !== "official_fpl" ? '<span class="builder-fixture-est">EST</span>' : "";
+                    return '<div class="builder-fixture-chip ' + level + '"><span class="builder-fixture-gw">GW' + esc(f.gw) + '</span><span class="builder-fixture-venue">' + venue + '</span><strong>' + opponent + '</strong><span class="builder-fixture-rating">' + (d == null ? "—" : d.toFixed(0)) + '</span>' + source + '</div>';
+                }).join("");
+                return '<article class="builder-fixture-team"><div class="builder-fixture-team-name"><strong>' + esc(row.teamName) + '</strong><span>' + (row.average == null ? "FDR n/a" : row.average.toFixed(2) + " avg FDR") + '</span></div><div class="builder-fixture-team-matches">' + (fixtureHtml || '<span class="builder-empty">No upcoming fixture ratings published.</span>') + '</div></article>';
+            }).join("");
+        }
+        fetch("fixture_difficulty.json?ts=" + Date.now()).then(response => {
+            if (!response.ok) throw new Error("Fixture ratings unavailable");
+            return response.json();
+        }).then(data => {
+            builderFixtureTeams = Array.isArray(data.teams) ? data.teams : [];
+            builderFixtureLoaded = true;
+            renderBuilderFixtureOutlook();
+        }).catch(() => {
+            builderFixtureLoaded = true;
+            const target = document.getElementById("builder-fixture-outlook-list");
+            if (target) target.innerHTML = '<div class="builder-empty">Fixture ratings are temporarily unavailable. Your squad and predictions are unchanged.</div>';
+        });
         list.addEventListener("click", event => {
             const button = event.target.closest("[data-builder-add]");
             if (!button || button.disabled) return;
