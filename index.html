@@ -2705,7 +2705,7 @@ const clubBadgeUrl = name => clubBadgeIds[String(name || "").trim()] ? "https://
         teamDirectory.innerHTML = teamDirectoryItems.map(([team,code]) => {
                 const accent = teamAccentColours[team] || "var(--accent)";
                 return '<a class="team-directory-card" style="--directory-team-colour:' + accent + '" href="team.html?team=' + encodeURIComponent(team) + '">' +
-                    (clubBadgeUrl(team) ? '<img class="team-directory-mark club-crest" src="' + clubBadgeUrl(team) + '" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'team-directory-mark club-crest-fallback',textContent:' + JSON.stringify('') + '}))">' : '<span class="team-directory-mark club-crest-fallback">' + code + '</span>') +
+                    (clubBadgeUrl(team) ? '<img class="team-directory-mark club-crest" src="' + clubBadgeUrl(team) + '" alt="" loading="lazy" onerror="this.style.display=&quot;none&quot;">' : '<span class="team-directory-mark club-crest-fallback">' + code + '</span>') +
                     '<span class="team-directory-name">' + team + '</span>' +
                     '<span class="team-directory-arrow" aria-hidden="true">→</span>' +
                 '</a>';
