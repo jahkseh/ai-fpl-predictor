@@ -2377,6 +2377,10 @@ body[data-theme="light"] .hero-stat span {
                 <div class="accuracy-trend-heading"><strong>Completed gameweek trend</strong><span id="accuracy-trend-count">Waiting for scored gameweeks</span></div>
                 <div id="accuracy-trend-content" class="accuracy-trend-content">As completed gameweeks are matched to saved predictions, their results will appear here.</div>
             </div>
+            <div class="accuracy-trend-panel" aria-live="polite">
+                <div class="accuracy-trend-heading"><strong>Prediction error diagnostics</strong><span id="accuracy-diagnostics-count">Waiting for official results</span></div>
+                <div id="accuracy-diagnostics-content" class="accuracy-trend-content">Once a saved gameweek has official results, this panel will show where errors are concentrated.</div>
+            </div>
             <div class="model-backtest-context"><strong>What the previous four-season backtest said:</strong> compared with the rolling-form baseline (MAE 0.9871, RMSE 1.9365, R² 0.3111), the Phase 4 model has a slightly higher MAE (0.9884) but lower RMSE (1.9296) and higher R² (0.3160). That is a mixed result, not proof of a universal accuracy improvement.</div>
         </div>
 
@@ -3504,11 +3508,56 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         }
     }
 
+    async function loadAccuracyDiagnostics() {
+        const content = document.getElementById("accuracy-diagnostics-content");
+        const count = document.getElementById("accuracy-diagnostics-count");
+        if (!content || !count) return;
+        const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, char => ({
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+        }[char]));
+        try {
+            const response = await fetch("prediction_accuracy.json?ts=" + Date.now());
+            if (!response.ok) throw new Error("Diagnostics not published");
+            const data = await response.json();
+            const diagnostics = data.diagnostics;
+            if (!data.available || !diagnostics) {
+                count.textContent = "Awaiting scored snapshot";
+                content.textContent = "No matched completed-gameweek diagnostics are available yet.";
+                return;
+            }
+            count.textContent = "GW" + Number(data.gameweek) + " · " + Number(data.players_evaluated) + " players";
+            const table = (heading, rows, labelKey) => {
+                if (!Array.isArray(rows) || !rows.length) return "";
+                return '<p><strong>' + heading + '</strong></p><table class="accuracy-trend-table"><thead><tr><th>' +
+                    heading.replace(/</g, "&lt;") + '</th><th>Players</th><th>MAE ↓</th><th>RMSE ↓</th><th>Bias</th></tr></thead><tbody>' +
+                    rows.map(row => '<tr><td>' + escapeHtml(row[labelKey]) + '</td><td>' + Number(row.players) +
+                        '</td><td>' + Number(row.mae).toFixed(2) + '</td><td>' + Number(row.rmse).toFixed(2) +
+                        '</td><td>' + (Number(row.mean_error) > 0 ? '+' : '') + Number(row.mean_error).toFixed(2) + '</td></tr>').join("") +
+                    '</tbody></table>';
+            };
+            const worst = Array.isArray(diagnostics.largest_absolute_errors) ? diagnostics.largest_absolute_errors : [];
+            content.innerHTML =
+                table("By position", diagnostics.by_position, "position") +
+                table("By prediction confidence", diagnostics.by_confidence, "confidence") +
+                table("By expected minutes", diagnostics.by_expected_minutes, "expected_minutes_band") +
+                (worst.length ? '<p><strong>Largest individual errors</strong></p><table class="accuracy-trend-table"><thead><tr><th>Player</th><th>Team</th><th>Pred.</th><th>Actual</th><th>Error</th></tr></thead><tbody>' +
+                    worst.map(row => '<tr><td>' + escapeHtml(row.name) + '</td><td>' + escapeHtml(row.team) + '</td><td>' +
+                        Number(row.prediction).toFixed(1) + '</td><td>' + Number(row.actual).toFixed(1) + '</td><td>' +
+                        (Number(row.error) > 0 ? '+' : '') + Number(row.error).toFixed(1) + '</td></tr>').join("") +
+                    '</tbody></table>' : '') +
+                '<p>These are descriptive diagnostics from the frozen featured-player sample. Wait for several gameweeks before changing model weights; small samples can be misleading.</p>';
+        } catch (error) {
+            count.textContent = "No diagnostics yet";
+            content.textContent = "Diagnostics will appear when official results can be matched to a saved prediction snapshot.";
+        }
+    }
+
     populateFeaturedPlayers();
     loadDifferentials();
     loadGw5Results();
     loadCurrentAccuracy();
     loadAccuracyTrend();
+    loadAccuracyDiagnostics();
 
     // Interactive squad builder, independent from the prediction-page rendering state.
     (function initSquadBuilder() {
