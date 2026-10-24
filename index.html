@@ -2483,21 +2483,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
         </article>
     </div>
 
-    <section class="section gw5-results-section" id="gw5-results">
-        <div class="section-title">
-            <span class="section-kicker">Verified gameweek</span>
-            <h2>GW5 Model Benchmark</h2>
-            <p>The frozen Gameweek 5 projections compared with the final player points.</p>
-        </div>
-        <div class="gw5-results-grid" id="gw5-results-grid">
-            <div class="gw5-result-stat"><span>Top-3 hits</span><strong>—</strong><small>Loading benchmark...</small></div>
-            <div class="gw5-result-stat"><span>Hit rate</span><strong>—</strong><small>Of 30 frozen predictions</small></div>
-            <div class="gw5-result-stat"><span>GW5 MAE</span><strong>—</strong><small>Prediction error</small></div>
-            <div class="gw5-result-stat"><span>GW5 RMSE</span><strong>—</strong><small>Larger errors weighted more heavily</small></div>
-        </div>
-        <div class="gw5-result-note" id="gw5-result-note">Loading verified Gameweek 5 results...</div>
-        <div class="gw5-fixtures" id="gw5-fixtures"></div>
-    </section>
+
 </section>           <div class="fixture-modal" id="fixture-modal" hidden><div class="fixture-modal-panel" role="dialog" aria-modal="true" aria-labelledby="fixture-modal-title"><div class="fixture-modal-head"><div class="fixture-modal-topline"><span class="fixture-modal-kicker">Fixture prediction</span><button class="fixture-modal-close" id="fixture-modal-close" type="button" aria-label="Close fixture details">×</button></div><div class="fixture-modal-teams" id="fixture-modal-title"></div></div><div class="fixture-modal-body"><div class="fixture-modal-summary" id="fixture-modal-summary"></div><div class="fixture-modal-list" id="fixture-modal-list"></div><p class="fixture-modal-footer">These are pre-match model projections. Select a player to open their full profile.</p></div></div></div>
 
 <footer class="scout-footer">
@@ -3665,7 +3651,6 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
 
     populateFeaturedPlayers();
     loadDifferentials();
-    loadGw5Results();
     loadCurrentAccuracy();
     loadAccuracyTrend();
     loadAccuracyDiagnostics();
