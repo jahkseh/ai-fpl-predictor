@@ -969,3 +969,33 @@ input:focus, select:focus, textarea:focus {
 .player-compare-metric strong { max-width:58%; }
 @media(max-width:1000px) { .player-compare-results { grid-template-columns:repeat(min(var(--compare-count, 2), 2), minmax(0,1fr)); } }
 @media(max-width:560px) { .player-compare-results { grid-template-columns:1fr; } }
+
+
+/* Fixture difficulty legend: explain colour and venue cues before the long table. */
+.fixture-difficulty-legend {
+  display:flex; align-items:center; flex-wrap:wrap; gap:9px 16px;
+  margin:0 0 16px; padding:11px 14px;
+  border:1px solid var(--border); border-radius:12px;
+  background:var(--surface); color:var(--text-muted); font-size:11px;
+}
+.fixture-difficulty-legend > span { display:inline-flex; align-items:center; gap:6px; }
+.fixture-difficulty-legend-title {
+  color:var(--text) !important; font-size:10px; font-weight:800;
+  letter-spacing:.06em; text-transform:uppercase;
+}
+.fixture-difficulty-legend-swatch {
+  width:10px; height:10px; display:inline-block; border-radius:3px;
+  border:1px solid transparent;
+}
+.fixture-difficulty-legend-swatch.easy { background:rgba(45,190,135,.2); border-color:rgba(45,190,135,.48); }
+.fixture-difficulty-legend-swatch.moderate { background:rgba(245,181,56,.2); border-color:rgba(245,181,56,.5); }
+.fixture-difficulty-legend-swatch.hard { background:rgba(238,91,116,.2); border-color:rgba(238,91,116,.5); }
+.fixture-difficulty-legend-venue {
+  min-width:19px; height:19px; display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid var(--border); border-radius:5px; background:var(--surface-soft);
+  color:var(--text); font-size:9px;
+}
+@media(max-width:600px) {
+  .fixture-difficulty-legend { gap:8px 12px; padding:10px 11px; }
+  .fixture-difficulty-legend-title { flex-basis:100%; }
+}
