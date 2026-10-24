@@ -16,9 +16,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23155eef'/%3E%3Cpath d='M17 18h30v7H28v6h19v15H17v-7h19v-2H17z' fill='white'/%3E%3C/svg%3E">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0b1220;--surface:#111827;--surface-soft:#162033;--border:#243047;--text:#e5e7eb;--text-muted:#94a3b8;--accent:#27d17f;--accent-hover:#20b86d;--header:#0f172a;--footer:#0f172a}
+:root{--bg:#0b1220;--surface:#111827;--surface-soft:#162033;--border:#243047;--text:#e5e7eb;--text-muted:#94a3b8;--accent:#5b8cff;--accent-hover:#155eef;--header:#0f172a;--footer:#0f172a}
 body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);transition:background .25s ease,color .25s ease}
-body[data-theme="light"]{--bg:#f7f8fa;--surface:#fff;--surface-soft:#eef2f5;--border:#dce3ea;--text:#1f2937;--text-muted:#64748b;--accent:#20b86d;--accent-hover:#17945a;--header:#0f172a;--footer:#0f172a}
+body[data-theme="light"]{--bg:#f7f8fa;--surface:#fff;--surface-soft:#eef2f5;--border:#dce3ea;--text:#1f2937;--text-muted:#64748b;--accent:#155eef;--accent-hover:#1049c7;--header:#0f172a;--footer:#0f172a}
 header{background:var(--header);color:#fff;padding:20px 40px}
 .navbar{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:24px;font-weight:700}.logo span{color:var(--accent)}
@@ -130,6 +130,35 @@ pointer-events:none;
             .team-squad-card{grid-template-columns:30px minmax(0,1fr) auto;padding:11px;gap:8px}
             .team-fixture-card{padding:12px}
         }
+
+        /* ScoutXI blue theme alignment for standalone profile pages */
+        :root { --accent: #5b8cff; --accent-hover: #155eef; }
+        body {
+            background: radial-gradient(circle at 50% -10%, rgba(91, 140, 255, .075), transparent 36%), var(--bg);
+        }
+        .profile-shell, .team-shell, .team-hero, .team-panel, .signal-card,
+        .history-panel, .fixture-panel, .stat-panel {
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+        .profile-shell, .team-shell {
+            border-color: color-mix(in srgb, var(--accent) 20%, var(--border));
+        }
+        .profile-hero, .team-hero {
+            background: radial-gradient(circle at 84% 42%, rgba(91, 140, 255, .17), transparent 30%),
+                        linear-gradient(135deg, #0f172a 0%, #101d35 56%, #10264b 100%);
+        }
+        .hero-projection { border-color: rgba(145, 181, 255, .2); background: rgba(8, 15, 28, .64); }
+        .signal-card:hover, .stat-card:hover, .team-stat:hover, .team-player-card:hover {
+            border-color: color-mix(in srgb, var(--accent) 48%, var(--border));
+            box-shadow: 0 12px 28px rgba(21, 94, 239, .09);
+        }
+        .section-heading .eyebrow, .profile-kicker, .team-kicker { color: var(--accent); }
+        .profile-kicker::before { background: var(--accent); box-shadow: 0 0 0 5px rgba(91, 140, 255, .12); }
+        body[data-theme="light"] .profile-hero, body[data-theme="light"] .team-hero {
+            background: radial-gradient(circle at 84% 42%, rgba(91, 140, 255, .2), transparent 30%),
+                        linear-gradient(135deg, #142447 0%, #18396f 100%);
+        }
+        body[data-theme="light"] .signal-card, body[data-theme="light"] .team-panel { background: var(--surface); }
 </style>
     <link rel="stylesheet" href="ui-refresh.css">
 </head>
@@ -180,7 +209,7 @@ const playerTeams={
 "Hill":"Bournemouth","Wirtz":"Liverpool","Szoboszlai":"Liverpool","João Pedro":"Chelsea","Lewis-Potter":"Brentford","Palmer":"Chelsea","Saka":"Arsenal","Gabriel":"Arsenal","Dunk":"Brighton","Branthwaite":"Everton","Mykolenko":"Everton","Tarkowski":"Everton","B. Fernandes":"Man Utd","Mbeumo":"Man Utd","Rice":"Arsenal","Isak": "Liverpool","Leno":"Fulham","Bogle":"Leeds","Calvert-Lewin":"Crystal Palace","Stach":"Leeds","Haaland":"Man City","Mukiele":"Sunderland","Semenyo":"Man City","Barnes":"Newcastle","Horníček":"Hull City","Wissa":"Newcastle","Sels":"Nott'm Forest","Schlager":"Coventry City","Gibbs-White":"Nott'm Forest","Van de Ven":"Spurs","Kinsky":"Spurs","Lindelöf":"Spurs"
 };
 
-function playerAccent(name){return teamAccentColours[playerTeams[name]]||"#20b86d";}
+function playerAccent(name){return teamAccentColours[playerTeams[name]]||"#155eef";}
 
 async function loadTeam(){
 try{

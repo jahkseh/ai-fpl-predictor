@@ -31,8 +31,8 @@
             --text: #e5e7eb;
             --text-muted: #94a3b8;
             --text-soft: #b8c3d3;
-            --accent: #27d17f;
-            --accent-hover: #20b86d;
+            --accent: #5b8cff;
+            --accent-hover: #155eef;
             --hero: #0f172a;
             --header: #0f172a;
             --footer: #0f172a;
@@ -41,7 +41,7 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             background:
-                radial-gradient(circle at 50% -10%, rgba(39, 209, 127, .08), transparent 34%),
+                radial-gradient(circle at 50% -10%, rgba(91, 140, 255, .10), transparent 34%),
                 var(--bg);
             color: var(--text);
             min-height: 100vh;
@@ -152,7 +152,7 @@
             gap: 42px;
             overflow: hidden;
             background:
-                radial-gradient(circle at 82% 50%, rgba(39, 209, 127, .13), transparent 28%),
+                radial-gradient(circle at 82% 50%, rgba(91, 140, 255, .16), transparent 28%),
                 linear-gradient(135deg, #0f172a 0%, #101a2c 55%, #0d1727 100%);
             color: white;
         }
@@ -197,7 +197,7 @@
             align-items: center;
             gap: 8px;
             margin-bottom: 16px;
-            color: #aebbb5;
+            color: #b7caff;
             font-size: 11px;
             font-weight: 800;
             letter-spacing: .11em;
@@ -210,7 +210,7 @@
             height: 7px;
             border-radius: 50%;
             background: var(--accent);
-            box-shadow: 0 0 0 5px rgba(39, 209, 127, .08);
+            box-shadow: 0 0 0 5px rgba(91, 140, 255, .10);
         }
 
         .model-graphic {
@@ -427,7 +427,7 @@
 
         .related-player:hover {
             transform: translateY(-2px);
-            border-color: rgba(39, 209, 127, .5);
+            border-color: rgba(91, 140, 255, .5);
             background: #172235;
             box-shadow: 0 10px 25px rgba(0, 0, 0, .14);
         }
@@ -493,13 +493,13 @@
             --text: #1f2937;
             --text-muted: #64748b;
             --text-soft: #475569;
-            --accent: #20b86d;
-            --accent-hover: #17945a;
+            --accent: #155eef;
+            --accent-hover: #1049c7;
         }
 
         body[data-theme="light"] {
             background:
-                radial-gradient(circle at 50% -10%, rgba(32, 184, 109, .06), transparent 34%),
+                radial-gradient(circle at 50% -10%, rgba(91, 140, 255, .07), transparent 34%),
                 var(--bg);
         }
 
@@ -821,7 +821,7 @@
         .profile-data-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid var(--border);border-radius:999px;background:var(--surface-soft);color:var(--text-muted);font-size:10px;font-weight:800}
         .profile-data-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
         .projection-meter{height:7px;margin:16px 0 5px;border-radius:999px;background:rgba(148,163,184,.16);overflow:hidden}
-        .projection-meter-fill{height:100%;border-radius:inherit;background:var(--accent);box-shadow:0 0 12px rgba(39,209,127,.24)}
+        .projection-meter-fill{height:100%;border-radius:inherit;background:var(--accent);box-shadow:0 0 12px rgba(91,140,255,.24)}
         .projection-meter-label{display:flex;justify-content:space-between;color:#8391a5;font-size:9px}
         .profile-data-empty{display:flex;gap:10px;align-items:flex-start;grid-column:1/-1;padding:16px;border:1px dashed var(--border);border-radius:13px;background:var(--surface-soft);color:var(--text-muted);font-size:11px;line-height:1.55}
         .profile-data-empty strong{display:block;color:var(--text);margin-bottom:2px}
@@ -841,6 +841,35 @@
             .profile-model-card,.profile-form-card,.profile-underlying,.profile-performance,.profile-fixture{padding:12px}
             .profile-history-grid{gap:7px}.profile-history-stat{padding:11px}.profile-why-row{padding:11px}
         }
+
+        /* ScoutXI blue theme alignment for standalone profile pages */
+        :root { --accent: #5b8cff; --accent-hover: #155eef; }
+        body {
+            background: radial-gradient(circle at 50% -10%, rgba(91, 140, 255, .075), transparent 36%), var(--bg);
+        }
+        .profile-shell, .team-shell, .team-hero, .team-panel, .signal-card,
+        .history-panel, .fixture-panel, .stat-panel {
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+        .profile-shell, .team-shell {
+            border-color: color-mix(in srgb, var(--accent) 20%, var(--border));
+        }
+        .profile-hero, .team-hero {
+            background: radial-gradient(circle at 84% 42%, rgba(91, 140, 255, .17), transparent 30%),
+                        linear-gradient(135deg, #0f172a 0%, #101d35 56%, #10264b 100%);
+        }
+        .hero-projection { border-color: rgba(145, 181, 255, .2); background: rgba(8, 15, 28, .64); }
+        .signal-card:hover, .stat-card:hover, .team-stat:hover, .team-player-card:hover {
+            border-color: color-mix(in srgb, var(--accent) 48%, var(--border));
+            box-shadow: 0 12px 28px rgba(21, 94, 239, .09);
+        }
+        .section-heading .eyebrow, .profile-kicker, .team-kicker { color: var(--accent); }
+        .profile-kicker::before { background: var(--accent); box-shadow: 0 0 0 5px rgba(91, 140, 255, .12); }
+        body[data-theme="light"] .profile-hero, body[data-theme="light"] .team-hero {
+            background: radial-gradient(circle at 84% 42%, rgba(91, 140, 255, .2), transparent 30%),
+                        linear-gradient(135deg, #142447 0%, #18396f 100%);
+        }
+        body[data-theme="light"] .signal-card, body[data-theme="light"] .team-panel { background: var(--surface); }
 </style>
     <link rel="stylesheet" href="ui-refresh.css">
 </head>
@@ -1072,7 +1101,7 @@
                             '<div class="profile-kicker">GW' + escapeHtml(dataGameweek) + ' · Pre-match model</div>' +
                             getTeamVisual(profile.name, "profile", team) +
                             '<h1>' + escapeHtml(profile.name) + '</h1>' +
-                            '<div class="profile-team-line" style="--profile-team-colour:' + (teamAccentColours[team] || "#27d17f") + '">' +
+                            '<div class="profile-team-line" style="--profile-team-colour:' + (teamAccentColours[team] || "#5b8cff") + '">' +
                                 '<span class="profile-team-dot"></span>' + escapeHtml(shirtMarks[team] || "FPL") + ' · ' + escapeHtml(team) +
                             '</div>' +
                             '<div class="fixture-line">' +
