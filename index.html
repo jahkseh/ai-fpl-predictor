@@ -2127,6 +2127,14 @@ body[data-theme="light"] .hero-stat span {
                         <label>Transfer out<select id="builder-transfer-out"><option value="">Choose a squad player</option></select></label>
                         <label>Transfer in<select id="builder-transfer-in"><option value="">Choose a replacement</option></select></label>
                     </div>
+                    <div class="builder-transfer-horizon-control">
+                        <label for="builder-transfer-horizon">Compare fixture window</label>
+                        <select id="builder-transfer-horizon">
+                            <option value="3">Next 3 Gameweeks</option>
+                            <option value="5">Next 5 Gameweeks</option>
+                            <option value="8">Next 8 Gameweeks</option>
+                        </select>
+                    </div>
                     <div class="builder-transfer-hit-control">
                         <label for="builder-transfer-hits">Extra transfers this Gameweek</label>
                         <select id="builder-transfer-hits">
@@ -3683,6 +3691,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         document.getElementById("builder-transfer-out").addEventListener("change", renderTransferComparison);
         document.getElementById("builder-transfer-in").addEventListener("change", renderTransferComparison);
         document.getElementById("builder-transfer-hits").addEventListener("change", renderTransferComparison);
+        document.getElementById("builder-transfer-horizon").addEventListener("change", renderTransferComparison);
         function renderTransferComparison() {
             const outSelect = document.getElementById("builder-transfer-out");
             const inSelect = document.getElementById("builder-transfer-in");
@@ -3717,7 +3726,8 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const upcomingFor = player => {
                 const teamName = player.team || player.team_name || "";
                 const team = builderFixtureTeams.find(item => normalise(item.team) === normalise(teamName));
-                const upcoming = (team?.fixtures || []).slice().sort((a,b)=>Number(a.gw)-Number(b.gw)).filter(f=>Number.isFinite(Number(f.gw))).slice(0,3);
+                const horizon = Number(document.getElementById("builder-transfer-horizon")?.value) || 3;
+                const upcoming = (team?.fixtures || []).slice().sort((a,b)=>Number(a.gw)-Number(b.gw)).filter(f=>Number.isFinite(Number(f.gw))).slice(0,horizon);
                 const rated = upcoming.filter(f=>f.difficulty !== null && f.difficulty !== "" && Number.isFinite(Number(f.difficulty)) && Number(f.difficulty)>=1 && Number(f.difficulty)<=5);
                 const avg = rated.length ? rated.reduce((sum,f)=>sum+Number(f.difficulty),0)/rated.length : null;
                 const chips = upcoming.map(f => {
@@ -3728,7 +3738,8 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 return {teamName,avg,chips};
             };
             const outRun = upcomingFor(outPlayer), inRun = upcomingFor(inPlayer);
-            const fixtureComparison = '<div class="builder-transfer-fixture-comparison"><div class="builder-transfer-fixture-title">Next fixtures · team FDR, not player-point forecasts</div><div class="builder-transfer-fixture-side"><strong>Out · ' + esc(outRun.teamName || playerName(outPlayer)) + '</strong><span>' + (outRun.avg == null ? "FDR n/a" : outRun.avg.toFixed(2) + " avg FDR") + '</span>' + (outRun.chips || '<small>Upcoming ratings unavailable</small>') + '</div><div class="builder-transfer-fixture-side"><strong>In · ' + esc(inRun.teamName || playerName(inPlayer)) + '</strong><span>' + (inRun.avg == null ? "FDR n/a" : inRun.avg.toFixed(2) + " avg FDR") + '</span>' + (inRun.chips || '<small>Upcoming ratings unavailable</small>') + '</div></div>';
+            const horizonLabel = Number(document.getElementById("builder-transfer-horizon")?.value) || 3;
+            const fixtureComparison = '<div class="builder-transfer-fixture-comparison"><div class="builder-transfer-fixture-title">Next ' + horizonLabel + ' GWs · team FDR, not player-point forecasts</div><div class="builder-transfer-fixture-side"><strong>Out · ' + esc(outRun.teamName || playerName(outPlayer)) + '</strong><span>' + (outRun.avg == null ? "FDR n/a" : outRun.avg.toFixed(2) + " avg FDR") + '</span>' + (outRun.chips || '<small>Upcoming ratings unavailable</small>') + '</div><div class="builder-transfer-fixture-side"><strong>In · ' + esc(inRun.teamName || playerName(inPlayer)) + '</strong><span>' + (inRun.avg == null ? "FDR n/a" : inRun.avg.toFixed(2) + " avg FDR") + '</span>' + (inRun.chips || '<small>Upcoming ratings unavailable</small>') + '</div></div>';
             const fixtureNote = outRun.avg != null && inRun.avg != null ? (inRun.avg < outRun.avg ? "The replacement has the easier average team fixture rating over the displayed window." : inRun.avg > outRun.avg ? "The replacement has the harder average team fixture rating over the displayed window." : "Both clubs have the same average team fixture rating over the displayed window.") : "Fixture comparison is incomplete because ratings are unavailable for one or both clubs.";
             const netSign = netDelta > 0 ? "+" : "";
             const netClass = netDelta > 0 ? "positive" : netDelta < 0 ? "negative" : "neutral";
