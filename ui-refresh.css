@@ -1054,3 +1054,21 @@ input:focus, select:focus, textarea:focus {
 .builder-transfer-stats strong { color:var(--text); font-size:11px; overflow-wrap:anywhere; }
 .builder-transfer-warning { margin:9px 0 0 !important; color:#A05A00 !important; }
 @media(max-width:600px) { .builder-transfer-fields { grid-template-columns:1fr; } }
+
+
+/* Fixture context inside transfer comparisons. */
+.builder-transfer-fixture-comparison { margin-top:12px; padding-top:11px; border-top:1px solid var(--border); display:grid; gap:10px; }
+.builder-transfer-fixture-title { color:var(--text-muted); font-size:9px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+.builder-transfer-fixture-side { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px 10px; align-items:center; }
+.builder-transfer-fixture-side > strong { color:var(--text); font-size:10px; }
+.builder-transfer-fixture-side > span { color:var(--text-muted); font-size:9px; }
+.builder-transfer-fixture-side > small { grid-column:1/-1; color:var(--text-muted); font-size:9px; }
+.builder-transfer-fixture-side .builder-transfer-fixture { grid-column:1/-1; }
+.builder-transfer-fixture { display:grid; grid-template-columns:auto auto minmax(0,1fr) auto; align-items:center; gap:6px; padding:6px 8px; border:1px solid var(--border); border-radius:7px; background:var(--surface-soft); }
+.builder-transfer-fixture b,.builder-transfer-fixture em { color:var(--text-muted); font-size:9px; font-style:normal; }
+.builder-transfer-fixture span { display:inline-grid; place-items:center; min-width:16px; height:16px; border:1px solid var(--border); border-radius:4px; color:var(--text-muted); font-size:8px; font-weight:900; }
+.builder-transfer-fixture strong { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text); font-size:10px; }
+.builder-transfer-fixture.easy { border-color:rgba(45,190,135,.35); background:rgba(45,190,135,.08); }
+.builder-transfer-fixture.medium { border-color:rgba(245,181,56,.35); background:rgba(245,181,56,.08); }
+.builder-transfer-fixture.hard { border-color:rgba(238,91,116,.35); background:rgba(238,91,116,.08); }
+.builder-transfer-fixture-note { margin:8px 0 0 !important; color:var(--text-muted) !important; font-size:10px !important; }

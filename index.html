@@ -3662,6 +3662,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             builderFixtureTeams = Array.isArray(data.teams) ? data.teams : [];
             builderFixtureLoaded = true;
             renderBuilderFixtureOutlook();
+            renderTransferComparison();
         }).catch(() => {
             builderFixtureLoaded = true;
             const target = document.getElementById("builder-fixture-outlook-list");
@@ -3695,7 +3696,25 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const deltaClass = delta > 0 ? "positive" : delta < 0 ? "negative" : "neutral";
             const outStatus = availabilityOf(outPlayer), inStatus = availabilityOf(inPlayer);
             const availabilityNote = inStatus.unavailable ? "Replacement has a serious availability flag; check news before transferring." : inStatus.doubtful ? "Replacement availability is uncertain; check the latest team news." : "";
-            result.innerHTML = '<div class="builder-transfer-metric ' + deltaClass + '"><span>Projected points change</span><strong>' + sign + delta.toFixed(2) + '</strong><small>per player, for the current prediction horizon</small></div><div class="builder-transfer-stats"><span>Budget change<strong>' + (costDelta > 0 ? "+" : "") + '£' + costDelta.toFixed(1) + 'm</strong></span><span>New player<strong>' + esc(priceText(inPlayer)) + '</strong></span><span>Availability<strong>' + (inStatus.unavailable ? "Flagged" : inStatus.doubtful ? "Doubtful" : inStatus.limited ? "Check status" : "No flag shown") + '</strong></span></div>' + (availabilityNote ? '<p class="builder-transfer-warning">' + esc(availabilityNote) + '</p>' : '') + (outStatus.unavailable ? '<p class="builder-transfer-warning">The outgoing player has an availability flag too.</p>' : '');
+            const aliases = {"man city":"manchester city","man utd":"manchester united","spurs":"tottenham","brighton and hove albion":"brighton","newcastle united":"newcastle","nott'm forest":"nottingham forest","wolves":"wolverhampton wanderers"};
+            const normalise = value => { const key = String(value || "").trim().toLowerCase().replace(/\\s+/g," "); return aliases[key] || key; };
+            const upcomingFor = player => {
+                const teamName = player.team || player.team_name || "";
+                const team = builderFixtureTeams.find(item => normalise(item.team) === normalise(teamName));
+                const upcoming = (team?.fixtures || []).slice().sort((a,b)=>Number(a.gw)-Number(b.gw)).filter(f=>Number.isFinite(Number(f.gw))).slice(0,3);
+                const rated = upcoming.filter(f=>f.difficulty !== null && f.difficulty !== "" && Number.isFinite(Number(f.difficulty)) && Number(f.difficulty)>=1 && Number(f.difficulty)<=5);
+                const avg = rated.length ? rated.reduce((sum,f)=>sum+Number(f.difficulty),0)/rated.length : null;
+                const chips = upcoming.map(f => {
+                    const d = f.difficulty !== null && f.difficulty !== "" && Number.isFinite(Number(f.difficulty)) ? Number(f.difficulty) : null;
+                    const level = d == null ? "unknown" : d <= 2 ? "easy" : d >= 4 ? "hard" : "medium";
+                    return '<span class="builder-transfer-fixture ' + level + '"><b>GW' + esc(f.gw) + '</b><span>' + (f.is_home ? "H" : "A") + '</span><strong>' + esc(f.opponent || "Opponent n/a") + '</strong><em>' + (d == null ? "—" : d.toFixed(0)) + '</em></span>';
+                }).join("");
+                return {teamName,avg,chips};
+            };
+            const outRun = upcomingFor(outPlayer), inRun = upcomingFor(inPlayer);
+            const fixtureComparison = '<div class="builder-transfer-fixture-comparison"><div class="builder-transfer-fixture-title">Next fixtures · team FDR, not player-point forecasts</div><div class="builder-transfer-fixture-side"><strong>Out · ' + esc(outRun.teamName || playerName(outPlayer)) + '</strong><span>' + (outRun.avg == null ? "FDR n/a" : outRun.avg.toFixed(2) + " avg FDR") + '</span>' + (outRun.chips || '<small>Upcoming ratings unavailable</small>') + '</div><div class="builder-transfer-fixture-side"><strong>In · ' + esc(inRun.teamName || playerName(inPlayer)) + '</strong><span>' + (inRun.avg == null ? "FDR n/a" : inRun.avg.toFixed(2) + " avg FDR") + '</span>' + (inRun.chips || '<small>Upcoming ratings unavailable</small>') + '</div></div>';
+            const fixtureNote = outRun.avg != null && inRun.avg != null ? (inRun.avg < outRun.avg ? "The replacement has the easier average team fixture rating over the displayed window." : inRun.avg > outRun.avg ? "The replacement has the harder average team fixture rating over the displayed window." : "Both clubs have the same average team fixture rating over the displayed window.") : "Fixture comparison is incomplete because ratings are unavailable for one or both clubs.";
+            result.innerHTML = '<div class="builder-transfer-metric ' + deltaClass + '"><span>Projected points change</span><strong>' + sign + delta.toFixed(2) + '</strong><small>per player, for the current prediction horizon</small></div><div class="builder-transfer-stats"><span>Budget change<strong>' + (costDelta > 0 ? "+" : "") + '£' + costDelta.toFixed(1) + 'm</strong></span><span>New player<strong>' + esc(priceText(inPlayer)) + '</strong></span><span>Availability<strong>' + (inStatus.unavailable ? "Flagged" : inStatus.doubtful ? "Doubtful" : inStatus.limited ? "Check status" : "No flag shown") + '</strong></span></div>' + fixtureComparison + '<p class="builder-transfer-fixture-note">' + esc(fixtureNote) + '</p>' + (availabilityNote ? '<p class="builder-transfer-warning">' + esc(availabilityNote) + '</p>' : '') + (outStatus.unavailable ? '<p class="builder-transfer-warning">The outgoing player has an availability flag too.</p>' : '');
         }
         list.addEventListener("click", event => {
             const button = event.target.closest("[data-builder-add]");
