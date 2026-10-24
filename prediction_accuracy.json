@@ -1,1 +1,5 @@
-{"available": false, "reason": "no published snapshot"}
+{
+  "available": false,
+  "gameweek": 8,
+  "reason": "gameweek not marked finished by the official FPL API"
+}

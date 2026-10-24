@@ -1,6 +1,6 @@
 {
   "season": "2026/27",
-  "gameweek_count": 1,
+  "gameweek_count": 2,
   "gameweeks": [
     {
       "gameweek": 8,
@@ -302,6 +302,341 @@
               "prediction_p10": 1.069231,
               "prediction_p90": 8.17,
               "confidence": "low"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gameweek": 9,
+      "predictions": [
+        {
+          "home": "Aston Villa",
+          "away": "Fulham",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Manzambi",
+              "prediction": 4.958806,
+              "prediction_p10": 1.125,
+              "prediction_p90": 9.629167,
+              "confidence": "low",
+              "expected_minutes": 37.637493
+            },
+            {
+              "rank": 2,
+              "name": "N.Jackson",
+              "prediction": 3.677507,
+              "prediction_p10": 0.709524,
+              "prediction_p90": 8.01,
+              "confidence": "low",
+              "expected_minutes": 60.195908
+            },
+            {
+              "rank": 3,
+              "name": "Suzuki",
+              "prediction": 3.584299,
+              "prediction_p10": 0.25,
+              "prediction_p90": 8.217857,
+              "confidence": "low",
+              "expected_minutes": 53.096378
+            }
+          ]
+        },
+        {
+          "home": "Bournemouth",
+          "away": "Leeds",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Calvert-Lewin",
+              "prediction": 3.983714,
+              "prediction_p10": 1.0,
+              "prediction_p90": 8.18875,
+              "confidence": "low",
+              "expected_minutes": 46.398285
+            },
+            {
+              "rank": 2,
+              "name": "Evanilson",
+              "prediction": 3.836599,
+              "prediction_p10": 0.666667,
+              "prediction_p90": 8.100568,
+              "confidence": "low",
+              "expected_minutes": 53.708862
+            },
+            {
+              "rank": 3,
+              "name": "Muharemović",
+              "prediction": 3.548764,
+              "prediction_p10": 0.305495,
+              "prediction_p90": 7.504545,
+              "confidence": "low",
+              "expected_minutes": 63.331289
+            }
+          ]
+        },
+        {
+          "home": "Brentford",
+          "away": "Nott'm Forest",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Muñoz",
+              "prediction": 4.034822,
+              "prediction_p10": 1.0,
+              "prediction_p90": 8.148571,
+              "confidence": "low",
+              "expected_minutes": 73.566015
+            },
+            {
+              "rank": 2,
+              "name": "Thiago",
+              "prediction": 3.993996,
+              "prediction_p10": 0.569841,
+              "prediction_p90": 8.35,
+              "confidence": "low",
+              "expected_minutes": 66.280108
+            },
+            {
+              "rank": 3,
+              "name": "McAtee",
+              "prediction": 3.750961,
+              "prediction_p10": 1.0,
+              "prediction_p90": 8.1375,
+              "confidence": "low",
+              "expected_minutes": 78.267528
+            }
+          ]
+        },
+        {
+          "home": "Chelsea",
+          "away": "Man Utd",
+          "players": [
+            {
+              "rank": 1,
+              "name": "João Pedro",
+              "prediction": 4.022158,
+              "prediction_p10": 0.817614,
+              "prediction_p90": 8.829221,
+              "confidence": "low",
+              "expected_minutes": 67.051216
+            },
+            {
+              "rank": 2,
+              "name": "Neto",
+              "prediction": 3.995708,
+              "prediction_p10": 0.617045,
+              "prediction_p90": 8.803333,
+              "confidence": "low",
+              "expected_minutes": 52.483872
+            },
+            {
+              "rank": 3,
+              "name": "B. Fernandes",
+              "prediction": 3.987779,
+              "prediction_p10": 0.4,
+              "prediction_p90": 8.639394,
+              "confidence": "low",
+              "expected_minutes": 62.20193
+            }
+          ]
+        },
+        {
+          "home": "Coventry City",
+          "away": "Sunderland",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Rudoni",
+              "prediction": 5.036859,
+              "prediction_p10": 0.8,
+              "prediction_p90": 9.364286,
+              "confidence": "low",
+              "expected_minutes": 34.202932
+            },
+            {
+              "rank": 2,
+              "name": "Cherif",
+              "prediction": 3.553733,
+              "prediction_p10": 0.383654,
+              "prediction_p90": 7.101667,
+              "confidence": "low",
+              "expected_minutes": 46.697941
+            },
+            {
+              "rank": 3,
+              "name": "Dasilva",
+              "prediction": 3.001059,
+              "prediction_p10": 0.0,
+              "prediction_p90": 7.459091,
+              "confidence": "low",
+              "expected_minutes": 64.325118
+            }
+          ]
+        },
+        {
+          "home": "Hull City",
+          "away": "Ipswich Town",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Emersonn",
+              "prediction": 4.29938,
+              "prediction_p10": 0.77,
+              "prediction_p90": 8.288312,
+              "confidence": "low",
+              "expected_minutes": 36.587374
+            },
+            {
+              "rank": 2,
+              "name": "Ouattara",
+              "prediction": 3.809905,
+              "prediction_p10": 0.595556,
+              "prediction_p90": 8.41,
+              "confidence": "low",
+              "expected_minutes": 76.399888
+            },
+            {
+              "rank": 3,
+              "name": "Davis",
+              "prediction": 3.662978,
+              "prediction_p10": 0.993333,
+              "prediction_p90": 7.336364,
+              "confidence": "low",
+              "expected_minutes": 81.060328
+            }
+          ]
+        },
+        {
+          "home": "Liverpool",
+          "away": "Arsenal",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Rice",
+              "prediction": 5.865683,
+              "prediction_p10": 1.222222,
+              "prediction_p90": 10.876389,
+              "confidence": "low",
+              "expected_minutes": 55.023629
+            },
+            {
+              "rank": 2,
+              "name": "Wirtz",
+              "prediction": 4.054089,
+              "prediction_p10": 0.331579,
+              "prediction_p90": 9.346667,
+              "confidence": "low",
+              "expected_minutes": 44.772058
+            },
+            {
+              "rank": 3,
+              "name": "Jacquet",
+              "prediction": 3.976783,
+              "prediction_p10": 0.309821,
+              "prediction_p90": 8.081731,
+              "confidence": "low",
+              "expected_minutes": 42.825864
+            }
+          ]
+        },
+        {
+          "home": "Man City",
+          "away": "Brighton",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Haaland",
+              "prediction": 5.018016,
+              "prediction_p10": 1.225874,
+              "prediction_p90": 10.290476,
+              "confidence": "low",
+              "expected_minutes": 64.124455
+            },
+            {
+              "rank": 2,
+              "name": "Vuskovic",
+              "prediction": 4.926827,
+              "prediction_p10": 0.689744,
+              "prediction_p90": 8.905263,
+              "confidence": "low",
+              "expected_minutes": 46.913266
+            },
+            {
+              "rank": 3,
+              "name": "Doku",
+              "prediction": 3.49039,
+              "prediction_p10": 0.568831,
+              "prediction_p90": 7.206667,
+              "confidence": "low",
+              "expected_minutes": 46.05024
+            }
+          ]
+        },
+        {
+          "home": "Newcastle",
+          "away": "Everton",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Dewsbury-Hall",
+              "prediction": 3.755564,
+              "prediction_p10": 0.569841,
+              "prediction_p90": 8.713333,
+              "confidence": "low",
+              "expected_minutes": 64.199218
+            },
+            {
+              "rank": 2,
+              "name": "Wissa",
+              "prediction": 3.710467,
+              "prediction_p10": 0.582143,
+              "prediction_p90": 8.310256,
+              "confidence": "low",
+              "expected_minutes": 39.26447
+            },
+            {
+              "rank": 3,
+              "name": "Barry",
+              "prediction": 3.662329,
+              "prediction_p10": 0.575,
+              "prediction_p90": 8.585,
+              "confidence": "low",
+              "expected_minutes": 59.353516
+            }
+          ]
+        },
+        {
+          "home": "Spurs",
+          "away": "Crystal Palace",
+          "players": [
+            {
+              "rank": 1,
+              "name": "Solanke",
+              "prediction": 3.071011,
+              "prediction_p10": 0.570536,
+              "prediction_p90": 6.858929,
+              "confidence": "low",
+              "expected_minutes": 28.512656
+            },
+            {
+              "rank": 2,
+              "name": "Marmoush",
+              "prediction": 2.846116,
+              "prediction_p10": 0.427381,
+              "prediction_p90": 6.639394,
+              "confidence": "low",
+              "expected_minutes": 48.18376
+            },
+            {
+              "rank": 3,
+              "name": "Kamada",
+              "prediction": 2.718753,
+              "prediction_p10": 0.33,
+              "prediction_p90": 6.285714,
+              "confidence": "low",
+              "expected_minutes": 55.13662
             }
           ]
         }
