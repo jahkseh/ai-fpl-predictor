@@ -1,0 +1,8 @@
+/* Extend club crests to every fixture planning surface */
+.fixture-difficulty-opponent-crest{width:24px;height:24px;object-fit:contain;display:inline-flex;align-items:center;justify-content:center;flex:0 0 24px}
+.fixture-difficulty-opponent-name{min-width:0}
+.builder-fixture-opponent-crest{width:22px;height:22px;object-fit:contain;display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px}
+.builder-fixture-chip,.builder-transfer-fixture{gap:7px}
+.builder-fixture-chip strong,.builder-transfer-fixture strong{min-width:0}
+@media(max-width:700px){.fixture-difficulty-opponent-crest{width:20px;height:20px;flex-basis:20px}.builder-fixture-opponent-crest{width:19px;height:19px;flex-basis:19px}}
+body[data-theme="dark"] .team-crest-fallback{background:#1b2546;color:#BFD0FF}
