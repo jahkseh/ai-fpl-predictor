@@ -97,6 +97,11 @@ def main() -> None:
                 else:
                     actual_by_name[key] = actual
 
+    prediction_scope = snapshot.get("prediction_scope", "fixture_top_three")
+    players_expected = int(snapshot.get(
+        "players_expected",
+        sum(len(fixture.get("players", [])) for fixture in snapshot.get("predictions", [])),
+    ))
     position_names = {1: "Goalkeeper", 2: "Defender", 3: "Midfielder", 4: "Forward"}
     rows = []
     unmatched = []
@@ -170,8 +175,11 @@ def main() -> None:
         "available": True,
         "source": "official_fpl_api",
         "gameweek": args.gameweek,
+        "prediction_scope": prediction_scope,
+        "players_expected": players_expected,
         "players_evaluated": int(len(frame)),
         "players_unmatched": len(unmatched),
+        "player_match_rate": round(float(len(frame) / players_expected), 3) if players_expected else None,
         "mae": round(float(errors.abs().mean()), 3),
         "rmse": round(float(np.sqrt((errors ** 2).mean())), 3),
         "mean_error": round(float(errors.mean()), 3),
@@ -182,7 +190,11 @@ def main() -> None:
             "by_expected_minutes": minute_bands,
             "largest_absolute_errors": worst_errors,
         },
-        "note": "Measured against frozen top-three predictions per fixture matched to official FPL points. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples; this is not full-squad accuracy.",
+        "note": (
+            "Measured against frozen full eligible-player predictions matched to official FPL points. "
+            if prediction_scope == "full_player_pool"
+            else "Measured against frozen top-three predictions per fixture matched to official FPL points. "
+        ) + "Player match rate reflects unmatched player-name records. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples.",
     }
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
 
