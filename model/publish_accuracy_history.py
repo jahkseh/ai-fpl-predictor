@@ -16,7 +16,15 @@ def main() -> None:
 
     result = json.loads(args.result.read_text(encoding="utf-8"))
     if not result.get("available"):
-        print("No realized accuracy result; keeping the existing trend history unchanged.")
+        # The scheduled workflow stages this file on every run. Ensure a valid
+        # empty history file exists on the first run, while preserving any
+        # previously published gameweek records.
+        if not args.history.exists():
+            history = {"season": "2026/27", "gameweeks": [], "gameweek_count": 0}
+            args.history.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
+            print("No realized accuracy result; initialized an empty trend history.")
+        else:
+            print("No realized accuracy result; keeping the existing trend history unchanged.")
         return
 
     required = ("gameweek", "players_evaluated", "mae", "rmse", "mean_error")
