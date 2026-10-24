@@ -1,92 +1,92 @@
 {
   "season": "2026/27",
-  "data_gameweek": 7,
-  "next_gameweek": 8,
-  "generated_at_utc": "2026-10-23T17:19:45.687074+00:00",
+  "data_gameweek": 8,
+  "next_gameweek": 9,
+  "generated_at_utc": "2026-10-24T16:22:24.920487+00:00",
   "picks": [
+    {
+      "name": "Rudoni",
+      "team": "Coventry City",
+      "position": "Midfielder",
+      "ownership": 0.6,
+      "prediction": 5.036859,
+      "differential_score": 5.007,
+      "price": 4.9,
+      "form": 4.3,
+      "fixture": {
+        "home": "Coventry City",
+        "away": "Sunderland",
+        "is_home": true,
+        "kickoff": "2026-10-31T15:00:00",
+        "match_id": "26-27-prem-coventry-city-vs-sunderland"
+      }
+    },
     {
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 2.9,
-      "prediction": 5.224138,
-      "differential_score": 5.073,
+      "ownership": 3.0,
+      "prediction": 4.958806,
+      "differential_score": 4.81,
       "price": 6.0,
-      "form": 8.0,
+      "form": 5.3,
       "fixture": {
         "home": "Aston Villa",
-        "away": "Man City",
+        "away": "Fulham",
         "is_home": true,
-        "kickoff": "2026-10-24T11:30:00",
-        "match_id": "26-27-prem-aston-villa-vs-manchester-city"
+        "kickoff": "2026-10-31T20:00:00",
+        "match_id": "26-27-prem-aston-villa-vs-fulham"
       }
     },
     {
-      "name": "Thiago",
-      "team": "Brentford",
+      "name": "Vuskovic",
+      "team": "Brighton",
+      "position": "Defender",
+      "ownership": 6.2,
+      "prediction": 4.926827,
+      "differential_score": 4.621,
+      "price": 5.1,
+      "form": 6.3,
+      "fixture": {
+        "home": "Man City",
+        "away": "Brighton",
+        "is_home": false,
+        "kickoff": "2026-10-31T15:00:00",
+        "match_id": "26-27-prem-manchester-city-vs-brighton-hove-albion"
+      }
+    },
+    {
+      "name": "Emersonn",
+      "team": "Ipswich Town",
       "position": "Forward",
-      "ownership": 8.7,
-      "prediction": 5.341666,
-      "differential_score": 4.877,
-      "price": 7.8,
-      "form": 4.0,
+      "ownership": 3.6,
+      "prediction": 4.29938,
+      "differential_score": 4.145,
+      "price": 5.5,
+      "form": 1.7,
       "fixture": {
         "home": "Hull City",
-        "away": "Brentford",
+        "away": "Ipswich Town",
         "is_home": false,
-        "kickoff": "2026-10-25T14:00:00",
-        "match_id": "26-27-prem-hull-city-vs-brentford"
+        "kickoff": "2026-10-31T15:00:00",
+        "match_id": "26-27-prem-hull-city-vs-ipswich-town"
       }
     },
     {
-      "name": "Iwobi",
-      "team": "Fulham",
+      "name": "Neto",
+      "team": "Chelsea",
       "position": "Midfielder",
-      "ownership": 1.3,
-      "prediction": 4.854824,
-      "differential_score": 4.792,
-      "price": 5.4,
-      "form": 7.5,
+      "ownership": 3.5,
+      "prediction": 3.995708,
+      "differential_score": 3.856,
+      "price": 6.6,
+      "form": 6.7,
       "fixture": {
-        "home": "Coventry City",
-        "away": "Fulham",
-        "is_home": false,
-        "kickoff": "2026-10-24T14:00:00",
-        "match_id": "26-27-prem-coventry-city-vs-fulham"
-      }
-    },
-    {
-      "name": "Mukiele",
-      "team": "Sunderland",
-      "position": "Defender",
-      "ownership": 1.8,
-      "prediction": 4.856131,
-      "differential_score": 4.769,
-      "price": 5.4,
-      "form": 3.0,
-      "fixture": {
-        "home": "Sunderland",
-        "away": "Leeds",
+        "home": "Chelsea",
+        "away": "Man Utd",
         "is_home": true,
-        "kickoff": "2026-10-25T16:30:00",
-        "match_id": "26-27-prem-sunderland-vs-leeds-united"
-      }
-    },
-    {
-      "name": "Ouattara",
-      "team": "Ipswich Town",
-      "position": "Defender",
-      "ownership": 1.0,
-      "prediction": 4.586852,
-      "differential_score": 4.541,
-      "price": 4.0,
-      "form": 6.5,
-      "fixture": {
-        "home": "Ipswich Town",
-        "away": "Nott'm Forest",
-        "is_home": true,
-        "kickoff": "2026-10-23T19:00:00",
-        "match_id": "26-27-prem-ipswich-town-vs-nottingham-forest"
+        "kickoff": "2026-10-31T12:30:00",
+        "match_id": "26-27-prem-chelsea-vs-manchester-united"
       }
     }
   ]
