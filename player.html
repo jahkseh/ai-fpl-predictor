@@ -872,6 +872,7 @@
         body[data-theme="light"] .signal-card, body[data-theme="light"] .team-panel { background: var(--surface); }
 </style>
     <link rel="stylesheet" href="ui-refresh.css">
+    <link rel="stylesheet" href="player-profile-refresh.css">
 </head>
 <body>
     <header>
@@ -906,7 +907,7 @@
         const themeToggle = document.getElementById("theme-toggle");
         const savedTheme = localStorage.getItem("fpl-theme");
         const themeLabel = themeToggle.querySelector(".theme-toggle-label");
-        document.body.dataset.theme = savedTheme === "light" ? "light" : "dark";
+        document.body.dataset.theme = savedTheme === "dark" ? "dark" : "light";
         themeLabel.textContent = document.body.dataset.theme === "light" ? "Dark" : "Light";
         themeToggle.addEventListener("click", () => {
             const isLight = document.body.dataset.theme === "light";
