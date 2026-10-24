@@ -42,7 +42,7 @@ def main() -> None:
     history["season"] = history.get("season", "2026/27")
     history["gameweeks"] = records[-38:]
     history["gameweek_count"] = len(history["gameweeks"])
-    args.history.write_text(json.dumps(history, indent=2) + "\\n", encoding="utf-8")
+    args.history.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
     print(f"Published accuracy trend for {len(history['gameweeks'])} gameweeks.")
 
 
