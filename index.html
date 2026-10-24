@@ -886,6 +886,10 @@ body[data-theme="light"] .hero-stat span {
             color:var(--directory-team-colour);
             font-size:9px;font-weight:900;letter-spacing:.05em;
         }
+        .team-directory-mark.club-crest{width:34px;height:34px;object-fit:contain;display:block;border:0;border-radius:0;background:transparent;padding:0}
+        .team-directory-mark.club-crest-fallback{border-radius:0}
+        .team-badge.team-crest-image{border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;filter:none}
+        .team-badge-link,.team-badge-link:hover .team-badge,.team-badge-link:focus-visible .team-badge{border-radius:0!important;box-shadow:none!important}
         .team-directory-name { min-width:0;font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
         .team-directory-arrow { margin-left:auto;color:var(--text-muted);font-size:13px; }
         @media(max-width:900px){.team-directory{grid-template-columns:repeat(3,1fr)}}
@@ -2695,10 +2699,13 @@ const playerContainer = document.getElementById("player-container");
                 ["Hull City","HUL"],["Ipswich Town","IPS"],["Leeds","LEE"],["Liverpool","LIV"],["Man City","MCI"],
                 ["Man Utd","MUN"],["Newcastle","NEW"],["Nott'm Forest","NFO"],["Spurs","TOT"],["Sunderland","SUN"]
             ];
-            teamDirectory.innerHTML = teamDirectoryItems.map(([team,code]) => {
+            const clubBadgeIds = {"Arsenal":3,"Aston Villa":7,"Bournemouth":91,"Brentford":94,"Brighton":36,"Brighton and Hove Albion":36,"Burnley":90,"Chelsea":8,"Crystal Palace":31,"Everton":11,"Fulham":54,"Leeds":2,"Leeds United":2,"Liverpool":14,"Manchester City":43,"Man City":43,"Manchester United":1,"Man Utd":1,"Newcastle":4,"Newcastle United":4,"Nottingham Forest":17,"Nott'm Forest":17,"Sunderland":56,"Tottenham":6,"Spurs":6,"West Ham":21,"Wolves":39,"Wolverhampton Wanderers":39,"Coventry City":9,"Hull City":88,"Ipswich Town":40,"Leicester City":13,"Southampton":20,"Norwich City":18};
+const clubBadgeUrl = name => clubBadgeIds[String(name || "").trim()] ? "https://resources.premierleague.com/premierleague/badges/50/t" + clubBadgeIds[String(name || "").trim()] + ".png" : "";
+
+        teamDirectory.innerHTML = teamDirectoryItems.map(([team,code]) => {
                 const accent = teamAccentColours[team] || "var(--accent)";
                 return '<a class="team-directory-card" style="--directory-team-colour:' + accent + '" href="team.html?team=' + encodeURIComponent(team) + '">' +
-                    '<span class="team-directory-mark">' + code + '</span>' +
+                    (clubBadgeUrl(team) ? '<img class="team-directory-mark club-crest" src="' + clubBadgeUrl(team) + '" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'team-directory-mark club-crest-fallback',textContent:' + JSON.stringify('') + '}))">' : '<span class="team-directory-mark club-crest-fallback">' + code + '</span>') +
                     '<span class="team-directory-name">' + team + '</span>' +
                     '<span class="team-directory-arrow" aria-hidden="true">→</span>' +
                 '</a>';
