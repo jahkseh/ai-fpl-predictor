@@ -121,7 +121,7 @@ jobs:
               --gameweek "$((GW - 1))" \
               --output prediction_accuracy.json
           else
-            printf '{"available":false,"reason":"no completed gameweek yet}\n' > prediction_accuracy.json
+            printf '{"available":false,"gameweek":%s,"reason":"no completed gameweek yet"}\n' "$GW" > prediction_accuracy.json
           fi
 
       - name: Update accuracy trend history
