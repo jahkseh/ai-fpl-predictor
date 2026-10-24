@@ -34,7 +34,7 @@ main{max-width:1200px;margin:0 auto;padding:30px 20px 70px}
 .team-copy,.team-snapshot{position:relative;z-index:1}
 .team-kicker{color:var(--text-muted);font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
 .team-heading{display:flex;align-items:center;gap:18px;margin-top:12px}
-.team-mark{width:82px;height:82px;flex:0 0 auto;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid color-mix(in srgb,var(--team-colour) 45%,var(--border));border-radius:22px;background:linear-gradient(135deg,var(--team-colour),color-mix(in srgb,var(--team-colour) 45%,#fff));box-shadow:0 0 0 4px var(--surface),0 0 0 5px color-mix(in srgb,var(--team-colour) 22%,var(--border))}
+.team-mark.team-profile-crest{object-fit:contain;display:block;border:0;border-radius:0;background:transparent;box-shadow:none;padding:0}.team-mark.team-profile-crest:after{display:none}.team-mark{width:82px;height:82px;flex:0 0 auto;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid color-mix(in srgb,var(--team-colour) 45%,var(--border));border-radius:22px;background:linear-gradient(135deg,var(--team-colour),color-mix(in srgb,var(--team-colour) 45%,#fff));box-shadow:0 0 0 4px var(--surface),0 0 0 5px color-mix(in srgb,var(--team-colour) 22%,var(--border))}
 .team-mark:after{content:"";position:absolute;width:48px;height:48px;right:-16px;bottom:-16px;border:2px solid rgba(255,255,255,.55);border-radius:50%}
 .team-mark span{position:relative;z-index:1;padding:8px 9px;border-radius:9px;background:rgba(10,18,32,.78);color:#fff;font-size:14px;font-weight:900;letter-spacing:.06em}
 .team-heading h1{font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-.04em}
@@ -200,6 +200,9 @@ const content=document.getElementById("team-content");
 
 function escapeHtml(value){return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
 
+const clubBadgeIds = {"Arsenal":3,"Aston Villa":7,"Bournemouth":91,"Brentford":94,"Brighton":36,"Brighton and Hove Albion":36,"Burnley":90,"Chelsea":8,"Crystal Palace":31,"Everton":11,"Fulham":54,"Leeds":2,"Leeds United":2,"Liverpool":14,"Manchester City":43,"Man City":43,"Manchester United":1,"Man Utd":1,"Newcastle":4,"Newcastle United":4,"Nottingham Forest":17,"Nott'm Forest":17,"Sunderland":56,"Tottenham":6,"Spurs":6,"West Ham":21,"Wolves":39,"Wolverhampton Wanderers":39,"Coventry City":9,"Hull City":88,"Ipswich Town":40,"Leicester City":13,"Southampton":20,"Norwich City":18};
+const clubBadgeUrl = name => clubBadgeIds[String(name || "").trim()] ? "https://resources.premierleague.com/premierleague/badges/50/t" + clubBadgeIds[String(name || "").trim()] + ".png" : "";
+
 const teamCodes={
 "Arsenal":"ARS","Aston Villa":"AVL","Bournemouth":"BOU","Brentford":"BRE","Brighton":"BHA","Chelsea":"CHE","Coventry City":"COV","Crystal Palace":"CRY","Everton":"EVE","Fulham":"FUL","Hull City":"HUL","Ipswich Town":"IPS","Leeds":"LEE","Liverpool":"LIV","Man City":"MCI","Man Utd":"MUN","Newcastle":"NEW","Nott'm Forest":"NFO","Spurs":"TOT","Sunderland":"SUN"
 };
@@ -253,7 +256,7 @@ content.innerHTML=
 '<div class="team-copy">'+
 '<div class="team-colour-line"></div>'+
 '<span class="team-kicker">Gameweek '+escapeHtml(data.gameweek)+' · Team profile</span>'+
-'<div class="team-heading"><div class="team-mark" aria-label="'+escapeHtml(requestedTeam)+' team colour visual"><span>'+code+'</span></div><h1>'+escapeHtml(requestedTeam)+'</h1></div>'+
+'<div class="team-heading">'+(clubBadgeUrl(requestedTeam)?'<img class="team-mark team-profile-crest" src="'+clubBadgeUrl(requestedTeam)+'" alt="'+escapeHtml(requestedTeam)+' crest" loading="lazy" onerror="this.style.display=&quot;none&quot;">':'<div class="team-mark"><span>'+code+'</span></div>')+'<h1>'+escapeHtml(requestedTeam)+'</h1></div>'+
 '<p class="team-subtitle">A dedicated view of '+escapeHtml(requestedTeam)+"'s current FPL model context. The page starts with the pre-match prediction layer and is designed to become richer as live team and player data is connected.</p>"+
 '<div class="team-fixture-line"><span class="fixture-pill">Current fixture</span><strong>'+escapeHtml(fixture.home)+'</strong><span>vs</span><strong>'+escapeHtml(fixture.away)+'</strong><span class="fixture-pill">'+(isHome?"Home":"Away")+'</span></div>'+
 '<div class="team-status-row"><span class="team-status"><span class="team-status-dot"></span>Pre-match model</span><span class="team-status">Live data ready</span><span class="team-status">GW'+escapeHtml(data.gameweek)+'</span></div>'+
