@@ -2003,6 +2003,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
 </style>
     <link rel="stylesheet" href="ui-refresh.css">
     <link rel="stylesheet" href="brand-system.css">
+    <link rel="stylesheet" href="team-crest-refresh.css">
     <link rel="stylesheet" href="performance-dashboard-refresh.css">
     <link rel="stylesheet" href="home-discovery-refresh.css">
     <link rel="stylesheet" href="team-builder-refresh.css">
@@ -2822,7 +2823,7 @@ function renderFeaturedPlayers(fixtures) {
     function openFixtureModal(fixture) {
         lastFocusedFixture = document.activeElement;
         const topPlayer = fixture.players[0];
-        fixtureModalTitle.innerHTML = '<a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.home) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + '" data-team="' + fixture.home + '">' + (teamCodes[fixture.home] || "FPL") + '</span></a><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.away) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '" data-team="' + fixture.away + '">' + (teamCodes[fixture.away] || "FPL") + '</span></a>';
+        fixtureModalTitle.innerHTML = '<a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.home) + '">' + teamBadgeMarkup(fixture.home, "team-badge") + '</a><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.away) + '">' + teamBadgeMarkup(fixture.away, "team-badge") + '</a>';
 
         const ctx = topPlayer.fixture_context || {};
         const teamXg = Number(ctx.team_xg_for_per90);
