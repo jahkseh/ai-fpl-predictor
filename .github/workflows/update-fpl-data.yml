@@ -2,6 +2,8 @@ name: Update FPL website data
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "model/**"
       - ".github/workflows/update-fpl-data.yml"
