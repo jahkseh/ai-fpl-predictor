@@ -1,0 +1,11 @@
+/* Consistent club crests throughout ScoutXI */
+.team-crest-image{display:inline-block;object-fit:contain;flex:0 0 auto;vertical-align:middle;filter:drop-shadow(0 1px 1px rgba(10,16,51,.10))}
+.team-crest-fallback{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;border-radius:50%;background:#e9edff;color:#2B50F0;font-size:9px;font-weight:850}
+.differential-team.team-crest-image{width:27px;height:27px;padding:1px;border:0;background:transparent;object-fit:contain}
+.differential-team.team-crest-fallback{min-width:27px;height:27px;padding:0 5px;border:0}
+.team-badge.team-crest-image{width:38px;height:38px;padding:2px;border:0;background:transparent;object-fit:contain;filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}
+.team-badge.team-crest-fallback{width:38px;height:38px}
+.fixture-difficulty-match{grid-template-columns:24px 25px minmax(45px,1fr) 27px auto}
+.fixture-difficulty-opponent-crest{width:23px;height:23px;object-fit:contain;flex:0 0 23px}
+@media(max-width:700px){.fixture-difficulty-match{grid-template-columns:21px 22px minmax(40px,1fr) 25px auto;gap:4px}.fixture-difficulty-opponent-crest{width:20px;height:20px;flex-basis:20px}}
+body[data-theme="dark"] .team-crest-fallback{background:#1b2546;color:#BFD0FF}

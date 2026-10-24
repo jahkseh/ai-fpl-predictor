@@ -2003,6 +2003,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
 </style>
     <link rel="stylesheet" href="ui-refresh.css">
     <link rel="stylesheet" href="brand-system.css">
+    <link rel="stylesheet" href="team-crest-refresh.css">
     <link rel="stylesheet" href="performance-dashboard-refresh.css">
     <link rel="stylesheet" href="home-discovery-refresh.css">
     <link rel="stylesheet" href="team-builder-refresh.css">
@@ -2577,7 +2578,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
                     '<div class="differential-card-content">' +
                         '<div class="differential-card-head">' +
                             '<div><strong>' + escapeDifferentialText(pick.name) + '</strong><span class="differential-meta">' + escapeDifferentialText(position) + ' · ' + escapeDifferentialText(team) + '</span></div>' +
-                            '<span class="differential-team">' + teamCode + '</span>' +
+                            teamBadgeMarkup(team, "differential-team") +
                         '</div>' +
                         '<div class="differential-projection"><span>Model projection</span><strong>' + (Number.isFinite(prediction) ? prediction.toFixed(2) : '—') + '</strong></div>' +
                         '<div class="differential-secondary"><span>' + (Number.isFinite(ownership) ? ownership.toFixed(1) + '% owned' : '—') + '</span><span>' + (Number.isFinite(price) ? '£' + price.toFixed(1) : '—') + '</span></div>' +
@@ -2794,6 +2795,24 @@ function renderFeaturedPlayers(fixtures) {
         "Aston Villa": "AVL"
     };
 
+    const teamBadgeImageCodes = {
+        "Arsenal":3,"Aston Villa":7,"Bournemouth":91,"Brentford":94,"Brighton":36,"Brighton and Hove Albion":36,
+        "Burnley":90,"Chelsea":8,"Crystal Palace":31,"Everton":11,"Fulham":54,"Leeds":2,"Leeds United":2,
+        "Liverpool":14,"Manchester City":43,"Man City":43,"Manchester United":1,"Man Utd":1,"Newcastle":4,"Newcastle United":4,
+        "Nottingham Forest":17,"Nott'm Forest":17,"Sunderland":56,"Tottenham":6,"Spurs":6,"West Ham":21,"Wolves":39,
+        "Wolverhampton Wanderers":39,"Coventry City":9,"Hull City":88,"Ipswich Town":40,"Leicester City":13,"Southampton":20,"Norwich City":18
+    };
+    const teamBadgeImage = name => {
+        const code = teamBadgeImageCodes[String(name || "").trim()];
+        return code ? 'https://resources.premierleague.com/premierleague/badges/50/t' + code + '.png' : "";
+    };
+    const teamBadgeMarkup = (name, className) => {
+        const code = teamCodes[name] || String(name || "?").split(/\\s+/).filter(Boolean).slice(0,2).map(word=>word[0]).join("").toUpperCase();
+        const url = teamBadgeImage(name);
+        if (!url) return '<span class="' + className + ' team-crest-fallback">' + code + '</span>';
+        return '<img class="' + className + ' team-crest-image" src="' + url + '" alt="' + String(name || "").replace(/&/g,"&amp;").replace(/"/g,"&quot;") + ' crest" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{className:this.className.replace(\' team-crest-image\',\' team-crest-fallback\'),textContent:' + JSON.stringify(code) + '}))">';
+    };
+
     const fixtureModal = document.getElementById("fixture-modal");
     const fixtureModalClose = document.getElementById("fixture-modal-close");
     const fixtureModalTitle = document.getElementById("fixture-modal-title");
@@ -2804,7 +2823,7 @@ function renderFeaturedPlayers(fixtures) {
     function openFixtureModal(fixture) {
         lastFocusedFixture = document.activeElement;
         const topPlayer = fixture.players[0];
-        fixtureModalTitle.innerHTML = '<a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.home) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.home] || "var(--accent)") + '" data-team="' + fixture.home + '">' + (teamCodes[fixture.home] || "FPL") + '</span></a><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.away) + '"><span class="team-badge" style="--team-colour:' + (teamAccentColours[fixture.away] || "var(--accent)") + '" data-team="' + fixture.away + '">' + (teamCodes[fixture.away] || "FPL") + '</span></a>';
+        fixtureModalTitle.innerHTML = '<a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.home) + '">' + teamBadgeMarkup(fixture.home, "team-badge") + '</a><strong>' + fixture.home + '</strong><span class="fixture-modal-vs">VS</span><strong>' + fixture.away + '</strong><a class="team-badge-link" href="team.html?team=' + encodeURIComponent(fixture.away) + '">' + teamBadgeMarkup(fixture.away, "team-badge") + '</a>';
 
         const ctx = topPlayer.fixture_context || {};
         const teamXg = Number(ctx.team_xg_for_per90);
