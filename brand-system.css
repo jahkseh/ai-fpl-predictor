@@ -1,0 +1,23 @@
+/* Official ScoutXI brand system v1 — based on the supplied brand sheet */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap');
+:root{
+ --scout-blue:#2B50F0;--scout-midnight:#0A1033;--scout-sky:#BFD0FF;--scout-mist:#F5F7FC;
+ --accent:var(--scout-blue)!important;--accent-hover:#203fd0!important;
+ --font-sans:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif!important;
+}
+html,body,button,input,select,textarea{font-family:var(--font-sans)}
+body[data-theme="light"]{--page:var(--scout-mist);--bg:var(--scout-mist);--surface:#fff;--surface-raised:#fff;--surface-soft:#e9edff;--border:#e1e7f5;--text:var(--scout-midnight);--text-muted:#5c6787;--soft-text:#374364;--accent:var(--scout-blue);--accent-strong:#203fd0;--accent-wash:#e9edff}
+body[data-theme="dark"]{--bg:#080d26;--page:#080d26;--surface:#111832;--surface-raised:#151e3b;--surface-soft:#1b2546;--border:#293456;--text:#f5f7ff;--text-muted:#aab4d0;--soft-text:#d5dcf2;--accent:#2B50F0;--accent-strong:#4968ff;--accent-wash:rgba(43,80,240,.17)}
+.brand-logo{display:inline-flex!important;align-items:center!important;flex:0 0 auto;line-height:0!important;gap:0!important;text-decoration:none!important}
+.brand-logo .brand-symbol,.brand-logo .brand-name{display:none!important}
+.brand-logo .brand-logo-image{display:block;width:164px;height:auto;max-width:100%}
+.brand-logo .brand-logo-image.inverse{display:none}
+body[data-theme="dark"] .brand-logo .brand-logo-image.primary{display:none}
+body[data-theme="dark"] .brand-logo .brand-logo-image.inverse{display:block}
+header{font-family:var(--font-sans)!important}
+nav a{font-family:var(--font-sans)!important}
+.theme-toggle{font-family:var(--font-sans)!important}
+.section-kicker,.eyebrow{color:var(--scout-blue)}
+::selection{background:var(--scout-sky);color:var(--scout-midnight)}
+@media(max-width:700px){.brand-logo .brand-logo-image{width:140px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}}
