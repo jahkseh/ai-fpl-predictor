@@ -23,6 +23,7 @@ def build_snapshot(predictions: dict) -> dict:
                         "prediction_p10": player.get("prediction_p10"),
                         "prediction_p90": player.get("prediction_p90"),
                         "confidence": player.get("confidence"),
+                        "expected_minutes": player.get("expected_minutes"),
                     }
                     for player in fixture["players"]
                 ],
