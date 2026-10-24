@@ -1916,7 +1916,24 @@ body[data-theme="light"] .hero-stat span {
             .fixture-difficulty-match { grid-template-columns: 21px minmax(45px,1fr) 25px auto; gap: 5px; padding: 6px; }
         }
 
-    </style>
+    .history-explorer{margin-top:24px;padding:22px;border:1px solid var(--border);border-radius:20px;background:var(--surface)}
+        .history-explorer-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:12px}
+        .history-explorer-head h3{margin:5px 0 6px;font-size:1.2rem}
+        .history-explorer-head p{margin:0;max-width:650px;color:var(--text-muted);font-size:.9rem;line-height:1.5}
+        .history-gameweek-label{display:grid;gap:6px;min-width:150px;color:var(--text-muted);font-size:.8rem;font-weight:600}
+        .history-gameweek-label select{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit}
+        .history-explorer-status{margin:12px 0;color:var(--text-muted);font-size:.88rem}
+        .history-explorer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+        .history-fixture-card{min-width:0;padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--background,transparent)}
+        .history-fixture-title{display:flex;justify-content:space-between;gap:10px;font-weight:700;margin-bottom:10px}
+        .history-fixture-title span{color:var(--text-muted);font-size:.75rem;font-weight:500}
+        .history-player-row{display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:8px;padding:7px 0;border-top:1px solid var(--border)}
+        .history-player-rank{color:var(--text-muted);font-size:.78rem}
+        .history-player-name{min-width:0;overflow-wrap:anywhere}
+        .history-player-points{font-weight:750;font-variant-numeric:tabular-nums}
+        .history-player-range{grid-column:2/4;color:var(--text-muted);font-size:.74rem;margin-top:-5px}
+        @media(max-width:700px){.history-explorer-head{align-items:stretch;flex-direction:column}.history-gameweek-label{max-width:none}.history-explorer-grid{grid-template-columns:1fr}.history-explorer{padding:16px}}
+</style>
     <link rel="stylesheet" href="ui-refresh.css">
 </head>
 
@@ -2019,6 +2036,21 @@ body[data-theme="light"] .hero-stat span {
 
 <div class="fixture-grid" id="prediction-container">
 </div>
+
+        <div class="history-explorer panel-surface" id="prediction-history-explorer">
+            <div class="history-explorer-head">
+                <div>
+                    <span class="section-kicker">Look back</span>
+                    <h3>Gameweek prediction archive</h3>
+                    <p>Review the top three model picks saved for each fixture before that Gameweek. Only frozen snapshots are shown.</p>
+                </div>
+                <label class="history-gameweek-label" for="history-gameweek-select">Saved Gameweek
+                    <select id="history-gameweek-select" disabled><option>Loading archive…</option></select>
+                </label>
+            </div>
+            <p class="history-explorer-status" id="history-explorer-status" aria-live="polite">Loading saved prediction snapshots…</p>
+            <div class="history-explorer-grid" id="history-explorer-grid"></div>
+        </div>
 
     </section>
 <section class="section player-compare-section" id="compare-players">
@@ -3030,6 +3062,66 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
 
     
 
+    async function loadPredictionHistoryExplorer() {
+        const select = document.getElementById("history-gameweek-select");
+        const status = document.getElementById("history-explorer-status");
+        const grid = document.getElementById("history-explorer-grid");
+        if (!select || !status || !grid) return;
+
+        const renderGameweek = (gameweek) => {
+            const snapshot = (window.savedPredictionHistory || []).find(item => Number(item.gameweek) === Number(gameweek));
+            if (!snapshot || !Array.isArray(snapshot.predictions) || !snapshot.predictions.length) {
+                status.textContent = "No saved prediction snapshot is available for this Gameweek.";
+                grid.innerHTML = "";
+                return;
+            }
+            status.textContent = "Frozen pre-match snapshot · GW" + snapshot.gameweek + " · " + snapshot.predictions.length + " fixtures. These are predictions, not actual results.";
+            grid.innerHTML = snapshot.predictions.map(fixture => {
+                const players = Array.isArray(fixture.players) ? fixture.players : [];
+                return '<article class="history-fixture-card">' +
+                    '<div class="history-fixture-title">' + escapeHistoryText(fixture.home || "Home team") + ' <span>vs</span> ' + escapeHistoryText(fixture.away || "Away team") + '</div>' +
+                    players.map(player => {
+                        const point = Number(player.prediction);
+                        const rangeValid = Number.isFinite(Number(player.prediction_p10)) && Number.isFinite(Number(player.prediction_p90));
+                        return '<div class="history-player-row"><span class="history-player-rank">' + Number(player.rank || 0) + '</span><span class="history-player-name">' + escapeHistoryText(player.name || "Player") + '</span><strong class="history-player-points">' + (Number.isFinite(point) ? point.toFixed(2) : "—") + '</strong>' +
+                            (rangeValid ? '<small class="history-player-range">Model range ' + Number(player.prediction_p10).toFixed(1) + '–' + Number(player.prediction_p90).toFixed(1) + ' pts · ' + escapeHistoryText(player.confidence || "unrated") + ' confidence</small>' : '') +
+                            '</div>';
+                    }).join("") +
+                    '</article>';
+            }).join("");
+        };
+
+        try {
+            const response = await fetch("prediction_history.json?ts=" + Date.now());
+            if (!response.ok) throw new Error("HTTP " + response.status);
+            const data = await response.json();
+            const history = Array.isArray(data.gameweeks) ? data.gameweeks.slice().sort((a, b) => Number(b.gameweek) - Number(a.gameweek)) : [];
+            window.savedPredictionHistory = history;
+            if (!history.length) {
+                select.innerHTML = '<option value="">No saved Gameweeks</option>';
+                select.disabled = true;
+                status.textContent = "The archive is empty. A Gameweek will appear after its predictions are saved.";
+                grid.innerHTML = "";
+                return;
+            }
+            select.innerHTML = history.map(item => '<option value="' + Number(item.gameweek) + '">Gameweek ' + Number(item.gameweek) + '</option>').join("");
+            select.disabled = history.length < 2;
+            select.value = String(history[0].gameweek);
+            select.addEventListener("change", () => renderGameweek(select.value));
+            renderGameweek(select.value);
+        } catch (error) {
+            console.error("Prediction history loading error:", error);
+            select.innerHTML = '<option value="">Archive unavailable</option>';
+            select.disabled = true;
+            status.textContent = "The saved prediction archive could not be loaded. Current predictions are still available above.";
+            grid.innerHTML = "";
+        }
+    }
+
+    function escapeHistoryText(value) {
+        return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
+
     async function loadGw5Results() {
         try {
             const response = await fetch("gw5_results.json");
@@ -3252,6 +3344,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
     }
 
     loadPredictions();
+    loadPredictionHistoryExplorer();
     loadLiveStats();
 
     async function populateFeaturedPlayers() {
