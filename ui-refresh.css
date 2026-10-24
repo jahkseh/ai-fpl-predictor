@@ -1072,3 +1072,16 @@ input:focus, select:focus, textarea:focus {
 .builder-transfer-fixture.medium { border-color:rgba(245,181,56,.35); background:rgba(245,181,56,.08); }
 .builder-transfer-fixture.hard { border-color:rgba(238,91,116,.35); background:rgba(238,91,116,.08); }
 .builder-transfer-fixture-note { margin:8px 0 0 !important; color:var(--text-muted) !important; font-size:10px !important; }
+
+
+/* Transfer hit estimator: clearly separate gross projection from net after hits. */
+.builder-transfer-hit-control { display:grid; gap:5px; margin-top:10px; }
+.builder-transfer-hit-control label { color:var(--text-muted); font-size:10px; font-weight:800; }
+.builder-transfer-hit-control select { width:100%; padding:9px; border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--text); font:inherit; font-size:11px; }
+.builder-transfer-hit-control > span { color:var(--text-muted); font-size:9px; line-height:1.45; }
+.builder-transfer-net { display:flex; flex-direction:column; gap:3px; margin-top:10px; padding:11px; border:1px solid var(--border); border-radius:9px; background:var(--surface); }
+.builder-transfer-net > span { color:var(--text-muted); font-size:10px; }
+.builder-transfer-net > strong { color:var(--text); font-size:20px; letter-spacing:-.03em; }
+.builder-transfer-net.positive > strong { color:#16865B; }
+.builder-transfer-net.negative > strong { color:#C4475A; }
+.builder-transfer-net > small { color:var(--text-muted); font-size:9px; line-height:1.45; }
