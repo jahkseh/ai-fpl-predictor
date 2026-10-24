@@ -1,0 +1,52 @@
+/* ScoutXI discovery pages — light-first surfaces and mobile-first player discovery */
+:root{--sx-page:#f3f6fc;--sx-card:#fff;--sx-soft:#e9edff;--sx-border:#dfe5f3;--sx-ink:#111438;--sx-muted:#606b89;--sx-blue:#4350f5;--sx-navy:#101233}
+body,body[data-theme="light"]{background:var(--sx-page)!important;color:var(--sx-ink)!important}
+body[data-theme="light"]{--page:var(--sx-page);--surface:var(--sx-card);--surface-raised:var(--sx-card);--surface-soft:#f8f9ff;--border:var(--sx-border);--text:var(--sx-ink);--muted:var(--sx-muted);--soft-text:#394364;--accent:var(--sx-blue);--accent-strong:#303de0;--accent-wash:#e9edff;--header:rgba(243,246,252,.94);--shadow:0 8px 28px rgba(22,32,78,.06)}
+header{backdrop-filter:blur(14px)}
+.logo,.brand-name{color:var(--text)!important}
+.brand-symbol{background:var(--sx-blue)!important;color:#fff!important;border-radius:10px!important}
+nav a{border-radius:999px!important}
+nav a:hover,nav a:focus-visible{background:var(--sx-soft)!important;color:var(--sx-blue)!important}
+.theme-toggle{border-radius:999px!important;background:var(--surface)!important;border:1px solid var(--sx-border)!important;color:var(--sx-ink)!important}
+.section{scroll-margin-top:100px}
+.section-title h2{letter-spacing:-.045em}
+.section-kicker{color:var(--sx-blue)!important;letter-spacing:.09em}
+.players-section .section-title{margin-bottom:18px}
+.featured-note,.differential-note{border:1px solid var(--sx-border)!important;border-radius:18px!important;background:#fff!important;box-shadow:0 6px 20px rgba(22,32,78,.035)!important;color:var(--sx-muted)!important}
+.featured-note strong,.differential-note strong{color:var(--sx-ink)!important}
+.featured-note-icon,.differential-note-icon{background:var(--sx-soft)!important;color:var(--sx-blue)!important;border-radius:12px!important}
+#player-container{gap:14px!important}
+#player-container .player-card,#player-container .info-card{border:1px solid var(--sx-border)!important;border-radius:19px!important;background:#fff!important;color:var(--sx-ink)!important;box-shadow:0 5px 18px rgba(22,32,78,.035)!important;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease!important}
+#player-container .player-card:hover,#player-container .info-card:hover{transform:translateY(-2px);border-color:#b9c4ff!important;box-shadow:0 12px 28px rgba(67,80,245,.09)!important}
+.live-intelligence-section .live-banner,.live-intelligence-section .live-summary-card,.live-intelligence-section .live-filter-panel{border:1px solid var(--sx-border)!important;border-radius:18px!important;background:#fff!important;color:var(--sx-ink)!important;box-shadow:0 5px 18px rgba(22,32,78,.03)!important}
+.live-intelligence-section .live-summary-card strong{color:var(--sx-blue)!important}
+.live-filter-field label{color:var(--sx-muted)!important;font-weight:700}
+.live-filter-field input,.live-filter-field select{min-height:44px!important;border:1px solid var(--sx-border)!important;border-radius:12px!important;background:#fff!important;color:var(--sx-ink)!important}
+.live-filter-field input:focus,.live-filter-field select:focus{outline:3px solid rgba(67,80,245,.13)!important;border-color:var(--sx-blue)!important}
+.live-intelligence-section .live-table-wrap,.live-intelligence-section table{border-color:var(--sx-border)!important}
+.live-intelligence-section th{background:var(--sx-soft)!important;color:var(--sx-muted)!important}
+.live-intelligence-section td{color:var(--sx-ink)!important;border-color:var(--sx-border)!important}
+.differential-card{border:1px solid var(--sx-border)!important;border-radius:19px!important;background:#fff!important;color:var(--sx-ink)!important;box-shadow:0 5px 18px rgba(22,32,78,.035)!important}
+.differential-card:hover{border-color:#b9c4ff!important;box-shadow:0 12px 28px rgba(67,80,245,.09)!important}
+.differential-card strong,.differential-card .differential-projection strong{color:var(--sx-ink)!important}
+.differential-card .differential-projection{background:var(--sx-soft)!important;border-radius:14px!important}
+.differential-card .differential-projection strong,.differential-rank{color:var(--sx-blue)!important}
+.team-directory .team-card,.team-directory a{border-radius:17px!important}
+body[data-theme="dark"]{--sx-page:#0b1027;--sx-card:#111832;--sx-soft:#202a4b;--sx-border:#2a3557;--sx-ink:#f4f6ff;--sx-muted:#aab4d0;--sx-blue:#7480ff}
+body[data-theme="dark"] .featured-note,body[data-theme="dark"] .differential-note,body[data-theme="dark"] #player-container .player-card,body[data-theme="dark"] #player-container .info-card,body[data-theme="dark"] .live-intelligence-section .live-banner,body[data-theme="dark"] .live-intelligence-section .live-summary-card,body[data-theme="dark"] .live-intelligence-section .live-filter-panel,body[data-theme="dark"] .differential-card{background:var(--sx-card)!important;color:var(--sx-ink)!important;border-color:var(--sx-border)!important}
+body[data-theme="dark"] .featured-note strong,body[data-theme="dark"] .differential-note strong,body[data-theme="dark"] .differential-card strong,body[data-theme="dark"] .live-intelligence-section td{color:var(--sx-ink)!important}
+body[data-theme="dark"] .live-filter-field input,body[data-theme="dark"] .live-filter-field select{background:var(--sx-card)!important;color:var(--sx-ink)!important;border-color:var(--sx-border)!important}
+@media(max-width:700px){
+  header{padding-left:14px!important;padding-right:14px!important}
+  .section{padding-left:15px!important;padding-right:15px!important}
+  .players-section .section-title h2{font-size:clamp(1.8rem,8vw,2.5rem)!important}
+  #player-container{grid-template-columns:1fr!important;gap:11px!important}
+  #player-container .player-card,#player-container .info-card{padding:16px!important}
+  .live-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+  .live-filter-panel{padding:14px!important}
+  .live-filter-row{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .live-filter-field:first-child{grid-column:1/-1}
+  .live-filter-field input,.live-filter-field select{width:100%;min-width:0}
+  .differential-grid{grid-template-columns:1fr!important;gap:11px!important}
+}
+@media(prefers-reduced-motion:reduce){#player-container .player-card,#player-container .info-card,.differential-card{transition:none!important}}
