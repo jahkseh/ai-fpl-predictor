@@ -2002,6 +2002,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
 
 </style>
     <link rel="stylesheet" href="ui-refresh.css">
+    <link rel="stylesheet" href="home-discovery-refresh.css">
 </head>
 
 <body>
@@ -2500,7 +2501,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
         const themeToggle = document.getElementById("theme-toggle");
         const savedTheme = localStorage.getItem("fpl-theme");
         const themeLabel = themeToggle.querySelector(".theme-toggle-label");
-        document.body.dataset.theme = savedTheme === "light" ? "light" : "dark";
+        document.body.dataset.theme = savedTheme === "dark" ? "dark" : "light";
         themeLabel.textContent = document.body.dataset.theme === "light" ? "Dark" : "Light";
         themeToggle.addEventListener("click", () => {
             const isLight = document.body.dataset.theme === "light";
