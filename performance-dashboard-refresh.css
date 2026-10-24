@@ -1,0 +1,89 @@
+/* ScoutXI Performance page — brand-sheet aligned accuracy dashboard */
+#performance{padding:34px 0 22px;background:var(--scout-mist,#F5F7FC)}
+#performance .performance-dashboard{padding:0 22px 24px;max-width:1240px;margin:0 auto}
+#performance .performance-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;padding:30px 30px 27px;margin-bottom:18px;border:1px solid #e1e7f5;border-radius:24px;background:#fff;box-shadow:0 8px 28px rgba(10,16,51,.045)}
+#performance .performance-kicker{display:inline-flex;align-items:center;gap:9px;color:#2B50F0;font-size:10px;font-weight:850;letter-spacing:.12em}
+#performance .performance-live-dot{width:7px;height:7px;border-radius:50%;background:#2B50F0;box-shadow:0 0 0 4px rgba(43,80,240,.11)}
+#performance .performance-hero h2{margin:12px 0 9px;color:#0A1033;font-size:clamp(30px,4vw,46px);font-weight:850;letter-spacing:-.06em;line-height:1.05}
+#performance .performance-hero h2 span{color:#2B50F0}
+#performance .performance-hero p{max-width:720px;color:#5c6787;font-size:13px;line-height:1.75}
+#performance .performance-status{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;padding:10px 13px;border:1px solid #e1e7f5;border-radius:999px;background:#F5F7FC;color:#374364;font-size:11px;font-weight:750}
+#performance .performance-status-dot{width:7px;height:7px;border-radius:50%;background:#2B50F0}
+#performance .performance-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}
+#performance .performance-stat{min-width:0;padding:20px;border:1px solid #e1e7f5;border-radius:19px;background:#fff;box-shadow:0 5px 18px rgba(10,16,51,.025)}
+#performance .performance-stat-primary{background:#0A1033;border-color:#0A1033}
+#performance .performance-stat-label{display:block;color:#5c6787;font-size:10px;font-weight:800;letter-spacing:.045em}
+#performance .performance-stat-primary .performance-stat-label{color:#BFD0FF}
+#performance .performance-stat strong{display:block;margin:14px 0 8px;color:#0A1033;font-size:clamp(23px,2.4vw,32px);font-weight:850;letter-spacing:-.055em;overflow-wrap:anywhere}
+#performance .performance-stat-primary strong{color:#fff}
+#performance .performance-stat small{display:block;color:#5c6787;font-size:11px;line-height:1.65}
+#performance .performance-stat-primary small{color:#c8d0ec}
+#performance .performance-note{display:flex;align-items:flex-start;gap:11px;padding:15px 17px;margin-bottom:16px;border:1px solid #dce5ff;border-radius:15px;background:#edf1ff;color:#374364;font-size:12px;line-height:1.7}
+#performance .performance-note-mark{display:inline-grid;place-items:center;flex:0 0 22px;height:22px;border-radius:8px;background:#2B50F0;color:#fff;font-weight:850}
+#performance .performance-content-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;margin-bottom:15px}
+#performance .performance-panel{min-width:0;padding:21px;border:1px solid #e1e7f5;border-radius:20px;background:#fff;box-shadow:0 6px 22px rgba(10,16,51,.03)}
+#performance .performance-panel-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:15px}
+#performance .performance-panel-kicker{display:block;margin-bottom:7px;color:#2B50F0;font-size:9px;font-weight:850;letter-spacing:.12em}
+#performance .performance-panel-heading h3,#performance .performance-baseline h3{margin:0;color:#0A1033;font-size:19px;font-weight:800;letter-spacing:-.045em}
+#performance .performance-panel-meta{display:inline-flex;align-items:center;flex-shrink:0;max-width:48%;padding:7px 9px;border-radius:999px;background:#e9edff;color:#2B50F0;font-size:10px;font-weight:750;text-align:center}
+#performance .performance-panel-intro{margin:-4px 0 14px;color:#5c6787;font-size:12px;line-height:1.7}
+#performance .accuracy-trend-content{margin-top:10px;overflow-x:auto;color:#5c6787;font-size:11px;line-height:1.7}
+#performance .accuracy-trend-table{width:100%;border-collapse:separate;border-spacing:0;min-width:360px;text-align:left}
+#performance .accuracy-trend-table th{background:#F5F7FC;color:#5c6787;font-size:9px;font-weight:850;letter-spacing:.04em;text-transform:uppercase}
+#performance .accuracy-trend-table th:first-child{border-radius:9px 0 0 9px}
+#performance .accuracy-trend-table th:last-child{border-radius:0 9px 9px 0}
+#performance .accuracy-trend-table th,#performance .accuracy-trend-table td{padding:11px 9px;border-bottom:1px solid #e9edf6;white-space:nowrap}
+#performance .accuracy-trend-table td{color:#0A1033}
+#performance .performance-baseline{display:grid;grid-template-columns:46px minmax(0,1fr);gap:17px;padding:23px;border:1px solid #dce5ff;border-radius:21px;background:linear-gradient(125deg,#fff 0%,#f2f5ff 100%)}
+#performance .performance-baseline-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#2B50F0;color:#fff;font-size:24px}
+#performance .performance-baseline p{margin:9px 0 16px;color:#5c6787;font-size:12px;line-height:1.8}
+#performance .performance-benchmark-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#performance .performance-benchmark-grid>div{padding:14px;border:1px solid #e1e7f5;border-radius:14px;background:#fff}
+#performance .performance-benchmark-grid span{display:block;color:#5c6787;font-size:10px;font-weight:750}
+#performance .performance-benchmark-grid strong{display:block;margin:8px 0 5px;color:#0A1033;font-size:22px;font-weight:850;letter-spacing:-.045em}
+#performance .performance-benchmark-grid small{color:#5c6787;font-size:10px}
+#performance .gw5-results-section{max-width:1240px;margin:0 auto;padding:28px 22px 34px}
+#performance .gw5-results-section .section-title h2{color:#0A1033;letter-spacing:-.05em}
+#performance .gw5-results-section .section-kicker{color:#2B50F0}
+#performance .gw5-results-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#performance .gw5-result-stat{padding:18px;border:1px solid #e1e7f5;border-radius:17px;background:#fff}
+#performance .gw5-result-stat span{color:#5c6787;font-size:10px;font-weight:800}
+#performance .gw5-result-stat strong{display:block;margin:10px 0 6px;color:#2B50F0;font-size:27px;font-weight:850;letter-spacing:-.05em}
+#performance .gw5-result-stat small{color:#5c6787;font-size:10px;line-height:1.6}
+#performance .gw5-result-note{margin:13px 0;padding:13px 15px;border:1px solid #dce5ff;border-radius:13px;background:#edf1ff;color:#374364;font-size:11px;line-height:1.7}
+#performance .gw5-fixtures{display:grid;gap:10px}
+body[data-theme="dark"] #performance{background:#080d26}
+body[data-theme="dark"] #performance .performance-hero,body[data-theme="dark"] #performance .performance-stat:not(.performance-stat-primary),body[data-theme="dark"] #performance .performance-panel,body[data-theme="dark"] #performance .gw5-result-stat{background:#111832;border-color:#293456}
+body[data-theme="dark"] #performance .performance-hero h2,body[data-theme="dark"] #performance .performance-panel-heading h3,body[data-theme="dark"] #performance .performance-baseline h3,body[data-theme="dark"] #performance .gw5-results-section .section-title h2,body[data-theme="dark"] #performance .performance-stat strong,body[data-theme="dark"] #performance .performance-benchmark-grid strong,body[data-theme="dark"] #performance .accuracy-trend-table td{color:#f5f7ff}
+body[data-theme="dark"] #performance .performance-hero p,body[data-theme="dark"] #performance .performance-stat-label,body[data-theme="dark"] #performance .performance-stat small,body[data-theme="dark"] #performance .performance-panel-intro,body[data-theme="dark"] #performance .accuracy-trend-content,body[data-theme="dark"] #performance .accuracy-trend-table td,body[data-theme="dark"] #performance .performance-baseline p,body[data-theme="dark"] #performance .performance-benchmark-grid small,body[data-theme="dark"] #performance .gw5-result-stat small{color:#aab4d0}
+body[data-theme="dark"] #performance .performance-status,body[data-theme="dark"] #performance .performance-note,body[data-theme="dark"] #performance .performance-panel-meta,body[data-theme="dark"] #performance .gw5-result-note{background:#1b2546;border-color:#293456;color:#d5dcf2}
+body[data-theme="dark"] #performance .performance-baseline{background:linear-gradient(125deg,#111832 0%,#101a39 100%);border-color:#293456}
+body[data-theme="dark"] #performance .performance-benchmark-grid>div{background:#151e3b;border-color:#293456}
+body[data-theme="dark"] #performance .performance-benchmark-grid span,body[data-theme="dark"] #performance .gw5-result-stat span{color:#aab4d0}
+body[data-theme="dark"] #performance .accuracy-trend-table th{background:#1b2546;color:#aab4d0}
+body[data-theme="dark"] #performance .accuracy-trend-table th,body[data-theme="dark"] #performance .accuracy-trend-table td{border-color:#293456}
+@media(max-width:900px){
+ #performance .performance-dashboard{padding-inline:16px}
+ #performance .performance-content-grid{grid-template-columns:1fr}
+ #performance .performance-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #performance .gw5-results-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+ #performance .performance-dashboard{padding-inline:13px}
+ #performance .performance-hero{align-items:flex-start;flex-direction:column;padding:22px 19px;border-radius:20px}
+ #performance .performance-hero h2{font-size:34px}
+ #performance .performance-status{font-size:10px}
+ #performance .performance-stat{padding:15px;border-radius:16px}
+ #performance .performance-stat strong{font-size:25px}
+ #performance .performance-panel{padding:16px;border-radius:17px}
+ #performance .performance-panel-heading{flex-direction:column}
+ #performance .performance-panel-meta{max-width:100%}
+ #performance .performance-baseline{grid-template-columns:1fr;padding:17px}
+ #performance .performance-benchmark-grid{grid-template-columns:1fr;gap:8px}
+ #performance .performance-benchmark-grid>div{display:grid;grid-template-columns:1fr auto;gap:3px 10px;align-items:center}
+ #performance .performance-benchmark-grid strong{grid-column:2;grid-row:1/3;margin:0;font-size:20px}
+ #performance .gw5-results-section{padding:24px 13px}
+ #performance .gw5-result-stat{padding:14px}
+ #performance .gw5-result-stat strong{font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){#performance *{scroll-behavior:auto!important;transition:none!important}}
