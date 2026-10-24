@@ -2004,6 +2004,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
     <link rel="stylesheet" href="ui-refresh.css">
     <link rel="stylesheet" href="brand-system.css">
     <link rel="stylesheet" href="team-crest-refresh.css">
+    <link rel="stylesheet" href="team-crest-coverage.css">
     <link rel="stylesheet" href="performance-dashboard-refresh.css">
     <link rel="stylesheet" href="home-discovery-refresh.css">
     <link rel="stylesheet" href="team-builder-refresh.css">
@@ -2950,7 +2951,7 @@ function renderFeaturedPlayers(fixtures) {
                 const sourceTag = fixture.source && fixture.source !== "official_fpl" ? '<span class="fixture-difficulty-estimate" title="Model-based estimate, not an official FPL rating">EST</span>' : "";
                 return '<div class="fixture-difficulty-match ' + difficultyClass + '" title="' + esc(venueLabel + " vs " + fixture.opponent + (difficulty == null ? "" : " · FDR " + difficulty)) + '">' +
                     '<span class="fixture-difficulty-venue">' + venue + '</span>' +
-                    '<span class="fixture-difficulty-opponent">' + esc(fixture.opponent || "Opponent n/a") + '</span>' +
+                    (teamLogo(fixture.opponent) ? '<img class="fixture-difficulty-opponent-crest" src="' + teamLogo(fixture.opponent) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '<span class="fixture-difficulty-opponent-crest team-crest-fallback">' + esc(teamMonogram(fixture.opponent)) + '</span>') + '<span class="fixture-difficulty-opponent fixture-difficulty-opponent-name">' + esc(fixture.opponent || "Opponent n/a") + '</span>' +
                     '<span class="fixture-difficulty-fdr">' + (difficulty == null ? "—" : difficulty.toFixed(0)) + '</span>' +
                     sourceTag + '</div>';
             }).join("");
@@ -3165,13 +3166,13 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
     <div class="fixture-card interactive-fixture" tabindex="0" role="button" aria-label="View ${fixture.home} versus ${fixture.away} prediction details" style="--home-team-colour:${teamAccentColours[fixture.home] || "var(--accent)"};--away-team-colour:${teamAccentColours[fixture.away] || "var(--accent)"}">
         <div class="fixture-teams">
             <a class="team-badge-link" href="team.html?team=${encodeURIComponent(fixture.home)}" aria-label="Open ${fixture.home} team page" data-team-link>
-                <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.home] || "#27d17f"}" data-team="${fixture.home}" aria-label="${fixture.home}">${teamCodes[fixture.home]}</span>
+                ${teamBadgeMarkup(fixture.home, "team-badge")}
             </a>
             <span class="team-name">${fixture.home}</span>
             <span class="vs">VS</span>
             <span class="team-name">${fixture.away}</span>
             <a class="team-badge-link" href="team.html?team=${encodeURIComponent(fixture.away)}" aria-label="Open ${fixture.away} team page" data-team-link>
-                <span class="team-badge" style="--team-colour:${teamAccentColours[fixture.away] || "#27d17f"}" data-team="${fixture.away}" aria-label="${fixture.away}">${teamCodes[fixture.away]}</span>
+                ${teamBadgeMarkup(fixture.away, "team-badge")}
             </a>
         </div>
 
@@ -3871,7 +3872,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                     const opponent = esc(f.opponent || "Opponent n/a");
                     const venue = f.is_home ? "H" : "A";
                     const source = f.source && f.source !== "official_fpl" ? '<span class="builder-fixture-est">EST</span>' : "";
-                    return '<div class="builder-fixture-chip ' + level + '"><span class="builder-fixture-gw">GW' + esc(f.gw) + '</span><span class="builder-fixture-venue">' + venue + '</span><strong>' + opponent + '</strong><span class="builder-fixture-rating">' + (d == null ? "—" : d.toFixed(0)) + '</span>' + source + '</div>';
+                    return '<div class="builder-fixture-chip ' + level + '"><span class="builder-fixture-gw">GW' + esc(f.gw) + '</span><span class="builder-fixture-venue">' + venue + '</span>' + (teamBadgeImage(f.opponent) ? '<img class="builder-fixture-opponent-crest" src="' + teamBadgeImage(f.opponent) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '<span class="builder-fixture-opponent-crest team-crest-fallback">' + esc(teamCodes[f.opponent] || teamMonogram(f.opponent)) + '</span>') + '<strong>' + opponent + '</strong><span class="builder-fixture-rating">' + (d == null ? "—" : d.toFixed(0)) + '</span>' + source + '</div>';
                 }).join("");
                 return '<article class="builder-fixture-team"><div class="builder-fixture-team-name"><strong>' + esc(row.teamName) + '</strong><span>' + (row.average == null ? "FDR n/a" : row.average.toFixed(2) + " avg FDR") + '</span></div><div class="builder-fixture-team-matches">' + (fixtureHtml || '<span class="builder-empty">No upcoming fixture ratings published.</span>') + '</div></article>';
             }).join("");
