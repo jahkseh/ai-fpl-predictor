@@ -1031,3 +1031,26 @@ input:focus, select:focus, textarea:focus {
   .builder-fixture-chip { padding:7px 5px; gap:4px; }
   .builder-fixture-chip strong { font-size:9px; }
 }
+
+
+/* AI transfer comparison panel within the Squad Builder. */
+.builder-transfer-tool { margin-top:15px; padding:15px; border:1px solid var(--border); border-radius:13px; background:var(--surface); }
+.builder-transfer-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.builder-transfer-heading h4 { margin:3px 0 0; color:var(--text); font-size:14px; }
+.builder-transfer-tag { border-radius:7px; padding:5px 8px; background:var(--accent-wash); color:var(--accent-strong); font-size:9px; font-weight:800; }
+.builder-transfer-tool > p { margin:8px 0 12px; color:var(--text-muted); font-size:11px; line-height:1.5; }
+.builder-transfer-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+.builder-transfer-fields label { display:grid; gap:5px; color:var(--text-muted); font-size:10px; font-weight:700; }
+.builder-transfer-fields select { width:100%; min-width:0; padding:9px; border:1px solid var(--border); border-radius:8px; background:var(--surface); color:var(--text); font:inherit; font-size:11px; }
+.builder-transfer-result { margin-top:12px; padding:11px; border-radius:10px; background:var(--surface-soft); color:var(--text-muted); font-size:11px; line-height:1.5; }
+.builder-transfer-metric { display:flex; flex-direction:column; gap:2px; }
+.builder-transfer-metric span { font-size:10px; }
+.builder-transfer-metric strong { font-size:24px; letter-spacing:-.04em; color:var(--text); }
+.builder-transfer-metric.positive strong { color:#16865B; }
+.builder-transfer-metric.negative strong { color:#C4475A; }
+.builder-transfer-metric small { font-size:9px; color:var(--text-muted); }
+.builder-transfer-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-top:12px; padding-top:10px; border-top:1px solid var(--border); }
+.builder-transfer-stats span { display:flex; flex-direction:column; gap:4px; font-size:9px; color:var(--text-muted); }
+.builder-transfer-stats strong { color:var(--text); font-size:11px; overflow-wrap:anywhere; }
+.builder-transfer-warning { margin:9px 0 0 !important; color:#A05A00 !important; }
+@media(max-width:600px) { .builder-transfer-fields { grid-template-columns:1fr; } }
