@@ -124,6 +124,12 @@ jobs:
             printf '{"available":false,"reason":"no completed gameweek yet}\n' > prediction_accuracy.json
           fi
 
+      - name: Update accuracy trend history
+        run: |
+          python model/publish_accuracy_history.py \
+            --result prediction_accuracy.json \
+            --history prediction_accuracy_history.json
+
       - name: Validate generated data
         run: |
           python - <<'PY'
@@ -169,7 +175,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json prediction_accuracy.json fixture_difficulty.json index.html
+          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json prediction_accuracy.json prediction_accuracy_history.json fixture_difficulty.json index.html
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0

@@ -1331,6 +1331,18 @@ body[data-theme="light"] .hero-stat span {
         .model-backtest-context { margin-top:10px; color:var(--text-muted); font-size:11px; line-height:1.7; }
         .model-backtest-context strong { color:var(--text); }
         .model-accuracy-note { margin-top:14px; padding:12px 14px; border-left:3px solid var(--accent); border-radius:0 8px 8px 0; background:var(--surface-soft); color:var(--text-muted); font-size:11px; line-height:1.65; }
+        .accuracy-trend-panel { margin-top:14px; padding:14px; border:1px solid var(--border); border-radius:12px; background:var(--surface); }
+        .accuracy-trend-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; color:var(--text); font-size:12px; }
+        .accuracy-trend-heading span { color:var(--text-muted); font-size:10px; font-weight:500; }
+        .accuracy-trend-content { margin-top:10px; overflow-x:auto; color:var(--text-muted); font-size:11px; line-height:1.6; }
+        .accuracy-trend-table { width:100%; border-collapse:collapse; min-width:360px; text-align:left; }
+        .accuracy-trend-table th,.accuracy-trend-table td { padding:8px 7px; border-bottom:1px solid var(--border); white-space:nowrap; }
+        .accuracy-trend-table th { color:var(--text-muted); font-size:9px; text-transform:uppercase; letter-spacing:.06em; }
+        .accuracy-trend-table td { color:var(--text); font-variant-numeric:tabular-nums; }
+        .accuracy-trend-table tr:last-child td { border-bottom:0; }
+        .accuracy-trend-summary { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+        .accuracy-trend-chip { padding:6px 9px; border-radius:8px; background:var(--surface-soft); color:var(--text-muted); font-size:10px; }
+        .accuracy-trend-chip strong { color:var(--text); margin-left:4px; }
         @media(max-width:700px) { .model-data-panel { padding:16px; } .model-data-heading { flex-direction:column; } .model-data-grid { grid-template-columns:1fr; } }
 
         /* DepositScout-inspired visual refresh: clear hierarchy, calm surfaces and data-first layouts. */
@@ -2361,6 +2373,10 @@ body[data-theme="light"] .hero-stat span {
                 <article class="model-data-card"><span>Latest completed GW score</span><strong id="current-accuracy-value">Awaiting results</strong><small id="current-accuracy-detail">A score appears after a frozen prediction snapshot can be matched to actual points.</small></article>
             </div>
             <div class="model-accuracy-note" id="model-accuracy-note" role="status">Accuracy tracking is separate from the historical benchmark below. No new improvement is claimed until realized results are available.</div>
+            <div class="accuracy-trend-panel" aria-live="polite">
+                <div class="accuracy-trend-heading"><strong>Completed gameweek trend</strong><span id="accuracy-trend-count">Waiting for scored gameweeks</span></div>
+                <div id="accuracy-trend-content" class="accuracy-trend-content">As completed gameweeks are matched to saved predictions, their results will appear here.</div>
+            </div>
             <div class="model-backtest-context"><strong>What the previous four-season backtest said:</strong> compared with the rolling-form baseline (MAE 0.9871, RMSE 1.9365, R² 0.3111), the Phase 4 model has a slightly higher MAE (0.9884) but lower RMSE (1.9296) and higher R² (0.3160). That is a mixed result, not proof of a universal accuracy improvement.</div>
         </div>
 
@@ -3456,10 +3472,43 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         }
     }
 
+    async function loadAccuracyTrend() {
+        const content = document.getElementById("accuracy-trend-content");
+        const count = document.getElementById("accuracy-trend-count");
+        if (!content || !count) return;
+        try {
+            const response = await fetch("prediction_accuracy_history.json?ts=" + Date.now());
+            if (!response.ok) throw new Error("Accuracy trend not published");
+            const data = await response.json();
+            const rows = Array.isArray(data.gameweeks) ? data.gameweeks.slice().sort((a,b) => Number(b.gameweek)-Number(a.gameweek)) : [];
+            count.textContent = rows.length + (rows.length === 1 ? " scored gameweek" : " scored gameweeks");
+            if (!rows.length) {
+                content.textContent = "No completed gameweeks have been scored yet. Results will be added automatically when official points are available.";
+                return;
+            }
+            const recent = rows.slice(0, 8);
+            const meanMae = rows.reduce((sum,row) => sum + Number(row.mae || 0), 0) / rows.length;
+            const meanRmse = rows.reduce((sum,row) => sum + Number(row.rmse || 0), 0) / rows.length;
+            content.innerHTML =
+                '<div class="accuracy-trend-summary">' +
+                    '<span class="accuracy-trend-chip">Mean MAE<strong>' + meanMae.toFixed(2) + '</strong></span>' +
+                    '<span class="accuracy-trend-chip">Mean RMSE<strong>' + meanRmse.toFixed(2) + '</strong></span>' +
+                    '<span class="accuracy-trend-chip">Scored GWs<strong>' + rows.length + '</strong></span>' +
+                '</div>' +
+                '<table class="accuracy-trend-table"><thead><tr><th>Gameweek</th><th>Players</th><th>MAE ↓</th><th>RMSE ↓</th><th>Bias</th></tr></thead><tbody>' +
+                recent.map(row => '<tr><td>GW' + Number(row.gameweek) + '</td><td>' + Number(row.players_evaluated || 0) + '</td><td>' + Number(row.mae).toFixed(2) + '</td><td>' + Number(row.rmse).toFixed(2) + '</td><td>' + (Number(row.mean_error) > 0 ? '+' : '') + Number(row.mean_error).toFixed(2) + '</td></tr>').join("") +
+                '</tbody></table><p>Lower MAE/RMSE is better. Bias above zero means predictions were higher than actual points on average. These are featured top-three picks per fixture, not all-player accuracy.</p>';
+        } catch (error) {
+            count.textContent = "No trend data yet";
+            content.textContent = "The trend table will populate as completed gameweeks are measured.";
+        }
+    }
+
     populateFeaturedPlayers();
     loadDifferentials();
     loadGw5Results();
     loadCurrentAccuracy();
+    loadAccuracyTrend();
 
     // Interactive squad builder, independent from the prediction-page rendering state.
     (function initSquadBuilder() {
