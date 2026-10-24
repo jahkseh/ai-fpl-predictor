@@ -999,3 +999,35 @@ input:focus, select:focus, textarea:focus {
   .fixture-difficulty-legend { gap:8px 12px; padding:10px 11px; }
   .fixture-difficulty-legend-title { flex-basis:100%; }
 }
+
+
+/* Squad Builder: compact fixture run for the selected clubs. */
+.builder-fixture-outlook {
+  margin-top:16px; padding:17px; border:1px solid var(--border);
+  border-radius:14px; background:var(--surface);
+}
+.builder-fixture-outlook-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.builder-fixture-outlook-head h4 { margin:3px 0 0; color:var(--text); font-size:15px; }
+.builder-fixture-window { flex:0 0 auto; padding:6px 9px; border-radius:8px; background:var(--accent-wash); color:var(--accent-strong); font-size:10px; font-weight:800; }
+.builder-fixture-outlook-note { margin:8px 0 13px; color:var(--text-muted); font-size:11px; line-height:1.5; }
+.builder-fixture-outlook-list { display:grid; gap:9px; }
+.builder-fixture-team { display:grid; grid-template-columns:minmax(100px,150px) minmax(0,1fr); align-items:center; gap:12px; padding:10px 0; border-top:1px solid var(--border); }
+.builder-fixture-team-name { display:flex; flex-direction:column; gap:4px; min-width:0; }
+.builder-fixture-team-name strong { color:var(--text); font-size:12px; overflow-wrap:anywhere; }
+.builder-fixture-team-name > span { color:var(--text-muted); font-size:10px; }
+.builder-fixture-team-matches { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; }
+.builder-fixture-chip { display:grid; grid-template-columns:auto auto minmax(0,1fr) auto; align-items:center; gap:5px; min-width:0; padding:8px; border:1px solid var(--border); border-radius:9px; background:var(--surface-soft); }
+.builder-fixture-gw { color:var(--text-muted); font-size:9px; font-weight:800; }
+.builder-fixture-venue { display:inline-grid; place-items:center; min-width:17px; height:17px; border:1px solid var(--border); border-radius:4px; color:var(--text-muted); font-size:8px; font-weight:900; }
+.builder-fixture-chip strong { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text); font-size:10px; }
+.builder-fixture-rating { font-size:11px; font-weight:900; color:var(--text); }
+.builder-fixture-chip.easy { border-color:rgba(45,190,135,.35); background:rgba(45,190,135,.08); }
+.builder-fixture-chip.medium { border-color:rgba(245,181,56,.35); background:rgba(245,181,56,.08); }
+.builder-fixture-chip.hard { border-color:rgba(238,91,116,.35); background:rgba(238,91,116,.08); }
+.builder-fixture-est { grid-column:1/-1; color:var(--text-muted); font-size:8px; font-weight:800; }
+@media(max-width:700px) {
+  .builder-fixture-team { grid-template-columns:1fr; gap:7px; }
+  .builder-fixture-team-matches { gap:5px; }
+  .builder-fixture-chip { padding:7px 5px; gap:4px; }
+  .builder-fixture-chip strong { font-size:9px; }
+}
