@@ -2,34 +2,17 @@
   "season": "2026/27",
   "data_gameweek": 8,
   "next_gameweek": 9,
-  "generated_at_utc": "2026-10-24T16:30:08.720653+00:00",
+  "generated_at_utc": "2026-10-24T20:57:40.549126+00:00",
   "picks": [
-    {
-      "name": "Rudoni",
-      "team": "Coventry City",
-      "position": "Midfielder",
-      "ownership": 0.6,
-      "prediction": 5.036859,
-      "differential_score": 5.007,
-      "price": 4.9,
-      "form": 4.3,
-      "fixture": {
-        "home": "Coventry City",
-        "away": "Sunderland",
-        "is_home": true,
-        "kickoff": "2026-10-31T15:00:00",
-        "match_id": "26-27-prem-coventry-city-vs-sunderland"
-      }
-    },
     {
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 3.0,
-      "prediction": 4.958806,
-      "differential_score": 4.81,
+      "ownership": 3.2,
+      "prediction": 5.272026,
+      "differential_score": 5.103,
       "price": 6.0,
-      "form": 5.3,
+      "form": 5.7,
       "fixture": {
         "home": "Aston Villa",
         "away": "Fulham",
@@ -39,12 +22,29 @@
       }
     },
     {
+      "name": "Doku",
+      "team": "Man City",
+      "position": "Midfielder",
+      "ownership": 3.6,
+      "prediction": 4.946467,
+      "differential_score": 4.768,
+      "price": 7.5,
+      "form": 6.7,
+      "fixture": {
+        "home": "Man City",
+        "away": "Brighton",
+        "is_home": true,
+        "kickoff": "2026-10-31T15:00:00",
+        "match_id": "26-27-prem-manchester-city-vs-brighton-hove-albion"
+      }
+    },
+    {
       "name": "Vuskovic",
       "team": "Brighton",
       "position": "Defender",
-      "ownership": 6.2,
+      "ownership": 6.3,
       "prediction": 4.926827,
-      "differential_score": 4.621,
+      "differential_score": 4.616,
       "price": 5.1,
       "form": 6.3,
       "fixture": {
@@ -56,37 +56,37 @@
       }
     },
     {
-      "name": "Emersonn",
-      "team": "Ipswich Town",
+      "name": "N.Jackson",
+      "team": "Aston Villa",
       "position": "Forward",
-      "ownership": 3.6,
-      "prediction": 4.29938,
-      "differential_score": 4.145,
-      "price": 5.5,
-      "form": 1.7,
+      "ownership": 5.2,
+      "prediction": 4.739261,
+      "differential_score": 4.493,
+      "price": 6.6,
+      "form": 8.0,
       "fixture": {
-        "home": "Hull City",
-        "away": "Ipswich Town",
-        "is_home": false,
-        "kickoff": "2026-10-31T15:00:00",
-        "match_id": "26-27-prem-hull-city-vs-ipswich-town"
+        "home": "Aston Villa",
+        "away": "Fulham",
+        "is_home": true,
+        "kickoff": "2026-10-31T20:00:00",
+        "match_id": "26-27-prem-aston-villa-vs-fulham"
       }
     },
     {
-      "name": "Neto",
-      "team": "Chelsea",
+      "name": "Iwobi",
+      "team": "Fulham",
       "position": "Midfielder",
-      "ownership": 3.5,
-      "prediction": 3.995708,
-      "differential_score": 3.856,
-      "price": 6.6,
-      "form": 6.7,
+      "ownership": 1.4,
+      "prediction": 4.224733,
+      "differential_score": 4.166,
+      "price": 5.4,
+      "form": 6.0,
       "fixture": {
-        "home": "Chelsea",
-        "away": "Man Utd",
-        "is_home": true,
-        "kickoff": "2026-10-31T12:30:00",
-        "match_id": "26-27-prem-chelsea-vs-manchester-united"
+        "home": "Aston Villa",
+        "away": "Fulham",
+        "is_home": false,
+        "kickoff": "2026-10-31T20:00:00",
+        "match_id": "26-27-prem-aston-villa-vs-fulham"
       }
     }
   ]
