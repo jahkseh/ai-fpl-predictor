@@ -2127,6 +2127,18 @@ body[data-theme="light"] .hero-stat span {
                         <label>Transfer out<select id="builder-transfer-out"><option value="">Choose a squad player</option></select></label>
                         <label>Transfer in<select id="builder-transfer-in"><option value="">Choose a replacement</option></select></label>
                     </div>
+                    <div class="builder-transfer-hit-control">
+                        <label for="builder-transfer-hits">Extra transfers this Gameweek</label>
+                        <select id="builder-transfer-hits">
+                            <option value="0">0 extra · no hit</option>
+                            <option value="1">1 extra · −4 points</option>
+                            <option value="2">2 extra · −8 points</option>
+                            <option value="3">3 extra · −12 points</option>
+                            <option value="4">4 extra · −16 points</option>
+                            <option value="5">5 extra · −20 points</option>
+                        </select>
+                        <span>Use this to estimate the net value if your plan requires additional transfers beyond your available free transfers.</span>
+                    </div>
                     <div id="builder-transfer-result" class="builder-transfer-result" aria-live="polite">Build your squad to compare a transfer.</div>
                 </section>
                 <p class="builder-disclaimer">Estimates use the site's published model data. This is a planning tool, not an official FPL squad submission or a guarantee of points.</p>
@@ -3670,6 +3682,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         });
         document.getElementById("builder-transfer-out").addEventListener("change", renderTransferComparison);
         document.getElementById("builder-transfer-in").addEventListener("change", renderTransferComparison);
+        document.getElementById("builder-transfer-hits").addEventListener("change", renderTransferComparison);
         function renderTransferComparison() {
             const outSelect = document.getElementById("builder-transfer-out");
             const inSelect = document.getElementById("builder-transfer-in");
@@ -3691,6 +3704,9 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 return;
             }
             const delta = pointsOf(inPlayer) - pointsOf(outPlayer);
+            const extraTransfers = Number(document.getElementById("builder-transfer-hits").value) || 0;
+            const hitCost = extraTransfers * 4;
+            const netDelta = delta - hitCost;
             const costDelta = (priceOf(inPlayer) ?? 0) - (priceOf(outPlayer) ?? 0);
             const sign = delta > 0 ? "+" : "";
             const deltaClass = delta > 0 ? "positive" : delta < 0 ? "negative" : "neutral";
@@ -3714,7 +3730,9 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const outRun = upcomingFor(outPlayer), inRun = upcomingFor(inPlayer);
             const fixtureComparison = '<div class="builder-transfer-fixture-comparison"><div class="builder-transfer-fixture-title">Next fixtures · team FDR, not player-point forecasts</div><div class="builder-transfer-fixture-side"><strong>Out · ' + esc(outRun.teamName || playerName(outPlayer)) + '</strong><span>' + (outRun.avg == null ? "FDR n/a" : outRun.avg.toFixed(2) + " avg FDR") + '</span>' + (outRun.chips || '<small>Upcoming ratings unavailable</small>') + '</div><div class="builder-transfer-fixture-side"><strong>In · ' + esc(inRun.teamName || playerName(inPlayer)) + '</strong><span>' + (inRun.avg == null ? "FDR n/a" : inRun.avg.toFixed(2) + " avg FDR") + '</span>' + (inRun.chips || '<small>Upcoming ratings unavailable</small>') + '</div></div>';
             const fixtureNote = outRun.avg != null && inRun.avg != null ? (inRun.avg < outRun.avg ? "The replacement has the easier average team fixture rating over the displayed window." : inRun.avg > outRun.avg ? "The replacement has the harder average team fixture rating over the displayed window." : "Both clubs have the same average team fixture rating over the displayed window.") : "Fixture comparison is incomplete because ratings are unavailable for one or both clubs.";
-            result.innerHTML = '<div class="builder-transfer-metric ' + deltaClass + '"><span>Projected points change</span><strong>' + sign + delta.toFixed(2) + '</strong><small>per player, for the current prediction horizon</small></div><div class="builder-transfer-stats"><span>Budget change<strong>' + (costDelta > 0 ? "+" : "") + '£' + costDelta.toFixed(1) + 'm</strong></span><span>New player<strong>' + esc(priceText(inPlayer)) + '</strong></span><span>Availability<strong>' + (inStatus.unavailable ? "Flagged" : inStatus.doubtful ? "Doubtful" : inStatus.limited ? "Check status" : "No flag shown") + '</strong></span></div>' + fixtureComparison + '<p class="builder-transfer-fixture-note">' + esc(fixtureNote) + '</p>' + (availabilityNote ? '<p class="builder-transfer-warning">' + esc(availabilityNote) + '</p>' : '') + (outStatus.unavailable ? '<p class="builder-transfer-warning">The outgoing player has an availability flag too.</p>' : '');
+            const netSign = netDelta > 0 ? "+" : "";
+            const netClass = netDelta > 0 ? "positive" : netDelta < 0 ? "negative" : "neutral";
+            result.innerHTML = '<div class="builder-transfer-metric ' + deltaClass + '"><span>Projected points change before hit</span><strong>' + sign + delta.toFixed(2) + '</strong><small>per player, for the current prediction horizon</small></div><div class="builder-transfer-net ' + netClass + '"><span>Estimated net after transfer hit</span><strong>' + netSign + netDelta.toFixed(2) + ' pts</strong><small>Includes a ' + hitCost + '-point hit (' + extraTransfers + ' extra transfer' + (extraTransfers === 1 ? '' : 's') + ' × 4). This is a simple estimate, not a full squad-level simulation.</small></div><div class="builder-transfer-stats"><span>Budget change<strong>' + (costDelta > 0 ? "+" : "") + '£' + costDelta.toFixed(1) + 'm</strong></span><span>New player<strong>' + esc(priceText(inPlayer)) + '</strong></span><span>Availability<strong>' + (inStatus.unavailable ? "Flagged" : inStatus.doubtful ? "Doubtful" : inStatus.limited ? "Check status" : "No flag shown") + '</strong></span></div>' + fixtureComparison + '<p class="builder-transfer-fixture-note">' + esc(fixtureNote) + '</p>' + (availabilityNote ? '<p class="builder-transfer-warning">' + esc(availabilityNote) + '</p>' : '') + (outStatus.unavailable ? '<p class="builder-transfer-warning">The outgoing player has an availability flag too.</p>' : '');
         }
         list.addEventListener("click", event => {
             const button = event.target.closest("[data-builder-add]");
