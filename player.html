@@ -596,7 +596,7 @@
         }
     
         /* Profile information polish */
-        .profile-team-line {
+        .profile-club-crest{width:28px;height:28px;object-fit:contain;display:inline-block;vertical-align:middle;flex:0 0 auto}.profile-team-line {
             display:inline-flex;
             align-items:center;
             gap:8px;
@@ -1010,6 +1010,9 @@
             "Aston Villa": "#670e36"
         };
 
+        const clubBadgeIds = {"Arsenal":3,"Aston Villa":7,"Bournemouth":91,"Brentford":94,"Brighton":36,"Brighton and Hove Albion":36,"Burnley":90,"Chelsea":8,"Crystal Palace":31,"Everton":11,"Fulham":54,"Leeds":2,"Leeds United":2,"Liverpool":14,"Manchester City":43,"Man City":43,"Manchester United":1,"Man Utd":1,"Newcastle":4,"Newcastle United":4,"Nottingham Forest":17,"Nott'm Forest":17,"Sunderland":56,"Tottenham":6,"Spurs":6,"West Ham":21,"Wolves":39,"Wolverhampton Wanderers":39,"Coventry City":9,"Hull City":88,"Ipswich Town":40,"Leicester City":13,"Southampton":20,"Norwich City":18};
+const clubBadgeUrl = name => clubBadgeIds[String(name || "").trim()] ? "https://resources.premierleague.com/premierleague/badges/50/t" + clubBadgeIds[String(name || "").trim()] + ".png" : "";
+
         const shirtMarks = {
             "Arsenal": "ARS",
             "Bournemouth": "BOU",
@@ -1104,7 +1107,7 @@
                             getTeamVisual(profile.name, "profile", team) +
                             '<h1>' + escapeHtml(profile.name) + '</h1>' +
                             '<div class="profile-team-line" style="--profile-team-colour:' + (teamAccentColours[team] || "#5b8cff") + '">' +
-                                '<span class="profile-team-dot"></span>' + escapeHtml(shirtMarks[team] || "FPL") + ' · ' + escapeHtml(team) +
+                                (clubBadgeUrl(team) ? '<img class="profile-club-crest" src="' + clubBadgeUrl(team) + '" alt="" loading="lazy" onerror="this.style.display=&quot;none&quot;">' : '') + escapeHtml(team) +
                             '</div>' +
                             '<div class="fixture-line">' +
                                 escapeHtml(fixture.home || "—") + ' ' + (fixture.is_home ? 'vs' : 'at') + ' ' + escapeHtml(fixture.away || fixture.opponent || "—") +
