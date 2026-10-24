@@ -1945,6 +1945,61 @@ body[data-theme="light"] .hero-stat span {
         .history-player-points{font-weight:750;font-variant-numeric:tabular-nums}
         .history-player-range{grid-column:2/4;color:var(--text-muted);font-size:.74rem;margin-top:-5px}
         @media(max-width:700px){.history-explorer-head{align-items:stretch;flex-direction:column}.history-gameweek-label{max-width:none}.history-explorer-grid{grid-template-columns:1fr}.history-explorer{padding:16px}}
+
+/* ScoutXI accuracy dashboard — navy surfaces with restrained blue accents */
+.performance-dashboard{max-width:1240px!important}
+.performance-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin:0 0 28px;padding:30px 32px;border:1px solid var(--border);border-radius:22px;background:linear-gradient(125deg,#101c34 0%,#142747 62%,#172f55 100%);color:#f5f8ff;position:relative;overflow:hidden}
+.performance-hero:after{content:"";position:absolute;width:270px;height:270px;right:-95px;top:-150px;border:1px solid rgba(104,157,255,.22);border-radius:50%;box-shadow:0 0 0 28px rgba(104,157,255,.035),0 0 0 58px rgba(104,157,255,.025);pointer-events:none}
+.performance-kicker,.performance-panel-kicker{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:800;letter-spacing:.14em;color:#91b9ff}
+.performance-live-dot,.performance-status-dot{width:7px;height:7px;border-radius:50%;background:#5d9cff;box-shadow:0 0 0 4px rgba(93,156,255,.14)}
+.performance-hero h2{margin:12px 0 8px!important;color:#fff!important;font-size:clamp(28px,4vw,42px)!important;letter-spacing:-.045em!important;line-height:1.1!important}
+.performance-hero h2 span{color:#80adff}
+.performance-hero p{max-width:670px;margin:0;color:#c1cee3;font-size:13px;line-height:1.7}
+.performance-status{position:relative;z-index:1;display:inline-flex;align-items:center;gap:9px;flex-shrink:0;padding:10px 13px;border:1px solid rgba(145,185,255,.22);border-radius:999px;background:rgba(255,255,255,.045);color:#d8e5fa;font-size:11px;font-weight:700}
+.performance-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:16px}
+.performance-stat{min-width:0;padding:21px 20px 19px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:0 8px 26px rgba(7,20,45,.06)}
+.performance-stat-primary{border-color:rgba(69,124,245,.42);background:linear-gradient(145deg,rgba(49,92,245,.12),var(--surface) 78%)}
+.performance-stat-label{display:block;margin-bottom:12px;color:var(--muted);font-size:11px;font-weight:700}
+.performance-stat strong{display:block;color:var(--text);font-size:clamp(21px,2.4vw,29px);line-height:1.2;letter-spacing:-.035em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.performance-stat-primary strong{color:#75a5ff;font-size:clamp(19px,2vw,26px)}
+.performance-stat small{display:block;margin-top:9px;color:var(--muted);font-size:10px;line-height:1.55}
+.performance-note{display:flex;align-items:flex-start;gap:10px;margin:0 0 20px;padding:13px 15px;border:1px solid rgba(69,124,245,.2);border-radius:12px;background:rgba(49,92,245,.055);color:var(--muted);font-size:11px;line-height:1.65}
+.performance-note-mark{display:inline-flex;align-items:center;justify-content:center;flex:0 0 18px;width:18px;height:18px;border-radius:50%;background:rgba(49,92,245,.14);color:#75a5ff;font-size:11px;font-weight:900}
+.performance-content-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:16px;align-items:start}
+.performance-panel{min-width:0;padding:21px;border:1px solid var(--border);border-radius:17px;background:var(--surface)}
+.performance-panel-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:17px}
+.performance-panel-kicker{font-size:9px;color:#6495ff}
+.performance-panel-heading h3,.performance-baseline h3{margin:5px 0 0!important;color:var(--text);font-size:17px!important;letter-spacing:-.025em}
+.performance-panel-meta{flex-shrink:0;padding:6px 8px;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:9px;font-weight:700}
+.performance-panel-intro{margin:0 0 14px;color:var(--muted);font-size:11px;line-height:1.65}
+.performance-baseline{display:grid;grid-template-columns:42px minmax(0,1fr);gap:16px;margin-top:16px;padding:22px;border:1px solid var(--border);border-radius:17px;background:var(--surface)}
+.performance-baseline-icon{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(69,124,245,.24);border-radius:12px;background:rgba(49,92,245,.1);color:#6495ff;font-size:22px;font-weight:800}
+.performance-baseline h3{margin-bottom:8px!important}
+.performance-baseline p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.performance-benchmark-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:17px}
+.performance-benchmark-grid>div{padding:12px;border:1px solid var(--border);border-radius:11px;background:var(--surface-soft)}
+.performance-benchmark-grid span,.performance-benchmark-grid small{display:block;color:var(--muted);font-size:9px}
+.performance-benchmark-grid strong{display:block;margin:5px 0;color:var(--text);font-size:20px;font-variant-numeric:tabular-nums}
+.accuracy-trend-content{margin-top:0!important;overflow-x:auto;color:var(--muted);font-size:11px;line-height:1.65}
+.accuracy-trend-summary{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:13px}
+.accuracy-trend-chip{padding:7px 10px;border:1px solid var(--border);border-radius:9px;background:var(--surface-soft);color:var(--muted);font-size:10px}
+.accuracy-trend-chip strong{margin-left:6px;color:var(--text);font-variant-numeric:tabular-nums}
+.accuracy-trend-table{width:100%;border-collapse:collapse;min-width:340px;text-align:left}
+.accuracy-trend-table th,.accuracy-trend-table td{padding:10px 8px;border-bottom:1px solid var(--border);white-space:nowrap}
+.accuracy-trend-table th{color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.06em}
+.accuracy-trend-table td{color:var(--text);font-size:11px;font-variant-numeric:tabular-nums}
+.accuracy-trend-table tr:last-child td{border-bottom:0}
+.accuracy-trend-content>p{margin:12px 0 0;color:var(--muted);font-size:10px;line-height:1.65}
+.accuracy-mini-chart{display:flex;align-items:flex-end;gap:8px;height:104px;margin:14px 0 17px;padding:12px 12px 0;border-bottom:1px solid var(--border);border-radius:10px 10px 0 0;background:linear-gradient(180deg,rgba(49,92,245,.07),transparent)}
+.accuracy-mini-chart-item{display:flex;flex:1;min-width:0;height:100%;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px}
+.accuracy-mini-chart-bar{width:min(28px,72%);min-height:4px;border-radius:5px 5px 0 0;background:linear-gradient(180deg,#7eabff,#376bf0);box-shadow:0 3px 10px rgba(49,92,245,.14)}
+.accuracy-mini-chart-item span{color:var(--muted);font-size:8px;line-height:1.2}
+body[data-theme="light"] .performance-hero{background:linear-gradient(125deg,#10234a,#183b77 70%,#214b91);border-color:#d4e0f7}
+body[data-theme="light"] .performance-stat-primary strong{color:#315cf5}
+body[data-theme="light"] .performance-stat-primary{background:linear-gradient(145deg,rgba(49,92,245,.08),#fff 80%)}
+@media(max-width:950px){.performance-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.performance-content-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.performance-hero{align-items:flex-start;flex-direction:column;padding:23px 20px}.performance-status{align-self:flex-start}.performance-stat-grid{gap:9px}.performance-stat{padding:16px 14px}.performance-stat-label{font-size:10px}.performance-stat small{font-size:9px}.performance-panel{padding:16px}.performance-panel-heading{flex-direction:column}.performance-baseline{grid-template-columns:1fr;padding:17px}.performance-benchmark-grid{gap:7px}.performance-benchmark-grid>div{padding:9px}.performance-benchmark-grid strong{font-size:17px}}
+
 </style>
     <link rel="stylesheet" href="ui-refresh.css">
 </head>
@@ -2350,83 +2405,89 @@ body[data-theme="light"] .hero-stat span {
         </div>
     </section>
 <section class="info-section" id="performance">
-
-    <div class="section">
-
-        <div class="section-title">
-            <h2>Model Performance</h2>
-            <p>Previous controlled walk-forward backtest: 2025/26 Gameweeks 11–38, using the four-season archive before expansion. The seven-season archive is being re-evaluated now.</p>
+    <div class="section performance-dashboard">
+        <div class="performance-hero">
+            <div>
+                <span class="performance-kicker"><span class="performance-live-dot"></span> SCOUTXI MODEL INTELLIGENCE</span>
+                <h2>Prediction <span>performance</span></h2>
+                <p>See how ScoutXI projections compare with real FPL points. We separate measured results from historical backtests, so every number has context.</p>
+            </div>
+            <div class="performance-status"><span class="performance-status-dot"></span><span>Transparent tracking</span></div>
         </div>
 
-        <div class="model-data-panel">
-            <div class="model-data-heading">
-                <div>
-                    <span class="section-kicker">Training data & validation</span>
-                    <h3>More data. Measured improvement.</h3>
-                    <p>The model is rebuilt from historical player records and evaluated against gameweeks it has not seen. We only report an accuracy change when the backtest or completed-gameweek results support it.</p>
+        <div class="performance-stat-grid">
+            <article class="performance-stat performance-stat-primary">
+                <span class="performance-stat-label">Latest scored gameweek</span>
+                <strong id="current-accuracy-value">Awaiting results</strong>
+                <small id="current-accuracy-detail">Waiting for official points to match a frozen prediction snapshot.</small>
+            </article>
+            <article class="performance-stat">
+                <span class="performance-stat-label">Average MAE</span>
+                <strong id="accuracy-mean-mae">—</strong>
+                <small>Lower is better · across scored gameweeks</small>
+            </article>
+            <article class="performance-stat">
+                <span class="performance-stat-label">Average RMSE</span>
+                <strong id="accuracy-mean-rmse">—</strong>
+                <small>Highlights larger misses</small>
+            </article>
+            <article class="performance-stat">
+                <span class="performance-stat-label">Gameweeks measured</span>
+                <strong id="accuracy-total-gameweeks">0</strong>
+                <small id="accuracy-total-players">No player results scored yet</small>
+            </article>
+        </div>
+
+        <div class="performance-note" id="model-accuracy-note" role="status"><span class="performance-note-mark">i</span><span>Realised accuracy will appear once official points can be matched to saved pre-match predictions. No improvement is claimed before results are available.</span></div>
+
+        <div class="performance-content-grid">
+            <article class="performance-panel performance-trend-panel" aria-live="polite">
+                <div class="performance-panel-heading">
+                    <div><span class="performance-panel-kicker">TRACK RECORD</span><h3>Gameweek accuracy trend</h3></div>
+                    <span class="performance-panel-meta" id="accuracy-trend-count">Waiting for scored gameweeks</span>
                 </div>
-                <span class="model-data-badge"><span class="status-dot"></span> Validation-led</span>
-            </div>
-            <div class="model-data-grid">
-                <article class="model-data-card"><span>Historical training archive</span><strong>4 seasons</strong><small>2019/20–2025/26 completed-season player data (7 seasons)</small></article>
-                <article class="model-data-card"><span>Model inputs</span><strong>Player + fixture</strong><small>Recent form, minutes, xG/xA, historical ability, team strength and opponent context</small></article>
-                <article class="model-data-card"><span>Latest completed GW score</span><strong id="current-accuracy-value">Awaiting results</strong><small id="current-accuracy-detail">A score appears after a frozen prediction snapshot can be matched to actual points.</small></article>
-            </div>
-            <div class="model-accuracy-note" id="model-accuracy-note" role="status">Accuracy tracking is separate from the historical benchmark below. No new improvement is claimed until realized results are available.</div>
-            <div class="accuracy-trend-panel" aria-live="polite">
-                <div class="accuracy-trend-heading"><strong>Completed gameweek trend</strong><span id="accuracy-trend-count">Waiting for scored gameweeks</span></div>
-                <div id="accuracy-trend-content" class="accuracy-trend-content">As completed gameweeks are matched to saved predictions, their results will appear here.</div>
-            </div>
-            <div class="accuracy-trend-panel" aria-live="polite">
-                <div class="accuracy-trend-heading"><strong>Prediction error diagnostics</strong><span id="accuracy-diagnostics-count">Waiting for official results</span></div>
-                <div id="accuracy-diagnostics-content" class="accuracy-trend-content">Once a saved gameweek has official results, this panel will show where errors are concentrated.</div>
-            </div>
-            <div class="model-backtest-context"><strong>What the previous four-season backtest said:</strong> compared with the rolling-form baseline (MAE 0.9871, RMSE 1.9365, R² 0.3111), the Phase 4 model has a slightly higher MAE (0.9884) but lower RMSE (1.9296) and higher R² (0.3160). That is a mixed result, not proof of a universal accuracy improvement.</div>
+                <div id="accuracy-trend-content" class="accuracy-trend-content">As completed gameweeks are scored, the trend and results table will appear here.</div>
+            </article>
+            <article class="performance-panel performance-diagnostics-panel" aria-live="polite">
+                <div class="performance-panel-heading">
+                    <div><span class="performance-panel-kicker">ERROR ANALYSIS</span><h3>Where predictions miss</h3></div>
+                    <span class="performance-panel-meta" id="accuracy-diagnostics-count">Awaiting results</span>
+                </div>
+                <p class="performance-panel-intro">Breakdowns by position, confidence and expected minutes help show where the model performs well — and where it needs work.</p>
+                <div id="accuracy-diagnostics-content" class="accuracy-trend-content">Diagnostics will appear when official results can be matched to a saved prediction snapshot.</div>
+            </article>
         </div>
 
-        <div class="info-grid">
-
-            <div class="info-card">
-                <h3>MAE</h3>
-                <p>
-                    0.9884 average absolute prediction error across 28 unseen gameweeks.
-                </p>
+        <article class="performance-baseline">
+            <div class="performance-baseline-icon" aria-hidden="true">↗</div>
+            <div>
+                <span class="performance-panel-kicker">HISTORICAL VALIDATION</span>
+                <h3>Walk-forward backtest benchmark</h3>
+                <p>The previous Phase 4 evaluation compared the model with a rolling-form baseline over 28 unseen gameweeks. It was a mixed result: the model's MAE was slightly higher, while RMSE and R² were better. The seven-season archive is being re-evaluated; this benchmark is not the same as live, realised accuracy.</p>
+                <div class="performance-benchmark-grid">
+                    <div><span>Phase 4 MAE</span><strong>0.9884</strong><small>Baseline 0.9871</small></div>
+                    <div><span>Phase 4 RMSE</span><strong>1.9296</strong><small>Baseline 1.9365</small></div>
+                    <div><span>Phase 4 R²</span><strong>0.3160</strong><small>Baseline 0.3111</small></div>
+                </div>
             </div>
+        </article>
+    </div>
 
-            <div class="info-card">
-                <h3>RMSE</h3>
-                <p>
-                    1.9296, with larger prediction errors weighted more heavily.
-                </p>
-            </div>
-
-            <div class="info-card">
-                <h3>R²</h3>
-                <p>
-                    0.3160 on the same walk-forward evaluation window.
-                </p>
-            </div>
-
+    <section class="section gw5-results-section" id="gw5-results">
+        <div class="section-title">
+            <span class="section-kicker">Verified gameweek</span>
+            <h2>GW5 Model Benchmark</h2>
+            <p>The frozen Gameweek 5 projections compared with the final player points.</p>
         </div>
-
-    </div>
-
-
-<section class="section gw5-results-section" id="gw5-results">
-    <div class="section-title">
-        <span class="section-kicker">Verified gameweek</span>
-        <h2>GW5 Model Benchmark</h2>
-        <p>The frozen Gameweek 5 projections compared with the final player points.</p>
-    </div>
-    <div class="gw5-results-grid" id="gw5-results-grid">
-        <div class="gw5-result-stat"><span>Top-3 hits</span><strong>—</strong><small>Loading benchmark...</small></div>
-        <div class="gw5-result-stat"><span>Hit rate</span><strong>—</strong><small>Of 30 frozen predictions</small></div>
-        <div class="gw5-result-stat"><span>GW5 MAE</span><strong>—</strong><small>Prediction error</small></div>
-        <div class="gw5-result-stat"><span>GW5 RMSE</span><strong>—</strong><small>Larger errors weighted more heavily</small></div>
-    </div>
-    <div class="gw5-result-note" id="gw5-result-note">Loading verified Gameweek 5 results...</div>
-    <div class="gw5-fixtures" id="gw5-fixtures"></div>
-</section>
+        <div class="gw5-results-grid" id="gw5-results-grid">
+            <div class="gw5-result-stat"><span>Top-3 hits</span><strong>—</strong><small>Loading benchmark...</small></div>
+            <div class="gw5-result-stat"><span>Hit rate</span><strong>—</strong><small>Of 30 frozen predictions</small></div>
+            <div class="gw5-result-stat"><span>GW5 MAE</span><strong>—</strong><small>Prediction error</small></div>
+            <div class="gw5-result-stat"><span>GW5 RMSE</span><strong>—</strong><small>Larger errors weighted more heavily</small></div>
+        </div>
+        <div class="gw5-result-note" id="gw5-result-note">Loading verified Gameweek 5 results...</div>
+        <div class="gw5-fixtures" id="gw5-fixtures"></div>
+    </section>
 </section>           <div class="fixture-modal" id="fixture-modal" hidden><div class="fixture-modal-panel" role="dialog" aria-modal="true" aria-labelledby="fixture-modal-title"><div class="fixture-modal-head"><div class="fixture-modal-topline"><span class="fixture-modal-kicker">Fixture prediction</span><button class="fixture-modal-close" id="fixture-modal-close" type="button" aria-label="Close fixture details">×</button></div><div class="fixture-modal-teams" id="fixture-modal-title"></div></div><div class="fixture-modal-body"><div class="fixture-modal-summary" id="fixture-modal-summary"></div><div class="fixture-modal-list" id="fixture-modal-list"></div><p class="fixture-modal-footer">These are pre-match model projections. Select a player to open their full profile.</p></div></div></div>
 
 <footer class="scout-footer">
@@ -3462,17 +3523,17 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 value.textContent = "Awaiting results";
                 detail.textContent = data.reason === "no published snapshot"
                     ? "A frozen prediction snapshot is needed before the completed-gameweek comparison can run."
-                    : "The latest gameweek does not yet have enough matched realized player results.";
-                note.textContent = "No fresh realized-accuracy result is published yet. This is intentional: the site will not present a new score or claim an improvement until actual points can be matched to predictions.";
+                    : "The latest gameweek does not yet have enough matched realised player results.";
+                note.innerHTML = '<span class="performance-note-mark">i</span><span>No fresh realised-accuracy result is published yet. This is deliberate: the site will not claim an improvement until actual points can be matched to frozen predictions.</span>';
                 return;
             }
             value.textContent = "GW" + data.gameweek + " · MAE " + Number(data.mae).toFixed(2);
             detail.textContent = Number(data.players_evaluated).toLocaleString() + " featured predictions compared with actual points · RMSE " + Number(data.rmse).toFixed(2);
-            note.textContent = "Measured from frozen pre-match top-three predictions per fixture. This is a featured-player sample, not accuracy across every player or a guarantee of future performance.";
+            note.innerHTML = '<span class="performance-note-mark">i</span><span>Measured from frozen pre-match predictions. Snapshot scope: ' + (data.prediction_scope === "all_players" ? "full eligible-player pool" : "featured top-three picks per fixture") + '. Results are retrospective, not a guarantee of future performance.</span>';
         } catch (error) {
             value.textContent = "Not available";
             detail.textContent = "The published accuracy file could not be loaded.";
-            note.textContent = "Accuracy results are temporarily unavailable. Historical benchmark figures remain separate from realized gameweek results.";
+            note.innerHTML = '<span class="performance-note-mark">i</span><span>Accuracy results are temporarily unavailable. Historical benchmark figures remain separate from realised gameweek results.</span>';
         }
     }
 
@@ -3480,28 +3541,47 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         const content = document.getElementById("accuracy-trend-content");
         const count = document.getElementById("accuracy-trend-count");
         if (!content || !count) return;
+        const meanMaeNode = document.getElementById("accuracy-mean-mae");
+        const meanRmseNode = document.getElementById("accuracy-mean-rmse");
+        const totalGwsNode = document.getElementById("accuracy-total-gameweeks");
+        const totalPlayersNode = document.getElementById("accuracy-total-players");
         try {
             const response = await fetch("prediction_accuracy_history.json?ts=" + Date.now());
             if (!response.ok) throw new Error("Accuracy trend not published");
             const data = await response.json();
             const rows = Array.isArray(data.gameweeks) ? data.gameweeks.slice().sort((a,b) => Number(b.gameweek)-Number(a.gameweek)) : [];
             count.textContent = rows.length + (rows.length === 1 ? " scored gameweek" : " scored gameweeks");
+            if (totalGwsNode) totalGwsNode.textContent = String(rows.length);
             if (!rows.length) {
-                content.textContent = "No completed gameweeks have been scored yet. Results will be added automatically when official points are available.";
+                if (meanMaeNode) meanMaeNode.textContent = "—";
+                if (meanRmseNode) meanRmseNode.textContent = "—";
+                if (totalPlayersNode) totalPlayersNode.textContent = "No player results scored yet";
+                content.innerHTML = '<div class="performance-empty"><p>No completed gameweeks have been scored yet. This dashboard will populate automatically when official points are matched to frozen predictions.</p></div>';
                 return;
             }
+            const valid = rows.filter(row => Number.isFinite(Number(row.mae)) && Number.isFinite(Number(row.rmse)));
+            const meanMae = valid.length ? valid.reduce((sum,row) => sum + Number(row.mae), 0) / valid.length : null;
+            const meanRmse = valid.length ? valid.reduce((sum,row) => sum + Number(row.rmse), 0) / valid.length : null;
+            if (meanMaeNode) meanMaeNode.textContent = meanMae == null ? "—" : meanMae.toFixed(2);
+            if (meanRmseNode) meanRmseNode.textContent = meanRmse == null ? "—" : meanRmse.toFixed(2);
+            if (totalPlayersNode) totalPlayersNode.textContent = rows.reduce((sum,row) => sum + Number(row.players_evaluated || 0), 0).toLocaleString() + " player-gameweek comparisons";
             const recent = rows.slice(0, 8);
-            const meanMae = rows.reduce((sum,row) => sum + Number(row.mae || 0), 0) / rows.length;
-            const meanRmse = rows.reduce((sum,row) => sum + Number(row.rmse || 0), 0) / rows.length;
+            const maxMae = Math.max(...recent.map(row => Number(row.mae) || 0), 0.1);
+            const chart = '<div class="accuracy-mini-chart" role="img" aria-label="Mean absolute error by recent gameweek; shorter bars indicate lower error">' +
+                recent.slice().reverse().map(row => {
+                    const mae = Number(row.mae) || 0;
+                    const height = Math.max(6, Math.round((mae / maxMae) * 66));
+                    return '<div class="accuracy-mini-chart-item" title="GW' + Number(row.gameweek) + ' · MAE ' + mae.toFixed(2) + '"><div class="accuracy-mini-chart-bar" style="height:' + height + 'px"></div><span>GW' + Number(row.gameweek) + '</span></div>';
+                }).join("") + '</div>';
             content.innerHTML =
                 '<div class="accuracy-trend-summary">' +
-                    '<span class="accuracy-trend-chip">Mean MAE<strong>' + meanMae.toFixed(2) + '</strong></span>' +
-                    '<span class="accuracy-trend-chip">Mean RMSE<strong>' + meanRmse.toFixed(2) + '</strong></span>' +
+                    '<span class="accuracy-trend-chip">Mean MAE<strong>' + (meanMae == null ? "—" : meanMae.toFixed(2)) + '</strong></span>' +
+                    '<span class="accuracy-trend-chip">Mean RMSE<strong>' + (meanRmse == null ? "—" : meanRmse.toFixed(2)) + '</strong></span>' +
                     '<span class="accuracy-trend-chip">Scored GWs<strong>' + rows.length + '</strong></span>' +
-                '</div>' +
+                '</div>' + chart +
                 '<table class="accuracy-trend-table"><thead><tr><th>Gameweek</th><th>Players</th><th>MAE ↓</th><th>RMSE ↓</th><th>Bias</th></tr></thead><tbody>' +
                 recent.map(row => '<tr><td>GW' + Number(row.gameweek) + '</td><td>' + Number(row.players_evaluated || 0) + '</td><td>' + Number(row.mae).toFixed(2) + '</td><td>' + Number(row.rmse).toFixed(2) + '</td><td>' + (Number(row.mean_error) > 0 ? '+' : '') + Number(row.mean_error).toFixed(2) + '</td></tr>').join("") +
-                '</tbody></table><p>Lower MAE/RMSE is better. Bias above zero means predictions were higher than actual points on average. These are featured top-three picks per fixture, not all-player accuracy.</p>';
+                '</tbody></table><p>Lower MAE and RMSE are better. Positive bias means predictions were higher than actual points on average. Player counts reflect the scope of each saved snapshot; older featured-player samples are not full-pool accuracy.</p>';
         } catch (error) {
             count.textContent = "No trend data yet";
             content.textContent = "The trend table will populate as completed gameweeks are measured.";
