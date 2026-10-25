@@ -2,15 +2,15 @@
   "season": "2026/27",
   "data_gameweek": 8,
   "next_gameweek": 9,
-  "generated_at_utc": "2026-10-24T23:28:36.613440+00:00",
+  "generated_at_utc": "2026-10-25T04:55:43.504332+00:00",
   "picks": [
     {
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 3.2,
+      "ownership": 3.3,
       "prediction": 5.272026,
-      "differential_score": 5.103,
+      "differential_score": 5.098,
       "price": 6.0,
       "form": 5.7,
       "fixture": {
@@ -42,9 +42,9 @@
       "name": "Vuskovic",
       "team": "Brighton",
       "position": "Defender",
-      "ownership": 6.3,
+      "ownership": 6.4,
       "prediction": 4.926827,
-      "differential_score": 4.616,
+      "differential_score": 4.612,
       "price": 5.1,
       "form": 6.3,
       "fixture": {
@@ -59,10 +59,10 @@
       "name": "N.Jackson",
       "team": "Aston Villa",
       "position": "Forward",
-      "ownership": 5.2,
-      "prediction": 4.739261,
-      "differential_score": 4.493,
-      "price": 6.6,
+      "ownership": 6.0,
+      "prediction": 4.732173,
+      "differential_score": 4.448,
+      "price": 6.7,
       "form": 8.0,
       "fixture": {
         "home": "Aston Villa",
@@ -73,20 +73,20 @@
       }
     },
     {
-      "name": "Iwobi",
-      "team": "Fulham",
+      "name": "Neto",
+      "team": "Chelsea",
       "position": "Midfielder",
-      "ownership": 1.4,
-      "prediction": 4.224733,
-      "differential_score": 4.166,
-      "price": 5.4,
-      "form": 6.0,
+      "ownership": 3.7,
+      "prediction": 4.461883,
+      "differential_score": 4.297,
+      "price": 6.6,
+      "form": 7.7,
       "fixture": {
-        "home": "Aston Villa",
-        "away": "Fulham",
-        "is_home": false,
-        "kickoff": "2026-10-31T20:00:00",
-        "match_id": "26-27-prem-aston-villa-vs-fulham"
+        "home": "Chelsea",
+        "away": "Man Utd",
+        "is_home": true,
+        "kickoff": "2026-10-31T12:30:00",
+        "match_id": "26-27-prem-chelsea-vs-manchester-united"
       }
     }
   ]
