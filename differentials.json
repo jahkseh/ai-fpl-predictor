@@ -2,15 +2,15 @@
   "season": "2026/27",
   "data_gameweek": 8,
   "next_gameweek": 9,
-  "generated_at_utc": "2026-10-25T11:40:14.203379+00:00",
+  "generated_at_utc": "2026-10-25T16:34:38.600952+00:00",
   "picks": [
     {
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 3.3,
+      "ownership": 3.4,
       "prediction": 5.272026,
-      "differential_score": 5.098,
+      "differential_score": 5.093,
       "price": 6.0,
       "form": 5.7,
       "fixture": {
@@ -25,9 +25,9 @@
       "name": "Doku",
       "team": "Man City",
       "position": "Midfielder",
-      "ownership": 3.6,
+      "ownership": 3.7,
       "prediction": 4.946467,
-      "differential_score": 4.768,
+      "differential_score": 4.763,
       "price": 7.5,
       "form": 6.7,
       "fixture": {
@@ -59,9 +59,9 @@
       "name": "N.Jackson",
       "team": "Aston Villa",
       "position": "Forward",
-      "ownership": 6.0,
+      "ownership": 6.3,
       "prediction": 4.732173,
-      "differential_score": 4.448,
+      "differential_score": 4.434,
       "price": 6.7,
       "form": 8.0,
       "fixture": {
