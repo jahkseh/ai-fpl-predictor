@@ -38,6 +38,16 @@
     <div class="story-top"><span class="story-label">Form watch</span><span class="story-chip">Trend signals</span></div>
     <div class="story-body"><h2>Who’s trending?</h2><p>Form compared with points-per-game as a simple recent-performance signal.</p><div id="riserStories" class="story-list"><div class="news-empty">Checking form…</div></div></div>
   </article>
+
+  <article class="story">
+    <div class="story-top"><span class="story-label">Model outlook</span><span class="story-chip" id="forecastGw">Current forecast</span></div>
+    <div class="story-body"><h2>Predicted points leaders</h2><p>Highest model projections for the target gameweek, with minutes and confidence context where available.</p><div id="modelStories" class="story-list"><div class="news-empty">Loading model forecasts…</div></div><div class="story-meta" id="modelMeta">Uses ScoutXI's published prediction output.</div></div>
+  </article>
+  <article class="story">
+    <div class="story-top"><span class="story-label">Forecast movers</span><span class="story-chip">Since last run</span></div>
+    <div class="story-body"><h2>Predictions on the move</h2><p>Players whose expected points have changed most between the latest two model runs.</p><div id="moverStories" class="story-list"><div class="news-empty">Checking prediction changes…</div></div><div class="story-meta" id="moverMeta">Changes show model revisions, not guaranteed future performance.</div></div>
+  </article>
+
   <article class="story story-wide">
     <div class="story-top"><span class="story-label">Fixture desk</span><span class="story-chip" id="fixtureDeskGw">Upcoming fixtures</span></div>
     <div class="story-body"><h2>Fixtures to keep an eye on</h2><p>Next scheduled matches from the official fixture feed. This is not yet a modelled fixture-difficulty rating.</p><div id="fixtureStories" class="story-list"><div class="news-empty">Loading fixture desk…</div></div></div>
@@ -77,7 +87,7 @@
 </main>
 <script>
 (function(){
-const $=id=>document.getElementById(id);let snapshot=null,mode='players',page=0,pageSize=25,playerRows=[],fixtureRows=[];
+const $=id=>document.getElementById(id);let snapshot=null,predictions=null,audit=null,mode='players',page=0,pageSize=25,playerRows=[],fixtureRows=[];
 const esc=value=>String(value??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,d=1)=>v===null||v===undefined||v===''?'—':Number(v).toLocaleString(undefined,{maximumFractionDigits:d});
 const pos={1:'Goalkeeper',2:'Defender',3:'Midfielder',4:'Forward'};
@@ -108,8 +118,28 @@ function renderNewsroom(){
  const notes=playerRows.filter(p=>p.news&&p.news.trim()&&p.status!=='a').sort((a,b)=>{const rank={i:0,s:1,d:2,u:3};return (rank[a.status]??4)-(rank[b.status]??4)}).slice(0,5);
  $('newsStories').innerHTML=notes.length?notes.map(p=>storyItem(p.name,p.team+' · '+(statusLabel[p.status]||'Status update'),p.status==='i'?'Injured':p.status==='d'?'Doubtful':p.status==='s'?'Suspended':'Unavailable',p.news)).join(''):'<div class="news-empty">No non-available player news is present in the current snapshot.</div>';
 }
+
+function normalizeName(value){return String(value||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^a-z0-9]/g,'')}
+function renderPredictionNewsroom(){
+ const all=predictions&&Array.isArray(predictions.all_players)?predictions.all_players:[];
+ const gw=(predictions&&predictions.gameweek)||snapshot.target_gameweek;
+ $('forecastGw').textContent='GW '+(gw??'—');
+ if(!all.length){$('modelStories').innerHTML='<div class="news-empty">Model forecasts are not available. The prediction file may be missing or still updating.</div>';$('modelMeta').textContent='Forecast data unavailable';}
+ else{
+  const eligible=all.filter(p=>Number.isFinite(Number(p.prediction))&&(p.expected_minutes==null||Number(p.expected_minutes)>=45));
+  eligible.sort((a,b)=>Number(b.prediction)-Number(a.prediction));
+  $('modelStories').innerHTML=eligible.slice(0,5).map(p=>{const match=playerRows.find(s=>normalizeName(s.name)===normalizeName(p.name));const club=p.team||p.team_name||(match&&match.team)||'Team not matched';const context=[club,p.expected_minutes!=null?Math.round(Number(p.expected_minutes))+' expected mins':null,p.confidence?String(p.confidence)+' confidence':null].filter(Boolean).join(' · ');return storyItem(p.name,context,Number(p.prediction).toFixed(2)+' pts',p.fixture_home&&p.fixture_away?p.fixture_home+' vs '+p.fixture_away:(p.fixture?String(p.fixture):''))}).join('')||'<div class="news-empty">No eligible model projections found.</div>';
+  $('modelMeta').textContent='GW '+(gw??'—')+' · '+eligible.length+' projections with numeric values'+(predictions.generated_at?' · Updated '+predictions.generated_at:'')+'. Projections are estimates, not guarantees.';
+ }
+ const changes=audit&&Array.isArray(audit.largest_changes)?audit.largest_changes:[];
+ const movers=changes.filter(x=>Number.isFinite(Number(x.change))).sort((a,b)=>Number(b.change)-Number(a.change));
+ const rises=movers.filter(x=>Number(x.change)>0).slice(0,3),falls=movers.filter(x=>Number(x.change)<0).sort((a,b)=>Number(a.change)-Number(b.change)).slice(0,2);
+ const display=[...rises,...falls];
+ $('moverStories').innerHTML=display.length?display.map(p=>storyItem(p.name,(p.change>0?'Projection increased':'Projection decreased')+(p.expected_minutes!=null?' · '+Math.round(Number(p.expected_minutes))+' expected mins':''),(p.change>0?'+':'')+Number(p.change).toFixed(2)+' pts',(p.new_confidence||p.old_confidence||'')+' confidence')).join(''):'<div class="news-empty">No comparison available yet, or the audit has no material changes.</div>';
+ $('moverMeta').textContent=audit&&audit.comparison_available?'Compared '+(audit.players_compared||0)+' players in the latest model refresh.':'A previous prediction run is required to show forecast changes.';
+}
 function renderCoverage(c){const items=[['Player records',true,(c.players||0)+' players'],['Fixture list',true,(c.fixtures||0)+' fixtures'],['FPL injury/status fields',!!c.injury_status_fields,'From FPL-published fields'],['Confirmed team news',!!c.confirmed_team_news,c.confirmed_team_news?'Integrated':'Not integrated yet'],['Cup appearances',!!c.cup_appearances,c.cup_appearances?'Integrated':'Not integrated yet'],['Expected goals (xG)',!!c.expected_goals_data,c.expected_goals_data?'Integrated':'Not integrated yet'],['Betting market data',!!c.betting_market_data,c.betting_market_data?'Integrated':'Not integrated yet']];$('coverageGrid').innerHTML=items.map(i=>'<div class="coverage-item '+(i[1]?'yes':'no')+'"><strong>'+(i[1]?'✓ ':'○ ')+esc(i[0])+'</strong><span>'+esc(i[2])+'</span></div>').join('');$('coverageNote').textContent=c.reason||'The snapshot includes only the sources listed in its metadata. Missing supplementary sources are not inferred or fabricated.'}
-async function init(){try{const response=await fetch('intelligence_snapshot.json?cache='+(Date.now()),{cache:'no-store'});if(!response.ok)throw new Error('Snapshot request returned '+response.status+'. Check that intelligence_snapshot.json is published on the main branch.');snapshot=await response.json();playerRows=Array.isArray(snapshot.players)?snapshot.players:[];fixtureRows=Array.isArray(snapshot.fixtures)?snapshot.fixtures:[];$('updated').textContent=snapshot.collected_at?new Date(snapshot.collected_at).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short',timeZone:'UTC'})+' UTC':'Timestamp unavailable';$('gw').textContent='Target Gameweek '+(snapshot.target_gameweek??'—')+' · Season '+(snapshot.season||'—');$('playerCount').textContent=playerRows.length.toLocaleString();$('fixtureCount').textContent=fixtureRows.length.toLocaleString();$('availabilityCount').textContent=playerRows.filter(x=>x.news).length.toLocaleString();fillSelect('teamFilter',playerRows.map(x=>x.team));fillSelect('fixtureTeamFilter',[...fixtureRows.map(x=>x.home_team),...fixtureRows.map(x=>x.away_team)]);[...new Set(fixtureRows.map(x=>x.gameweek).filter(x=>x!==null&&x!==undefined))].sort((a,b)=>a-b).forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent='Gameweek '+g;$('gameweekFilter').appendChild(o)});renderCoverage(snapshot.coverage||{});renderNewsroom();render()}catch(err){$('error').classList.remove('hidden');$('error').textContent='Could not load the snapshot: '+err.message;$('tableBody').innerHTML='<tr><td colspan="9" class="empty">The data file could not be loaded.</td></tr>';$('recordSubtitle').textContent='Snapshot unavailable';$('resultCount').textContent='No data loaded'}}
+async function init(){try{const response=await fetch('intelligence_snapshot.json?cache='+(Date.now()),{cache:'no-store'});if(!response.ok)throw new Error('Snapshot request returned '+response.status+'. Check that intelligence_snapshot.json is published on the main branch.');snapshot=await response.json();playerRows=Array.isArray(snapshot.players)?snapshot.players:[];fixtureRows=Array.isArray(snapshot.fixtures)?snapshot.fixtures:[];$('updated').textContent=snapshot.collected_at?new Date(snapshot.collected_at).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short',timeZone:'UTC'})+' UTC':'Timestamp unavailable';$('gw').textContent='Target Gameweek '+(snapshot.target_gameweek??'—')+' · Season '+(snapshot.season||'—');$('playerCount').textContent=playerRows.length.toLocaleString();$('fixtureCount').textContent=fixtureRows.length.toLocaleString();$('availabilityCount').textContent=playerRows.filter(x=>x.news).length.toLocaleString();fillSelect('teamFilter',playerRows.map(x=>x.team));fillSelect('fixtureTeamFilter',[...fixtureRows.map(x=>x.home_team),...fixtureRows.map(x=>x.away_team)]);[...new Set(fixtureRows.map(x=>x.gameweek).filter(x=>x!==null&&x!==undefined))].sort((a,b)=>a-b).forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent='Gameweek '+g;$('gameweekFilter').appendChild(o)});renderCoverage(snapshot.coverage||{});renderNewsroom();render();try{const [p,a]=await Promise.all([fetch('predictions.json?cache='+Date.now(),{cache:'no-store'}),fetch('prediction_audit.json?cache='+Date.now(),{cache:'no-store'})]);if(p.ok)predictions=await p.json();if(a.ok)audit=await a.json();renderPredictionNewsroom()}catch(e){renderPredictionNewsroom()}}catch(err){$('error').classList.remove('hidden');$('error').textContent='Could not load the snapshot: '+err.message;$('tableBody').innerHTML='<tr><td colspan="9" class="empty">The data file could not be loaded.</td></tr>';$('recordSubtitle').textContent='Snapshot unavailable';$('resultCount').textContent='No data loaded'}}
 ['playerSearch','positionFilter','teamFilter','statusFilter','sortPlayers','fixtureSearch','gameweekFilter','fixtureTeamFilter','fixtureSort'].forEach(id=>$(id).addEventListener('input',()=>{page=0;render()}));$('playersTab').addEventListener('click',()=>setMode('players'));$('fixturesTab').addEventListener('click',()=>setMode('fixtures'));$('prevPage').addEventListener('click',()=>{page=Math.max(0,page-1);render()});$('nextPage').addEventListener('click',()=>{page++;render()});init();
 })();
 </script>
