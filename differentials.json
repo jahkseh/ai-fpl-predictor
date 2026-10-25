@@ -2,15 +2,32 @@
   "season": "2026/27",
   "data_gameweek": 8,
   "next_gameweek": 9,
-  "generated_at_utc": "2026-10-25T16:34:38.600952+00:00",
+  "generated_at_utc": "2026-10-25T19:10:43.332399+00:00",
   "picks": [
+    {
+      "name": "Thiago",
+      "team": "Brentford",
+      "position": "Forward",
+      "ownership": 8.8,
+      "prediction": 6.004571,
+      "differential_score": 5.476,
+      "price": 7.8,
+      "form": 4.3,
+      "fixture": {
+        "home": "Brentford",
+        "away": "Nott'm Forest",
+        "is_home": true,
+        "kickoff": "2026-10-31T15:00:00",
+        "match_id": "26-27-prem-brentford-vs-nottingham-forest"
+      }
+    },
     {
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 3.4,
+      "ownership": 3.6,
       "prediction": 5.272026,
-      "differential_score": 5.093,
+      "differential_score": 5.082,
       "price": 6.0,
       "form": 5.7,
       "fixture": {
@@ -25,9 +42,9 @@
       "name": "Doku",
       "team": "Man City",
       "position": "Midfielder",
-      "ownership": 3.7,
+      "ownership": 3.8,
       "prediction": 4.946467,
-      "differential_score": 4.763,
+      "differential_score": 4.759,
       "price": 7.5,
       "form": 6.7,
       "fixture": {
@@ -39,54 +56,37 @@
       }
     },
     {
-      "name": "Vuskovic",
-      "team": "Brighton",
-      "position": "Defender",
-      "ownership": 6.4,
-      "prediction": 4.926827,
-      "differential_score": 4.612,
-      "price": 5.1,
-      "form": 6.3,
-      "fixture": {
-        "home": "Man City",
-        "away": "Brighton",
-        "is_home": false,
-        "kickoff": "2026-10-31T15:00:00",
-        "match_id": "26-27-prem-manchester-city-vs-brighton-hove-albion"
-      }
-    },
-    {
-      "name": "N.Jackson",
-      "team": "Aston Villa",
-      "position": "Forward",
-      "ownership": 6.3,
-      "prediction": 4.732173,
-      "differential_score": 4.434,
-      "price": 6.7,
-      "form": 8.0,
-      "fixture": {
-        "home": "Aston Villa",
-        "away": "Fulham",
-        "is_home": true,
-        "kickoff": "2026-10-31T20:00:00",
-        "match_id": "26-27-prem-aston-villa-vs-fulham"
-      }
-    },
-    {
-      "name": "Neto",
-      "team": "Chelsea",
+      "name": "Barcola",
+      "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 3.7,
-      "prediction": 4.461883,
-      "differential_score": 4.297,
-      "price": 6.6,
-      "form": 7.7,
+      "ownership": 3.6,
+      "prediction": 4.859426,
+      "differential_score": 4.684,
+      "price": 8.0,
+      "form": 4.0,
       "fixture": {
-        "home": "Chelsea",
-        "away": "Man Utd",
+        "home": "Liverpool",
+        "away": "Arsenal",
         "is_home": true,
-        "kickoff": "2026-10-31T12:30:00",
-        "match_id": "26-27-prem-chelsea-vs-manchester-united"
+        "kickoff": "2026-11-01T16:30:00",
+        "match_id": "26-27-prem-liverpool-vs-arsenal"
+      }
+    },
+    {
+      "name": "Wirtz",
+      "team": "Liverpool",
+      "position": "Midfielder",
+      "ownership": 5.2,
+      "prediction": 4.725528,
+      "differential_score": 4.48,
+      "price": 7.2,
+      "form": 4.3,
+      "fixture": {
+        "home": "Liverpool",
+        "away": "Arsenal",
+        "is_home": true,
+        "kickoff": "2026-11-01T16:30:00",
+        "match_id": "26-27-prem-liverpool-vs-arsenal"
       }
     }
   ]
