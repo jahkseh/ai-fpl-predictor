@@ -50,7 +50,9 @@ jobs:
           PY
       - name: Commit updated intelligence snapshot
         run: |
-          if git diff --quiet -- intelligence_snapshot.json; then
+          # git diff ignores untracked files; use git status so the first
+          # generated snapshot is committed as well as later tracked updates.
+          if [ -z "$(git status --porcelain -- intelligence_snapshot.json)" ]; then
             echo "Snapshot unchanged; no commit needed."
             exit 0
           fi
