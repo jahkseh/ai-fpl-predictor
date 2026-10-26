@@ -1,5 +1,17 @@
 {
   "season": "2026/27",
-  "gameweeks": [],
-  "gameweek_count": 0
+  "gameweeks": [
+    {
+      "gameweek": 8,
+      "players_evaluated": 28,
+      "players_unmatched": 2,
+      "mae": 2.901,
+      "rmse": 3.838,
+      "mean_error": 0.764,
+      "p10_p90_coverage": 0.75,
+      "source": "official_fpl_api",
+      "note": "Measured against frozen top-three predictions per fixture matched to official FPL points. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples; this is not full-squad accuracy."
+    }
+  ],
+  "gameweek_count": 1
 }
