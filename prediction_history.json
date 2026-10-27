@@ -368,9 +368,9 @@
             {
               "rank": 3,
               "name": "Tavernier",
-              "prediction": 4.202033,
+              "prediction": 4.288975,
               "prediction_p10": 1.248529,
-              "prediction_p90": 8.126786,
+              "prediction_p90": 8.238889,
               "confidence": "low",
               "expected_minutes": 62.389181
             }
