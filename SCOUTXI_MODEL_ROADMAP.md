@@ -147,3 +147,10 @@ Reviewed 27 October 2026. This is a source-selection decision, not a claim that 
 - football-data.org free coverage: https://www.football-data.org/coverage
 - football-data.org pricing and free-tier limits: https://www.football-data.org/pricing
 - football-data.org API documentation: https://www.football-data.org/documentation/api
+
+
+## Step 2 — establish a trustworthy accuracy baseline
+
+The initial published Gameweek 8 result is documented in `SCOUTXI_ACCURACY_BASELINE.md`. It is a legacy top-three-per-fixture sample (28 evaluated players, 2 unmatched, MAE 2.901, RMSE 3.838, mean error +0.764, P10–P90 coverage 75%). These numbers are descriptive only and are not a full-squad accuracy claim.
+
+The next gate is to verify that the next newly frozen gameweek snapshot genuinely contains the full eligible-player pool, then evaluate it after completion. Keep old top-three snapshots separate from full-pool results, and wait for multiple comparable gameweeks before tuning features or claiming a trend.
