@@ -3570,7 +3570,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const data = await response.json();
             const rows = Array.isArray(data.gameweeks) ? data.gameweeks.slice().sort((a,b) => Number(b.gameweek)-Number(a.gameweek)) : [];
             count.textContent = rows.length + (rows.length === 1 ? " scored gameweek" : " scored gameweeks");
-            if (totalGwsNode) totalGwsNode.textContent = String(rows.length);
+            if (totalGwsNode) totalGwsNode.textContent = String(rows.filter(row => row.prediction_scope === "full_player_pool").length);
             if (!rows.length) {
                 if (meanMaeNode) meanMaeNode.textContent = "—";
                 if (meanRmseNode) meanRmseNode.textContent = "—";
@@ -3578,29 +3578,32 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 content.innerHTML = '<div class="performance-empty"><p>No completed gameweeks have been scored yet. This dashboard will populate automatically when official points are matched to frozen predictions.</p></div>';
                 return;
             }
-            const valid = rows.filter(row => Number.isFinite(Number(row.mae)) && Number.isFinite(Number(row.rmse)));
+            const scopeOf = row => row.prediction_scope || (/top-three/i.test(String(row.note || "")) ? "fixture_top_three" : "unknown");
+            const fullPoolRows = rows.filter(row => scopeOf(row) === "full_player_pool");
+            const valid = fullPoolRows.filter(row => Number.isFinite(Number(row.mae)) && Number.isFinite(Number(row.rmse)));
             const meanMae = valid.length ? valid.reduce((sum,row) => sum + Number(row.mae), 0) / valid.length : null;
             const meanRmse = valid.length ? valid.reduce((sum,row) => sum + Number(row.rmse), 0) / valid.length : null;
             if (meanMaeNode) meanMaeNode.textContent = meanMae == null ? "—" : meanMae.toFixed(2);
             if (meanRmseNode) meanRmseNode.textContent = meanRmse == null ? "—" : meanRmse.toFixed(2);
-            if (totalPlayersNode) totalPlayersNode.textContent = rows.reduce((sum,row) => sum + Number(row.players_evaluated || 0), 0).toLocaleString() + " player-gameweek comparisons";
+            if (totalPlayersNode) totalPlayersNode.textContent = valid.reduce((sum,row) => sum + Number(row.players_evaluated || 0), 0).toLocaleString() + " full-pool player-gameweek comparisons";
             const recent = rows.slice(0, 8);
-            const maxMae = Math.max(...recent.map(row => Number(row.mae) || 0), 0.1);
+            const chartRows = recent.filter(row => scopeOf(row) === "full_player_pool");
+            const maxMae = Math.max(...chartRows.map(row => Number(row.mae) || 0), 0.1);
             const chart = '<div class="accuracy-mini-chart" role="img" aria-label="Mean absolute error by recent gameweek; shorter bars indicate lower error">' +
-                recent.slice().reverse().map(row => {
+                chartRows.slice().reverse().map(row => {
                     const mae = Number(row.mae) || 0;
                     const height = Math.max(6, Math.round((mae / maxMae) * 66));
                     return '<div class="accuracy-mini-chart-item" title="GW' + Number(row.gameweek) + ' · MAE ' + mae.toFixed(2) + '"><div class="accuracy-mini-chart-bar" style="height:' + height + 'px"></div><span>GW' + Number(row.gameweek) + '</span></div>';
                 }).join("") + '</div>';
             content.innerHTML =
                 '<div class="accuracy-trend-summary">' +
-                    '<span class="accuracy-trend-chip">Mean MAE<strong>' + (meanMae == null ? "—" : meanMae.toFixed(2)) + '</strong></span>' +
-                    '<span class="accuracy-trend-chip">Mean RMSE<strong>' + (meanRmse == null ? "—" : meanRmse.toFixed(2)) + '</strong></span>' +
-                    '<span class="accuracy-trend-chip">Scored GWs<strong>' + rows.length + '</strong></span>' +
+                    '<span class="accuracy-trend-chip">Full-pool mean MAE<strong>' + (meanMae == null ? "—" : meanMae.toFixed(2)) + '</strong></span>' +
+                    '<span class="accuracy-trend-chip">Full-pool mean RMSE<strong>' + (meanRmse == null ? "—" : meanRmse.toFixed(2)) + '</strong></span>' +
+                    '<span class="accuracy-trend-chip">Full-pool GWs<strong>' + fullPoolRows.length + '</strong></span>' +
                 '</div>' + chart +
-                '<table class="accuracy-trend-table"><thead><tr><th>Gameweek</th><th>Players</th><th>MAE ↓</th><th>RMSE ↓</th><th>Bias</th></tr></thead><tbody>' +
-                recent.map(row => '<tr><td>GW' + Number(row.gameweek) + '</td><td>' + Number(row.players_evaluated || 0) + '</td><td>' + Number(row.mae).toFixed(2) + '</td><td>' + Number(row.rmse).toFixed(2) + '</td><td>' + (Number(row.mean_error) > 0 ? '+' : '') + Number(row.mean_error).toFixed(2) + '</td></tr>').join("") +
-                '</tbody></table><p>Lower MAE and RMSE are better. Positive bias means predictions were higher than actual points on average. Player counts reflect the scope of each saved snapshot; older featured-player samples are not full-pool accuracy.</p>';
+                '<table class="accuracy-trend-table"><thead><tr><th>Gameweek</th><th>Snapshot scope</th><th>Players</th><th>MAE ↓</th><th>RMSE ↓</th><th>Bias</th></tr></thead><tbody>' +
+                recent.map(row => '{ const scope = scopeOf(row); const label = scope === "full_player_pool" ? "Full pool" : scope === "fixture_top_three" ? "Top 3 / fixture" : "Unknown"; return '<tr><td>GW' + Number(row.gameweek) + '</td><td>' + label + '</td><td>' + Number(row.players_evaluated || 0) + '</td><td>' + Number(row.mae).toFixed(2) + '</td><td>' + Number(row.rmse).toFixed(2) + '</td><td>' + (Number(row.mean_error) > 0 ? '+' : '') + Number(row.mean_error).toFixed(2) + '</td></tr>'; }).join("") +
+                '</tbody></table><p>Full-pool summary statistics and chart exclude legacy top-three snapshots. Lower MAE and RMSE are better. Positive bias means predictions were higher than actual points on average.</p>';
         } catch (error) {
             count.textContent = "No trend data yet";
             content.textContent = "The trend table will populate as completed gameweeks are measured.";
