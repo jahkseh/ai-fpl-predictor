@@ -2,8 +2,11 @@
   "available": true,
   "source": "official_fpl_api",
   "gameweek": 8,
+  "prediction_scope": "fixture_top_three",
+  "players_expected": 30,
   "players_evaluated": 28,
   "players_unmatched": 2,
+  "player_match_rate": 0.933,
   "mae": 2.901,
   "rmse": 3.838,
   "mean_error": 0.764,
@@ -175,5 +178,5 @@
       }
     ]
   },
-  "note": "Measured against frozen top-three predictions per fixture matched to official FPL points. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples; this is not full-squad accuracy."
+  "note": "Measured against frozen top-three predictions per fixture matched to official FPL points. Player match rate reflects unmatched player-name records. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples."
 }
