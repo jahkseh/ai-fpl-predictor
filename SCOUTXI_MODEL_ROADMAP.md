@@ -115,3 +115,35 @@ The accuracy report now records the snapshot scope, expected player count and na
 ## Immediate next action
 
 Once the current workflows finish, inspect the data-refresh logs. Then confirm that the first accuracy record is honest about the old top-three-only Gameweek 8 snapshot, and that the next frozen gameweek snapshot captures the full eligible-player pool. Only after those checks should model features be changed.
+
+
+## Step 1 — free-source audit: team news and cup appearances
+
+Reviewed 27 October 2026. This is a source-selection decision, not a claim that either data feed is integrated.
+
+### Confirmed team news
+
+- **Primary, already integrated:** official FPL bootstrap fields (`status`, `news`, and chance-of-playing fields). Treat these as FPL-published availability signals, not independent confirmation.
+- **Candidate for manual cross-checking:** WassupFPL's public press-conference page describes a free account and club-by-club availability digests. Its public page does not establish a supported, public API or reuse licence for automated ingestion. Do not scrape the site or ingest its content into the public snapshot until an authorised API/export and terms for reuse are confirmed.
+- **Preferred source if automation is later authorised:** official club and manager press-conference pages, retaining source URL, publication time, player, exact short evidence/quote where permitted, verdict, and confidence. A manually curated link is safer than treating a headline or model-generated summary as a verified fact.
+
+### Domestic and European cup appearances
+
+- The current official FPL API provides Premier League fantasy-season minutes, not a complete cross-competition player-minute history. It cannot by itself confirm cup rotation.
+- football-data.org's free plan documents fixtures/schedules and delayed scores; its pricing page places line-ups/substitutions outside the basic free plan. It is therefore not sufficient on its own for reliable cup-minute ingestion.
+- A third-party lineup API with a free quota is only a *candidate* until its current competition coverage, cup line-up/substitution fields, retention/reuse terms, and quota are verified directly. Do not make it a production dependency based only on a third-party comparison page.
+
+### Decision and acceptance criteria
+
+1. Keep the current snapshot flags explicit: `confirmed_team_news: false` and `cup_appearances: false`. Never infer these values from the presence of FPL injury text or fixture lists.
+2. Do not add a new API key, paid plan, brittle scraping job, or unverified data source merely to make coverage look complete.
+3. Before implementation, verify the provider's own documentation and terms; test a representative current-season player and cup match; confirm the response contains player-level evidence and timestamps; and document attribution/retention limits.
+4. For team news, mark information as pre-deadline only when its publication timestamp precedes the prediction cutoff. Preserve the original source link and distinguish confirmed, doubtful, and unknown.
+5. For cup rotation, store appearances, starts, minutes and competition separately from Premier League minutes; use null for missing data, not zero.
+6. Any new feature must pass schema/coverage checks and an out-of-time backtest against the existing baseline before it can influence predictions.
+
+**Source references checked:**
+- WassupFPL press-conference feed: https://www.wassupfpl.com/press-conference
+- football-data.org free coverage: https://www.football-data.org/coverage
+- football-data.org pricing and free-tier limits: https://www.football-data.org/pricing
+- football-data.org API documentation: https://www.football-data.org/documentation/api
