@@ -133,10 +133,13 @@ jobs:
             --history prediction_accuracy_history.json
 
       - name: Validate generated data
+        env:
+          TARGET_GAMEWEEK: ${{ steps.gw.outputs.gameweek }}
         run: |
           python - <<'PY'
           import json
           import math
+          import os
           from pathlib import Path
 
           predictions = json.loads(Path("predictions.json").read_text(encoding="utf-8"))
@@ -169,7 +172,30 @@ jobs:
                   rating = fixture.get("difficulty")
                   assert rating is None or 1 <= int(rating) <= 5, f"Invalid FDR for {team.get('team')}"
                   assert fixture.get("source") in {"official_fpl", "model_estimate", "unavailable"}, f"Unknown FDR source: {fixture.get('source')}"
-          print(f"Validated {len(players)} player predictions, {len(live['players'])} live player records and {len(ranked_teams)} fixture schedules.")
+
+          # Accuracy depends on a genuinely frozen full-player pool, not just
+          # the top three players per fixture. Fail before publishing if history
+          # silently falls back to the legacy format or loses player records.
+          history = json.loads(Path("prediction_history.json").read_text(encoding="utf-8"))
+          target_gw = int(os.environ["TARGET_GAMEWEEK"])
+          snapshots = [
+              item for item in history.get("gameweeks", [])
+              if int(item.get("gameweek", -1)) == target_gw
+          ]
+          assert len(snapshots) == 1, f"Expected exactly one history snapshot for GW{target_gw}, found {len(snapshots)}"
+          snapshot = snapshots[0]
+          assert snapshot.get("prediction_scope") == "full_player_pool", (
+              f"GW{target_gw} history must preserve full_player_pool; got {snapshot.get('prediction_scope')}"
+          )
+          expected = int(snapshot.get("players_expected", 0))
+          recorded = sum(len(fixture.get("players", [])) for fixture in snapshot.get("predictions", []))
+          assert expected == len(players), (
+              f"GW{target_gw} history expected {expected} players but current prediction pool has {len(players)}"
+          )
+          assert recorded == expected, (
+              f"GW{target_gw} history recorded {recorded}/{expected} player predictions"
+          )
+          print(f"Validated {len(players)} player predictions, full-pool GW{target_gw} history ({recorded} players), {len(live['players'])} live player records and {len(ranked_teams)} fixture schedules.")
           PY
 
       - name: Commit generated data
