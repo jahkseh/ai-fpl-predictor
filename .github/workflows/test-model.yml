@@ -28,6 +28,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install numpy pandas scikit-learn
 
+      - name: Test prediction history snapshot coverage
+        run: python -m unittest model.test_prediction_history
+
       - name: Run Phase 3/4 walk-forward backtest
         run: |
           python model/phase3_backtest.py --output phase3_backtest.json
