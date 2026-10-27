@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 8,
   "next_gameweek": 9,
-  "generated_at_utc": "2026-10-27T09:13:36.302928+00:00",
+  "generated_at_utc": "2026-10-27T15:30:00.852055+00:00",
   "picks": [
     {
       "name": "Thiago",
@@ -25,9 +25,9 @@
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 4.1,
+      "ownership": 4.2,
       "prediction": 5.272026,
-      "differential_score": 5.056,
+      "differential_score": 5.051,
       "price": 6.0,
       "form": 5.7,
       "fixture": {
