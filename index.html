@@ -2165,6 +2165,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
     <div class="builder-pitch-card panel-surface">
         <div class="builder-pitch-head"><h3>Squad pitch view</h3><span id="builder-pitch-caption">15-player squad · grouped by position</span></div>
         <div class="builder-pitch" id="builder-pitch"><div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div><div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div></div>
+        <div class="builder-xi-summary" id="builder-xi-summary" aria-live="polite"><div><span>Starting XI projection</span><strong id="builder-xi-points">—</strong></div><div><span>Captain bonus included</span><strong id="builder-xi-captain-points">—</strong></div><p>Based on current player projections; the captain’s points are doubled in the total.</p></div>
         <div class="builder-bench" id="builder-bench"></div>
         <div class="builder-selection-insights" id="builder-selection-insights" aria-live="polite">
             <div class="builder-selection-insights-head"><h4>Why these players?</h4><p>Selection notes based on projected points, expected minutes and any available availability flags.</p></div>
@@ -3807,6 +3808,12 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
             const aiCaptain = [...startingPlayers].sort((a,b)=>selectionScore(b)-selectionScore(a))[0];
             if (!captainManuallySet || !squad.some(p=>p._builderId===captainId)) captainId = aiCaptain?._builderId || null;
             const effectiveCaptainId = captainId;
+            const xiProjection = startingPlayers.reduce((sum,p)=>sum+pointsOf(p),0);
+            const captainProjection = startingPlayers.find(p=>p._builderId===effectiveCaptainId);
+            const xiPointsNode = document.getElementById("builder-xi-points");
+            const xiCaptainNode = document.getElementById("builder-xi-captain-points");
+            if (xiPointsNode) xiPointsNode.textContent = startingPlayers.length === 11 ? (xiProjection + (captainProjection ? pointsOf(captainProjection) : 0)).toFixed(2) + " pts" : "—";
+            if (xiCaptainNode) xiCaptainNode.textContent = captainProjection ? "+" + pointsOf(captainProjection).toFixed(2) + " pts" : "—";
             const rows = [fwds,mids,defs,gk];
             const pitch = document.getElementById("builder-pitch");
             pitch.innerHTML = '<div class="builder-pitch-line"></div><div class="builder-pitch-circle"></div>' + (squad.length ? rows.map(row => '<div class="builder-pitch-row">' + (row.length ? row.map(p => '<div class="builder-pitch-player ' + (p._builderId===effectiveCaptainId?'is-captain':'') + '"><span class="builder-pitch-shirt">' + (p._builderId===effectiveCaptainId?'C':({Goalkeeper:"GK",Defender:"D",Midfielder:"M",Forward:"F"}[p._builderPosition]||"•")) + '</span><span class="builder-pitch-name" title="' + esc(p.name) + '">' + esc(p.name) + '</span><span class="builder-pitch-points">' + pointsOf(p).toFixed(1) + ' pts</span></div>').join("") : '<div class="builder-pitch-empty">No players in this line</div>') + '</div>').join("") : '<div class="builder-pitch-empty">Add players to see your squad take shape on the pitch.</div>');
