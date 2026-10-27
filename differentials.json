@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 8,
   "next_gameweek": 9,
-  "generated_at_utc": "2026-10-26T20:37:17.255932+00:00",
+  "generated_at_utc": "2026-10-27T00:33:45.759282+00:00",
   "picks": [
     {
       "name": "Thiago",
@@ -25,9 +25,9 @@
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 3.8,
+      "ownership": 4.0,
       "prediction": 5.272026,
-      "differential_score": 5.072,
+      "differential_score": 5.061,
       "price": 6.0,
       "form": 5.7,
       "fixture": {
@@ -42,9 +42,9 @@
       "name": "Doku",
       "team": "Man City",
       "position": "Midfielder",
-      "ownership": 3.9,
+      "ownership": 4.0,
       "prediction": 4.946467,
-      "differential_score": 4.754,
+      "differential_score": 4.749,
       "price": 7.5,
       "form": 6.7,
       "fixture": {
@@ -59,10 +59,10 @@
       "name": "Barcola",
       "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 3.7,
-      "prediction": 4.916097,
-      "differential_score": 4.734,
-      "price": 8.0,
+      "ownership": 3.8,
+      "prediction": 4.924279,
+      "differential_score": 4.737,
+      "price": 8.1,
       "form": 4.0,
       "fixture": {
         "home": "Liverpool",

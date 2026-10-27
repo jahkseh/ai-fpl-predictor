@@ -515,9 +515,9 @@
             {
               "rank": 1,
               "name": "Barcola",
-              "prediction": 4.916097,
+              "prediction": 4.924279,
               "prediction_p10": 0.936058,
-              "prediction_p90": 9.461538,
+              "prediction_p90": 9.475385,
               "confidence": "low",
               "expected_minutes": 69.560071
             },
