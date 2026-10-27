@@ -2,6 +2,11 @@ name: ScoutXI Daily Intelligence Snapshot
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'model/build_intelligence_snapshot.py'
+      - '.github/workflows/daily-intelligence.yml'
   schedule:
     # 08:00 UTC. GitHub cron uses UTC, so this is 08:00 UK in winter and
     # 09:00 UK during British Summer Time; DST-aware scheduling is a later option.
@@ -40,8 +45,34 @@ jobs:
               raise SystemExit(f"Snapshot missing required fields: {sorted(missing)}")
           if not data["players"]:
               raise SystemExit("Snapshot contains no players")
+          if not data["fixtures"]:
+              raise SystemExit("Snapshot contains no fixtures")
           if not data["sources"] or any(source.get("status") != "ok" for source in data["sources"]):
               raise SystemExit("One or more data sources failed")
+          # These keys must exist even when the official API omits a value.
+          required_player_fields = {
+              "id", "name", "expected_goals", "expected_assists",
+              "expected_goal_involvements"
+          }
+          missing_player_fields = {
+              field for player in data["players"]
+              for field in required_player_fields - player.keys()
+          }
+          if missing_player_fields:
+              raise SystemExit(
+                  f"Player records missing expected fields: {sorted(missing_player_fields)}"
+              )
+          has_xg_xa = any(
+              player.get("expected_goals") is not None
+              or player.get("expected_assists") is not None
+              for player in data["players"]
+          )
+          if bool(data["coverage"].get("expected_goals_data")) != has_xg_xa:
+              raise SystemExit("xG/xA coverage flag does not match populated player fields")
+          if data["coverage"].get("players") != len(data["players"]):
+              raise SystemExit("Player coverage count does not match snapshot")
+          if data["coverage"].get("fixtures") != len(data["fixtures"]):
+              raise SystemExit("Fixture coverage count does not match snapshot")
           collected = datetime.fromisoformat(data["collected_at"].replace("Z", "+00:00"))
           age_seconds = (datetime.now(timezone.utc) - collected).total_seconds()
           if age_seconds < -60 or age_seconds > 600:
