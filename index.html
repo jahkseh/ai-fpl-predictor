@@ -3602,7 +3602,7 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                     '<span class="accuracy-trend-chip">Full-pool GWs<strong>' + fullPoolRows.length + '</strong></span>' +
                 '</div>' + chart +
                 '<table class="accuracy-trend-table"><thead><tr><th>Gameweek</th><th>Snapshot scope</th><th>Players</th><th>MAE ↓</th><th>RMSE ↓</th><th>Bias</th></tr></thead><tbody>' +
-                recent.map(row => '{ const scope = scopeOf(row); const label = scope === "full_player_pool" ? "Full pool" : scope === "fixture_top_three" ? "Top 3 / fixture" : "Unknown"; return '<tr><td>GW' + Number(row.gameweek) + '</td><td>' + label + '</td><td>' + Number(row.players_evaluated || 0) + '</td><td>' + Number(row.mae).toFixed(2) + '</td><td>' + Number(row.rmse).toFixed(2) + '</td><td>' + (Number(row.mean_error) > 0 ? '+' : '') + Number(row.mean_error).toFixed(2) + '</td></tr>'; }).join("") +
+                recent.map(row => { const scope = scopeOf(row); const label = scope === "full_player_pool" ? "Full pool" : scope === "fixture_top_three" ? "Top 3 / fixture" : "Unknown"; return '<tr><td>GW' + Number(row.gameweek) + '</td><td>' + label + '</td><td>' + Number(row.players_evaluated || 0) + '</td><td>' + Number(row.mae).toFixed(2) + '</td><td>' + Number(row.rmse).toFixed(2) + '</td><td>' + (Number(row.mean_error) > 0 ? '+' : '') + Number(row.mean_error).toFixed(2) + '</td></tr>'; }).join("") +
                 '</tbody></table><p>Full-pool summary statistics and chart exclude legacy top-three snapshots. Lower MAE and RMSE are better. Positive bias means predictions were higher than actual points on average.</p>';
         } catch (error) {
             count.textContent = "No trend data yet";
