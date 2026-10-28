@@ -5,76 +5,6 @@
   "players_compared": 649,
   "largest_changes": [
     {
-      "name": "Diomande",
-      "old_prediction": 1.792,
-      "new_prediction": 1.945,
-      "change": 0.153,
-      "old_confidence": "medium",
-      "new_confidence": "low",
-      "expected_minutes": 50.775599,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Vuskovic",
-      "old_prediction": 3.414,
-      "new_prediction": 3.528,
-      "change": 0.114,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 70.996321,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Rashford",
-      "old_prediction": 1.612,
-      "new_prediction": 1.502,
-      "change": -0.11,
-      "old_confidence": "medium",
-      "new_confidence": "medium",
-      "expected_minutes": 11.15634,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "N.Jackson",
-      "old_prediction": 4.732,
-      "new_prediction": 4.678,
-      "change": -0.054,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 66.108198,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Isak",
-      "old_prediction": 4.614,
-      "new_prediction": 4.581,
-      "change": -0.033,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 59.053597,
-      "fixture_difficulty": 5
-    },
-    {
-      "name": "Jo\u00e3o Pedro",
-      "old_prediction": 4.022,
-      "new_prediction": 4.041,
-      "change": 0.019,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 67.051216,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Cunha",
-      "old_prediction": 2.977,
-      "new_prediction": 2.96,
-      "change": -0.017,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 49.856806,
-      "fixture_difficulty": 4
-    },
-    {
       "name": "Manzambi",
       "old_prediction": 5.272,
       "new_prediction": 5.272,
@@ -82,6 +12,16 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 59.113518,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "N.Jackson",
+      "old_prediction": 4.678,
+      "new_prediction": 4.678,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 66.108198,
       "fixture_difficulty": 3
     },
     {
@@ -252,6 +192,66 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 8.56487,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Sessegnon",
+      "old_prediction": 2.391,
+      "new_prediction": 2.391,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 42.964667,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Palacios",
+      "old_prediction": 2.746,
+      "new_prediction": 2.746,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 67.795781,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Affengruber",
+      "old_prediction": 2.289,
+      "new_prediction": 2.289,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 85.38451,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Berge",
+      "old_prediction": 2.271,
+      "new_prediction": 2.271,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 73.058642,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Mings",
+      "old_prediction": 2.203,
+      "new_prediction": 2.203,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 45.607179,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Castagne",
+      "old_prediction": 2.197,
+      "new_prediction": 2.197,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 54.343884,
       "fixture_difficulty": 3
     }
   ]
