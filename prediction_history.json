@@ -319,8 +319,8 @@
             {
               "rank": 1,
               "name": "Manzambi",
-              "prediction": 5.272026,
-              "prediction_p10": 1.358042,
+              "prediction": 5.250139,
+              "prediction_p10": 1.4,
               "prediction_p90": 9.700855,
               "confidence": "low",
               "expected_minutes": 59.113518
@@ -1465,9 +1465,9 @@
             {
               "rank": 3,
               "name": "M.Sangaré",
-              "prediction": 3.901791,
+              "prediction": 3.846674,
               "prediction_p10": 0.5,
-              "prediction_p90": 8.354545,
+              "prediction_p90": 8.274026,
               "confidence": "low",
               "expected_minutes": 58.87764
             },
