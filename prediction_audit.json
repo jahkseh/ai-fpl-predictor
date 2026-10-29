@@ -5,20 +5,10 @@
   "players_compared": 649,
   "largest_changes": [
     {
-      "name": "M.Sangar\u00e9",
-      "old_prediction": 3.902,
-      "new_prediction": 3.847,
-      "change": -0.055,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 58.87764,
-      "fixture_difficulty": 3
-    },
-    {
       "name": "Manzambi",
-      "old_prediction": 5.272,
+      "old_prediction": 5.25,
       "new_prediction": 5.25,
-      "change": -0.022,
+      "change": 0.0,
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 59.113518,
@@ -252,6 +242,16 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 45.607179,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Castagne",
+      "old_prediction": 2.197,
+      "new_prediction": 2.197,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 54.343884,
       "fixture_difficulty": 3
     }
   ]
