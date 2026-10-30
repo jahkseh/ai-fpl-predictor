@@ -2,15 +2,15 @@
   "season": "2026/27",
   "data_gameweek": 8,
   "next_gameweek": 9,
-  "generated_at_utc": "2026-10-29T18:38:46.079712+00:00",
+  "generated_at_utc": "2026-10-30T01:13:27.348826+00:00",
   "picks": [
     {
       "name": "Thiago",
       "team": "Brentford",
       "position": "Forward",
-      "ownership": 9.0,
+      "ownership": 9.1,
       "prediction": 6.021497,
-      "differential_score": 5.48,
+      "differential_score": 5.474,
       "price": 7.8,
       "form": 4.3,
       "fixture": {
@@ -25,9 +25,9 @@
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 4.9,
+      "ownership": 5.1,
       "prediction": 5.250139,
-      "differential_score": 4.993,
+      "differential_score": 4.982,
       "price": 6.1,
       "form": 5.7,
       "fixture": {
