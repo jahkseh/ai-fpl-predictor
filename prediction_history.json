@@ -901,9 +901,9 @@
             {
               "rank": 1,
               "name": "Evanilson",
-              "prediction": 4.600595,
-              "prediction_p10": 1.355844,
-              "prediction_p90": 9.805714,
+              "prediction": 4.743855,
+              "prediction_p10": 1.44375,
+              "prediction_p90": 9.572619,
               "confidence": "low",
               "expected_minutes": 80.058163
             },
@@ -4081,9 +4081,9 @@
             {
               "rank": 16,
               "name": "Havertz",
-              "prediction": 3.178404,
-              "prediction_p10": 0.197647,
-              "prediction_p90": 7.514706,
+              "prediction": 3.157051,
+              "prediction_p10": 0.2,
+              "prediction_p90": 7.653782,
               "confidence": "low",
               "expected_minutes": 42.923852
             },
@@ -4107,21 +4107,21 @@
             },
             {
               "rank": 19,
+              "name": "Calafiori",
+              "prediction": 2.797665,
+              "prediction_p10": 0.363636,
+              "prediction_p90": 6.835714,
+              "confidence": "low",
+              "expected_minutes": 66.065095
+            },
+            {
+              "rank": 20,
               "name": "Gakpo",
               "prediction": 2.789977,
               "prediction_p10": 0.052941,
               "prediction_p90": 7.022222,
               "confidence": "low",
               "expected_minutes": 50.160032
-            },
-            {
-              "rank": 20,
-              "name": "Calafiori",
-              "prediction": 2.777519,
-              "prediction_p10": 0.357273,
-              "prediction_p90": 6.736898,
-              "confidence": "low",
-              "expected_minutes": 66.065095
             },
             {
               "rank": 21,
@@ -4288,7 +4288,7 @@
             {
               "rank": 39,
               "name": "Tzolis",
-              "prediction": 0.868403,
+              "prediction": 0.852801,
               "prediction_p10": 0.0,
               "prediction_p90": 3.0,
               "confidence": "medium",
@@ -6178,9 +6178,9 @@
             {
               "rank": 53,
               "name": "Tomiyasu",
-              "prediction": 0.298737,
+              "prediction": 0.297653,
               "prediction_p10": 0.0,
-              "prediction_p90": 0.875,
+              "prediction_p90": 0.858929,
               "confidence": "high",
               "expected_minutes": 11.654583
             },
