@@ -1,58 +1,24 @@
 {
   "season": "2026/27",
   "data_gameweek": 8,
-  "next_gameweek": 9,
-  "generated_at_utc": "2026-10-31T05:54:22.913832+00:00",
+  "next_gameweek": 10,
+  "generated_at_utc": "2026-10-31T12:42:20.452929+00:00",
   "picks": [
     {
       "name": "Thiago",
       "team": "Brentford",
       "position": "Forward",
       "ownership": 9.4,
-      "prediction": 6.021497,
-      "differential_score": 5.455,
+      "prediction": 5.793051,
+      "differential_score": 5.249,
       "price": 7.8,
       "form": 4.3,
       "fixture": {
-        "home": "Brentford",
-        "away": "Nott'm Forest",
-        "is_home": true,
-        "kickoff": "2026-10-31T15:00:00",
-        "match_id": "26-27-prem-brentford-vs-nottingham-forest"
-      }
-    },
-    {
-      "name": "Manzambi",
-      "team": "Aston Villa",
-      "position": "Midfielder",
-      "ownership": 6.4,
-      "prediction": 5.250139,
-      "differential_score": 4.914,
-      "price": 6.1,
-      "form": 5.7,
-      "fixture": {
-        "home": "Aston Villa",
-        "away": "Fulham",
-        "is_home": true,
-        "kickoff": "2026-10-31T20:00:00",
-        "match_id": "26-27-prem-aston-villa-vs-fulham"
-      }
-    },
-    {
-      "name": "Doku",
-      "team": "Man City",
-      "position": "Midfielder",
-      "ownership": 4.5,
-      "prediction": 4.946467,
-      "differential_score": 4.724,
-      "price": 7.5,
-      "form": 6.7,
-      "fixture": {
-        "home": "Man City",
-        "away": "Brighton",
-        "is_home": true,
-        "kickoff": "2026-10-31T15:00:00",
-        "match_id": "26-27-prem-manchester-city-vs-brighton-hove-albion"
+        "home": "Brighton",
+        "away": "Brentford",
+        "is_home": false,
+        "kickoff": "2026-11-08T14:00:00",
+        "match_id": "26-27-prem-brighton-hove-albion-vs-brentford"
       }
     },
     {
@@ -60,33 +26,67 @@
       "team": "Liverpool",
       "position": "Midfielder",
       "ownership": 4.1,
-      "prediction": 4.924279,
-      "differential_score": 4.722,
+      "prediction": 4.844876,
+      "differential_score": 4.646,
       "price": 8.1,
       "form": 4.0,
       "fixture": {
-        "home": "Liverpool",
-        "away": "Arsenal",
-        "is_home": true,
-        "kickoff": "2026-11-01T16:30:00",
-        "match_id": "26-27-prem-liverpool-vs-arsenal"
+        "home": "Crystal Palace",
+        "away": "Liverpool",
+        "is_home": false,
+        "kickoff": "2026-11-08T14:00:00",
+        "match_id": "26-27-prem-crystal-palace-vs-liverpool"
       }
     },
     {
-      "name": "Wirtz",
-      "team": "Liverpool",
+      "name": "Manzambi",
+      "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 5.0,
-      "prediction": 4.803612,
-      "differential_score": 4.563,
-      "price": 7.2,
-      "form": 4.3,
+      "ownership": 6.4,
+      "prediction": 4.881761,
+      "differential_score": 4.569,
+      "price": 6.1,
+      "form": 5.7,
       "fixture": {
-        "home": "Liverpool",
-        "away": "Arsenal",
+        "home": "Man Utd",
+        "away": "Aston Villa",
+        "is_home": false,
+        "kickoff": "2026-11-08T16:30:00",
+        "match_id": "26-27-prem-manchester-united-vs-aston-villa"
+      }
+    },
+    {
+      "name": "Doku",
+      "team": "Man City",
+      "position": "Midfielder",
+      "ownership": 4.5,
+      "prediction": 4.635398,
+      "differential_score": 4.427,
+      "price": 7.5,
+      "form": 6.7,
+      "fixture": {
+        "home": "Nott'm Forest",
+        "away": "Man City",
+        "is_home": false,
+        "kickoff": "2026-11-07T17:30:00",
+        "match_id": "26-27-prem-nottingham-forest-vs-manchester-city"
+      }
+    },
+    {
+      "name": "Iwobi",
+      "team": "Fulham",
+      "position": "Midfielder",
+      "ownership": 1.4,
+      "prediction": 4.46878,
+      "differential_score": 4.406,
+      "price": 5.4,
+      "form": 6.0,
+      "fixture": {
+        "home": "Fulham",
+        "away": "Newcastle",
         "is_home": true,
-        "kickoff": "2026-11-01T16:30:00",
-        "match_id": "26-27-prem-liverpool-vs-arsenal"
+        "kickoff": "2026-11-07T15:00:00",
+        "match_id": "26-27-prem-fulham-vs-newcastle-united"
       }
     }
   ]
