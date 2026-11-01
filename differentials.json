@@ -2,25 +2,8 @@
   "season": "2026/27",
   "data_gameweek": 9,
   "next_gameweek": 10,
-  "generated_at_utc": "2026-11-01T00:16:31.286812+00:00",
+  "generated_at_utc": "2026-11-01T06:18:54.844853+00:00",
   "picks": [
-    {
-      "name": "Doku",
-      "team": "Man City",
-      "position": "Midfielder",
-      "ownership": 4.5,
-      "prediction": 4.980149,
-      "differential_score": 4.756,
-      "price": 7.5,
-      "form": 6.0,
-      "fixture": {
-        "home": "Nott'm Forest",
-        "away": "Man City",
-        "is_home": false,
-        "kickoff": "2026-11-07T17:30:00",
-        "match_id": "26-27-prem-nottingham-forest-vs-manchester-city"
-      }
-    },
     {
       "name": "Thiago",
       "team": "Brentford",
@@ -56,12 +39,29 @@
       }
     },
     {
+      "name": "Manzambi",
+      "team": "Aston Villa",
+      "position": "Midfielder",
+      "ownership": 6.3,
+      "prediction": 4.810021,
+      "differential_score": 4.507,
+      "price": 6.1,
+      "form": 6.0,
+      "fixture": {
+        "home": "Man Utd",
+        "away": "Aston Villa",
+        "is_home": false,
+        "kickoff": "2026-11-08T16:30:00",
+        "match_id": "26-27-prem-manchester-united-vs-aston-villa"
+      }
+    },
+    {
       "name": "Ouattara",
       "team": "Ipswich Town",
       "position": "Defender",
       "ownership": 1.0,
-      "prediction": 4.451834,
-      "differential_score": 4.407,
+      "prediction": 4.505673,
+      "differential_score": 4.461,
       "price": 4.0,
       "form": 4.8,
       "fixture": {
@@ -77,8 +77,8 @@
       "team": "Chelsea",
       "position": "Midfielder",
       "ownership": 4.8,
-      "prediction": 4.485479,
-      "differential_score": 4.27,
+      "prediction": 4.596433,
+      "differential_score": 4.376,
       "price": 6.6,
       "form": 6.5,
       "fixture": {
