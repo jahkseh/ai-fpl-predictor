@@ -2,68 +2,51 @@
   "season": "2026/27",
   "data_gameweek": 9,
   "next_gameweek": 10,
-  "generated_at_utc": "2026-10-31T19:28:14.304929+00:00",
+  "generated_at_utc": "2026-11-01T00:16:31.286812+00:00",
   "picks": [
     {
-      "name": "Vuskovic",
-      "team": "Brighton",
-      "position": "Defender",
-      "ownership": 7.0,
-      "prediction": 4.863038,
-      "differential_score": 4.523,
-      "price": 5.2,
-      "form": 6.5,
+      "name": "Doku",
+      "team": "Man City",
+      "position": "Midfielder",
+      "ownership": 4.5,
+      "prediction": 4.980149,
+      "differential_score": 4.756,
+      "price": 7.5,
+      "form": 6.0,
+      "fixture": {
+        "home": "Nott'm Forest",
+        "away": "Man City",
+        "is_home": false,
+        "kickoff": "2026-11-07T17:30:00",
+        "match_id": "26-27-prem-nottingham-forest-vs-manchester-city"
+      }
+    },
+    {
+      "name": "Thiago",
+      "team": "Brentford",
+      "position": "Forward",
+      "ownership": 9.2,
+      "prediction": 5.13373,
+      "differential_score": 4.661,
+      "price": 7.8,
+      "form": 5.5,
       "fixture": {
         "home": "Brighton",
         "away": "Brentford",
-        "is_home": true,
+        "is_home": false,
         "kickoff": "2026-11-08T14:00:00",
         "match_id": "26-27-prem-brighton-hove-albion-vs-brentford"
       }
     },
     {
-      "name": "Rudoni",
-      "team": "Coventry City",
-      "position": "Midfielder",
-      "ownership": 0.8,
-      "prediction": 4.463804,
-      "differential_score": 4.428,
-      "price": 4.9,
-      "form": 6.0,
-      "fixture": {
-        "home": "Everton",
-        "away": "Coventry City",
-        "is_home": false,
-        "kickoff": "2026-11-06T20:00:00",
-        "match_id": "26-27-prem-everton-vs-coventry-city"
-      }
-    },
-    {
-      "name": "Muharemović",
-      "team": "Leeds",
-      "position": "Defender",
-      "ownership": 6.1,
-      "prediction": 4.334528,
-      "differential_score": 4.07,
-      "price": 5.1,
-      "form": 4.8,
-      "fixture": {
-        "home": "Leeds",
-        "away": "Spurs",
-        "is_home": true,
-        "kickoff": "2026-11-07T12:30:00",
-        "match_id": "26-27-prem-leeds-united-vs-tottenham-hotspur"
-      }
-    },
-    {
-      "name": "Silva",
+      "name": "Rayan",
       "team": "Bournemouth",
-      "position": "Defender",
-      "ownership": 2.0,
-      "prediction": 4.089475,
-      "differential_score": 4.008,
-      "price": 5.0,
-      "form": 6.0,
+      "position": "Midfielder",
+      "ownership": 2.2,
+      "prediction": 4.611202,
+      "differential_score": 4.51,
+      "price": 6.3,
+      "form": 4.5,
       "fixture": {
         "home": "Ipswich Town",
         "away": "Bournemouth",
@@ -73,20 +56,37 @@
       }
     },
     {
-      "name": "Barcola",
-      "team": "Liverpool",
-      "position": "Midfielder",
-      "ownership": 4.2,
-      "prediction": 4.171422,
-      "differential_score": 3.996,
-      "price": 8.1,
-      "form": 3.0,
+      "name": "Ouattara",
+      "team": "Ipswich Town",
+      "position": "Defender",
+      "ownership": 1.0,
+      "prediction": 4.451834,
+      "differential_score": 4.407,
+      "price": 4.0,
+      "form": 4.8,
       "fixture": {
-        "home": "Crystal Palace",
-        "away": "Liverpool",
+        "home": "Ipswich Town",
+        "away": "Bournemouth",
+        "is_home": true,
+        "kickoff": "2026-11-08T14:00:00",
+        "match_id": "26-27-prem-ipswich-town-vs-afc-bournemouth"
+      }
+    },
+    {
+      "name": "Neto",
+      "team": "Chelsea",
+      "position": "Midfielder",
+      "ownership": 4.8,
+      "prediction": 4.485479,
+      "differential_score": 4.27,
+      "price": 6.6,
+      "form": 6.5,
+      "fixture": {
+        "home": "Sunderland",
+        "away": "Chelsea",
         "is_home": false,
         "kickoff": "2026-11-08T14:00:00",
-        "match_id": "26-27-prem-crystal-palace-vs-liverpool"
+        "match_id": "26-27-prem-sunderland-vs-chelsea"
       }
     }
   ]
