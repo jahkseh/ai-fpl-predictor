@@ -8879,7 +8879,7 @@
             {
               "rank": 1,
               "name": "Iwobi",
-              "prediction": 4.381291,
+              "prediction": 4.404106,
               "prediction_p10": 1.285714,
               "prediction_p90": 9.416667,
               "confidence": "low",
@@ -8897,7 +8897,7 @@
             {
               "rank": 3,
               "name": "Bobb",
-              "prediction": 3.956568,
+              "prediction": 3.923325,
               "prediction_p10": 0.932857,
               "prediction_p90": 8.511538,
               "confidence": "low",
@@ -8915,23 +8915,14 @@
             {
               "rank": 5,
               "name": "Charles",
-              "prediction": 3.296562,
-              "prediction_p10": 0.554545,
-              "prediction_p90": 6.917308,
+              "prediction": 3.236443,
+              "prediction_p10": 0.540909,
+              "prediction_p90": 6.878409,
               "confidence": "low",
               "expected_minutes": 76.732778
             },
             {
               "rank": 6,
-              "name": "Robinson",
-              "prediction": 3.182054,
-              "prediction_p10": 0.6225,
-              "prediction_p90": 6.85,
-              "confidence": "low",
-              "expected_minutes": 75.561384
-            },
-            {
-              "rank": 7,
               "name": "Barnes",
               "prediction": 3.181225,
               "prediction_p10": 0.373864,
@@ -8940,9 +8931,18 @@
               "expected_minutes": 45.497046
             },
             {
+              "rank": 7,
+              "name": "Robinson",
+              "prediction": 3.178415,
+              "prediction_p10": 0.625,
+              "prediction_p90": 6.803333,
+              "confidence": "low",
+              "expected_minutes": 75.561384
+            },
+            {
               "rank": 8,
               "name": "Gonzalo",
-              "prediction": 3.113898,
+              "prediction": 3.111333,
               "prediction_p10": 0.6,
               "prediction_p90": 7.371717,
               "confidence": "low",
@@ -8951,9 +8951,9 @@
             {
               "rank": 9,
               "name": "Castagne",
-              "prediction": 3.011008,
+              "prediction": 2.954018,
               "prediction_p10": 0.301923,
-              "prediction_p90": 6.928182,
+              "prediction_p90": 6.802353,
               "confidence": "low",
               "expected_minutes": 65.167419
             },
@@ -8996,9 +8996,9 @@
             {
               "rank": 14,
               "name": "Bassey",
-              "prediction": 2.515609,
-              "prediction_p10": 0.198182,
-              "prediction_p90": 5.876389,
+              "prediction": 2.521282,
+              "prediction_p10": 0.2,
+              "prediction_p90": 5.8075,
               "confidence": "low",
               "expected_minutes": 84.558736
             },
@@ -9059,9 +9059,9 @@
             {
               "rank": 21,
               "name": "Affengruber",
-              "prediction": 2.083432,
-              "prediction_p10": 0.284416,
-              "prediction_p90": 4.935,
+              "prediction": 2.100155,
+              "prediction_p10": 0.265,
+              "prediction_p90": 5.1025,
               "confidence": "low",
               "expected_minutes": 86.78696
             },
@@ -10688,8 +10688,8 @@
             {
               "rank": 2,
               "name": "N.Jackson",
-              "prediction": 4.43082,
-              "prediction_p10": 1.1225,
+              "prediction": 4.450868,
+              "prediction_p10": 1.125,
               "prediction_p90": 9.405455,
               "confidence": "low",
               "expected_minutes": 73.317762
@@ -10769,29 +10769,29 @@
             {
               "rank": 11,
               "name": "McGinn",
-              "prediction": 2.937773,
-              "prediction_p10": 0.5,
-              "prediction_p90": 6.428571,
+              "prediction": 2.938782,
+              "prediction_p10": 0.55,
+              "prediction_p90": 6.3,
               "confidence": "low",
               "expected_minutes": 73.155847
             },
             {
               "rank": 12,
+              "name": "Goretzka",
+              "prediction": 2.907421,
+              "prediction_p10": 0.295,
+              "prediction_p90": 6.007692,
+              "confidence": "low",
+              "expected_minutes": 35.342868
+            },
+            {
+              "rank": 13,
               "name": "Kamara",
               "prediction": 2.896663,
               "prediction_p10": 0.55,
               "prediction_p90": 6.49375,
               "confidence": "low",
               "expected_minutes": 70.418499
-            },
-            {
-              "rank": 13,
-              "name": "Goretzka",
-              "prediction": 2.889597,
-              "prediction_p10": 0.33,
-              "prediction_p90": 6.0,
-              "confidence": "low",
-              "expected_minutes": 35.342868
             },
             {
               "rank": 14,
@@ -10877,7 +10877,7 @@
             {
               "rank": 23,
               "name": "Alysson",
-              "prediction": 2.155902,
+              "prediction": 2.159243,
               "prediction_p10": 0.099091,
               "prediction_p90": 5.651299,
               "confidence": "low",
@@ -10904,10 +10904,10 @@
             {
               "rank": 26,
               "name": "Pau",
-              "prediction": 1.742692,
+              "prediction": 1.687362,
               "prediction_p10": 0.0,
-              "prediction_p90": 4.17,
-              "confidence": "low",
+              "prediction_p90": 4.0,
+              "confidence": "medium",
               "expected_minutes": 66.71474
             },
             {
@@ -10958,7 +10958,7 @@
             {
               "rank": 32,
               "name": "Garnacho",
-              "prediction": 1.228121,
+              "prediction": 1.217751,
               "prediction_p10": 0.0,
               "prediction_p90": 3.090909,
               "confidence": "medium",

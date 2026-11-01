@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 9,
   "next_gameweek": 10,
-  "generated_at_utc": "2026-11-01T13:36:19.196994+00:00",
+  "generated_at_utc": "2026-11-01T19:54:31.076227+00:00",
   "picks": [
     {
       "name": "Thiago",
@@ -42,9 +42,9 @@
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 6.3,
+      "ownership": 6.6,
       "prediction": 4.810021,
-      "differential_score": 4.507,
+      "differential_score": 4.493,
       "price": 6.1,
       "form": 6.0,
       "fixture": {
@@ -73,20 +73,20 @@
       }
     },
     {
-      "name": "Neto",
-      "team": "Chelsea",
+      "name": "Doku",
+      "team": "Man City",
       "position": "Midfielder",
-      "ownership": 4.8,
-      "prediction": 4.596433,
-      "differential_score": 4.376,
-      "price": 6.6,
-      "form": 6.5,
+      "ownership": 4.6,
+      "prediction": 4.58363,
+      "differential_score": 4.373,
+      "price": 7.5,
+      "form": 5.5,
       "fixture": {
-        "home": "Sunderland",
-        "away": "Chelsea",
+        "home": "Nott'm Forest",
+        "away": "Man City",
         "is_home": false,
-        "kickoff": "2026-11-08T14:00:00",
-        "match_id": "26-27-prem-sunderland-vs-chelsea"
+        "kickoff": "2026-11-07T17:30:00",
+        "match_id": "26-27-prem-nottingham-forest-vs-manchester-city"
       }
     }
   ]
