@@ -155,9 +155,17 @@ jobs:
           assert history["gameweek_count"] == len(history["gameweeks"])
           assert all(len(gw["predictions"]) == 10 for gw in history["gameweeks"])
           assert all(
-              all(len(fixture["players"]) == 3 for fixture in gw["predictions"])
+              fixture.get("players") and isinstance(fixture["players"], list)
               for gw in history["gameweeks"]
+              for fixture in gw["predictions"]
           )
+          for gw in history["gameweeks"]:
+              if gw.get("prediction_scope") == "full_player_pool":
+                  assert all(len(fixture["players"]) > 3 for fixture in gw["predictions"])
+              else:
+                  assert all(len(fixture["players"]) == 3 for fixture in gw["predictions"]), (
+                      f"Legacy snapshot GW{gw.get('gameweek')} should retain its top-three fixture format"
+                  )
           print("Prediction history validation passed.")
 
           print("Phase 3 backtest validation passed.")
