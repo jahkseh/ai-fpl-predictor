@@ -1,0 +1,301 @@
+{
+  "season": "2026/27",
+  "updated_at": "2026-11-02T19:39:21.524487+00:00",
+  "source": "official_fpl_api",
+  "gameweeks": [
+    {
+      "gameweek": 8,
+      "available": true,
+      "players_compared": 28,
+      "mae": 2.87,
+      "within_two": 14,
+      "average_bias": -0.6,
+      "fixtures": [
+        {
+          "home": "Arsenal",
+          "away": "Everton",
+          "players": [
+            {
+              "name": "Gabriel",
+              "rank": 1,
+              "prediction": 4.76,
+              "actual": 17.0,
+              "difference": 12.24,
+              "minutes": 90
+            },
+            {
+              "name": "Rice",
+              "rank": 2,
+              "prediction": 4.56,
+              "actual": 3.0,
+              "difference": -1.56,
+              "minutes": 79
+            },
+            {
+              "name": "\u00d8degaard",
+              "rank": 3,
+              "prediction": 4.42,
+              "actual": 3.0,
+              "difference": -1.42,
+              "minutes": 90
+            }
+          ]
+        },
+        {
+          "home": "Aston Villa",
+          "away": "Man City",
+          "players": [
+            {
+              "name": "Haaland",
+              "rank": 1,
+              "prediction": 6.23,
+              "actual": 8.0,
+              "difference": 1.77,
+              "minutes": 90
+            },
+            {
+              "name": "Manzambi",
+              "rank": 2,
+              "prediction": 5.22,
+              "actual": 1.0,
+              "difference": -4.22,
+              "minutes": 65
+            },
+            {
+              "name": "N.Jackson",
+              "rank": 3,
+              "prediction": 4.31,
+              "actual": 13.0,
+              "difference": 8.69,
+              "minutes": 81
+            }
+          ]
+        },
+        {
+          "home": "Chelsea",
+          "away": "Spurs",
+          "players": [
+            {
+              "name": "Rogers",
+              "rank": 1,
+              "prediction": 5.53,
+              "actual": 1.0,
+              "difference": -4.53,
+              "minutes": 90
+            },
+            {
+              "name": "Palmer",
+              "rank": 2,
+              "prediction": 5.47,
+              "actual": -1.0,
+              "difference": -6.47,
+              "minutes": 79
+            },
+            {
+              "name": "Lacroix",
+              "rank": 3,
+              "prediction": 4.02,
+              "actual": 3.0,
+              "difference": -1.02,
+              "minutes": 90
+            }
+          ]
+        },
+        {
+          "home": "Coventry City",
+          "away": "Fulham",
+          "players": [
+            {
+              "name": "Iwobi",
+              "rank": 1,
+              "prediction": 4.85,
+              "actual": 3.0,
+              "difference": -1.85,
+              "minutes": 73
+            },
+            {
+              "name": "Gonzalo",
+              "rank": 2,
+              "prediction": 4.18,
+              "actual": 2.0,
+              "difference": -2.18,
+              "minutes": 73
+            },
+            {
+              "name": "King",
+              "rank": 3,
+              "prediction": 4.12,
+              "actual": 6.0,
+              "difference": 1.88,
+              "minutes": 80
+            }
+          ]
+        },
+        {
+          "home": "Crystal Palace",
+          "away": "Newcastle",
+          "players": [
+            {
+              "name": "Richards",
+              "rank": 1,
+              "prediction": 4.26,
+              "actual": 3.0,
+              "difference": -1.26,
+              "minutes": 90
+            },
+            {
+              "name": "Wissa",
+              "rank": 2,
+              "prediction": 4.23,
+              "actual": 1.0,
+              "difference": -3.23,
+              "minutes": 13
+            }
+          ]
+        },
+        {
+          "home": "Hull City",
+          "away": "Brentford",
+          "players": [
+            {
+              "name": "Thiago",
+              "rank": 1,
+              "prediction": 5.34,
+              "actual": 5.0,
+              "difference": -0.34,
+              "minutes": 90
+            },
+            {
+              "name": "Belloumi",
+              "rank": 2,
+              "prediction": 4.95,
+              "actual": 4.0,
+              "difference": -0.95,
+              "minutes": 85
+            },
+            {
+              "name": "Egan",
+              "rank": 3,
+              "prediction": 3.78,
+              "actual": 4.0,
+              "difference": 0.22,
+              "minutes": 90
+            }
+          ]
+        },
+        {
+          "home": "Ipswich Town",
+          "away": "Nott'm Forest",
+          "players": [
+            {
+              "name": "Ouattara",
+              "rank": 1,
+              "prediction": 4.59,
+              "actual": 2.0,
+              "difference": -2.59,
+              "minutes": 90
+            },
+            {
+              "name": "Emersonn",
+              "rank": 2,
+              "prediction": 4.43,
+              "actual": 1.0,
+              "difference": -3.43,
+              "minutes": 59
+            },
+            {
+              "name": "Davis",
+              "rank": 3,
+              "prediction": 4.16,
+              "actual": 2.0,
+              "difference": -2.16,
+              "minutes": 90
+            }
+          ]
+        },
+        {
+          "home": "Liverpool",
+          "away": "Brighton",
+          "players": [
+            {
+              "name": "Isak",
+              "rank": 1,
+              "prediction": 4.73,
+              "actual": 9.0,
+              "difference": 4.27,
+              "minutes": 76
+            },
+            {
+              "name": "Wirtz",
+              "rank": 2,
+              "prediction": 4.67,
+              "actual": 6.0,
+              "difference": 1.33,
+              "minutes": 64
+            },
+            {
+              "name": "Kostoulas",
+              "rank": 3,
+              "prediction": 4.03,
+              "actual": 2.0,
+              "difference": -2.03,
+              "minutes": 90
+            }
+          ]
+        },
+        {
+          "home": "Man Utd",
+          "away": "Bournemouth",
+          "players": [
+            {
+              "name": "Evanilson",
+              "rank": 2,
+              "prediction": 4.6,
+              "actual": 6.0,
+              "difference": 1.4,
+              "minutes": 86
+            },
+            {
+              "name": "Cunha",
+              "rank": 3,
+              "prediction": 3.9,
+              "actual": 1.0,
+              "difference": -2.9,
+              "minutes": 45
+            }
+          ]
+        },
+        {
+          "home": "Sunderland",
+          "away": "Leeds",
+          "players": [
+            {
+              "name": "Mukiele",
+              "rank": 1,
+              "prediction": 4.86,
+              "actual": 1.0,
+              "difference": -3.86,
+              "minutes": 51
+            },
+            {
+              "name": "Xhaka",
+              "rank": 2,
+              "prediction": 4.44,
+              "actual": 3.0,
+              "difference": -1.44,
+              "minutes": 90
+            },
+            {
+              "name": "E.Le F\u00e9e",
+              "rank": 3,
+              "prediction": 4.11,
+              "actual": 3.0,
+              "difference": -1.11,
+              "minutes": 78
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
