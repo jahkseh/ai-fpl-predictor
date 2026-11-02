@@ -1937,6 +1937,23 @@ body[data-theme="light"] .hero-stat span {
         .history-explorer-head h3{margin:5px 0 6px;font-size:1.2rem}
         .history-explorer-head p{margin:0;max-width:650px;color:var(--text-muted);font-size:.9rem;line-height:1.5}
         .history-gameweek-label{display:grid;gap:6px;min-width:150px;color:var(--text-muted);font-size:.8rem;font-weight:600}
+        .history-comparison-labels{display:grid;grid-template-columns:minmax(0,1fr) 70px 60px 64px;gap:8px;padding:0 0 7px;color:var(--text-muted);font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+        .history-comparison-labels span:not(:first-child){text-align:right}
+        .history-comparison-row{grid-template-columns:minmax(0,1fr) 70px 60px 64px;gap:8px}
+        .history-player-name{font-weight:650}
+        .history-player-name small{display:block;margin-top:3px;color:var(--text-muted);font-size:.68rem;font-weight:500}
+        .history-player-actual,.history-player-difference{font-size:.88rem;font-variant-numeric:tabular-nums;text-align:right}
+        .history-player-difference.positive,.history-comparison-summary .positive{color:#16a36a}
+        .history-player-difference.negative,.history-comparison-summary .negative{color:#dc6464}
+        .history-player-difference.level,.history-comparison-summary .level{color:var(--text-muted)}
+        .history-comparison-summary{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:4px;padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+        .history-comparison-summary div{min-width:0}
+        .history-comparison-summary span{display:block;color:var(--text-muted);font-size:.68rem;font-weight:650}
+        .history-comparison-summary strong{display:block;margin-top:5px;color:var(--text);font-size:1.05rem;font-variant-numeric:tabular-nums}
+        .history-comparison-summary strong.positive{color:#16a36a}
+        .history-comparison-summary strong.negative{color:#dc6464}
+        @media(max-width:700px){.history-comparison-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+        @media(max-width:420px){.history-comparison-labels,.history-comparison-row{grid-template-columns:minmax(0,1fr) 52px 46px 48px;gap:5px}.history-player-actual,.history-player-difference{font-size:.78rem}.history-player-name{font-size:.82rem}}
         .history-gameweek-label select{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit}
         .history-explorer-status{margin:12px 0;color:var(--text-muted);font-size:.88rem}
         .history-explorer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -2120,7 +2137,7 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
                 <div>
                     <span class="section-kicker">Look back</span>
                     <h3>Gameweek prediction archive</h3>
-                    <p>Review the top three model picks saved for each fixture before that Gameweek. Only frozen snapshots are shown.</p>
+                    <p>Compare ScoutXI’s frozen pre-match predictions with official FPL points for players who actually featured.</p>
                 </div>
                 <label class="history-gameweek-label" for="history-gameweek-select">Saved Gameweek
                     <select id="history-gameweek-select" disabled><option>Loading archive…</option></select>
@@ -3210,35 +3227,107 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
         const grid = document.getElementById("history-explorer-grid");
         if (!select || !status || !grid) return;
 
-        const renderGameweek = (gameweek) => {
-            const snapshot = (window.savedPredictionHistory || []).find(item => Number(item.gameweek) === Number(gameweek));
-            if (!snapshot || !Array.isArray(snapshot.predictions) || !snapshot.predictions.length) {
-                status.textContent = "No saved prediction snapshot is available for this Gameweek.";
+        const normalizePlayerName = value => String(value || "")
+            .normalize("NFKD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, "");
+
+        const normalizeTeamName = value => String(value || "")
+            .toLowerCase()
+            .replace(/&/g, "and")
+            .replace(/[^a-z0-9]/g, "");
+
+        const renderGameweek = (snapshot, actualByName, teamNames) => {
+            const fixtureCards = [];
+            const compared = [];
+
+            (snapshot.predictions || []).forEach(fixture => {
+                const fixtureTeams = [fixture.home, fixture.away].map(normalizeTeamName);
+                const featuredPlayers = [];
+
+                (Array.isArray(fixture.players) ? fixture.players : []).forEach(player => {
+                    const prediction = Number(player.prediction);
+                    if (!Number.isFinite(prediction)) return;
+
+                    const aliases = [player.name, player.web_name, player.full_name]
+                        .map(normalizePlayerName).filter(Boolean);
+                    let candidates = aliases.flatMap(alias => actualByName.get(alias) || []);
+                    candidates = [...new Map(candidates.map(item => [item.id, item])).values()];
+                    if (candidates.length > 1) {
+                        const fixtureCandidates = candidates.filter(item =>
+                            fixtureTeams.includes(normalizeTeamName(teamNames[item.team]))
+                        );
+                        if (fixtureCandidates.length) candidates = fixtureCandidates;
+                    }
+                    if (candidates.length !== 1) return;
+
+                    const actualPlayer = candidates[0];
+                    if (!(actualPlayer.minutes > 0)) return;
+                    const actual = actualPlayer.points;
+                    const difference = actual - prediction;
+                    const row = {
+                        name: player.name || actualPlayer.name,
+                        rank: Number(player.rank || 0),
+                        prediction,
+                        actual,
+                        difference,
+                        minutes: actualPlayer.minutes
+                    };
+                    featuredPlayers.push(row);
+                    compared.push(row);
+                });
+
+                if (!featuredPlayers.length) return;
+                featuredPlayers.sort((a, b) => a.rank - b.rank || b.prediction - a.prediction);
+                fixtureCards.push('<article class="history-fixture-card">' +
+                    '<div class="history-fixture-title">' + escapeHistoryText(fixture.home || "Home team") +
+                    ' <span>vs</span> ' + escapeHistoryText(fixture.away || "Away team") + '</div>' +
+                    '<div class="history-comparison-labels"><span>Player</span><span>Predicted</span><span>Actual</span><span>Diff.</span></div>' +
+                    featuredPlayers.map(player => {
+                        const delta = player.difference;
+                        const deltaClass = delta > 0.0001 ? "positive" : delta < -0.0001 ? "negative" : "level";
+                        const deltaText = (delta > 0 ? "+" : "") + delta.toFixed(1);
+                        return '<div class="history-player-row history-comparison-row">' +
+                            '<span class="history-player-name">' + escapeHistoryText(player.name) +
+                            '<small>' + player.minutes + ' min</small></span>' +
+                            '<strong class="history-player-points">' + player.prediction.toFixed(1) + '</strong>' +
+                            '<strong class="history-player-actual">' + player.actual.toFixed(0) + '</strong>' +
+                            '<strong class="history-player-difference ' + deltaClass + '">' + deltaText + '</strong>' +
+                            '</div>';
+                    }).join("") + '</article>');
+            });
+
+            if (!compared.length) {
+                status.textContent = "No featured players from this saved prediction snapshot could be matched to official FPL results.";
                 grid.innerHTML = "";
                 return;
             }
-            status.textContent = "Frozen pre-match snapshot · GW" + snapshot.gameweek + " · " + snapshot.predictions.length + " fixtures. These are predictions, not actual results.";
-            grid.innerHTML = snapshot.predictions.map(fixture => {
-                const players = Array.isArray(fixture.players) ? fixture.players : [];
-                return '<article class="history-fixture-card">' +
-                    '<div class="history-fixture-title">' + escapeHistoryText(fixture.home || "Home team") + ' <span>vs</span> ' + escapeHistoryText(fixture.away || "Away team") + '</div>' +
-                    players.map(player => {
-                        const point = Number(player.prediction);
-                        const rangeValid = Number.isFinite(Number(player.prediction_p10)) && Number.isFinite(Number(player.prediction_p90));
-                        return '<div class="history-player-row"><span class="history-player-rank">' + Number(player.rank || 0) + '</span><span class="history-player-name">' + escapeHistoryText(player.name || "Player") + '</span><strong class="history-player-points">' + (Number.isFinite(point) ? point.toFixed(2) : "—") + '</strong>' +
-                            (rangeValid ? '<small class="history-player-range">Model range ' + Number(player.prediction_p10).toFixed(1) + '–' + Number(player.prediction_p90).toFixed(1) + ' pts · ' + escapeHistoryText(player.confidence || "unrated") + ' confidence</small>' : '') +
-                            '</div>';
-                    }).join("") +
-                    '</article>';
-            }).join("");
+
+            const mae = compared.reduce((sum, player) => sum + Math.abs(player.difference), 0) / compared.length;
+            const withinTwo = compared.filter(player => Math.abs(player.difference) <= 2).length;
+            const averageError = compared.reduce((sum, player) => sum + player.difference, 0) / compared.length;
+            const signedClass = averageError > 0.0001 ? "negative" : averageError < -0.0001 ? "positive" : "level";
+            const summary = '<div class="history-comparison-summary">' +
+                '<div><span>Players compared</span><strong>' + compared.length + '</strong></div>' +
+                '<div><span>Mean absolute error</span><strong>' + mae.toFixed(2) + ' pts</strong></div>' +
+                '<div><span>Within 2 points</span><strong>' + withinTwo + ' / ' + compared.length + '</strong></div>' +
+                '<div><span>Average bias</span><strong class="' + signedClass + '">' +
+                (averageError > 0 ? "+" : "") + averageError.toFixed(2) + ' pts</strong></div></div>';
+            status.textContent = "GW" + snapshot.gameweek + " · " + compared.length +
+                " predicted players who recorded minutes · official FPL results";
+            grid.innerHTML = summary + fixtureCards.join("");
         };
 
         try {
-            const response = await fetch("prediction_history.json?ts=" + Date.now());
-            if (!response.ok) throw new Error("HTTP " + response.status);
-            const data = await response.json();
-            const history = Array.isArray(data.gameweeks) ? data.gameweeks.slice().sort((a, b) => Number(b.gameweek) - Number(a.gameweek)) : [];
+            const historyResponse = await fetch("prediction_history.json?ts=" + Date.now());
+            if (!historyResponse.ok) throw new Error("Prediction archive HTTP " + historyResponse.status);
+            const data = await historyResponse.json();
+            const history = Array.isArray(data.gameweeks)
+                ? data.gameweeks.slice().sort((a, b) => Number(b.gameweek) - Number(a.gameweek))
+                : [];
             window.savedPredictionHistory = history;
+
             if (!history.length) {
                 select.innerHTML = '<option value="">No saved Gameweeks</option>';
                 select.disabled = true;
@@ -3246,16 +3335,70 @@ predictionsTitle.textContent = `Gameweek ${data.gameweek} AI Predictions`;
                 grid.innerHTML = "";
                 return;
             }
-            select.innerHTML = history.map(item => '<option value="' + Number(item.gameweek) + '">Gameweek ' + Number(item.gameweek) + '</option>').join("");
-            select.disabled = history.length < 2;
+
+            select.innerHTML = history.map(item =>
+                '<option value="' + Number(item.gameweek) + '">Gameweek ' + Number(item.gameweek) + '</option>'
+            ).join("");
             select.value = String(history[0].gameweek);
-            select.addEventListener("change", () => renderGameweek(select.value));
-            renderGameweek(select.value);
+
+            status.textContent = "Loading official FPL results…";
+            const bootstrapResponse = await fetch("https://fantasy.premierleague.com/api/bootstrap-static/");
+            if (!bootstrapResponse.ok) throw new Error("Official FPL player data HTTP " + bootstrapResponse.status);
+            const bootstrap = await bootstrapResponse.json();
+            const teams = Object.fromEntries((bootstrap.teams || []).map(team => [Number(team.id), team.name]));
+            const players = bootstrap.elements || [];
+            const actualByName = new Map();
+
+            const renderSelected = async gameweek => {
+                const snapshot = history.find(item => Number(item.gameweek) === Number(gameweek));
+                if (!snapshot) return;
+                const event = (bootstrap.events || []).find(item => Number(item.id) === Number(gameweek));
+                if (!event || !event.finished) {
+                    status.textContent = "Official FPL results for GW" + gameweek + " are not marked as final yet. The archive will update once the Gameweek is complete.";
+                    grid.innerHTML = "";
+                    return;
+                }
+
+                status.textContent = "Loading GW" + gameweek + " player results…";
+                const liveResponse = await fetch("https://fantasy.premierleague.com/api/event/" + Number(gameweek) + "/live/");
+                if (!liveResponse.ok) throw new Error("Official FPL GW" + gameweek + " results HTTP " + liveResponse.status);
+                const live = await liveResponse.json();
+                actualByName.clear();
+
+                (live.elements || []).forEach(item => {
+                    const player = players.find(candidate => Number(candidate.id) === Number(item.id));
+                    const stats = item.stats || {};
+                    if (!player || stats.total_points == null) return;
+                    const actual = {
+                        id: Number(player.id),
+                        name: player.web_name || (player.first_name + " " + player.second_name),
+                        team: Number(player.team),
+                        minutes: Number(stats.minutes || 0),
+                        points: Number(stats.total_points)
+                    };
+                    const aliases = [player.web_name, player.first_name + " " + player.second_name];
+                    aliases.map(normalizePlayerName).filter(Boolean).forEach(alias => {
+                        const existing = actualByName.get(alias) || [];
+                        actualByName.set(alias, [...existing.filter(record => record.id !== actual.id), actual]);
+                    });
+                });
+
+                renderGameweek(snapshot, actualByName, teams);
+            };
+
+            select.disabled = history.length < 2;
+            await renderSelected(select.value);
+            select.addEventListener("change", () => {
+                renderSelected(select.value).catch(error => {
+                    console.error("Look Back results error:", error);
+                    status.textContent = "Official FPL results could not be loaded for this Gameweek. Please try again later.";
+                    grid.innerHTML = "";
+                });
+            });
         } catch (error) {
-            console.error("Prediction history loading error:", error);
-            select.innerHTML = '<option value="">Archive unavailable</option>';
+            console.error("Prediction history comparison error:", error);
             select.disabled = true;
-            status.textContent = "The saved prediction archive could not be loaded. Current predictions are still available above.";
+            status.textContent = "The prediction archive or official FPL results could not be loaded. Please try again later.";
             grid.innerHTML = "";
         }
     }
