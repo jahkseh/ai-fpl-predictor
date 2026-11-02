@@ -7,87 +7,17 @@
       "players": [
         {
           "rank": 1,
-          "name": "Rice",
-          "prediction": 5.796616,
-          "prediction_std": 3.681629,
-          "prediction_p10": 1.280672,
-          "prediction_p90": 11.143956,
-          "prediction_range": 9.863284,
-          "confidence": "low",
-          "fixture_difficulty": 2,
-          "expected_minutes": 60.981559,
-          "start_probability": 0.704179,
-          "sixty_probability": 0.645954,
-          "fixture_context": {
-            "opponent": "Hull City",
-            "is_home": true,
-            "team_strength": 4.0,
-            "opponent_strength": 2.0,
-            "home_elo": null,
-            "away_elo": null,
-            "team_xg_for_per90": 1.732857,
-            "team_xg_against_per90": 0.78,
-            "opponent_xg_for_per90": 1.075,
-            "opponent_xg_against_per90": 1.545,
-            "fixture_attack_mismatch": 0.187857,
-            "fixture_defence_mismatch": 0.295,
-            "fixture_xg_environment": 2.807857
-          },
-          "model_inputs": {
-            "historical_ability": {
-              "points_per_90": 3.759449,
-              "xg_per_90": 0.056472,
-              "xa_per_90": 0.095251,
-              "goals_per_90": 0.110868,
-              "assists_per_90": 0.156224,
-              "start_rate": 0.554545
-            },
-            "current_form": {
-              "points_per_90": 6.390533,
-              "recent_3_points": 4.0,
-              "recent_3_minutes": 56.333333,
-              "recent_3_xg": 0.066667,
-              "recent_3_xa": 0.293333,
-              "ict_index_per_90": 6.65,
-              "influence_per_90": 25.198734,
-              "creativity_per_90": 36.789241,
-              "threat_per_90": 4.31962,
-              "bps_per_90": 24.050633,
-              "bonus_per_90": 1.25,
-              "xgi_per_90": 0.319771
-            },
-            "current_club": {
-              "points_per_90": 4.677692,
-              "xg_per_90": 0.101654,
-              "xa_per_90": 0.178704,
-              "start_rate": 0.927273
-            },
-            "team_attack": {
-              "xg_for_per_90": 1.732857,
-              "goals_for_per_90": 1.571429
-            },
-            "opponent_defence": {
-              "xg_against_per_90": 1.545,
-              "goals_against_per_90": 1.0
-            },
-            "expected_minutes": 60.981559,
-            "home_away": "home",
-            "fixture_environment": 2.807857
-          }
-        },
-        {
-          "rank": 2,
           "name": "Gabriel",
-          "prediction": 4.005355,
-          "prediction_std": 3.217916,
-          "prediction_p10": 0.646639,
-          "prediction_p90": 9.114286,
-          "prediction_range": 8.467647,
+          "prediction": 5.011485,
+          "prediction_std": 3.262927,
+          "prediction_p10": 1.222222,
+          "prediction_p90": 9.875,
+          "prediction_range": 8.652778,
           "confidence": "low",
           "fixture_difficulty": 2,
-          "expected_minutes": 76.559442,
-          "start_probability": 0.830099,
-          "sixty_probability": 0.850732,
+          "expected_minutes": 83.93179,
+          "start_probability": 0.886349,
+          "sixty_probability": 0.882108,
           "fixture_context": {
             "opponent": "Hull City",
             "is_home": true,
@@ -113,18 +43,18 @@
               "start_rate": 0.773973
             },
             "current_form": {
-              "points_per_90": 12.5,
-              "recent_3_points": 8.333333,
-              "recent_3_minutes": 60.0,
+              "points_per_90": 10.333333,
+              "recent_3_points": 10.333333,
+              "recent_3_minutes": 90.0,
               "recent_3_xg": 0.32,
               "recent_3_xa": 0.013333,
-              "ict_index_per_90": 6.425,
-              "influence_per_90": 35.1,
-              "creativity_per_90": 8.375,
-              "threat_per_90": 20.75,
-              "bps_per_90": 21.0,
-              "bonus_per_90": 0.75,
-              "xgi_per_90": 0.2875
+              "ict_index_per_90": 5.14,
+              "influence_per_90": 28.08,
+              "creativity_per_90": 6.7,
+              "threat_per_90": 16.6,
+              "bps_per_90": 22.6,
+              "bonus_per_90": 0.6,
+              "xgi_per_90": 0.23
             },
             "current_club": {
               "points_per_90": 4.839143,
@@ -140,78 +70,148 @@
               "xg_against_per_90": 1.545,
               "goals_against_per_90": 1.0
             },
-            "expected_minutes": 76.559442,
+            "expected_minutes": 83.93179,
+            "home_away": "home",
+            "fixture_environment": 2.807857
+          }
+        },
+        {
+          "rank": 2,
+          "name": "Rice",
+          "prediction": 4.847787,
+          "prediction_std": 2.766474,
+          "prediction_p10": 1.699231,
+          "prediction_p90": 8.862338,
+          "prediction_range": 7.163107,
+          "confidence": "low",
+          "fixture_difficulty": 2,
+          "expected_minutes": 69.935503,
+          "start_probability": 0.914635,
+          "sixty_probability": 0.826112,
+          "fixture_context": {
+            "opponent": "Hull City",
+            "is_home": true,
+            "team_strength": 4.0,
+            "opponent_strength": 2.0,
+            "home_elo": null,
+            "away_elo": null,
+            "team_xg_for_per90": 1.732857,
+            "team_xg_against_per90": 0.78,
+            "opponent_xg_for_per90": 1.075,
+            "opponent_xg_against_per90": 1.545,
+            "fixture_attack_mismatch": 0.187857,
+            "fixture_defence_mismatch": 0.295,
+            "fixture_xg_environment": 2.807857
+          },
+          "model_inputs": {
+            "historical_ability": {
+              "points_per_90": 3.759449,
+              "xg_per_90": 0.056472,
+              "xa_per_90": 0.095251,
+              "goals_per_90": 0.110868,
+              "assists_per_90": 0.156224,
+              "start_rate": 0.554545
+            },
+            "current_form": {
+              "points_per_90": 6.949807,
+              "recent_3_points": 6.666667,
+              "recent_3_minutes": 86.333333,
+              "recent_3_xg": 0.106667,
+              "recent_3_xa": 0.41,
+              "ict_index_per_90": 5.32,
+              "influence_per_90": 20.158987,
+              "creativity_per_90": 29.431392,
+              "threat_per_90": 3.455696,
+              "bps_per_90": 25.640506,
+              "bonus_per_90": 1.4,
+              "xgi_per_90": 0.350569
+            },
+            "current_club": {
+              "points_per_90": 4.677692,
+              "xg_per_90": 0.101654,
+              "xa_per_90": 0.178704,
+              "start_rate": 0.927273
+            },
+            "team_attack": {
+              "xg_for_per_90": 1.732857,
+              "goals_for_per_90": 1.571429
+            },
+            "opponent_defence": {
+              "xg_against_per_90": 1.545,
+              "goals_against_per_90": 1.0
+            },
+            "expected_minutes": 69.935503,
             "home_away": "home",
             "fixture_environment": 2.807857
           }
         },
         {
           "rank": 3,
-          "name": "Belloumi",
-          "prediction": 3.66047,
-          "prediction_std": 2.772809,
-          "prediction_p10": 0.55,
-          "prediction_p90": 7.82,
-          "prediction_range": 7.27,
+          "name": "Ødegaard",
+          "prediction": 4.283314,
+          "prediction_std": 3.307697,
+          "prediction_p10": 1.11,
+          "prediction_p90": 9.380357,
+          "prediction_range": 8.270357,
           "confidence": "low",
-          "fixture_difficulty": 4,
-          "expected_minutes": 70.975084,
-          "start_probability": 0.691066,
-          "sixty_probability": 0.783278,
+          "fixture_difficulty": 2,
+          "expected_minutes": 74.131856,
+          "start_probability": 0.90447,
+          "sixty_probability": 0.827927,
           "fixture_context": {
-            "opponent": "Arsenal",
-            "is_home": false,
-            "team_strength": 2.0,
-            "opponent_strength": 4.0,
+            "opponent": "Hull City",
+            "is_home": true,
+            "team_strength": 4.0,
+            "opponent_strength": 2.0,
             "home_elo": null,
             "away_elo": null,
-            "team_xg_for_per90": 1.075,
-            "team_xg_against_per90": 1.545,
-            "opponent_xg_for_per90": 1.732857,
-            "opponent_xg_against_per90": 0.78,
-            "fixture_attack_mismatch": 0.295,
-            "fixture_defence_mismatch": 0.187857,
+            "team_xg_for_per90": 1.732857,
+            "team_xg_against_per90": 0.78,
+            "opponent_xg_for_per90": 1.075,
+            "opponent_xg_against_per90": 1.545,
+            "fixture_attack_mismatch": 0.187857,
+            "fixture_defence_mismatch": 0.295,
             "fixture_xg_environment": 2.807857
           },
           "model_inputs": {
             "historical_ability": {
-              "points_per_90": 0.0,
-              "xg_per_90": 0.0,
-              "xa_per_90": 0.0,
-              "goals_per_90": 0.0,
-              "assists_per_90": 0.0,
-              "start_rate": 0.0
+              "points_per_90": 5.126182,
+              "xg_per_90": 0.139185,
+              "xa_per_90": 0.173051,
+              "goals_per_90": 0.239081,
+              "assists_per_90": 0.281272,
+              "start_rate": 0.5
             },
             "current_form": {
-              "points_per_90": 3.735849,
-              "recent_3_points": 3.666667,
-              "recent_3_minutes": 88.333333,
-              "recent_3_xg": 0.133333,
-              "recent_3_xa": 0.143333,
-              "ict_index_per_90": 8.31817,
-              "influence_per_90": 36.42707,
-              "creativity_per_90": 14.266357,
-              "threat_per_90": 32.909502,
-              "bps_per_90": 33.984019,
+              "points_per_90": 3.033708,
+              "recent_3_points": 3.0,
+              "recent_3_minutes": 89.0,
+              "recent_3_xg": 0.086667,
+              "recent_3_xa": 0.24,
+              "ict_index_per_90": 4.271404,
+              "influence_per_90": 6.302472,
+              "creativity_per_90": 17.409551,
+              "threat_per_90": 18.971348,
+              "bps_per_90": 14.044208,
               "bonus_per_90": 0.0,
-              "xgi_per_90": 0.410188
+              "xgi_per_90": 0.422664
             },
             "current_club": {
-              "points_per_90": 0.0,
-              "xg_per_90": 0.0,
-              "xa_per_90": 0.0,
-              "start_rate": 0.0
+              "points_per_90": 5.126182,
+              "xg_per_90": 0.139185,
+              "xa_per_90": 0.173051,
+              "start_rate": 0.5
             },
             "team_attack": {
-              "xg_for_per_90": 1.075,
-              "goals_for_per_90": 1.125
+              "xg_for_per_90": 1.732857,
+              "goals_for_per_90": 1.571429
             },
             "opponent_defence": {
-              "xg_against_per_90": 0.78,
-              "goals_against_per_90": 0.714286
+              "xg_against_per_90": 1.545,
+              "goals_against_per_90": 1.0
             },
-            "expected_minutes": 70.975084,
-            "home_away": "away",
+            "expected_minutes": 74.131856,
+            "home_away": "home",
             "fixture_environment": 2.807857
           }
         }
@@ -440,16 +440,16 @@
         {
           "rank": 1,
           "name": "Isak",
-          "prediction": 4.41575,
-          "prediction_std": 3.168133,
-          "prediction_p10": 0.797778,
-          "prediction_p90": 8.835714,
-          "prediction_range": 8.037937,
+          "prediction": 5.392292,
+          "prediction_std": 3.850677,
+          "prediction_p10": 1.179021,
+          "prediction_p90": 10.8,
+          "prediction_range": 9.620979,
           "confidence": "low",
           "fixture_difficulty": 2,
-          "expected_minutes": 49.513665,
-          "start_probability": 0.589995,
-          "sixty_probability": 0.556914,
+          "expected_minutes": 61.669631,
+          "start_probability": 0.766396,
+          "sixty_probability": 0.71296,
           "fixture_context": {
             "opponent": "Crystal Palace",
             "is_home": false,
@@ -475,18 +475,18 @@
               "start_rate": 0.548611
             },
             "current_form": {
-              "points_per_90": 10.519481,
-              "recent_3_points": 6.0,
-              "recent_3_minutes": 51.333333,
-              "recent_3_xg": 0.243333,
-              "recent_3_xa": 0.016667,
-              "ict_index_per_90": 10.622318,
-              "influence_per_90": 38.674393,
-              "creativity_per_90": 18.548279,
-              "threat_per_90": 48.649291,
-              "bps_per_90": 37.728239,
-              "bonus_per_90": 3.463057,
-              "xgi_per_90": 0.596154
+              "points_per_90": 7.377049,
+              "recent_3_points": 6.666667,
+              "recent_3_minutes": 81.333333,
+              "recent_3_xg": 0.276667,
+              "recent_3_xa": 0.06,
+              "ict_index_per_90": 7.966738,
+              "influence_per_90": 29.005795,
+              "creativity_per_90": 13.91121,
+              "threat_per_90": 36.486969,
+              "bps_per_90": 30.296179,
+              "bonus_per_90": 2.597293,
+              "xgi_per_90": 0.494444
             },
             "current_club": {
               "points_per_90": 5.317003,
@@ -502,94 +502,24 @@
               "xg_against_per_90": 1.96875,
               "goals_against_per_90": 2.375
             },
-            "expected_minutes": 49.513665,
+            "expected_minutes": 61.669631,
             "home_away": "away",
             "fixture_environment": 2.93
           }
         },
         {
           "rank": 2,
-          "name": "Barcola",
-          "prediction": 4.171422,
-          "prediction_std": 2.832936,
-          "prediction_p10": 0.920769,
-          "prediction_p90": 8.386154,
-          "prediction_range": 7.465385,
-          "confidence": "low",
-          "fixture_difficulty": 2,
-          "expected_minutes": 28.333435,
-          "start_probability": 0.362881,
-          "sixty_probability": 0.350245,
-          "fixture_context": {
-            "opponent": "Crystal Palace",
-            "is_home": false,
-            "team_strength": 4.0,
-            "opponent_strength": 2.0,
-            "home_elo": null,
-            "away_elo": null,
-            "team_xg_for_per90": 1.55,
-            "team_xg_against_per90": 1.185714,
-            "opponent_xg_for_per90": 1.38,
-            "opponent_xg_against_per90": 1.96875,
-            "fixture_attack_mismatch": -0.41875,
-            "fixture_defence_mismatch": 0.194286,
-            "fixture_xg_environment": 2.93
-          },
-          "model_inputs": {
-            "historical_ability": {
-              "points_per_90": 0.0,
-              "xg_per_90": 0.0,
-              "xa_per_90": 0.0,
-              "goals_per_90": 0.0,
-              "assists_per_90": 0.0,
-              "start_rate": 0.0
-            },
-            "current_form": {
-              "points_per_90": 5.421687,
-              "recent_3_points": 3.333333,
-              "recent_3_minutes": 55.333333,
-              "recent_3_xg": 0.2,
-              "recent_3_xa": 0.186667,
-              "ict_index_per_90": 4.921718,
-              "influence_per_90": 13.936611,
-              "creativity_per_90": 15.080893,
-              "threat_per_90": 20.014503,
-              "bps_per_90": 17.433351,
-              "bonus_per_90": 0.0,
-              "xgi_per_90": 0.363889
-            },
-            "current_club": {
-              "points_per_90": 0.0,
-              "xg_per_90": 0.0,
-              "xa_per_90": 0.0,
-              "start_rate": 0.0
-            },
-            "team_attack": {
-              "xg_for_per_90": 1.55,
-              "goals_for_per_90": 1.285714
-            },
-            "opponent_defence": {
-              "xg_against_per_90": 1.96875,
-              "goals_against_per_90": 2.375
-            },
-            "expected_minutes": 28.333435,
-            "home_away": "away",
-            "fixture_environment": 2.93
-          }
-        },
-        {
-          "rank": 3,
           "name": "Wirtz",
-          "prediction": 4.101465,
-          "prediction_std": 3.27163,
-          "prediction_p10": 0.309821,
-          "prediction_p90": 9.0,
-          "prediction_range": 8.690179,
+          "prediction": 4.987175,
+          "prediction_std": 3.48976,
+          "prediction_p10": 1.064286,
+          "prediction_p90": 10.3,
+          "prediction_range": 9.235714,
           "confidence": "low",
           "fixture_difficulty": 2,
-          "expected_minutes": 48.31855,
-          "start_probability": 0.616227,
-          "sixty_probability": 0.547006,
+          "expected_minutes": 66.921527,
+          "start_probability": 0.742809,
+          "sixty_probability": 0.701714,
           "fixture_context": {
             "opponent": "Crystal Palace",
             "is_home": false,
@@ -615,18 +545,18 @@
               "start_rate": 0.72973
             },
             "current_form": {
-              "points_per_90": 6.428571,
-              "recent_3_points": 3.666667,
-              "recent_3_minutes": 51.333333,
-              "recent_3_xg": 0.026667,
-              "recent_3_xa": 0.143333,
-              "ict_index_per_90": 9.1699,
-              "influence_per_90": 17.074348,
-              "creativity_per_90": 61.784967,
-              "threat_per_90": 12.743819,
-              "bps_per_90": 24.794729,
+              "points_per_90": 5.0,
+              "recent_3_points": 4.333333,
+              "recent_3_minutes": 78.0,
+              "recent_3_xg": 0.123333,
+              "recent_3_xa": 0.163333,
+              "ict_index_per_90": 7.33592,
+              "influence_per_90": 13.659478,
+              "creativity_per_90": 49.427974,
+              "threat_per_90": 10.195055,
+              "bps_per_90": 21.860783,
               "bonus_per_90": 0.0,
-              "xgi_per_90": 0.351903
+              "xgi_per_90": 0.360976
             },
             "current_club": {
               "points_per_90": 4.734832,
@@ -642,7 +572,77 @@
               "xg_against_per_90": 1.96875,
               "goals_against_per_90": 2.375
             },
-            "expected_minutes": 48.31855,
+            "expected_minutes": 66.921527,
+            "home_away": "away",
+            "fixture_environment": 2.93
+          }
+        },
+        {
+          "rank": 3,
+          "name": "Mac Allister",
+          "prediction": 4.363486,
+          "prediction_std": 2.927046,
+          "prediction_p10": 1.3,
+          "prediction_p90": 8.673684,
+          "prediction_range": 7.373684,
+          "confidence": "low",
+          "fixture_difficulty": 2,
+          "expected_minutes": 78.348185,
+          "start_probability": 0.912497,
+          "sixty_probability": 0.889917,
+          "fixture_context": {
+            "opponent": "Crystal Palace",
+            "is_home": false,
+            "team_strength": 4.0,
+            "opponent_strength": 2.0,
+            "home_elo": null,
+            "away_elo": null,
+            "team_xg_for_per90": 1.55,
+            "team_xg_against_per90": 1.185714,
+            "opponent_xg_for_per90": 1.38,
+            "opponent_xg_against_per90": 1.96875,
+            "fixture_attack_mismatch": -0.41875,
+            "fixture_defence_mismatch": 0.194286,
+            "fixture_xg_environment": 2.93
+          },
+          "model_inputs": {
+            "historical_ability": {
+              "points_per_90": 4.008041,
+              "xg_per_90": 0.114753,
+              "xa_per_90": 0.098388,
+              "goals_per_90": 0.17396,
+              "assists_per_90": 0.139168,
+              "start_rate": 0.476636
+            },
+            "current_form": {
+              "points_per_90": 1.666667,
+              "recent_3_points": 1.666667,
+              "recent_3_minutes": 90.0,
+              "recent_3_xg": 0.136667,
+              "recent_3_xa": 0.173333,
+              "ict_index_per_90": 3.38,
+              "influence_per_90": 11.16,
+              "creativity_per_90": 14.38,
+              "threat_per_90": 8.2,
+              "bps_per_90": 12.4,
+              "bonus_per_90": 0.0,
+              "xgi_per_90": 0.252
+            },
+            "current_club": {
+              "points_per_90": 3.893252,
+              "xg_per_90": 0.113803,
+              "xa_per_90": 0.142074,
+              "start_rate": 0.807339
+            },
+            "team_attack": {
+              "xg_for_per_90": 1.55,
+              "goals_for_per_90": 1.285714
+            },
+            "opponent_defence": {
+              "xg_against_per_90": 1.96875,
+              "goals_against_per_90": 2.375
+            },
+            "expected_minutes": 78.348185,
             "home_away": "away",
             "fixture_environment": 2.93
           }
@@ -2165,99 +2165,23 @@
   "all_players": [
     {
       "rank": 1,
-      "name": "Rice",
-      "prediction": 5.796616,
-      "price": 7.4,
-      "ownership": 11.8,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 3.681629,
-      "prediction_p10": 1.280672,
-      "prediction_p90": 11.143956,
-      "prediction_range": 9.863284,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 60.981559,
-      "start_probability": 0.704179,
-      "sixty_probability": 0.645954,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 3.759449,
-          "xg_per_90": 0.056472,
-          "xa_per_90": 0.095251,
-          "goals_per_90": 0.110868,
-          "assists_per_90": 0.156224,
-          "start_rate": 0.554545
-        },
-        "current_form": {
-          "points_per_90": 6.390533,
-          "recent_3_points": 4.0,
-          "recent_3_minutes": 56.333333,
-          "recent_3_xg": 0.066667,
-          "recent_3_xa": 0.293333,
-          "ict_index_per_90": 6.65,
-          "influence_per_90": 25.198734,
-          "creativity_per_90": 36.789241,
-          "threat_per_90": 4.31962,
-          "bps_per_90": 24.050633,
-          "bonus_per_90": 1.25,
-          "xgi_per_90": 0.319771
-        },
-        "current_club": {
-          "points_per_90": 4.677692,
-          "xg_per_90": 0.101654,
-          "xa_per_90": 0.178704,
-          "start_rate": 0.927273
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 60.981559,
-        "home_away": "home",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 2,
       "name": "Gabriel",
-      "prediction": 4.005355,
+      "prediction": 5.011485,
       "price": 8.0,
       "ownership": 24.1,
       "position": "Defender",
       "team": "",
       "fixture_home": "Arsenal",
       "fixture_away": "Hull City",
-      "prediction_std": 3.217916,
-      "prediction_p10": 0.646639,
-      "prediction_p90": 9.114286,
-      "prediction_range": 8.467647,
+      "prediction_std": 3.262927,
+      "prediction_p10": 1.222222,
+      "prediction_p90": 9.875,
+      "prediction_range": 8.652778,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 76.559442,
-      "start_probability": 0.830099,
-      "sixty_probability": 0.850732,
+      "expected_minutes": 83.93179,
+      "start_probability": 0.886349,
+      "sixty_probability": 0.882108,
       "fixture_context": {
         "opponent": "Hull City",
         "is_home": true,
@@ -2283,18 +2207,18 @@
           "start_rate": 0.773973
         },
         "current_form": {
-          "points_per_90": 12.5,
-          "recent_3_points": 8.333333,
-          "recent_3_minutes": 60.0,
+          "points_per_90": 10.333333,
+          "recent_3_points": 10.333333,
+          "recent_3_minutes": 90.0,
           "recent_3_xg": 0.32,
           "recent_3_xa": 0.013333,
-          "ict_index_per_90": 6.425,
-          "influence_per_90": 35.1,
-          "creativity_per_90": 8.375,
-          "threat_per_90": 20.75,
-          "bps_per_90": 21.0,
-          "bonus_per_90": 0.75,
-          "xgi_per_90": 0.2875
+          "ict_index_per_90": 5.14,
+          "influence_per_90": 28.08,
+          "creativity_per_90": 6.7,
+          "threat_per_90": 16.6,
+          "bps_per_90": 22.6,
+          "bonus_per_90": 0.6,
+          "xgi_per_90": 0.23
         },
         "current_club": {
           "points_per_90": 4.839143,
@@ -2310,13 +2234,241 @@
           "xg_against_per_90": 1.545,
           "goals_against_per_90": 1.0
         },
-        "expected_minutes": 76.559442,
+        "expected_minutes": 83.93179,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 2,
+      "name": "Rice",
+      "prediction": 4.847787,
+      "price": 7.4,
+      "ownership": 11.8,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 2.766474,
+      "prediction_p10": 1.699231,
+      "prediction_p90": 8.862338,
+      "prediction_range": 7.163107,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 69.935503,
+      "start_probability": 0.914635,
+      "sixty_probability": 0.826112,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 3.759449,
+          "xg_per_90": 0.056472,
+          "xa_per_90": 0.095251,
+          "goals_per_90": 0.110868,
+          "assists_per_90": 0.156224,
+          "start_rate": 0.554545
+        },
+        "current_form": {
+          "points_per_90": 6.949807,
+          "recent_3_points": 6.666667,
+          "recent_3_minutes": 86.333333,
+          "recent_3_xg": 0.106667,
+          "recent_3_xa": 0.41,
+          "ict_index_per_90": 5.32,
+          "influence_per_90": 20.158987,
+          "creativity_per_90": 29.431392,
+          "threat_per_90": 3.455696,
+          "bps_per_90": 25.640506,
+          "bonus_per_90": 1.4,
+          "xgi_per_90": 0.350569
+        },
+        "current_club": {
+          "points_per_90": 4.677692,
+          "xg_per_90": 0.101654,
+          "xa_per_90": 0.178704,
+          "start_rate": 0.927273
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 69.935503,
         "home_away": "home",
         "fixture_environment": 2.807857
       }
     },
     {
       "rank": 3,
+      "name": "Ødegaard",
+      "prediction": 4.283314,
+      "price": 6.7,
+      "ownership": 16.8,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 3.307697,
+      "prediction_p10": 1.11,
+      "prediction_p90": 9.380357,
+      "prediction_range": 8.270357,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 74.131856,
+      "start_probability": 0.90447,
+      "sixty_probability": 0.827927,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 5.126182,
+          "xg_per_90": 0.139185,
+          "xa_per_90": 0.173051,
+          "goals_per_90": 0.239081,
+          "assists_per_90": 0.281272,
+          "start_rate": 0.5
+        },
+        "current_form": {
+          "points_per_90": 3.033708,
+          "recent_3_points": 3.0,
+          "recent_3_minutes": 89.0,
+          "recent_3_xg": 0.086667,
+          "recent_3_xa": 0.24,
+          "ict_index_per_90": 4.271404,
+          "influence_per_90": 6.302472,
+          "creativity_per_90": 17.409551,
+          "threat_per_90": 18.971348,
+          "bps_per_90": 14.044208,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.422664
+        },
+        "current_club": {
+          "points_per_90": 5.126182,
+          "xg_per_90": 0.139185,
+          "xa_per_90": 0.173051,
+          "start_rate": 0.5
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 74.131856,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 4,
+      "name": "Raya",
+      "prediction": 3.98951,
+      "price": 6.2,
+      "ownership": 46.4,
+      "position": "Goalkeeper",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 2.389779,
+      "prediction_p10": 1.11,
+      "prediction_p90": 7.36,
+      "prediction_range": 6.25,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 70.136552,
+      "start_probability": 0.825408,
+      "sixty_probability": 0.825354,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 4.103659,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.001454,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.692308
+        },
+        "current_form": {
+          "points_per_90": 7.0,
+          "recent_3_points": 7.0,
+          "recent_3_minutes": 90.0,
+          "recent_3_xg": 0.0,
+          "recent_3_xa": 0.0,
+          "ict_index_per_90": 1.64,
+          "influence_per_90": 16.28,
+          "creativity_per_90": 0.0,
+          "threat_per_90": 0.0,
+          "bps_per_90": 20.6,
+          "bonus_per_90": 0.6,
+          "xgi_per_90": 0.0
+        },
+        "current_club": {
+          "points_per_90": 4.048077,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.00125,
+          "start_rate": 0.954128
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 70.136552,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 5,
       "name": "Belloumi",
       "prediction": 3.66047,
       "price": 5.3,
@@ -2392,7 +2544,7 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 6,
       "name": "McBurnie",
       "prediction": 3.473572,
       "price": 5.5,
@@ -2468,83 +2620,7 @@
       }
     },
     {
-      "rank": 5,
-      "name": "Ødegaard",
-      "prediction": 3.330104,
-      "price": 6.7,
-      "ownership": 16.8,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 2.722707,
-      "prediction_p10": 0.5,
-      "prediction_p90": 7.338462,
-      "prediction_range": 6.838462,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 58.969446,
-      "start_probability": 0.683362,
-      "sixty_probability": 0.651336,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 5.126182,
-          "xg_per_90": 0.139185,
-          "xa_per_90": 0.173051,
-          "goals_per_90": 0.239081,
-          "assists_per_90": 0.281272,
-          "start_rate": 0.5
-        },
-        "current_form": {
-          "points_per_90": 3.0,
-          "recent_3_points": 2.0,
-          "recent_3_minutes": 60.0,
-          "recent_3_xg": 0.086667,
-          "recent_3_xa": 0.193333,
-          "ict_index_per_90": 5.339256,
-          "influence_per_90": 7.87809,
-          "creativity_per_90": 21.761938,
-          "threat_per_90": 23.714185,
-          "bps_per_90": 13.158708,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.493548
-        },
-        "current_club": {
-          "points_per_90": 5.126182,
-          "xg_per_90": 0.139185,
-          "xa_per_90": 0.173051,
-          "start_rate": 0.5
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 58.969446,
-        "home_away": "home",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 6,
+      "rank": 7,
       "name": "Tzolakis",
       "prediction": 3.24405,
       "price": 4.7,
@@ -2616,82 +2692,6 @@
         },
         "expected_minutes": 74.602908,
         "home_away": "away",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 7,
-      "name": "Konsa",
-      "prediction": 3.18565,
-      "price": 4.7,
-      "ownership": 21.9,
-      "position": "Defender",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 2.582617,
-      "prediction_p10": 0.461538,
-      "prediction_p90": 7.007692,
-      "prediction_range": 6.546154,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 46.594681,
-      "start_probability": 0.561659,
-      "sixty_probability": 0.482913,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 2.99742,
-          "xg_per_90": 0.029613,
-          "xa_per_90": 0.013101,
-          "goals_per_90": 0.036113,
-          "assists_per_90": 0.010318,
-          "start_rate": 0.568807
-        },
-        "current_form": {
-          "points_per_90": 11.5,
-          "recent_3_points": 7.666667,
-          "recent_3_minutes": 60.0,
-          "recent_3_xg": 0.126667,
-          "recent_3_xa": 0.003333,
-          "ict_index_per_90": 4.1,
-          "influence_per_90": 22.45,
-          "creativity_per_90": 3.775,
-          "threat_per_90": 14.75,
-          "bps_per_90": 22.75,
-          "bonus_per_90": 1.25,
-          "xgi_per_90": 0.1575
-        },
-        "current_club": {
-          "points_per_90": 2.99742,
-          "xg_per_90": 0.029613,
-          "xa_per_90": 0.013101,
-          "start_rate": 0.568807
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 46.594681,
-        "home_away": "home",
         "fixture_environment": 2.807857
       }
     },
@@ -2773,10 +2773,86 @@
     },
     {
       "rank": 9,
+      "name": "Gyökeres",
+      "prediction": 3.12248,
+      "price": 7.0,
+      "ownership": 3.1,
+      "position": "Forward",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 2.567101,
+      "prediction_p10": 0.328571,
+      "prediction_p90": 7.018182,
+      "prediction_range": 6.68961,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 34.212565,
+      "start_probability": 0.449906,
+      "sixty_probability": 0.395315,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 5.349057,
+          "xg_per_90": 0.513679,
+          "xa_per_90": 0.060708,
+          "goals_per_90": 0.59434,
+          "assists_per_90": 0.042453,
+          "start_rate": 0.694444
+        },
+        "current_form": {
+          "points_per_90": 6.494845,
+          "recent_3_points": 2.333333,
+          "recent_3_minutes": 32.333333,
+          "recent_3_xg": 0.026667,
+          "recent_3_xa": 0.03,
+          "ict_index_per_90": 6.682229,
+          "influence_per_90": 8.973134,
+          "creativity_per_90": 49.681709,
+          "threat_per_90": 9.11194,
+          "bps_per_90": 28.102575,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.357447
+        },
+        "current_club": {
+          "points_per_90": 5.349057,
+          "xg_per_90": 0.513679,
+          "xa_per_90": 0.060708,
+          "start_rate": 0.694444
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 34.212565,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 10,
       "name": "Saka",
       "prediction": 3.084598,
       "price": 9.5,
-      "ownership": 6.6,
+      "ownership": 6.5,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Arsenal",
@@ -2848,7 +2924,159 @@
       }
     },
     {
-      "rank": 10,
+      "rank": 11,
+      "name": "Havertz",
+      "prediction": 3.051457,
+      "price": 7.4,
+      "ownership": 5.5,
+      "position": "Forward",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 2.578697,
+      "prediction_p10": 0.5,
+      "prediction_p90": 7.005556,
+      "prediction_range": 6.505556,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 60.304654,
+      "start_probability": 0.689803,
+      "sixty_probability": 0.617979,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 5.093359,
+          "xg_per_90": 0.28171,
+          "xa_per_90": 0.066091,
+          "goals_per_90": 0.355149,
+          "assists_per_90": 0.225217,
+          "start_rate": 0.341121
+        },
+        "current_form": {
+          "points_per_90": 6.352941,
+          "recent_3_points": 4.0,
+          "recent_3_minutes": 56.666667,
+          "recent_3_xg": 0.32,
+          "recent_3_xa": 0.013333,
+          "ict_index_per_90": 2.421317,
+          "influence_per_90": 3.072258,
+          "creativity_per_90": 5.189321,
+          "threat_per_90": 16.181141,
+          "bps_per_90": 14.767454,
+          "bonus_per_90": 0.650602,
+          "xgi_per_90": 0.547826
+        },
+        "current_club": {
+          "points_per_90": 5.57377,
+          "xg_per_90": 0.446266,
+          "xa_per_90": 0.10674,
+          "start_rate": 0.518182
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 60.304654,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 12,
+      "name": "Calafiori",
+      "prediction": 2.975571,
+      "price": 5.9,
+      "ownership": 47.8,
+      "position": "Defender",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 2.593063,
+      "prediction_p10": 0.149286,
+      "prediction_p90": 7.0,
+      "prediction_range": 6.850714,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 67.608499,
+      "start_probability": 0.887137,
+      "sixty_probability": 0.802859,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 5.013354,
+          "xg_per_90": 0.144907,
+          "xa_per_90": 0.046356,
+          "goals_per_90": 0.103014,
+          "assists_per_90": 0.103014,
+          "start_rate": 0.438356
+        },
+        "current_form": {
+          "points_per_90": 6.683168,
+          "recent_3_points": 5.0,
+          "recent_3_minutes": 67.333333,
+          "recent_3_xg": 0.0,
+          "recent_3_xa": 0.106667,
+          "ict_index_per_90": 4.737576,
+          "influence_per_90": 16.691717,
+          "creativity_per_90": 12.634545,
+          "threat_per_90": 17.644444,
+          "bps_per_90": 16.761616,
+          "bonus_per_90": 0.222222,
+          "xgi_per_90": 0.248525
+        },
+        "current_club": {
+          "points_per_90": 5.013354,
+          "xg_per_90": 0.144907,
+          "xa_per_90": 0.046356,
+          "start_rate": 0.438356
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 67.608499,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 13,
       "name": "White",
       "prediction": 2.919146,
       "price": 5.4,
@@ -2924,24 +3152,24 @@
       }
     },
     {
-      "rank": 11,
-      "name": "Gyökeres",
-      "prediction": 2.78396,
-      "price": 7.0,
-      "ownership": 3.1,
-      "position": "Forward",
+      "rank": 14,
+      "name": "Bruno G.",
+      "prediction": 2.841972,
+      "price": 6.7,
+      "ownership": 2.3,
+      "position": "Midfielder",
       "team": "",
       "fixture_home": "Arsenal",
       "fixture_away": "Hull City",
-      "prediction_std": 2.317436,
-      "prediction_p10": 0.25,
-      "prediction_p90": 6.186713,
-      "prediction_range": 5.936713,
+      "prediction_std": 3.100724,
+      "prediction_p10": 0.262222,
+      "prediction_p90": 7.85,
+      "prediction_range": 7.587778,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 37.676759,
-      "start_probability": 0.436541,
-      "sixty_probability": 0.417235,
+      "expected_minutes": 40.543772,
+      "start_probability": 0.420783,
+      "sixty_probability": 0.34219,
       "fixture_context": {
         "opponent": "Hull City",
         "is_home": true,
@@ -2959,32 +3187,32 @@
       },
       "model_inputs": {
         "historical_ability": {
-          "points_per_90": 5.349057,
-          "xg_per_90": 0.513679,
-          "xa_per_90": 0.060708,
-          "goals_per_90": 0.59434,
-          "assists_per_90": 0.042453,
-          "start_rate": 0.694444
+          "points_per_90": 4.336546,
+          "xg_per_90": 0.121417,
+          "xa_per_90": 0.139524,
+          "goals_per_90": 0.200148,
+          "assists_per_90": 0.207561,
+          "start_rate": 0.732919
         },
         "current_form": {
-          "points_per_90": 5.934066,
-          "recent_3_points": 2.0,
-          "recent_3_minutes": 30.333333,
+          "points_per_90": 4.256757,
+          "recent_3_points": 2.333333,
+          "recent_3_minutes": 49.333333,
           "recent_3_xg": 0.026667,
-          "recent_3_xa": 0.03,
-          "ict_index_per_90": 8.352786,
-          "influence_per_90": 11.216418,
-          "creativity_per_90": 62.102136,
-          "threat_per_90": 11.389925,
-          "bps_per_90": 23.878219,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.373333
+          "recent_3_xa": 0.016667,
+          "ict_index_per_90": 6.510344,
+          "influence_per_90": 34.102335,
+          "creativity_per_90": 20.754887,
+          "threat_per_90": 10.020718,
+          "bps_per_90": 35.543794,
+          "bonus_per_90": 2.0,
+          "xgi_per_90": 0.119231
         },
         "current_club": {
-          "points_per_90": 5.349057,
-          "xg_per_90": 0.513679,
-          "xa_per_90": 0.060708,
-          "start_rate": 0.694444
+          "points_per_90": 4.336546,
+          "xg_per_90": 0.121417,
+          "xa_per_90": 0.139524,
+          "start_rate": 0.732919
         },
         "team_attack": {
           "xg_for_per_90": 1.732857,
@@ -2994,13 +3222,89 @@
           "xg_against_per_90": 1.545,
           "goals_against_per_90": 1.0
         },
-        "expected_minutes": 37.676759,
+        "expected_minutes": 40.543772,
         "home_away": "home",
         "fixture_environment": 2.807857
       }
     },
     {
-      "rank": 12,
+      "rank": 15,
+      "name": "Madueke",
+      "prediction": 2.721493,
+      "price": 6.2,
+      "ownership": 0.4,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 2.276475,
+      "prediction_p10": 0.5,
+      "prediction_p90": 5.835714,
+      "prediction_range": 5.335714,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 62.984351,
+      "start_probability": 0.653301,
+      "sixty_probability": 0.647521,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 5.069034,
+          "xg_per_90": 0.268836,
+          "xa_per_90": 0.156805,
+          "goals_per_90": 0.25641,
+          "assists_per_90": 0.157791,
+          "start_rate": 0.468254
+        },
+        "current_form": {
+          "points_per_90": 4.0,
+          "recent_3_points": 3.333333,
+          "recent_3_minutes": 75.0,
+          "recent_3_xg": 0.083333,
+          "recent_3_xa": 0.253333,
+          "ict_index_per_90": 6.45,
+          "influence_per_90": 19.75,
+          "creativity_per_90": 23.75,
+          "threat_per_90": 21.0,
+          "bps_per_90": 20.0,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.502857
+        },
+        "current_club": {
+          "points_per_90": 4.273504,
+          "xg_per_90": 0.074359,
+          "xa_per_90": 0.21453,
+          "start_rate": 0.388889
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 62.984351,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 16,
       "name": "Mendy",
       "prediction": 2.647981,
       "price": 4.1,
@@ -3076,24 +3380,24 @@
       }
     },
     {
-      "rank": 13,
-      "name": "Raya",
-      "prediction": 2.5921,
-      "price": 6.2,
-      "ownership": 46.3,
-      "position": "Goalkeeper",
+      "rank": 17,
+      "name": "Tzolis",
+      "prediction": 2.546671,
+      "price": 6.1,
+      "ownership": 3.8,
+      "position": "Midfielder",
       "team": "",
       "fixture_home": "Arsenal",
       "fixture_away": "Hull City",
-      "prediction_std": 2.047638,
-      "prediction_p10": 0.180303,
-      "prediction_p90": 5.555556,
-      "prediction_range": 5.375253,
+      "prediction_std": 2.24432,
+      "prediction_p10": 0.1325,
+      "prediction_p90": 5.671429,
+      "prediction_range": 5.538929,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 60.128228,
-      "start_probability": 0.677445,
-      "sixty_probability": 0.659189,
+      "expected_minutes": 33.658668,
+      "start_probability": 0.371669,
+      "sixty_probability": 0.384339,
       "fixture_context": {
         "opponent": "Hull City",
         "is_home": true,
@@ -3111,32 +3415,32 @@
       },
       "model_inputs": {
         "historical_ability": {
-          "points_per_90": 4.103659,
+          "points_per_90": 4.417178,
           "xg_per_90": 0.0,
-          "xa_per_90": 0.001454,
+          "xa_per_90": 0.0,
           "goals_per_90": 0.0,
           "assists_per_90": 0.0,
-          "start_rate": 0.692308
+          "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 8.0,
-          "recent_3_points": 5.333333,
-          "recent_3_minutes": 60.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 2.05,
-          "influence_per_90": 20.35,
-          "creativity_per_90": 0.0,
-          "threat_per_90": 0.0,
-          "bps_per_90": 20.5,
-          "bonus_per_90": 0.75,
-          "xgi_per_90": 0.0
+          "points_per_90": 3.253012,
+          "recent_3_points": 1.0,
+          "recent_3_minutes": 27.666667,
+          "recent_3_xg": 0.01,
+          "recent_3_xa": 0.1,
+          "ict_index_per_90": 1.0625,
+          "influence_per_90": 3.125,
+          "creativity_per_90": 3.875,
+          "threat_per_90": 3.75,
+          "bps_per_90": 13.215361,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.232258
         },
         "current_club": {
-          "points_per_90": 4.048077,
+          "points_per_90": 4.417178,
           "xg_per_90": 0.0,
-          "xa_per_90": 0.00125,
-          "start_rate": 0.954128
+          "xa_per_90": 0.0,
+          "start_rate": 0.0
         },
         "team_attack": {
           "xg_for_per_90": 1.732857,
@@ -3146,13 +3450,13 @@
           "xg_against_per_90": 1.545,
           "goals_against_per_90": 1.0
         },
-        "expected_minutes": 60.128228,
+        "expected_minutes": 33.658668,
         "home_away": "home",
         "fixture_environment": 2.807857
       }
     },
     {
-      "rank": 14,
+      "rank": 18,
       "name": "Iroegbunam",
       "prediction": 2.520511,
       "price": 5.0,
@@ -3228,7 +3532,83 @@
       }
     },
     {
-      "rank": 15,
+      "rank": 19,
+      "name": "Konsa",
+      "prediction": 2.393075,
+      "price": 4.7,
+      "ownership": 22.0,
+      "position": "Defender",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 2.414296,
+      "prediction_p10": 0.045,
+      "prediction_p90": 6.220652,
+      "prediction_range": 6.175652,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 74.815938,
+      "start_probability": 0.901993,
+      "sixty_probability": 0.796519,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 2.99742,
+          "xg_per_90": 0.029613,
+          "xa_per_90": 0.013101,
+          "goals_per_90": 0.036113,
+          "assists_per_90": 0.010318,
+          "start_rate": 0.568807
+        },
+        "current_form": {
+          "points_per_90": 11.0,
+          "recent_3_points": 11.0,
+          "recent_3_minutes": 90.0,
+          "recent_3_xg": 0.126667,
+          "recent_3_xa": 0.003333,
+          "ict_index_per_90": 3.28,
+          "influence_per_90": 17.96,
+          "creativity_per_90": 3.02,
+          "threat_per_90": 11.8,
+          "bps_per_90": 24.6,
+          "bonus_per_90": 1.4,
+          "xgi_per_90": 0.126
+        },
+        "current_club": {
+          "points_per_90": 2.99742,
+          "xg_per_90": 0.029613,
+          "xa_per_90": 0.013101,
+          "start_rate": 0.568807
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 74.815938,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 20,
       "name": "Stroud",
       "prediction": 2.261922,
       "price": 4.9,
@@ -3304,7 +3684,7 @@
       }
     },
     {
-      "rank": 16,
+      "rank": 21,
       "name": "Egan",
       "prediction": 2.248983,
       "price": 4.1,
@@ -3380,7 +3760,7 @@
       }
     },
     {
-      "rank": 17,
+      "rank": 22,
       "name": "Eze",
       "prediction": 2.231001,
       "price": 6.2,
@@ -3456,7 +3836,7 @@
       }
     },
     {
-      "rank": 18,
+      "rank": 23,
       "name": "Morita",
       "prediction": 2.201793,
       "price": 4.9,
@@ -3532,100 +3912,24 @@
       }
     },
     {
-      "rank": 19,
-      "name": "Calafiori",
-      "prediction": 2.157108,
-      "price": 5.9,
-      "ownership": 47.8,
-      "position": "Defender",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 2.184019,
-      "prediction_p10": 0.0,
-      "prediction_p90": 5.6025,
-      "prediction_range": 5.6025,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 49.130478,
-      "start_probability": 0.519526,
-      "sixty_probability": 0.47898,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 5.013354,
-          "xg_per_90": 0.144907,
-          "xa_per_90": 0.046356,
-          "goals_per_90": 0.103014,
-          "assists_per_90": 0.103014,
-          "start_rate": 0.438356
-        },
-        "current_form": {
-          "points_per_90": 5.625,
-          "recent_3_points": 2.333333,
-          "recent_3_minutes": 37.333333,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.1,
-          "ict_index_per_90": 5.92197,
-          "influence_per_90": 20.864646,
-          "creativity_per_90": 15.793182,
-          "threat_per_90": 22.055556,
-          "bps_per_90": 15.20202,
-          "bonus_per_90": 0.277778,
-          "xgi_per_90": 0.321201
-        },
-        "current_club": {
-          "points_per_90": 5.013354,
-          "xg_per_90": 0.144907,
-          "xa_per_90": 0.046356,
-          "start_rate": 0.438356
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 49.130478,
-        "home_away": "home",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 20,
+      "rank": 24,
       "name": "J.Timber",
-      "prediction": 2.125349,
+      "prediction": 2.145453,
       "price": 6.5,
       "ownership": 0.8,
       "position": "Defender",
       "team": "",
       "fixture_home": "Arsenal",
       "fixture_away": "Hull City",
-      "prediction_std": 2.22773,
+      "prediction_std": 2.287556,
       "prediction_p10": 0.0,
-      "prediction_p90": 5.261364,
-      "prediction_range": 5.261364,
+      "prediction_p90": 5.466667,
+      "prediction_range": 5.466667,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 17.858491,
-      "start_probability": 0.240546,
-      "sixty_probability": 0.230265,
+      "expected_minutes": 62.990464,
+      "start_probability": 0.661758,
+      "sixty_probability": 0.677817,
       "fixture_context": {
         "opponent": "Hull City",
         "is_home": true,
@@ -3651,18 +3955,18 @@
           "start_rate": 0.5
         },
         "current_form": {
-          "points_per_90": 3.75,
-          "recent_3_points": 0.333333,
-          "recent_3_minutes": 8.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.023333,
-          "ict_index_per_90": 4.786488,
-          "influence_per_90": 14.413371,
-          "creativity_per_90": 21.669492,
-          "threat_per_90": 11.666667,
-          "bps_per_90": 5.282486,
+          "points_per_90": 4.736842,
+          "recent_3_points": 2.0,
+          "recent_3_minutes": 38.0,
+          "recent_3_xg": 0.006667,
+          "recent_3_xa": 0.03,
+          "ict_index_per_90": 3.589866,
+          "influence_per_90": 10.810028,
+          "creativity_per_90": 16.252119,
+          "threat_per_90": 8.75,
+          "bps_per_90": 9.711864,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.114545
+          "xgi_per_90": 0.081
         },
         "current_club": {
           "points_per_90": 4.846297,
@@ -3678,13 +3982,13 @@
           "xg_against_per_90": 1.545,
           "goals_against_per_90": 1.0
         },
-        "expected_minutes": 17.858491,
+        "expected_minutes": 62.990464,
         "home_away": "home",
         "fixture_environment": 2.807857
       }
     },
     {
-      "rank": 21,
+      "rank": 25,
       "name": "Thomas",
       "prediction": 2.101428,
       "price": 5.5,
@@ -3760,7 +4064,7 @@
       }
     },
     {
-      "rank": 22,
+      "rank": 26,
       "name": "Slater",
       "prediction": 2.08105,
       "price": 4.5,
@@ -3836,7 +4140,7 @@
       }
     },
     {
-      "rank": 23,
+      "rank": 27,
       "name": "Cho",
       "prediction": 2.069028,
       "price": 5.0,
@@ -3912,7 +4216,7 @@
       }
     },
     {
-      "rank": 24,
+      "rank": 28,
       "name": "Norton-Cuffy",
       "prediction": 2.059616,
       "price": 3.9,
@@ -3988,7 +4292,7 @@
       }
     },
     {
-      "rank": 25,
+      "rank": 29,
       "name": "Coyle",
       "prediction": 2.049697,
       "price": 4.0,
@@ -4064,100 +4368,24 @@
       }
     },
     {
-      "rank": 26,
-      "name": "Madueke",
-      "prediction": 2.003713,
-      "price": 6.2,
-      "ownership": 0.4,
+      "rank": 30,
+      "name": "Lewis-Skelly",
+      "prediction": 2.03829,
+      "price": 5.4,
+      "ownership": 0.5,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Arsenal",
       "fixture_away": "Hull City",
-      "prediction_std": 2.176139,
-      "prediction_p10": 0.111111,
-      "prediction_p90": 5.0,
-      "prediction_range": 4.888889,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 53.971712,
-      "start_probability": 0.675621,
-      "sixty_probability": 0.660053,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 5.069034,
-          "xg_per_90": 0.268836,
-          "xa_per_90": 0.156805,
-          "goals_per_90": 0.25641,
-          "assists_per_90": 0.157791,
-          "start_rate": 0.468254
-        },
-        "current_form": {
-          "points_per_90": 5.333333,
-          "recent_3_points": 2.666667,
-          "recent_3_minutes": 45.0,
-          "recent_3_xg": 0.073333,
-          "recent_3_xa": 0.03,
-          "ict_index_per_90": 8.6,
-          "influence_per_90": 26.333333,
-          "creativity_per_90": 31.666667,
-          "threat_per_90": 28.0,
-          "bps_per_90": 23.0,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.424
-        },
-        "current_club": {
-          "points_per_90": 4.273504,
-          "xg_per_90": 0.074359,
-          "xa_per_90": 0.21453,
-          "start_rate": 0.388889
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 53.971712,
-        "home_away": "home",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 27,
-      "name": "Havertz",
-      "prediction": 1.899244,
-      "price": 7.4,
-      "ownership": 5.5,
-      "position": "Forward",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 2.341645,
+      "prediction_std": 1.978117,
       "prediction_p10": 0.0,
-      "prediction_p90": 5.444444,
-      "prediction_range": 5.444444,
+      "prediction_p90": 5.091818,
+      "prediction_range": 5.091818,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 37.835635,
-      "start_probability": 0.410114,
-      "sixty_probability": 0.390176,
+      "expected_minutes": 40.86715,
+      "start_probability": 0.521403,
+      "sixty_probability": 0.431459,
       "fixture_context": {
         "opponent": "Hull City",
         "is_home": true,
@@ -4175,32 +4403,32 @@
       },
       "model_inputs": {
         "historical_ability": {
-          "points_per_90": 5.093359,
-          "xg_per_90": 0.28171,
-          "xa_per_90": 0.066091,
-          "goals_per_90": 0.355149,
-          "assists_per_90": 0.225217,
-          "start_rate": 0.341121
+          "points_per_90": 2.928719,
+          "xg_per_90": 0.008368,
+          "xa_per_90": 0.031147,
+          "goals_per_90": 0.046488,
+          "assists_per_90": 0.0,
+          "start_rate": 0.202128
         },
         "current_form": {
-          "points_per_90": 3.103448,
-          "recent_3_points": 1.0,
-          "recent_3_minutes": 29.0,
-          "recent_3_xg": 0.11,
-          "recent_3_xa": 0.01,
-          "ict_index_per_90": 3.026647,
-          "influence_per_90": 3.840323,
-          "creativity_per_90": 6.486651,
-          "threat_per_90": 20.226427,
-          "bps_per_90": 9.513535,
+          "points_per_90": 1.894737,
+          "recent_3_points": 0.666667,
+          "recent_3_minutes": 31.666667,
+          "recent_3_xg": 0.013333,
+          "recent_3_xa": 0.02,
+          "ict_index_per_90": 2.262638,
+          "influence_per_90": 8.227251,
+          "creativity_per_90": 10.84882,
+          "threat_per_90": 3.654309,
+          "bps_per_90": 18.707958,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.497071
+          "xgi_per_90": 0.269427
         },
         "current_club": {
-          "points_per_90": 5.57377,
-          "xg_per_90": 0.446266,
-          "xa_per_90": 0.10674,
-          "start_rate": 0.518182
+          "points_per_90": 2.928719,
+          "xg_per_90": 0.008368,
+          "xa_per_90": 0.031147,
+          "start_rate": 0.202128
         },
         "team_attack": {
           "xg_for_per_90": 1.732857,
@@ -4210,13 +4438,13 @@
           "xg_against_per_90": 1.545,
           "goals_against_per_90": 1.0
         },
-        "expected_minutes": 37.835635,
+        "expected_minutes": 40.86715,
         "home_away": "home",
         "fixture_environment": 2.807857
       }
     },
     {
-      "rank": 28,
+      "rank": 31,
       "name": "Zubimendi",
       "prediction": 1.795117,
       "price": 5.2,
@@ -4292,83 +4520,7 @@
       }
     },
     {
-      "rank": 29,
-      "name": "Bruno G.",
-      "prediction": 1.749044,
-      "price": 6.7,
-      "ownership": 2.4,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 1.952357,
-      "prediction_p10": 0.0,
-      "prediction_p90": 4.585,
-      "prediction_range": 4.585,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 36.822808,
-      "start_probability": 0.482585,
-      "sixty_probability": 0.345566,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 4.336546,
-          "xg_per_90": 0.121417,
-          "xa_per_90": 0.139524,
-          "goals_per_90": 0.200148,
-          "assists_per_90": 0.207561,
-          "start_rate": 0.732919
-        },
-        "current_form": {
-          "points_per_90": 4.137931,
-          "recent_3_points": 1.333333,
-          "recent_3_minutes": 29.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.013333,
-          "ict_index_per_90": 8.13793,
-          "influence_per_90": 42.627919,
-          "creativity_per_90": 25.943609,
-          "threat_per_90": 12.525898,
-          "bps_per_90": 41.110071,
-          "bonus_per_90": 2.5,
-          "xgi_per_90": 0.114451
-        },
-        "current_club": {
-          "points_per_90": 4.336546,
-          "xg_per_90": 0.121417,
-          "xa_per_90": 0.139524,
-          "start_rate": 0.732919
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 36.822808,
-        "home_away": "home",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 30,
+      "rank": 32,
       "name": "Gelhardt",
       "prediction": 1.747838,
       "price": 5.0,
@@ -4444,7 +4596,7 @@
       }
     },
     {
-      "rank": 31,
+      "rank": 33,
       "name": "Herrington",
       "prediction": 1.714804,
       "price": 4.0,
@@ -4520,7 +4672,83 @@
       }
     },
     {
-      "rank": 32,
+      "rank": 34,
+      "name": "Merino",
+      "prediction": 1.679963,
+      "price": 5.7,
+      "ownership": 0.4,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Arsenal",
+      "fixture_away": "Hull City",
+      "prediction_std": 1.820961,
+      "prediction_p10": 0.104737,
+      "prediction_p90": 4.3875,
+      "prediction_range": 4.282763,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 26.68201,
+      "start_probability": 0.328531,
+      "sixty_probability": 0.180397,
+      "fixture_context": {
+        "opponent": "Hull City",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.732857,
+        "team_xg_against_per90": 0.78,
+        "opponent_xg_for_per90": 1.075,
+        "opponent_xg_against_per90": 1.545,
+        "fixture_attack_mismatch": 0.187857,
+        "fixture_defence_mismatch": 0.295,
+        "fixture_xg_environment": 2.807857
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 5.963855,
+          "xg_per_90": 0.270181,
+          "xa_per_90": 0.131024,
+          "goals_per_90": 0.361446,
+          "assists_per_90": 0.271084,
+          "start_rate": 0.277778
+        },
+        "current_form": {
+          "points_per_90": 4.83871,
+          "recent_3_points": 1.666667,
+          "recent_3_minutes": 31.0,
+          "recent_3_xg": 0.203333,
+          "recent_3_xa": 0.026667,
+          "ict_index_per_90": 1.819701,
+          "influence_per_90": 6.69,
+          "creativity_per_90": 3.842687,
+          "threat_per_90": 11.991045,
+          "bps_per_90": 97.76194,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.595161
+        },
+        "current_club": {
+          "points_per_90": 5.963855,
+          "xg_per_90": 0.270181,
+          "xa_per_90": 0.131024,
+          "start_rate": 0.277778
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.732857,
+          "goals_for_per_90": 1.571429
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.545,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 26.68201,
+        "home_away": "home",
+        "fixture_environment": 2.807857
+      }
+    },
+    {
+      "rank": 35,
       "name": "Dowman",
       "prediction": 1.533841,
       "price": 5.3,
@@ -4596,7 +4824,7 @@
       }
     },
     {
-      "rank": 33,
+      "rank": 36,
       "name": "Giles",
       "prediction": 1.528812,
       "price": 4.0,
@@ -4672,7 +4900,7 @@
       }
     },
     {
-      "rank": 34,
+      "rank": 37,
       "name": "Vaz",
       "prediction": 1.500515,
       "price": 5.0,
@@ -4748,7 +4976,7 @@
       }
     },
     {
-      "rank": 35,
+      "rank": 38,
       "name": "Crooks",
       "prediction": 1.456192,
       "price": 4.4,
@@ -4824,159 +5052,7 @@
       }
     },
     {
-      "rank": 36,
-      "name": "Lewis-Skelly",
-      "prediction": 1.408134,
-      "price": 5.4,
-      "ownership": 0.5,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 1.593196,
-      "prediction_p10": 0.0,
-      "prediction_p90": 3.677778,
-      "prediction_range": 3.677778,
-      "confidence": "medium",
-      "fixture_difficulty": 2,
-      "expected_minutes": 29.89366,
-      "start_probability": 0.355413,
-      "sixty_probability": 0.322552,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 2.928719,
-          "xg_per_90": 0.008368,
-          "xa_per_90": 0.031147,
-          "goals_per_90": 0.046488,
-          "assists_per_90": 0.0,
-          "start_rate": 0.202128
-        },
-        "current_form": {
-          "points_per_90": 2.686567,
-          "recent_3_points": 0.666667,
-          "recent_3_minutes": 22.333333,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.02,
-          "ict_index_per_90": 3.393958,
-          "influence_per_90": 12.340876,
-          "creativity_per_90": 16.273231,
-          "threat_per_90": 5.481464,
-          "bps_per_90": 21.633365,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.3
-        },
-        "current_club": {
-          "points_per_90": 2.928719,
-          "xg_per_90": 0.008368,
-          "xa_per_90": 0.031147,
-          "start_rate": 0.202128
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 29.89366,
-        "home_away": "home",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 37,
-      "name": "Merino",
-      "prediction": 1.374424,
-      "price": 5.7,
-      "ownership": 0.4,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 1.570359,
-      "prediction_p10": 0.0,
-      "prediction_p90": 3.41,
-      "prediction_range": 3.41,
-      "confidence": "medium",
-      "fixture_difficulty": 2,
-      "expected_minutes": 27.312325,
-      "start_probability": 0.311382,
-      "sixty_probability": 0.187623,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 5.963855,
-          "xg_per_90": 0.270181,
-          "xa_per_90": 0.131024,
-          "goals_per_90": 0.361446,
-          "assists_per_90": 0.271084,
-          "start_rate": 0.277778
-        },
-        "current_form": {
-          "points_per_90": 3.956044,
-          "recent_3_points": 1.333333,
-          "recent_3_minutes": 30.333333,
-          "recent_3_xg": 0.203333,
-          "recent_3_xa": 0.026667,
-          "ict_index_per_90": 2.274627,
-          "influence_per_90": 8.3625,
-          "creativity_per_90": 4.803358,
-          "threat_per_90": 14.988806,
-          "bps_per_90": 77.202425,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.604918
-        },
-        "current_club": {
-          "points_per_90": 5.963855,
-          "xg_per_90": 0.270181,
-          "xa_per_90": 0.131024,
-          "start_rate": 0.277778
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 27.312325,
-        "home_away": "home",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 38,
+      "rank": 39,
       "name": "Gourna-Douath",
       "prediction": 1.269845,
       "price": 4.9,
@@ -5052,7 +5128,7 @@
       }
     },
     {
-      "rank": 39,
+      "rank": 40,
       "name": "Millar",
       "prediction": 1.112053,
       "price": 5.0,
@@ -5128,24 +5204,24 @@
       }
     },
     {
-      "rank": 40,
-      "name": "Tzolis",
-      "prediction": 0.811154,
-      "price": 6.1,
-      "ownership": 3.8,
-      "position": "Midfielder",
+      "rank": 41,
+      "name": "Hincapie",
+      "prediction": 0.831669,
+      "price": 5.2,
+      "ownership": 0.7,
+      "position": "Defender",
       "team": "",
       "fixture_home": "Arsenal",
       "fixture_away": "Hull City",
-      "prediction_std": 1.456037,
+      "prediction_std": 0.968242,
       "prediction_p10": 0.0,
-      "prediction_p90": 2.672727,
-      "prediction_range": 2.672727,
-      "confidence": "medium",
+      "prediction_p90": 2.0,
+      "prediction_range": 2.0,
+      "confidence": "high",
       "fixture_difficulty": 2,
-      "expected_minutes": 16.133698,
-      "start_probability": 0.157553,
-      "sixty_probability": 0.157455,
+      "expected_minutes": 17.191827,
+      "start_probability": 0.074452,
+      "sixty_probability": 0.103702,
       "fixture_context": {
         "opponent": "Hull City",
         "is_home": true,
@@ -5163,32 +5239,32 @@
       },
       "model_inputs": {
         "historical_ability": {
-          "points_per_90": 4.417178,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
+          "points_per_90": 4.341373,
+          "xg_per_90": 0.018367,
+          "xa_per_90": 0.083488,
+          "goals_per_90": 0.055659,
+          "assists_per_90": 0.055659,
+          "start_rate": 0.545455
         },
         "current_form": {
-          "points_per_90": null,
-          "recent_3_points": 0.0,
-          "recent_3_minutes": 0.0,
+          "points_per_90": 15.0,
+          "recent_3_points": 0.333333,
+          "recent_3_minutes": 2.0,
           "recent_3_xg": 0.0,
           "recent_3_xa": 0.0,
-          "ict_index_per_90": 2.125,
-          "influence_per_90": 6.25,
-          "creativity_per_90": 7.75,
-          "threat_per_90": 7.5,
-          "bps_per_90": 11.25,
+          "ict_index_per_90": 2.8125,
+          "influence_per_90": 23.625,
+          "creativity_per_90": 3.9375,
+          "threat_per_90": 0.0,
+          "bps_per_90": 37.5,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.0875
+          "xgi_per_90": 0.0
         },
         "current_club": {
-          "points_per_90": 4.417178,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "start_rate": 0.0
+          "points_per_90": 4.341373,
+          "xg_per_90": 0.018367,
+          "xa_per_90": 0.083488,
+          "start_rate": 0.545455
         },
         "team_attack": {
           "xg_for_per_90": 1.732857,
@@ -5198,13 +5274,13 @@
           "xg_against_per_90": 1.545,
           "goals_against_per_90": 1.0
         },
-        "expected_minutes": 16.133698,
+        "expected_minutes": 17.191827,
         "home_away": "home",
         "fixture_environment": 2.807857
       }
     },
     {
-      "rank": 41,
+      "rank": 42,
       "name": "Saliba",
       "prediction": 0.785531,
       "price": 5.9,
@@ -5280,7 +5356,7 @@
       }
     },
     {
-      "rank": 42,
+      "rank": 43,
       "name": "Targett",
       "prediction": 0.744915,
       "price": 3.9,
@@ -5352,82 +5428,6 @@
         },
         "expected_minutes": 3.605024,
         "home_away": "away",
-        "fixture_environment": 2.807857
-      }
-    },
-    {
-      "rank": 43,
-      "name": "Hincapie",
-      "prediction": 0.4073,
-      "price": 5.2,
-      "ownership": 0.7,
-      "position": "Defender",
-      "team": "",
-      "fixture_home": "Arsenal",
-      "fixture_away": "Hull City",
-      "prediction_std": 0.680877,
-      "prediction_p10": 0.0,
-      "prediction_p90": 1.0,
-      "prediction_range": 1.0,
-      "confidence": "high",
-      "fixture_difficulty": 2,
-      "expected_minutes": 8.972556,
-      "start_probability": 0.089445,
-      "sixty_probability": 0.064145,
-      "fixture_context": {
-        "opponent": "Hull City",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.732857,
-        "team_xg_against_per90": 0.78,
-        "opponent_xg_for_per90": 1.075,
-        "opponent_xg_against_per90": 1.545,
-        "fixture_attack_mismatch": 0.187857,
-        "fixture_defence_mismatch": 0.295,
-        "fixture_xg_environment": 2.807857
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 4.341373,
-          "xg_per_90": 0.018367,
-          "xa_per_90": 0.083488,
-          "goals_per_90": 0.055659,
-          "assists_per_90": 0.055659,
-          "start_rate": 0.545455
-        },
-        "current_form": {
-          "points_per_90": null,
-          "recent_3_points": 0.0,
-          "recent_3_minutes": 0.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 5.625,
-          "influence_per_90": 47.25,
-          "creativity_per_90": 7.875,
-          "threat_per_90": 0.0,
-          "bps_per_90": 45.0,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.0
-        },
-        "current_club": {
-          "points_per_90": 4.341373,
-          "xg_per_90": 0.018367,
-          "xa_per_90": 0.083488,
-          "start_rate": 0.545455
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.732857,
-          "goals_for_per_90": 1.571429
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.545,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 8.972556,
-        "home_away": "home",
         "fixture_environment": 2.807857
       }
     },
@@ -7716,7 +7716,7 @@
       "name": "Kostoulas",
       "prediction": 3.980232,
       "price": 5.8,
-      "ownership": 10.3,
+      "ownership": 10.2,
       "position": "Forward",
       "team": "",
       "fixture_home": "Brighton",
@@ -8096,7 +8096,7 @@
       "name": "Ayari",
       "prediction": 3.451715,
       "price": 5.4,
-      "ownership": 1.0,
+      "ownership": 1.1,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Brighton",
@@ -8248,7 +8248,7 @@
       "name": "De Cuyper",
       "prediction": 3.380521,
       "price": 5.4,
-      "ownership": 44.2,
+      "ownership": 44.3,
       "position": "Defender",
       "team": "",
       "fixture_home": "Brighton",
@@ -8476,7 +8476,7 @@
       "name": "Verbruggen",
       "prediction": 3.275093,
       "price": 4.6,
-      "ownership": 22.7,
+      "ownership": 22.8,
       "position": "Goalkeeper",
       "team": "",
       "fixture_home": "Brighton",
@@ -12654,22 +12654,22 @@
     {
       "rank": 1,
       "name": "Isak",
-      "prediction": 4.41575,
+      "prediction": 5.392292,
       "price": 9.2,
-      "ownership": 20.9,
+      "ownership": 21.0,
       "position": "Forward",
       "team": "",
       "fixture_home": "Crystal Palace",
       "fixture_away": "Liverpool",
-      "prediction_std": 3.168133,
-      "prediction_p10": 0.797778,
-      "prediction_p90": 8.835714,
-      "prediction_range": 8.037937,
+      "prediction_std": 3.850677,
+      "prediction_p10": 1.179021,
+      "prediction_p90": 10.8,
+      "prediction_range": 9.620979,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 49.513665,
-      "start_probability": 0.589995,
-      "sixty_probability": 0.556914,
+      "expected_minutes": 61.669631,
+      "start_probability": 0.766396,
+      "sixty_probability": 0.71296,
       "fixture_context": {
         "opponent": "Crystal Palace",
         "is_home": false,
@@ -12695,18 +12695,18 @@
           "start_rate": 0.548611
         },
         "current_form": {
-          "points_per_90": 10.519481,
-          "recent_3_points": 6.0,
-          "recent_3_minutes": 51.333333,
-          "recent_3_xg": 0.243333,
-          "recent_3_xa": 0.016667,
-          "ict_index_per_90": 10.622318,
-          "influence_per_90": 38.674393,
-          "creativity_per_90": 18.548279,
-          "threat_per_90": 48.649291,
-          "bps_per_90": 37.728239,
-          "bonus_per_90": 3.463057,
-          "xgi_per_90": 0.596154
+          "points_per_90": 7.377049,
+          "recent_3_points": 6.666667,
+          "recent_3_minutes": 81.333333,
+          "recent_3_xg": 0.276667,
+          "recent_3_xa": 0.06,
+          "ict_index_per_90": 7.966738,
+          "influence_per_90": 29.005795,
+          "creativity_per_90": 13.91121,
+          "threat_per_90": 36.486969,
+          "bps_per_90": 30.296179,
+          "bonus_per_90": 2.597293,
+          "xgi_per_90": 0.494444
         },
         "current_club": {
           "points_per_90": 5.317003,
@@ -12722,106 +12722,30 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 49.513665,
+        "expected_minutes": 61.669631,
         "home_away": "away",
         "fixture_environment": 2.93
       }
     },
     {
       "rank": 2,
-      "name": "Barcola",
-      "prediction": 4.171422,
-      "price": 8.1,
-      "ownership": 4.2,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 2.832936,
-      "prediction_p10": 0.920769,
-      "prediction_p90": 8.386154,
-      "prediction_range": 7.465385,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 28.333435,
-      "start_probability": 0.362881,
-      "sixty_probability": 0.350245,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": 5.421687,
-          "recent_3_points": 3.333333,
-          "recent_3_minutes": 55.333333,
-          "recent_3_xg": 0.2,
-          "recent_3_xa": 0.186667,
-          "ict_index_per_90": 4.921718,
-          "influence_per_90": 13.936611,
-          "creativity_per_90": 15.080893,
-          "threat_per_90": 20.014503,
-          "bps_per_90": 17.433351,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.363889
-        },
-        "current_club": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 28.333435,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 3,
       "name": "Wirtz",
-      "prediction": 4.101465,
+      "prediction": 4.987175,
       "price": 7.2,
       "ownership": 5.1,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Crystal Palace",
       "fixture_away": "Liverpool",
-      "prediction_std": 3.27163,
-      "prediction_p10": 0.309821,
-      "prediction_p90": 9.0,
-      "prediction_range": 8.690179,
+      "prediction_std": 3.48976,
+      "prediction_p10": 1.064286,
+      "prediction_p90": 10.3,
+      "prediction_range": 9.235714,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 48.31855,
-      "start_probability": 0.616227,
-      "sixty_probability": 0.547006,
+      "expected_minutes": 66.921527,
+      "start_probability": 0.742809,
+      "sixty_probability": 0.701714,
       "fixture_context": {
         "opponent": "Crystal Palace",
         "is_home": false,
@@ -12847,18 +12771,18 @@
           "start_rate": 0.72973
         },
         "current_form": {
-          "points_per_90": 6.428571,
-          "recent_3_points": 3.666667,
-          "recent_3_minutes": 51.333333,
-          "recent_3_xg": 0.026667,
-          "recent_3_xa": 0.143333,
-          "ict_index_per_90": 9.1699,
-          "influence_per_90": 17.074348,
-          "creativity_per_90": 61.784967,
-          "threat_per_90": 12.743819,
-          "bps_per_90": 24.794729,
+          "points_per_90": 5.0,
+          "recent_3_points": 4.333333,
+          "recent_3_minutes": 78.0,
+          "recent_3_xg": 0.123333,
+          "recent_3_xa": 0.163333,
+          "ict_index_per_90": 7.33592,
+          "influence_per_90": 13.659478,
+          "creativity_per_90": 49.427974,
+          "threat_per_90": 10.195055,
+          "bps_per_90": 21.860783,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.351903
+          "xgi_per_90": 0.360976
         },
         "current_club": {
           "points_per_90": 4.734832,
@@ -12874,13 +12798,165 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 48.31855,
+        "expected_minutes": 66.921527,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 3,
+      "name": "Mac Allister",
+      "prediction": 4.363486,
+      "price": 5.4,
+      "ownership": 1.3,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.927046,
+      "prediction_p10": 1.3,
+      "prediction_p90": 8.673684,
+      "prediction_range": 7.373684,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 78.348185,
+      "start_probability": 0.912497,
+      "sixty_probability": 0.889917,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 4.008041,
+          "xg_per_90": 0.114753,
+          "xa_per_90": 0.098388,
+          "goals_per_90": 0.17396,
+          "assists_per_90": 0.139168,
+          "start_rate": 0.476636
+        },
+        "current_form": {
+          "points_per_90": 1.666667,
+          "recent_3_points": 1.666667,
+          "recent_3_minutes": 90.0,
+          "recent_3_xg": 0.136667,
+          "recent_3_xa": 0.173333,
+          "ict_index_per_90": 3.38,
+          "influence_per_90": 11.16,
+          "creativity_per_90": 14.38,
+          "threat_per_90": 8.2,
+          "bps_per_90": 12.4,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.252
+        },
+        "current_club": {
+          "points_per_90": 3.893252,
+          "xg_per_90": 0.113803,
+          "xa_per_90": 0.142074,
+          "start_rate": 0.807339
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 78.348185,
         "home_away": "away",
         "fixture_environment": 2.93
       }
     },
     {
       "rank": 4,
+      "name": "Barcola",
+      "prediction": 4.065965,
+      "price": 8.1,
+      "ownership": 4.3,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 3.20623,
+      "prediction_p10": 0.775,
+      "prediction_p90": 8.548052,
+      "prediction_range": 7.773052,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 58.310326,
+      "start_probability": 0.661427,
+      "sixty_probability": 0.672547,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": 3.867188,
+          "recent_3_points": 3.666667,
+          "recent_3_minutes": 85.333333,
+          "recent_3_xg": 0.223333,
+          "recent_3_xa": 0.23,
+          "ict_index_per_90": 3.937375,
+          "influence_per_90": 11.149289,
+          "creativity_per_90": 12.064714,
+          "threat_per_90": 16.011602,
+          "bps_per_90": 15.146681,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.328261
+        },
+        "current_club": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 58.310326,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 5,
       "name": "Richards",
       "prediction": 4.06211,
       "price": 4.9,
@@ -12956,24 +13032,100 @@
       }
     },
     {
-      "rank": 5,
-      "name": "Jacquet",
-      "prediction": 3.550529,
-      "price": 5.1,
-      "ownership": 4.4,
+      "rank": 6,
+      "name": "Virgil",
+      "prediction": 3.653613,
+      "price": 6.4,
+      "ownership": 15.1,
       "position": "Defender",
       "team": "",
       "fixture_home": "Crystal Palace",
       "fixture_away": "Liverpool",
-      "prediction_std": 2.937602,
-      "prediction_p10": 0.19875,
-      "prediction_p90": 8.007692,
-      "prediction_range": 7.808942,
+      "prediction_std": 2.532029,
+      "prediction_p10": 1.0,
+      "prediction_p90": 7.504545,
+      "prediction_range": 6.504545,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 50.678659,
-      "start_probability": 0.569786,
-      "sixty_probability": 0.505394,
+      "expected_minutes": 89.065255,
+      "start_probability": 0.964998,
+      "sixty_probability": 0.958346,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 4.309959,
+          "xg_per_90": 0.060555,
+          "xa_per_90": 0.023099,
+          "goals_per_90": 0.106565,
+          "assists_per_90": 0.047362,
+          "start_rate": 0.570093
+        },
+        "current_form": {
+          "points_per_90": 4.666667,
+          "recent_3_points": 4.666667,
+          "recent_3_minutes": 90.0,
+          "recent_3_xg": 0.036667,
+          "recent_3_xa": 0.036667,
+          "ict_index_per_90": 2.28,
+          "influence_per_90": 18.44,
+          "creativity_per_90": 3.02,
+          "threat_per_90": 1.2,
+          "bps_per_90": 14.2,
+          "bonus_per_90": 0.2,
+          "xgi_per_90": 0.048
+        },
+        "current_club": {
+          "points_per_90": 4.309959,
+          "xg_per_90": 0.060555,
+          "xa_per_90": 0.023099,
+          "start_rate": 0.570093
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 89.065255,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 7,
+      "name": "Araujo",
+      "prediction": 3.557514,
+      "price": 5.4,
+      "ownership": 3.9,
+      "position": "Defender",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.729231,
+      "prediction_p10": 0.44,
+      "prediction_p90": 7.6325,
+      "prediction_range": 7.1925,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 58.050665,
+      "start_probability": 0.604522,
+      "sixty_probability": 0.622178,
       "fixture_context": {
         "opponent": "Crystal Palace",
         "is_home": false,
@@ -12999,18 +13151,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 5.5,
-          "recent_3_points": 3.666667,
-          "recent_3_minutes": 60.0,
-          "recent_3_xg": 0.01,
-          "recent_3_xa": 0.016667,
-          "ict_index_per_90": 3.55,
-          "influence_per_90": 25.460345,
-          "creativity_per_90": 1.027586,
-          "threat_per_90": 8.784483,
-          "bps_per_90": 14.25,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.093277
+          "points_per_90": 6.27907,
+          "recent_3_points": 5.0,
+          "recent_3_minutes": 71.666667,
+          "recent_3_xg": 0.073333,
+          "recent_3_xa": 0.006667,
+          "ict_index_per_90": 2.119459,
+          "influence_per_90": 13.355676,
+          "creativity_per_90": 3.985946,
+          "threat_per_90": 3.8,
+          "bps_per_90": 12.468243,
+          "bonus_per_90": 0.6,
+          "xgi_per_90": 0.061741
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -13026,13 +13178,13 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 50.678659,
+        "expected_minutes": 58.050665,
         "home_away": "away",
         "fixture_environment": 2.93
       }
     },
     {
-      "rank": 6,
+      "rank": 8,
       "name": "Mateta",
       "prediction": 3.531914,
       "price": 6.3,
@@ -13108,7 +13260,235 @@
       }
     },
     {
-      "rank": 7,
+      "rank": 9,
+      "name": "Gakpo",
+      "prediction": 3.518772,
+      "price": 7.1,
+      "ownership": 6.9,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.975245,
+      "prediction_p10": 0.354762,
+      "prediction_p90": 8.275,
+      "prediction_range": 7.920238,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 46.357684,
+      "start_probability": 0.647602,
+      "sixty_probability": 0.561499,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 5.211248,
+          "xg_per_90": 0.370312,
+          "xa_per_90": 0.152638,
+          "goals_per_90": 0.38648,
+          "assists_per_90": 0.162072,
+          "start_rate": 0.648438
+        },
+        "current_form": {
+          "points_per_90": 2.884615,
+          "recent_3_points": 1.666667,
+          "recent_3_minutes": 52.0,
+          "recent_3_xg": 0.2,
+          "recent_3_xa": 0.05,
+          "ict_index_per_90": 5.5,
+          "influence_per_90": 7.933333,
+          "creativity_per_90": 22.166667,
+          "threat_per_90": 24.666667,
+          "bps_per_90": 11.181818,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.526829
+        },
+        "current_club": {
+          "points_per_90": 5.211248,
+          "xg_per_90": 0.370312,
+          "xa_per_90": 0.152638,
+          "start_rate": 0.648438
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 46.357684,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 10,
+      "name": "Jacquet",
+      "prediction": 3.488628,
+      "price": 5.1,
+      "ownership": 4.4,
+      "position": "Defender",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.601405,
+      "prediction_p10": 0.663636,
+      "prediction_p90": 7.25,
+      "prediction_range": 6.586364,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 81.219352,
+      "start_probability": 0.758699,
+      "sixty_probability": 0.844307,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": 4.333333,
+          "recent_3_points": 4.333333,
+          "recent_3_minutes": 90.0,
+          "recent_3_xg": 0.01,
+          "recent_3_xa": 0.033333,
+          "ict_index_per_90": 2.84,
+          "influence_per_90": 20.368276,
+          "creativity_per_90": 0.822069,
+          "threat_per_90": 7.027586,
+          "bps_per_90": 14.2,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.084564
+        },
+        "current_club": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 81.219352,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 11,
+      "name": "A.Becker",
+      "prediction": 3.372278,
+      "price": 5.5,
+      "ownership": 4.1,
+      "position": "Goalkeeper",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.395371,
+      "prediction_p10": 0.848333,
+      "prediction_p90": 7.007692,
+      "prediction_range": 6.159359,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 86.150129,
+      "start_probability": 0.963395,
+      "sixty_probability": 0.981229,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 3.56,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0012,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.675676
+        },
+        "current_form": {
+          "points_per_90": 3.333333,
+          "recent_3_points": 3.333333,
+          "recent_3_minutes": 90.0,
+          "recent_3_xg": 0.0,
+          "recent_3_xa": 0.003333,
+          "ict_index_per_90": 1.0,
+          "influence_per_90": 10.04,
+          "creativity_per_90": 0.0,
+          "threat_per_90": 0.0,
+          "bps_per_90": 13.0,
+          "bonus_per_90": 0.4,
+          "xgi_per_90": 0.002
+        },
+        "current_club": {
+          "points_per_90": 3.56,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0012,
+          "start_rate": 0.675676
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 86.150129,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 12,
       "name": "Mitchell",
       "prediction": 3.338476,
       "price": 4.5,
@@ -13184,83 +13564,7 @@
       }
     },
     {
-      "rank": 8,
-      "name": "Virgil",
-      "prediction": 3.280695,
-      "price": 6.4,
-      "ownership": 15.1,
-      "position": "Defender",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 2.852633,
-      "prediction_p10": 0.1,
-      "prediction_p90": 7.402404,
-      "prediction_range": 7.302404,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 65.73629,
-      "start_probability": 0.806332,
-      "sixty_probability": 0.77881,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 4.309959,
-          "xg_per_90": 0.060555,
-          "xa_per_90": 0.023099,
-          "goals_per_90": 0.106565,
-          "assists_per_90": 0.047362,
-          "start_rate": 0.570093
-        },
-        "current_form": {
-          "points_per_90": 6.5,
-          "recent_3_points": 4.333333,
-          "recent_3_minutes": 60.0,
-          "recent_3_xg": 0.02,
-          "recent_3_xa": 0.006667,
-          "ict_index_per_90": 2.85,
-          "influence_per_90": 23.05,
-          "creativity_per_90": 3.775,
-          "threat_per_90": 1.5,
-          "bps_per_90": 16.25,
-          "bonus_per_90": 0.25,
-          "xgi_per_90": 0.025
-        },
-        "current_club": {
-          "points_per_90": 4.309959,
-          "xg_per_90": 0.060555,
-          "xa_per_90": 0.023099,
-          "start_rate": 0.570093
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 65.73629,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 9,
+      "rank": 13,
       "name": "Wharton",
       "prediction": 3.210335,
       "price": 5.4,
@@ -13336,87 +13640,11 @@
       }
     },
     {
-      "rank": 10,
-      "name": "Araujo",
-      "prediction": 3.161506,
-      "price": 5.4,
-      "ownership": 3.9,
-      "position": "Defender",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 2.946142,
-      "prediction_p10": 0.076923,
-      "prediction_p90": 7.714286,
-      "prediction_range": 7.637363,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 27.860821,
-      "start_probability": 0.360289,
-      "sixty_probability": 0.368196,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": 7.333333,
-          "recent_3_points": 3.666667,
-          "recent_3_minutes": 45.0,
-          "recent_3_xg": 0.02,
-          "recent_3_xa": 0.003333,
-          "ict_index_per_90": 2.649324,
-          "influence_per_90": 16.694595,
-          "creativity_per_90": 4.982432,
-          "threat_per_90": 4.75,
-          "bps_per_90": 13.054054,
-          "bonus_per_90": 0.75,
-          "xgi_per_90": 0.02709
-        },
-        "current_club": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 27.860821,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 11,
+      "rank": 14,
       "name": "Kamada",
       "prediction": 3.082092,
       "price": 5.0,
-      "ownership": 0.7,
+      "ownership": 0.6,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Crystal Palace",
@@ -13488,7 +13716,83 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 15,
+      "name": "Kerkez",
+      "prediction": 2.992819,
+      "price": 5.3,
+      "ownership": 1.9,
+      "position": "Defender",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.374636,
+      "prediction_p10": 0.4,
+      "prediction_p90": 6.310256,
+      "prediction_range": 5.910256,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 79.595128,
+      "start_probability": 0.939863,
+      "sixty_probability": 0.865808,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 3.315342,
+          "xg_per_90": 0.039954,
+          "xa_per_90": 0.051491,
+          "goals_per_90": 0.048576,
+          "assists_per_90": 0.097153,
+          "start_rate": 0.765766
+        },
+        "current_form": {
+          "points_per_90": 3.151751,
+          "recent_3_points": 3.0,
+          "recent_3_minutes": 85.666667,
+          "recent_3_xg": 0.056667,
+          "recent_3_xa": 0.07,
+          "ict_index_per_90": 1.83931,
+          "influence_per_90": 9.926897,
+          "creativity_per_90": 6.473793,
+          "threat_per_90": 2.055172,
+          "bps_per_90": 14.633621,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.094737
+        },
+        "current_club": {
+          "points_per_90": 3.368984,
+          "xg_per_90": 0.058957,
+          "xa_per_90": 0.027674,
+          "start_rate": 0.72973
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 79.595128,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 16,
       "name": "Yeremy",
       "prediction": 2.808767,
       "price": 5.5,
@@ -13564,159 +13868,7 @@
       }
     },
     {
-      "rank": 13,
-      "name": "Szoboszlai",
-      "prediction": 2.762982,
-      "price": 6.7,
-      "ownership": 13.5,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 2.58923,
-      "prediction_p10": 0.328571,
-      "prediction_p90": 6.365734,
-      "prediction_range": 6.037163,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 21.760497,
-      "start_probability": 0.22971,
-      "sixty_probability": 0.175325,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 4.699801,
-          "xg_per_90": 0.175467,
-          "xa_per_90": 0.203022,
-          "goals_per_90": 0.178926,
-          "assists_per_90": 0.250497,
-          "start_rate": 0.798165
-        },
-        "current_form": {
-          "points_per_90": 2.903226,
-          "recent_3_points": 0.333333,
-          "recent_3_minutes": 10.333333,
-          "recent_3_xg": 0.033333,
-          "recent_3_xa": 0.08,
-          "ict_index_per_90": 1.61129,
-          "influence_per_90": 3.222581,
-          "creativity_per_90": 10.281048,
-          "threat_per_90": 2.576613,
-          "bps_per_90": 7.167339,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.397297
-        },
-        "current_club": {
-          "points_per_90": 4.699801,
-          "xg_per_90": 0.175467,
-          "xa_per_90": 0.203022,
-          "start_rate": 0.798165
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 21.760497,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 14,
-      "name": "Gakpo",
-      "prediction": 2.760848,
-      "price": 7.1,
-      "ownership": 6.9,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 2.688936,
-      "prediction_p10": 0.0,
-      "prediction_p90": 6.847253,
-      "prediction_range": 6.847253,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 43.249379,
-      "start_probability": 0.37718,
-      "sixty_probability": 0.367595,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 5.211248,
-          "xg_per_90": 0.370312,
-          "xa_per_90": 0.152638,
-          "goals_per_90": 0.38648,
-          "assists_per_90": 0.162072,
-          "start_rate": 0.648438
-        },
-        "current_form": {
-          "points_per_90": 3.0,
-          "recent_3_points": 1.0,
-          "recent_3_minutes": 30.0,
-          "recent_3_xg": 0.186667,
-          "recent_3_xa": 0.013333,
-          "ict_index_per_90": 8.25,
-          "influence_per_90": 11.9,
-          "creativity_per_90": 33.25,
-          "threat_per_90": 37.0,
-          "bps_per_90": 12.0,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.645
-        },
-        "current_club": {
-          "points_per_90": 5.211248,
-          "xg_per_90": 0.370312,
-          "xa_per_90": 0.152638,
-          "start_rate": 0.648438
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 43.249379,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 15,
+      "rank": 17,
       "name": "Disasi",
       "prediction": 2.72965,
       "price": 4.4,
@@ -13792,7 +13944,83 @@
       }
     },
     {
-      "rank": 16,
+      "rank": 18,
+      "name": "Szoboszlai",
+      "prediction": 2.692591,
+      "price": 6.7,
+      "ownership": 13.5,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.358809,
+      "prediction_p10": 0.229915,
+      "prediction_p90": 6.222222,
+      "prediction_range": 5.992308,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 34.46552,
+      "start_probability": 0.370962,
+      "sixty_probability": 0.225692,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 4.699801,
+          "xg_per_90": 0.175467,
+          "xa_per_90": 0.203022,
+          "goals_per_90": 0.178926,
+          "assists_per_90": 0.250497,
+          "start_rate": 0.798165
+        },
+        "current_form": {
+          "points_per_90": 2.903226,
+          "recent_3_points": 0.666667,
+          "recent_3_minutes": 20.666667,
+          "recent_3_xg": 0.033333,
+          "recent_3_xa": 0.106667,
+          "ict_index_per_90": 1.074194,
+          "influence_per_90": 2.148387,
+          "creativity_per_90": 6.854032,
+          "threat_per_90": 1.717742,
+          "bps_per_90": 14.455645,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.361268
+        },
+        "current_club": {
+          "points_per_90": 4.699801,
+          "xg_per_90": 0.175467,
+          "xa_per_90": 0.203022,
+          "start_rate": 0.798165
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 34.46552,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 19,
       "name": "Canvot",
       "prediction": 2.660218,
       "price": 4.8,
@@ -13868,83 +14096,7 @@
       }
     },
     {
-      "rank": 17,
-      "name": "Ngumoha",
-      "prediction": 2.650373,
-      "price": 5.7,
-      "ownership": 0.5,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 2.430403,
-      "prediction_p10": 0.181818,
-      "prediction_p90": 6.364773,
-      "prediction_range": 6.182955,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 21.991929,
-      "start_probability": 0.280672,
-      "sixty_probability": 0.18766,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 7.768421,
-          "xg_per_90": 0.229263,
-          "xa_per_90": 0.369474,
-          "goals_per_90": 0.378947,
-          "assists_per_90": 0.189474,
-          "start_rate": 0.108108
-        },
-        "current_form": {
-          "points_per_90": 3.529412,
-          "recent_3_points": 0.666667,
-          "recent_3_minutes": 17.0,
-          "recent_3_xg": 0.01,
-          "recent_3_xa": 0.023333,
-          "ict_index_per_90": 3.066802,
-          "influence_per_90": 5.210526,
-          "creativity_per_90": 15.619433,
-          "threat_per_90": 8.684211,
-          "bps_per_90": 20.817814,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.136364
-        },
-        "current_club": {
-          "points_per_90": 7.768421,
-          "xg_per_90": 0.229263,
-          "xa_per_90": 0.369474,
-          "start_rate": 0.108108
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 21.991929,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 18,
+      "rank": 20,
       "name": "Osorio",
       "prediction": 2.578921,
       "price": 5.4,
@@ -14020,7 +14172,159 @@
       }
     },
     {
-      "rank": 19,
+      "rank": 21,
+      "name": "Nyoni",
+      "prediction": 2.555276,
+      "price": 4.8,
+      "ownership": 0.0,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.151334,
+      "prediction_p10": 0.196667,
+      "prediction_p90": 5.850427,
+      "prediction_range": 5.653761,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 30.355169,
+      "start_probability": 0.42196,
+      "sixty_probability": 0.354798,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 32.142857,
+          "xg_per_90": 2.378571,
+          "xa_per_90": 0.064286,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": 1.914894,
+          "recent_3_points": 1.0,
+          "recent_3_minutes": 47.0,
+          "recent_3_xg": 0.03,
+          "recent_3_xa": 0.05,
+          "ict_index_per_90": 2.860437,
+          "influence_per_90": 18.77253,
+          "creativity_per_90": 6.131145,
+          "threat_per_90": 3.362069,
+          "bps_per_90": 14.308312,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.117391
+        },
+        "current_club": {
+          "points_per_90": 32.142857,
+          "xg_per_90": 2.378571,
+          "xa_per_90": 0.064286,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 30.355169,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 22,
+      "name": "Koumas",
+      "prediction": 2.549373,
+      "price": 5.0,
+      "ownership": 0.1,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 2.535869,
+      "prediction_p10": 0.0,
+      "prediction_p90": 6.266667,
+      "prediction_range": 6.266667,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 14.128138,
+      "start_probability": 0.117688,
+      "sixty_probability": 0.138595,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": 8.181818,
+          "recent_3_points": 1.0,
+          "recent_3_minutes": 11.0,
+          "recent_3_xg": 0.02,
+          "recent_3_xa": 0.0,
+          "ict_index_per_90": 6.588584,
+          "influence_per_90": 12.766925,
+          "creativity_per_90": 0.462162,
+          "threat_per_90": 52.862408,
+          "bps_per_90": 32.78265,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.318103
+        },
+        "current_club": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 14.128138,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 23,
       "name": "McNeil",
       "prediction": 2.507849,
       "price": 5.3,
@@ -14096,24 +14400,24 @@
       }
     },
     {
-      "rank": 20,
-      "name": "Kerkez",
-      "prediction": 2.419018,
-      "price": 5.3,
-      "ownership": 1.9,
-      "position": "Defender",
+      "rank": 24,
+      "name": "Munoz",
+      "prediction": 2.384969,
+      "price": 6.5,
+      "ownership": 0.7,
+      "position": "Midfielder",
       "team": "",
       "fixture_home": "Crystal Palace",
       "fixture_away": "Liverpool",
-      "prediction_std": 2.209273,
-      "prediction_p10": 0.141071,
-      "prediction_p90": 5.75,
-      "prediction_range": 5.608929,
+      "prediction_std": 2.412643,
+      "prediction_p10": 0.0,
+      "prediction_p90": 5.925,
+      "prediction_range": 5.925,
       "confidence": "low",
       "fixture_difficulty": 2,
-      "expected_minutes": 65.324033,
-      "start_probability": 0.709742,
-      "sixty_probability": 0.660922,
+      "expected_minutes": 37.890339,
+      "start_probability": 0.366808,
+      "sixty_probability": 0.324266,
       "fixture_context": {
         "opponent": "Crystal Palace",
         "is_home": false,
@@ -14131,32 +14435,32 @@
       },
       "model_inputs": {
         "historical_ability": {
-          "points_per_90": 3.315342,
-          "xg_per_90": 0.039954,
-          "xa_per_90": 0.051491,
-          "goals_per_90": 0.048576,
-          "assists_per_90": 0.097153,
-          "start_rate": 0.765766
+          "points_per_90": 3.968438,
+          "xg_per_90": 0.124901,
+          "xa_per_90": 0.092945,
+          "goals_per_90": 0.083546,
+          "assists_per_90": 0.208865,
+          "start_rate": 0.960784
         },
         "current_form": {
-          "points_per_90": 4.067797,
-          "recent_3_points": 2.666667,
-          "recent_3_minutes": 59.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.01,
-          "ict_index_per_90": 2.299138,
-          "influence_per_90": 12.408621,
-          "creativity_per_90": 8.092241,
-          "threat_per_90": 2.568966,
-          "bps_per_90": 15.198276,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.027731
+          "points_per_90": 10.344828,
+          "recent_3_points": 3.333333,
+          "recent_3_minutes": 29.0,
+          "recent_3_xg": 0.076667,
+          "recent_3_xa": 0.003333,
+          "ict_index_per_90": 4.905769,
+          "influence_per_90": 20.280769,
+          "creativity_per_90": 14.644231,
+          "threat_per_90": 13.807692,
+          "bps_per_90": 30.980769,
+          "bonus_per_90": 0.576923,
+          "xgi_per_90": 0.166154
         },
         "current_club": {
-          "points_per_90": 3.368984,
-          "xg_per_90": 0.058957,
-          "xa_per_90": 0.027674,
-          "start_rate": 0.72973
+          "points_per_90": 3.968438,
+          "xg_per_90": 0.124901,
+          "xa_per_90": 0.092945,
+          "start_rate": 0.960784
         },
         "team_attack": {
           "xg_for_per_90": 1.55,
@@ -14166,89 +14470,13 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 65.324033,
+        "expected_minutes": 37.890339,
         "home_away": "away",
         "fixture_environment": 2.93
       }
     },
     {
-      "rank": 21,
-      "name": "A.Becker",
-      "prediction": 2.41014,
-      "price": 5.5,
-      "ownership": 4.1,
-      "position": "Goalkeeper",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 2.030263,
-      "prediction_p10": 0.173109,
-      "prediction_p90": 5.333333,
-      "prediction_range": 5.160224,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 62.281645,
-      "start_probability": 0.756769,
-      "sixty_probability": 0.732554,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 3.56,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0012,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.675676
-        },
-        "current_form": {
-          "points_per_90": 4.0,
-          "recent_3_points": 2.666667,
-          "recent_3_minutes": 60.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 1.25,
-          "influence_per_90": 12.55,
-          "creativity_per_90": 0.0,
-          "threat_per_90": 0.0,
-          "bps_per_90": 14.5,
-          "bonus_per_90": 0.5,
-          "xgi_per_90": 0.0
-        },
-        "current_club": {
-          "points_per_90": 3.56,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0012,
-          "start_rate": 0.675676
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 62.281645,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 22,
+      "rank": 25,
       "name": "Henderson",
       "prediction": 2.352235,
       "price": 4.9,
@@ -14324,83 +14552,7 @@
       }
     },
     {
-      "rank": 23,
-      "name": "Munoz",
-      "prediction": 2.327246,
-      "price": 6.5,
-      "ownership": 0.7,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 2.497071,
-      "prediction_p10": 0.0,
-      "prediction_p90": 6.0,
-      "prediction_range": 6.0,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 33.744945,
-      "start_probability": 0.317622,
-      "sixty_probability": 0.28432,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 3.968438,
-          "xg_per_90": 0.124901,
-          "xa_per_90": 0.092945,
-          "goals_per_90": 0.083546,
-          "assists_per_90": 0.208865,
-          "start_rate": 0.960784
-        },
-        "current_form": {
-          "points_per_90": 10.384615,
-          "recent_3_points": 3.0,
-          "recent_3_minutes": 26.0,
-          "recent_3_xg": 0.066667,
-          "recent_3_xa": 0.003333,
-          "ict_index_per_90": 6.541026,
-          "influence_per_90": 27.041026,
-          "creativity_per_90": 19.525641,
-          "threat_per_90": 18.410256,
-          "bps_per_90": 27.974359,
-          "bonus_per_90": 0.769231,
-          "xgi_per_90": 0.159677
-        },
-        "current_club": {
-          "points_per_90": 3.968438,
-          "xg_per_90": 0.124901,
-          "xa_per_90": 0.092945,
-          "start_rate": 0.960784
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 33.744945,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 24,
+      "rank": 26,
       "name": "Khalaili",
       "prediction": 2.236884,
       "price": 5.0,
@@ -14476,7 +14628,7 @@
       }
     },
     {
-      "rank": 25,
+      "rank": 27,
       "name": "Nketiah",
       "prediction": 2.182314,
       "price": 5.4,
@@ -14552,83 +14704,7 @@
       }
     },
     {
-      "rank": 26,
-      "name": "Mac Allister",
-      "prediction": 2.161623,
-      "price": 5.4,
-      "ownership": 1.3,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 1.731172,
-      "prediction_p10": 0.428571,
-      "prediction_p90": 4.469091,
-      "prediction_range": 4.040519,
-      "confidence": "medium",
-      "fixture_difficulty": 2,
-      "expected_minutes": 41.050418,
-      "start_probability": 0.613139,
-      "sixty_probability": 0.512567,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 4.008041,
-          "xg_per_90": 0.114753,
-          "xa_per_90": 0.098388,
-          "goals_per_90": 0.17396,
-          "assists_per_90": 0.139168,
-          "start_rate": 0.476636
-        },
-        "current_form": {
-          "points_per_90": 2.0,
-          "recent_3_points": 1.333333,
-          "recent_3_minutes": 60.0,
-          "recent_3_xg": 0.086667,
-          "recent_3_xa": 0.123333,
-          "ict_index_per_90": 4.225,
-          "influence_per_90": 13.95,
-          "creativity_per_90": 17.975,
-          "threat_per_90": 10.25,
-          "bps_per_90": 14.0,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.24
-        },
-        "current_club": {
-          "points_per_90": 3.893252,
-          "xg_per_90": 0.113803,
-          "xa_per_90": 0.142074,
-          "start_rate": 0.807339
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 41.050418,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 27,
+      "rank": 28,
       "name": "Benitez",
       "prediction": 2.078767,
       "price": 4.5,
@@ -14704,7 +14780,7 @@
       }
     },
     {
-      "rank": 28,
+      "rank": 29,
       "name": "Gravenberch",
       "prediction": 2.015044,
       "price": 5.8,
@@ -14780,7 +14856,83 @@
       }
     },
     {
-      "rank": 29,
+      "rank": 30,
+      "name": "Ngumoha",
+      "prediction": 1.889471,
+      "price": 5.7,
+      "ownership": 0.5,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 1.88154,
+      "prediction_p10": 0.125,
+      "prediction_p90": 4.51,
+      "prediction_range": 4.385,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 27.353105,
+      "start_probability": 0.283588,
+      "sixty_probability": 0.242238,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 7.768421,
+          "xg_per_90": 0.229263,
+          "xa_per_90": 0.369474,
+          "goals_per_90": 0.378947,
+          "assists_per_90": 0.189474,
+          "start_rate": 0.108108
+        },
+        "current_form": {
+          "points_per_90": 3.648649,
+          "recent_3_points": 1.0,
+          "recent_3_minutes": 24.666667,
+          "recent_3_xg": 0.036667,
+          "recent_3_xa": 0.06,
+          "ict_index_per_90": 2.300101,
+          "influence_per_90": 3.907895,
+          "creativity_per_90": 11.714575,
+          "threat_per_90": 6.513158,
+          "bps_per_90": 20.504665,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.293258
+        },
+        "current_club": {
+          "points_per_90": 7.768421,
+          "xg_per_90": 0.229263,
+          "xa_per_90": 0.369474,
+          "start_rate": 0.108108
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 27.353105,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 31,
       "name": "Lerma",
       "prediction": 1.81492,
       "price": 4.8,
@@ -14852,158 +15004,6 @@
         },
         "expected_minutes": 30.697884,
         "home_away": "home",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 30,
-      "name": "Koumas",
-      "prediction": 1.59067,
-      "price": 5.0,
-      "ownership": 0.1,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 1.651327,
-      "prediction_p10": 0.0,
-      "prediction_p90": 3.9,
-      "prediction_range": 3.9,
-      "confidence": "medium",
-      "fixture_difficulty": 2,
-      "expected_minutes": 12.773973,
-      "start_probability": 0.109958,
-      "sixty_probability": 0.095647,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": 7.5,
-          "recent_3_points": 0.666667,
-          "recent_3_minutes": 8.0,
-          "recent_3_xg": 0.02,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 8.23573,
-          "influence_per_90": 15.958656,
-          "creativity_per_90": 0.577703,
-          "threat_per_90": 66.07801,
-          "bps_per_90": 30.978312,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.34486
-        },
-        "current_club": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 12.773973,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
-      "rank": 31,
-      "name": "Nyoni",
-      "prediction": 1.535668,
-      "price": 4.8,
-      "ownership": 0.0,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 1.606259,
-      "prediction_p10": 0.0,
-      "prediction_p90": 3.701429,
-      "prediction_range": 3.701429,
-      "confidence": "medium",
-      "fixture_difficulty": 2,
-      "expected_minutes": 23.158921,
-      "start_probability": 0.100493,
-      "sixty_probability": 0.22308,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 32.142857,
-          "xg_per_90": 2.378571,
-          "xa_per_90": 0.064286,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": 2.168675,
-          "recent_3_points": 0.666667,
-          "recent_3_minutes": 27.666667,
-          "recent_3_xg": 0.03,
-          "recent_3_xa": 0.023333,
-          "ict_index_per_90": 3.575547,
-          "influence_per_90": 23.465662,
-          "creativity_per_90": 7.663931,
-          "threat_per_90": 4.202586,
-          "bps_per_90": 14.00608,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.114286
-        },
-        "current_club": {
-          "points_per_90": 32.142857,
-          "xg_per_90": 2.378571,
-          "xa_per_90": 0.064286,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 23.158921,
-        "home_away": "away",
         "fixture_environment": 2.93
       }
     },
@@ -15088,7 +15088,7 @@
       "name": "Frimpong",
       "prediction": 1.07311,
       "price": 5.2,
-      "ownership": 1.3,
+      "ownership": 1.2,
       "position": "Defender",
       "team": "",
       "fixture_home": "Crystal Palace",
@@ -15237,6 +15237,82 @@
     },
     {
       "rank": 35,
+      "name": "Tsimikas",
+      "prediction": 0.80385,
+      "price": 4.9,
+      "ownership": 0.1,
+      "position": "Defender",
+      "team": "",
+      "fixture_home": "Crystal Palace",
+      "fixture_away": "Liverpool",
+      "prediction_std": 1.055916,
+      "prediction_p10": 0.0,
+      "prediction_p90": 1.78,
+      "prediction_range": 1.78,
+      "confidence": "medium",
+      "fixture_difficulty": 2,
+      "expected_minutes": 17.587885,
+      "start_probability": 0.193904,
+      "sixty_probability": 0.177962,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": false,
+        "team_strength": 4.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.55,
+        "team_xg_against_per90": 1.185714,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -0.41875,
+        "fixture_defence_mismatch": 0.194286,
+        "fixture_xg_environment": 2.93
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 5.292359,
+          "xg_per_90": 0.0277,
+          "xa_per_90": 0.132277,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.269103,
+          "start_rate": 0.102804
+        },
+        "current_form": {
+          "points_per_90": 16.363636,
+          "recent_3_points": 0.666667,
+          "recent_3_minutes": 3.666667,
+          "recent_3_xg": 0.0,
+          "recent_3_xa": 0.02,
+          "ict_index_per_90": 24.75,
+          "influence_per_90": 247.5,
+          "creativity_per_90": 0.0,
+          "threat_per_90": 0.0,
+          "bps_per_90": 100.0,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.490909
+        },
+        "current_club": {
+          "points_per_90": 5.292359,
+          "xg_per_90": 0.0277,
+          "xa_per_90": 0.132277,
+          "start_rate": 0.102804
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.55,
+          "goals_for_per_90": 1.285714
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 17.587885,
+        "home_away": "away",
+        "fixture_environment": 2.93
+      }
+    },
+    {
+      "rank": 36,
       "name": "Gomez",
       "prediction": 0.799422,
       "price": 4.9,
@@ -15312,7 +15388,7 @@
       }
     },
     {
-      "rank": 36,
+      "rank": 37,
       "name": "Sarr",
       "prediction": 0.792359,
       "price": 6.2,
@@ -15388,7 +15464,7 @@
       }
     },
     {
-      "rank": 37,
+      "rank": 38,
       "name": "Timber",
       "prediction": 0.721691,
       "price": 5.0,
@@ -15464,7 +15540,7 @@
       }
     },
     {
-      "rank": 38,
+      "rank": 39,
       "name": "Ahanor",
       "prediction": 0.70954,
       "price": 4.5,
@@ -15540,7 +15616,7 @@
       }
     },
     {
-      "rank": 39,
+      "rank": 40,
       "name": "Mingueza",
       "prediction": 0.684132,
       "price": 4.3,
@@ -15616,87 +15692,11 @@
       }
     },
     {
-      "rank": 40,
-      "name": "Tsimikas",
-      "prediction": 0.649706,
-      "price": 4.9,
-      "ownership": 0.1,
-      "position": "Defender",
-      "team": "",
-      "fixture_home": "Crystal Palace",
-      "fixture_away": "Liverpool",
-      "prediction_std": 0.805209,
-      "prediction_p10": 0.0,
-      "prediction_p90": 1.671429,
-      "prediction_range": 1.671429,
-      "confidence": "high",
-      "fixture_difficulty": 2,
-      "expected_minutes": 10.280651,
-      "start_probability": 0.081821,
-      "sixty_probability": 0.082783,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": false,
-        "team_strength": 4.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.55,
-        "team_xg_against_per90": 1.185714,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -0.41875,
-        "fixture_defence_mismatch": 0.194286,
-        "fixture_xg_environment": 2.93
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 5.292359,
-          "xg_per_90": 0.0277,
-          "xa_per_90": 0.132277,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.269103,
-          "start_rate": 0.102804
-        },
-        "current_form": {
-          "points_per_90": 45.0,
-          "recent_3_points": 0.333333,
-          "recent_3_minutes": 0.666667,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 49.5,
-          "influence_per_90": 495.0,
-          "creativity_per_90": 0.0,
-          "threat_per_90": 0.0,
-          "bps_per_90": 180.0,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.0
-        },
-        "current_club": {
-          "points_per_90": 5.292359,
-          "xg_per_90": 0.0277,
-          "xa_per_90": 0.132277,
-          "start_rate": 0.102804
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.55,
-          "goals_for_per_90": 1.285714
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 10.280651,
-        "home_away": "away",
-        "fixture_environment": 2.93
-      }
-    },
-    {
       "rank": 41,
       "name": "Hughes",
       "prediction": 0.641806,
       "price": 4.3,
-      "ownership": 5.8,
+      "ownership": 5.7,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Crystal Palace",
@@ -19268,7 +19268,7 @@
       "name": "Thomas-Asante",
       "prediction": 2.50702,
       "price": 5.0,
-      "ownership": 1.1,
+      "ownership": 1.0,
       "position": "Forward",
       "team": "",
       "fixture_home": "Everton",
@@ -19496,7 +19496,7 @@
       "name": "Pickford",
       "prediction": 2.409512,
       "price": 5.5,
-      "ownership": 8.5,
+      "ownership": 8.4,
       "position": "Goalkeeper",
       "team": "",
       "fixture_home": "Everton",
@@ -27552,7 +27552,7 @@
       "name": "Tavernier",
       "prediction": 5.146801,
       "price": 6.6,
-      "ownership": 26.2,
+      "ownership": 26.5,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Ipswich Town",
@@ -27628,7 +27628,7 @@
       "name": "Evanilson",
       "prediction": 4.902381,
       "price": 6.4,
-      "ownership": 15.9,
+      "ownership": 16.3,
       "position": "Forward",
       "team": "",
       "fixture_home": "Ipswich Town",
@@ -28160,7 +28160,7 @@
       "name": "Silva",
       "prediction": 3.458945,
       "price": 5.0,
-      "ownership": 2.1,
+      "ownership": 2.2,
       "position": "Defender",
       "team": "",
       "fixture_home": "Ipswich Town",
@@ -28692,7 +28692,7 @@
       "name": "Kroupi.Jr",
       "prediction": 2.776292,
       "price": 7.3,
-      "ownership": 0.4,
+      "ownership": 0.5,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Ipswich Town",
@@ -32568,7 +32568,7 @@
       "name": "Kudus",
       "prediction": 4.019488,
       "price": 6.5,
-      "ownership": 1.5,
+      "ownership": 1.6,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Leeds",
@@ -32644,7 +32644,7 @@
       "name": "Calvert-Lewin",
       "prediction": 3.937617,
       "price": 6.1,
-      "ownership": 21.2,
+      "ownership": 21.1,
       "position": "Forward",
       "team": "",
       "fixture_home": "Leeds",
@@ -33024,7 +33024,7 @@
       "name": "Bogle",
       "prediction": 3.522749,
       "price": 4.8,
-      "ownership": 11.5,
+      "ownership": 11.4,
       "position": "Defender",
       "team": "",
       "fixture_home": "Leeds",
@@ -33252,7 +33252,7 @@
       "name": "Van Hecke",
       "prediction": 2.91669,
       "price": 5.0,
-      "ownership": 10.0,
+      "ownership": 10.2,
       "position": "Defender",
       "team": "",
       "fixture_home": "Leeds",
@@ -33404,7 +33404,7 @@
       "name": "Robertson",
       "prediction": 2.711491,
       "price": 4.3,
-      "ownership": 2.3,
+      "ownership": 2.4,
       "position": "Defender",
       "team": "",
       "fixture_home": "Leeds",
@@ -37888,7 +37888,7 @@
       "name": "Manzambi",
       "prediction": 4.810021,
       "price": 6.1,
-      "ownership": 6.5,
+      "ownership": 6.6,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Man Utd",
@@ -37964,7 +37964,7 @@
       "name": "N.Jackson",
       "prediction": 4.450868,
       "price": 7.0,
-      "ownership": 24.2,
+      "ownership": 24.6,
       "position": "Forward",
       "team": "",
       "fixture_home": "Man Utd",
@@ -38040,7 +38040,7 @@
       "name": "B. Fernandes",
       "prediction": 4.268426,
       "price": 11.7,
-      "ownership": 22.2,
+      "ownership": 22.1,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Man Utd",
@@ -38192,7 +38192,7 @@
       "name": "Mbeumo",
       "prediction": 3.527556,
       "price": 7.9,
-      "ownership": 20.9,
+      "ownership": 20.8,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Man Utd",
@@ -38344,7 +38344,7 @@
       "name": "Cunha",
       "prediction": 3.161704,
       "price": 7.8,
-      "ownership": 5.7,
+      "ownership": 5.6,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Man Utd",
@@ -39104,7 +39104,7 @@
       "name": "Maguire",
       "prediction": 2.589401,
       "price": 4.7,
-      "ownership": 5.7,
+      "ownership": 5.6,
       "position": "Defender",
       "team": "",
       "fixture_home": "Man Utd",
@@ -39712,7 +39712,7 @@
       "name": "Martinez",
       "prediction": 1.85759,
       "price": 4.8,
-      "ownership": 1.1,
+      "ownership": 1.0,
       "position": "Defender",
       "team": "",
       "fixture_home": "Man Utd",
@@ -41232,7 +41232,7 @@
       "name": "Shaw",
       "prediction": 0.480962,
       "price": 4.2,
-      "ownership": 3.8,
+      "ownership": 3.7,
       "position": "Defender",
       "team": "",
       "fixture_home": "Man Utd",
@@ -43892,7 +43892,7 @@
       "name": "Gibbs-White",
       "prediction": 3.491986,
       "price": 7.9,
-      "ownership": 11.1,
+      "ownership": 11.0,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Nott'm Forest",
@@ -43968,7 +43968,7 @@
       "name": "Gvardiol",
       "prediction": 3.471864,
       "price": 5.7,
-      "ownership": 26.4,
+      "ownership": 26.3,
       "position": "Defender",
       "team": "",
       "fixture_home": "Nott'm Forest",
@@ -44348,7 +44348,7 @@
       "name": "Ndoye",
       "prediction": 2.851127,
       "price": 5.5,
-      "ownership": 0.6,
+      "ownership": 0.5,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Nott'm Forest",
@@ -44500,7 +44500,7 @@
       "name": "Cherki",
       "prediction": 2.72106,
       "price": 7.9,
-      "ownership": 36.6,
+      "ownership": 36.4,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Nott'm Forest",
@@ -45032,7 +45032,7 @@
       "name": "Guéhi",
       "prediction": 2.107094,
       "price": 6.0,
-      "ownership": 16.4,
+      "ownership": 16.3,
       "position": "Defender",
       "team": "",
       "fixture_home": "Nott'm Forest",
@@ -46324,7 +46324,7 @@
       "name": "Aït-Nouri",
       "prediction": 0.709807,
       "price": 5.2,
-      "ownership": 0.4,
+      "ownership": 0.3,
       "position": "Defender",
       "team": "",
       "fixture_home": "Nott'm Forest",
@@ -47996,7 +47996,7 @@
       "name": "Rogers",
       "prediction": 5.609044,
       "price": 8.1,
-      "ownership": 51.6,
+      "ownership": 51.7,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Sunderland",
@@ -48072,7 +48072,7 @@
       "name": "Neto",
       "prediction": 4.596433,
       "price": 6.6,
-      "ownership": 4.8,
+      "ownership": 4.9,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Sunderland",
@@ -48148,7 +48148,7 @@
       "name": "Palmer",
       "prediction": 4.589421,
       "price": 9.8,
-      "ownership": 27.6,
+      "ownership": 27.7,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Sunderland",
@@ -48908,7 +48908,7 @@
       "name": "João Pedro",
       "prediction": 2.547856,
       "price": 7.7,
-      "ownership": 43.4,
+      "ownership": 42.8,
       "position": "Forward",
       "team": "",
       "fixture_home": "Sunderland",
@@ -52784,7 +52784,7 @@
       "name": "Sharman-Lowe",
       "prediction": 0.017423,
       "price": 4.0,
-      "ownership": 0.0,
+      "ownership": 0.1,
       "position": "Goalkeeper",
       "team": "",
       "fixture_home": "Sunderland",

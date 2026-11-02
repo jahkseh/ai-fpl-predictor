@@ -2,8 +2,25 @@
   "season": "2026/27",
   "data_gameweek": 9,
   "next_gameweek": 10,
-  "generated_at_utc": "2026-11-01T19:54:31.076227+00:00",
+  "generated_at_utc": "2026-11-02T00:58:32.003369+00:00",
   "picks": [
+    {
+      "name": "Wirtz",
+      "team": "Liverpool",
+      "position": "Midfielder",
+      "ownership": 5.1,
+      "prediction": 4.987175,
+      "differential_score": 4.733,
+      "price": 7.2,
+      "form": 3.8,
+      "fixture": {
+        "home": "Crystal Palace",
+        "away": "Liverpool",
+        "is_home": false,
+        "kickoff": "2026-11-08T14:00:00",
+        "match_id": "26-27-prem-crystal-palace-vs-liverpool"
+      }
+    },
     {
       "name": "Thiago",
       "team": "Brentford",
@@ -70,23 +87,6 @@
         "is_home": true,
         "kickoff": "2026-11-08T14:00:00",
         "match_id": "26-27-prem-ipswich-town-vs-afc-bournemouth"
-      }
-    },
-    {
-      "name": "Doku",
-      "team": "Man City",
-      "position": "Midfielder",
-      "ownership": 4.6,
-      "prediction": 4.58363,
-      "differential_score": 4.373,
-      "price": 7.5,
-      "form": 5.5,
-      "fixture": {
-        "home": "Nott'm Forest",
-        "away": "Man City",
-        "is_home": false,
-        "kickoff": "2026-11-07T17:30:00",
-        "match_id": "26-27-prem-nottingham-forest-vs-manchester-city"
       }
     }
   ]
