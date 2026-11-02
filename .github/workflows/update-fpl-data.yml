@@ -169,6 +169,16 @@ jobs:
           assert len(live.get("players", [])) >= 30, "Live dataset has too few players"
           profiles = json.loads(Path("player_profiles.json").read_text(encoding="utf-8"))
           assert len(profiles.get("players", [])) >= 30, "Player profile dataset has too few players"
+          lookback = json.loads(Path("prediction_lookback.json").read_text(encoding="utf-8"))
+          assert isinstance(lookback.get("gameweeks"), list), "Look Back gameweeks must be a list"
+          for gameweek in lookback["gameweeks"]:
+              assert gameweek.get("available") is True, f"Published Look Back GW{gameweek.get('gameweek')} is not available"
+              assert gameweek.get("players_compared", 0) > 0, f"Look Back GW{gameweek.get('gameweek')} has no player comparisons"
+              for fixture in gameweek.get("fixtures", []):
+                  for player in fixture.get("players", []):
+                      assert player.get("minutes", 0) > 0, "Look Back must exclude players with zero minutes"
+                      assert all(key in player for key in ("prediction", "actual", "difference")), "Look Back comparison is missing a points value"
+
           fixture_data = json.loads(Path("fixture_difficulty.json").read_text(encoding="utf-8"))
           ranked_teams = fixture_data.get("teams", [])
           assert len(ranked_teams) == 20, f"Expected fixture schedules for 20 clubs, got {len(ranked_teams)}"
