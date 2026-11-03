@@ -1,0 +1,77 @@
+name: ScoutXI External Intelligence
+
+on:
+  pull_request:
+    paths:
+      - 'model/external_intelligence.py'
+      - 'tests/test_external_intelligence.py'
+      - '.github/workflows/external-intelligence.yml'
+  workflow_dispatch:
+  schedule:
+    # Three daily checks to observe late-week movement without exhausting the free odds quota.
+    - cron: "0 7,15,22 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scoutxi-external-intelligence
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run external-intelligence unit tests
+        run: python -m unittest discover -s tests -p "test_external_intelligence.py" -v
+      - name: Collect optional external intelligence
+        if: github.event_name != 'pull_request'
+        env:
+          PITCHAPI_API_KEY: ${{ secrets.PITCHAPI_API_KEY }}
+          UK_ODDS_API_KEY: ${{ secrets.UK_ODDS_API_KEY }}
+          PITCHAPI_PUBLIC_USE_APPROVED: ${{ vars.PITCHAPI_PUBLIC_USE_APPROVED }}
+          UK_ODDS_PUBLIC_USE_APPROVED: ${{ vars.UK_ODDS_PUBLIC_USE_APPROVED }}
+        run: python model/external_intelligence.py
+      - name: Validate output and enforce model isolation
+        if: github.event_name != 'pull_request'
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("external_intelligence_snapshot.json").read_text(encoding="utf-8"))
+          required = {"schema_version", "collected_at", "prediction_model_changed", "sources", "coverage"}
+          if required - data.keys():
+              raise SystemExit(f"Missing snapshot keys: {sorted(required - data.keys())}")
+          if data["prediction_model_changed"] is not False:
+              raise SystemExit("External intelligence must never change the prediction model")
+          if data["coverage"].get("cup_minutes") and not data.get("cup_workload"):
+              raise SystemExit("Cup coverage is true but cup data is missing")
+          if data["coverage"].get("betting_odds") and not data.get("odds_monitor"):
+              raise SystemExit("Odds coverage is true but odds data is missing")
+          print("External intelligence snapshot validated.")
+          PY
+      - name: Commit external snapshot and quota state
+        if: github.event_name != 'pull_request'
+        run: |
+          # Do not create three empty commits per day while every external feed
+          # is disabled or awaiting written public-use permission.
+          if ! python -c "import json; d=json.load(open('external_intelligence_snapshot.json')); raise SystemExit(0 if d['coverage'].get('cup_minutes') or d['coverage'].get('betting_odds') else 1)"; then
+            echo "No approved external feed is enabled; leaving the public repository unchanged."
+            exit 0
+          fi
+          if [ -z "$(git status --porcelain -- external_intelligence_snapshot.json odds_usage.json)" ]; then
+            echo "External intelligence unchanged; no commit needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add external_intelligence_snapshot.json odds_usage.json
+          git commit -m "Refresh ScoutXI external intelligence"
+          git push
