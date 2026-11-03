@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 9,
   "next_gameweek": 10,
-  "generated_at_utc": "2026-11-03T06:56:13.137468+00:00",
+  "generated_at_utc": "2026-11-03T14:16:03.790482+00:00",
   "difficulty_scale": {
     "min": 1,
     "max": 5,
@@ -41,7 +41,7 @@
           "gw": 13,
           "opponent": "Brentford",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-02T20:15:00"
         },
@@ -62,7 +62,7 @@
           "gw": 10,
           "opponent": "Man Utd",
           "is_home": false,
-          "difficulty": 4,
+          "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-11-08T16:30:00"
         },
@@ -70,7 +70,7 @@
           "gw": 11,
           "opponent": "Sunderland",
           "is_home": true,
-          "difficulty": 3,
+          "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-11-21T15:00:00"
         },
@@ -131,7 +131,7 @@
           "gw": 13,
           "opponent": "Brighton",
           "is_home": true,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-02T20:15:00"
         },
@@ -168,7 +168,7 @@
           "gw": 12,
           "opponent": "Man Utd",
           "is_home": false,
-          "difficulty": 4,
+          "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-11-28T15:00:00"
         },
@@ -221,7 +221,7 @@
           "gw": 13,
           "opponent": "Bournemouth",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-02T20:15:00"
         },
@@ -229,7 +229,7 @@
           "gw": 14,
           "opponent": "Nott'm Forest",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-05T17:30:00"
         }
@@ -258,7 +258,7 @@
           "gw": 12,
           "opponent": "Nott'm Forest",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-11-27T20:00:00"
         },
@@ -319,7 +319,7 @@
           "gw": 14,
           "opponent": "Man Utd",
           "is_home": false,
-          "difficulty": 4,
+          "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
         }
@@ -385,7 +385,7 @@
           "gw": 11,
           "opponent": "Brentford",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-11-23T20:00:00"
         },
@@ -475,7 +475,7 @@
           "gw": 11,
           "opponent": "Brighton",
           "is_home": true,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-11-22T14:00:00"
         },
@@ -483,7 +483,7 @@
           "gw": 12,
           "opponent": "Crystal Palace",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-11-29T14:05:00"
         },
@@ -499,7 +499,7 @@
           "gw": 14,
           "opponent": "Bournemouth",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
         }
@@ -557,7 +557,7 @@
           "gw": 10,
           "opponent": "Spurs",
           "is_home": true,
-          "difficulty": 2,
+          "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-11-07T12:30:00"
         },
@@ -602,7 +602,7 @@
           "gw": 10,
           "opponent": "Crystal Palace",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-11-08T14:00:00"
         },
@@ -610,7 +610,7 @@
           "gw": 11,
           "opponent": "Man Utd",
           "is_home": true,
-          "difficulty": 4,
+          "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-11-22T16:30:00"
         },
@@ -626,7 +626,7 @@
           "gw": 13,
           "opponent": "Sunderland",
           "is_home": true,
-          "difficulty": 3,
+          "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-02T19:30:00"
         },
@@ -647,7 +647,7 @@
           "gw": 10,
           "opponent": "Nott'm Forest",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-11-07T17:30:00"
         },
@@ -679,7 +679,7 @@
           "gw": 14,
           "opponent": "Brentford",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T20:00:00"
         }
@@ -761,7 +761,7 @@
           "gw": 13,
           "opponent": "Man Utd",
           "is_home": true,
-          "difficulty": 4,
+          "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-12-02T20:15:00"
         },
@@ -769,7 +769,7 @@
           "gw": 14,
           "opponent": "Sunderland",
           "is_home": true,
-          "difficulty": 3,
+          "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-06T14:00:00"
         }
@@ -790,7 +790,7 @@
           "gw": 11,
           "opponent": "Bournemouth",
           "is_home": false,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-11-21T15:00:00"
         },
@@ -814,7 +814,7 @@
           "gw": 14,
           "opponent": "Brighton",
           "is_home": true,
-          "difficulty": 3,
+          "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T17:30:00"
         }
@@ -888,7 +888,7 @@
           "gw": 12,
           "opponent": "Spurs",
           "is_home": true,
-          "difficulty": 2,
+          "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-11-29T14:05:00"
         },
