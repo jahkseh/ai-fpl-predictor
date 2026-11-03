@@ -163,6 +163,9 @@ def collect_odds(api_key: str, *, usage: dict, now: datetime | None = None) -> t
         if count >= MAX_ODDS_REQUESTS_PER_MONTH:
             break
         event_id = str(event["event_id"])
+        # Count every attempted odds request: failed HTTP responses may still
+        # consume provider quota, so the guard must be conservative.
+        count += 1
         try:
             payload = fetch_json(
                 f"{ODDS_BASE}/events/{event_id}/odds?package=core&odds_format=decimal",
@@ -170,7 +173,6 @@ def collect_odds(api_key: str, *, usage: dict, now: datetime | None = None) -> t
             )
         except (HTTPError, URLError, RuntimeError):
             continue
-        count += 1
         snapshots.append({
             "event_id": event_id,
             "home_team": event.get("home_team"),
