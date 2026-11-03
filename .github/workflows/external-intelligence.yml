@@ -50,6 +50,12 @@ jobs:
           PY
       - name: Commit external snapshot and quota state
         run: |
+          # Do not create three empty commits per day while every external feed
+          # is disabled or awaiting written public-use permission.
+          if ! python -c "import json; d=json.load(open('external_intelligence_snapshot.json')); raise SystemExit(0 if d['coverage'].get('cup_minutes') or d['coverage'].get('betting_odds') else 1)"; then
+            echo "No approved external feed is enabled; leaving the public repository unchanged."
+            exit 0
+          fi
           if [ -z "$(git status --porcelain -- external_intelligence_snapshot.json odds_usage.json)" ]; then
             echo "External intelligence unchanged; no commit needed."
             exit 0
