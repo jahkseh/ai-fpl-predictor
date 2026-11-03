@@ -1964,6 +1964,13 @@ body[data-theme="light"] .hero-stat span {
         .history-player-rank{color:var(--text-muted);font-size:.78rem}
         .history-player-name{min-width:0;overflow-wrap:anywhere}
         .history-player-points{font-weight:750;font-variant-numeric:tabular-nums}
+        /* Keep the four comparison columns intact: the generic player-row rule is declared later. */
+        .history-fixture-card .history-comparison-row{grid-template-columns:minmax(0,1fr) 70px 60px 64px;gap:8px}
+        .history-fixture-card .history-comparison-row .history-player-name{min-width:0;overflow-wrap:normal;word-break:normal}
+        @media(max-width:420px){
+            .history-fixture-card .history-comparison-row{grid-template-columns:minmax(0,1fr) 52px 46px 48px;gap:5px}
+            .history-fixture-card .history-comparison-row .history-player-name{font-size:.82rem}
+        }
         .history-player-range{grid-column:2/4;color:var(--text-muted);font-size:.74rem;margin-top:-5px}
         @media(max-width:700px){.history-explorer-head{align-items:stretch;flex-direction:column}.history-gameweek-label{max-width:none}.history-explorer-grid{grid-template-columns:1fr}.history-explorer{padding:16px}}
 
