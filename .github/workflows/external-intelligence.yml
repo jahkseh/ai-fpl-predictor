@@ -1,6 +1,11 @@
 name: ScoutXI External Intelligence
 
 on:
+  pull_request:
+    paths:
+      - 'model/external_intelligence.py'
+      - 'tests/test_external_intelligence.py'
+      - '.github/workflows/external-intelligence.yml'
   workflow_dispatch:
   schedule:
     # Three daily checks to observe late-week movement without exhausting the free odds quota.
@@ -23,7 +28,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Run external-intelligence unit tests
+        run: python -m unittest discover -s tests -p "test_external_intelligence.py" -v
       - name: Collect optional external intelligence
+        if: github.event_name != 'pull_request'
         env:
           PITCHAPI_API_KEY: ${{ secrets.PITCHAPI_API_KEY }}
           UK_ODDS_API_KEY: ${{ secrets.UK_ODDS_API_KEY }}
@@ -31,6 +39,7 @@ jobs:
           UK_ODDS_PUBLIC_USE_APPROVED: ${{ vars.UK_ODDS_PUBLIC_USE_APPROVED }}
         run: python model/external_intelligence.py
       - name: Validate output and enforce model isolation
+        if: github.event_name != 'pull_request'
         run: |
           python - <<'PY'
           import json
@@ -49,6 +58,7 @@ jobs:
           print("External intelligence snapshot validated.")
           PY
       - name: Commit external snapshot and quota state
+        if: github.event_name != 'pull_request'
         run: |
           # Do not create three empty commits per day while every external feed
           # is disabled or awaiting written public-use permission.
