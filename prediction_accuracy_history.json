@@ -11,7 +11,18 @@
       "p10_p90_coverage": 0.75,
       "source": "official_fpl_api",
       "note": "Measured against frozen top-three predictions per fixture matched to official FPL points. Player match rate reflects unmatched player-name records. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples."
+    },
+    {
+      "gameweek": 9,
+      "players_evaluated": 642,
+      "players_unmatched": 27,
+      "mae": 1.168,
+      "rmse": 1.87,
+      "mean_error": 0.235,
+      "p10_p90_coverage": 0.755,
+      "source": "official_fpl_api",
+      "note": "Measured against frozen full eligible-player predictions matched to official FPL points. Player match rate reflects unmatched player-name records. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples."
     }
   ],
-  "gameweek_count": 1
+  "gameweek_count": 2
 }
