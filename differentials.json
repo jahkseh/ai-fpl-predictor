@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 9,
   "next_gameweek": 10,
-  "generated_at_utc": "2026-11-03T17:17:48.595265+00:00",
+  "generated_at_utc": "2026-11-03T23:36:16.849464+00:00",
   "picks": [
     {
       "name": "Wirtz",
@@ -59,9 +59,9 @@
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 7.0,
+      "ownership": 7.1,
       "prediction": 4.810021,
-      "differential_score": 4.473,
+      "differential_score": 4.469,
       "price": 6.1,
       "form": 6.0,
       "fixture": {
@@ -76,9 +76,9 @@
       "name": "Ouattara",
       "team": "Ipswich Town",
       "position": "Defender",
-      "ownership": 1.0,
+      "ownership": 1.1,
       "prediction": 4.505673,
-      "differential_score": 4.461,
+      "differential_score": 4.456,
       "price": 4.0,
       "form": 4.8,
       "fixture": {
