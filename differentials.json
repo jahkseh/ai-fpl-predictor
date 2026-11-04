@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 9,
   "next_gameweek": 10,
-  "generated_at_utc": "2026-11-03T23:36:16.849464+00:00",
+  "generated_at_utc": "2026-11-04T06:36:07.442479+00:00",
   "picks": [
     {
       "name": "Wirtz",
@@ -42,9 +42,9 @@
       "name": "Rayan",
       "team": "Bournemouth",
       "position": "Midfielder",
-      "ownership": 2.2,
+      "ownership": 2.3,
       "prediction": 4.611202,
-      "differential_score": 4.51,
+      "differential_score": 4.505,
       "price": 6.3,
       "form": 4.5,
       "fixture": {
