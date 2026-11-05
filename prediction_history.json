@@ -10448,9 +10448,9 @@
             {
               "rank": 47,
               "name": "Rodon",
-              "prediction": 0.446515,
+              "prediction": 0.449043,
               "prediction_p10": 0.0,
-              "prediction_p90": 1.396154,
+              "prediction_p90": 1.5,
               "confidence": "high",
               "expected_minutes": 7.854666
             },
@@ -10822,21 +10822,21 @@
             },
             {
               "rank": 17,
-              "name": "Maguire",
-              "prediction": 2.589401,
-              "prediction_p10": 0.298571,
-              "prediction_p90": 5.50625,
-              "confidence": "low",
-              "expected_minutes": 85.992476
-            },
-            {
-              "rank": 18,
               "name": "Yoro",
               "prediction": 2.553688,
               "prediction_p10": 0.696667,
               "prediction_p90": 5.375,
               "confidence": "low",
               "expected_minutes": 81.165079
+            },
+            {
+              "rank": 18,
+              "name": "Maguire",
+              "prediction": 2.552477,
+              "prediction_p10": 0.272727,
+              "prediction_p90": 5.50625,
+              "confidence": "low",
+              "expected_minutes": 85.992476
             },
             {
               "rank": 19,
@@ -11396,7 +11396,7 @@
             {
               "rank": 10,
               "name": "Gibbs-White",
-              "prediction": 3.491986,
+              "prediction": 3.508427,
               "prediction_p10": 0.370833,
               "prediction_p90": 7.763889,
               "confidence": "low",
@@ -12193,15 +12193,6 @@
             },
             {
               "rank": 35,
-              "name": "Tutierov",
-              "prediction": 1.538863,
-              "prediction_p10": 0.0,
-              "prediction_p90": 4.23125,
-              "confidence": "medium",
-              "expected_minutes": 35.698488
-            },
-            {
-              "rank": 36,
               "name": "Sánchez",
               "prediction": 1.481861,
               "prediction_p10": 0.0,
@@ -12210,13 +12201,22 @@
               "expected_minutes": 5.682503
             },
             {
-              "rank": 37,
+              "rank": 36,
               "name": "Isidor",
               "prediction": 1.437395,
               "prediction_p10": 0.0,
               "prediction_p90": 3.72619,
               "confidence": "medium",
               "expected_minutes": 30.320797
+            },
+            {
+              "rank": 37,
+              "name": "Tutierov",
+              "prediction": 1.42807,
+              "prediction_p10": 0.0,
+              "prediction_p90": 4.172222,
+              "confidence": "medium",
+              "expected_minutes": 35.698488
             },
             {
               "rank": 38,
