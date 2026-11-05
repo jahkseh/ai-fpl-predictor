@@ -5,46 +5,6 @@
   "players_compared": 650,
   "largest_changes": [
     {
-      "name": "Tutierov",
-      "old_prediction": 1.539,
-      "new_prediction": 1.428,
-      "change": -0.111,
-      "old_confidence": "medium",
-      "new_confidence": "medium",
-      "expected_minutes": 35.698488,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Maguire",
-      "old_prediction": 2.589,
-      "new_prediction": 2.552,
-      "change": -0.037,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 85.992476,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Gibbs-White",
-      "old_prediction": 3.492,
-      "new_prediction": 3.508,
-      "change": 0.016,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 68.332859,
-      "fixture_difficulty": 5
-    },
-    {
-      "name": "Rodon",
-      "old_prediction": 0.447,
-      "new_prediction": 0.449,
-      "change": 0.003,
-      "old_confidence": "high",
-      "new_confidence": "high",
-      "expected_minutes": 7.854666,
-      "fixture_difficulty": 3
-    },
-    {
       "name": "Gabriel",
       "old_prediction": 5.011,
       "new_prediction": 5.011,
@@ -253,6 +213,46 @@
       "new_confidence": "low",
       "expected_minutes": 46.739553,
       "fixture_difficulty": 4
+    },
+    {
+      "name": "Eze",
+      "old_prediction": 2.231,
+      "new_prediction": 2.231,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 45.167872,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Morita",
+      "old_prediction": 2.202,
+      "new_prediction": 2.202,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 21.450615,
+      "fixture_difficulty": 4
+    },
+    {
+      "name": "J.Timber",
+      "old_prediction": 2.153,
+      "new_prediction": 2.153,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 62.990464,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Thomas",
+      "old_prediction": 2.781,
+      "new_prediction": 2.781,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 31.786523,
+      "fixture_difficulty": 3
     }
   ]
 }
