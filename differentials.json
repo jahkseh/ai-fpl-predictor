@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 9,
   "next_gameweek": 10,
-  "generated_at_utc": "2026-11-06T06:56:00.659007+00:00",
+  "generated_at_utc": "2026-11-06T16:53:55.757540+00:00",
   "picks": [
     {
       "name": "Wirtz",
@@ -42,9 +42,9 @@
       "name": "Rayan",
       "team": "Bournemouth",
       "position": "Midfielder",
-      "ownership": 2.3,
+      "ownership": 2.4,
       "prediction": 4.611202,
-      "differential_score": 4.505,
+      "differential_score": 4.501,
       "price": 6.3,
       "form": 4.5,
       "fixture": {
@@ -76,9 +76,9 @@
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 7.5,
+      "ownership": 7.8,
       "prediction": 4.810021,
-      "differential_score": 4.449,
+      "differential_score": 4.435,
       "price": 6.2,
       "form": 6.0,
       "fixture": {
