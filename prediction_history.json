@@ -7940,9 +7940,9 @@
             {
               "rank": 32,
               "name": "Strand Larsen",
-              "prediction": 1.268185,
+              "prediction": 1.314171,
               "prediction_p10": 0.0,
-              "prediction_p90": 3.717857,
+              "prediction_p90": 4.0,
               "confidence": "low",
               "expected_minutes": 35.341817
             },
@@ -9515,9 +9515,9 @@
             {
               "rank": 9,
               "name": "Hill",
-              "prediction": 3.661356,
-              "prediction_p10": 0.8875,
-              "prediction_p90": 7.333333,
+              "prediction": 3.605169,
+              "prediction_p10": 0.922436,
+              "prediction_p90": 7.225,
               "confidence": "low",
               "expected_minutes": 73.567873
             },

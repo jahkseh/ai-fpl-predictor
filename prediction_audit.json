@@ -5,6 +5,26 @@
   "players_compared": 650,
   "largest_changes": [
     {
+      "name": "Hill",
+      "old_prediction": 3.661,
+      "new_prediction": 3.605,
+      "change": -0.056,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 73.567873,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Strand Larsen",
+      "old_prediction": 1.268,
+      "new_prediction": 1.314,
+      "change": 0.046,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 35.341817,
+      "fixture_difficulty": 4
+    },
+    {
       "name": "Gabriel",
       "old_prediction": 5.011,
       "new_prediction": 5.011,
@@ -233,26 +253,6 @@
       "new_confidence": "low",
       "expected_minutes": 21.450615,
       "fixture_difficulty": 4
-    },
-    {
-      "name": "J.Timber",
-      "old_prediction": 2.153,
-      "new_prediction": 2.153,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 62.990464,
-      "fixture_difficulty": 2
-    },
-    {
-      "name": "Thomas",
-      "old_prediction": 2.781,
-      "new_prediction": 2.781,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 31.786523,
-      "fixture_difficulty": 3
     }
   ]
 }
