@@ -1,8 +1,8 @@
 {
   "season": "2026/27",
-  "data_gameweek": 9,
-  "next_gameweek": 10,
-  "generated_at_utc": "2026-11-06T16:54:05.259097+00:00",
+  "data_gameweek": 10,
+  "next_gameweek": 11,
+  "generated_at_utc": "2026-11-06T23:18:55.279559+00:00",
   "difficulty_scale": {
     "min": 1,
     "max": 5,
@@ -14,14 +14,6 @@
       "team": "Arsenal",
       "fixtures": [
         {
-          "gw": 10,
-          "opponent": "Hull City",
-          "is_home": true,
-          "difficulty": 2,
-          "source": "official_fpl",
-          "kickoff": "2026-11-07T15:00:00"
-        },
-        {
           "gw": 11,
           "opponent": "Newcastle",
           "is_home": false,
@@ -52,6 +44,14 @@
           "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-12-06T16:30:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Bournemouth",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T14:00:00"
         }
       ]
     },
@@ -59,14 +59,6 @@
       "team": "Aston Villa",
       "fixtures": [
         {
-          "gw": 10,
-          "opponent": "Man Utd",
-          "is_home": false,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T16:30:00"
-        },
-        {
           "gw": 11,
           "opponent": "Sunderland",
           "is_home": true,
@@ -97,20 +89,20 @@
           "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Coventry City",
+          "is_home": false,
+          "difficulty": 2,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T16:30:00"
         }
       ]
     },
     {
       "team": "Bournemouth",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Ipswich Town",
-          "is_home": false,
-          "difficulty": 2,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T14:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Nott'm Forest",
@@ -142,20 +134,20 @@
           "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Arsenal",
+          "is_home": false,
+          "difficulty": 5,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T14:00:00"
         }
       ]
     },
     {
       "team": "Brentford",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Brighton",
-          "is_home": false,
-          "difficulty": 4,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T14:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Everton",
@@ -187,20 +179,20 @@
           "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T20:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Fulham",
+          "is_home": false,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-12T15:00:00"
         }
       ]
     },
     {
       "team": "Brighton",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Brentford",
-          "is_home": true,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T14:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Hull City",
@@ -232,20 +224,20 @@
           "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-05T17:30:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Everton",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T14:00:00"
         }
       ]
     },
     {
       "team": "Chelsea",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Sunderland",
-          "is_home": false,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T14:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Leeds",
@@ -277,20 +269,20 @@
           "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T12:30:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Man City",
+          "is_home": false,
+          "difficulty": 5,
+          "source": "official_fpl",
+          "kickoff": "2026-12-12T17:30:00"
         }
       ]
     },
     {
       "team": "Coventry City",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Everton",
-          "is_home": false,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-06T20:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Crystal Palace",
@@ -322,20 +314,20 @@
           "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Aston Villa",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T16:30:00"
         }
       ]
     },
     {
       "team": "Crystal Palace",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Liverpool",
-          "is_home": true,
-          "difficulty": 4,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T14:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Coventry City",
@@ -367,20 +359,20 @@
           "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Man Utd",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T19:00:00"
         }
       ]
     },
     {
       "team": "Everton",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Coventry City",
-          "is_home": true,
-          "difficulty": 2,
-          "source": "official_fpl",
-          "kickoff": "2026-11-06T20:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Brentford",
@@ -412,20 +404,20 @@
           "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-06T14:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Brighton",
+          "is_home": false,
+          "difficulty": 4,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T14:00:00"
         }
       ]
     },
     {
       "team": "Fulham",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Newcastle",
-          "is_home": true,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-07T15:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Man City",
@@ -457,20 +449,20 @@
           "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-12-06T14:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Brentford",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-12T15:00:00"
         }
       ]
     },
     {
       "team": "Hull City",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Arsenal",
-          "is_home": false,
-          "difficulty": 5,
-          "source": "official_fpl",
-          "kickoff": "2026-11-07T15:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Brighton",
@@ -502,20 +494,20 @@
           "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Spurs",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-14T20:00:00"
         }
       ]
     },
     {
       "team": "Ipswich Town",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Bournemouth",
-          "is_home": true,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T14:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Spurs",
@@ -547,20 +539,20 @@
           "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Newcastle",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-12T15:00:00"
         }
       ]
     },
     {
       "team": "Leeds",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Spurs",
-          "is_home": true,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-07T12:30:00"
-        },
         {
           "gw": 11,
           "opponent": "Chelsea",
@@ -592,20 +584,20 @@
           "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Liverpool",
+          "is_home": false,
+          "difficulty": 4,
+          "source": "official_fpl",
+          "kickoff": "2026-12-12T15:00:00"
         }
       ]
     },
     {
       "team": "Liverpool",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Crystal Palace",
-          "is_home": false,
-          "difficulty": 2,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T14:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Man Utd",
@@ -637,20 +629,20 @@
           "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T12:30:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Leeds",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-12T15:00:00"
         }
       ]
     },
     {
       "team": "Man City",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Nott'm Forest",
-          "is_home": false,
-          "difficulty": 2,
-          "source": "official_fpl",
-          "kickoff": "2026-11-07T17:30:00"
-        },
         {
           "gw": 11,
           "opponent": "Fulham",
@@ -682,20 +674,20 @@
           "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T20:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Chelsea",
+          "is_home": true,
+          "difficulty": 4,
+          "source": "official_fpl",
+          "kickoff": "2026-12-12T17:30:00"
         }
       ]
     },
     {
       "team": "Man Utd",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Aston Villa",
-          "is_home": true,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T16:30:00"
-        },
         {
           "gw": 11,
           "opponent": "Liverpool",
@@ -727,20 +719,20 @@
           "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-05T15:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Crystal Palace",
+          "is_home": false,
+          "difficulty": 2,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T19:00:00"
         }
       ]
     },
     {
       "team": "Newcastle",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Fulham",
-          "is_home": false,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-07T15:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Arsenal",
@@ -772,20 +764,20 @@
           "difficulty": 2,
           "source": "official_fpl",
           "kickoff": "2026-12-06T14:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Ipswich Town",
+          "is_home": false,
+          "difficulty": 2,
+          "source": "official_fpl",
+          "kickoff": "2026-12-12T15:00:00"
         }
       ]
     },
     {
       "team": "Nott'm Forest",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Man City",
-          "is_home": true,
-          "difficulty": 4,
-          "source": "official_fpl",
-          "kickoff": "2026-11-07T17:30:00"
-        },
         {
           "gw": 11,
           "opponent": "Bournemouth",
@@ -817,20 +809,20 @@
           "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-05T17:30:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Sunderland",
+          "is_home": false,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T14:00:00"
         }
       ]
     },
     {
       "team": "Spurs",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Leeds",
-          "is_home": false,
-          "difficulty": 3,
-          "source": "official_fpl",
-          "kickoff": "2026-11-07T12:30:00"
-        },
         {
           "gw": 11,
           "opponent": "Ipswich Town",
@@ -862,20 +854,20 @@
           "difficulty": 4,
           "source": "official_fpl",
           "kickoff": "2026-12-06T16:30:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Hull City",
+          "is_home": false,
+          "difficulty": 2,
+          "source": "official_fpl",
+          "kickoff": "2026-12-14T20:00:00"
         }
       ]
     },
     {
       "team": "Sunderland",
       "fixtures": [
-        {
-          "gw": 10,
-          "opponent": "Chelsea",
-          "is_home": true,
-          "difficulty": 4,
-          "source": "official_fpl",
-          "kickoff": "2026-11-08T14:00:00"
-        },
         {
           "gw": 11,
           "opponent": "Aston Villa",
@@ -907,6 +899,14 @@
           "difficulty": 3,
           "source": "official_fpl",
           "kickoff": "2026-12-06T14:00:00"
+        },
+        {
+          "gw": 15,
+          "opponent": "Nott'm Forest",
+          "is_home": true,
+          "difficulty": 3,
+          "source": "official_fpl",
+          "kickoff": "2026-12-13T14:00:00"
         }
       ]
     }

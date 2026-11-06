@@ -1,92 +1,92 @@
 {
   "season": "2026/27",
-  "data_gameweek": 9,
-  "next_gameweek": 10,
-  "generated_at_utc": "2026-11-06T16:53:55.757540+00:00",
+  "data_gameweek": 10,
+  "next_gameweek": 11,
+  "generated_at_utc": "2026-11-06T23:18:44.757496+00:00",
   "picks": [
     {
-      "name": "Wirtz",
-      "team": "Liverpool",
+      "name": "Rudoni",
+      "team": "Coventry City",
       "position": "Midfielder",
-      "ownership": 5.1,
-      "prediction": 4.979027,
-      "differential_score": 4.725,
-      "price": 7.2,
-      "form": 3.8,
+      "ownership": 1.1,
+      "prediction": 4.942919,
+      "differential_score": 4.889,
+      "price": 4.9,
+      "form": 5.0,
       "fixture": {
-        "home": "Crystal Palace",
-        "away": "Liverpool",
-        "is_home": false,
-        "kickoff": "2026-11-08T14:00:00",
-        "match_id": "26-27-prem-crystal-palace-vs-liverpool"
+        "home": "Coventry City",
+        "away": "Crystal Palace",
+        "is_home": true,
+        "kickoff": "2026-11-21T15:00:00",
+        "match_id": "26-27-prem-coventry-city-vs-crystal-palace"
+      }
+    },
+    {
+      "name": "Silva",
+      "team": "Bournemouth",
+      "position": "Defender",
+      "ownership": 3.5,
+      "prediction": 4.45704,
+      "differential_score": 4.301,
+      "price": 5.1,
+      "form": 4.8,
+      "fixture": {
+        "home": "Bournemouth",
+        "away": "Nott'm Forest",
+        "is_home": true,
+        "kickoff": "2026-11-21T15:00:00",
+        "match_id": "26-27-prem-afc-bournemouth-vs-nottingham-forest"
       }
     },
     {
       "name": "Thiago",
       "team": "Brentford",
       "position": "Forward",
-      "ownership": 9.1,
-      "prediction": 5.13373,
-      "differential_score": 4.667,
+      "ownership": 9.0,
+      "prediction": 4.550868,
+      "differential_score": 4.141,
       "price": 7.8,
-      "form": 5.5,
+      "form": 4.4,
       "fixture": {
-        "home": "Brighton",
-        "away": "Brentford",
-        "is_home": false,
-        "kickoff": "2026-11-08T14:00:00",
-        "match_id": "26-27-prem-brighton-hove-albion-vs-brentford"
-      }
-    },
-    {
-      "name": "Rayan",
-      "team": "Bournemouth",
-      "position": "Midfielder",
-      "ownership": 2.4,
-      "prediction": 4.611202,
-      "differential_score": 4.501,
-      "price": 6.3,
-      "form": 4.5,
-      "fixture": {
-        "home": "Ipswich Town",
-        "away": "Bournemouth",
-        "is_home": false,
-        "kickoff": "2026-11-08T14:00:00",
-        "match_id": "26-27-prem-ipswich-town-vs-afc-bournemouth"
-      }
-    },
-    {
-      "name": "Ouattara",
-      "team": "Ipswich Town",
-      "position": "Defender",
-      "ownership": 1.1,
-      "prediction": 4.505673,
-      "differential_score": 4.456,
-      "price": 4.0,
-      "form": 4.8,
-      "fixture": {
-        "home": "Ipswich Town",
-        "away": "Bournemouth",
+        "home": "Brentford",
+        "away": "Everton",
         "is_home": true,
-        "kickoff": "2026-11-08T14:00:00",
-        "match_id": "26-27-prem-ipswich-town-vs-afc-bournemouth"
+        "kickoff": "2026-11-23T20:00:00",
+        "match_id": "26-27-prem-brentford-vs-everton"
       }
     },
     {
-      "name": "Manzambi",
-      "team": "Aston Villa",
+      "name": "Belloumi",
+      "team": "Hull City",
       "position": "Midfielder",
-      "ownership": 7.8,
-      "prediction": 4.810021,
-      "differential_score": 4.435,
-      "price": 6.2,
-      "form": 6.0,
+      "ownership": 9.9,
+      "prediction": 4.538032,
+      "differential_score": 4.089,
+      "price": 5.3,
+      "form": 3.4,
       "fixture": {
-        "home": "Man Utd",
-        "away": "Aston Villa",
-        "is_home": false,
-        "kickoff": "2026-11-08T16:30:00",
-        "match_id": "26-27-prem-manchester-united-vs-aston-villa"
+        "home": "Hull City",
+        "away": "Brighton",
+        "is_home": true,
+        "kickoff": "2026-11-22T14:00:00",
+        "match_id": "26-27-prem-hull-city-vs-brighton-hove-albion"
+      }
+    },
+    {
+      "name": "Araujo",
+      "team": "Liverpool",
+      "position": "Defender",
+      "ownership": 4.1,
+      "prediction": 4.063137,
+      "differential_score": 3.897,
+      "price": 5.4,
+      "form": 3.0,
+      "fixture": {
+        "home": "Liverpool",
+        "away": "Man Utd",
+        "is_home": true,
+        "kickoff": "2026-11-22T16:30:00",
+        "match_id": "26-27-prem-liverpool-vs-manchester-united"
       }
     }
   ]
