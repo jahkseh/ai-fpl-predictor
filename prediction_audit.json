@@ -5,6 +5,66 @@
   "players_compared": 650,
   "largest_changes": [
     {
+      "name": "R\u00f6hl",
+      "old_prediction": 2.721,
+      "new_prediction": 2.599,
+      "change": -0.122,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 63.95335,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Awoniyi",
+      "old_prediction": 3.045,
+      "new_prediction": 3.1,
+      "change": 0.056,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 49.89948,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Sakamoto",
+      "old_prediction": 2.711,
+      "new_prediction": 2.759,
+      "change": 0.048,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 64.412612,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Barry",
+      "old_prediction": 4.099,
+      "new_prediction": 4.066,
+      "change": -0.033,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 79.086959,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Branthwaite",
+      "old_prediction": 2.336,
+      "new_prediction": 2.366,
+      "change": 0.031,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 73.741071,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Dewsbury-Hall",
+      "old_prediction": 3.886,
+      "new_prediction": 3.891,
+      "change": 0.005,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 64.286404,
+      "fixture_difficulty": 3
+    },
+    {
       "name": "N.Jackson",
       "old_prediction": 4.888,
       "new_prediction": 4.888,
@@ -192,66 +252,6 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 28.836864,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Gomes",
-      "old_prediction": 1.829,
-      "new_prediction": 1.829,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 26.119367,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Talbi",
-      "old_prediction": 1.829,
-      "new_prediction": 1.829,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 54.368094,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Sadiki",
-      "old_prediction": 1.777,
-      "new_prediction": 1.777,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 51.691789,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "N.Angulo",
-      "old_prediction": 1.752,
-      "new_prediction": 1.752,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 35.744249,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Hume",
-      "old_prediction": 1.721,
-      "new_prediction": 1.721,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 45.032182,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Reinildo",
-      "old_prediction": 1.632,
-      "new_prediction": 1.632,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 61.536697,
       "fixture_difficulty": 3
     }
   ]

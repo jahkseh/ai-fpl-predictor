@@ -13677,9 +13677,9 @@
             {
               "rank": 4,
               "name": "Barry",
-              "prediction": 4.098957,
+              "prediction": 4.065957,
               "prediction_p10": 1.0,
-              "prediction_p90": 8.419444,
+              "prediction_p90": 8.401667,
               "confidence": "low",
               "expected_minutes": 79.086959
             },
@@ -13695,7 +13695,7 @@
             {
               "rank": 6,
               "name": "Dewsbury-Hall",
-              "prediction": 3.886231,
+              "prediction": 3.891101,
               "prediction_p10": 0.875,
               "prediction_p90": 8.14,
               "confidence": "low",
@@ -13775,21 +13775,21 @@
             },
             {
               "rank": 15,
-              "name": "Röhl",
-              "prediction": 2.721053,
-              "prediction_p10": 0.598333,
-              "prediction_p90": 5.735165,
-              "confidence": "low",
-              "expected_minutes": 63.95335
-            },
-            {
-              "rank": 16,
               "name": "Lewis-Potter",
               "prediction": 2.608597,
               "prediction_p10": 0.0,
               "prediction_p90": 6.245098,
               "confidence": "low",
               "expected_minutes": 58.738507
+            },
+            {
+              "rank": 16,
+              "name": "Röhl",
+              "prediction": 2.598554,
+              "prediction_p10": 0.494444,
+              "prediction_p90": 5.6025,
+              "confidence": "low",
+              "expected_minutes": 63.95335
             },
             {
               "rank": 17,
@@ -13812,7 +13812,7 @@
             {
               "rank": 19,
               "name": "Branthwaite",
-              "prediction": 2.335644,
+              "prediction": 2.366402,
               "prediction_p10": 0.069231,
               "prediction_p90": 5.381944,
               "confidence": "low",
@@ -14787,9 +14787,9 @@
             {
               "rank": 5,
               "name": "Awoniyi",
-              "prediction": 3.044751,
-              "prediction_p10": 0.494444,
-              "prediction_p90": 7.207273,
+              "prediction": 3.100391,
+              "prediction_p10": 0.5,
+              "prediction_p90": 7.287143,
               "confidence": "low",
               "expected_minutes": 49.89948
             },
@@ -14822,21 +14822,21 @@
             },
             {
               "rank": 9,
+              "name": "Sakamoto",
+              "prediction": 2.759353,
+              "prediction_p10": 0.284416,
+              "prediction_p90": 6.016667,
+              "confidence": "low",
+              "expected_minutes": 64.412612
+            },
+            {
+              "rank": 10,
               "name": "Rushworth",
               "prediction": 2.724404,
               "prediction_p10": 0.497059,
               "prediction_p90": 5.675,
               "confidence": "low",
               "expected_minutes": 74.602908
-            },
-            {
-              "rank": 10,
-              "name": "Sakamoto",
-              "prediction": 2.71087,
-              "prediction_p10": 0.22,
-              "prediction_p90": 5.8875,
-              "confidence": "low",
-              "expected_minutes": 64.412612
             },
             {
               "rank": 11,

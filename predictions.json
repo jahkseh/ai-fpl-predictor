@@ -459,11 +459,11 @@
             "away_elo": null,
             "team_xg_for_per90": 1.70625,
             "team_xg_against_per90": 1.51,
-            "opponent_xg_for_per90": 1.2425,
-            "opponent_xg_against_per90": 1.43875,
-            "fixture_attack_mismatch": 0.2675,
-            "fixture_defence_mismatch": -0.2675,
-            "fixture_xg_environment": 2.94875
+            "opponent_xg_for_per90": 1.343333,
+            "opponent_xg_against_per90": 1.442222,
+            "fixture_attack_mismatch": 0.264028,
+            "fixture_defence_mismatch": -0.166667,
+            "fixture_xg_environment": 3.049583
           },
           "model_inputs": {
             "historical_ability": {
@@ -499,12 +499,12 @@
               "goals_for_per_90": 1.75
             },
             "opponent_defence": {
-              "xg_against_per_90": 1.43875,
-              "goals_against_per_90": 1.125
+              "xg_against_per_90": 1.442222,
+              "goals_against_per_90": 1.0
             },
             "expected_minutes": 60.165705,
             "home_away": "home",
-            "fixture_environment": 2.94875
+            "fixture_environment": 3.049583
           }
         },
         {
@@ -527,13 +527,13 @@
             "opponent_strength": 3.0,
             "home_elo": null,
             "away_elo": null,
-            "team_xg_for_per90": 1.2425,
-            "team_xg_against_per90": 1.43875,
+            "team_xg_for_per90": 1.343333,
+            "team_xg_against_per90": 1.442222,
             "opponent_xg_for_per90": 1.70625,
             "opponent_xg_against_per90": 1.51,
-            "fixture_attack_mismatch": -0.2675,
-            "fixture_defence_mismatch": 0.2675,
-            "fixture_xg_environment": 2.94875
+            "fixture_attack_mismatch": -0.166667,
+            "fixture_defence_mismatch": 0.264028,
+            "fixture_xg_environment": 3.049583
           },
           "model_inputs": {
             "historical_ability": {
@@ -565,7 +565,7 @@
               "start_rate": 0.617512
             },
             "team_attack": {
-              "xg_for_per_90": 1.2425,
+              "xg_for_per_90": 1.343333,
               "goals_for_per_90": 1.0
             },
             "opponent_defence": {
@@ -574,7 +574,7 @@
             },
             "expected_minutes": 86.458057,
             "home_away": "away",
-            "fixture_environment": 2.94875
+            "fixture_environment": 3.049583
           }
         },
         {
@@ -597,13 +597,13 @@
             "opponent_strength": 3.0,
             "home_elo": null,
             "away_elo": null,
-            "team_xg_for_per90": 1.2425,
-            "team_xg_against_per90": 1.43875,
+            "team_xg_for_per90": 1.343333,
+            "team_xg_against_per90": 1.442222,
             "opponent_xg_for_per90": 1.70625,
             "opponent_xg_against_per90": 1.51,
-            "fixture_attack_mismatch": -0.2675,
-            "fixture_defence_mismatch": 0.2675,
-            "fixture_xg_environment": 2.94875
+            "fixture_attack_mismatch": -0.166667,
+            "fixture_defence_mismatch": 0.264028,
+            "fixture_xg_environment": 3.049583
           },
           "model_inputs": {
             "historical_ability": {
@@ -635,7 +635,7 @@
               "start_rate": 0.076923
             },
             "team_attack": {
-              "xg_for_per_90": 1.2425,
+              "xg_for_per_90": 1.343333,
               "goals_for_per_90": 1.0
             },
             "opponent_defence": {
@@ -644,7 +644,7 @@
             },
             "expected_minutes": 71.876949,
             "home_away": "away",
-            "fixture_environment": 2.94875
+            "fixture_environment": 3.049583
           }
         }
       ]
@@ -889,13 +889,13 @@
             "opponent_strength": 2.0,
             "home_elo": null,
             "away_elo": null,
-            "team_xg_for_per90": 0.94625,
-            "team_xg_against_per90": 1.485,
+            "team_xg_for_per90": 0.917778,
+            "team_xg_against_per90": 1.522222,
             "opponent_xg_for_per90": 1.38,
             "opponent_xg_against_per90": 1.96875,
-            "fixture_attack_mismatch": -1.0225,
-            "fixture_defence_mismatch": -0.105,
-            "fixture_xg_environment": 2.32625
+            "fixture_attack_mismatch": -1.050972,
+            "fixture_defence_mismatch": -0.142222,
+            "fixture_xg_environment": 2.297778
           },
           "model_inputs": {
             "historical_ability": {
@@ -927,8 +927,8 @@
               "start_rate": 0.0
             },
             "team_attack": {
-              "xg_for_per_90": 0.94625,
-              "goals_for_per_90": 0.75
+              "xg_for_per_90": 0.917778,
+              "goals_for_per_90": 1.0
             },
             "opponent_defence": {
               "xg_against_per_90": 1.96875,
@@ -936,7 +936,7 @@
             },
             "expected_minutes": 73.436139,
             "home_away": "home",
-            "fixture_environment": 2.32625
+            "fixture_environment": 2.297778
           }
         },
         {
@@ -959,13 +959,13 @@
             "opponent_strength": 2.0,
             "home_elo": null,
             "away_elo": null,
-            "team_xg_for_per90": 0.94625,
-            "team_xg_against_per90": 1.485,
+            "team_xg_for_per90": 0.917778,
+            "team_xg_against_per90": 1.522222,
             "opponent_xg_for_per90": 1.38,
             "opponent_xg_against_per90": 1.96875,
-            "fixture_attack_mismatch": -1.0225,
-            "fixture_defence_mismatch": -0.105,
-            "fixture_xg_environment": 2.32625
+            "fixture_attack_mismatch": -1.050972,
+            "fixture_defence_mismatch": -0.142222,
+            "fixture_xg_environment": 2.297778
           },
           "model_inputs": {
             "historical_ability": {
@@ -997,8 +997,8 @@
               "start_rate": 0.407609
             },
             "team_attack": {
-              "xg_for_per_90": 0.94625,
-              "goals_for_per_90": 0.75
+              "xg_for_per_90": 0.917778,
+              "goals_for_per_90": 1.0
             },
             "opponent_defence": {
               "xg_against_per_90": 1.96875,
@@ -1006,7 +1006,7 @@
             },
             "expected_minutes": 86.577391,
             "home_away": "home",
-            "fixture_environment": 2.32625
+            "fixture_environment": 2.297778
           }
         },
         {
@@ -1029,13 +1029,13 @@
             "opponent_strength": 2.0,
             "home_elo": null,
             "away_elo": null,
-            "team_xg_for_per90": 0.94625,
-            "team_xg_against_per90": 1.485,
+            "team_xg_for_per90": 0.917778,
+            "team_xg_against_per90": 1.522222,
             "opponent_xg_for_per90": 1.38,
             "opponent_xg_against_per90": 1.96875,
-            "fixture_attack_mismatch": -1.0225,
-            "fixture_defence_mismatch": -0.105,
-            "fixture_xg_environment": 2.32625
+            "fixture_attack_mismatch": -1.050972,
+            "fixture_defence_mismatch": -0.142222,
+            "fixture_xg_environment": 2.297778
           },
           "model_inputs": {
             "historical_ability": {
@@ -1067,8 +1067,8 @@
               "start_rate": 0.0
             },
             "team_attack": {
-              "xg_for_per_90": 0.94625,
-              "goals_for_per_90": 0.75
+              "xg_for_per_90": 0.917778,
+              "goals_for_per_90": 1.0
             },
             "opponent_defence": {
               "xg_against_per_90": 1.96875,
@@ -1076,7 +1076,7 @@
             },
             "expected_minutes": 80.751995,
             "home_away": "home",
-            "fixture_environment": 2.32625
+            "fixture_environment": 2.297778
           }
         }
       ]
@@ -2244,7 +2244,7 @@
       "name": "Manzambi",
       "prediction": 4.175012,
       "price": 6.2,
-      "ownership": 8.1,
+      "ownership": 8.2,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Aston Villa",
@@ -2320,7 +2320,7 @@
       "name": "Suzuki",
       "prediction": 3.72214,
       "price": 5.0,
-      "ownership": 3.0,
+      "ownership": 3.1,
       "position": "Goalkeeper",
       "team": "",
       "fixture_home": "Aston Villa",
@@ -3232,7 +3232,7 @@
       "name": "Cash",
       "prediction": 1.99758,
       "price": 4.3,
-      "ownership": 3.7,
+      "ownership": 3.6,
       "position": "Defender",
       "team": "",
       "fixture_home": "Aston Villa",
@@ -7412,7 +7412,7 @@
       "name": "Tavernier",
       "prediction": 3.713556,
       "price": 6.6,
-      "ownership": 30.5,
+      "ownership": 30.6,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Bournemouth",
@@ -7564,7 +7564,7 @@
       "name": "Gibbs-White",
       "prediction": 3.295819,
       "price": 7.8,
-      "ownership": 9.4,
+      "ownership": 9.3,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Bournemouth",
@@ -7640,7 +7640,7 @@
       "name": "Hill",
       "prediction": 3.119763,
       "price": 5.6,
-      "ownership": 2.7,
+      "ownership": 2.8,
       "position": "Defender",
       "team": "",
       "fixture_home": "Bournemouth",
@@ -9464,7 +9464,7 @@
       "name": "Wood",
       "prediction": 1.247364,
       "price": 5.7,
-      "ownership": 0.8,
+      "ownership": 0.7,
       "position": "Forward",
       "team": "",
       "fixture_home": "Bournemouth",
@@ -11767,11 +11767,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -11807,12 +11807,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 60.165705,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -11841,13 +11841,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -11879,7 +11879,7 @@
           "start_rate": 0.617512
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -11888,7 +11888,7 @@
         },
         "expected_minutes": 86.458057,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -11917,13 +11917,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -11955,7 +11955,7 @@
           "start_rate": 0.076923
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -11964,23 +11964,23 @@
         },
         "expected_minutes": 71.876949,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
       "rank": 4,
       "name": "Barry",
-      "prediction": 4.098957,
+      "prediction": 4.065957,
       "price": 5.7,
-      "ownership": 9.0,
+      "ownership": 9.2,
       "position": "Forward",
       "team": "",
       "fixture_home": "Brentford",
       "fixture_away": "Everton",
-      "prediction_std": 3.045305,
+      "prediction_std": 2.996338,
       "prediction_p10": 1.0,
-      "prediction_p90": 8.419444,
-      "prediction_range": 7.419444,
+      "prediction_p90": 8.401667,
+      "prediction_range": 7.401667,
       "confidence": "low",
       "fixture_difficulty": 3,
       "expected_minutes": 79.086959,
@@ -11993,13 +11993,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12020,7 +12020,7 @@
           "influence_per_90": 22.320149,
           "creativity_per_90": 8.994937,
           "threat_per_90": 44.517498,
-          "bps_per_90": 28.545644,
+          "bps_per_90": 28.345644,
           "bonus_per_90": 1.283544,
           "xgi_per_90": 0.854378
         },
@@ -12031,7 +12031,7 @@
           "start_rate": 0.540541
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -12040,7 +12040,7 @@
         },
         "expected_minutes": 79.086959,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12069,13 +12069,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12107,7 +12107,7 @@
           "start_rate": 0.864865
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -12116,20 +12116,20 @@
         },
         "expected_minutes": 80.690869,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
       "rank": 6,
       "name": "Dewsbury-Hall",
-      "prediction": 3.886231,
+      "prediction": 3.891101,
       "price": 6.6,
       "ownership": 6.7,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Brentford",
       "fixture_away": "Everton",
-      "prediction_std": 2.879357,
+      "prediction_std": 2.879525,
       "prediction_p10": 0.875,
       "prediction_p90": 8.14,
       "prediction_range": 7.265,
@@ -12145,13 +12145,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12166,15 +12166,15 @@
           "points_per_90": 5.09434,
           "recent_3_points": 5.0,
           "recent_3_minutes": 88.333333,
-          "recent_3_xg": 0.153333,
+          "recent_3_xg": 0.13,
           "recent_3_xa": 0.136667,
           "ict_index_per_90": 6.130588,
           "influence_per_90": 20.971765,
           "creativity_per_90": 29.251765,
           "threat_per_90": 11.047059,
-          "bps_per_90": 32.152941,
+          "bps_per_90": 32.352941,
           "bonus_per_90": 1.2,
-          "xgi_per_90": 0.287191
+          "xgi_per_90": 0.273034
         },
         "current_club": {
           "points_per_90": 5.267086,
@@ -12183,7 +12183,7 @@
           "start_rate": 0.783784
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -12192,7 +12192,7 @@
         },
         "expected_minutes": 64.286404,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12223,11 +12223,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12263,12 +12263,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 54.668765,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12297,13 +12297,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12335,7 +12335,7 @@
           "start_rate": 0.657343
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -12344,7 +12344,7 @@
         },
         "expected_minutes": 82.15571,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12375,11 +12375,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12415,12 +12415,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 58.975057,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12449,13 +12449,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12487,7 +12487,7 @@
           "start_rate": 0.081081
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -12496,7 +12496,7 @@
         },
         "expected_minutes": 61.812219,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12525,13 +12525,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12563,7 +12563,7 @@
           "start_rate": 0.654545
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -12572,7 +12572,7 @@
         },
         "expected_minutes": 69.103768,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12580,7 +12580,7 @@
       "name": "Schade",
       "prediction": 3.111597,
       "price": 6.1,
-      "ownership": 13.4,
+      "ownership": 13.3,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Brentford",
@@ -12603,11 +12603,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12643,12 +12643,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 33.14284,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12679,11 +12679,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12719,12 +12719,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 38.350037,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12755,11 +12755,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12795,92 +12795,16 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 52.478074,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
       "rank": 15,
-      "name": "Röhl",
-      "prediction": 2.721053,
-      "price": 4.9,
-      "ownership": 0.0,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Brentford",
-      "fixture_away": "Everton",
-      "prediction_std": 2.294316,
-      "prediction_p10": 0.598333,
-      "prediction_p90": 5.735165,
-      "prediction_range": 5.136832,
-      "confidence": "low",
-      "fixture_difficulty": 3,
-      "expected_minutes": 63.95335,
-      "start_probability": 0.818918,
-      "sixty_probability": 0.630043,
-      "fixture_context": {
-        "opponent": "Brentford",
-        "is_home": false,
-        "team_strength": 3.0,
-        "opponent_strength": 3.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
-        "opponent_xg_for_per90": 1.70625,
-        "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 4.983713,
-          "xg_per_90": 0.098208,
-          "xa_per_90": 0.051303,
-          "goals_per_90": 0.14658,
-          "assists_per_90": 0.14658,
-          "start_rate": 0.147059
-        },
-        "current_form": {
-          "points_per_90": 2.5,
-          "recent_3_points": 2.333333,
-          "recent_3_minutes": 84.0,
-          "recent_3_xg": 0.016667,
-          "recent_3_xa": 0.05,
-          "ict_index_per_90": 1.775,
-          "influence_per_90": 6.85,
-          "creativity_per_90": 2.775,
-          "threat_per_90": 8.25,
-          "bps_per_90": 11.3125,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.060526
-        },
-        "current_club": {
-          "points_per_90": 4.983713,
-          "xg_per_90": 0.098208,
-          "xa_per_90": 0.051303,
-          "start_rate": 0.147059
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.2425,
-          "goals_for_per_90": 1.0
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.51,
-          "goals_against_per_90": 1.125
-        },
-        "expected_minutes": 63.95335,
-        "home_away": "away",
-        "fixture_environment": 2.94875
-      }
-    },
-    {
-      "rank": 16,
       "name": "Lewis-Potter",
       "prediction": 2.608597,
       "price": 5.5,
@@ -12907,11 +12831,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -12947,12 +12871,88 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 58.738507,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
+      }
+    },
+    {
+      "rank": 16,
+      "name": "Röhl",
+      "prediction": 2.598554,
+      "price": 4.9,
+      "ownership": 0.0,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Brentford",
+      "fixture_away": "Everton",
+      "prediction_std": 2.229478,
+      "prediction_p10": 0.494444,
+      "prediction_p90": 5.6025,
+      "prediction_range": 5.108056,
+      "confidence": "low",
+      "fixture_difficulty": 3,
+      "expected_minutes": 63.95335,
+      "start_probability": 0.818918,
+      "sixty_probability": 0.630043,
+      "fixture_context": {
+        "opponent": "Brentford",
+        "is_home": false,
+        "team_strength": 3.0,
+        "opponent_strength": 3.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
+        "opponent_xg_for_per90": 1.70625,
+        "opponent_xg_against_per90": 1.51,
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 4.983713,
+          "xg_per_90": 0.098208,
+          "xa_per_90": 0.051303,
+          "goals_per_90": 0.14658,
+          "assists_per_90": 0.14658,
+          "start_rate": 0.147059
+        },
+        "current_form": {
+          "points_per_90": 2.5,
+          "recent_3_points": 2.333333,
+          "recent_3_minutes": 84.0,
+          "recent_3_xg": 0.016667,
+          "recent_3_xa": 0.05,
+          "ict_index_per_90": 1.775,
+          "influence_per_90": 6.85,
+          "creativity_per_90": 2.775,
+          "threat_per_90": 8.25,
+          "bps_per_90": 12.5625,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.060526
+        },
+        "current_club": {
+          "points_per_90": 4.983713,
+          "xg_per_90": 0.098208,
+          "xa_per_90": 0.051303,
+          "start_rate": 0.147059
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.343333,
+          "goals_for_per_90": 1.0
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.51,
+          "goals_against_per_90": 1.125
+        },
+        "expected_minutes": 63.95335,
+        "home_away": "away",
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -12981,13 +12981,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13019,7 +13019,7 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -13028,7 +13028,7 @@
         },
         "expected_minutes": 20.655276,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13057,13 +13057,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13095,7 +13095,7 @@
           "start_rate": 0.705882
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -13104,20 +13104,20 @@
         },
         "expected_minutes": 44.459246,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
       "rank": 19,
       "name": "Branthwaite",
-      "prediction": 2.335644,
+      "prediction": 2.366402,
       "price": 5.5,
       "ownership": 2.2,
       "position": "Defender",
       "team": "",
       "fixture_home": "Brentford",
       "fixture_away": "Everton",
-      "prediction_std": 2.14218,
+      "prediction_std": 2.153999,
       "prediction_p10": 0.069231,
       "prediction_p90": 5.381944,
       "prediction_range": 5.312714,
@@ -13133,13 +13133,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13160,7 +13160,7 @@
           "influence_per_90": 16.327778,
           "creativity_per_90": 6.952778,
           "threat_per_90": 14.027778,
-          "bps_per_90": 15.412247,
+          "bps_per_90": 15.923611,
           "bonus_per_90": 0.833333,
           "xgi_per_90": 0.100573
         },
@@ -13171,7 +13171,7 @@
           "start_rate": 0.313364
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -13180,7 +13180,7 @@
         },
         "expected_minutes": 73.741071,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13211,11 +13211,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13251,12 +13251,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 42.052833,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13287,11 +13287,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13327,12 +13327,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 51.263735,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13361,13 +13361,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13399,7 +13399,7 @@
           "start_rate": 0.675676
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -13408,7 +13408,7 @@
         },
         "expected_minutes": 64.36295,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13439,11 +13439,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13479,12 +13479,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 34.453957,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13515,11 +13515,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13555,12 +13555,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 37.724345,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13589,13 +13589,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13627,7 +13627,7 @@
           "start_rate": 0.114286
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -13636,7 +13636,7 @@
         },
         "expected_minutes": 55.448305,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13667,11 +13667,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13707,12 +13707,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 64.988713,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13743,11 +13743,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13783,12 +13783,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 27.588333,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13819,11 +13819,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13859,12 +13859,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 11.802059,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13893,13 +13893,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -13931,7 +13931,7 @@
           "start_rate": 0.24424
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -13940,7 +13940,7 @@
         },
         "expected_minutes": 13.532055,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -13971,11 +13971,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14011,12 +14011,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 11.977017,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14047,11 +14047,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14087,12 +14087,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 31.264753,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14121,13 +14121,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14159,7 +14159,7 @@
           "start_rate": 0.290323
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -14168,7 +14168,7 @@
         },
         "expected_minutes": 11.795734,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14199,11 +14199,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14239,12 +14239,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 33.25895,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14273,13 +14273,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14311,7 +14311,7 @@
           "start_rate": 0.25
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -14320,7 +14320,7 @@
         },
         "expected_minutes": 12.403415,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14349,13 +14349,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14387,7 +14387,7 @@
           "start_rate": 0.37037
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -14396,7 +14396,7 @@
         },
         "expected_minutes": 6.267599,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14425,13 +14425,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14463,7 +14463,7 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -14472,7 +14472,7 @@
         },
         "expected_minutes": 14.107044,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14503,11 +14503,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14543,12 +14543,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 8.97306,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14577,13 +14577,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14615,7 +14615,7 @@
           "start_rate": 0.486486
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -14624,7 +14624,7 @@
         },
         "expected_minutes": 6.500926,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14655,11 +14655,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14695,12 +14695,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 16.285082,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14731,11 +14731,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14771,12 +14771,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 1.37248,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14805,13 +14805,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14843,7 +14843,7 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -14852,7 +14852,7 @@
         },
         "expected_minutes": 6.324244,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14883,11 +14883,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14923,12 +14923,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 7.876944,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -14959,11 +14959,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -14999,12 +14999,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 0.0,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15033,13 +15033,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15071,7 +15071,7 @@
           "start_rate": 0.133333
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -15080,7 +15080,7 @@
         },
         "expected_minutes": 0.132559,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15109,13 +15109,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15147,7 +15147,7 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -15156,7 +15156,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15187,11 +15187,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15227,12 +15227,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 0.0,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15263,11 +15263,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15303,12 +15303,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 0.945784,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15337,13 +15337,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15375,7 +15375,7 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -15384,7 +15384,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15413,13 +15413,13 @@
         "opponent_strength": 3.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 1.2425,
-        "team_xg_against_per90": 1.43875,
+        "team_xg_for_per90": 1.343333,
+        "team_xg_against_per90": 1.442222,
         "opponent_xg_for_per90": 1.70625,
         "opponent_xg_against_per90": 1.51,
-        "fixture_attack_mismatch": -0.2675,
-        "fixture_defence_mismatch": 0.2675,
-        "fixture_xg_environment": 2.94875
+        "fixture_attack_mismatch": -0.166667,
+        "fixture_defence_mismatch": 0.264028,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15451,7 +15451,7 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 1.2425,
+          "xg_for_per_90": 1.343333,
           "goals_for_per_90": 1.0
         },
         "opponent_defence": {
@@ -15460,7 +15460,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15491,11 +15491,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15531,12 +15531,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15567,11 +15567,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15607,12 +15607,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15643,11 +15643,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15683,12 +15683,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15719,11 +15719,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15759,12 +15759,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -15795,11 +15795,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.70625,
         "team_xg_against_per90": 1.51,
-        "opponent_xg_for_per90": 1.2425,
-        "opponent_xg_against_per90": 1.43875,
-        "fixture_attack_mismatch": 0.2675,
-        "fixture_defence_mismatch": -0.2675,
-        "fixture_xg_environment": 2.94875
+        "opponent_xg_for_per90": 1.343333,
+        "opponent_xg_against_per90": 1.442222,
+        "fixture_attack_mismatch": 0.264028,
+        "fixture_defence_mismatch": -0.166667,
+        "fixture_xg_environment": 3.049583
       },
       "model_inputs": {
         "historical_ability": {
@@ -15835,12 +15835,12 @@
           "goals_for_per_90": 1.75
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.43875,
-          "goals_against_per_90": 1.125
+          "xg_against_per_90": 1.442222,
+          "goals_against_per_90": 1.0
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.94875
+        "fixture_environment": 3.049583
       }
     },
     {
@@ -16380,7 +16380,7 @@
       "name": "Acheampong",
       "prediction": 2.636911,
       "price": 4.5,
-      "ownership": 0.5,
+      "ownership": 0.6,
       "position": "Defender",
       "team": "",
       "fixture_home": "Chelsea",
@@ -17368,7 +17368,7 @@
       "name": "João Pedro",
       "prediction": 1.885678,
       "price": 7.7,
-      "ownership": 34.4,
+      "ownership": 34.3,
       "position": "Forward",
       "team": "",
       "fixture_home": "Chelsea",
@@ -20961,13 +20961,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -20999,8 +20999,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21008,7 +21008,7 @@
         },
         "expected_minutes": 73.436139,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21037,13 +21037,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21075,8 +21075,8 @@
           "start_rate": 0.407609
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21084,7 +21084,7 @@
         },
         "expected_minutes": 86.577391,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21113,13 +21113,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21151,8 +21151,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21160,7 +21160,7 @@
         },
         "expected_minutes": 80.751995,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21189,13 +21189,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21227,8 +21227,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21236,23 +21236,23 @@
         },
         "expected_minutes": 45.470738,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
       "rank": 5,
       "name": "Awoniyi",
-      "prediction": 3.044751,
+      "prediction": 3.100391,
       "price": 5.4,
       "ownership": 0.3,
       "position": "Forward",
       "team": "",
       "fixture_home": "Coventry City",
       "fixture_away": "Crystal Palace",
-      "prediction_std": 2.646699,
-      "prediction_p10": 0.494444,
-      "prediction_p90": 7.207273,
-      "prediction_range": 6.712828,
+      "prediction_std": 2.674134,
+      "prediction_p10": 0.5,
+      "prediction_p90": 7.287143,
+      "prediction_range": 6.787143,
       "confidence": "low",
       "fixture_difficulty": 2,
       "expected_minutes": 49.89948,
@@ -21265,13 +21265,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21292,7 +21292,7 @@
           "influence_per_90": 11.413962,
           "creativity_per_90": 0.976102,
           "threat_per_90": 26.201776,
-          "bps_per_90": 16.318543,
+          "bps_per_90": 16.580171,
           "bonus_per_90": 0.950704,
           "xgi_per_90": 0.278571
         },
@@ -21303,8 +21303,8 @@
           "start_rate": 0.193333
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21312,7 +21312,7 @@
         },
         "expected_minutes": 49.89948,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21341,13 +21341,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21379,8 +21379,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21388,7 +21388,7 @@
         },
         "expected_minutes": 61.647128,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21417,13 +21417,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21455,8 +21455,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21464,7 +21464,7 @@
         },
         "expected_minutes": 70.711829,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21493,13 +21493,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21531,8 +21531,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21540,11 +21540,87 @@
         },
         "expected_minutes": 56.892425,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
       "rank": 9,
+      "name": "Sakamoto",
+      "prediction": 2.759353,
+      "price": 4.8,
+      "ownership": 0.1,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Coventry City",
+      "fixture_away": "Crystal Palace",
+      "prediction_std": 2.212792,
+      "prediction_p10": 0.284416,
+      "prediction_p90": 6.016667,
+      "prediction_range": 5.732251,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 64.412612,
+      "start_probability": 0.645722,
+      "sixty_probability": 0.741504,
+      "fixture_context": {
+        "opponent": "Crystal Palace",
+        "is_home": true,
+        "team_strength": 2.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
+        "opponent_xg_for_per90": 1.38,
+        "opponent_xg_against_per90": 1.96875,
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": 3.448276,
+          "recent_3_points": 3.333333,
+          "recent_3_minutes": 87.0,
+          "recent_3_xg": 0.123333,
+          "recent_3_xa": 0.02,
+          "ict_index_per_90": 1.947924,
+          "influence_per_90": 9.745991,
+          "creativity_per_90": 1.80954,
+          "threat_per_90": 7.99539,
+          "bps_per_90": 15.09982,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.144687
+        },
+        "current_club": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.96875,
+          "goals_against_per_90": 2.375
+        },
+        "expected_minutes": 64.412612,
+        "home_away": "home",
+        "fixture_environment": 2.297778
+      }
+    },
+    {
+      "rank": 10,
       "name": "Rushworth",
       "prediction": 2.724404,
       "price": 4.5,
@@ -21569,13 +21645,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21607,8 +21683,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -21616,83 +21692,7 @@
         },
         "expected_minutes": 74.602908,
         "home_away": "home",
-        "fixture_environment": 2.32625
-      }
-    },
-    {
-      "rank": 10,
-      "name": "Sakamoto",
-      "prediction": 2.71087,
-      "price": 4.8,
-      "ownership": 0.1,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Coventry City",
-      "fixture_away": "Crystal Palace",
-      "prediction_std": 2.204208,
-      "prediction_p10": 0.22,
-      "prediction_p90": 5.8875,
-      "prediction_range": 5.6675,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 64.412612,
-      "start_probability": 0.645722,
-      "sixty_probability": 0.741504,
-      "fixture_context": {
-        "opponent": "Crystal Palace",
-        "is_home": true,
-        "team_strength": 2.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
-        "opponent_xg_for_per90": 1.38,
-        "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": 3.448276,
-          "recent_3_points": 3.333333,
-          "recent_3_minutes": 87.0,
-          "recent_3_xg": 0.123333,
-          "recent_3_xa": 0.02,
-          "ict_index_per_90": 1.947924,
-          "influence_per_90": 9.745991,
-          "creativity_per_90": 1.80954,
-          "threat_per_90": 7.99539,
-          "bps_per_90": 14.681216,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.144687
-        },
-        "current_club": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.96875,
-          "goals_against_per_90": 2.375
-        },
-        "expected_minutes": 64.412612,
-        "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21723,11 +21723,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21763,12 +21763,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 43.906684,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21799,11 +21799,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21839,12 +21839,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 50.710356,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21875,11 +21875,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21915,12 +21915,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 59.364783,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -21951,11 +21951,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -21991,12 +21991,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 74.243227,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22027,11 +22027,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22067,12 +22067,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 23.923103,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22103,11 +22103,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22143,12 +22143,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 14.195831,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22177,13 +22177,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22215,8 +22215,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -22224,7 +22224,7 @@
         },
         "expected_minutes": 26.273417,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22253,13 +22253,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22291,8 +22291,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -22300,7 +22300,7 @@
         },
         "expected_minutes": 23.028804,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22329,13 +22329,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22367,8 +22367,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -22376,7 +22376,7 @@
         },
         "expected_minutes": 25.407757,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22407,11 +22407,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22447,12 +22447,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 48.782532,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22483,11 +22483,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22523,12 +22523,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 51.477774,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22559,11 +22559,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22599,12 +22599,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 47.008628,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22635,11 +22635,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22675,12 +22675,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 50.23218,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22711,11 +22711,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22751,12 +22751,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 39.430384,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22787,11 +22787,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22827,12 +22827,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 56.85305,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22861,13 +22861,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22899,8 +22899,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -22908,7 +22908,7 @@
         },
         "expected_minutes": 79.003358,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -22939,11 +22939,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -22979,12 +22979,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 26.945445,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23013,13 +23013,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23051,8 +23051,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -23060,7 +23060,7 @@
         },
         "expected_minutes": 24.175837,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23089,13 +23089,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23127,8 +23127,8 @@
           "start_rate": 0.914286
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -23136,7 +23136,7 @@
         },
         "expected_minutes": 22.386127,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23167,11 +23167,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23207,12 +23207,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 23.496727,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23241,13 +23241,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23279,8 +23279,8 @@
           "start_rate": 0.017391
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -23288,7 +23288,7 @@
         },
         "expected_minutes": 8.704346,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23317,13 +23317,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23355,8 +23355,8 @@
           "start_rate": 0.086957
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -23364,7 +23364,7 @@
         },
         "expected_minutes": 27.36344,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23393,13 +23393,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23431,8 +23431,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -23440,7 +23440,7 @@
         },
         "expected_minutes": 21.964451,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23469,13 +23469,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23507,8 +23507,8 @@
           "start_rate": 0.361111
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -23516,7 +23516,7 @@
         },
         "expected_minutes": 13.9576,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23547,11 +23547,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23587,12 +23587,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 17.333129,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23623,11 +23623,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23663,12 +23663,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 12.547411,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23699,11 +23699,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23739,12 +23739,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 7.616042,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23775,11 +23775,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23815,12 +23815,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 8.948426,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23849,13 +23849,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23887,8 +23887,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -23896,7 +23896,7 @@
         },
         "expected_minutes": 18.540956,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -23927,11 +23927,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -23967,12 +23967,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 24.101395,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24003,11 +24003,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24043,12 +24043,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 9.205633,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24079,11 +24079,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24119,12 +24119,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 15.511747,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24153,13 +24153,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24191,8 +24191,8 @@
           "start_rate": 0.324324
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -24200,7 +24200,7 @@
         },
         "expected_minutes": 10.34949,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24231,11 +24231,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24271,12 +24271,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 3.461714,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24307,11 +24307,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24347,12 +24347,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 2.64035,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24383,11 +24383,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24423,12 +24423,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 1.629951,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24459,11 +24459,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24499,12 +24499,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 0.528526,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24535,11 +24535,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24575,12 +24575,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 0.429172,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24611,11 +24611,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24651,12 +24651,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24687,11 +24687,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24727,12 +24727,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24763,11 +24763,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24803,12 +24803,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 5.496661,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24839,11 +24839,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24879,12 +24879,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 12.372441,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24913,13 +24913,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -24951,8 +24951,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -24960,7 +24960,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -24989,13 +24989,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25027,8 +25027,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25036,7 +25036,7 @@
         },
         "expected_minutes": 2.217366,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25067,11 +25067,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25107,12 +25107,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 1.933373,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25143,11 +25143,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25183,12 +25183,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 0.42874,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25217,13 +25217,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25255,8 +25255,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25264,7 +25264,7 @@
         },
         "expected_minutes": 1.249962,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25293,13 +25293,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25331,8 +25331,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25340,7 +25340,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25369,13 +25369,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25407,8 +25407,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25416,7 +25416,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25445,13 +25445,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25483,8 +25483,8 @@
           "start_rate": 0.078125
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25492,7 +25492,7 @@
         },
         "expected_minutes": 0.111417,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25523,11 +25523,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25563,12 +25563,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25597,13 +25597,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25635,8 +25635,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25644,7 +25644,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25673,13 +25673,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25711,8 +25711,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25720,7 +25720,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25749,13 +25749,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25787,8 +25787,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25796,7 +25796,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25825,13 +25825,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25863,8 +25863,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25872,7 +25872,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25901,13 +25901,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -25939,8 +25939,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -25948,7 +25948,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -25979,11 +25979,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -26019,12 +26019,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -26055,11 +26055,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -26095,12 +26095,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -26129,13 +26129,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -26167,8 +26167,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -26176,7 +26176,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -26205,13 +26205,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -26243,8 +26243,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -26252,7 +26252,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -26281,13 +26281,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -26319,8 +26319,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -26328,7 +26328,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -26357,13 +26357,13 @@
         "opponent_strength": 2.0,
         "home_elo": null,
         "away_elo": null,
-        "team_xg_for_per90": 0.94625,
-        "team_xg_against_per90": 1.485,
+        "team_xg_for_per90": 0.917778,
+        "team_xg_against_per90": 1.522222,
         "opponent_xg_for_per90": 1.38,
         "opponent_xg_against_per90": 1.96875,
-        "fixture_attack_mismatch": -1.0225,
-        "fixture_defence_mismatch": -0.105,
-        "fixture_xg_environment": 2.32625
+        "fixture_attack_mismatch": -1.050972,
+        "fixture_defence_mismatch": -0.142222,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -26395,8 +26395,8 @@
           "start_rate": 0.0
         },
         "team_attack": {
-          "xg_for_per_90": 0.94625,
-          "goals_for_per_90": 0.75
+          "xg_for_per_90": 0.917778,
+          "goals_for_per_90": 1.0
         },
         "opponent_defence": {
           "xg_against_per_90": 1.96875,
@@ -26404,7 +26404,7 @@
         },
         "expected_minutes": 1.022375,
         "home_away": "home",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -26435,11 +26435,11 @@
         "away_elo": null,
         "team_xg_for_per90": 1.38,
         "team_xg_against_per90": 1.96875,
-        "opponent_xg_for_per90": 0.94625,
-        "opponent_xg_against_per90": 1.485,
-        "fixture_attack_mismatch": -0.105,
-        "fixture_defence_mismatch": -1.0225,
-        "fixture_xg_environment": 2.32625
+        "opponent_xg_for_per90": 0.917778,
+        "opponent_xg_against_per90": 1.522222,
+        "fixture_attack_mismatch": -0.142222,
+        "fixture_defence_mismatch": -1.050972,
+        "fixture_xg_environment": 2.297778
       },
       "model_inputs": {
         "historical_ability": {
@@ -26475,12 +26475,12 @@
           "goals_for_per_90": 1.125
         },
         "opponent_defence": {
-          "xg_against_per_90": 1.485,
-          "goals_against_per_90": 1.875
+          "xg_against_per_90": 1.522222,
+          "goals_against_per_90": 1.777778
         },
         "expected_minutes": 1.022375,
         "home_away": "away",
-        "fixture_environment": 2.32625
+        "fixture_environment": 2.297778
       }
     },
     {
@@ -33632,7 +33632,7 @@
       "name": "Lammens",
       "prediction": 2.364912,
       "price": 4.8,
-      "ownership": 7.4,
+      "ownership": 7.3,
       "position": "Goalkeeper",
       "team": "",
       "fixture_home": "Liverpool",
@@ -42600,7 +42600,7 @@
       "name": "Gabriel",
       "prediction": 3.873458,
       "price": 8.1,
-      "ownership": 25.4,
+      "ownership": 25.5,
       "position": "Defender",
       "team": "",
       "fixture_home": "Newcastle",
@@ -43056,7 +43056,7 @@
       "name": "Ødegaard",
       "prediction": 2.84825,
       "price": 6.7,
-      "ownership": 16.4,
+      "ownership": 16.3,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Newcastle",
@@ -43892,7 +43892,7 @@
       "name": "Hall",
       "prediction": 2.224012,
       "price": 5.2,
-      "ownership": 18.8,
+      "ownership": 18.7,
       "position": "Defender",
       "team": "",
       "fixture_home": "Newcastle",
@@ -44044,7 +44044,7 @@
       "name": "Calafiori",
       "prediction": 1.999853,
       "price": 5.9,
-      "ownership": 48.5,
+      "ownership": 48.6,
       "position": "Defender",
       "team": "",
       "fixture_home": "Newcastle",
@@ -47768,7 +47768,7 @@
       "name": "Van Hecke",
       "prediction": 2.712928,
       "price": 5.0,
-      "ownership": 13.1,
+      "ownership": 13.2,
       "position": "Defender",
       "team": "",
       "fixture_home": "Spurs",
@@ -48072,7 +48072,7 @@
       "name": "Davis",
       "prediction": 2.43546,
       "price": 4.0,
-      "ownership": 6.8,
+      "ownership": 6.7,
       "position": "Defender",
       "team": "",
       "fixture_home": "Spurs",
@@ -48528,7 +48528,7 @@
       "name": "Solanke",
       "prediction": 2.114598,
       "price": 5.8,
-      "ownership": 1.5,
+      "ownership": 1.4,
       "position": "Forward",
       "team": "",
       "fixture_home": "Spurs",
@@ -48832,7 +48832,7 @@
       "name": "Kinsky",
       "prediction": 1.836381,
       "price": 4.4,
-      "ownership": 15.5,
+      "ownership": 15.6,
       "position": "Goalkeeper",
       "team": "",
       "fixture_home": "Spurs",
@@ -51644,7 +51644,7 @@
       "name": "McAteer",
       "prediction": 0.194195,
       "price": 4.3,
-      "ownership": 0.8,
+      "ownership": 0.9,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Spurs",
