@@ -2,23 +2,23 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-06T23:18:44.757496+00:00",
+  "generated_at_utc": "2026-11-07T06:12:04.992284+00:00",
   "picks": [
     {
-      "name": "Rudoni",
-      "team": "Coventry City",
+      "name": "George",
+      "team": "Everton",
       "position": "Midfielder",
-      "ownership": 1.1,
-      "prediction": 4.942919,
-      "differential_score": 4.889,
-      "price": 4.9,
-      "form": 5.0,
+      "ownership": 0.5,
+      "prediction": 4.33827,
+      "differential_score": 4.317,
+      "price": 5.5,
+      "form": 2.2,
       "fixture": {
-        "home": "Coventry City",
-        "away": "Crystal Palace",
-        "is_home": true,
-        "kickoff": "2026-11-21T15:00:00",
-        "match_id": "26-27-prem-coventry-city-vs-crystal-palace"
+        "home": "Brentford",
+        "away": "Everton",
+        "is_home": false,
+        "kickoff": "2026-11-23T20:00:00",
+        "match_id": "26-27-prem-brentford-vs-everton"
       }
     },
     {
@@ -73,20 +73,20 @@
       }
     },
     {
-      "name": "Araujo",
-      "team": "Liverpool",
-      "position": "Defender",
-      "ownership": 4.1,
-      "prediction": 4.063137,
-      "differential_score": 3.897,
-      "price": 5.4,
-      "form": 3.0,
+      "name": "Pickford",
+      "team": "Everton",
+      "position": "Goalkeeper",
+      "ownership": 8.5,
+      "prediction": 4.410183,
+      "differential_score": 4.035,
+      "price": 5.5,
+      "form": 2.8,
       "fixture": {
-        "home": "Liverpool",
-        "away": "Man Utd",
-        "is_home": true,
-        "kickoff": "2026-11-22T16:30:00",
-        "match_id": "26-27-prem-liverpool-vs-manchester-united"
+        "home": "Brentford",
+        "away": "Everton",
+        "is_home": false,
+        "kickoff": "2026-11-23T20:00:00",
+        "match_id": "26-27-prem-brentford-vs-everton"
       }
     }
   ]

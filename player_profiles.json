@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-06T23:18:55.279559+00:00",
+  "generated_at_utc": "2026-11-07T06:12:21.486639+00:00",
   "players": [
     {
       "id": 1,
@@ -10,7 +10,7 @@
       "position": "Goalkeeper",
       "team": "Arsenal",
       "price": 0.62,
-      "ownership": 47.1,
+      "ownership": 47.2,
       "form": 4.8,
       "prediction": 2.722122,
       "prediction_p10": 0.142857,
@@ -1081,13 +1081,13 @@
       "name": "Gabriel",
       "position": "Defender",
       "team": "Arsenal",
-      "price": 0.8,
+      "price": 0.8099999999999999,
       "ownership": 25.4,
       "form": 6.6,
-      "prediction": 3.906529,
-      "prediction_p10": 0.647059,
-      "prediction_p90": 8.876389,
-      "prediction_range": 8.22933,
+      "prediction": 3.873458,
+      "prediction_p10": 0.646639,
+      "prediction_p90": 8.7875,
+      "prediction_range": 8.140861,
       "confidence": "low",
       "expected_minutes": 66.844305,
       "start_probability": 0.760073,
@@ -3834,7 +3834,7 @@
       "position": "Midfielder",
       "team": "Arsenal",
       "price": 0.95,
-      "ownership": 5.8,
+      "ownership": 5.7,
       "form": 1.0,
       "prediction": 1.602928,
       "prediction_p10": 0.0,
@@ -4237,10 +4237,10 @@
       "name": "Rice",
       "position": "Midfielder",
       "team": "Arsenal",
-      "price": 0.74,
+      "price": 0.75,
       "ownership": 13.5,
       "form": 5.4,
-      "prediction": 5.234787,
+      "prediction": 5.241453,
       "prediction_p10": 0.81125,
       "prediction_p90": 10.465385,
       "prediction_range": 9.654135,
@@ -14126,7 +14126,7 @@
       "position": "Midfielder",
       "team": "Chelsea",
       "price": 0.82,
-      "ownership": 53.7,
+      "ownership": 53.8,
       "form": 4.2,
       "prediction": 3.737333,
       "prediction_p10": 0.496154,
@@ -15177,13 +15177,13 @@
       "name": "Tielemans",
       "position": "Midfielder",
       "team": "Man Utd",
-      "price": 0.5700000000000001,
+      "price": 0.5599999999999999,
       "ownership": 1.2,
       "form": 2.0,
-      "prediction": 1.134008,
+      "prediction": 1.107987,
       "prediction_p10": 0.0,
-      "prediction_p90": 3.252778,
-      "prediction_range": 3.252778,
+      "prediction_p90": 3.185859,
+      "prediction_range": 3.185859,
       "confidence": "medium",
       "expected_minutes": 12.151187,
       "start_probability": 0.191736,
@@ -27479,10 +27479,10 @@
       "name": "Evanilson",
       "position": "Forward",
       "team": "Bournemouth",
-      "price": 0.64,
-      "ownership": 21.9,
+      "price": 0.65,
+      "ownership": 22.0,
       "form": 6.8,
-      "prediction": 3.75711,
+      "prediction": 3.772473,
       "prediction_p10": 0.732727,
       "prediction_p90": 8.5,
       "prediction_range": 7.767273,
@@ -31728,15 +31728,15 @@
       "team": "Coventry City",
       "price": 0.45,
       "ownership": 0.1,
-      "form": 2.4,
-      "prediction": 2.130349,
-      "prediction_p10": 0.076923,
-      "prediction_p90": 5.344444,
-      "prediction_range": 5.267521,
+      "form": 2.8,
+      "prediction": 3.325348,
+      "prediction_p10": 0.582143,
+      "prediction_p90": 7.2,
+      "prediction_range": 6.617857,
       "confidence": "low",
-      "expected_minutes": 56.075402,
-      "start_probability": 0.545984,
-      "sixty_probability": 0.506489,
+      "expected_minutes": 86.577391,
+      "start_probability": 0.9789,
+      "sixty_probability": 0.949533,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -31759,18 +31759,18 @@
           "start_rate": 0.407609
         },
         "current_form": {
-          "points_per_90": 4.354839,
-          "recent_3_points": 3.0,
-          "recent_3_minutes": 62.0,
+          "points_per_90": 3.666667,
+          "recent_3_points": 3.666667,
+          "recent_3_minutes": 90.0,
           "recent_3_xg": 0.01,
-          "recent_3_xa": 0.013333,
+          "recent_3_xa": 0.05,
           "ict_index_per_90": 2.28,
           "influence_per_90": 18.8,
           "creativity_per_90": 1.66,
           "threat_per_90": 2.4,
-          "bps_per_90": 14.2,
+          "bps_per_90": 4.8,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.036885
+          "xgi_per_90": 0.052
         },
         "current_club": {
           "points_per_90": 3.016863,
@@ -31786,7 +31786,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 56.075402,
+        "expected_minutes": 86.577391,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -31813,7 +31813,7 @@
         },
         {
           "label": "Current form",
-          "value": "3.00 pts/GW",
+          "value": "3.67 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -31833,7 +31833,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "56.08 min",
+          "value": "86.58 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -31902,33 +31902,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 3.0,
+          "minutes": 90.0,
           "starts": 1.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.10999999999999999,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": -2.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.02361111111111111,
-        "xa_per_90": 0.013888888888888888,
-        "points_per_90": 3.6111111111111107,
+        "xg_per_90": 0.0209016393442623,
+        "xa_per_90": 0.025819672131147543,
+        "points_per_90": 3.4426229508196724,
         "starts": 8,
-        "minutes": 648,
+        "minutes": 732,
         "goals": 0,
         "assists": 0,
         "ict_index_per_90": 2.28,
-        "bps_per_90": 14.2,
+        "bps_per_90": 4.8,
         "bonus_per_90": 0.0,
         "influence_per_90": 18.8,
         "creativity_per_90": 1.66,
         "threat_per_90": 2.4,
-        "xgi_per_90": 0.036885
+        "xgi_per_90": 0.052
       },
       "historical_record": {
         "career": {
@@ -32717,10 +32717,10 @@
       "name": "Schade",
       "position": "Midfielder",
       "team": "Brentford",
-      "price": 0.62,
+      "price": 0.61,
       "ownership": 13.4,
       "form": 1.2,
-      "prediction": 3.103799,
+      "prediction": 3.111597,
       "prediction_p10": 0.33,
       "prediction_p90": 6.880357,
       "prediction_range": 6.550357,
@@ -37693,13 +37693,13 @@
       "name": "Wilson",
       "position": "Forward",
       "team": "Brentford",
-      "price": 0.54,
+      "price": 0.53,
       "ownership": 0.3,
       "form": 0.4,
-      "prediction": 1.276575,
+      "prediction": 1.18771,
       "prediction_p10": 0.0,
-      "prediction_p90": 3.17,
-      "prediction_range": 3.17,
+      "prediction_p90": 3.0,
+      "prediction_range": 3.0,
       "confidence": "medium",
       "expected_minutes": 11.977017,
       "start_probability": 0.131807,
@@ -38443,15 +38443,15 @@
       "team": "Coventry City",
       "price": 0.45,
       "ownership": 0.8,
-      "form": 1.8,
-      "prediction": 2.375542,
-      "prediction_p10": 0.25,
-      "prediction_p90": 5.214474,
-      "prediction_range": 4.964474,
+      "form": 2.0,
+      "prediction": 2.724404,
+      "prediction_p10": 0.497059,
+      "prediction_p90": 5.675,
+      "prediction_range": 5.177941,
       "confidence": "low",
-      "expected_minutes": 61.311078,
-      "start_probability": 0.593146,
-      "sixty_probability": 0.623545,
+      "expected_minutes": 74.602908,
+      "start_probability": 0.682173,
+      "sixty_probability": 0.812027,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -38474,18 +38474,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 2.419355,
-          "recent_3_points": 1.666667,
-          "recent_3_minutes": 62.0,
+          "points_per_90": 2.0,
+          "recent_3_points": 2.0,
+          "recent_3_minutes": 90.0,
           "recent_3_xg": 0.0,
           "recent_3_xa": 0.0,
           "ict_index_per_90": 1.24,
           "influence_per_90": 12.52,
           "creativity_per_90": 0.0,
           "threat_per_90": 0.0,
-          "bps_per_90": 14.6,
+          "bps_per_90": 7.0,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.002459
+          "xgi_per_90": 0.002
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -38501,7 +38501,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 61.311078,
+        "expected_minutes": 74.602908,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -38528,7 +38528,7 @@
         },
         {
           "label": "Current form",
-          "value": "1.67 pts/GW",
+          "value": "2.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -38548,7 +38548,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "61.31 min",
+          "value": "74.60 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -38617,13 +38617,13 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 90.0,
           "starts": 1.0,
           "xg": 0.0,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 7.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
@@ -38631,19 +38631,19 @@
       ],
       "underlying": {
         "xg_per_90": 0.0,
-        "xa_per_90": 0.0033088235294117642,
-        "points_per_90": 2.7573529411764706,
+        "xa_per_90": 0.003,
+        "points_per_90": 2.6,
         "starts": 10,
-        "minutes": 816,
+        "minutes": 900,
         "goals": 0,
         "assists": 1,
         "ict_index_per_90": 1.24,
-        "bps_per_90": 14.6,
+        "bps_per_90": 7.0,
         "bonus_per_90": 0.0,
         "influence_per_90": 12.52,
         "creativity_per_90": 0.0,
         "threat_per_90": 0.0,
-        "xgi_per_90": 0.002459
+        "xgi_per_90": 0.002
       },
       "historical_record": {
         "career": {
@@ -39170,7 +39170,7 @@
       "position": "Defender",
       "team": "Spurs",
       "price": 0.5,
-      "ownership": 13.0,
+      "ownership": 13.1,
       "form": 5.8,
       "prediction": 2.712928,
       "prediction_p10": 0.333333,
@@ -40142,7 +40142,7 @@
       "position": "Defender",
       "team": "Brighton",
       "price": 0.54,
-      "ownership": 46.5,
+      "ownership": 46.6,
       "form": 6.2,
       "prediction": 2.505657,
       "prediction_p10": 0.0,
@@ -43095,13 +43095,13 @@
       "name": "Groß",
       "position": "Midfielder",
       "team": "Brighton",
-      "price": 0.62,
+      "price": 0.63,
       "ownership": 47.3,
       "form": 2.6,
-      "prediction": 2.735466,
-      "prediction_p10": 0.165385,
-      "prediction_p90": 6.381944,
-      "prediction_range": 6.21656,
+      "prediction": 2.899759,
+      "prediction_p10": 0.166667,
+      "prediction_p90": 6.563393,
+      "prediction_range": 6.396726,
       "confidence": "low",
       "expected_minutes": 60.520047,
       "start_probability": 0.675083,
@@ -44875,13 +44875,13 @@
       "name": "Ayari",
       "position": "Midfielder",
       "team": "Brighton",
-      "price": 0.54,
-      "ownership": 2.0,
+      "price": 0.55,
+      "ownership": 2.1,
       "form": 5.6,
-      "prediction": 2.618454,
+      "prediction": 2.691965,
       "prediction_p10": 0.305495,
-      "prediction_p90": 6.011111,
-      "prediction_range": 5.705617,
+      "prediction_p90": 6.402857,
+      "prediction_range": 6.097363,
       "confidence": "low",
       "expected_minutes": 58.256663,
       "start_probability": 0.621753,
@@ -57197,7 +57197,7 @@
       "position": "Forward",
       "team": "Chelsea",
       "price": 0.77,
-      "ownership": 34.6,
+      "ownership": 34.4,
       "form": 2.8,
       "prediction": 1.885678,
       "prediction_p10": 0.0,
@@ -57561,7 +57561,7 @@
       "position": "Forward",
       "team": "Aston Villa",
       "price": 0.7,
-      "ownership": 28.4,
+      "ownership": 28.5,
       "form": 6.6,
       "prediction": 4.887806,
       "prediction_p10": 1.282143,
@@ -57904,13 +57904,13 @@
       "name": "Delap",
       "position": "Forward",
       "team": "Nott'm Forest",
-      "price": 0.54,
+      "price": 0.53,
       "ownership": 1.4,
       "form": 1.6,
-      "prediction": 2.678399,
-      "prediction_p10": 0.285714,
-      "prediction_p90": 6.210417,
-      "prediction_range": 5.924702,
+      "prediction": 2.561351,
+      "prediction_p10": 0.22,
+      "prediction_p90": 6.1025,
+      "prediction_range": 5.8825,
       "confidence": "low",
       "expected_minutes": 42.055561,
       "start_probability": 0.426854,
@@ -60435,14 +60435,14 @@
       "price": 0.39,
       "ownership": 7.0,
       "form": 2.8,
-      "prediction": 2.44401,
-      "prediction_p10": 0.142857,
-      "prediction_p90": 5.68875,
-      "prediction_range": 5.545893,
+      "prediction": 2.079263,
+      "prediction_p10": 0.0,
+      "prediction_p90": 5.390598,
+      "prediction_range": 5.390598,
       "confidence": "low",
-      "expected_minutes": 51.620883,
-      "start_probability": 0.522365,
-      "sixty_probability": 0.571855,
+      "expected_minutes": 79.003358,
+      "start_probability": 0.729938,
+      "sixty_probability": 0.845469,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -60465,18 +60465,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 3.387097,
+          "points_per_90": 2.333333,
           "recent_3_points": 2.333333,
-          "recent_3_minutes": 62.0,
+          "recent_3_minutes": 90.0,
           "recent_3_xg": 0.003333,
-          "recent_3_xa": 0.02,
+          "recent_3_xa": 0.053333,
           "ict_index_per_90": 3.24,
           "influence_per_90": 16.16,
           "creativity_per_90": 15.18,
           "threat_per_90": 1.0,
-          "bps_per_90": 18.6,
+          "bps_per_90": 11.0,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.046721
+          "xgi_per_90": 0.058
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -60492,7 +60492,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 51.620883,
+        "expected_minutes": 79.003358,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -60539,7 +60539,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "51.62 min",
+          "value": "79.00 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -60609,32 +60609,32 @@
         {
           "gw": 10,
           "points": 1.0,
-          "minutes": 6.0,
+          "minutes": 90.0,
           "starts": 1.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.09999999999999998,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 7.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.0012396694214876034,
-        "xa_per_90": 0.05950413223140495,
-        "points_per_90": 2.479338842975207,
+        "xg_per_90": 0.0011111111111111111,
+        "xa_per_90": 0.06444444444444444,
+        "points_per_90": 2.2222222222222223,
         "starts": 9,
-        "minutes": 726,
+        "minutes": 810,
         "goals": 0,
         "assists": 1,
         "ict_index_per_90": 3.24,
-        "bps_per_90": 18.6,
+        "bps_per_90": 11.0,
         "bonus_per_90": 0.0,
         "influence_per_90": 16.16,
         "creativity_per_90": 15.18,
         "threat_per_90": 1.0,
-        "xgi_per_90": 0.046721
+        "xgi_per_90": 0.058
       },
       "historical_record": {
         "career": {
@@ -60718,14 +60718,14 @@
       "price": 0.4,
       "ownership": 1.4,
       "form": 2.0,
-      "prediction": 2.560362,
-      "prediction_p10": 0.097143,
-      "prediction_p90": 6.354545,
-      "prediction_range": 6.257403,
+      "prediction": 3.174619,
+      "prediction_p10": 0.120192,
+      "prediction_p90": 6.720635,
+      "prediction_range": 6.600443,
       "confidence": "low",
-      "expected_minutes": 61.832705,
-      "start_probability": 0.586044,
-      "sixty_probability": 0.624066,
+      "expected_minutes": 80.751995,
+      "start_probability": 0.727982,
+      "sixty_probability": 0.896478,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -60748,18 +60748,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 2.419355,
+          "points_per_90": 1.666667,
           "recent_3_points": 1.666667,
-          "recent_3_minutes": 62.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.04,
+          "recent_3_minutes": 90.0,
+          "recent_3_xg": 0.01,
+          "recent_3_xa": 0.056667,
           "ict_index_per_90": 2.4,
           "influence_per_90": 11.96,
           "creativity_per_90": 11.38,
           "threat_per_90": 0.4,
-          "bps_per_90": 14.0,
+          "bps_per_90": 5.6,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.046721
+          "xgi_per_90": 0.054
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -60775,7 +60775,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 61.832705,
+        "expected_minutes": 80.751995,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -60822,7 +60822,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "61.83 min",
+          "value": "80.75 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -60892,10 +60892,10 @@
         {
           "gw": 10,
           "points": 1.0,
-          "minutes": 6.0,
+          "minutes": 90.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.030000000000000027,
+          "xa": 0.050000000000000044,
           "ict_index": 0.0,
           "bps": 3.0,
           "bonus": 0.0,
@@ -60904,20 +60904,20 @@
         }
       ],
       "underlying": {
-        "xg_per_90": 0.05555555555555555,
-        "xa_per_90": 0.07888888888888888,
-        "points_per_90": 3.333333333333333,
+        "xg_per_90": 0.053355704697986575,
+        "xa_per_90": 0.07651006711409397,
+        "points_per_90": 3.0201342281879193,
         "starts": 10,
-        "minutes": 810,
+        "minutes": 894,
         "goals": 1,
         "assists": 1,
         "ict_index_per_90": 2.4,
-        "bps_per_90": 14.0,
+        "bps_per_90": 5.6,
         "bonus_per_90": 0.0,
         "influence_per_90": 11.96,
         "creativity_per_90": 11.38,
         "threat_per_90": 0.4,
-        "xgi_per_90": 0.046721
+        "xgi_per_90": 0.054
       },
       "historical_record": {
         "career": {
@@ -62780,15 +62780,15 @@
       "team": "Coventry City",
       "price": 0.49000000000000005,
       "ownership": 1.1,
-      "form": 5.0,
-      "prediction": 4.942919,
-      "prediction_p10": 0.775,
-      "prediction_p90": 9.183636,
-      "prediction_range": 8.408636,
+      "form": 5.2,
+      "prediction": 3.54163,
+      "prediction_p10": 0.5,
+      "prediction_p90": 7.727273,
+      "prediction_range": 7.227273,
       "confidence": "low",
-      "expected_minutes": 50.881035,
-      "start_probability": 0.475517,
-      "sixty_probability": 0.440648,
+      "expected_minutes": 73.436139,
+      "start_probability": 0.70027,
+      "sixty_probability": 0.778122,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -62811,18 +62811,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 5.806452,
-          "recent_3_points": 4.0,
-          "recent_3_minutes": 62.0,
-          "recent_3_xg": 0.086667,
-          "recent_3_xa": 0.086667,
+          "points_per_90": 4.415094,
+          "recent_3_points": 4.333333,
+          "recent_3_minutes": 88.333333,
+          "recent_3_xg": 0.126667,
+          "recent_3_xa": 0.173333,
           "ict_index_per_90": 6.435303,
           "influence_per_90": 28.70135,
           "creativity_per_90": 18.547192,
           "threat_per_90": 16.992967,
-          "bps_per_90": 30.282246,
+          "bps_per_90": 25.305776,
           "bonus_per_90": 0.4,
-          "xgi_per_90": 0.381356
+          "xgi_per_90": 0.390762
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -62838,7 +62838,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 50.881035,
+        "expected_minutes": 73.436139,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -62865,7 +62865,7 @@
         },
         {
           "label": "Current form",
-          "value": "4.00 pts/GW",
+          "value": "4.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -62885,7 +62885,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "50.88 min",
+          "value": "73.44 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -62954,33 +62954,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 85.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.1200000000000001,
+          "xa": 0.26,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 19.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.29170506912442395,
-        "xa_per_90": 0.19631336405529953,
-        "points_per_90": 5.253456221198157,
+        "xg_per_90": 0.27493150684931505,
+        "xa_per_90": 0.20712328767123286,
+        "points_per_90": 4.808219178082192,
         "starts": 9,
-        "minutes": 651,
+        "minutes": 730,
         "goals": 3,
         "assists": 0,
         "ict_index_per_90": 6.435303,
-        "bps_per_90": 30.282246,
+        "bps_per_90": 25.305776,
         "bonus_per_90": 0.4,
         "influence_per_90": 28.70135,
         "creativity_per_90": 18.547192,
         "threat_per_90": 16.992967,
-        "xgi_per_90": 0.381356
+        "xgi_per_90": 0.390762
       },
       "historical_record": {
         "career": {
@@ -63063,15 +63063,15 @@
       "team": "Coventry City",
       "price": 0.48,
       "ownership": 0.1,
-      "form": 1.4,
-      "prediction": 2.612552,
-      "prediction_p10": 0.111111,
-      "prediction_p90": 5.57218,
-      "prediction_range": 5.461069,
+      "form": 1.6,
+      "prediction": 2.559972,
+      "prediction_p10": 0.109091,
+      "prediction_p90": 5.671429,
+      "prediction_range": 5.562338,
       "confidence": "low",
-      "expected_minutes": 17.756083,
-      "start_probability": 0.222695,
-      "sixty_probability": 0.228656,
+      "expected_minutes": 26.273417,
+      "start_probability": 0.277412,
+      "sixty_probability": 0.322908,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -63094,18 +63094,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 2.783505,
-          "recent_3_points": 1.0,
-          "recent_3_minutes": 32.333333,
+          "points_per_90": 3.564356,
+          "recent_3_points": 1.333333,
+          "recent_3_minutes": 33.666667,
           "recent_3_xg": 0.016667,
-          "recent_3_xa": 0.026667,
-          "ict_index_per_90": 3.617073,
-          "influence_per_90": 29.478049,
-          "creativity_per_90": 7.223519,
-          "threat_per_90": 0.5,
-          "bps_per_90": 24.516551,
+          "recent_3_xa": 0.03,
+          "ict_index_per_90": 2.893659,
+          "influence_per_90": 23.582439,
+          "creativity_per_90": 5.778815,
+          "threat_per_90": 0.4,
+          "bps_per_90": 33.11324,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.050186
+          "xgi_per_90": 0.052747
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -63121,7 +63121,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 17.756083,
+        "expected_minutes": 26.273417,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -63148,7 +63148,7 @@
         },
         {
           "label": "Current form",
-          "value": "1.00 pts/GW",
+          "value": "1.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -63168,7 +63168,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "17.76 min",
+          "value": "26.27 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -63237,33 +63237,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 4.0,
           "starts": 0.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.009999999999999981,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 3.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.02148876404494382,
-        "xa_per_90": 0.02907303370786517,
-        "points_per_90": 2.2752808988764044,
+        "xg_per_90": 0.02136871508379888,
+        "xa_per_90": 0.030167597765363128,
+        "points_per_90": 2.388268156424581,
         "starts": 8,
-        "minutes": 712,
+        "minutes": 716,
         "goals": 0,
         "assists": 0,
-        "ict_index_per_90": 3.617073,
-        "bps_per_90": 24.516551,
+        "ict_index_per_90": 2.893659,
+        "bps_per_90": 33.11324,
         "bonus_per_90": 0.0,
-        "influence_per_90": 29.478049,
-        "creativity_per_90": 7.223519,
-        "threat_per_90": 0.5,
-        "xgi_per_90": 0.050186
+        "influence_per_90": 23.582439,
+        "creativity_per_90": 5.778815,
+        "threat_per_90": 0.4,
+        "xgi_per_90": 0.052747
       },
       "historical_record": {
         "career": {
@@ -63346,15 +63346,15 @@
       "team": "Coventry City",
       "price": 0.48,
       "ownership": 0.1,
-      "form": 2.4,
-      "prediction": 3.656281,
-      "prediction_p10": 0.363636,
-      "prediction_p90": 6.838889,
-      "prediction_range": 6.475253,
+      "form": 2.6,
+      "prediction": 2.71087,
+      "prediction_p10": 0.22,
+      "prediction_p90": 5.8875,
+      "prediction_range": 5.6675,
       "confidence": "low",
-      "expected_minutes": 43.322322,
-      "start_probability": 0.50039,
-      "sixty_probability": 0.383481,
+      "expected_minutes": 64.412612,
+      "start_probability": 0.645722,
+      "sixty_probability": 0.741504,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -63377,18 +63377,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 4.475138,
-          "recent_3_points": 3.0,
-          "recent_3_minutes": 60.333333,
-          "recent_3_xg": 0.04,
-          "recent_3_xa": 0.01,
+          "points_per_90": 3.448276,
+          "recent_3_points": 3.333333,
+          "recent_3_minutes": 87.0,
+          "recent_3_xg": 0.123333,
+          "recent_3_xa": 0.02,
           "ict_index_per_90": 1.947924,
           "influence_per_90": 9.745991,
           "creativity_per_90": 1.80954,
           "threat_per_90": 7.99539,
-          "bps_per_90": 20.960286,
+          "bps_per_90": 14.681216,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.097213
+          "xgi_per_90": 0.144687
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -63404,7 +63404,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 43.322322,
+        "expected_minutes": 64.412612,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -63431,7 +63431,7 @@
         },
         {
           "label": "Current form",
-          "value": "3.00 pts/GW",
+          "value": "3.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -63451,7 +63451,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "43.32 min",
+          "value": "64.41 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -63520,33 +63520,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 86.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.25000000000000006,
+          "xa": 0.03,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 13.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.0820754716981132,
-        "xa_per_90": 0.016981132075471698,
-        "points_per_90": 3.6792452830188678,
+        "xg_per_90": 0.1221105527638191,
+        "xa_per_90": 0.02035175879396985,
+        "points_per_90": 3.1658291457286434,
         "starts": 4,
-        "minutes": 318,
+        "minutes": 398,
         "goals": 1,
         "assists": 0,
         "ict_index_per_90": 1.947924,
-        "bps_per_90": 20.960286,
+        "bps_per_90": 14.681216,
         "bonus_per_90": 0.0,
         "influence_per_90": 9.745991,
         "creativity_per_90": 1.80954,
         "threat_per_90": 7.99539,
-        "xgi_per_90": 0.097213
+        "xgi_per_90": 0.144687
       },
       "historical_record": {
         "career": {
@@ -64195,15 +64195,15 @@
       "team": "Coventry City",
       "price": 0.53,
       "ownership": 0.1,
-      "form": 1.2,
-      "prediction": 2.628753,
-      "prediction_p10": 0.0,
-      "prediction_p90": 5.729545,
-      "prediction_range": 5.729545,
+      "form": 1.8,
+      "prediction": 3.126213,
+      "prediction_p10": 0.3975,
+      "prediction_p90": 6.47,
+      "prediction_range": 6.0725,
       "confidence": "low",
-      "expected_minutes": 26.021881,
-      "start_probability": 0.332927,
-      "sixty_probability": 0.249293,
+      "expected_minutes": 45.470738,
+      "start_probability": 0.550273,
+      "sixty_probability": 0.606662,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -64226,18 +64226,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 5.113636,
-          "recent_3_points": 1.666667,
-          "recent_3_minutes": 29.333333,
-          "recent_3_xg": 0.01,
-          "recent_3_xa": 0.013333,
+          "points_per_90": 4.311377,
+          "recent_3_points": 2.666667,
+          "recent_3_minutes": 55.666667,
+          "recent_3_xg": 0.076667,
+          "recent_3_xa": 0.026667,
           "ict_index_per_90": 9.151568,
           "influence_per_90": 18.135889,
           "creativity_per_90": 69.297909,
           "threat_per_90": 1.829268,
-          "bps_per_90": 39.094077,
+          "bps_per_90": 31.1529,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.189474
+          "xgi_per_90": 0.227586
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -64253,7 +64253,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 26.021881,
+        "expected_minutes": 45.470738,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -64280,7 +64280,7 @@
         },
         {
           "label": "Current form",
-          "value": "1.67 pts/GW",
+          "value": "2.67 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -64300,7 +64300,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "26.02 min",
+          "value": "45.47 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -64369,33 +64369,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 4.0,
+          "minutes": 85.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.2,
+          "xa": 0.040000000000000036,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 20.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.01824324324324324,
-        "xa_per_90": 0.17635135135135135,
-        "points_per_90": 5.472972972972974,
+        "xg_per_90": 0.09118942731277532,
+        "xa_per_90": 0.13083700440528634,
+        "points_per_90": 4.757709251101322,
         "starts": 2,
-        "minutes": 148,
+        "minutes": 227,
         "goals": 0,
         "assists": 1,
         "ict_index_per_90": 9.151568,
-        "bps_per_90": 39.094077,
+        "bps_per_90": 31.1529,
         "bonus_per_90": 0.0,
         "influence_per_90": 18.135889,
         "creativity_per_90": 69.297909,
         "threat_per_90": 1.829268,
-        "xgi_per_90": 0.189474
+        "xgi_per_90": 0.227586
       },
       "historical_record": {
         "career": {
@@ -64761,15 +64761,15 @@
       "team": "Coventry City",
       "price": 0.53,
       "ownership": 0.1,
-      "form": 0.0,
-      "prediction": 0.207055,
+      "form": 0.2,
+      "prediction": 1.094381,
       "prediction_p10": 0.0,
-      "prediction_p90": 0.714286,
-      "prediction_range": 0.714286,
-      "confidence": "high",
-      "expected_minutes": 1.214759,
-      "start_probability": 0.037556,
-      "sixty_probability": 0.027105,
+      "prediction_p90": 2.858095,
+      "prediction_range": 2.858095,
+      "confidence": "medium",
+      "expected_minutes": 13.9576,
+      "start_probability": 0.151374,
+      "sixty_probability": 0.125542,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -64792,18 +64792,18 @@
           "start_rate": 0.361111
         },
         "current_form": {
-          "points_per_90": null,
-          "recent_3_points": 0.0,
-          "recent_3_minutes": 0.0,
-          "recent_3_xg": 0.0,
+          "points_per_90": 22.5,
+          "recent_3_points": 0.333333,
+          "recent_3_minutes": 1.333333,
+          "recent_3_xg": 0.053333,
           "recent_3_xa": 0.0,
           "ict_index_per_90": 0.0,
           "influence_per_90": 0.0,
           "creativity_per_90": 0.0,
           "threat_per_90": 0.0,
-          "bps_per_90": 0.0,
+          "bps_per_90": 45.0,
           "bonus_per_90": 0.0,
-          "xgi_per_90": null
+          "xgi_per_90": 3.6
         },
         "current_club": {
           "points_per_90": 4.049236,
@@ -64819,7 +64819,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 1.214759,
+        "expected_minutes": 13.9576,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -64846,7 +64846,7 @@
         },
         {
           "label": "Current form",
-          "value": "0.00 pts/GW",
+          "value": "0.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -64866,7 +64866,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "1.21 min",
+          "value": "13.96 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -64935,33 +64935,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 4.0,
           "starts": 0.0,
-          "xg": 0.0,
+          "xg": 0.16,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 2.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.0981042654028436,
-        "xa_per_90": 0.07677725118483412,
-        "points_per_90": 2.132701421800948,
+        "xg_per_90": 0.16325581395348837,
+        "xa_per_90": 0.07534883720930233,
+        "points_per_90": 2.511627906976744,
         "starts": 2,
-        "minutes": 211,
+        "minutes": 215,
         "goals": 0,
         "assists": 0,
         "ict_index_per_90": 0.0,
-        "bps_per_90": 0.0,
+        "bps_per_90": 45.0,
         "bonus_per_90": 0.0,
         "influence_per_90": 0.0,
         "creativity_per_90": 0.0,
         "threat_per_90": 0.0,
-        "xgi_per_90": null
+        "xgi_per_90": 3.6
       },
       "historical_record": {
         "career": {
@@ -65914,15 +65914,15 @@
       "team": "Coventry City",
       "price": 0.5,
       "ownership": 1.0,
-      "form": 2.6,
-      "prediction": 2.374324,
-      "prediction_p10": 0.0,
-      "prediction_p90": 5.633929,
-      "prediction_range": 5.633929,
+      "form": 2.8,
+      "prediction": 2.43458,
+      "prediction_p10": 0.142857,
+      "prediction_p90": 5.445714,
+      "prediction_range": 5.302857,
       "confidence": "low",
-      "expected_minutes": 22.142303,
-      "start_probability": 0.294214,
-      "sixty_probability": 0.229282,
+      "expected_minutes": 23.028804,
+      "start_probability": 0.308668,
+      "sixty_probability": 0.290282,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -65945,18 +65945,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 3.214286,
-          "recent_3_points": 1.0,
-          "recent_3_minutes": 28.0,
-          "recent_3_xg": 0.05,
+          "points_per_90": 3.564356,
+          "recent_3_points": 1.333333,
+          "recent_3_minutes": 33.666667,
+          "recent_3_xg": 0.063333,
           "recent_3_xa": 0.003333,
-          "ict_index_per_90": 5.58539,
-          "influence_per_90": 19.288961,
-          "creativity_per_90": 19.980195,
-          "threat_per_90": 15.821429,
-          "bps_per_90": 19.337662,
+          "ict_index_per_90": 4.468312,
+          "influence_per_90": 15.431169,
+          "creativity_per_90": 15.984156,
+          "threat_per_90": 12.657143,
+          "bps_per_90": 17.587777,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.100398
+          "xgi_per_90": 0.107463
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -65972,7 +65972,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 22.142303,
+        "expected_minutes": 23.028804,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -65999,7 +65999,7 @@
         },
         {
           "label": "Current form",
-          "value": "1.00 pts/GW",
+          "value": "1.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -66019,7 +66019,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "22.14 min",
+          "value": "23.03 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -66088,33 +66088,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 17.0,
           "starts": 0.0,
-          "xg": 0.0,
+          "xg": 0.040000000000000036,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 2.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.11297071129707113,
-        "xa_per_90": 0.015062761506276152,
-        "points_per_90": 4.142259414225942,
+        "xg_per_90": 0.11636363636363636,
+        "xa_per_90": 0.014545454545454545,
+        "points_per_90": 4.181818181818182,
         "starts": 5,
-        "minutes": 478,
+        "minutes": 495,
         "goals": 0,
         "assists": 2,
-        "ict_index_per_90": 5.58539,
-        "bps_per_90": 19.337662,
+        "ict_index_per_90": 4.468312,
+        "bps_per_90": 17.587777,
         "bonus_per_90": 0.0,
-        "influence_per_90": 19.288961,
-        "creativity_per_90": 19.980195,
-        "threat_per_90": 15.821429,
-        "xgi_per_90": 0.100398
+        "influence_per_90": 15.431169,
+        "creativity_per_90": 15.984156,
+        "threat_per_90": 12.657143,
+        "xgi_per_90": 0.107463
       },
       "historical_record": {
         "career": {
@@ -70810,15 +70810,15 @@
       "team": "Everton",
       "price": 0.58,
       "ownership": 0.1,
-      "form": 1.0,
-      "prediction": 1.758936,
-      "prediction_p10": 0.0,
-      "prediction_p90": 4.178571,
-      "prediction_range": 4.178571,
+      "form": 1.2,
+      "prediction": 2.392749,
+      "prediction_p10": 0.166667,
+      "prediction_p90": 5.871429,
+      "prediction_range": 5.704762,
       "confidence": "low",
-      "expected_minutes": 30.063974,
-      "start_probability": 0.381075,
-      "sixty_probability": 0.323563,
+      "expected_minutes": 44.459246,
+      "start_probability": 0.482851,
+      "sixty_probability": 0.468536,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -70841,18 +70841,18 @@
           "start_rate": 0.591837
         },
         "current_form": {
-          "points_per_90": 2.222222,
-          "recent_3_points": 0.666667,
-          "recent_3_minutes": 27.0,
+          "points_per_90": 2.755102,
+          "recent_3_points": 1.0,
+          "recent_3_minutes": 32.666667,
           "recent_3_xg": 0.0,
           "recent_3_xa": 0.0,
-          "ict_index_per_90": 1.073077,
-          "influence_per_90": 2.976923,
-          "creativity_per_90": 8.433965,
-          "threat_per_90": 2.423077,
-          "bps_per_90": 5.046046,
+          "ict_index_per_90": 0.858462,
+          "influence_per_90": 2.381538,
+          "creativity_per_90": 6.747172,
+          "threat_per_90": 1.938462,
+          "bps_per_90": 9.330954,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.125166
+          "xgi_per_90": 0.1125
         },
         "current_club": {
           "points_per_90": 2.536443,
@@ -70868,7 +70868,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 30.063974,
+        "expected_minutes": 44.459246,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -70895,7 +70895,7 @@
         },
         {
           "label": "Current form",
-          "value": "0.67 pts/GW",
+          "value": "1.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -70915,7 +70915,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "30.06 min",
+          "value": "44.46 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -70984,33 +70984,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 17.0,
           "starts": 0.0,
           "xg": 0.0,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 5.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.2475578406169666,
-        "xa_per_90": 0.09023136246786632,
-        "points_per_90": 3.2390745501285347,
+        "xg_per_90": 0.23719211822660102,
+        "xa_per_90": 0.08645320197044334,
+        "points_per_90": 3.32512315270936,
         "starts": 5,
-        "minutes": 389,
+        "minutes": 406,
         "goals": 0,
         "assists": 0,
-        "ict_index_per_90": 1.073077,
-        "bps_per_90": 5.046046,
+        "ict_index_per_90": 0.858462,
+        "bps_per_90": 9.330954,
         "bonus_per_90": 0.0,
-        "influence_per_90": 2.976923,
-        "creativity_per_90": 8.433965,
-        "threat_per_90": 2.423077,
-        "xgi_per_90": 0.125166
+        "influence_per_90": 2.381538,
+        "creativity_per_90": 6.747172,
+        "threat_per_90": 1.938462,
+        "xgi_per_90": 0.1125
       },
       "historical_record": {
         "career": {
@@ -76758,15 +76758,15 @@
       "team": "Everton",
       "price": 0.55,
       "ownership": 8.5,
-      "form": 2.4,
-      "prediction": 2.234278,
-      "prediction_p10": 0.11,
-      "prediction_p90": 5.580952,
-      "prediction_range": 5.470952,
+      "form": 2.8,
+      "prediction": 4.410183,
+      "prediction_p10": 1.198182,
+      "prediction_p90": 8.167647,
+      "prediction_range": 6.969465,
       "confidence": "low",
-      "expected_minutes": 45.404642,
-      "start_probability": 0.558389,
-      "sixty_probability": 0.523921,
+      "expected_minutes": 86.458057,
+      "start_probability": 0.959576,
+      "sixty_probability": 0.953691,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -76789,18 +76789,18 @@
           "start_rate": 0.617512
         },
         "current_form": {
-          "points_per_90": 4.354839,
-          "recent_3_points": 3.0,
-          "recent_3_minutes": 62.0,
+          "points_per_90": 3.666667,
+          "recent_3_points": 3.666667,
+          "recent_3_minutes": 90.0,
           "recent_3_xg": 0.0,
-          "recent_3_xa": 0.003333,
+          "recent_3_xa": 0.006667,
           "ict_index_per_90": 1.68,
           "influence_per_90": 16.72,
           "creativity_per_90": 0.0,
           "threat_per_90": 0.0,
-          "bps_per_90": 20.2,
+          "bps_per_90": 13.8,
           "bonus_per_90": 0.2,
-          "xgi_per_90": 0.002459
+          "xgi_per_90": 0.004
         },
         "current_club": {
           "points_per_90": 3.656765,
@@ -76816,7 +76816,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 45.404642,
+        "expected_minutes": 86.458057,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -76843,7 +76843,7 @@
         },
         {
           "label": "Current form",
-          "value": "3.00 pts/GW",
+          "value": "3.67 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -76863,7 +76863,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "45.40 min",
+          "value": "86.46 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -76932,13 +76932,13 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 3.0,
+          "minutes": 90.0,
           "starts": 1.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.010000000000000002,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 13.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
@@ -76946,19 +76946,19 @@
       ],
       "underlying": {
         "xg_per_90": 0.0,
-        "xa_per_90": 0.0033088235294117642,
-        "points_per_90": 4.080882352941177,
+        "xa_per_90": 0.004,
+        "points_per_90": 3.9000000000000004,
         "starts": 10,
-        "minutes": 816,
+        "minutes": 900,
         "goals": 0,
         "assists": 0,
         "ict_index_per_90": 1.68,
-        "bps_per_90": 20.2,
+        "bps_per_90": 13.8,
         "bonus_per_90": 0.2,
         "influence_per_90": 16.72,
         "creativity_per_90": 0.0,
         "threat_per_90": 0.0,
-        "xgi_per_90": 0.002459
+        "xgi_per_90": 0.004
       },
       "historical_record": {
         "career": {
@@ -77890,15 +77890,15 @@
       "team": "Everton",
       "price": 0.62,
       "ownership": 19.5,
-      "form": 2.4,
-      "prediction": 2.734146,
-      "prediction_p10": 0.069231,
-      "prediction_p90": 6.74026,
-      "prediction_range": 6.671029,
+      "form": 2.6,
+      "prediction": 3.973665,
+      "prediction_p10": 0.55625,
+      "prediction_p90": 7.876389,
+      "prediction_range": 7.320139,
       "confidence": "low",
-      "expected_minutes": 37.51244,
-      "start_probability": 0.504098,
-      "sixty_probability": 0.463899,
+      "expected_minutes": 80.690869,
+      "start_probability": 0.931501,
+      "sixty_probability": 0.904023,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -77921,18 +77921,18 @@
           "start_rate": 0.595349
         },
         "current_form": {
-          "points_per_90": 4.354839,
-          "recent_3_points": 3.0,
-          "recent_3_minutes": 62.0,
+          "points_per_90": 3.333333,
+          "recent_3_points": 3.333333,
+          "recent_3_minutes": 90.0,
           "recent_3_xg": 0.0,
           "recent_3_xa": 0.003333,
           "ict_index_per_90": 2.84,
           "influence_per_90": 21.88,
           "creativity_per_90": 5.24,
           "threat_per_90": 1.2,
-          "bps_per_90": 20.4,
+          "bps_per_90": 12.8,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.017213
+          "xgi_per_90": 0.014
         },
         "current_club": {
           "points_per_90": 3.378888,
@@ -77948,7 +77948,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 37.51244,
+        "expected_minutes": 80.690869,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -77975,7 +77975,7 @@
         },
         {
           "label": "Current form",
-          "value": "3.00 pts/GW",
+          "value": "3.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -77995,7 +77995,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "37.51 min",
+          "value": "80.69 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -78064,33 +78064,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 90.0,
           "starts": 1.0,
           "xg": 0.0,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 7.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.019852941176470587,
-        "xa_per_90": 0.012132352941176469,
-        "points_per_90": 6.066176470588235,
+        "xg_per_90": 0.018,
+        "xa_per_90": 0.011,
+        "points_per_90": 5.6,
         "starts": 10,
-        "minutes": 816,
+        "minutes": 900,
         "goals": 1,
         "assists": 1,
         "ict_index_per_90": 2.84,
-        "bps_per_90": 20.4,
+        "bps_per_90": 12.8,
         "bonus_per_90": 0.0,
         "influence_per_90": 21.88,
         "creativity_per_90": 5.24,
         "threat_per_90": 1.2,
-        "xgi_per_90": 0.017213
+        "xgi_per_90": 0.014
       },
       "historical_record": {
         "career": {
@@ -78294,15 +78294,15 @@
       "team": "Everton",
       "price": 0.55,
       "ownership": 2.2,
-      "form": 2.8,
-      "prediction": 1.525288,
-      "prediction_p10": 0.0,
-      "prediction_p90": 3.925,
-      "prediction_range": 3.925,
+      "form": 3.2,
+      "prediction": 2.335644,
+      "prediction_p10": 0.069231,
+      "prediction_p90": 5.381944,
+      "prediction_range": 5.312714,
       "confidence": "low",
-      "expected_minutes": 25.286943,
-      "start_probability": 0.253445,
-      "sixty_probability": 0.214157,
+      "expected_minutes": 73.741071,
+      "start_probability": 0.709057,
+      "sixty_probability": 0.763619,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -78325,18 +78325,18 @@
           "start_rate": 0.313364
         },
         "current_form": {
-          "points_per_90": 10.344828,
-          "recent_3_points": 3.333333,
-          "recent_3_minutes": 29.0,
+          "points_per_90": 6.390533,
+          "recent_3_points": 4.0,
+          "recent_3_minutes": 56.333333,
           "recent_3_xg": 0.023333,
-          "recent_3_xa": 0.026667,
+          "recent_3_xa": 0.06,
           "ict_index_per_90": 3.725,
           "influence_per_90": 16.327778,
           "creativity_per_90": 6.952778,
           "threat_per_90": 14.027778,
-          "bps_per_90": 24.361111,
+          "bps_per_90": 15.412247,
           "bonus_per_90": 0.833333,
-          "xgi_per_90": 0.097753
+          "xgi_per_90": 0.100573
         },
         "current_club": {
           "points_per_90": 3.368243,
@@ -78352,7 +78352,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 25.286943,
+        "expected_minutes": 73.741071,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -78379,7 +78379,7 @@
         },
         {
           "label": "Current form",
-          "value": "3.33 pts/GW",
+          "value": "4.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -78399,7 +78399,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "25.29 min",
+          "value": "73.74 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -78468,33 +78468,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 3.0,
+          "minutes": 88.0,
           "starts": 1.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.1,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 9.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.043933054393305436,
-        "xa_per_90": 0.016317991631799162,
-        "points_per_90": 5.146443514644351,
+        "xg_per_90": 0.039424280350438046,
+        "xa_per_90": 0.02590738423028786,
+        "points_per_90": 4.843554443053818,
         "starts": 9,
-        "minutes": 717,
+        "minutes": 799,
         "goals": 0,
         "assists": 0,
         "ict_index_per_90": 3.725,
-        "bps_per_90": 24.361111,
+        "bps_per_90": 15.412247,
         "bonus_per_90": 0.833333,
         "influence_per_90": 16.327778,
         "creativity_per_90": 6.952778,
         "threat_per_90": 14.027778,
-        "xgi_per_90": 0.097753
+        "xgi_per_90": 0.100573
       },
       "historical_record": {
         "career": {
@@ -78698,15 +78698,15 @@
       "team": "Everton",
       "price": 0.47000000000000003,
       "ownership": 0.6,
-      "form": 0.4,
-      "prediction": 1.002819,
+      "form": 0.6,
+      "prediction": 1.198581,
       "prediction_p10": 0.0,
-      "prediction_p90": 2.803333,
-      "prediction_range": 2.803333,
+      "prediction_p90": 2.900909,
+      "prediction_range": 2.900909,
       "confidence": "medium",
-      "expected_minutes": 15.091724,
-      "start_probability": 0.144677,
-      "sixty_probability": 0.137041,
+      "expected_minutes": 13.532055,
+      "start_probability": 0.145492,
+      "sixty_probability": 0.133802,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -78729,18 +78729,18 @@
           "start_rate": 0.24424
         },
         "current_form": {
-          "points_per_90": 11.25,
-          "recent_3_points": 0.333333,
-          "recent_3_minutes": 2.666667,
+          "points_per_90": 20.0,
+          "recent_3_points": 0.666667,
+          "recent_3_minutes": 3.0,
           "recent_3_xg": 0.0,
           "recent_3_xa": 0.0,
-          "ict_index_per_90": 2.675,
-          "influence_per_90": 11.525,
-          "creativity_per_90": 0.9125,
-          "threat_per_90": 15.75,
-          "bps_per_90": 20.375,
+          "ict_index_per_90": 1.783333,
+          "influence_per_90": 7.683333,
+          "creativity_per_90": 0.608333,
+          "threat_per_90": 10.5,
+          "bps_per_90": 103.583333,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.018367
+          "xgi_per_90": 0.018182
         },
         "current_club": {
           "points_per_90": 3.818549,
@@ -78756,7 +78756,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 15.091724,
+        "expected_minutes": 13.532055,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -78783,7 +78783,7 @@
         },
         {
           "label": "Current form",
-          "value": "0.33 pts/GW",
+          "value": "0.67 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -78803,7 +78803,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "15.09 min",
+          "value": "13.53 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -78872,33 +78872,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 1.0,
           "starts": 0.0,
           "xg": 0.0,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 3.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.009183673469387756,
-        "xa_per_90": 0.009183673469387756,
-        "points_per_90": 1.8367346938775508,
+        "xg_per_90": 0.00909090909090909,
+        "xa_per_90": 0.00909090909090909,
+        "points_per_90": 2.7272727272727275,
         "starts": 1,
-        "minutes": 98,
+        "minutes": 99,
         "goals": 0,
         "assists": 0,
-        "ict_index_per_90": 2.675,
-        "bps_per_90": 20.375,
+        "ict_index_per_90": 1.783333,
+        "bps_per_90": 103.583333,
         "bonus_per_90": 0.0,
-        "influence_per_90": 11.525,
-        "creativity_per_90": 0.9125,
-        "threat_per_90": 15.75,
-        "xgi_per_90": 0.018367
+        "influence_per_90": 7.683333,
+        "creativity_per_90": 0.608333,
+        "threat_per_90": 10.5,
+        "xgi_per_90": 0.018182
       },
       "historical_record": {
         "career": {
@@ -79102,15 +79102,15 @@
       "team": "Everton",
       "price": 0.48,
       "ownership": 0.3,
-      "form": 2.0,
-      "prediction": 2.136963,
-      "prediction_p10": 0.08951,
-      "prediction_p90": 5.011111,
-      "prediction_range": 4.921601,
+      "form": 2.2,
+      "prediction": 2.055625,
+      "prediction_p10": 0.090909,
+      "prediction_p90": 4.52,
+      "prediction_range": 4.429091,
       "confidence": "low",
-      "expected_minutes": 63.346727,
-      "start_probability": 0.753014,
-      "sixty_probability": 0.655569,
+      "expected_minutes": 64.36295,
+      "start_probability": 0.75054,
+      "sixty_probability": 0.690168,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -79133,18 +79133,18 @@
           "start_rate": 0.45045
         },
         "current_form": {
-          "points_per_90": 4.5,
-          "recent_3_points": 3.0,
-          "recent_3_minutes": 60.0,
+          "points_per_90": 4.568528,
+          "recent_3_points": 3.333333,
+          "recent_3_minutes": 65.666667,
           "recent_3_xg": 0.066667,
           "recent_3_xa": 0.026667,
-          "ict_index_per_90": 3.683333,
-          "influence_per_90": 13.8,
-          "creativity_per_90": 8.6,
-          "threat_per_90": 14.666667,
-          "bps_per_90": 12.333333,
+          "ict_index_per_90": 2.7625,
+          "influence_per_90": 10.35,
+          "creativity_per_90": 6.45,
+          "threat_per_90": 11.0,
+          "bps_per_90": 13.220588,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.135937
+          "xgi_per_90": 0.12488
         },
         "current_club": {
           "points_per_90": 3.453142,
@@ -79160,7 +79160,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 63.346727,
+        "expected_minutes": 64.36295,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -79187,7 +79187,7 @@
         },
         {
           "label": "Current form",
-          "value": "3.00 pts/GW",
+          "value": "3.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -79207,7 +79207,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "63.35 min",
+          "value": "64.36 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -79276,33 +79276,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 17.0,
           "starts": 0.0,
           "xg": 0.0,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 3.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.08653846153846154,
-        "xa_per_90": 0.038942307692307686,
-        "points_per_90": 5.1923076923076925,
+        "xg_per_90": 0.08,
+        "xa_per_90": 0.036,
+        "points_per_90": 5.2,
         "starts": 2,
-        "minutes": 208,
+        "minutes": 225,
         "goals": 0,
         "assists": 0,
-        "ict_index_per_90": 3.683333,
-        "bps_per_90": 12.333333,
+        "ict_index_per_90": 2.7625,
+        "bps_per_90": 13.220588,
         "bonus_per_90": 0.0,
-        "influence_per_90": 13.8,
-        "creativity_per_90": 8.6,
-        "threat_per_90": 14.666667,
-        "xgi_per_90": 0.135937
+        "influence_per_90": 10.35,
+        "creativity_per_90": 6.45,
+        "threat_per_90": 11.0,
+        "xgi_per_90": 0.12488
       },
       "historical_record": {
         "career": {
@@ -79446,15 +79446,15 @@
       "team": "Everton",
       "price": 0.45999999999999996,
       "ownership": 2.5,
-      "form": 1.6,
-      "prediction": 1.979326,
-      "prediction_p10": 0.047368,
-      "prediction_p90": 4.637013,
-      "prediction_range": 4.589645,
+      "form": 3.0,
+      "prediction": 3.124483,
+      "prediction_p10": 0.666667,
+      "prediction_p90": 6.690179,
+      "prediction_range": 6.023512,
       "confidence": "low",
-      "expected_minutes": 49.524643,
-      "start_probability": 0.662272,
-      "sixty_probability": 0.522366,
+      "expected_minutes": 69.103768,
+      "start_probability": 0.777511,
+      "sixty_probability": 0.762861,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -79477,18 +79477,18 @@
           "start_rate": 0.654545
         },
         "current_form": {
-          "points_per_90": 3.727811,
-          "recent_3_points": 2.333333,
-          "recent_3_minutes": 56.333333,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.016667,
+          "points_per_90": 4.980237,
+          "recent_3_points": 4.666667,
+          "recent_3_minutes": 84.333333,
+          "recent_3_xg": 0.046667,
+          "recent_3_xa": 0.08,
           "ict_index_per_90": 2.573973,
           "influence_per_90": 13.583562,
           "creativity_per_90": 9.378082,
           "threat_per_90": 2.616438,
-          "bps_per_90": 21.017123,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.090347
+          "bps_per_90": 18.017123,
+          "bonus_per_90": 0.25,
+          "xgi_per_90": 0.15481
         },
         "current_club": {
           "points_per_90": 3.177295,
@@ -79504,7 +79504,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 49.524643,
+        "expected_minutes": 69.103768,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -79531,7 +79531,7 @@
         },
         {
           "label": "Current form",
-          "value": "2.33 pts/GW",
+          "value": "4.67 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -79551,7 +79551,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "49.52 min",
+          "value": "69.10 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -79620,33 +79620,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 8.0,
+          "minutes": 90.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.13999999999999999,
+          "xa": 0.19,
           "ict_index": 0.0,
-          "bps": 3.0,
-          "bonus": 0.0,
+          "bps": 33.0,
+          "bonus": 1.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.005077574047954866,
-        "xa_per_90": 0.053314527503526096,
-        "points_per_90": 4.4428772919605075,
+        "xg_per_90": 0.02042875157629256,
+        "xa_per_90": 0.06923076923076923,
+        "points_per_90": 4.766708701134931,
         "starts": 9,
-        "minutes": 709,
+        "minutes": 793,
         "goals": 0,
-        "assists": 0,
+        "assists": 1,
         "ict_index_per_90": 2.573973,
-        "bps_per_90": 21.017123,
-        "bonus_per_90": 0.0,
+        "bps_per_90": 18.017123,
+        "bonus_per_90": 0.25,
         "influence_per_90": 13.583562,
         "creativity_per_90": 9.378082,
         "threat_per_90": 2.616438,
-        "xgi_per_90": 0.090347
+        "xgi_per_90": 0.15481
       },
       "historical_record": {
         "career": {
@@ -80518,15 +80518,15 @@
       "team": "Everton",
       "price": 0.6599999999999999,
       "ownership": 6.7,
-      "form": 4.4,
-      "prediction": 3.932554,
-      "prediction_p10": 0.619643,
-      "prediction_p90": 8.71,
-      "prediction_range": 8.090357,
+      "form": 6.0,
+      "prediction": 3.886231,
+      "prediction_p10": 0.875,
+      "prediction_p90": 8.14,
+      "prediction_range": 7.265,
       "confidence": "low",
-      "expected_minutes": 38.735455,
-      "start_probability": 0.484873,
-      "sixty_probability": 0.485672,
+      "expected_minutes": 64.286404,
+      "start_probability": 0.801966,
+      "sixty_probability": 0.780891,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -80549,18 +80549,18 @@
           "start_rate": 0.306122
         },
         "current_form": {
-          "points_per_90": 3.480663,
-          "recent_3_points": 2.333333,
-          "recent_3_minutes": 60.333333,
-          "recent_3_xg": 0.07,
-          "recent_3_xa": 0.1,
+          "points_per_90": 5.09434,
+          "recent_3_points": 5.0,
+          "recent_3_minutes": 88.333333,
+          "recent_3_xg": 0.153333,
+          "recent_3_xa": 0.136667,
           "ict_index_per_90": 6.130588,
           "influence_per_90": 20.971765,
           "creativity_per_90": 29.251765,
           "threat_per_90": 11.047059,
-          "bps_per_90": 33.152941,
-          "bonus_per_90": 0.8,
-          "xgi_per_90": 0.264266
+          "bps_per_90": 32.152941,
+          "bonus_per_90": 1.2,
+          "xgi_per_90": 0.287191
         },
         "current_club": {
           "points_per_90": 5.267086,
@@ -80576,7 +80576,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 38.735455,
+        "expected_minutes": 64.286404,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -80603,7 +80603,7 @@
         },
         {
           "label": "Current form",
-          "value": "2.33 pts/GW",
+          "value": "5.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -80623,7 +80623,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "38.74 min",
+          "value": "64.29 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -80692,33 +80692,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 9.0,
+          "minutes": 90.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.25,
+          "xa": 0.10999999999999988,
           "ict_index": 0.0,
-          "bps": 3.0,
-          "bonus": 0.0,
+          "bps": 40.0,
+          "bonus": 2.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.17755856966707767,
-        "xa_per_90": 0.14204685573366216,
-        "points_per_90": 4.660912453760789,
+        "xg_per_90": 0.18603351955307265,
+        "xa_per_90": 0.13977653631284914,
+        "points_per_90": 5.027932960893854,
         "starts": 10,
-        "minutes": 811,
-        "goals": 2,
+        "minutes": 895,
+        "goals": 3,
         "assists": 1,
         "ict_index_per_90": 6.130588,
-        "bps_per_90": 33.152941,
-        "bonus_per_90": 0.8,
+        "bps_per_90": 32.152941,
+        "bonus_per_90": 1.2,
         "influence_per_90": 20.971765,
         "creativity_per_90": 29.251765,
         "threat_per_90": 11.047059,
-        "xgi_per_90": 0.264266
+        "xgi_per_90": 0.287191
       },
       "historical_record": {
         "career": {
@@ -81650,15 +81650,15 @@
       "team": "Everton",
       "price": 0.6,
       "ownership": 0.2,
-      "form": 2.6,
-      "prediction": 2.779739,
-      "prediction_p10": 0.495455,
-      "prediction_p90": 5.871429,
-      "prediction_range": 5.375974,
+      "form": 2.8,
+      "prediction": 3.355859,
+      "prediction_p10": 0.732727,
+      "prediction_p90": 7.91,
+      "prediction_range": 7.177273,
       "confidence": "low",
-      "expected_minutes": 54.931093,
-      "start_probability": 0.619947,
-      "sixty_probability": 0.656741,
+      "expected_minutes": 82.15571,
+      "start_probability": 0.951471,
+      "sixty_probability": 0.943976,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -81681,18 +81681,18 @@
           "start_rate": 0.516484
         },
         "current_form": {
-          "points_per_90": 3.387097,
-          "recent_3_points": 2.333333,
-          "recent_3_minutes": 62.0,
+          "points_per_90": 2.666667,
+          "recent_3_points": 2.666667,
+          "recent_3_minutes": 90.0,
           "recent_3_xg": 0.08,
-          "recent_3_xa": 0.06,
+          "recent_3_xa": 0.076667,
           "ict_index_per_90": 3.4,
           "influence_per_90": 13.84,
           "creativity_per_90": 16.2,
           "threat_per_90": 3.8,
-          "bps_per_90": 21.2,
+          "bps_per_90": 15.8,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.194262
+          "xgi_per_90": 0.168
         },
         "current_club": {
           "points_per_90": 3.158262,
@@ -81708,7 +81708,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 54.931093,
+        "expected_minutes": 82.15571,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -81735,7 +81735,7 @@
         },
         {
           "label": "Current form",
-          "value": "2.33 pts/GW",
+          "value": "2.67 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -81755,7 +81755,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "54.93 min",
+          "value": "82.16 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -81824,33 +81824,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 90.0,
           "starts": 1.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.04999999999999993,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 18.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.06224783861671469,
-        "xa_per_90": 0.08818443804034583,
-        "points_per_90": 3.1123919308357353,
+        "xg_per_90": 0.05552699228791774,
+        "xa_per_90": 0.08444730077120823,
+        "points_per_90": 2.892030848329049,
         "starts": 9,
-        "minutes": 694,
+        "minutes": 778,
         "goals": 0,
         "assists": 0,
         "ict_index_per_90": 3.4,
-        "bps_per_90": 21.2,
+        "bps_per_90": 15.8,
         "bonus_per_90": 0.0,
         "influence_per_90": 13.84,
         "creativity_per_90": 16.2,
         "threat_per_90": 3.8,
-        "xgi_per_90": 0.194262
+        "xgi_per_90": 0.168
       },
       "historical_record": {
         "career": {
@@ -82862,15 +82862,15 @@
       "team": "Everton",
       "price": 0.55,
       "ownership": 0.5,
-      "form": 2.0,
-      "prediction": 2.935488,
-      "prediction_p10": 0.373864,
-      "prediction_p90": 6.705,
-      "prediction_range": 6.331136,
+      "form": 2.2,
+      "prediction": 4.33827,
+      "prediction_p10": 1.09,
+      "prediction_p90": 9.0,
+      "prediction_range": 7.91,
       "confidence": "low",
-      "expected_minutes": 60.465202,
-      "start_probability": 0.593205,
-      "sixty_probability": 0.677529,
+      "expected_minutes": 71.876949,
+      "start_probability": 0.801717,
+      "sixty_probability": 0.724307,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -82893,18 +82893,18 @@
           "start_rate": 0.030303
         },
         "current_form": {
-          "points_per_90": 3.870968,
-          "recent_3_points": 2.666667,
-          "recent_3_minutes": 62.0,
-          "recent_3_xg": 0.05,
-          "recent_3_xa": 0.113333,
+          "points_per_90": 3.011152,
+          "recent_3_points": 3.0,
+          "recent_3_minutes": 89.666667,
+          "recent_3_xg": 0.073333,
+          "recent_3_xa": 0.283333,
           "ict_index_per_90": 2.681429,
           "influence_per_90": 6.908571,
           "creativity_per_90": 12.875714,
           "threat_per_90": 7.228571,
-          "bps_per_90": 20.907143,
+          "bps_per_90": 16.963323,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.187347
+          "xgi_per_90": 0.299085
         },
         "current_club": {
           "points_per_90": 5.469613,
@@ -82920,7 +82920,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 60.465202,
+        "expected_minutes": 71.876949,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -82947,7 +82947,7 @@
         },
         {
           "label": "Current form",
-          "value": "2.67 pts/GW",
+          "value": "3.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -82967,7 +82967,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "60.47 min",
+          "value": "71.88 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -83036,33 +83036,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 89.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.06999999999999995,
+          "xa": 0.5099999999999999,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 25.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.0812274368231047,
-        "xa_per_90": 0.1104693140794224,
-        "points_per_90": 4.7111913357400725,
+        "xg_per_90": 0.08053375196232339,
+        "xa_per_90": 0.16813186813186815,
+        "points_per_90": 4.238618524332811,
         "starts": 7,
-        "minutes": 554,
+        "minutes": 637,
         "goals": 1,
         "assists": 1,
         "ict_index_per_90": 2.681429,
-        "bps_per_90": 20.907143,
+        "bps_per_90": 16.963323,
         "bonus_per_90": 0.0,
         "influence_per_90": 6.908571,
         "creativity_per_90": 12.875714,
         "threat_per_90": 7.228571,
-        "xgi_per_90": 0.187347
+        "xgi_per_90": 0.299085
       },
       "historical_record": {
         "career": {
@@ -83226,15 +83226,15 @@
       "team": "Everton",
       "price": 0.48,
       "ownership": 0.1,
-      "form": 0.4,
-      "prediction": 0.559061,
+      "form": 0.6,
+      "prediction": 0.713606,
       "prediction_p10": 0.0,
-      "prediction_p90": 1.2,
-      "prediction_range": 1.2,
+      "prediction_p90": 1.5,
+      "prediction_range": 1.5,
       "confidence": "high",
-      "expected_minutes": 9.319227,
-      "start_probability": 0.085596,
-      "sixty_probability": 0.072916,
+      "expected_minutes": 12.403415,
+      "start_probability": 0.089187,
+      "sixty_probability": 0.075131,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -83257,18 +83257,18 @@
           "start_rate": 0.173333
         },
         "current_form": {
-          "points_per_90": 22.5,
-          "recent_3_points": 0.333333,
-          "recent_3_minutes": 1.333333,
+          "points_per_90": 36.0,
+          "recent_3_points": 0.666667,
+          "recent_3_minutes": 1.666667,
           "recent_3_xg": 0.02,
           "recent_3_xa": 0.0,
-          "ict_index_per_90": 4.5,
+          "ict_index_per_90": 3.0,
           "influence_per_90": 0.0,
-          "creativity_per_90": 4.5,
-          "threat_per_90": 78.75,
-          "bps_per_90": 56.25,
+          "creativity_per_90": 3.0,
+          "threat_per_90": 52.5,
+          "bps_per_90": 127.5,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.9
+          "xgi_per_90": 0.8
         },
         "current_club": {
           "points_per_90": 4.468531,
@@ -83284,7 +83284,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 9.319227,
+        "expected_minutes": 12.403415,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -83311,7 +83311,7 @@
         },
         {
           "label": "Current form",
-          "value": "0.33 pts/GW",
+          "value": "0.67 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -83331,7 +83331,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "9.32 min",
+          "value": "12.40 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -83400,33 +83400,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 1.0,
           "starts": 0.0,
           "xg": 0.0,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 3.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.9,
-        "xa_per_90": 0.13846153846153847,
-        "points_per_90": 20.76923076923077,
+        "xg_per_90": 0.8357142857142857,
+        "xa_per_90": 0.12857142857142856,
+        "points_per_90": 25.71428571428571,
         "starts": 0,
-        "minutes": 13,
+        "minutes": 14,
         "goals": 0,
         "assists": 0,
-        "ict_index_per_90": 4.5,
-        "bps_per_90": 56.25,
+        "ict_index_per_90": 3.0,
+        "bps_per_90": 127.5,
         "bonus_per_90": 0.0,
         "influence_per_90": 0.0,
-        "creativity_per_90": 4.5,
-        "threat_per_90": 78.75,
-        "xgi_per_90": 0.9
+        "creativity_per_90": 3.0,
+        "threat_per_90": 52.5,
+        "xgi_per_90": 0.8
       },
       "historical_record": {
         "career": {
@@ -83570,15 +83570,15 @@
       "team": "Everton",
       "price": 0.5,
       "ownership": 0.3,
-      "form": 2.2,
-      "prediction": 2.745121,
-      "prediction_p10": 0.352198,
-      "prediction_p90": 6.265,
-      "prediction_range": 5.912802,
+      "form": 2.4,
+      "prediction": 3.227653,
+      "prediction_p10": 0.6625,
+      "prediction_p90": 7.007143,
+      "prediction_range": 6.344643,
       "confidence": "low",
-      "expected_minutes": 60.958557,
-      "start_probability": 0.645066,
-      "sixty_probability": 0.626639,
+      "expected_minutes": 61.812219,
+      "start_probability": 0.715128,
+      "sixty_probability": 0.713033,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -83601,18 +83601,18 @@
           "start_rate": 0.081081
         },
         "current_form": {
-          "points_per_90": 3.870968,
-          "recent_3_points": 2.666667,
-          "recent_3_minutes": 62.0,
-          "recent_3_xg": 0.133333,
-          "recent_3_xa": 0.066667,
+          "points_per_90": 3.214286,
+          "recent_3_points": 3.0,
+          "recent_3_minutes": 84.0,
+          "recent_3_xg": 0.146667,
+          "recent_3_xa": 0.07,
           "ict_index_per_90": 3.272987,
           "influence_per_90": 13.424675,
           "creativity_per_90": 13.885325,
           "threat_per_90": 5.438961,
-          "bps_per_90": 22.061039,
+          "bps_per_90": 17.561039,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.228242
+          "xgi_per_90": 0.202663
         },
         "current_club": {
           "points_per_90": 3.646409,
@@ -83628,7 +83628,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 60.958557,
+        "expected_minutes": 61.812219,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -83655,7 +83655,7 @@
         },
         {
           "label": "Current form",
-          "value": "2.67 pts/GW",
+          "value": "3.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -83675,7 +83675,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "60.96 min",
+          "value": "61.81 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -83744,33 +83744,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 72.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.039999999999999925,
+          "xa": 0.010000000000000009,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 18.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.09192938209331653,
-        "xa_per_90": 0.08738965952080706,
-        "points_per_90": 3.0643127364438842,
+        "xg_per_90": 0.08905704307334109,
+        "xa_per_90": 0.08172293364377183,
+        "points_per_90": 2.9336437718277066,
         "starts": 10,
-        "minutes": 793,
+        "minutes": 859,
         "goals": 0,
         "assists": 1,
         "ict_index_per_90": 3.272987,
-        "bps_per_90": 22.061039,
+        "bps_per_90": 17.561039,
         "bonus_per_90": 0.0,
         "influence_per_90": 13.424675,
         "creativity_per_90": 13.885325,
         "threat_per_90": 5.438961,
-        "xgi_per_90": 0.228242
+        "xgi_per_90": 0.202663
       },
       "historical_record": {
         "career": {
@@ -83894,15 +83894,15 @@
       "team": "Everton",
       "price": 0.53,
       "ownership": 0.0,
-      "form": 0.6,
-      "prediction": 1.131732,
+      "form": 0.8,
+      "prediction": 1.849439,
       "prediction_p10": 0.0,
-      "prediction_p90": 2.835714,
-      "prediction_range": 2.835714,
-      "confidence": "medium",
-      "expected_minutes": 22.431599,
-      "start_probability": 0.186671,
-      "sixty_probability": 0.201993,
+      "prediction_p90": 4.258333,
+      "prediction_range": 4.258333,
+      "confidence": "low",
+      "expected_minutes": 55.448305,
+      "start_probability": 0.596227,
+      "sixty_probability": 0.544137,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -83925,18 +83925,18 @@
           "start_rate": 0.315789
         },
         "current_form": {
-          "points_per_90": 7.5,
-          "recent_3_points": 0.666667,
-          "recent_3_minutes": 8.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.02,
+          "points_per_90": 3.0,
+          "recent_3_points": 1.0,
+          "recent_3_minutes": 30.0,
+          "recent_3_xg": 0.013333,
+          "recent_3_xa": 0.113333,
           "ict_index_per_90": 7.0,
           "influence_per_90": 22.666667,
           "creativity_per_90": 28.666667,
           "threat_per_90": 21.666667,
-          "bps_per_90": 61.666667,
+          "bps_per_90": 45.833333,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.45
+          "xgi_per_90": 0.440426
         },
         "current_club": {
           "points_per_90": 4.641834,
@@ -83952,7 +83952,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 22.431599,
+        "expected_minutes": 55.448305,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -83979,7 +83979,7 @@
         },
         {
           "label": "Current form",
-          "value": "0.67 pts/GW",
+          "value": "1.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -83999,7 +83999,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "22.43 min",
+          "value": "55.45 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -84068,33 +84068,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 72.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.03999999999999998,
+          "xa": 0.27999999999999997,
           "ict_index": 0.0,
-          "bps": 4.0,
+          "bps": 10.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.29423076923076924,
-        "xa_per_90": 0.5192307692307692,
-        "points_per_90": 6.923076923076923,
+        "xg_per_90": 0.16016949152542373,
+        "xa_per_90": 0.44237288135593217,
+        "points_per_90": 3.813559322033898,
         "starts": 1,
-        "minutes": 52,
+        "minutes": 118,
         "goals": 0,
         "assists": 0,
         "ict_index_per_90": 7.0,
-        "bps_per_90": 61.666667,
+        "bps_per_90": 45.833333,
         "bonus_per_90": 0.0,
         "influence_per_90": 22.666667,
         "creativity_per_90": 28.666667,
         "threat_per_90": 21.666667,
-        "xgi_per_90": 0.45
+        "xgi_per_90": 0.440426
       },
       "historical_record": {
         "career": {
@@ -84238,15 +84238,15 @@
       "team": "Everton",
       "price": 0.49000000000000005,
       "ownership": 0.0,
-      "form": 1.6,
-      "prediction": 2.16405,
-      "prediction_p10": 0.083333,
-      "prediction_p90": 5.435714,
-      "prediction_range": 5.352381,
+      "form": 1.8,
+      "prediction": 2.721053,
+      "prediction_p10": 0.598333,
+      "prediction_p90": 5.735165,
+      "prediction_range": 5.136832,
       "confidence": "low",
-      "expected_minutes": 38.954505,
-      "start_probability": 0.392998,
-      "sixty_probability": 0.398407,
+      "expected_minutes": 63.95335,
+      "start_probability": 0.818918,
+      "sixty_probability": 0.630043,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -84269,18 +84269,18 @@
           "start_rate": 0.147059
         },
         "current_form": {
-          "points_per_90": 2.903226,
-          "recent_3_points": 2.0,
-          "recent_3_minutes": 62.0,
+          "points_per_90": 2.5,
+          "recent_3_points": 2.333333,
+          "recent_3_minutes": 84.0,
           "recent_3_xg": 0.016667,
-          "recent_3_xa": 0.01,
+          "recent_3_xa": 0.05,
           "ict_index_per_90": 1.775,
           "influence_per_90": 6.85,
           "creativity_per_90": 2.775,
           "threat_per_90": 8.25,
-          "bps_per_90": 18.5,
+          "bps_per_90": 11.3125,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.03587
+          "xgi_per_90": 0.060526
         },
         "current_club": {
           "points_per_90": 4.983713,
@@ -84296,7 +84296,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 38.954505,
+        "expected_minutes": 63.95335,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -84323,7 +84323,7 @@
         },
         {
           "label": "Current form",
-          "value": "2.00 pts/GW",
+          "value": "2.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -84343,7 +84343,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "38.95 min",
+          "value": "63.95 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -84412,33 +84412,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 72.0,
           "starts": 1.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.11999999999999997,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 13.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.013714285714285715,
-        "xa_per_90": 0.03942857142857143,
-        "points_per_90": 2.4000000000000004,
+        "xg_per_90": 0.012182741116751269,
+        "xa_per_90": 0.0532994923857868,
+        "points_per_90": 2.284263959390863,
         "starts": 7,
-        "minutes": 525,
+        "minutes": 591,
         "goals": 0,
         "assists": 0,
         "ict_index_per_90": 1.775,
-        "bps_per_90": 18.5,
+        "bps_per_90": 11.3125,
         "bonus_per_90": 0.0,
         "influence_per_90": 6.85,
         "creativity_per_90": 2.775,
         "threat_per_90": 8.25,
-        "xgi_per_90": 0.03587
+        "xgi_per_90": 0.060526
       },
       "historical_record": {
         "career": {
@@ -84542,15 +84542,15 @@
       "team": "Everton",
       "price": 0.53,
       "ownership": 0.1,
-      "form": 0.6,
-      "prediction": 1.542102,
+      "form": 0.8,
+      "prediction": 2.592943,
       "prediction_p10": 0.0,
-      "prediction_p90": 3.89,
-      "prediction_range": 3.89,
-      "confidence": "medium",
-      "expected_minutes": 15.360322,
-      "start_probability": 0.109117,
-      "sixty_probability": 0.112753,
+      "prediction_p90": 5.900909,
+      "prediction_range": 5.900909,
+      "confidence": "low",
+      "expected_minutes": 20.655276,
+      "start_probability": 0.099664,
+      "sixty_probability": 0.1482,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -84573,18 +84573,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 10.588235,
-          "recent_3_points": 0.666667,
-          "recent_3_minutes": 5.666667,
-          "recent_3_xg": 0.006667,
+          "points_per_90": 7.941176,
+          "recent_3_points": 1.0,
+          "recent_3_minutes": 11.333333,
+          "recent_3_xg": 0.023333,
           "recent_3_xa": 0.006667,
-          "ict_index_per_90": 6.6875,
-          "influence_per_90": 10.0,
-          "creativity_per_90": 34.125,
-          "threat_per_90": 18.125,
-          "bps_per_90": 135.0,
+          "ict_index_per_90": 5.015625,
+          "influence_per_90": 7.5,
+          "creativity_per_90": 25.59375,
+          "threat_per_90": 13.59375,
+          "bps_per_90": 107.867647,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.186207
+          "xgi_per_90": 0.215217
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -84600,7 +84600,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 15.360322,
+        "expected_minutes": 20.655276,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -84627,7 +84627,7 @@
         },
         {
           "label": "Current form",
-          "value": "0.67 pts/GW",
+          "value": "1.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -84647,7 +84647,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "15.36 min",
+          "value": "20.66 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -84716,33 +84716,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 17.0,
           "starts": 0.0,
-          "xg": 0.0,
+          "xg": 0.04999999999999999,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 5.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.03795180722891567,
-        "xa_per_90": 0.09216867469879518,
-        "points_per_90": 7.048192771084338,
+        "xg_per_90": 0.05901639344262295,
+        "xa_per_90": 0.0836065573770492,
+        "points_per_90": 6.885245901639345,
         "starts": 1,
-        "minutes": 166,
+        "minutes": 183,
         "goals": 0,
         "assists": 1,
-        "ict_index_per_90": 6.6875,
-        "bps_per_90": 135.0,
+        "ict_index_per_90": 5.015625,
+        "bps_per_90": 107.867647,
         "bonus_per_90": 0.0,
-        "influence_per_90": 10.0,
-        "creativity_per_90": 34.125,
-        "threat_per_90": 18.125,
-        "xgi_per_90": 0.186207
+        "influence_per_90": 7.5,
+        "creativity_per_90": 25.59375,
+        "threat_per_90": 13.59375,
+        "xgi_per_90": 0.215217
       },
       "historical_record": {
         "career": {
@@ -85167,17 +85167,17 @@
       "name": "Barry",
       "position": "Forward",
       "team": "Everton",
-      "price": 0.5599999999999999,
-      "ownership": 8.8,
-      "form": 4.0,
-      "prediction": 3.466832,
-      "prediction_p10": 0.6,
-      "prediction_p90": 8.132857,
-      "prediction_range": 7.532857,
+      "price": 0.5700000000000001,
+      "ownership": 9.0,
+      "form": 7.0,
+      "prediction": 4.098957,
+      "prediction_p10": 1.0,
+      "prediction_p90": 8.419444,
+      "prediction_range": 7.419444,
       "confidence": "low",
-      "expected_minutes": 55.470304,
-      "start_probability": 0.672783,
-      "sixty_probability": 0.644248,
+      "expected_minutes": 79.086959,
+      "start_probability": 0.962005,
+      "sixty_probability": 0.915948,
       "fixture": {
         "gw": 11,
         "team_code": 11,
@@ -85200,18 +85200,18 @@
           "start_rate": 0.540541
         },
         "current_form": {
-          "points_per_90": 6.171429,
-          "recent_3_points": 4.0,
-          "recent_3_minutes": 58.333333,
-          "recent_3_xg": 0.556667,
-          "recent_3_xa": 0.073333,
+          "points_per_90": 9.382239,
+          "recent_3_points": 9.0,
+          "recent_3_minutes": 86.333333,
+          "recent_3_xg": 0.863333,
+          "recent_3_xa": 0.106667,
           "ict_index_per_90": 7.593462,
           "influence_per_90": 22.320149,
           "creativity_per_90": 8.994937,
           "threat_per_90": 44.517498,
-          "bps_per_90": 25.545644,
-          "bonus_per_90": 0.683544,
-          "xgi_per_90": 0.797143
+          "bps_per_90": 28.545644,
+          "bonus_per_90": 1.283544,
+          "xgi_per_90": 0.854378
         },
         "current_club": {
           "points_per_90": 4.61157,
@@ -85227,7 +85227,7 @@
           "xg_against_per_90": 1.51,
           "goals_against_per_90": 1.125
         },
-        "expected_minutes": 55.470304,
+        "expected_minutes": 79.086959,
         "home_away": "away",
         "fixture_environment": 2.94875
       },
@@ -85254,7 +85254,7 @@
         },
         {
           "label": "Current form",
-          "value": "4.00 pts/GW",
+          "value": "9.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -85274,7 +85274,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "55.47 min",
+          "value": "79.09 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -85343,33 +85343,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 16.0,
+          "minutes": 90.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.9199999999999999,
+          "xa": 0.09999999999999998,
           "ict_index": 0.0,
-          "bps": 3.0,
-          "bonus": 0.0,
+          "bps": 60.0,
+          "bonus": 3.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.7474576271186442,
-        "xa_per_90": 0.04458930899608866,
-        "points_per_90": 4.69361147327249,
+        "xg_per_90": 0.7709753231492361,
+        "xa_per_90": 0.050763807285546414,
+        "points_per_90": 5.81668625146886,
         "starts": 10,
-        "minutes": 767,
-        "goals": 4,
-        "assists": 0,
+        "minutes": 851,
+        "goals": 6,
+        "assists": 1,
         "ict_index_per_90": 7.593462,
-        "bps_per_90": 25.545644,
-        "bonus_per_90": 0.683544,
+        "bps_per_90": 28.545644,
+        "bonus_per_90": 1.283544,
         "influence_per_90": 22.320149,
         "creativity_per_90": 8.994937,
         "threat_per_90": 44.517498,
-        "xgi_per_90": 0.797143
+        "xgi_per_90": 0.854378
       },
       "historical_record": {
         "career": {
@@ -93639,13 +93639,13 @@
       "name": "Kusi-Asare",
       "position": "Forward",
       "team": "Fulham",
-      "price": 0.44000000000000006,
+      "price": 0.43,
       "ownership": 4.3,
       "form": 0.0,
-      "prediction": 0.088997,
+      "prediction": 0.122461,
       "prediction_p10": 0.0,
-      "prediction_p90": 0.333333,
-      "prediction_range": 0.333333,
+      "prediction_p90": 0.384615,
+      "prediction_range": 0.384615,
       "confidence": "high",
       "expected_minutes": 1.022375,
       "start_probability": 0.001977,
@@ -105982,10 +105982,10 @@
       "name": "Clarke",
       "position": "Midfielder",
       "team": "Ipswich Town",
-      "price": 0.53,
+      "price": 0.52,
       "ownership": 0.1,
       "form": 1.4,
-      "prediction": 1.728295,
+      "prediction": 1.735245,
       "prediction_p10": 0.0,
       "prediction_p90": 4.871429,
       "prediction_range": 4.871429,
@@ -113289,13 +113289,13 @@
       "name": "Okafor",
       "position": "Midfielder",
       "team": "Leeds",
-      "price": 0.58,
+      "price": 0.5700000000000001,
       "ownership": 0.3,
       "form": 1.0,
-      "prediction": 1.799774,
-      "prediction_p10": 0.090909,
-      "prediction_p90": 4.431868,
-      "prediction_range": 4.340959,
+      "prediction": 1.70048,
+      "prediction_p10": 0.081667,
+      "prediction_p90": 4.465385,
+      "prediction_range": 4.383718,
       "confidence": "low",
       "expected_minutes": 31.303376,
       "start_probability": 0.297338,
@@ -116809,13 +116809,13 @@
       "name": "Calvert-Lewin",
       "position": "Forward",
       "team": "Leeds",
-      "price": 0.61,
-      "ownership": 18.5,
+      "price": 0.6,
+      "ownership": 18.4,
       "form": 3.0,
-      "prediction": 3.455733,
-      "prediction_p10": 0.833333,
-      "prediction_p90": 7.070536,
-      "prediction_range": 6.237202,
+      "prediction": 3.382591,
+      "prediction_p10": 0.795,
+      "prediction_p90": 7.00625,
+      "prediction_range": 6.21125,
       "confidence": "low",
       "expected_minutes": 59.843883,
       "start_probability": 0.684392,
@@ -140631,7 +140631,7 @@
       "position": "Defender",
       "team": "Man Utd",
       "price": 0.48,
-      "ownership": 1.3,
+      "ownership": 1.2,
       "form": 1.6,
       "prediction": 1.86776,
       "prediction_p10": 0.0,
@@ -151917,10 +151917,10 @@
       "name": "Hall",
       "position": "Defender",
       "team": "Newcastle",
-      "price": 0.53,
+      "price": 0.52,
       "ownership": 18.8,
       "form": 2.2,
-      "prediction": 2.252723,
+      "prediction": 2.224012,
       "prediction_p10": 0.0,
       "prediction_p90": 5.431169,
       "prediction_range": 5.431169,
@@ -157415,13 +157415,13 @@
       "name": "Wissa",
       "position": "Forward",
       "team": "Newcastle",
-      "price": 0.6,
-      "ownership": 8.9,
+      "price": 0.5900000000000001,
+      "ownership": 8.8,
       "form": 1.0,
-      "prediction": 2.216462,
+      "prediction": 2.298422,
       "prediction_p10": 0.0,
-      "prediction_p90": 5.342857,
-      "prediction_range": 5.342857,
+      "prediction_p90": 5.671429,
+      "prediction_range": 5.671429,
       "confidence": "low",
       "expected_minutes": 55.928666,
       "start_probability": 0.512401,
@@ -167168,15 +167168,15 @@
       "team": "Coventry City",
       "price": 0.54,
       "ownership": 0.3,
-      "form": 2.4,
-      "prediction": 2.883734,
-      "prediction_p10": 0.166667,
-      "prediction_p90": 6.765909,
-      "prediction_range": 6.599242,
+      "form": 2.6,
+      "prediction": 3.044751,
+      "prediction_p10": 0.494444,
+      "prediction_p90": 7.207273,
+      "prediction_range": 6.712828,
       "confidence": "low",
-      "expected_minutes": 36.640276,
-      "start_probability": 0.414753,
-      "sixty_probability": 0.31848,
+      "expected_minutes": 49.89948,
+      "start_probability": 0.630135,
+      "sixty_probability": 0.589649,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -167199,18 +167199,18 @@
           "start_rate": 0.193333
         },
         "current_form": {
-          "points_per_90": 9.9,
-          "recent_3_points": 3.666667,
-          "recent_3_minutes": 33.333333,
-          "recent_3_xg": 0.06,
-          "recent_3_xa": 0.0,
+          "points_per_90": 6.0,
+          "recent_3_points": 4.0,
+          "recent_3_minutes": 60.0,
+          "recent_3_xg": 0.12,
+          "recent_3_xa": 0.003333,
           "ict_index_per_90": 3.515539,
           "influence_per_90": 11.413962,
           "creativity_per_90": 0.976102,
           "threat_per_90": 26.201776,
-          "bps_per_90": 29.748775,
+          "bps_per_90": 16.318543,
           "bonus_per_90": 0.950704,
-          "xgi_per_90": 0.318462
+          "xgi_per_90": 0.278571
         },
         "current_club": {
           "points_per_90": 6.618859,
@@ -167226,7 +167226,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 36.640276,
+        "expected_minutes": 49.89948,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -167253,7 +167253,7 @@
         },
         {
           "label": "Current form",
-          "value": "3.67 pts/GW",
+          "value": "4.00 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -167273,7 +167273,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "36.64 min",
+          "value": "49.90 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -167342,33 +167342,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 2.0,
+          "minutes": 86.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.17999999999999994,
+          "xa": 0.010000000000000002,
           "ict_index": 0.0,
-          "bps": 4.0,
+          "bps": 6.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.4375690607734807,
-        "xa_per_90": 0.009944751381215469,
-        "points_per_90": 3.729281767955801,
+        "xg_per_90": 0.39502262443438907,
+        "xa_per_90": 0.010180995475113122,
+        "points_per_90": 3.2579185520361995,
         "starts": 5,
-        "minutes": 362,
+        "minutes": 442,
         "goals": 1,
         "assists": 0,
         "ict_index_per_90": 3.515539,
-        "bps_per_90": 29.748775,
+        "bps_per_90": 16.318543,
         "bonus_per_90": 0.950704,
         "influence_per_90": 11.413962,
         "creativity_per_90": 0.976102,
         "threat_per_90": 26.201776,
-        "xgi_per_90": 0.318462
+        "xgi_per_90": 0.278571
       },
       "historical_record": {
         "career": {
@@ -171435,7 +171435,7 @@
       "position": "Defender",
       "team": "Brighton",
       "price": 0.52,
-      "ownership": 7.8,
+      "ownership": 7.9,
       "form": 5.2,
       "prediction": 3.746888,
       "prediction_p10": 0.5,
@@ -181409,13 +181409,13 @@
       "name": "Mukiele",
       "position": "Defender",
       "team": "Sunderland",
-      "price": 0.54,
+      "price": 0.53,
       "ownership": 1.4,
       "form": 1.4,
-      "prediction": 1.098631,
+      "prediction": 1.036269,
       "prediction_p10": 0.0,
-      "prediction_p90": 3.41,
-      "prediction_range": 3.41,
+      "prediction_p90": 3.183333,
+      "prediction_range": 3.183333,
       "confidence": "medium",
       "expected_minutes": 26.175522,
       "start_probability": 0.243076,
@@ -184832,13 +184832,13 @@
       "name": "Xhaka",
       "position": "Midfielder",
       "team": "Sunderland",
-      "price": 0.54,
+      "price": 0.53,
       "ownership": 2.7,
       "form": 2.2,
-      "prediction": 2.126814,
+      "prediction": 2.096743,
       "prediction_p10": 0.0,
-      "prediction_p90": 5.375,
-      "prediction_range": 5.375,
+      "prediction_p90": 5.585,
+      "prediction_range": 5.585,
       "confidence": "low",
       "expected_minutes": 62.212657,
       "start_probability": 0.718733,
@@ -187405,7 +187405,7 @@
       "position": "Forward",
       "team": "Sunderland",
       "price": 0.5700000000000001,
-      "ownership": 4.9,
+      "ownership": 4.8,
       "form": 0.8,
       "prediction": 3.189188,
       "prediction_p10": 0.333333,
@@ -192705,7 +192705,7 @@
       "position": "Forward",
       "team": "Fulham",
       "price": 0.5900000000000001,
-      "ownership": 3.9,
+      "ownership": 3.8,
       "form": 1.6,
       "prediction": 3.07689,
       "prediction_p10": 0.272727,
@@ -194426,14 +194426,14 @@
       "price": 0.48,
       "ownership": 0.1,
       "form": 2.0,
-      "prediction": 2.969803,
-      "prediction_p10": 0.164286,
-      "prediction_p90": 6.435714,
-      "prediction_range": 6.271429,
+      "prediction": 2.819586,
+      "prediction_p10": 0.177922,
+      "prediction_p90": 5.507143,
+      "prediction_range": 5.329221,
       "confidence": "low",
-      "expected_minutes": 37.450077,
-      "start_probability": 0.364495,
-      "sixty_probability": 0.423537,
+      "expected_minutes": 70.711829,
+      "start_probability": 0.630991,
+      "sixty_probability": 0.795237,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -194456,18 +194456,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 3.333333,
+          "points_per_90": 2.195122,
           "recent_3_points": 2.0,
-          "recent_3_minutes": 54.0,
+          "recent_3_minutes": 82.0,
           "recent_3_xg": 0.04,
-          "recent_3_xa": 0.003333,
+          "recent_3_xa": 0.01,
           "ict_index_per_90": 1.090711,
           "influence_per_90": 5.935813,
           "creativity_per_90": 4.906604,
           "threat_per_90": 0.810169,
-          "bps_per_90": 21.688312,
+          "bps_per_90": 9.688312,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.045302
+          "xgi_per_90": 0.040052
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -194483,7 +194483,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 37.450077,
+        "expected_minutes": 70.711829,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -194530,7 +194530,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "37.45 min",
+          "value": "70.71 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -194600,32 +194600,32 @@
         {
           "gw": 10,
           "points": 1.0,
-          "minutes": 6.0,
+          "minutes": 90.0,
           "starts": 1.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.020000000000000018,
           "ict_index": 0.0,
-          "bps": 5.0,
+          "bps": 15.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.023978685612788632,
-        "xa_per_90": 0.028774422735346358,
-        "points_per_90": 3.037300177619893,
+        "xg_per_90": 0.02086553323029366,
+        "xa_per_90": 0.027820710973724884,
+        "points_per_90": 2.6429675425038637,
         "starts": 8,
-        "minutes": 563,
+        "minutes": 647,
         "goals": 0,
         "assists": 0,
         "ict_index_per_90": 1.090711,
-        "bps_per_90": 21.688312,
+        "bps_per_90": 9.688312,
         "bonus_per_90": 0.0,
         "influence_per_90": 5.935813,
         "creativity_per_90": 4.906604,
         "threat_per_90": 0.810169,
-        "xgi_per_90": 0.045302
+        "xgi_per_90": 0.040052
       },
       "historical_record": {
         "career": {
@@ -195697,13 +195697,13 @@
       "name": "Araujo",
       "position": "Defender",
       "team": "Liverpool",
-      "price": 0.54,
-      "ownership": 4.1,
+      "price": 0.55,
+      "ownership": 4.2,
       "form": 3.0,
-      "prediction": 4.063137,
-      "prediction_p10": 0.427381,
-      "prediction_p90": 8.51,
-      "prediction_range": 8.082619,
+      "prediction": 3.992998,
+      "prediction_p10": 0.494444,
+      "prediction_p90": 8.550909,
+      "prediction_range": 8.056465,
       "confidence": "low",
       "expected_minutes": 38.612206,
       "start_probability": 0.435585,
@@ -197175,15 +197175,15 @@
       "team": "Coventry City",
       "price": 0.53,
       "ownership": 0.1,
-      "form": 0.4,
-      "prediction": 1.221558,
+      "form": 0.6,
+      "prediction": 1.390648,
       "prediction_p10": 0.0,
-      "prediction_p90": 3.011111,
-      "prediction_range": 3.011111,
+      "prediction_p90": 3.430159,
+      "prediction_range": 3.430159,
       "confidence": "medium",
-      "expected_minutes": 19.100451,
-      "start_probability": 0.214022,
-      "sixty_probability": 0.196892,
+      "expected_minutes": 22.386127,
+      "start_probability": 0.310436,
+      "sixty_probability": 0.301665,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -197207,17 +197207,17 @@
         },
         "current_form": {
           "points_per_90": 22.5,
-          "recent_3_points": 0.333333,
-          "recent_3_minutes": 1.333333,
+          "recent_3_points": 0.666667,
+          "recent_3_minutes": 2.666667,
           "recent_3_xg": 0.0,
-          "recent_3_xa": 0.013333,
-          "ict_index_per_90": 15.375,
-          "influence_per_90": 33.0,
-          "creativity_per_90": 116.25,
+          "recent_3_xa": 0.033333,
+          "ict_index_per_90": 10.25,
+          "influence_per_90": 22.0,
+          "creativity_per_90": 77.5,
           "threat_per_90": 0.0,
-          "bps_per_90": 60.0,
+          "bps_per_90": 70.0,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.9
+          "xgi_per_90": 0.99
         },
         "current_club": {
           "points_per_90": 3.217804,
@@ -197233,7 +197233,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 19.100451,
+        "expected_minutes": 22.386127,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -197260,7 +197260,7 @@
         },
         {
           "label": "Current form",
-          "value": "0.33 pts/GW",
+          "value": "0.67 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -197280,7 +197280,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "19.10 min",
+          "value": "22.39 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -197349,13 +197349,13 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 4.0,
           "starts": 0.0,
           "xg": 0.0,
-          "xa": 0.0,
+          "xa": 0.06,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 4.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
@@ -197363,19 +197363,19 @@
       ],
       "underlying": {
         "xg_per_90": 0.0,
-        "xa_per_90": 0.33749999999999997,
-        "points_per_90": 9.375,
+        "xa_per_90": 0.41538461538461535,
+        "points_per_90": 10.384615384615385,
         "starts": 0,
-        "minutes": 48,
+        "minutes": 52,
         "goals": 0,
         "assists": 0,
-        "ict_index_per_90": 15.375,
-        "bps_per_90": 60.0,
+        "ict_index_per_90": 10.25,
+        "bps_per_90": 70.0,
         "bonus_per_90": 0.0,
-        "influence_per_90": 33.0,
-        "creativity_per_90": 116.25,
+        "influence_per_90": 22.0,
+        "creativity_per_90": 77.5,
         "threat_per_90": 0.0,
-        "xgi_per_90": 0.9
+        "xgi_per_90": 0.99
       },
       "historical_record": {
         "career": {
@@ -199883,13 +199883,13 @@
       "name": "Dedić",
       "position": "Defender",
       "team": "Newcastle",
-      "price": 0.45,
+      "price": 0.44000000000000006,
       "ownership": 1.1,
       "form": 2.6,
-      "prediction": 2.900005,
+      "prediction": 2.928863,
       "prediction_p10": 0.22,
-      "prediction_p90": 6.375,
-      "prediction_range": 6.155,
+      "prediction_p90": 6.392045,
+      "prediction_range": 6.172045,
       "confidence": "low",
       "expected_minutes": 49.532422,
       "start_probability": 0.593737,
@@ -201583,15 +201583,15 @@
       "team": "Coventry City",
       "price": 0.5,
       "ownership": 0.4,
-      "form": 3.2,
-      "prediction": 2.319656,
+      "form": 3.4,
+      "prediction": 2.43298,
       "prediction_p10": 0.0,
-      "prediction_p90": 5.47,
-      "prediction_range": 5.47,
+      "prediction_p90": 5.455758,
+      "prediction_range": 5.455758,
       "confidence": "low",
-      "expected_minutes": 22.540123,
-      "start_probability": 0.27969,
-      "sixty_probability": 0.26646,
+      "expected_minutes": 25.407757,
+      "start_probability": 0.298658,
+      "sixty_probability": 0.270393,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -201614,18 +201614,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 3.214286,
-          "recent_3_points": 1.0,
-          "recent_3_minutes": 28.0,
+          "points_per_90": 4.137931,
+          "recent_3_points": 1.333333,
+          "recent_3_minutes": 29.0,
           "recent_3_xg": 0.013333,
           "recent_3_xa": 0.0,
-          "ict_index_per_90": 3.183964,
-          "influence_per_90": 12.098393,
-          "creativity_per_90": 4.811853,
-          "threat_per_90": 15.940733,
-          "bps_per_90": 23.448987,
-          "bonus_per_90": 0.876623,
-          "xgi_per_90": 0.167727
+          "ict_index_per_90": 2.547171,
+          "influence_per_90": 9.678715,
+          "creativity_per_90": 3.849483,
+          "threat_per_90": 12.752586,
+          "bps_per_90": 36.75919,
+          "bonus_per_90": 0.701299,
+          "xgi_per_90": 0.165471
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -201641,7 +201641,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 22.540123,
+        "expected_minutes": 25.407757,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -201668,7 +201668,7 @@
         },
         {
           "label": "Current form",
-          "value": "1.00 pts/GW",
+          "value": "1.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -201688,7 +201688,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "22.54 min",
+          "value": "25.41 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -201757,33 +201757,33 @@
         },
         {
           "gw": 10,
-          "points": 0.0,
-          "minutes": 0.0,
+          "points": 1.0,
+          "minutes": 3.0,
           "starts": 0.0,
           "xg": 0.0,
           "xa": 0.0,
           "ict_index": 0.0,
-          "bps": 0.0,
+          "bps": 3.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.1404,
-        "xa_per_90": 0.007200000000000001,
-        "points_per_90": 6.12,
+        "xg_per_90": 0.13873517786561265,
+        "xa_per_90": 0.007114624505928854,
+        "points_per_90": 6.403162055335969,
         "starts": 3,
-        "minutes": 250,
+        "minutes": 253,
         "goals": 1,
         "assists": 1,
-        "ict_index_per_90": 3.183964,
-        "bps_per_90": 23.448987,
-        "bonus_per_90": 0.876623,
-        "influence_per_90": 12.098393,
-        "creativity_per_90": 4.811853,
-        "threat_per_90": 15.940733,
-        "xgi_per_90": 0.167727
+        "ict_index_per_90": 2.547171,
+        "bps_per_90": 36.75919,
+        "bonus_per_90": 0.701299,
+        "influence_per_90": 9.678715,
+        "creativity_per_90": 3.849483,
+        "threat_per_90": 12.752586,
+        "xgi_per_90": 0.165471
       },
       "historical_record": {
         "career": {
@@ -207915,10 +207915,10 @@
       "name": "Diouf",
       "position": "Defender",
       "team": "Brentford",
-      "price": 0.45,
+      "price": 0.44000000000000006,
       "ownership": 0.1,
       "form": 0.6,
-      "prediction": 1.038084,
+      "prediction": 1.034745,
       "prediction_p10": 0.0,
       "prediction_p90": 2.507143,
       "prediction_range": 2.507143,
@@ -216086,10 +216086,10 @@
       "name": "Bahoya",
       "position": "Midfielder",
       "team": "Leeds",
-      "price": 0.49000000000000005,
+      "price": 0.48,
       "ownership": 0.0,
       "form": 0.4,
-      "prediction": 1.154538,
+      "prediction": 1.150565,
       "prediction_p10": 0.0,
       "prediction_p90": 3.0,
       "prediction_range": 3.0,
@@ -218191,15 +218191,15 @@
       "team": "Coventry City",
       "price": 0.55,
       "ownership": 0.0,
-      "form": 0.6,
-      "prediction": 2.844003,
-      "prediction_p10": 0.11,
-      "prediction_p90": 5.777778,
-      "prediction_range": 5.667778,
+      "form": 2.0,
+      "prediction": 2.818812,
+      "prediction_p10": 0.25,
+      "prediction_p90": 6.172222,
+      "prediction_range": 5.922222,
       "confidence": "low",
-      "expected_minutes": 24.622759,
-      "start_probability": 0.240139,
-      "sixty_probability": 0.230555,
+      "expected_minutes": 56.892425,
+      "start_probability": 0.573529,
+      "sixty_probability": 0.519051,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -218222,18 +218222,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 3.506494,
-          "recent_3_points": 1.0,
-          "recent_3_minutes": 25.666667,
-          "recent_3_xg": 0.016667,
-          "recent_3_xa": 0.003333,
+          "points_per_90": 6.293706,
+          "recent_3_points": 3.333333,
+          "recent_3_minutes": 47.666667,
+          "recent_3_xg": 0.083333,
+          "recent_3_xa": 0.02,
           "ict_index_per_90": 1.204225,
           "influence_per_90": 3.295775,
           "creativity_per_90": 1.330986,
           "threat_per_90": 7.605634,
-          "bps_per_90": 36.971831,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.07013
+          "bps_per_90": 27.596831,
+          "bonus_per_90": 0.625,
+          "xgi_per_90": 0.195105
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -218249,7 +218249,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 24.622759,
+        "expected_minutes": 56.892425,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -218276,7 +218276,7 @@
         },
         {
           "label": "Current form",
-          "value": "1.00 pts/GW",
+          "value": "3.33 pts/GW",
           "detail": "Average points across the previous three completed gameweeks."
         },
         {
@@ -218296,7 +218296,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "24.62 min",
+          "value": "56.89 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -218365,33 +218365,33 @@
         },
         {
           "gw": 10,
-          "points": 1.0,
-          "minutes": 6.0,
+          "points": 8.0,
+          "minutes": 72.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.2,
+          "xa": 0.049999999999999996,
           "ict_index": 0.0,
-          "bps": 4.0,
-          "bonus": 0.0,
+          "bps": 33.0,
+          "bonus": 1.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.05844155844155844,
-        "xa_per_90": 0.011688311688311689,
-        "points_per_90": 3.5064935064935066,
+        "xg_per_90": 0.15734265734265734,
+        "xa_per_90": 0.03776223776223776,
+        "points_per_90": 6.293706293706294,
         "starts": 2,
-        "minutes": 77,
-        "goals": 0,
+        "minutes": 143,
+        "goals": 1,
         "assists": 0,
         "ict_index_per_90": 1.204225,
-        "bps_per_90": 36.971831,
-        "bonus_per_90": 0.0,
+        "bps_per_90": 27.596831,
+        "bonus_per_90": 0.625,
         "influence_per_90": 3.295775,
         "creativity_per_90": 1.330986,
         "threat_per_90": 7.605634,
-        "xgi_per_90": 0.07013
+        "xgi_per_90": 0.195105
       },
       "historical_record": {
         "career": {
@@ -218475,14 +218475,14 @@
       "price": 0.4,
       "ownership": 0.2,
       "form": 2.6,
-      "prediction": 3.14959,
+      "prediction": 2.861682,
       "prediction_p10": 0.25,
-      "prediction_p90": 6.541758,
-      "prediction_range": 6.291758,
+      "prediction_p90": 6.1025,
+      "prediction_range": 5.8525,
       "confidence": "low",
-      "expected_minutes": 34.916822,
-      "start_probability": 0.420611,
-      "sixty_probability": 0.349381,
+      "expected_minutes": 61.647128,
+      "start_probability": 0.638456,
+      "sixty_probability": 0.753221,
       "fixture": {
         "gw": 11,
         "team_code": 9,
@@ -218505,18 +218505,18 @@
           "start_rate": 0.0
         },
         "current_form": {
-          "points_per_90": 4.285714,
+          "points_per_90": 2.571429,
           "recent_3_points": 2.0,
-          "recent_3_minutes": 42.0,
-          "recent_3_xg": 0.04,
-          "recent_3_xa": 0.003333,
+          "recent_3_minutes": 70.0,
+          "recent_3_xg": 0.05,
+          "recent_3_xa": 0.006667,
           "ict_index_per_90": 32.189286,
           "influence_per_90": 130.678571,
           "creativity_per_90": 1.425,
           "threat_per_90": 189.964286,
-          "bps_per_90": 73.821429,
+          "bps_per_90": 63.821429,
           "bonus_per_90": 0.0,
-          "xgi_per_90": 0.230075
+          "xgi_per_90": 0.157604
         },
         "current_club": {
           "points_per_90": 0.0,
@@ -218532,7 +218532,7 @@
           "xg_against_per_90": 1.96875,
           "goals_against_per_90": 2.375
         },
-        "expected_minutes": 34.916822,
+        "expected_minutes": 61.647128,
         "home_away": "home",
         "fixture_environment": 2.32625
       },
@@ -218579,7 +218579,7 @@
         },
         {
           "label": "Expected minutes",
-          "value": "34.92 min",
+          "value": "61.65 min",
           "detail": "Separate expected-minutes model output."
         },
         {
@@ -218649,32 +218649,32 @@
         {
           "gw": 10,
           "points": 1.0,
-          "minutes": 6.0,
+          "minutes": 90.0,
           "starts": 1.0,
-          "xg": 0.0,
-          "xa": 0.0,
+          "xg": 0.02999999999999997,
+          "xa": 0.009999999999999998,
           "ict_index": 0.0,
-          "bps": 3.0,
+          "bps": 5.0,
           "bonus": 0.0,
           "fixture": "GW10",
           "is_home": false
         }
       ],
       "underlying": {
-        "xg_per_90": 0.13318385650224215,
-        "xa_per_90": 0.008071748878923767,
-        "points_per_90": 7.668161434977578,
+        "xg_per_90": 0.1055374592833876,
+        "xa_per_90": 0.008794788273615635,
+        "points_per_90": 5.570032573289902,
         "starts": 3,
-        "minutes": 223,
+        "minutes": 307,
         "goals": 1,
         "assists": 0,
         "ict_index_per_90": 32.189286,
-        "bps_per_90": 73.821429,
+        "bps_per_90": 63.821429,
         "bonus_per_90": 0.0,
         "influence_per_90": 130.678571,
         "creativity_per_90": 1.425,
         "threat_per_90": 189.964286,
-        "xgi_per_90": 0.230075
+        "xgi_per_90": 0.157604
       },
       "historical_record": {
         "career": {
