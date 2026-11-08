@@ -2972,15 +2972,24 @@ function renderFeaturedPlayers(fixtures) {
             if (!fixtures.length) return '<span class="fixture-difficulty-empty">—</span>';
             return fixtures.map(fixture => {
                 const difficulty = fixture.difficulty === null || fixture.difficulty === "" || !Number.isFinite(Number(fixture.difficulty)) ? null : Number(fixture.difficulty);
-                const difficultyClass = difficulty == null ? "unknown" : difficulty <= 2 ? "low" : difficulty >= 4 ? "high" : "mid";
+                const isCurrent = hasCurrentFixtures && Number(fixture.gw) === dataGameweek;
+                const difficultyClass = isCurrent ? "current-result" : difficulty == null ? "unknown" : difficulty <= 2 ? "low" : difficulty >= 4 ? "high" : "mid";
                 const venue = fixture.is_home ? "H" : "A";
                 const venueLabel = fixture.is_home ? "Home" : "Away";
-                const sourceTag = fixture.source && fixture.source !== "official_fpl" ? '<span class="fixture-difficulty-estimate" title="Model-based estimate, not an official FPL rating">EST</span>' : "";
-                return '<div class="fixture-difficulty-match ' + difficultyClass + '" title="' + esc(venueLabel + " vs " + fixture.opponent + (difficulty == null ? "" : " · FDR " + difficulty)) + '">' +
+                let displayValue = difficulty == null ? "—" : difficulty.toFixed(0);
+                let sourceTag = fixture.source && fixture.source !== "official_fpl" ? '<span class="fixture-difficulty-estimate" title="Model-based estimate, not an official FPL rating">EST</span>' : "";
+                if (isCurrent) {
+                    const hasScore = fixture.team_score !== null && fixture.team_score !== undefined && fixture.opponent_score !== null && fixture.opponent_score !== undefined;
+                    displayValue = hasScore ? Number(fixture.team_score) + "–" + Number(fixture.opponent_score) : "vs";
+                    const status = fixture.status === "finished" ? "FT" : fixture.status === "live" ? ("LIVE" + (fixture.minutes ? " " + fixture.minutes + "'" : "")) : (fixture.kickoff ? new Date(fixture.kickoff).toLocaleDateString("en-GB",{day:"numeric",month:"short",timeZone:"Europe/London"}) : "TBC");
+                    sourceTag = '<span class="fixture-difficulty-estimate">' + esc(status) + '</span>';
+                }
+                const title = venueLabel + " vs " + fixture.opponent + (isCurrent ? " · " + (fixture.status || "scheduled") : difficulty == null ? "" : " · FDR " + difficulty);
+                return '<div class="fixture-difficulty-match ' + difficultyClass + '" title="' + esc(title) + '">' +
                     '<span class="fixture-difficulty-venue">' + venue + '</span>' +
-                    (teamLogo(fixture.opponent) ? '<img class="fixture-difficulty-opponent-crest" src="' + teamLogo(fixture.opponent) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '<span class="fixture-difficulty-opponent-crest team-crest-fallback">' + esc(teamMonogram(fixture.opponent)) + '</span>') + '<span class="fixture-difficulty-opponent fixture-difficulty-opponent-name">' + esc(fixture.opponent || "Opponent n/a") + '</span>' +
-                    '<span class="fixture-difficulty-fdr">' + (difficulty == null ? "—" : difficulty.toFixed(0)) + '</span>' +
-                    sourceTag + '</div>';
+                    (teamLogo(fixture.opponent) ? '<img class="fixture-difficulty-opponent-crest" src="' + teamLogo(fixture.opponent) + '" alt="" loading="lazy">' : '<span class="fixture-difficulty-opponent-crest team-crest-fallback">' + esc(teamMonogram(fixture.opponent)) + '</span>') +
+                    '<span class="fixture-difficulty-opponent fixture-difficulty-opponent-name">' + esc(fixture.opponent || "Opponent n/a") + '</span>' +
+                    '<span class="fixture-difficulty-fdr">' + displayValue + '</span>' + sourceTag + '</div>';
             }).join("");
         };
 
