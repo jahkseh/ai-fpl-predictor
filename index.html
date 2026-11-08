@@ -931,26 +931,6 @@ body[data-theme="light"] .hero-stat span {
         @media(max-width:900px){.differential-grid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:520px){.differential-grid{grid-template-columns:1fr}}
         
-        /* Current Gameweek fixtures */
-        .current-fixtures-section{background:var(--surface)}
-        .current-fixtures-status{display:flex;align-items:center;gap:8px;margin:0 0 14px;color:var(--text-muted);font-size:11px;font-weight:700}
-        .current-fixtures-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-        .current-fixture-card{min-width:0;padding:15px 16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);box-shadow:0 5px 18px rgba(21,56,112,.04)}
-        .current-fixture-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;color:var(--text-muted);font-size:10px;font-weight:700}
-        .current-fixture-state{padding:4px 8px;border-radius:20px;background:#eef4ff;color:#31599b;font-size:9px;font-weight:900;white-space:nowrap}
-        .current-fixture-state.live{background:#fff0ed;color:#c44736}
-        .current-fixture-state.finished{background:#edf8f2;color:#16865b}
-        .current-fixture-teams{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px}
-        .current-fixture-team{display:flex;align-items:center;gap:8px;min-width:0;color:var(--text);font-size:12px;font-weight:800}
-        .current-fixture-team.away{justify-content:flex-end;text-align:right}
-        .current-fixture-team img{width:27px;height:27px;object-fit:contain;flex:0 0 27px}
-        .current-fixture-team span{min-width:0;overflow-wrap:anywhere}
-        .current-fixture-score{color:var(--text);font-size:17px;font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap}
-        .current-fixture-vs{color:var(--text-muted);font-size:9px;font-weight:900}
-        .current-fixture-loading,.current-fixtures-empty{grid-column:1/-1;padding:18px;border:1px dashed var(--border);border-radius:12px;color:var(--text-muted);font-size:11px;text-align:center}
-        .current-fixtures-footnote{margin:12px 0 0;color:var(--text-muted);font-size:9px}
-        @media(max-width:700px){.current-fixtures-grid{grid-template-columns:1fr}.current-fixture-card{padding:13px}.current-fixture-team{font-size:11px}.current-fixture-score{font-size:15px}}
-
         /* Fixture difficulty calendar */
         .fixture-difficulty-section{background:var(--surface-soft)}
         .fixture-difficulty-note{max-width:980px;margin:0 auto 18px;padding:13px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text-muted);font-size:11px;line-height:1.55}
@@ -2278,19 +2258,6 @@ body[data-theme="light"] .performance-stat-primary{background:linear-gradient(14
     </div>
 </section>
 
-<section class="section current-fixtures-section" id="current-fixtures">
-    <div class="section-title">
-        <span class="section-kicker">This week</span>
-        <h2>Gameweek Fixtures</h2>
-        <p id="current-fixtures-subtitle">Every match in the current gameweek, with live scores and final results.</p>
-    </div>
-    <div class="current-fixtures-status" id="current-fixtures-status" aria-live="polite">Loading official FPL fixtures…</div>
-    <div class="current-fixtures-grid" id="current-fixtures-grid">
-        <div class="current-fixture-loading">Loading the current gameweek schedule…</div>
-    </div>
-    <p class="current-fixtures-footnote" id="current-fixtures-updated"></p>
-</section>
-
 <section class="section fixture-difficulty-section" id="fixture-difficulty">
     <div class="section-title">
         <span class="section-kicker">Fixture planner</span>
@@ -3055,46 +3022,6 @@ function renderFeaturedPlayers(fixtures) {
             (estimatedFixtures ? 'EST marks model-based estimates where official FPL difficulty was unavailable.' : 'All ratings shown in this window are official FPL difficulty ratings.');
     }
 
-    async function loadCurrentGameweekFixtures() {
-        const grid = document.getElementById("current-fixtures-grid");
-        const status = document.getElementById("current-fixtures-status");
-        const subtitle = document.getElementById("current-fixtures-subtitle");
-        const updated = document.getElementById("current-fixtures-updated");
-        if (!grid || !status) return;
-        const esc = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-        const kickoffLabel = value => {
-            if (!value) return "Kick-off time TBC";
-            const date = new Date(value);
-            return Number.isNaN(date.getTime()) ? "Kick-off time TBC" : date.toLocaleString("en-GB",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",timeZone:"Europe/London"});
-        };
-        try {
-            const response = await fetch("current_fixtures.json?ts=" + Date.now());
-            if (!response.ok) throw new Error("Current fixture data unavailable");
-            const payload = await response.json();
-            const fixtures = Array.isArray(payload.fixtures) ? payload.fixtures : [];
-            if (!fixtures.length) throw new Error("No fixtures published for the current gameweek");
-            if (subtitle) subtitle.textContent = "All " + fixtures.length + " official fixtures for Gameweek " + payload.gameweek + ", including live scores and completed results.";
-            const liveCount = fixtures.filter(f => f.started && !f.finished).length;
-            const finishedCount = fixtures.filter(f => f.finished).length;
-            status.textContent = fixtures.length + " matches · " + liveCount + " live · " + finishedCount + " completed";
-            grid.innerHTML = fixtures.map(fixture => {
-                const finished = Boolean(fixture.finished);
-                const live = Boolean(fixture.started) && !finished;
-                const state = finished ? "Full time" : live ? (fixture.minutes ? "Live · " + fixture.minutes + "'" : "Live") : kickoffLabel(fixture.kickoff);
-                const stateClass = finished ? "finished" : live ? "live" : "";
-                const hasScore = fixture.home_score !== null && fixture.home_score !== undefined && fixture.away_score !== null && fixture.away_score !== undefined;
-                const score = hasScore ? '<strong class="current-fixture-score">' + Number(fixture.home_score) + ' – ' + Number(fixture.away_score) + '</strong>' : '<span class="current-fixture-vs">VS</span>';
-                const logo = (url,name) => url ? '<img src="' + esc(url) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '';
-                return '<article class="current-fixture-card"><div class="current-fixture-meta"><span>GW' + Number(payload.gameweek) + '</span><span class="current-fixture-state ' + stateClass + '">' + esc(state) + '</span></div><div class="current-fixture-teams"><div class="current-fixture-team">' + logo(fixture.home_logo,fixture.home) + '<span>' + esc(fixture.home) + '</span></div>' + score + '<div class="current-fixture-team away"><span>' + esc(fixture.away) + '</span>' + logo(fixture.away_logo,fixture.away) + '</div></div></article>';
-            }).join("");
-            if (updated && payload.generated_at_utc) updated.textContent = "Official FPL fixture data · Updated " + new Date(payload.generated_at_utc).toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Europe/London"}) + " UK time.";
-        } catch (error) {
-            status.textContent = "Current gameweek fixtures could not be loaded.";
-            grid.innerHTML = '<div class="current-fixtures-empty">The official fixture list is temporarily unavailable. It will retry after the next data refresh.</div>';
-            console.warn("Current gameweek fixtures loading error:", error.message);
-        }
-    }
-
     async function loadFixtureDifficulty() {
         const body = document.getElementById("fixture-difficulty-body");
         try {
@@ -3122,7 +3049,6 @@ function renderFeaturedPlayers(fixtures) {
         });
     });
     loadFixtureDifficulty();
-    loadCurrentGameweekFixtures();
 
     function renderPlayerComparison(players, gameweek) {
         const firstSelect = document.getElementById("compare-player-a");
