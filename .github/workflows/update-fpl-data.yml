@@ -138,9 +138,6 @@ jobs:
             --history prediction_history.json \
             --output prediction_lookback.json
 
-      - name: Publish current Gameweek fixtures and scores
-        run: python model/publish_current_fixtures.py --output current_fixtures.json
-
       - name: Validate generated data
         env:
           TARGET_GAMEWEEK: ${{ steps.gw.outputs.gameweek }}
@@ -192,14 +189,22 @@ jobs:
                   assert rating is None or 1 <= int(rating) <= 5, f"Invalid FDR for {team.get('team')}"
                   assert fixture.get("source") in {"official_fpl", "model_estimate", "unavailable"}, f"Unknown FDR source: {fixture.get('source')}"
 
-          current_fixtures = json.loads(Path("current_fixtures.json").read_text(encoding="utf-8"))
-          current_matches = current_fixtures.get("fixtures", [])
-          assert 1 <= int(current_fixtures.get("gameweek", 0)) <= 38, "Current fixture gameweek is invalid"
-          assert len(current_matches) >= 1, "Current gameweek fixture list is empty"
-          for match in current_matches:
-              assert match.get("home") and match.get("away") and match.get("id") is not None, "Current fixture is missing team details"
-              if match.get("finished") or match.get("started"):
-                  assert match.get("home_score") is not None and match.get("away_score") is not None, "Started/finished fixture is missing scores"
+          current_gw = int(fixture_data.get("data_gameweek", 0))
+          assert current_gw > 0, "Fixture data is missing its current gameweek"
+          current_rows = {
+              team.get("team"): [fixture for fixture in team.get("fixtures", []) if int(fixture.get("gw", -1)) == current_gw]
+              for team in ranked_teams
+          }
+          assert all(len(fixtures) == 1 for fixtures in current_rows.values()), "Every club must have exactly one current-gameweek fixture"
+          assert len({fixture.get("fixture_id") for fixtures in current_rows.values() for fixture in fixtures}) == 10, "Current gameweek must contain exactly 10 unique official fixtures"
+          for team_name, fixtures in current_rows.items():
+              fixture = fixtures[0]
+              assert fixture.get("opponent") in current_rows, f"Unknown GW{current_gw} opponent for {team_name}"
+              reciprocal = current_rows[fixture["opponent"]][0]
+              assert reciprocal.get("opponent") == team_name and reciprocal.get("fixture_id") == fixture.get("fixture_id"), f"GW{current_gw} fixture pairing is inconsistent for {team_name}"
+              assert fixture.get("status") in {"scheduled", "live", "finished"}, f"Invalid GW{current_gw} status for {team_name}"
+              if fixture["status"] in {"live", "finished"}:
+                  assert fixture.get("team_score") is not None and fixture.get("opponent_score") is not None, f"Missing official GW{current_gw} score for {team_name}"
 
           # Accuracy depends on a genuinely frozen full-player pool, not just
           # the top three players per fixture. Fail before publishing if history
@@ -231,7 +236,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json prediction_accuracy.json prediction_accuracy_history.json prediction_lookback.json fixture_difficulty.json current_fixtures.json index.html model/publish_lookback_results.py model/publish_current_fixtures.py
+          git add predictions.json live_data.json differentials.json player_profiles.json prediction_history.json prediction_audit.json prediction_accuracy.json prediction_accuracy_history.json prediction_lookback.json fixture_difficulty.json index.html model/publish_lookback_results.py
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0

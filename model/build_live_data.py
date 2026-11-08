@@ -193,6 +193,85 @@ def load_official_fpl_fixture_difficulties() -> dict[tuple[int, str, str], tuple
         return {}
 
 
+def load_current_gameweek_fixture_results(target_gameweek: int) -> tuple[int, list[dict]]:
+    """Load every current-GW fixture and its official status/score from FPL."""
+    headers = {"User-Agent": "ScoutXI/1.0 (public current-gameweek fixture lookup)"}
+
+    def fetch_json(url: str):
+        request = Request(url, headers=headers)
+        with urlopen(request, timeout=20) as response:
+            return json.loads(response.read().decode("utf-8"))
+
+    bootstrap = fetch_json("https://fantasy.premierleague.com/api/bootstrap-static/")
+    fixtures = fetch_json("https://fantasy.premierleague.com/api/fixtures/")
+    events = bootstrap.get("events", [])
+    current_event = next((event for event in events if event.get("is_current")), None)
+    current_gw = int(current_event["id"]) if current_event else max(1, int(target_gameweek) - 1)
+
+    canonical = {normalize_name(name): name for name in SLUGS.values()}
+    aliases = {
+        "nottinghamforest": "Nott'm Forest",
+        "tottenhamhotspur": "Spurs",
+        "brightonandhovealbion": "Brighton",
+        "manchesterunited": "Man Utd",
+        "manchestercity": "Man City",
+        "afcbournemouth": "Bournemouth",
+        "leedsunited": "Leeds",
+    }
+    canonical.update({normalize_name(alias): name for alias, name in aliases.items()})
+    team_names = {
+        int(team["id"]): canonical[normalize_name(team["name"])]
+        for team in bootstrap.get("teams", [])
+        if normalize_name(team.get("name", "")) in canonical
+    }
+
+    rows = []
+    for fixture in fixtures:
+        if int(fixture.get("event") or 0) != current_gw:
+            continue
+        home = team_names.get(int(fixture.get("team_h", 0)))
+        away = team_names.get(int(fixture.get("team_a", 0)))
+        if not home or not away:
+            raise ValueError(f"GW{current_gw} fixture has an unrecognised FPL team: {fixture}")
+        home_score = fixture.get("team_h_score")
+        away_score = fixture.get("team_a_score")
+        started = bool(fixture.get("started"))
+        finished = bool(fixture.get("finished"))
+        if (started or finished) and (home_score is None or away_score is None):
+            raise ValueError(f"GW{current_gw} started/finished fixture is missing an official score: {fixture.get('id')}")
+        shared = {
+            "gw": current_gw,
+            "fixture_id": int(fixture["id"]),
+            "difficulty": None,
+            "source": "official_fpl",
+            "kickoff": fixture.get("kickoff_time"),
+            "status": "finished" if finished else "live" if started else "scheduled",
+            "minutes": fixture.get("minutes"),
+            "home_score": home_score,
+            "away_score": away_score,
+        }
+        rows.extend([
+            {
+                **shared, "opponent": away, "is_home": True,
+                "difficulty": fixture.get("team_h_difficulty"),
+                "team_score": home_score, "opponent_score": away_score,
+            },
+            {
+                **shared, "opponent": home, "is_home": False,
+                "difficulty": fixture.get("team_a_difficulty"),
+                "team_score": away_score, "opponent_score": home_score,
+            },
+        ])
+
+    fixture_ids = {row["fixture_id"] for row in rows}
+    if len(rows) != 20 or len(fixture_ids) != 10:
+        raise ValueError(
+            f"Expected 10 official GW{current_gw} fixtures / 20 club rows; "
+            f"received {len(fixture_ids)} fixtures / {len(rows)} rows."
+        )
+    return current_gw, rows
+
+
 def safe_float(value):
     if pd.isna(value):
         return None
@@ -842,10 +921,22 @@ def main() -> None:
         if clean_fixtures:
             fixtures_by_team[team] = clean_fixtures
 
+    current_gameweek, current_gameweek_rows = load_current_gameweek_fixture_results(args.gameweek)
+    for row in current_gameweek_rows:
+        opposite = next(
+            item for item in current_gameweek_rows
+            if item["fixture_id"] == row["fixture_id"] and item["is_home"] != row["is_home"]
+        )
+        club_name = opposite["opponent"]
+        fixtures_by_team.setdefault(club_name, []).append(row)
+
+    for team_fixtures in fixtures_by_team.values():
+        team_fixtures.sort(key=lambda item: (int(item["gw"]), item.get("kickoff") or ""))
+
     fixture_difficulty_payload = {
         "season": profile_payload.get("season", "2026/27"),
-        "data_gameweek": profile_payload.get("data_gameweek"),
-        "next_gameweek": profile_payload.get("next_gameweek"),
+        "data_gameweek": current_gameweek,
+        "next_gameweek": args.gameweek,
         "generated_at_utc": profile_payload.get("generated_at_utc"),
         "difficulty_scale": {"min": 1, "max": 5, "easier": 1, "harder": 5},
         "teams": [

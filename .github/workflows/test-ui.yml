@@ -53,12 +53,32 @@ jobs:
           assert 'id="fixture-difficulty-summary"' in html, "Fixture summary is missing"
           assert 'data-fdr-horizon="3"' in html and 'data-fdr-horizon="5"' in html, "3- and 5-GW horizon controls are required"
           assert 'fixture_difficulty.json' in html, "Homepage does not load published fixture difficulty data"
+          assert 'id="current-fixtures"' not in html, "Standalone current fixtures section should be removed"
 
           payload = json.loads(Path("fixture_difficulty.json").read_text(encoding="utf-8"))
           teams = payload.get("teams", [])
           assert len(teams) == 20, f"Expected 20 club schedules, got {len(teams)}"
           assert len({team.get("team") for team in teams}) == 20, "Club schedules must be unique"
           assert payload.get("next_gameweek"), "Next gameweek is missing"
+          current_gw = int(payload.get("data_gameweek", 0))
+          assert current_gw > 0, "Current data gameweek is missing"
+          current_rows = {
+              team.get("team"): [fixture for fixture in team.get("fixtures", []) if int(fixture.get("gw", -1)) == current_gw]
+              for team in teams
+          }
+          current_row_count = sum(len(fixtures) for fixtures in current_rows.values())
+          assert current_row_count in {0, 20}, "Current gameweek fixture data must be either absent (before refresh) or complete"
+          if current_row_count:
+              assert all(len(fixtures) == 1 for fixtures in current_rows.values()), "Every club must have exactly one current-gameweek fixture"
+              assert len({fixture.get("fixture_id") for fixtures in current_rows.values() for fixture in fixtures}) == 10, "Current gameweek must contain exactly 10 unique fixtures"
+              for team_name, fixtures in current_rows.items():
+                  fixture = fixtures[0]
+                  assert fixture.get("opponent") in current_rows, f"Unknown GW{current_gw} opponent for {team_name}"
+                  reciprocal = current_rows[fixture["opponent"]][0]
+                  assert reciprocal.get("opponent") == team_name and reciprocal.get("fixture_id") == fixture.get("fixture_id"), f"GW{current_gw} fixture pairing is inconsistent for {team_name}"
+                  assert fixture.get("status") in {"scheduled", "live", "finished"}, f"Invalid current fixture status for {team_name}"
+                  if fixture["status"] in {"live", "finished"}:
+                      assert fixture.get("team_score") is not None and fixture.get("opponent_score") is not None, f"Missing official score for {team_name}"
           for team in teams:
               fixtures = team.get("fixtures", [])
               assert fixtures, f"No upcoming fixtures for {team.get('team')}"
