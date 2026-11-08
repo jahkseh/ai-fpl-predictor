@@ -2920,7 +2920,14 @@ function renderFeaturedPlayers(fixtures) {
         const availableGameweeks = [...new Set(teams.flatMap(team =>
             (Array.isArray(team.fixtures) ? team.fixtures : []).map(fixture => Number(fixture.gw))
         ))].filter(Number.isFinite).sort((a,b) => a-b);
-        const gameweeks = availableGameweeks.slice(0, fixtureDifficultyHorizon);
+        const dataGameweek = Number(payload && payload.data_gameweek);
+        const hasCurrentFixtures = Number.isFinite(dataGameweek) && teams.some(team =>
+            (team.fixtures || []).some(fixture => Number(fixture.gw) === dataGameweek)
+        );
+        const upcomingGameweeks = availableGameweeks.filter(gw => !hasCurrentFixtures || gw > dataGameweek);
+        const gameweeks = hasCurrentFixtures
+            ? [dataGameweek, ...upcomingGameweeks.slice(0, fixtureDifficultyHorizon)]
+            : availableGameweeks.slice(0, fixtureDifficultyHorizon);
         const selectedGameweeks = new Set(gameweeks);
 
         if (!teams.length || !gameweeks.length) {
@@ -2935,7 +2942,8 @@ function renderFeaturedPlayers(fixtures) {
             const fixtures = (Array.isArray(team.fixtures) ? team.fixtures : [])
                 .filter(fixture => selectedGameweeks.has(Number(fixture.gw)))
                 .sort((a,b) => Number(a.gw)-Number(b.gw) || String(a.kickoff || "").localeCompare(String(b.kickoff || "")));
-            const rated = fixtures.filter(fixture => {
+            const upcomingFixtures = fixtures.filter(fixture => !hasCurrentFixtures || Number(fixture.gw) > dataGameweek);
+            const rated = upcomingFixtures.filter(fixture => {
                 const difficulty = Number(fixture.difficulty);
                 return fixture.difficulty !== null && fixture.difficulty !== "" && Number.isFinite(difficulty) && difficulty >= 1 && difficulty <= 5;
             });
