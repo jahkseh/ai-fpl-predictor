@@ -2,8 +2,42 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-08T00:46:02.731738+00:00",
+  "generated_at_utc": "2026-11-08T10:07:44.512282+00:00",
   "picks": [
+    {
+      "name": "Gibbs-White",
+      "team": "Nott'm Forest",
+      "position": "Midfielder",
+      "ownership": 9.3,
+      "prediction": 4.902068,
+      "differential_score": 4.446,
+      "price": 7.8,
+      "form": 2.2,
+      "fixture": {
+        "home": "Bournemouth",
+        "away": "Nott'm Forest",
+        "is_home": false,
+        "kickoff": "2026-11-21T15:00:00",
+        "match_id": "26-27-prem-afc-bournemouth-vs-nottingham-forest"
+      }
+    },
+    {
+      "name": "Anderson",
+      "team": "Man City",
+      "position": "Midfielder",
+      "ownership": 3.6,
+      "prediction": 4.594082,
+      "differential_score": 4.429,
+      "price": 6.3,
+      "form": 2.8,
+      "fixture": {
+        "home": "Man City",
+        "away": "Fulham",
+        "is_home": true,
+        "kickoff": "2026-11-21T12:30:00",
+        "match_id": "26-27-prem-manchester-city-vs-fulham"
+      }
+    },
     {
       "name": "George",
       "team": "Everton",
@@ -39,29 +73,12 @@
       }
     },
     {
-      "name": "Osula",
-      "team": "Newcastle",
-      "position": "Forward",
-      "ownership": 0.4,
-      "prediction": 4.221244,
-      "differential_score": 4.204,
-      "price": 5.8,
-      "form": 2.8,
-      "fixture": {
-        "home": "Newcastle",
-        "away": "Arsenal",
-        "is_home": true,
-        "kickoff": "2026-11-21T17:30:00",
-        "match_id": "26-27-prem-newcastle-united-vs-arsenal"
-      }
-    },
-    {
       "name": "Madueke",
       "team": "Arsenal",
       "position": "Midfielder",
       "ownership": 0.5,
-      "prediction": 4.188674,
-      "differential_score": 4.168,
+      "prediction": 4.273277,
+      "differential_score": 4.252,
       "price": 6.2,
       "form": 4.0,
       "fixture": {
@@ -70,23 +87,6 @@
         "is_home": false,
         "kickoff": "2026-11-21T17:30:00",
         "match_id": "26-27-prem-newcastle-united-vs-arsenal"
-      }
-    },
-    {
-      "name": "Thiago",
-      "team": "Brentford",
-      "position": "Forward",
-      "ownership": 9.0,
-      "prediction": 4.550868,
-      "differential_score": 4.141,
-      "price": 7.8,
-      "form": 4.4,
-      "fixture": {
-        "home": "Brentford",
-        "away": "Everton",
-        "is_home": true,
-        "kickoff": "2026-11-23T20:00:00",
-        "match_id": "26-27-prem-brentford-vs-everton"
       }
     }
   ]
