@@ -2,8 +2,42 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-08T18:05:33.665624+00:00",
+  "generated_at_utc": "2026-11-08T22:19:50.209896+00:00",
   "picks": [
+    {
+      "name": "Wirtz",
+      "team": "Liverpool",
+      "position": "Midfielder",
+      "ownership": 5.2,
+      "prediction": 5.036337,
+      "differential_score": 4.774,
+      "price": 7.2,
+      "form": 5.6,
+      "fixture": {
+        "home": "Liverpool",
+        "away": "Man Utd",
+        "is_home": true,
+        "kickoff": "2026-11-22T16:30:00",
+        "match_id": "26-27-prem-liverpool-vs-manchester-united"
+      }
+    },
+    {
+      "name": "Manzambi",
+      "team": "Aston Villa",
+      "position": "Midfielder",
+      "ownership": 8.4,
+      "prediction": 5.019685,
+      "differential_score": 4.598,
+      "price": 6.2,
+      "form": 5.2,
+      "fixture": {
+        "home": "Aston Villa",
+        "away": "Sunderland",
+        "is_home": true,
+        "kickoff": "2026-11-21T15:00:00",
+        "match_id": "26-27-prem-aston-villa-vs-sunderland"
+      }
+    },
     {
       "name": "Gibbs-White",
       "team": "Nott'm Forest",
@@ -39,54 +73,20 @@
       }
     },
     {
-      "name": "George",
-      "team": "Everton",
+      "name": "Mac Allister",
+      "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 0.5,
-      "prediction": 4.33827,
-      "differential_score": 4.317,
-      "price": 5.5,
-      "form": 2.2,
+      "ownership": 1.3,
+      "prediction": 4.412056,
+      "differential_score": 4.355,
+      "price": 5.4,
+      "form": 3.0,
       "fixture": {
-        "home": "Brentford",
-        "away": "Everton",
-        "is_home": false,
-        "kickoff": "2026-11-23T20:00:00",
-        "match_id": "26-27-prem-brentford-vs-everton"
-      }
-    },
-    {
-      "name": "Silva",
-      "team": "Bournemouth",
-      "position": "Defender",
-      "ownership": 3.6,
-      "prediction": 4.45704,
-      "differential_score": 4.297,
-      "price": 5.1,
-      "form": 4.8,
-      "fixture": {
-        "home": "Bournemouth",
-        "away": "Nott'm Forest",
+        "home": "Liverpool",
+        "away": "Man Utd",
         "is_home": true,
-        "kickoff": "2026-11-21T15:00:00",
-        "match_id": "26-27-prem-afc-bournemouth-vs-nottingham-forest"
-      }
-    },
-    {
-      "name": "Madueke",
-      "team": "Arsenal",
-      "position": "Midfielder",
-      "ownership": 0.5,
-      "prediction": 4.273277,
-      "differential_score": 4.252,
-      "price": 6.2,
-      "form": 4.0,
-      "fixture": {
-        "home": "Newcastle",
-        "away": "Arsenal",
-        "is_home": false,
-        "kickoff": "2026-11-21T17:30:00",
-        "match_id": "26-27-prem-newcastle-united-vs-arsenal"
+        "kickoff": "2026-11-22T16:30:00",
+        "match_id": "26-27-prem-liverpool-vs-manchester-united"
       }
     }
   ]
