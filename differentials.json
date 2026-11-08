@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-08T10:32:52.783688+00:00",
+  "generated_at_utc": "2026-11-08T18:05:33.665624+00:00",
   "picks": [
     {
       "name": "Gibbs-White",
@@ -59,9 +59,9 @@
       "name": "Silva",
       "team": "Bournemouth",
       "position": "Defender",
-      "ownership": 3.5,
+      "ownership": 3.6,
       "prediction": 4.45704,
-      "differential_score": 4.301,
+      "differential_score": 4.297,
       "price": 5.1,
       "form": 4.8,
       "fixture": {
