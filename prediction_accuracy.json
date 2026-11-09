@@ -1,5 +1,225 @@
 {
-  "available": false,
+  "available": true,
+  "source": "official_fpl_api",
   "gameweek": 10,
-  "reason": "gameweek not marked finished by the official FPL API"
+  "prediction_scope": "full_player_pool",
+  "players_expected": 670,
+  "players_evaluated": 651,
+  "players_unmatched": 19,
+  "player_match_rate": 0.972,
+  "mae": 1.253,
+  "rmse": 2.09,
+  "mean_error": 0.16,
+  "p10_p90_coverage": 0.754,
+  "diagnostics": {
+    "by_position": [
+      {
+        "position": "Defender",
+        "players": 216,
+        "mae": 1.201,
+        "rmse": 1.891,
+        "mean_error": 0.131
+      },
+      {
+        "position": "Forward",
+        "players": 77,
+        "mae": 1.502,
+        "rmse": 2.638,
+        "mean_error": 0.172
+      },
+      {
+        "position": "Goalkeeper",
+        "players": 70,
+        "mae": 0.644,
+        "rmse": 1.334,
+        "mean_error": 0.077
+      },
+      {
+        "position": "Midfielder",
+        "players": 288,
+        "mae": 1.372,
+        "rmse": 2.212,
+        "mean_error": 0.198
+      }
+    ],
+    "by_confidence": [
+      {
+        "confidence": "high",
+        "players": 258,
+        "mae": 0.181,
+        "rmse": 0.267,
+        "mean_error": 0.129
+      },
+      {
+        "confidence": "low",
+        "players": 286,
+        "mae": 2.246,
+        "rmse": 2.954,
+        "mean_error": 0.109
+      },
+      {
+        "confidence": "medium",
+        "players": 107,
+        "mae": 1.181,
+        "rmse": 1.754,
+        "mean_error": 0.369
+      }
+    ],
+    "by_expected_minutes": [
+      {
+        "expected_minutes_band": "0-29",
+        "players": 379,
+        "mae": 0.541,
+        "rmse": 1.037,
+        "mean_error": 0.267
+      },
+      {
+        "expected_minutes_band": "30-59",
+        "players": 127,
+        "mae": 2.025,
+        "rmse": 2.725,
+        "mean_error": 0.202
+      },
+      {
+        "expected_minutes_band": "60-89",
+        "players": 145,
+        "mae": 2.436,
+        "rmse": 3.208,
+        "mean_error": -0.157
+      }
+    ],
+    "largest_absolute_errors": [
+      {
+        "name": "Alysson",
+        "team": "Aston Villa",
+        "position": "Midfielder",
+        "prediction": 2.159243,
+        "actual": 16.0,
+        "error": -13.841,
+        "absolute_error": 13.841,
+        "expected_minutes": 31.527908,
+        "confidence": "low",
+        "p10": 0.099091,
+        "p90": 5.651299
+      },
+      {
+        "name": "Barry",
+        "team": "Everton",
+        "position": "Forward",
+        "prediction": 3.472714,
+        "actual": 16.0,
+        "error": -12.527,
+        "absolute_error": 12.527,
+        "expected_minutes": 78.26521,
+        "confidence": "low",
+        "p10": 0.874167,
+        "p90": 7.574286
+      },
+      {
+        "name": "Dorgu",
+        "team": "Man Utd",
+        "position": "Midfielder",
+        "prediction": 0.758631,
+        "actual": 11.0,
+        "error": -10.241,
+        "absolute_error": 10.241,
+        "expected_minutes": 8.604621,
+        "confidence": "medium",
+        "p10": 0.0,
+        "p90": 2.303333
+      },
+      {
+        "name": "Delap",
+        "team": "Nott'm Forest",
+        "position": "Forward",
+        "prediction": 3.600298,
+        "actual": 13.0,
+        "error": -9.4,
+        "absolute_error": 9.4,
+        "expected_minutes": 70.157304,
+        "confidence": "low",
+        "p10": 0.875,
+        "p90": 8.18875
+      },
+      {
+        "name": "J.Murphy",
+        "team": "Newcastle",
+        "position": "Midfielder",
+        "prediction": 1.589729,
+        "actual": 10.0,
+        "error": -8.41,
+        "absolute_error": 8.41,
+        "expected_minutes": 49.271622,
+        "confidence": "low",
+        "p10": 0.071429,
+        "p90": 3.572619
+      },
+      {
+        "name": "Vuskovic",
+        "team": "Brighton",
+        "position": "Defender",
+        "prediction": 3.717972,
+        "actual": 12.0,
+        "error": -8.282,
+        "absolute_error": 8.282,
+        "expected_minutes": 77.250677,
+        "confidence": "low",
+        "p10": 0.725974,
+        "p90": 7.629167
+      },
+      {
+        "name": "Wirtz",
+        "team": "Liverpool",
+        "position": "Midfielder",
+        "prediction": 4.979027,
+        "actual": 13.0,
+        "error": -8.021,
+        "absolute_error": 8.021,
+        "expected_minutes": 66.921527,
+        "confidence": "low",
+        "p10": 1.064286,
+        "p90": 10.3
+      },
+      {
+        "name": "E.Le F\u00e9e",
+        "team": "Sunderland",
+        "position": "Midfielder",
+        "prediction": 3.745843,
+        "actual": 11.0,
+        "error": -7.254,
+        "absolute_error": 7.254,
+        "expected_minutes": 65.249574,
+        "confidence": "low",
+        "p10": 0.782143,
+        "p90": 8.171429
+      },
+      {
+        "name": "Thiago",
+        "team": "Brentford",
+        "position": "Forward",
+        "prediction": 5.13373,
+        "actual": -2.0,
+        "error": 7.134,
+        "absolute_error": 7.134,
+        "expected_minutes": 77.774818,
+        "confidence": "low",
+        "p10": 1.270455,
+        "p90": 10.601538
+      },
+      {
+        "name": "McGinn",
+        "team": "Aston Villa",
+        "position": "Midfielder",
+        "prediction": 2.938782,
+        "actual": 10.0,
+        "error": -7.061,
+        "absolute_error": 7.061,
+        "expected_minutes": 73.155847,
+        "confidence": "low",
+        "p10": 0.55,
+        "p90": 6.3
+      }
+    ]
+  },
+  "note": "Measured against frozen full eligible-player predictions matched to official FPL points. Player match rate reflects unmatched player-name records. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples."
 }
