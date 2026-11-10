@@ -2,17 +2,17 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-10T15:02:58.486018+00:00",
+  "generated_at_utc": "2026-11-10T21:27:19.680248+00:00",
   "picks": [
     {
       "name": "Wirtz",
       "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 5.4,
+      "ownership": 5.5,
       "prediction": 5.036337,
-      "differential_score": 4.764,
+      "differential_score": 4.759,
       "price": 7.2,
-      "form": 5.6,
+      "form": 6.5,
       "fixture": {
         "home": "Liverpool",
         "away": "Man Utd",
@@ -25,9 +25,9 @@
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 8.5,
+      "ownership": 8.6,
       "prediction": 5.053298,
-      "differential_score": 4.624,
+      "differential_score": 4.619,
       "price": 6.2,
       "form": 5.2,
       "fixture": {
@@ -46,7 +46,7 @@
       "prediction": 4.514586,
       "differential_score": 4.456,
       "price": 5.4,
-      "form": 3.2,
+      "form": 3.5,
       "fixture": {
         "home": "Liverpool",
         "away": "Man Utd",
@@ -80,7 +80,7 @@
       "prediction": 4.33827,
       "differential_score": 4.317,
       "price": 5.5,
-      "form": 2.2,
+      "form": 2.5,
       "fixture": {
         "home": "Brentford",
         "away": "Everton",
