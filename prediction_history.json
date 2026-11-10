@@ -12774,9 +12774,9 @@
             {
               "rank": 31,
               "name": "Madjo",
-              "prediction": 1.554544,
-              "prediction_p10": 0.087701,
-              "prediction_p90": 3.404444,
+              "prediction": 1.428,
+              "prediction_p10": 0.0,
+              "prediction_p90": 3.333333,
               "confidence": "medium",
               "expected_minutes": 1.513652
             },
@@ -14349,8 +14349,8 @@
             {
               "rank": 23,
               "name": "Wilson",
-              "prediction": 2.117173,
-              "prediction_p10": 0.125,
+              "prediction": 2.10621,
+              "prediction_p10": 0.1325,
               "prediction_p90": 5.586538,
               "confidence": "low",
               "expected_minutes": 55.827255
@@ -14813,15 +14813,6 @@
             },
             {
               "rank": 7,
-              "name": "Wharton",
-              "prediction": 3.24701,
-              "prediction_p10": 0.722967,
-              "prediction_p90": 6.603636,
-              "confidence": "low",
-              "expected_minutes": 83.220654
-            },
-            {
-              "rank": 8,
               "name": "Dasilva",
               "prediction": 3.174619,
               "prediction_p10": 0.120192,
@@ -14830,7 +14821,7 @@
               "expected_minutes": 80.751995
             },
             {
-              "rank": 9,
+              "rank": 8,
               "name": "Torp",
               "prediction": 3.126213,
               "prediction_p10": 0.3975,
@@ -14839,13 +14830,22 @@
               "expected_minutes": 45.470738
             },
             {
-              "rank": 10,
+              "rank": 9,
               "name": "Awoniyi",
               "prediction": 3.100391,
               "prediction_p10": 0.5,
               "prediction_p90": 7.287143,
               "confidence": "low",
               "expected_minutes": 49.89948
+            },
+            {
+              "rank": 10,
+              "name": "Wharton",
+              "prediction": 3.016637,
+              "prediction_p10": 0.663636,
+              "prediction_p90": 6.336364,
+              "confidence": "low",
+              "expected_minutes": 83.220654
             },
             {
               "rank": 11,
@@ -15254,21 +15254,21 @@
             },
             {
               "rank": 56,
-              "name": "Doucouré",
-              "prediction": 0.093231,
-              "prediction_p10": 0.0,
-              "prediction_p90": 0.333333,
-              "confidence": "high",
-              "expected_minutes": 0.42874
-            },
-            {
-              "rank": 57,
               "name": "Kesler-Hayden",
               "prediction": 0.091374,
               "prediction_p10": 0.0,
               "prediction_p90": 0.286555,
               "confidence": "high",
               "expected_minutes": 1.249962
+            },
+            {
+              "rank": 57,
+              "name": "Doucouré",
+              "prediction": 0.066926,
+              "prediction_p10": 0.0,
+              "prediction_p90": 0.252273,
+              "confidence": "high",
+              "expected_minutes": 0.42874
             },
             {
               "rank": 58,
@@ -16793,21 +16793,21 @@
             },
             {
               "rank": 2,
-              "name": "Anderson",
-              "prediction": 4.594082,
-              "prediction_p10": 0.83,
-              "prediction_p90": 9.5125,
-              "confidence": "low",
-              "expected_minutes": 83.194668
-            },
-            {
-              "rank": 3,
               "name": "Ndiaye",
               "prediction": 4.419984,
               "prediction_p10": 1.0,
               "prediction_p90": 8.8375,
               "confidence": "low",
               "expected_minutes": 63.3272
+            },
+            {
+              "rank": 3,
+              "name": "Anderson",
+              "prediction": 4.390083,
+              "prediction_p10": 0.841538,
+              "prediction_p90": 8.425,
+              "confidence": "low",
+              "expected_minutes": 83.194668
             },
             {
               "rank": 4,

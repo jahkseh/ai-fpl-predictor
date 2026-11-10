@@ -5,6 +5,46 @@
   "players_compared": 652,
   "largest_changes": [
     {
+      "name": "Wharton",
+      "old_prediction": 3.247,
+      "new_prediction": 3.017,
+      "change": -0.23,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 83.220654,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Anderson",
+      "old_prediction": 4.594,
+      "new_prediction": 4.39,
+      "change": -0.204,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 83.194668,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Madjo",
+      "old_prediction": 1.555,
+      "new_prediction": 1.428,
+      "change": -0.127,
+      "old_confidence": "medium",
+      "new_confidence": "medium",
+      "expected_minutes": 1.513652,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Doucour\u00e9",
+      "old_prediction": 0.093,
+      "new_prediction": 0.067,
+      "change": -0.026,
+      "old_confidence": "high",
+      "new_confidence": "high",
+      "expected_minutes": 0.42874,
+      "fixture_difficulty": 2
+    },
+    {
       "name": "N.Jackson",
       "old_prediction": 5.49,
       "new_prediction": 5.49,
@@ -212,46 +252,6 @@
       "old_confidence": "medium",
       "new_confidence": "medium",
       "expected_minutes": 74.174381,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Reinildo",
-      "old_prediction": 2.122,
-      "new_prediction": 2.122,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 76.385941,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Cash",
-      "old_prediction": 1.998,
-      "new_prediction": 1.998,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 50.543074,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Buend\u00eda",
-      "old_prediction": 1.993,
-      "new_prediction": 1.993,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 34.005317,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Ahoka",
-      "old_prediction": 1.988,
-      "new_prediction": 1.988,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 23.644093,
       "fixture_difficulty": 3
     }
   ]
