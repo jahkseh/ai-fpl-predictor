@@ -5,36 +5,6 @@
   "players_compared": 652,
   "largest_changes": [
     {
-      "name": "Verbruggen",
-      "old_prediction": 2.909,
-      "new_prediction": 3.149,
-      "change": 0.24,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 83.014583,
-      "fixture_difficulty": 2
-    },
-    {
-      "name": "Dewsbury-Hall",
-      "old_prediction": 3.891,
-      "new_prediction": 4.082,
-      "change": 0.191,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 64.286404,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Amass",
-      "old_prediction": 0.001,
-      "new_prediction": 0.028,
-      "change": 0.027,
-      "old_confidence": "high",
-      "new_confidence": "high",
-      "expected_minutes": 0.0,
-      "fixture_difficulty": 4
-    },
-    {
       "name": "N.Jackson",
       "old_prediction": 5.49,
       "new_prediction": 5.49,
@@ -252,6 +222,36 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 76.385941,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Cash",
+      "old_prediction": 1.998,
+      "new_prediction": 1.998,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 50.543074,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Buend\u00eda",
+      "old_prediction": 1.993,
+      "new_prediction": 1.993,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 34.005317,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Ahoka",
+      "old_prediction": 1.988,
+      "new_prediction": 1.988,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 23.644093,
       "fixture_difficulty": 3
     }
   ]
