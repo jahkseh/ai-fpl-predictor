@@ -38,7 +38,8 @@ def main() -> None:
         history = {"season": "2026/27", "gameweeks": []}
 
     record = {key: result.get(key) for key in (
-        "gameweek", "players_evaluated", "players_unmatched", "mae", "rmse",
+        "gameweek", "prediction_scope", "players_expected", "player_match_rate",
+        "players_evaluated", "players_unmatched", "mae", "rmse",
         "mean_error", "p10_p90_coverage", "source", "note"
     ) if key in result}
     records = [
