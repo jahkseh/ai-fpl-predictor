@@ -17411,21 +17411,21 @@
             },
             {
               "rank": 9,
+              "name": "Steur",
+              "prediction": 3.237206,
+              "prediction_p10": 0.196667,
+              "prediction_p90": 6.539161,
+              "confidence": "low",
+              "expected_minutes": 46.201319
+            },
+            {
+              "rank": 10,
               "name": "J.Murphy",
               "prediction": 3.230026,
               "prediction_p10": 0.597143,
               "prediction_p90": 7.236364,
               "confidence": "low",
               "expected_minutes": 55.291979
-            },
-            {
-              "rank": 10,
-              "name": "Steur",
-              "prediction": 3.210722,
-              "prediction_p10": 0.138571,
-              "prediction_p90": 6.539161,
-              "confidence": "low",
-              "expected_minutes": 46.201319
             },
             {
               "rank": 11,

@@ -27020,7 +27020,7 @@
       "name": "De Cuyper",
       "prediction": 3.313947,
       "price": 5.5,
-      "ownership": 47.7,
+      "ownership": 47.8,
       "position": "Defender",
       "team": "",
       "fixture_home": "Hull City",
@@ -39408,7 +39408,7 @@
       "name": "Gonzalo",
       "prediction": 2.492555,
       "price": 5.9,
-      "ownership": 3.7,
+      "ownership": 3.6,
       "position": "Forward",
       "team": "",
       "fixture_home": "Man City",
@@ -43205,6 +43205,82 @@
     },
     {
       "rank": 9,
+      "name": "Steur",
+      "prediction": 3.237206,
+      "price": 4.7,
+      "ownership": 0.1,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Newcastle",
+      "fixture_away": "Arsenal",
+      "prediction_std": 2.399815,
+      "prediction_p10": 0.196667,
+      "prediction_p90": 6.539161,
+      "prediction_range": 6.342494,
+      "confidence": "low",
+      "fixture_difficulty": 5,
+      "expected_minutes": 46.201319,
+      "start_probability": 0.440044,
+      "sixty_probability": 0.486893,
+      "fixture_context": {
+        "opponent": "Arsenal",
+        "is_home": true,
+        "team_strength": 3.0,
+        "opponent_strength": 5.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.175556,
+        "team_xg_against_per90": 1.764444,
+        "opponent_xg_for_per90": 1.651111,
+        "opponent_xg_against_per90": 0.787778,
+        "fixture_attack_mismatch": 0.387778,
+        "fixture_defence_mismatch": -0.113333,
+        "fixture_xg_environment": 2.826667
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": 4.326923,
+          "recent_3_points": 1.666667,
+          "recent_3_minutes": 34.666667,
+          "recent_3_xg": 0.02,
+          "recent_3_xa": 0.02,
+          "ict_index_per_90": 4.729189,
+          "influence_per_90": 11.317176,
+          "creativity_per_90": 31.643836,
+          "threat_per_90": 3.951528,
+          "bps_per_90": 34.880927,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.103846
+        },
+        "current_club": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.175556,
+          "goals_for_per_90": 1.333333
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 0.787778,
+          "goals_against_per_90": 0.555556
+        },
+        "expected_minutes": 46.201319,
+        "home_away": "home",
+        "fixture_environment": 2.826667
+      }
+    },
+    {
+      "rank": 10,
       "name": "J.Murphy",
       "prediction": 3.230026,
       "price": 5.9,
@@ -43275,82 +43351,6 @@
           "goals_against_per_90": 0.555556
         },
         "expected_minutes": 55.291979,
-        "home_away": "home",
-        "fixture_environment": 2.826667
-      }
-    },
-    {
-      "rank": 10,
-      "name": "Steur",
-      "prediction": 3.210722,
-      "price": 4.8,
-      "ownership": 0.1,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Newcastle",
-      "fixture_away": "Arsenal",
-      "prediction_std": 2.412793,
-      "prediction_p10": 0.138571,
-      "prediction_p90": 6.539161,
-      "prediction_range": 6.400589,
-      "confidence": "low",
-      "fixture_difficulty": 5,
-      "expected_minutes": 46.201319,
-      "start_probability": 0.440044,
-      "sixty_probability": 0.486893,
-      "fixture_context": {
-        "opponent": "Arsenal",
-        "is_home": true,
-        "team_strength": 3.0,
-        "opponent_strength": 5.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.175556,
-        "team_xg_against_per90": 1.764444,
-        "opponent_xg_for_per90": 1.651111,
-        "opponent_xg_against_per90": 0.787778,
-        "fixture_attack_mismatch": 0.387778,
-        "fixture_defence_mismatch": -0.113333,
-        "fixture_xg_environment": 2.826667
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": 4.326923,
-          "recent_3_points": 1.666667,
-          "recent_3_minutes": 34.666667,
-          "recent_3_xg": 0.02,
-          "recent_3_xa": 0.02,
-          "ict_index_per_90": 4.729189,
-          "influence_per_90": 11.317176,
-          "creativity_per_90": 31.643836,
-          "threat_per_90": 3.951528,
-          "bps_per_90": 34.880927,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.103846
-        },
-        "current_club": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.175556,
-          "goals_for_per_90": 1.333333
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 0.787778,
-          "goals_against_per_90": 0.555556
-        },
-        "expected_minutes": 46.201319,
         "home_away": "home",
         "fixture_environment": 2.826667
       }
@@ -43512,7 +43512,7 @@
       "name": "Hall",
       "prediction": 3.014963,
       "price": 5.2,
-      "ownership": 18.3,
+      "ownership": 18.2,
       "position": "Defender",
       "team": "",
       "fixture_home": "Newcastle",
