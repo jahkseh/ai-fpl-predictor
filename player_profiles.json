@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-14T18:15:43.507197+00:00",
+  "generated_at_utc": "2026-11-14T22:34:16.412633+00:00",
   "players": [
     {
       "id": 1,
@@ -23736,7 +23736,7 @@
       "position": "Midfielder",
       "team": "Bournemouth",
       "price": 0.67,
-      "ownership": 31.4,
+      "ownership": 31.5,
       "form": 6.5,
       "prediction": 4.664979,
       "prediction_p10": 1.534615,
@@ -123248,7 +123248,7 @@
       "position": "Midfielder",
       "team": "Liverpool",
       "price": 0.72,
-      "ownership": 5.6,
+      "ownership": 5.7,
       "form": 6.5,
       "prediction": 5.036337,
       "prediction_p10": 1.196667,
