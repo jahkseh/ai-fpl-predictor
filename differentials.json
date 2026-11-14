@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-14T10:36:19.755880+00:00",
+  "generated_at_utc": "2026-11-14T18:15:29.058091+00:00",
   "picks": [
     {
       "name": "Wirtz",
@@ -25,9 +25,9 @@
       "name": "Manzambi",
       "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 8.6,
+      "ownership": 8.5,
       "prediction": 5.053298,
-      "differential_score": 4.619,
+      "differential_score": 4.624,
       "price": 6.2,
       "form": 5.2,
       "fixture": {
