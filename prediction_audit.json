@@ -5,6 +5,16 @@
   "players_compared": 652,
   "largest_changes": [
     {
+      "name": "Roefs",
+      "old_prediction": 3.372,
+      "new_prediction": 3.388,
+      "change": 0.016,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 88.592779,
+      "fixture_difficulty": 3
+    },
+    {
       "name": "N.Jackson",
       "old_prediction": 5.49,
       "new_prediction": 5.49,
@@ -62,16 +72,6 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 77.651792,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Roefs",
-      "old_prediction": 3.372,
-      "new_prediction": 3.372,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 88.592779,
       "fixture_difficulty": 3
     },
     {
