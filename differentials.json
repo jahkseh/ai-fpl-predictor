@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-15T16:31:54.780741+00:00",
+  "generated_at_utc": "2026-11-15T23:02:33.015434+00:00",
   "picks": [
     {
       "name": "Wirtz",
@@ -59,9 +59,9 @@
       "name": "Gibbs-White",
       "team": "Nott'm Forest",
       "position": "Midfielder",
-      "ownership": 9.3,
+      "ownership": 9.2,
       "prediction": 4.902068,
-      "differential_score": 4.446,
+      "differential_score": 4.451,
       "price": 7.8,
       "form": 2.2,
       "fixture": {
