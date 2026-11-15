@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-15T06:40:44.407869+00:00",
+  "generated_at_utc": "2026-11-15T16:31:54.780741+00:00",
   "picks": [
     {
       "name": "Wirtz",
@@ -42,9 +42,9 @@
       "name": "Mac Allister",
       "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 1.3,
+      "ownership": 1.4,
       "prediction": 4.514586,
-      "differential_score": 4.456,
+      "differential_score": 4.451,
       "price": 5.4,
       "form": 3.5,
       "fixture": {

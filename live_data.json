@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-15T06:40:44.407869+00:00",
+  "generated_at_utc": "2026-11-15T16:31:54.780741+00:00",
   "player_count": 672,
   "fixtures": [
     {
@@ -155,9 +155,9 @@
       "name": "Mac Allister",
       "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 1.3,
+      "ownership": 1.4,
       "prediction": 4.514586,
-      "differential_score": 4.456,
+      "differential_score": 4.451,
       "price": 5.4,
       "form": 3.5,
       "fixture": {
@@ -2657,8 +2657,8 @@
       "saves_per_90": 0.0,
       "starts_per_90": 0.96,
       "defensive_contribution_per_90": 7.27,
-      "chance_next_round": 100.0,
-      "news": null,
+      "chance_next_round": 75.0,
+      "news": "Concussion - 75% chance of playing",
       "prediction": 1.99758,
       "prediction_std": 2.04187,
       "prediction_p10": 0.0,
@@ -6297,7 +6297,7 @@
       "team": "Bournemouth",
       "position": "Forward",
       "price": 6.5,
-      "ownership": 23.9,
+      "ownership": 24.0,
       "form": 9.0,
       "points_per_game": 6.1,
       "total_points": 9,
@@ -15813,7 +15813,7 @@
       "team": "Nott'm Forest",
       "position": "Defender",
       "price": 5.2,
-      "ownership": 4.2,
+      "ownership": 4.1,
       "form": 2.8,
       "points_per_game": 1.9,
       "total_points": 2,
@@ -29153,7 +29153,7 @@
       "team": "Liverpool",
       "position": "Midfielder",
       "price": 5.4,
-      "ownership": 1.3,
+      "ownership": 1.4,
       "form": 3.5,
       "points_per_game": 2.7,
       "total_points": 9,
@@ -29222,7 +29222,7 @@
         "kickoff": "2026-11-22T16:30:00",
         "match_id": "26-27-prem-liverpool-vs-manchester-united"
       },
-      "differential_score": 4.456
+      "differential_score": 4.451
     },
     {
       "id": 373,
@@ -39451,7 +39451,7 @@
       "team": "Brighton",
       "position": "Defender",
       "price": 5.3,
-      "ownership": 9.4,
+      "ownership": 9.5,
       "form": 7.5,
       "points_per_game": 7.0,
       "total_points": 12,
