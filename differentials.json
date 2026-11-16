@@ -2,7 +2,7 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-16T06:43:08.966695+00:00",
+  "generated_at_utc": "2026-11-16T19:45:40.175586+00:00",
   "picks": [
     {
       "name": "Wirtz",
@@ -12,7 +12,7 @@
       "prediction": 5.036337,
       "differential_score": 4.749,
       "price": 7.2,
-      "form": 6.5,
+      "form": 7.0,
       "fixture": {
         "home": "Liverpool",
         "away": "Man Utd",
@@ -46,7 +46,7 @@
       "prediction": 4.514586,
       "differential_score": 4.451,
       "price": 5.4,
-      "form": 3.5,
+      "form": 4.3,
       "fixture": {
         "home": "Liverpool",
         "away": "Man Utd",
@@ -80,7 +80,7 @@
       "prediction": 4.33827,
       "differential_score": 4.317,
       "price": 5.5,
-      "form": 2.5,
+      "form": 3.0,
       "fixture": {
         "home": "Brentford",
         "away": "Everton",
