@@ -15030,9 +15030,9 @@
             {
               "rank": 31,
               "name": "Hamer",
-              "prediction": 1.390648,
+              "prediction": 1.36071,
               "prediction_p10": 0.0,
-              "prediction_p90": 3.430159,
+              "prediction_p90": 3.267857,
               "confidence": "medium",
               "expected_minutes": 22.386127
             },
