@@ -5,6 +5,36 @@
   "players_compared": 652,
   "largest_changes": [
     {
+      "name": "Mingueza",
+      "old_prediction": 1.437,
+      "new_prediction": 1.404,
+      "change": -0.033,
+      "old_confidence": "medium",
+      "new_confidence": "medium",
+      "expected_minutes": 61.465965,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Cook",
+      "old_prediction": 1.912,
+      "new_prediction": 1.879,
+      "change": -0.032,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 56.782667,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "J.Fletcher",
+      "old_prediction": 0.184,
+      "new_prediction": 0.176,
+      "change": -0.007,
+      "old_confidence": "high",
+      "new_confidence": "high",
+      "expected_minutes": 1.022375,
+      "fixture_difficulty": 4
+    },
+    {
       "name": "N.Jackson",
       "old_prediction": 5.49,
       "new_prediction": 5.49,
@@ -222,36 +252,6 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 76.385941,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Cash",
-      "old_prediction": 1.998,
-      "new_prediction": 1.998,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 50.543074,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Buend\u00eda",
-      "old_prediction": 1.993,
-      "new_prediction": 1.993,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 34.005317,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Ahoka",
-      "old_prediction": 1.988,
-      "new_prediction": 1.988,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 23.644093,
       "fixture_difficulty": 3
     }
   ]

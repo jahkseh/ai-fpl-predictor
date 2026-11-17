@@ -9081,82 +9081,6 @@
     },
     {
       "rank": 24,
-      "name": "Cook",
-      "prediction": 1.91165,
-      "price": 5.0,
-      "ownership": 0.1,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Bournemouth",
-      "fixture_away": "Nott'm Forest",
-      "prediction_std": 1.855551,
-      "prediction_p10": 0.0,
-      "prediction_p90": 4.56,
-      "prediction_range": 4.56,
-      "confidence": "low",
-      "fixture_difficulty": 2,
-      "expected_minutes": 56.782667,
-      "start_probability": 0.533439,
-      "sixty_probability": 0.527922,
-      "fixture_context": {
-        "opponent": "Nott'm Forest",
-        "is_home": true,
-        "team_strength": 3.0,
-        "opponent_strength": 2.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.752222,
-        "team_xg_against_per90": 1.111111,
-        "opponent_xg_for_per90": 1.61,
-        "opponent_xg_against_per90": 1.018889,
-        "fixture_attack_mismatch": 0.733333,
-        "fixture_defence_mismatch": 0.498889,
-        "fixture_xg_environment": 3.362222
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 2.70022,
-          "xg_per_90": 0.016702,
-          "xa_per_90": 0.088959,
-          "goals_per_90": 0.011021,
-          "assists_per_90": 0.110213,
-          "start_rate": 0.517007
-        },
-        "current_form": {
-          "points_per_90": 6.05042,
-          "recent_3_points": 2.666667,
-          "recent_3_minutes": 39.666667,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 3.550311,
-          "influence_per_90": 15.594457,
-          "creativity_per_90": 18.608655,
-          "threat_per_90": 2.360656,
-          "bps_per_90": 15.44417,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": 0.18731
-        },
-        "current_club": {
-          "points_per_90": 2.70022,
-          "xg_per_90": 0.016702,
-          "xa_per_90": 0.088959,
-          "start_rate": 0.517007
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.752222,
-          "goals_for_per_90": 1.555556
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.018889,
-          "goals_against_per_90": 1.333333
-        },
-        "expected_minutes": 56.782667,
-        "home_away": "home",
-        "fixture_environment": 3.362222
-      }
-    },
-    {
-      "rank": 25,
       "name": "Rodríguez",
       "prediction": 1.90689,
       "price": 6.0,
@@ -9227,6 +9151,82 @@
           "goals_against_per_90": 1.333333
         },
         "expected_minutes": 17.743709,
+        "home_away": "home",
+        "fixture_environment": 3.362222
+      }
+    },
+    {
+      "rank": 25,
+      "name": "Cook",
+      "prediction": 1.879294,
+      "price": 4.9,
+      "ownership": 0.1,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Bournemouth",
+      "fixture_away": "Nott'm Forest",
+      "prediction_std": 1.832869,
+      "prediction_p10": 0.0,
+      "prediction_p90": 4.5,
+      "prediction_range": 4.5,
+      "confidence": "low",
+      "fixture_difficulty": 2,
+      "expected_minutes": 56.782667,
+      "start_probability": 0.533439,
+      "sixty_probability": 0.527922,
+      "fixture_context": {
+        "opponent": "Nott'm Forest",
+        "is_home": true,
+        "team_strength": 3.0,
+        "opponent_strength": 2.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.752222,
+        "team_xg_against_per90": 1.111111,
+        "opponent_xg_for_per90": 1.61,
+        "opponent_xg_against_per90": 1.018889,
+        "fixture_attack_mismatch": 0.733333,
+        "fixture_defence_mismatch": 0.498889,
+        "fixture_xg_environment": 3.362222
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 2.70022,
+          "xg_per_90": 0.016702,
+          "xa_per_90": 0.088959,
+          "goals_per_90": 0.011021,
+          "assists_per_90": 0.110213,
+          "start_rate": 0.517007
+        },
+        "current_form": {
+          "points_per_90": 6.05042,
+          "recent_3_points": 2.666667,
+          "recent_3_minutes": 39.666667,
+          "recent_3_xg": 0.0,
+          "recent_3_xa": 0.0,
+          "ict_index_per_90": 3.550311,
+          "influence_per_90": 15.594457,
+          "creativity_per_90": 18.608655,
+          "threat_per_90": 2.360656,
+          "bps_per_90": 15.44417,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": 0.18731
+        },
+        "current_club": {
+          "points_per_90": 2.70022,
+          "xg_per_90": 0.016702,
+          "xa_per_90": 0.088959,
+          "start_rate": 0.517007
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.752222,
+          "goals_for_per_90": 1.555556
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.018889,
+          "goals_against_per_90": 1.333333
+        },
+        "expected_minutes": 56.782667,
         "home_away": "home",
         "fixture_environment": 3.362222
       }
@@ -11820,7 +11820,7 @@
       "name": "Thiago",
       "prediction": 4.600534,
       "price": 7.8,
-      "ownership": 8.0,
+      "ownership": 7.9,
       "position": "Forward",
       "team": "",
       "fixture_home": "Brentford",
@@ -23218,17 +23218,17 @@
     {
       "rank": 30,
       "name": "Mingueza",
-      "prediction": 1.436756,
-      "price": 4.3,
+      "prediction": 1.404138,
+      "price": 4.2,
       "ownership": 0.0,
       "position": "Defender",
       "team": "",
       "fixture_home": "Coventry City",
       "fixture_away": "Crystal Palace",
-      "prediction_std": 1.709637,
+      "prediction_std": 1.660147,
       "prediction_p10": 0.0,
-      "prediction_p90": 4.098485,
-      "prediction_range": 4.098485,
+      "prediction_p90": 4.0,
+      "prediction_range": 4.0,
       "confidence": "medium",
       "fixture_difficulty": 2,
       "expected_minutes": 61.465965,
@@ -33708,7 +33708,7 @@
       "name": "Lammens",
       "prediction": 3.220439,
       "price": 4.8,
-      "ownership": 7.2,
+      "ownership": 7.1,
       "position": "Goalkeeper",
       "team": "",
       "fixture_home": "Liverpool",
@@ -36289,82 +36289,6 @@
     },
     {
       "rank": 49,
-      "name": "J.Fletcher",
-      "prediction": 0.183784,
-      "price": 4.9,
-      "ownership": 0.0,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Liverpool",
-      "fixture_away": "Man Utd",
-      "prediction_std": 0.390388,
-      "prediction_p10": 0.0,
-      "prediction_p90": 0.6,
-      "prediction_range": 0.6,
-      "confidence": "high",
-      "fixture_difficulty": 4,
-      "expected_minutes": 1.022375,
-      "start_probability": 0.001977,
-      "sixty_probability": 0.008525,
-      "fixture_context": {
-        "opponent": "Liverpool",
-        "is_home": false,
-        "team_strength": 3.0,
-        "opponent_strength": 4.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.556667,
-        "team_xg_against_per90": 1.668889,
-        "opponent_xg_for_per90": 1.43,
-        "opponent_xg_against_per90": 1.178889,
-        "fixture_attack_mismatch": 0.377778,
-        "fixture_defence_mismatch": -0.238889,
-        "fixture_xg_environment": 2.986667
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 2.523364,
-          "xg_per_90": 0.025234,
-          "xa_per_90": 0.016822,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": null,
-          "recent_3_points": 0.0,
-          "recent_3_minutes": 0.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 0.0,
-          "influence_per_90": 0.0,
-          "creativity_per_90": 0.0,
-          "threat_per_90": 0.0,
-          "bps_per_90": 0.0,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": null
-        },
-        "current_club": {
-          "points_per_90": 2.523364,
-          "xg_per_90": 0.025234,
-          "xa_per_90": 0.016822,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.556667,
-          "goals_for_per_90": 1.111111
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.178889,
-          "goals_against_per_90": 1.0
-        },
-        "expected_minutes": 1.022375,
-        "home_away": "away",
-        "fixture_environment": 2.986667
-      }
-    },
-    {
-      "rank": 50,
       "name": "Ugarte",
       "prediction": 0.17913,
       "price": 5.0,
@@ -36435,6 +36359,82 @@
           "goals_against_per_90": 1.0
         },
         "expected_minutes": 0.655581,
+        "home_away": "away",
+        "fixture_environment": 2.986667
+      }
+    },
+    {
+      "rank": 50,
+      "name": "J.Fletcher",
+      "prediction": 0.17643,
+      "price": 4.8,
+      "ownership": 0.0,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Liverpool",
+      "fixture_away": "Man Utd",
+      "prediction_std": 0.401247,
+      "prediction_p10": 0.0,
+      "prediction_p90": 0.6025,
+      "prediction_range": 0.6025,
+      "confidence": "high",
+      "fixture_difficulty": 4,
+      "expected_minutes": 1.022375,
+      "start_probability": 0.001977,
+      "sixty_probability": 0.008525,
+      "fixture_context": {
+        "opponent": "Liverpool",
+        "is_home": false,
+        "team_strength": 3.0,
+        "opponent_strength": 4.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.556667,
+        "team_xg_against_per90": 1.668889,
+        "opponent_xg_for_per90": 1.43,
+        "opponent_xg_against_per90": 1.178889,
+        "fixture_attack_mismatch": 0.377778,
+        "fixture_defence_mismatch": -0.238889,
+        "fixture_xg_environment": 2.986667
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 2.523364,
+          "xg_per_90": 0.025234,
+          "xa_per_90": 0.016822,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": null,
+          "recent_3_points": 0.0,
+          "recent_3_minutes": 0.0,
+          "recent_3_xg": 0.0,
+          "recent_3_xa": 0.0,
+          "ict_index_per_90": 0.0,
+          "influence_per_90": 0.0,
+          "creativity_per_90": 0.0,
+          "threat_per_90": 0.0,
+          "bps_per_90": 0.0,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": null
+        },
+        "current_club": {
+          "points_per_90": 2.523364,
+          "xg_per_90": 0.025234,
+          "xa_per_90": 0.016822,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.556667,
+          "goals_for_per_90": 1.111111
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.178889,
+          "goals_against_per_90": 1.0
+        },
+        "expected_minutes": 1.022375,
         "home_away": "away",
         "fixture_environment": 2.986667
       }
@@ -43056,7 +43056,7 @@
       "name": "Barnes",
       "prediction": 3.804969,
       "price": 6.1,
-      "ownership": 6.6,
+      "ownership": 6.5,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Newcastle",

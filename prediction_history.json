@@ -13328,21 +13328,21 @@
             },
             {
               "rank": 24,
-              "name": "Cook",
-              "prediction": 1.91165,
-              "prediction_p10": 0.0,
-              "prediction_p90": 4.56,
-              "confidence": "low",
-              "expected_minutes": 56.782667
-            },
-            {
-              "rank": 25,
               "name": "Rodríguez",
               "prediction": 1.90689,
               "prediction_p10": 0.123611,
               "prediction_p90": 4.576786,
               "confidence": "medium",
               "expected_minutes": 17.743709
+            },
+            {
+              "rank": 25,
+              "name": "Cook",
+              "prediction": 1.879294,
+              "prediction_p10": 0.0,
+              "prediction_p90": 4.5,
+              "confidence": "low",
+              "expected_minutes": 56.782667
             },
             {
               "rank": 26,
@@ -15021,9 +15021,9 @@
             {
               "rank": 30,
               "name": "Mingueza",
-              "prediction": 1.436756,
+              "prediction": 1.404138,
               "prediction_p10": 0.0,
-              "prediction_p90": 4.098485,
+              "prediction_p90": 4.0,
               "confidence": "medium",
               "expected_minutes": 61.465965
             },
@@ -16580,21 +16580,21 @@
             },
             {
               "rank": 49,
-              "name": "J.Fletcher",
-              "prediction": 0.183784,
-              "prediction_p10": 0.0,
-              "prediction_p90": 0.6,
-              "confidence": "high",
-              "expected_minutes": 1.022375
-            },
-            {
-              "rank": 50,
               "name": "Ugarte",
               "prediction": 0.17913,
               "prediction_p10": 0.0,
               "prediction_p90": 0.629167,
               "confidence": "high",
               "expected_minutes": 0.655581
+            },
+            {
+              "rank": 50,
+              "name": "J.Fletcher",
+              "prediction": 0.17643,
+              "prediction_p10": 0.0,
+              "prediction_p90": 0.6025,
+              "confidence": "high",
+              "expected_minutes": 1.022375
             },
             {
               "rank": 51,
