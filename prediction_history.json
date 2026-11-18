@@ -17394,8 +17394,8 @@
             {
               "rank": 7,
               "name": "Barnes",
-              "prediction": 3.804969,
-              "prediction_p10": 0.791071,
+              "prediction": 3.809701,
+              "prediction_p10": 0.784066,
               "prediction_p90": 8.808889,
               "confidence": "low",
               "expected_minutes": 59.188379
