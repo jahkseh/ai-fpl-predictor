@@ -147,17 +147,17 @@
         },
         {
           "rank": 3,
-          "name": "Alysson",
-          "prediction": 3.487146,
-          "prediction_std": 2.576559,
-          "prediction_p10": 0.428571,
-          "prediction_p90": 7.255769,
-          "prediction_range": 6.827198,
+          "name": "McGinn",
+          "prediction": 3.663214,
+          "prediction_std": 2.890782,
+          "prediction_p10": 0.795,
+          "prediction_p90": 8.126786,
+          "prediction_range": 7.331786,
           "confidence": "low",
           "fixture_difficulty": 3,
-          "expected_minutes": 41.910474,
-          "start_probability": 0.485514,
-          "sixty_probability": 0.467082,
+          "expected_minutes": 63.748948,
+          "start_probability": 0.694196,
+          "sixty_probability": 0.718871,
           "fixture_context": {
             "opponent": "Sunderland",
             "is_home": true,
@@ -175,32 +175,32 @@
           },
           "model_inputs": {
             "historical_ability": {
-              "points_per_90": 5.744681,
-              "xg_per_90": 0.095745,
-              "xa_per_90": 0.095745,
-              "goals_per_90": 0.0,
-              "assists_per_90": 0.0,
-              "start_rate": 0.0
+              "points_per_90": 3.359923,
+              "xg_per_90": 0.067825,
+              "xa_per_90": 0.078372,
+              "goals_per_90": 0.103382,
+              "assists_per_90": 0.160817,
+              "start_rate": 0.486239
             },
             "current_form": {
-              "points_per_90": 8.860104,
-              "recent_3_points": 6.333333,
-              "recent_3_minutes": 64.333333,
-              "recent_3_xg": 0.14,
-              "recent_3_xa": 0.003333,
-              "ict_index_per_90": 5.494335,
-              "influence_per_90": 14.44867,
-              "creativity_per_90": 12.265631,
-              "threat_per_90": 27.428344,
-              "bps_per_90": 31.512353,
-              "bonus_per_90": 0.771429,
-              "xgi_per_90": 0.163636
+              "points_per_90": 6.515837,
+              "recent_3_points": 5.333333,
+              "recent_3_minutes": 73.666667,
+              "recent_3_xg": 0.526667,
+              "recent_3_xa": 0.163333,
+              "ict_index_per_90": 10.001615,
+              "influence_per_90": 41.249537,
+              "creativity_per_90": 42.818543,
+              "threat_per_90": 15.827243,
+              "bps_per_90": 29.706517,
+              "bonus_per_90": 0.876923,
+              "xgi_per_90": 0.766011
             },
             "current_club": {
-              "points_per_90": 5.744681,
-              "xg_per_90": 0.095745,
-              "xa_per_90": 0.095745,
-              "start_rate": 0.0
+              "points_per_90": 3.359923,
+              "xg_per_90": 0.067825,
+              "xa_per_90": 0.078372,
+              "start_rate": 0.486239
             },
             "team_attack": {
               "xg_for_per_90": 1.202222,
@@ -210,7 +210,7 @@
               "xg_against_per_90": 1.75,
               "goals_against_per_90": 1.888889
             },
-            "expected_minutes": 41.910474,
+            "expected_minutes": 63.748948,
             "home_away": "home",
             "fixture_environment": 2.668889
           }
@@ -2168,7 +2168,7 @@
       "name": "N.Jackson",
       "prediction": 5.48993,
       "price": 7.1,
-      "ownership": 32.0,
+      "ownership": 32.1,
       "position": "Forward",
       "team": "",
       "fixture_home": "Aston Villa",
@@ -2317,10 +2317,162 @@
     },
     {
       "rank": 3,
+      "name": "McGinn",
+      "prediction": 3.663214,
+      "price": 5.5,
+      "ownership": 3.9,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Aston Villa",
+      "fixture_away": "Sunderland",
+      "prediction_std": 2.890782,
+      "prediction_p10": 0.795,
+      "prediction_p90": 8.126786,
+      "prediction_range": 7.331786,
+      "confidence": "low",
+      "fixture_difficulty": 3,
+      "expected_minutes": 63.748948,
+      "start_probability": 0.694196,
+      "sixty_probability": 0.718871,
+      "fixture_context": {
+        "opponent": "Sunderland",
+        "is_home": true,
+        "team_strength": 3.0,
+        "opponent_strength": 3.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.202222,
+        "team_xg_against_per90": 1.674444,
+        "opponent_xg_for_per90": 1.466667,
+        "opponent_xg_against_per90": 1.75,
+        "fixture_attack_mismatch": -0.547778,
+        "fixture_defence_mismatch": -0.207778,
+        "fixture_xg_environment": 2.668889
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 3.359923,
+          "xg_per_90": 0.067825,
+          "xa_per_90": 0.078372,
+          "goals_per_90": 0.103382,
+          "assists_per_90": 0.160817,
+          "start_rate": 0.486239
+        },
+        "current_form": {
+          "points_per_90": 6.515837,
+          "recent_3_points": 5.333333,
+          "recent_3_minutes": 73.666667,
+          "recent_3_xg": 0.526667,
+          "recent_3_xa": 0.163333,
+          "ict_index_per_90": 10.001615,
+          "influence_per_90": 41.249537,
+          "creativity_per_90": 42.818543,
+          "threat_per_90": 15.827243,
+          "bps_per_90": 29.706517,
+          "bonus_per_90": 0.876923,
+          "xgi_per_90": 0.766011
+        },
+        "current_club": {
+          "points_per_90": 3.359923,
+          "xg_per_90": 0.067825,
+          "xa_per_90": 0.078372,
+          "start_rate": 0.486239
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.202222,
+          "goals_for_per_90": 1.111111
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.75,
+          "goals_against_per_90": 1.888889
+        },
+        "expected_minutes": 63.748948,
+        "home_away": "home",
+        "fixture_environment": 2.668889
+      }
+    },
+    {
+      "rank": 4,
+      "name": "Suzuki",
+      "prediction": 3.593481,
+      "price": 5.1,
+      "ownership": 3.2,
+      "position": "Goalkeeper",
+      "team": "",
+      "fixture_home": "Aston Villa",
+      "fixture_away": "Sunderland",
+      "prediction_std": 2.698566,
+      "prediction_p10": 0.571429,
+      "prediction_p90": 7.63985,
+      "prediction_range": 7.068421,
+      "confidence": "low",
+      "fixture_difficulty": 3,
+      "expected_minutes": 79.003358,
+      "start_probability": 0.729938,
+      "sixty_probability": 0.845469,
+      "fixture_context": {
+        "opponent": "Sunderland",
+        "is_home": true,
+        "team_strength": 3.0,
+        "opponent_strength": 3.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.202222,
+        "team_xg_against_per90": 1.674444,
+        "opponent_xg_for_per90": 1.466667,
+        "opponent_xg_against_per90": 1.75,
+        "fixture_attack_mismatch": -0.547778,
+        "fixture_defence_mismatch": -0.207778,
+        "fixture_xg_environment": 2.668889
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": 1.666667,
+          "recent_3_points": 1.666667,
+          "recent_3_minutes": 90.0,
+          "recent_3_xg": 0.0,
+          "recent_3_xa": 0.0,
+          "ict_index_per_90": 3.24,
+          "influence_per_90": 32.32,
+          "creativity_per_90": 0.0,
+          "threat_per_90": 0.0,
+          "bps_per_90": 17.6,
+          "bonus_per_90": 0.4,
+          "xgi_per_90": 0.0
+        },
+        "current_club": {
+          "points_per_90": 0.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.202222,
+          "goals_for_per_90": 1.111111
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.75,
+          "goals_against_per_90": 1.888889
+        },
+        "expected_minutes": 79.003358,
+        "home_away": "home",
+        "fixture_environment": 2.668889
+      }
+    },
+    {
+      "rank": 5,
       "name": "Alysson",
       "prediction": 3.487146,
       "price": 4.9,
-      "ownership": 0.2,
+      "ownership": 0.3,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Aston Villa",
@@ -2387,158 +2539,6 @@
           "goals_against_per_90": 1.888889
         },
         "expected_minutes": 41.910474,
-        "home_away": "home",
-        "fixture_environment": 2.668889
-      }
-    },
-    {
-      "rank": 4,
-      "name": "Suzuki",
-      "prediction": 3.475533,
-      "price": 5.0,
-      "ownership": 3.2,
-      "position": "Goalkeeper",
-      "team": "",
-      "fixture_home": "Aston Villa",
-      "fixture_away": "Sunderland",
-      "prediction_std": 2.614053,
-      "prediction_p10": 0.582143,
-      "prediction_p90": 7.5,
-      "prediction_range": 6.917857,
-      "confidence": "low",
-      "fixture_difficulty": 3,
-      "expected_minutes": 79.003358,
-      "start_probability": 0.729938,
-      "sixty_probability": 0.845469,
-      "fixture_context": {
-        "opponent": "Sunderland",
-        "is_home": true,
-        "team_strength": 3.0,
-        "opponent_strength": 3.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.202222,
-        "team_xg_against_per90": 1.674444,
-        "opponent_xg_for_per90": 1.466667,
-        "opponent_xg_against_per90": 1.75,
-        "fixture_attack_mismatch": -0.547778,
-        "fixture_defence_mismatch": -0.207778,
-        "fixture_xg_environment": 2.668889
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": 1.666667,
-          "recent_3_points": 1.666667,
-          "recent_3_minutes": 90.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 3.24,
-          "influence_per_90": 32.32,
-          "creativity_per_90": 0.0,
-          "threat_per_90": 0.0,
-          "bps_per_90": 17.6,
-          "bonus_per_90": 0.4,
-          "xgi_per_90": 0.0
-        },
-        "current_club": {
-          "points_per_90": 0.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.202222,
-          "goals_for_per_90": 1.111111
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.75,
-          "goals_against_per_90": 1.888889
-        },
-        "expected_minutes": 79.003358,
-        "home_away": "home",
-        "fixture_environment": 2.668889
-      }
-    },
-    {
-      "rank": 5,
-      "name": "McGinn",
-      "prediction": 3.472436,
-      "price": 5.4,
-      "ownership": 3.9,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Aston Villa",
-      "fixture_away": "Sunderland",
-      "prediction_std": 2.816619,
-      "prediction_p10": 0.699231,
-      "prediction_p90": 7.755,
-      "prediction_range": 7.055769,
-      "confidence": "low",
-      "fixture_difficulty": 3,
-      "expected_minutes": 63.748948,
-      "start_probability": 0.694196,
-      "sixty_probability": 0.718871,
-      "fixture_context": {
-        "opponent": "Sunderland",
-        "is_home": true,
-        "team_strength": 3.0,
-        "opponent_strength": 3.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.202222,
-        "team_xg_against_per90": 1.674444,
-        "opponent_xg_for_per90": 1.466667,
-        "opponent_xg_against_per90": 1.75,
-        "fixture_attack_mismatch": -0.547778,
-        "fixture_defence_mismatch": -0.207778,
-        "fixture_xg_environment": 2.668889
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 3.359923,
-          "xg_per_90": 0.067825,
-          "xa_per_90": 0.078372,
-          "goals_per_90": 0.103382,
-          "assists_per_90": 0.160817,
-          "start_rate": 0.486239
-        },
-        "current_form": {
-          "points_per_90": 6.515837,
-          "recent_3_points": 5.333333,
-          "recent_3_minutes": 73.666667,
-          "recent_3_xg": 0.526667,
-          "recent_3_xa": 0.163333,
-          "ict_index_per_90": 10.001615,
-          "influence_per_90": 41.249537,
-          "creativity_per_90": 42.818543,
-          "threat_per_90": 15.827243,
-          "bps_per_90": 29.706517,
-          "bonus_per_90": 0.876923,
-          "xgi_per_90": 0.766011
-        },
-        "current_club": {
-          "points_per_90": 3.359923,
-          "xg_per_90": 0.067825,
-          "xa_per_90": 0.078372,
-          "start_rate": 0.486239
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.202222,
-          "goals_for_per_90": 1.111111
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.75,
-          "goals_against_per_90": 1.888889
-        },
-        "expected_minutes": 63.748948,
         "home_away": "home",
         "fixture_environment": 2.668889
       }
@@ -12124,7 +12124,7 @@
       "name": "Barry",
       "prediction": 4.065957,
       "price": 5.7,
-      "ownership": 10.9,
+      "ownership": 11.0,
       "position": "Forward",
       "team": "",
       "fixture_home": "Brentford",
@@ -16228,7 +16228,7 @@
       "name": "Neto",
       "prediction": 3.809441,
       "price": 6.6,
-      "ownership": 5.0,
+      "ownership": 4.9,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Chelsea",
@@ -27322,17 +27322,17 @@
     {
       "rank": 11,
       "name": "Gomez",
-      "prediction": 3.029914,
-      "price": 5.0,
+      "prediction": 2.970422,
+      "price": 5.1,
       "ownership": 4.4,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Hull City",
       "fixture_away": "Brighton",
-      "prediction_std": 2.433377,
-      "prediction_p10": 0.564286,
+      "prediction_std": 2.422769,
+      "prediction_p10": 0.5,
       "prediction_p90": 6.596429,
-      "prediction_range": 6.032143,
+      "prediction_range": 6.096429,
       "confidence": "low",
       "fixture_difficulty": 2,
       "expected_minutes": 84.025853,
@@ -27704,7 +27704,7 @@
       "name": "Iroegbunam",
       "prediction": 2.522825,
       "price": 5.0,
-      "ownership": 0.0,
+      "ownership": 0.1,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Hull City",
@@ -28766,17 +28766,17 @@
     {
       "rank": 30,
       "name": "Georginio",
-      "prediction": 1.741804,
-      "price": 5.3,
+      "prediction": 1.697054,
+      "price": 5.2,
       "ownership": 0.4,
       "position": "Forward",
       "team": "",
       "fixture_home": "Hull City",
       "fixture_away": "Brighton",
-      "prediction_std": 1.690433,
-      "prediction_p10": 0.052941,
-      "prediction_p90": 4.155128,
-      "prediction_range": 4.102187,
+      "prediction_std": 1.647822,
+      "prediction_p10": 0.076374,
+      "prediction_p90": 4.01,
+      "prediction_range": 3.933626,
       "confidence": "medium",
       "fixture_difficulty": 2,
       "expected_minutes": 17.021469,
@@ -32720,7 +32720,7 @@
       "name": "Wirtz",
       "prediction": 5.036337,
       "price": 7.2,
-      "ownership": 5.9,
+      "ownership": 6.0,
       "position": "Midfielder",
       "team": "",
       "fixture_home": "Liverpool",
@@ -36137,6 +36137,82 @@
     },
     {
       "rank": 47,
+      "name": "McConnell",
+      "prediction": 0.252458,
+      "price": 4.3,
+      "ownership": 0.2,
+      "position": "Midfielder",
+      "team": "",
+      "fixture_home": "Liverpool",
+      "fixture_away": "Man Utd",
+      "prediction_std": 0.272033,
+      "prediction_p10": 0.0,
+      "prediction_p90": 0.666667,
+      "prediction_range": 0.666667,
+      "confidence": "high",
+      "fixture_difficulty": 3,
+      "expected_minutes": 1.022375,
+      "start_probability": 0.001977,
+      "sixty_probability": 0.008525,
+      "fixture_context": {
+        "opponent": "Man Utd",
+        "is_home": true,
+        "team_strength": 4.0,
+        "opponent_strength": 3.0,
+        "home_elo": null,
+        "away_elo": null,
+        "team_xg_for_per90": 1.43,
+        "team_xg_against_per90": 1.178889,
+        "opponent_xg_for_per90": 1.556667,
+        "opponent_xg_against_per90": 1.668889,
+        "fixture_attack_mismatch": -0.238889,
+        "fixture_defence_mismatch": 0.377778,
+        "fixture_xg_environment": 2.986667
+      },
+      "model_inputs": {
+        "historical_ability": {
+          "points_per_90": 90.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "goals_per_90": 0.0,
+          "assists_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "current_form": {
+          "points_per_90": null,
+          "recent_3_points": 0.0,
+          "recent_3_minutes": 0.0,
+          "recent_3_xg": 0.0,
+          "recent_3_xa": 0.0,
+          "ict_index_per_90": 0.0,
+          "influence_per_90": 0.0,
+          "creativity_per_90": 0.0,
+          "threat_per_90": 0.0,
+          "bps_per_90": 0.0,
+          "bonus_per_90": 0.0,
+          "xgi_per_90": null
+        },
+        "current_club": {
+          "points_per_90": 90.0,
+          "xg_per_90": 0.0,
+          "xa_per_90": 0.0,
+          "start_rate": 0.0
+        },
+        "team_attack": {
+          "xg_for_per_90": 1.43,
+          "goals_for_per_90": 1.222222
+        },
+        "opponent_defence": {
+          "xg_against_per_90": 1.668889,
+          "goals_against_per_90": 1.666667
+        },
+        "expected_minutes": 1.022375,
+        "home_away": "home",
+        "fixture_environment": 2.986667
+      }
+    },
+    {
+      "rank": 48,
       "name": "Mamardashvili",
       "prediction": 0.249399,
       "price": 4.8,
@@ -36212,7 +36288,7 @@
       }
     },
     {
-      "rank": 48,
+      "rank": 49,
       "name": "Collyer",
       "prediction": 0.185173,
       "price": 5.0,
@@ -36288,7 +36364,7 @@
       }
     },
     {
-      "rank": 49,
+      "rank": 50,
       "name": "Ugarte",
       "prediction": 0.17913,
       "price": 5.0,
@@ -36364,7 +36440,7 @@
       }
     },
     {
-      "rank": 50,
+      "rank": 51,
       "name": "J.Fletcher",
       "prediction": 0.17643,
       "price": 4.8,
@@ -36440,7 +36516,7 @@
       }
     },
     {
-      "rank": 51,
+      "rank": 52,
       "name": "Bradley",
       "prediction": 0.15702,
       "price": 4.9,
@@ -36516,7 +36592,7 @@
       }
     },
     {
-      "rank": 52,
+      "rank": 53,
       "name": "Fletcher",
       "prediction": 0.134039,
       "price": 4.4,
@@ -36592,7 +36668,7 @@
       }
     },
     {
-      "rank": 53,
+      "rank": 54,
       "name": "Bajcetic",
       "prediction": 0.131508,
       "price": 5.0,
@@ -36668,7 +36744,7 @@
       }
     },
     {
-      "rank": 54,
+      "rank": 55,
       "name": "De Ligt",
       "prediction": 0.085276,
       "price": 4.9,
@@ -36744,7 +36820,7 @@
       }
     },
     {
-      "rank": 55,
+      "rank": 56,
       "name": "Endo",
       "prediction": 0.070579,
       "price": 4.8,
@@ -36820,7 +36896,7 @@
       }
     },
     {
-      "rank": 56,
+      "rank": 57,
       "name": "Woodman",
       "prediction": 0.059078,
       "price": 4.0,
@@ -36896,7 +36972,7 @@
       }
     },
     {
-      "rank": 57,
+      "rank": 58,
       "name": "Bayindir",
       "prediction": 0.055777,
       "price": 4.5,
@@ -36968,82 +37044,6 @@
         },
         "expected_minutes": 0.333934,
         "home_away": "away",
-        "fixture_environment": 2.986667
-      }
-    },
-    {
-      "rank": 58,
-      "name": "McConnell",
-      "prediction": 0.04451,
-      "price": 4.4,
-      "ownership": 0.2,
-      "position": "Midfielder",
-      "team": "",
-      "fixture_home": "Liverpool",
-      "fixture_away": "Man Utd",
-      "prediction_std": 0.033168,
-      "prediction_p10": 0.0,
-      "prediction_p90": 0.085714,
-      "prediction_range": 0.085714,
-      "confidence": "high",
-      "fixture_difficulty": 3,
-      "expected_minutes": 1.022375,
-      "start_probability": 0.001977,
-      "sixty_probability": 0.008525,
-      "fixture_context": {
-        "opponent": "Man Utd",
-        "is_home": true,
-        "team_strength": 4.0,
-        "opponent_strength": 3.0,
-        "home_elo": null,
-        "away_elo": null,
-        "team_xg_for_per90": 1.43,
-        "team_xg_against_per90": 1.178889,
-        "opponent_xg_for_per90": 1.556667,
-        "opponent_xg_against_per90": 1.668889,
-        "fixture_attack_mismatch": -0.238889,
-        "fixture_defence_mismatch": 0.377778,
-        "fixture_xg_environment": 2.986667
-      },
-      "model_inputs": {
-        "historical_ability": {
-          "points_per_90": 90.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "goals_per_90": 0.0,
-          "assists_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "current_form": {
-          "points_per_90": null,
-          "recent_3_points": 0.0,
-          "recent_3_minutes": 0.0,
-          "recent_3_xg": 0.0,
-          "recent_3_xa": 0.0,
-          "ict_index_per_90": 0.0,
-          "influence_per_90": 0.0,
-          "creativity_per_90": 0.0,
-          "threat_per_90": 0.0,
-          "bps_per_90": 0.0,
-          "bonus_per_90": 0.0,
-          "xgi_per_90": null
-        },
-        "current_club": {
-          "points_per_90": 90.0,
-          "xg_per_90": 0.0,
-          "xa_per_90": 0.0,
-          "start_rate": 0.0
-        },
-        "team_attack": {
-          "xg_for_per_90": 1.43,
-          "goals_for_per_90": 1.222222
-        },
-        "opponent_defence": {
-          "xg_against_per_90": 1.668889,
-          "goals_against_per_90": 1.666667
-        },
-        "expected_minutes": 1.022375,
-        "home_away": "home",
         "fixture_environment": 2.986667
       }
     },
@@ -39028,7 +39028,7 @@
       "name": "Leno",
       "prediction": 2.833551,
       "price": 4.5,
-      "ownership": 4.4,
+      "ownership": 4.3,
       "position": "Goalkeeper",
       "team": "",
       "fixture_home": "Man City",
@@ -39406,17 +39406,17 @@
     {
       "rank": 20,
       "name": "Gonzalo",
-      "prediction": 2.492555,
-      "price": 5.9,
-      "ownership": 3.6,
+      "prediction": 2.441673,
+      "price": 5.8,
+      "ownership": 3.5,
       "position": "Forward",
       "team": "",
       "fixture_home": "Man City",
       "fixture_away": "Fulham",
-      "prediction_std": 1.976969,
+      "prediction_std": 1.924748,
       "prediction_p10": 0.360606,
-      "prediction_p90": 5.326923,
-      "prediction_range": 4.966317,
+      "prediction_p90": 5.145238,
+      "prediction_range": 4.784632,
       "confidence": "low",
       "fixture_difficulty": 4,
       "expected_minutes": 57.672377,
@@ -48224,7 +48224,7 @@
       "name": "Van Hecke",
       "prediction": 2.737068,
       "price": 5.1,
-      "ownership": 15.2,
+      "ownership": 15.3,
       "position": "Defender",
       "team": "",
       "fixture_home": "Spurs",

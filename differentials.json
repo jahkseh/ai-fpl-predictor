@@ -2,15 +2,15 @@
   "season": "2026/27",
   "data_gameweek": 10,
   "next_gameweek": 11,
-  "generated_at_utc": "2026-11-19T02:48:38.690202+00:00",
+  "generated_at_utc": "2026-11-19T11:49:44.043135+00:00",
   "picks": [
     {
       "name": "Wirtz",
       "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 5.9,
+      "ownership": 6.0,
       "prediction": 5.036337,
-      "differential_score": 4.739,
+      "differential_score": 4.734,
       "price": 7.2,
       "form": 7.0,
       "fixture": {
