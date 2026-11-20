@@ -12504,9 +12504,9 @@
             {
               "rank": 1,
               "name": "N.Jackson",
-              "prediction": 5.48993,
+              "prediction": 5.43748,
               "prediction_p10": 1.333333,
-              "prediction_p90": 11.78,
+              "prediction_p90": 11.677778,
               "confidence": "low",
               "expected_minutes": 73.830786
             },
@@ -14760,9 +14760,9 @@
             {
               "rank": 1,
               "name": "Mitchell",
-              "prediction": 3.983854,
-              "prediction_p10": 0.858571,
-              "prediction_p90": 7.671429,
+              "prediction": 3.942097,
+              "prediction_p10": 0.785714,
+              "prediction_p90": 7.347917,
               "confidence": "low",
               "expected_minutes": 79.597291
             },
@@ -16919,21 +16919,21 @@
             },
             {
               "rank": 16,
-              "name": "Palacios",
-              "prediction": 2.708548,
-              "prediction_p10": 0.142857,
-              "prediction_p90": 5.5125,
-              "confidence": "low",
-              "expected_minutes": 30.167682
-            },
-            {
-              "rank": 17,
               "name": "Charles",
               "prediction": 2.700624,
               "prediction_p10": 0.367943,
               "prediction_p90": 6.233333,
               "confidence": "low",
               "expected_minutes": 70.123168
+            },
+            {
+              "rank": 17,
+              "name": "Palacios",
+              "prediction": 2.601227,
+              "prediction_p10": 0.1,
+              "prediction_p90": 5.516667,
+              "confidence": "low",
+              "expected_minutes": 30.167682
             },
             {
               "rank": 18,
@@ -18291,9 +18291,9 @@
             {
               "rank": 43,
               "name": "Walle Egeli",
-              "prediction": 0.688865,
+              "prediction": 0.695276,
               "prediction_p10": 0.0,
-              "prediction_p90": 2.146753,
+              "prediction_p90": 2.183636,
               "confidence": "high",
               "expected_minutes": 4.385941
             },
