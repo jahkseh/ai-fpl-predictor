@@ -6,32 +6,12 @@
   "largest_changes": [
     {
       "name": "N.Jackson",
-      "old_prediction": 5.49,
+      "old_prediction": 5.437,
       "new_prediction": 5.437,
-      "change": -0.052,
+      "change": 0.0,
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 73.830786,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Mitchell",
-      "old_prediction": 3.984,
-      "new_prediction": 3.942,
-      "change": -0.042,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 79.597291,
-      "fixture_difficulty": 2
-    },
-    {
-      "name": "Walle Egeli",
-      "old_prediction": 0.689,
-      "new_prediction": 0.695,
-      "change": 0.006,
-      "old_confidence": "high",
-      "new_confidence": "high",
-      "expected_minutes": 4.385941,
       "fixture_difficulty": 3
     },
     {
@@ -252,6 +232,26 @@
       "old_confidence": "low",
       "new_confidence": "low",
       "expected_minutes": 50.543074,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Buend\u00eda",
+      "old_prediction": 1.993,
+      "new_prediction": 1.993,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 34.005317,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Ahoka",
+      "old_prediction": 1.988,
+      "new_prediction": 1.988,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 23.644093,
       "fixture_difficulty": 3
     }
   ]
