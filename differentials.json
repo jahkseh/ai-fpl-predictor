@@ -1,75 +1,24 @@
 {
   "season": "2026/27",
   "data_gameweek": 10,
-  "next_gameweek": 11,
-  "generated_at_utc": "2026-11-21T02:28:12.874723+00:00",
+  "next_gameweek": 12,
+  "generated_at_utc": "2026-11-21T11:09:14.977812+00:00",
   "picks": [
     {
       "name": "Wirtz",
       "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 6.5,
-      "prediction": 5.036337,
-      "differential_score": 4.709,
-      "price": 7.2,
+      "ownership": 6.6,
+      "prediction": 4.935791,
+      "differential_score": 4.61,
+      "price": 7.3,
       "form": 7.0,
       "fixture": {
-        "home": "Liverpool",
-        "away": "Man Utd",
-        "is_home": true,
-        "kickoff": "2026-11-22T16:30:00",
-        "match_id": "26-27-prem-liverpool-vs-manchester-united"
-      }
-    },
-    {
-      "name": "Manzambi",
-      "team": "Aston Villa",
-      "position": "Midfielder",
-      "ownership": 8.4,
-      "prediction": 5.053298,
-      "differential_score": 4.629,
-      "price": 6.2,
-      "form": 3.3,
-      "fixture": {
-        "home": "Aston Villa",
-        "away": "Sunderland",
-        "is_home": true,
-        "kickoff": "2026-11-21T15:00:00",
-        "match_id": "26-27-prem-aston-villa-vs-sunderland"
-      }
-    },
-    {
-      "name": "Gibbs-White",
-      "team": "Nott'm Forest",
-      "position": "Midfielder",
-      "ownership": 9.1,
-      "prediction": 4.902068,
-      "differential_score": 4.456,
-      "price": 7.8,
-      "form": 3.0,
-      "fixture": {
-        "home": "Bournemouth",
-        "away": "Nott'm Forest",
+        "home": "Everton",
+        "away": "Liverpool",
         "is_home": false,
-        "kickoff": "2026-11-21T15:00:00",
-        "match_id": "26-27-prem-afc-bournemouth-vs-nottingham-forest"
-      }
-    },
-    {
-      "name": "Mac Allister",
-      "team": "Liverpool",
-      "position": "Midfielder",
-      "ownership": 1.4,
-      "prediction": 4.514586,
-      "differential_score": 4.451,
-      "price": 5.4,
-      "form": 4.3,
-      "fixture": {
-        "home": "Liverpool",
-        "away": "Man Utd",
-        "is_home": true,
-        "kickoff": "2026-11-22T16:30:00",
-        "match_id": "26-27-prem-liverpool-vs-manchester-united"
+        "kickoff": "2026-11-29T12:00:00",
+        "match_id": "26-27-prem-everton-vs-liverpool"
       }
     },
     {
@@ -77,16 +26,67 @@
       "team": "Everton",
       "position": "Midfielder",
       "ownership": 0.5,
-      "prediction": 4.33827,
-      "differential_score": 4.317,
+      "prediction": 4.534248,
+      "differential_score": 4.512,
       "price": 5.5,
       "form": 3.0,
       "fixture": {
-        "home": "Brentford",
-        "away": "Everton",
+        "home": "Everton",
+        "away": "Liverpool",
+        "is_home": true,
+        "kickoff": "2026-11-29T12:00:00",
+        "match_id": "26-27-prem-everton-vs-liverpool"
+      }
+    },
+    {
+      "name": "Gibbs-White",
+      "team": "Nott'm Forest",
+      "position": "Midfielder",
+      "ownership": 9.0,
+      "prediction": 4.905429,
+      "differential_score": 4.464,
+      "price": 7.8,
+      "form": 3.0,
+      "fixture": {
+        "home": "Nott'm Forest",
+        "away": "Chelsea",
+        "is_home": true,
+        "kickoff": "2026-11-27T20:00:00",
+        "match_id": "26-27-prem-nottingham-forest-vs-chelsea"
+      }
+    },
+    {
+      "name": "Mac Allister",
+      "team": "Liverpool",
+      "position": "Midfielder",
+      "ownership": 1.4,
+      "prediction": 4.42931,
+      "differential_score": 4.367,
+      "price": 5.4,
+      "form": 4.3,
+      "fixture": {
+        "home": "Everton",
+        "away": "Liverpool",
         "is_home": false,
-        "kickoff": "2026-11-23T20:00:00",
-        "match_id": "26-27-prem-brentford-vs-everton"
+        "kickoff": "2026-11-29T12:00:00",
+        "match_id": "26-27-prem-everton-vs-liverpool"
+      }
+    },
+    {
+      "name": "Madueke",
+      "team": "Arsenal",
+      "position": "Midfielder",
+      "ownership": 0.6,
+      "prediction": 4.330351,
+      "differential_score": 4.304,
+      "price": 6.2,
+      "form": 4.3,
+      "fixture": {
+        "home": "Arsenal",
+        "away": "Man City",
+        "is_home": true,
+        "kickoff": "2026-11-29T16:30:00",
+        "match_id": "26-27-prem-arsenal-vs-manchester-city"
       }
     }
   ]
