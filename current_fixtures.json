@@ -3,7 +3,7 @@
   "gameweek": 11,
   "event_name": "Gameweek 11",
   "deadline": "2026-11-21T11:00:00Z",
-  "generated_at_utc": "2026-11-23T12:49:18.536690+00:00",
+  "generated_at_utc": "2026-11-24T02:26:17.613816+00:00",
   "fixtures": [
     {
       "id": 108,
@@ -168,12 +168,12 @@
       "home_logo": "https://resources.premierleague.com/premierleague/badges/50/t4.png",
       "away_logo": "https://resources.premierleague.com/premierleague/badges/50/t9.png",
       "kickoff": "2026-11-23T20:00:00Z",
-      "started": false,
+      "started": true,
       "finished": false,
-      "finished_provisional": false,
-      "minutes": 0,
-      "home_score": null,
-      "away_score": null
+      "finished_provisional": true,
+      "minutes": 90,
+      "home_score": 4,
+      "away_score": 0
     }
   ]
 }

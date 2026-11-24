@@ -21808,8 +21808,8 @@
             {
               "rank": 21,
               "name": "Walton",
-              "prediction": 2.287589,
-              "prediction_p10": 0.428571,
+              "prediction": 2.344442,
+              "prediction_p10": 0.492857,
               "prediction_p90": 5.0,
               "confidence": "low",
               "expected_minutes": 71.677431
@@ -24180,21 +24180,21 @@
             },
             {
               "rank": 12,
+              "name": "Pedro Porro",
+              "prediction": 3.01003,
+              "prediction_p10": 0.5,
+              "prediction_p90": 6.575824,
+              "confidence": "low",
+              "expected_minutes": 62.981942
+            },
+            {
+              "rank": 13,
               "name": "Reinildo",
               "prediction": 2.970321,
               "prediction_p10": 0.682386,
               "prediction_p90": 6.01,
               "confidence": "low",
               "expected_minutes": 75.336531
-            },
-            {
-              "rank": 13,
-              "name": "Pedro Porro",
-              "prediction": 2.950827,
-              "prediction_p10": 0.5,
-              "prediction_p90": 6.507143,
-              "confidence": "low",
-              "expected_minutes": 62.981942
             },
             {
               "rank": 14,
@@ -24225,6 +24225,15 @@
             },
             {
               "rank": 17,
+              "name": "Williams-Barnett",
+              "prediction": 2.602876,
+              "prediction_p10": 0.125,
+              "prediction_p90": 6.083516,
+              "confidence": "low",
+              "expected_minutes": 23.208126
+            },
+            {
+              "rank": 18,
               "name": "Gray",
               "prediction": 2.551599,
               "prediction_p10": 0.217081,
@@ -24233,22 +24242,13 @@
               "expected_minutes": 32.035465
             },
             {
-              "rank": 18,
+              "rank": 19,
               "name": "O'Nien",
               "prediction": 2.525107,
               "prediction_p10": 0.22,
               "prediction_p90": 6.541758,
               "confidence": "low",
               "expected_minutes": 46.17764
-            },
-            {
-              "rank": 19,
-              "name": "Williams-Barnett",
-              "prediction": 2.484179,
-              "prediction_p10": 0.088961,
-              "prediction_p90": 5.637013,
-              "confidence": "low",
-              "expected_minutes": 23.208126
             },
             {
               "rank": 20,
@@ -24271,7 +24271,7 @@
             {
               "rank": 22,
               "name": "Senesi",
-              "prediction": 2.356308,
+              "prediction": 2.351521,
               "prediction_p10": 0.164286,
               "prediction_p90": 5.810909,
               "confidence": "low",
