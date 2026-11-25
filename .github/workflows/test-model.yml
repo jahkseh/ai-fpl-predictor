@@ -147,6 +147,8 @@ jobs:
           assert data["models"]["baseline"]
           assert data["models"]["phase3"]
           assert data["models"]["phase4"]
+          assert data["models"]["phase5_defensive"]
+          assert data["feature_count"]["phase5_defensive"] > data["feature_count"]["phase4"]
           assert "prior completed seasons" in data["evaluation"]
           assert data["feature_count"]["phase3"] > data["feature_count"]["baseline"]
           assert len(data["gameweeks_evaluated"]) >= 10
