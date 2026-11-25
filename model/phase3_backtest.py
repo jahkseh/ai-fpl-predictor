@@ -43,25 +43,43 @@ BASELINE = [
     "previous_5_expected_assists", "previous_10_expected_assists",
     "value", "was_home",
 ]
+DEFENSIVE_SOURCE_COLUMNS = [
+    "clean_sheets", "goals_conceded", "saves", "penalties_saved",
+    "penalties_missed", "yellow_cards", "red_cards", "own_goals",
+]
+DEFENSIVE_FEATURES = [
+    f"previous_{window}_{metric}"
+    for metric in DEFENSIVE_SOURCE_COLUMNS
+    for window in (3, 5, 10)
+]
 PHASE3 = BASELINE + HISTORICAL_FEATURES + PERFORMANCE_FEATURES
 PHASE4 = PHASE3 + TEAM_FEATURES + ["fixture_attack_mismatch", "fixture_defence_mismatch", "fixture_xg_environment"]
+PHASE5_DEFENSIVE = PHASE4 + DEFENSIVE_FEATURES
 PARAMS = {"n_estimators": 120, "min_samples_leaf": 5, "random_state": 42, "n_jobs": -1}
 
 
 def aggregate_weekly(df: pd.DataFrame) -> pd.DataFrame:
+    work = df.copy()
+    # These official FPL scoring events are available in the historical
+    # archive. Keep a stable schema even if an older season omits one field.
+    for col in DEFENSIVE_SOURCE_COLUMNS:
+        if col not in work.columns:
+            work[col] = 0
+        work[col] = pd.to_numeric(work[col], errors="coerce").fillna(0)
     numeric = [
         "minutes", "starts", "total_points", "goals_scored", "assists",
         "expected_goals", "expected_assists",
         "ict_index", "influence", "creativity", "threat", "bps", "bonus",
+        *DEFENSIVE_SOURCE_COLUMNS,
     ]
-    agg = {c: "sum" for c in numeric if c in df.columns}
+    agg = {c: "sum" for c in numeric if c in work.columns}
     agg["name"] = "first"
     agg["value"] = "first"
     agg["was_home"] = "first"
     agg["team"] = "first"
     agg["opponent_team"] = "first"
     weekly = (
-        df.groupby(["season", "element", "GW"], as_index=False)
+        work.groupby(["season", "element", "GW"], as_index=False)
         .agg(agg)
         .sort_values(["season", "element", "GW"])
         .reset_index(drop=True)
@@ -86,6 +104,14 @@ def aggregate_weekly(df: pd.DataFrame) -> pd.DataFrame:
     weekly["previous_10_minutes_rate"] = weekly.groupby(["season", "element"])["minutes"].transform(
         lambda s: s.shift(1).rolling(10, min_periods=1).mean()
     ) / 90
+    # Lag every event metric by at least one gameweek. These are experimental
+    # features only; the production predictor is not changed by this backtest.
+    for metric in DEFENSIVE_SOURCE_COLUMNS:
+        for window in (3, 5, 10):
+            weekly[f"previous_{window}_{metric}"] = (
+                weekly.groupby(["season", "element"])[metric]
+                .transform(lambda s, w=window: s.shift(1).rolling(w, min_periods=1).mean())
+            )
     return weekly
 
 
@@ -129,7 +155,12 @@ def main() -> None:
         y_train = train["total_points"].to_numpy()
         y_test = test["total_points"].to_numpy()
 
-        for label, features in [("baseline", BASELINE), ("phase3", PHASE3), ("phase4", PHASE4)]:
+        for label, features in [
+            ("baseline", BASELINE),
+            ("phase3", PHASE3),
+            ("phase4", PHASE4),
+            ("phase5_defensive", PHASE5_DEFENSIVE),
+        ]:
             X = train[features].replace([np.inf, -np.inf], np.nan).fillna(0)
             Xt = test[features].replace([np.inf, -np.inf], np.nan).fillna(0)
             model = RandomForestRegressor(**PARAMS)
@@ -153,7 +184,12 @@ def main() -> None:
         "models": summary,
         "gameweeks_evaluated": sorted(result["gameweek"].unique().tolist()),
         "detail": result.to_dict(orient="records"),
-        "feature_count": {"baseline": len(BASELINE), "phase3": len(PHASE3), "phase4": len(PHASE4)},
+        "feature_count": {
+            "baseline": len(BASELINE),
+            "phase3": len(PHASE3),
+            "phase4": len(PHASE4),
+            "phase5_defensive": len(PHASE5_DEFENSIVE),
+        },
     }
     args.output.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(output, indent=2))
