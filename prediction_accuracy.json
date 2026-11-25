@@ -1,5 +1,225 @@
 {
-  "available": false,
+  "available": true,
+  "source": "official_fpl_api",
   "gameweek": 11,
-  "reason": "gameweek not marked finished by the official FPL API"
+  "prediction_scope": "full_player_pool",
+  "players_expected": 672,
+  "players_evaluated": 649,
+  "players_unmatched": 23,
+  "player_match_rate": 0.966,
+  "mae": 1.354,
+  "rmse": 2.284,
+  "mean_error": 0.127,
+  "p10_p90_coverage": 0.737,
+  "diagnostics": {
+    "by_position": [
+      {
+        "position": "Defender",
+        "players": 217,
+        "mae": 1.403,
+        "rmse": 2.199,
+        "mean_error": 0.172
+      },
+      {
+        "position": "Forward",
+        "players": 77,
+        "mae": 1.438,
+        "rmse": 2.39,
+        "mean_error": 0.182
+      },
+      {
+        "position": "Goalkeeper",
+        "players": 71,
+        "mae": 0.81,
+        "rmse": 1.657,
+        "mean_error": -0.058
+      },
+      {
+        "position": "Midfielder",
+        "players": 284,
+        "mae": 1.431,
+        "rmse": 2.448,
+        "mean_error": 0.123
+      }
+    ],
+    "by_confidence": [
+      {
+        "confidence": "high",
+        "players": 260,
+        "mae": 0.257,
+        "rmse": 0.707,
+        "mean_error": 0.036
+      },
+      {
+        "confidence": "low",
+        "players": 281,
+        "mae": 2.396,
+        "rmse": 3.101,
+        "mean_error": 0.205
+      },
+      {
+        "confidence": "medium",
+        "players": 108,
+        "mae": 1.288,
+        "rmse": 2.266,
+        "mean_error": 0.142
+      }
+    ],
+    "by_expected_minutes": [
+      {
+        "expected_minutes_band": "0-29",
+        "players": 382,
+        "mae": 0.662,
+        "rmse": 1.56,
+        "mean_error": 0.065
+      },
+      {
+        "expected_minutes_band": "30-59",
+        "players": 120,
+        "mae": 2.154,
+        "rmse": 2.885,
+        "mean_error": 0.344
+      },
+      {
+        "expected_minutes_band": "60-89",
+        "players": 147,
+        "mae": 2.502,
+        "rmse": 3.149,
+        "mean_error": 0.11
+      }
+    ],
+    "largest_absolute_errors": [
+      {
+        "name": "Okafor",
+        "team": "Leeds",
+        "position": "Midfielder",
+        "prediction": 1.606862,
+        "actual": 15.0,
+        "error": -13.393,
+        "absolute_error": 13.393,
+        "expected_minutes": 29.975723,
+        "confidence": "medium",
+        "p10": 0.083333,
+        "p90": 3.925
+      },
+      {
+        "name": "Lewis-Potter",
+        "team": "Brentford",
+        "position": "Midfielder",
+        "prediction": 2.753204,
+        "actual": 16.0,
+        "error": -13.247,
+        "absolute_error": 13.247,
+        "expected_minutes": 58.25761,
+        "confidence": "low",
+        "p10": 0.427381,
+        "p90": 6.624615
+      },
+      {
+        "name": "Williams-Barnett",
+        "team": "Spurs",
+        "position": "Midfielder",
+        "prediction": 1.439833,
+        "actual": 13.0,
+        "error": -11.56,
+        "absolute_error": 11.56,
+        "expected_minutes": 5.3834,
+        "confidence": "medium",
+        "p10": 0.0,
+        "p90": 3.75
+      },
+      {
+        "name": "Ngumoha",
+        "team": "Liverpool",
+        "position": "Midfielder",
+        "prediction": 1.765904,
+        "actual": 13.0,
+        "error": -11.234,
+        "absolute_error": 11.234,
+        "expected_minutes": 23.848443,
+        "confidence": "low",
+        "p10": 0.090909,
+        "p90": 4.100649
+      },
+      {
+        "name": "Hill",
+        "team": "Bournemouth",
+        "position": "Defender",
+        "prediction": 3.868052,
+        "actual": 14.0,
+        "error": -10.132,
+        "absolute_error": 10.132,
+        "expected_minutes": 73.567873,
+        "confidence": "low",
+        "p10": 1.0,
+        "p90": 7.67
+      },
+      {
+        "name": "McBurnie",
+        "team": "Hull City",
+        "position": "Forward",
+        "prediction": 3.897671,
+        "actual": 13.0,
+        "error": -9.102,
+        "absolute_error": 9.102,
+        "expected_minutes": 76.002716,
+        "confidence": "low",
+        "p10": 0.908182,
+        "p90": 7.5625
+      },
+      {
+        "name": "Wirtz",
+        "team": "Liverpool",
+        "position": "Midfielder",
+        "prediction": 5.036337,
+        "actual": 14.0,
+        "error": -8.964,
+        "absolute_error": 8.964,
+        "expected_minutes": 72.956529,
+        "confidence": "low",
+        "p10": 1.196667,
+        "p90": 10.0
+      },
+      {
+        "name": "Strand Larsen",
+        "team": "Crystal Palace",
+        "position": "Forward",
+        "prediction": 1.334754,
+        "actual": 10.0,
+        "error": -8.665,
+        "absolute_error": 8.665,
+        "expected_minutes": 31.352262,
+        "confidence": "low",
+        "p10": 0.0,
+        "p90": 4.009091
+      },
+      {
+        "name": "Yeremy",
+        "team": "Crystal Palace",
+        "position": "Midfielder",
+        "prediction": 3.470441,
+        "actual": 12.0,
+        "error": -8.53,
+        "absolute_error": 8.53,
+        "expected_minutes": 59.788575,
+        "confidence": "low",
+        "p10": 0.666667,
+        "p90": 7.333333
+      },
+      {
+        "name": "Pedro Porro",
+        "team": "Spurs",
+        "position": "Defender",
+        "prediction": 2.527762,
+        "actual": 11.0,
+        "error": -8.472,
+        "absolute_error": 8.472,
+        "expected_minutes": 61.005675,
+        "confidence": "low",
+        "p10": 0.110526,
+        "p90": 6.3775
+      }
+    ]
+  },
+  "note": "Measured against frozen full eligible-player predictions matched to official FPL points. Player match rate reflects unmatched player-name records. Segment metrics are descriptive and should not drive model changes until several gameweeks provide adequate samples."
 }

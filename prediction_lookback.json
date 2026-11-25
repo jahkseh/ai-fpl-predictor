@@ -1,6 +1,6 @@
 {
   "season": "2026/27",
-  "updated_at": "2026-11-24T13:52:13.243997+00:00",
+  "updated_at": "2026-11-25T00:02:06.331320+00:00",
   "source": "official_fpl_api",
   "gameweeks": [
     {
@@ -5400,6 +5400,2580 @@
               "actual": 1.0,
               "difference": 0.92,
               "minutes": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gameweek": 11,
+      "available": true,
+      "players_compared": 313,
+      "mae": 2.21,
+      "within_two": 183,
+      "average_bias": 0.4,
+      "fixtures": [
+        {
+          "home": "Aston Villa",
+          "away": "Sunderland",
+          "players": [
+            {
+              "name": "N.Jackson",
+              "rank": 1,
+              "prediction": 5.44,
+              "actual": 2.0,
+              "difference": -3.44,
+              "minutes": 72
+            },
+            {
+              "name": "Manzambi",
+              "rank": 2,
+              "prediction": 5.05,
+              "actual": 1.0,
+              "difference": -4.05,
+              "minutes": 59
+            },
+            {
+              "name": "McGinn",
+              "rank": 3,
+              "prediction": 3.66,
+              "actual": 1.0,
+              "difference": -2.66,
+              "minutes": 30
+            },
+            {
+              "name": "Suzuki",
+              "rank": 4,
+              "prediction": 3.59,
+              "actual": 6.0,
+              "difference": 2.41,
+              "minutes": 90
+            },
+            {
+              "name": "Alysson",
+              "rank": 5,
+              "prediction": 3.49,
+              "actual": 3.0,
+              "difference": -0.49,
+              "minutes": 90
+            },
+            {
+              "name": "Maatsen",
+              "rank": 6,
+              "prediction": 3.45,
+              "actual": 5.0,
+              "difference": 1.55,
+              "minutes": 90
+            },
+            {
+              "name": "Roefs",
+              "rank": 7,
+              "prediction": 3.39,
+              "actual": 11.0,
+              "difference": 7.61,
+              "minutes": 90
+            },
+            {
+              "name": "E.Le F\u00e9e",
+              "rank": 8,
+              "prediction": 3.26,
+              "actual": 3.0,
+              "difference": -0.26,
+              "minutes": 90
+            },
+            {
+              "name": "Meunier",
+              "rank": 9,
+              "prediction": 2.98,
+              "actual": 6.0,
+              "difference": 3.02,
+              "minutes": 90
+            },
+            {
+              "name": "Mbaye",
+              "rank": 10,
+              "prediction": 2.93,
+              "actual": 1.0,
+              "difference": -1.93,
+              "minutes": 30
+            },
+            {
+              "name": "Goretzka",
+              "rank": 12,
+              "prediction": 2.83,
+              "actual": 2.0,
+              "difference": -0.83,
+              "minutes": 72
+            },
+            {
+              "name": "Hume",
+              "rank": 14,
+              "prediction": 2.79,
+              "actual": 5.0,
+              "difference": 2.21,
+              "minutes": 90
+            },
+            {
+              "name": "Pau",
+              "rank": 15,
+              "prediction": 2.69,
+              "actual": 7.0,
+              "difference": 4.31,
+              "minutes": 90
+            },
+            {
+              "name": "Kamara",
+              "rank": 17,
+              "prediction": 2.56,
+              "actual": 3.0,
+              "difference": 0.44,
+              "minutes": 90
+            },
+            {
+              "name": "O'Nien",
+              "rank": 18,
+              "prediction": 2.52,
+              "actual": 6.0,
+              "difference": 3.48,
+              "minutes": 90
+            },
+            {
+              "name": "Mukiele",
+              "rank": 19,
+              "prediction": 2.44,
+              "actual": 8.0,
+              "difference": 5.56,
+              "minutes": 90
+            },
+            {
+              "name": "Talbi",
+              "rank": 20,
+              "prediction": 2.28,
+              "actual": 3.0,
+              "difference": 0.72,
+              "minutes": 90
+            },
+            {
+              "name": "Sadiki",
+              "rank": 21,
+              "prediction": 2.15,
+              "actual": 3.0,
+              "difference": 0.85,
+              "minutes": 90
+            },
+            {
+              "name": "Reinildo",
+              "rank": 22,
+              "prediction": 2.12,
+              "actual": 6.0,
+              "difference": 3.88,
+              "minutes": 90
+            },
+            {
+              "name": "Buend\u00eda",
+              "rank": 24,
+              "prediction": 1.99,
+              "actual": 1.0,
+              "difference": -0.99,
+              "minutes": 59
+            },
+            {
+              "name": "Ahoka",
+              "rank": 25,
+              "prediction": 1.99,
+              "actual": 5.0,
+              "difference": 3.01,
+              "minutes": 90
+            },
+            {
+              "name": "N.Angulo",
+              "rank": 27,
+              "prediction": 1.88,
+              "actual": 0.0,
+              "difference": -1.88,
+              "minutes": 13
+            },
+            {
+              "name": "Isidor",
+              "rank": 28,
+              "prediction": 1.85,
+              "actual": 2.0,
+              "difference": 0.15,
+              "minutes": 76
+            },
+            {
+              "name": "Madjo",
+              "rank": 31,
+              "prediction": 1.43,
+              "actual": 1.0,
+              "difference": -0.43,
+              "minutes": 17
+            },
+            {
+              "name": "Barkley",
+              "rank": 33,
+              "prediction": 1.37,
+              "actual": 1.0,
+              "difference": -0.37,
+              "minutes": 17
+            },
+            {
+              "name": "Harwood-Bellis",
+              "rank": 34,
+              "prediction": 1.34,
+              "actual": 7.0,
+              "difference": 5.66,
+              "minutes": 90
+            },
+            {
+              "name": "Wan-Bissaka",
+              "rank": 47,
+              "prediction": 0.4,
+              "actual": 8.0,
+              "difference": 7.6,
+              "minutes": 90
+            }
+          ]
+        },
+        {
+          "home": "Bournemouth",
+          "away": "Nott'm Forest",
+          "players": [
+            {
+              "name": "Evanilson",
+              "rank": 1,
+              "prediction": 5.09,
+              "actual": 6.0,
+              "difference": 0.91,
+              "minutes": 90
+            },
+            {
+              "name": "Gibbs-White",
+              "rank": 2,
+              "prediction": 4.9,
+              "actual": 2.0,
+              "difference": -2.9,
+              "minutes": 90
+            },
+            {
+              "name": "Tavernier",
+              "rank": 3,
+              "prediction": 4.66,
+              "actual": 8.0,
+              "difference": 3.34,
+              "minutes": 90
+            },
+            {
+              "name": "McAtee",
+              "rank": 4,
+              "prediction": 4.05,
+              "actual": 4.0,
+              "difference": -0.05,
+              "minutes": 71
+            },
+            {
+              "name": "Rayan",
+              "rank": 5,
+              "prediction": 4.03,
+              "actual": 3.0,
+              "difference": -1.03,
+              "minutes": 89
+            },
+            {
+              "name": "Murillo",
+              "rank": 6,
+              "prediction": 4.01,
+              "actual": 0.0,
+              "difference": -4.01,
+              "minutes": 90
+            },
+            {
+              "name": "Hill",
+              "rank": 7,
+              "prediction": 3.87,
+              "actual": 14.0,
+              "difference": 10.13,
+              "minutes": 90
+            },
+            {
+              "name": "Silva",
+              "rank": 8,
+              "prediction": 3.84,
+              "actual": 8.0,
+              "difference": 4.16,
+              "minutes": 90
+            },
+            {
+              "name": "Truffert",
+              "rank": 9,
+              "prediction": 3.74,
+              "actual": 6.0,
+              "difference": 2.26,
+              "minutes": 90
+            },
+            {
+              "name": "N.Williams",
+              "rank": 10,
+              "prediction": 3.48,
+              "actual": 1.0,
+              "difference": -2.48,
+              "minutes": 71
+            },
+            {
+              "name": "Sels",
+              "rank": 11,
+              "prediction": 3.47,
+              "actual": 2.0,
+              "difference": -1.47,
+              "minutes": 90
+            },
+            {
+              "name": "Kluivert",
+              "rank": 12,
+              "prediction": 3.38,
+              "actual": 9.0,
+              "difference": 5.62,
+              "minutes": 68
+            },
+            {
+              "name": "Petrovi\u0107",
+              "rank": 13,
+              "prediction": 3.36,
+              "actual": 6.0,
+              "difference": 2.64,
+              "minutes": 90
+            },
+            {
+              "name": "Delap",
+              "rank": 14,
+              "prediction": 3.04,
+              "actual": 1.0,
+              "difference": -2.04,
+              "minutes": 90
+            },
+            {
+              "name": "Smith",
+              "rank": 15,
+              "prediction": 2.93,
+              "actual": 6.0,
+              "difference": 3.07,
+              "minutes": 86
+            },
+            {
+              "name": "Milenkovi\u0107",
+              "rank": 16,
+              "prediction": 2.92,
+              "actual": 1.0,
+              "difference": -1.92,
+              "minutes": 90
+            },
+            {
+              "name": "Schlager",
+              "rank": 17,
+              "prediction": 2.8,
+              "actual": 1.0,
+              "difference": -1.8,
+              "minutes": 45
+            },
+            {
+              "name": "Kroupi.Jr",
+              "rank": 18,
+              "prediction": 2.73,
+              "actual": 1.0,
+              "difference": -1.73,
+              "minutes": 21
+            },
+            {
+              "name": "Mu\u00f1oz",
+              "rank": 19,
+              "prediction": 2.73,
+              "actual": 0.0,
+              "difference": -2.73,
+              "minutes": 81
+            },
+            {
+              "name": "Adams",
+              "rank": 20,
+              "prediction": 2.68,
+              "actual": 3.0,
+              "difference": 0.32,
+              "minutes": 68
+            },
+            {
+              "name": "Christie",
+              "rank": 21,
+              "prediction": 2.55,
+              "actual": 3.0,
+              "difference": 0.45,
+              "minutes": 68
+            },
+            {
+              "name": "Ndoye",
+              "rank": 22,
+              "prediction": 2.48,
+              "actual": 1.0,
+              "difference": -1.48,
+              "minutes": 45
+            },
+            {
+              "name": "Jair Cunha",
+              "rank": 23,
+              "prediction": 1.99,
+              "actual": 1.0,
+              "difference": -0.99,
+              "minutes": 90
+            },
+            {
+              "name": "Cook",
+              "rank": 25,
+              "prediction": 1.88,
+              "actual": 1.0,
+              "difference": -0.88,
+              "minutes": 21
+            },
+            {
+              "name": "Yates",
+              "rank": 26,
+              "prediction": 1.87,
+              "actual": 1.0,
+              "difference": -0.87,
+              "minutes": 45
+            },
+            {
+              "name": "Aina",
+              "rank": 29,
+              "prediction": 1.28,
+              "actual": 1.0,
+              "difference": -0.28,
+              "minutes": 8
+            },
+            {
+              "name": "Igor Jesus",
+              "rank": 30,
+              "prediction": 1.25,
+              "actual": 1.0,
+              "difference": -0.25,
+              "minutes": 45
+            },
+            {
+              "name": "Wood",
+              "rank": 31,
+              "prediction": 1.25,
+              "actual": 1.0,
+              "difference": -0.25,
+              "minutes": 18
+            },
+            {
+              "name": "Gannon-Doak",
+              "rank": 34,
+              "prediction": 0.95,
+              "actual": 1.0,
+              "difference": 0.05,
+              "minutes": 1
+            },
+            {
+              "name": "Diakit\u00e9",
+              "rank": 35,
+              "prediction": 0.88,
+              "actual": 1.0,
+              "difference": 0.12,
+              "minutes": 3
+            },
+            {
+              "name": "Netz",
+              "rank": 38,
+              "prediction": 0.65,
+              "actual": 1.0,
+              "difference": 0.35,
+              "minutes": 18
+            },
+            {
+              "name": "Scott",
+              "rank": 40,
+              "prediction": 0.56,
+              "actual": 0.0,
+              "difference": -0.56,
+              "minutes": 21
+            }
+          ]
+        },
+        {
+          "home": "Brentford",
+          "away": "Everton",
+          "players": [
+            {
+              "name": "Pickford",
+              "rank": 2,
+              "prediction": 4.41,
+              "actual": 1.0,
+              "difference": -3.41,
+              "minutes": 90
+            },
+            {
+              "name": "George",
+              "rank": 3,
+              "prediction": 4.34,
+              "actual": 1.0,
+              "difference": -3.34,
+              "minutes": 45
+            },
+            {
+              "name": "Dewsbury-Hall",
+              "rank": 4,
+              "prediction": 4.08,
+              "actual": 2.0,
+              "difference": -2.08,
+              "minutes": 68
+            },
+            {
+              "name": "Barry",
+              "rank": 5,
+              "prediction": 4.07,
+              "actual": 2.0,
+              "difference": -2.07,
+              "minutes": 68
+            },
+            {
+              "name": "Tarkowski",
+              "rank": 6,
+              "prediction": 3.97,
+              "actual": -4.0,
+              "difference": -7.97,
+              "minutes": 39
+            },
+            {
+              "name": "O.Dango",
+              "rank": 7,
+              "prediction": 3.86,
+              "actual": 3.0,
+              "difference": -0.86,
+              "minutes": 65
+            },
+            {
+              "name": "M.Sangar\u00e9",
+              "rank": 8,
+              "prediction": 3.73,
+              "actual": 1.0,
+              "difference": -2.73,
+              "minutes": 8
+            },
+            {
+              "name": "Kayode",
+              "rank": 9,
+              "prediction": 3.64,
+              "actual": 6.0,
+              "difference": 2.36,
+              "minutes": 90
+            },
+            {
+              "name": "Schade",
+              "rank": 10,
+              "prediction": 3.64,
+              "actual": 1.0,
+              "difference": -2.64,
+              "minutes": 24
+            },
+            {
+              "name": "Kelleher",
+              "rank": 11,
+              "prediction": 3.63,
+              "actual": 6.0,
+              "difference": 2.37,
+              "minutes": 90
+            },
+            {
+              "name": "Garner",
+              "rank": 12,
+              "prediction": 3.36,
+              "actual": 4.0,
+              "difference": 0.64,
+              "minutes": 84
+            },
+            {
+              "name": "Armstrong",
+              "rank": 13,
+              "prediction": 3.23,
+              "actual": 2.0,
+              "difference": -1.23,
+              "minutes": 90
+            },
+            {
+              "name": "Mykolenko",
+              "rank": 14,
+              "prediction": 3.12,
+              "actual": 1.0,
+              "difference": -2.12,
+              "minutes": 90
+            },
+            {
+              "name": "Ajer",
+              "rank": 15,
+              "prediction": 2.96,
+              "actual": 6.0,
+              "difference": 3.04,
+              "minutes": 90
+            },
+            {
+              "name": "Van den Berg",
+              "rank": 16,
+              "prediction": 2.82,
+              "actual": 6.0,
+              "difference": 3.18,
+              "minutes": 90
+            },
+            {
+              "name": "Lewis-Potter",
+              "rank": 17,
+              "prediction": 2.75,
+              "actual": 16.0,
+              "difference": 13.25,
+              "minutes": 73
+            },
+            {
+              "name": "R\u00f6hl",
+              "rank": 18,
+              "prediction": 2.6,
+              "actual": 2.0,
+              "difference": -0.6,
+              "minutes": 68
+            },
+            {
+              "name": "Hackney",
+              "rank": 19,
+              "prediction": 2.59,
+              "actual": 1.0,
+              "difference": -1.59,
+              "minutes": 21
+            },
+            {
+              "name": "Johnson",
+              "rank": 20,
+              "prediction": 2.39,
+              "actual": 1.0,
+              "difference": -1.39,
+              "minutes": 21
+            },
+            {
+              "name": "Branthwaite",
+              "rank": 21,
+              "prediction": 2.37,
+              "actual": 2.0,
+              "difference": -0.37,
+              "minutes": 90
+            },
+            {
+              "name": "Damsgaard",
+              "rank": 22,
+              "prediction": 2.32,
+              "actual": 3.0,
+              "difference": 0.68,
+              "minutes": 90
+            },
+            {
+              "name": "Janelt",
+              "rank": 23,
+              "prediction": 2.08,
+              "actual": 10.0,
+              "difference": 7.92,
+              "minutes": 81
+            },
+            {
+              "name": "O'Brien",
+              "rank": 24,
+              "prediction": 2.06,
+              "actual": 2.0,
+              "difference": -0.06,
+              "minutes": 90
+            },
+            {
+              "name": "Jensen",
+              "rank": 25,
+              "prediction": 1.96,
+              "actual": 4.0,
+              "difference": 2.04,
+              "minutes": 16
+            },
+            {
+              "name": "Anthony",
+              "rank": 26,
+              "prediction": 1.93,
+              "actual": 10.0,
+              "difference": 8.07,
+              "minutes": 80
+            },
+            {
+              "name": "Wilson",
+              "rank": 27,
+              "prediction": 1.87,
+              "actual": 2.0,
+              "difference": 0.13,
+              "minutes": 90
+            },
+            {
+              "name": "Diouf",
+              "rank": 31,
+              "prediction": 1.4,
+              "actual": 1.0,
+              "difference": -0.4,
+              "minutes": 16
+            },
+            {
+              "name": "Keane",
+              "rank": 33,
+              "prediction": 1.2,
+              "actual": 1.0,
+              "difference": -0.2,
+              "minutes": 21
+            },
+            {
+              "name": "Yarmoliuk",
+              "rank": 35,
+              "prediction": 0.92,
+              "actual": 3.0,
+              "difference": 2.08,
+              "minutes": 73
+            },
+            {
+              "name": "N\u00f8rgaard",
+              "rank": 38,
+              "prediction": 0.53,
+              "actual": 1.0,
+              "difference": 0.47,
+              "minutes": 5
+            },
+            {
+              "name": "Grealish",
+              "rank": 39,
+              "prediction": 0.46,
+              "actual": 1.0,
+              "difference": 0.54,
+              "minutes": 45
+            },
+            {
+              "name": "Carvalho",
+              "rank": 40,
+              "prediction": 0.43,
+              "actual": 6.0,
+              "difference": 5.57,
+              "minutes": 9
+            }
+          ]
+        },
+        {
+          "home": "Chelsea",
+          "away": "Leeds",
+          "players": [
+            {
+              "name": "Rogers",
+              "rank": 1,
+              "prediction": 5.18,
+              "actual": 5.0,
+              "difference": -0.18,
+              "minutes": 90
+            },
+            {
+              "name": "Palmer",
+              "rank": 2,
+              "prediction": 4.88,
+              "actual": 2.0,
+              "difference": -2.88,
+              "minutes": 90
+            },
+            {
+              "name": "Muharemovi\u0107",
+              "rank": 3,
+              "prediction": 3.96,
+              "actual": 2.0,
+              "difference": -1.96,
+              "minutes": 90
+            },
+            {
+              "name": "Ampadu",
+              "rank": 4,
+              "prediction": 3.81,
+              "actual": 7.0,
+              "difference": 3.19,
+              "minutes": 90
+            },
+            {
+              "name": "Neto",
+              "rank": 5,
+              "prediction": 3.81,
+              "actual": 1.0,
+              "difference": -2.81,
+              "minutes": 26
+            },
+            {
+              "name": "Calvert-Lewin",
+              "rank": 6,
+              "prediction": 3.54,
+              "actual": 9.0,
+              "difference": 5.46,
+              "minutes": 90
+            },
+            {
+              "name": "Bogle",
+              "rank": 7,
+              "prediction": 3.39,
+              "actual": 4.0,
+              "difference": 0.61,
+              "minutes": 85
+            },
+            {
+              "name": "Trafford",
+              "rank": 8,
+              "prediction": 3.38,
+              "actual": 2.0,
+              "difference": -1.38,
+              "minutes": 90
+            },
+            {
+              "name": "Colwill",
+              "rank": 9,
+              "prediction": 3.06,
+              "actual": 0.0,
+              "difference": -3.06,
+              "minutes": 90
+            },
+            {
+              "name": "Lavia",
+              "rank": 11,
+              "prediction": 2.75,
+              "actual": 1.0,
+              "difference": -1.75,
+              "minutes": 90
+            },
+            {
+              "name": "Fofana",
+              "rank": 12,
+              "prediction": 2.69,
+              "actual": 2.0,
+              "difference": -0.69,
+              "minutes": 90
+            },
+            {
+              "name": "Chavarria",
+              "rank": 13,
+              "prediction": 2.68,
+              "actual": 1.0,
+              "difference": -1.68,
+              "minutes": 72
+            },
+            {
+              "name": "Acheampong",
+              "rank": 14,
+              "prediction": 2.64,
+              "actual": 1.0,
+              "difference": -1.64,
+              "minutes": 72
+            },
+            {
+              "name": "Henderson",
+              "rank": 15,
+              "prediction": 2.52,
+              "actual": 2.0,
+              "difference": -0.52,
+              "minutes": 68
+            },
+            {
+              "name": "Longstaff",
+              "rank": 16,
+              "prediction": 2.46,
+              "actual": 1.0,
+              "difference": -1.46,
+              "minutes": 90
+            },
+            {
+              "name": "Tanaka",
+              "rank": 17,
+              "prediction": 2.39,
+              "actual": 2.0,
+              "difference": -0.39,
+              "minutes": 85
+            },
+            {
+              "name": "Justin",
+              "rank": 19,
+              "prediction": 2.34,
+              "actual": 4.0,
+              "difference": 1.66,
+              "minutes": 90
+            },
+            {
+              "name": "Caicedo",
+              "rank": 20,
+              "prediction": 2.28,
+              "actual": 1.0,
+              "difference": -1.28,
+              "minutes": 21
+            },
+            {
+              "name": "Est\u00eav\u00e3o",
+              "rank": 21,
+              "prediction": 2.24,
+              "actual": 2.0,
+              "difference": -0.24,
+              "minutes": 63
+            },
+            {
+              "name": "Quenda",
+              "rank": 22,
+              "prediction": 2.17,
+              "actual": 1.0,
+              "difference": -1.17,
+              "minutes": 17
+            },
+            {
+              "name": "Wilson",
+              "rank": 23,
+              "prediction": 2.11,
+              "actual": 4.0,
+              "difference": 1.89,
+              "minutes": 1
+            },
+            {
+              "name": "Elvedi",
+              "rank": 24,
+              "prediction": 2.02,
+              "actual": 4.0,
+              "difference": 1.98,
+              "minutes": 90
+            },
+            {
+              "name": "Stach",
+              "rank": 29,
+              "prediction": 1.83,
+              "actual": 1.0,
+              "difference": -0.83,
+              "minutes": 4
+            },
+            {
+              "name": "Welbeck",
+              "rank": 30,
+              "prediction": 1.7,
+              "actual": 1.0,
+              "difference": -0.7,
+              "minutes": 26
+            },
+            {
+              "name": "Gusto",
+              "rank": 31,
+              "prediction": 1.67,
+              "actual": 1.0,
+              "difference": -0.67,
+              "minutes": 17
+            },
+            {
+              "name": "Gudmundsson",
+              "rank": 32,
+              "prediction": 1.65,
+              "actual": 1.0,
+              "difference": -0.65,
+              "minutes": 90
+            },
+            {
+              "name": "Okafor",
+              "rank": 33,
+              "prediction": 1.61,
+              "actual": 15.0,
+              "difference": 13.39,
+              "minutes": 72
+            },
+            {
+              "name": "Aaronson",
+              "rank": 34,
+              "prediction": 1.6,
+              "actual": 7.0,
+              "difference": 5.4,
+              "minutes": 17
+            },
+            {
+              "name": "Emegha",
+              "rank": 40,
+              "prediction": 1.05,
+              "actual": 8.0,
+              "difference": 6.95,
+              "minutes": 63
+            },
+            {
+              "name": "Bard",
+              "rank": 42,
+              "prediction": 0.87,
+              "actual": 1.0,
+              "difference": 0.13,
+              "minutes": 1
+            },
+            {
+              "name": "Martinez",
+              "rank": 43,
+              "prediction": 0.87,
+              "actual": 1.0,
+              "difference": 0.13,
+              "minutes": 90
+            },
+            {
+              "name": "Rodon",
+              "rank": 44,
+              "prediction": 0.86,
+              "actual": 1.0,
+              "difference": 0.14,
+              "minutes": 4
+            }
+          ]
+        },
+        {
+          "home": "Coventry City",
+          "away": "Crystal Palace",
+          "players": [
+            {
+              "name": "Mitchell",
+              "rank": 1,
+              "prediction": 3.94,
+              "actual": 1.0,
+              "difference": -2.94,
+              "minutes": 90
+            },
+            {
+              "name": "Disasi",
+              "rank": 2,
+              "prediction": 3.65,
+              "actual": 1.0,
+              "difference": -2.65,
+              "minutes": 90
+            },
+            {
+              "name": "Rudoni",
+              "rank": 3,
+              "prediction": 3.54,
+              "actual": 10.0,
+              "difference": 6.46,
+              "minutes": 90
+            },
+            {
+              "name": "Yeremy",
+              "rank": 4,
+              "prediction": 3.47,
+              "actual": 12.0,
+              "difference": 8.53,
+              "minutes": 78
+            },
+            {
+              "name": "Pinnock",
+              "rank": 5,
+              "prediction": 3.33,
+              "actual": 3.0,
+              "difference": -0.33,
+              "minutes": 90
+            },
+            {
+              "name": "Richards",
+              "rank": 6,
+              "prediction": 3.31,
+              "actual": 3.0,
+              "difference": -0.31,
+              "minutes": 90
+            },
+            {
+              "name": "Torp",
+              "rank": 8,
+              "prediction": 3.13,
+              "actual": 2.0,
+              "difference": -1.13,
+              "minutes": 70
+            },
+            {
+              "name": "Awoniyi",
+              "rank": 9,
+              "prediction": 3.1,
+              "actual": 5.0,
+              "difference": 1.9,
+              "minutes": 45
+            },
+            {
+              "name": "Wharton",
+              "rank": 10,
+              "prediction": 3.02,
+              "actual": 1.0,
+              "difference": -2.02,
+              "minutes": 90
+            },
+            {
+              "name": "Kamada",
+              "rank": 11,
+              "prediction": 2.98,
+              "actual": 2.0,
+              "difference": -0.98,
+              "minutes": 90
+            },
+            {
+              "name": "Osorio",
+              "rank": 12,
+              "prediction": 2.96,
+              "actual": 1.0,
+              "difference": -1.96,
+              "minutes": 1
+            },
+            {
+              "name": "Mfuni",
+              "rank": 13,
+              "prediction": 2.86,
+              "actual": 3.0,
+              "difference": 0.14,
+              "minutes": 90
+            },
+            {
+              "name": "Gboho",
+              "rank": 15,
+              "prediction": 2.82,
+              "actual": 2.0,
+              "difference": -0.82,
+              "minutes": 69
+            },
+            {
+              "name": "Sakamoto",
+              "rank": 16,
+              "prediction": 2.76,
+              "actual": 7.0,
+              "difference": 4.24,
+              "minutes": 90
+            },
+            {
+              "name": "Rushworth",
+              "rank": 17,
+              "prediction": 2.72,
+              "actual": 2.0,
+              "difference": -0.72,
+              "minutes": 90
+            },
+            {
+              "name": "McNeil",
+              "rank": 18,
+              "prediction": 2.71,
+              "actual": 0.0,
+              "difference": -2.71,
+              "minutes": 88
+            },
+            {
+              "name": "Canvot",
+              "rank": 19,
+              "prediction": 2.67,
+              "actual": 1.0,
+              "difference": -1.67,
+              "minutes": 17
+            },
+            {
+              "name": "Grimes",
+              "rank": 21,
+              "prediction": 2.56,
+              "actual": 1.0,
+              "difference": -1.56,
+              "minutes": 70
+            },
+            {
+              "name": "Henderson",
+              "rank": 22,
+              "prediction": 2.46,
+              "actual": 2.0,
+              "difference": -0.46,
+              "minutes": 90
+            },
+            {
+              "name": "Thomas-Asante",
+              "rank": 23,
+              "prediction": 2.43,
+              "actual": 4.0,
+              "difference": 1.57,
+              "minutes": 20
+            },
+            {
+              "name": "Cherif",
+              "rank": 24,
+              "prediction": 2.43,
+              "actual": 1.0,
+              "difference": -1.43,
+              "minutes": 45
+            },
+            {
+              "name": "Khalaili",
+              "rank": 25,
+              "prediction": 2.16,
+              "actual": 1.0,
+              "difference": -1.16,
+              "minutes": 72
+            },
+            {
+              "name": "van Ewijk",
+              "rank": 26,
+              "prediction": 2.08,
+              "actual": 1.0,
+              "difference": -1.08,
+              "minutes": 90
+            },
+            {
+              "name": "Nketiah",
+              "rank": 27,
+              "prediction": 1.93,
+              "actual": 1.0,
+              "difference": -0.93,
+              "minutes": 11
+            },
+            {
+              "name": "Lerma",
+              "rank": 29,
+              "prediction": 1.81,
+              "actual": 1.0,
+              "difference": -0.81,
+              "minutes": 17
+            },
+            {
+              "name": "Hamer",
+              "rank": 31,
+              "prediction": 1.36,
+              "actual": 1.0,
+              "difference": -0.36,
+              "minutes": 19
+            },
+            {
+              "name": "Strand Larsen",
+              "rank": 32,
+              "prediction": 1.33,
+              "actual": 10.0,
+              "difference": 8.67,
+              "minutes": 78
+            },
+            {
+              "name": "Onyeka",
+              "rank": 34,
+              "prediction": 1.17,
+              "actual": 1.0,
+              "difference": -0.17,
+              "minutes": 19
+            },
+            {
+              "name": "Thomas",
+              "rank": 35,
+              "prediction": 1.11,
+              "actual": 3.0,
+              "difference": 1.89,
+              "minutes": 90
+            },
+            {
+              "name": "Timber",
+              "rank": 36,
+              "prediction": 1.1,
+              "actual": 2.0,
+              "difference": 0.9,
+              "minutes": 72
+            },
+            {
+              "name": "Guessand",
+              "rank": 52,
+              "prediction": 0.16,
+              "actual": 1.0,
+              "difference": 0.84,
+              "minutes": 11
+            }
+          ]
+        },
+        {
+          "home": "Hull City",
+          "away": "Brighton",
+          "players": [
+            {
+              "name": "Belloumi",
+              "rank": 1,
+              "prediction": 4.54,
+              "actual": 7.0,
+              "difference": 2.46,
+              "minutes": 90
+            },
+            {
+              "name": "Gro\u00df",
+              "rank": 2,
+              "prediction": 4.15,
+              "actual": 4.0,
+              "difference": -0.15,
+              "minutes": 90
+            },
+            {
+              "name": "Vuskovic",
+              "rank": 3,
+              "prediction": 3.9,
+              "actual": 0.0,
+              "difference": -3.9,
+              "minutes": 90
+            },
+            {
+              "name": "McBurnie",
+              "rank": 4,
+              "prediction": 3.9,
+              "actual": 13.0,
+              "difference": 9.1,
+              "minutes": 90
+            },
+            {
+              "name": "Kostoulas",
+              "rank": 5,
+              "prediction": 3.66,
+              "actual": 1.0,
+              "difference": -2.66,
+              "minutes": 23
+            },
+            {
+              "name": "Cho",
+              "rank": 6,
+              "prediction": 3.43,
+              "actual": 1.0,
+              "difference": -2.43,
+              "minutes": 45
+            },
+            {
+              "name": "De Cuyper",
+              "rank": 7,
+              "prediction": 3.31,
+              "actual": 1.0,
+              "difference": -2.31,
+              "minutes": 90
+            },
+            {
+              "name": "Tzolakis",
+              "rank": 8,
+              "prediction": 3.28,
+              "actual": 10.0,
+              "difference": 6.72,
+              "minutes": 90
+            },
+            {
+              "name": "Verbruggen",
+              "rank": 9,
+              "prediction": 3.15,
+              "actual": 2.0,
+              "difference": -1.15,
+              "minutes": 90
+            },
+            {
+              "name": "Ayari",
+              "rank": 10,
+              "prediction": 3.09,
+              "actual": 3.0,
+              "difference": -0.09,
+              "minutes": 66
+            },
+            {
+              "name": "Gomez",
+              "rank": 11,
+              "prediction": 2.97,
+              "actual": 3.0,
+              "difference": 0.03,
+              "minutes": 79
+            },
+            {
+              "name": "Mendy",
+              "rank": 12,
+              "prediction": 2.85,
+              "actual": 5.0,
+              "difference": 2.15,
+              "minutes": 90
+            },
+            {
+              "name": "Stroud",
+              "rank": 13,
+              "prediction": 2.72,
+              "actual": 5.0,
+              "difference": 2.28,
+              "minutes": 67
+            },
+            {
+              "name": "Slater",
+              "rank": 14,
+              "prediction": 2.66,
+              "actual": 3.0,
+              "difference": 0.34,
+              "minutes": 90
+            },
+            {
+              "name": "Ajayi",
+              "rank": 15,
+              "prediction": 2.54,
+              "actual": 6.0,
+              "difference": 3.46,
+              "minutes": 90
+            },
+            {
+              "name": "Iroegbunam",
+              "rank": 16,
+              "prediction": 2.52,
+              "actual": 1.0,
+              "difference": -1.52,
+              "minutes": 44
+            },
+            {
+              "name": "Dunk",
+              "rank": 19,
+              "prediction": 2.47,
+              "actual": 1.0,
+              "difference": -1.47,
+              "minutes": 90
+            },
+            {
+              "name": "Gourna-Douath",
+              "rank": 21,
+              "prediction": 2.33,
+              "actual": 3.0,
+              "difference": 0.67,
+              "minutes": 45
+            },
+            {
+              "name": "Boscagli",
+              "rank": 22,
+              "prediction": 2.33,
+              "actual": 7.0,
+              "difference": 4.67,
+              "minutes": 66
+            },
+            {
+              "name": "Costinha",
+              "rank": 23,
+              "prediction": 2.32,
+              "actual": -2.0,
+              "difference": -4.32,
+              "minutes": 88
+            },
+            {
+              "name": "Andr\u00e9s",
+              "rank": 24,
+              "prediction": 2.28,
+              "actual": 1.0,
+              "difference": -1.28,
+              "minutes": 90
+            },
+            {
+              "name": "Thomas",
+              "rank": 25,
+              "prediction": 2.15,
+              "actual": 1.0,
+              "difference": -1.15,
+              "minutes": 45
+            },
+            {
+              "name": "Coyle",
+              "rank": 26,
+              "prediction": 2.04,
+              "actual": 6.0,
+              "difference": 3.96,
+              "minutes": 83
+            },
+            {
+              "name": "Hinshelwood",
+              "rank": 28,
+              "prediction": 1.82,
+              "actual": 1.0,
+              "difference": -0.82,
+              "minutes": 23
+            },
+            {
+              "name": "Georginio",
+              "rank": 30,
+              "prediction": 1.7,
+              "actual": 2.0,
+              "difference": 0.3,
+              "minutes": 66
+            },
+            {
+              "name": "Giles",
+              "rank": 32,
+              "prediction": 1.55,
+              "actual": 1.0,
+              "difference": -0.55,
+              "minutes": 23
+            },
+            {
+              "name": "F.Kad\u0131o\u011flu",
+              "rank": 33,
+              "prediction": 1.49,
+              "actual": 0.0,
+              "difference": -1.49,
+              "minutes": 10
+            },
+            {
+              "name": "Norton-Cuffy",
+              "rank": 37,
+              "prediction": 1.03,
+              "actual": 1.0,
+              "difference": -0.03,
+              "minutes": 6
+            },
+            {
+              "name": "Minteh",
+              "rank": 39,
+              "prediction": 0.89,
+              "actual": 1.0,
+              "difference": 0.11,
+              "minutes": 23
+            },
+            {
+              "name": "Osman",
+              "rank": 41,
+              "prediction": 0.84,
+              "actual": 1.0,
+              "difference": 0.16,
+              "minutes": 1
+            },
+            {
+              "name": "Crooks",
+              "rank": 45,
+              "prediction": 0.6,
+              "actual": 3.0,
+              "difference": 2.4,
+              "minutes": 67
+            },
+            {
+              "name": "Hjert\u00f8-Dahl",
+              "rank": 51,
+              "prediction": 0.24,
+              "actual": 1.0,
+              "difference": 0.76,
+              "minutes": 22
+            }
+          ]
+        },
+        {
+          "home": "Liverpool",
+          "away": "Man Utd",
+          "players": [
+            {
+              "name": "Isak",
+              "rank": 1,
+              "prediction": 5.65,
+              "actual": 5.0,
+              "difference": -0.65,
+              "minutes": 84
+            },
+            {
+              "name": "Wirtz",
+              "rank": 2,
+              "prediction": 5.04,
+              "actual": 14.0,
+              "difference": 8.96,
+              "minutes": 90
+            },
+            {
+              "name": "B. Fernandes",
+              "rank": 3,
+              "prediction": 4.7,
+              "actual": 2.0,
+              "difference": -2.7,
+              "minutes": 90
+            },
+            {
+              "name": "Mac Allister",
+              "rank": 4,
+              "prediction": 4.51,
+              "actual": 3.0,
+              "difference": -1.51,
+              "minutes": 71
+            },
+            {
+              "name": "Barcola",
+              "rank": 5,
+              "prediction": 4.46,
+              "actual": 5.0,
+              "difference": 0.54,
+              "minutes": 71
+            },
+            {
+              "name": "Virgil",
+              "rank": 6,
+              "prediction": 4.08,
+              "actual": 6.0,
+              "difference": 1.92,
+              "minutes": 90
+            },
+            {
+              "name": "Cunha",
+              "rank": 8,
+              "prediction": 3.86,
+              "actual": 1.0,
+              "difference": -2.86,
+              "minutes": 45
+            },
+            {
+              "name": "Araujo",
+              "rank": 9,
+              "prediction": 3.79,
+              "actual": 6.0,
+              "difference": 2.21,
+              "minutes": 84
+            },
+            {
+              "name": "A.Becker",
+              "rank": 10,
+              "prediction": 3.64,
+              "actual": 7.0,
+              "difference": 3.36,
+              "minutes": 90
+            },
+            {
+              "name": "Mbeumo",
+              "rank": 11,
+              "prediction": 3.42,
+              "actual": 1.0,
+              "difference": -2.42,
+              "minutes": 21
+            },
+            {
+              "name": "Jacquet",
+              "rank": 12,
+              "prediction": 3.31,
+              "actual": 6.0,
+              "difference": 2.69,
+              "minutes": 90
+            },
+            {
+              "name": "Kerkez",
+              "rank": 13,
+              "prediction": 3.31,
+              "actual": 6.0,
+              "difference": 2.69,
+              "minutes": 90
+            },
+            {
+              "name": "Szoboszlai",
+              "rank": 14,
+              "prediction": 3.28,
+              "actual": 9.0,
+              "difference": 5.72,
+              "minutes": 90
+            },
+            {
+              "name": "Lammens",
+              "rank": 15,
+              "prediction": 3.22,
+              "actual": 2.0,
+              "difference": -1.22,
+              "minutes": 90
+            },
+            {
+              "name": "Dorgu",
+              "rank": 16,
+              "prediction": 2.73,
+              "actual": 2.0,
+              "difference": -0.73,
+              "minutes": 64
+            },
+            {
+              "name": "Yoro",
+              "rank": 18,
+              "prediction": 2.53,
+              "actual": -4.0,
+              "difference": -6.53,
+              "minutes": 7
+            },
+            {
+              "name": "Nyoni",
+              "rank": 19,
+              "prediction": 2.51,
+              "actual": 1.0,
+              "difference": -1.51,
+              "minutes": 18
+            },
+            {
+              "name": "Maguire",
+              "rank": 20,
+              "prediction": 2.45,
+              "actual": 3.0,
+              "difference": 0.55,
+              "minutes": 68
+            },
+            {
+              "name": "Mount",
+              "rank": 21,
+              "prediction": 2.31,
+              "actual": 1.0,
+              "difference": -1.31,
+              "minutes": 25
+            },
+            {
+              "name": "Koumas",
+              "rank": 22,
+              "prediction": 2.16,
+              "actual": 1.0,
+              "difference": -1.16,
+              "minutes": 5
+            },
+            {
+              "name": "Dalot",
+              "rank": 23,
+              "prediction": 2.1,
+              "actual": 0.0,
+              "difference": -2.1,
+              "minutes": 90
+            },
+            {
+              "name": "Tielemans",
+              "rank": 26,
+              "prediction": 1.9,
+              "actual": 4.0,
+              "difference": 2.1,
+              "minutes": 64
+            },
+            {
+              "name": "Mainoo",
+              "rank": 27,
+              "prediction": 1.83,
+              "actual": 4.0,
+              "difference": 2.17,
+              "minutes": 86
+            },
+            {
+              "name": "Ngumoha",
+              "rank": 28,
+              "prediction": 1.77,
+              "actual": 13.0,
+              "difference": 11.23,
+              "minutes": 77
+            },
+            {
+              "name": "Mazraoui",
+              "rank": 29,
+              "prediction": 1.7,
+              "actual": 0.0,
+              "difference": -1.7,
+              "minutes": 25
+            },
+            {
+              "name": "Munoz",
+              "rank": 30,
+              "prediction": 1.67,
+              "actual": 6.0,
+              "difference": 4.33,
+              "minutes": 18
+            },
+            {
+              "name": "Martinez",
+              "rank": 31,
+              "prediction": 1.67,
+              "actual": 0.0,
+              "difference": -1.67,
+              "minutes": 90
+            },
+            {
+              "name": "Zirkzee",
+              "rank": 33,
+              "prediction": 1.44,
+              "actual": 1.0,
+              "difference": -0.44,
+              "minutes": 45
+            },
+            {
+              "name": "Andrey Santos",
+              "rank": 34,
+              "prediction": 1.3,
+              "actual": 1.0,
+              "difference": -0.3,
+              "minutes": 3
+            },
+            {
+              "name": "Gomez",
+              "rank": 38,
+              "prediction": 0.85,
+              "actual": 1.0,
+              "difference": 0.15,
+              "minutes": 5
+            },
+            {
+              "name": "Frimpong",
+              "rank": 44,
+              "prediction": 0.36,
+              "actual": 1.0,
+              "difference": 0.64,
+              "minutes": 12
+            },
+            {
+              "name": "De Ligt",
+              "rank": 55,
+              "prediction": 0.09,
+              "actual": 2.0,
+              "difference": 1.91,
+              "minutes": 90
+            }
+          ]
+        },
+        {
+          "home": "Man City",
+          "away": "Fulham",
+          "players": [
+            {
+              "name": "Haaland",
+              "rank": 1,
+              "prediction": 5.42,
+              "actual": 2.0,
+              "difference": -3.42,
+              "minutes": 90
+            },
+            {
+              "name": "Ndiaye",
+              "rank": 2,
+              "prediction": 4.42,
+              "actual": 2.0,
+              "difference": -2.42,
+              "minutes": 77
+            },
+            {
+              "name": "Anderson",
+              "rank": 3,
+              "prediction": 4.39,
+              "actual": 10.0,
+              "difference": 5.61,
+              "minutes": 90
+            },
+            {
+              "name": "King",
+              "rank": 4,
+              "prediction": 4.29,
+              "actual": 2.0,
+              "difference": -2.29,
+              "minutes": 69
+            },
+            {
+              "name": "Doku",
+              "rank": 5,
+              "prediction": 4.24,
+              "actual": 2.0,
+              "difference": -2.24,
+              "minutes": 90
+            },
+            {
+              "name": "R\u00faben",
+              "rank": 6,
+              "prediction": 4.08,
+              "actual": 2.0,
+              "difference": -2.08,
+              "minutes": 90
+            },
+            {
+              "name": "Iwobi",
+              "rank": 7,
+              "prediction": 3.95,
+              "actual": 1.0,
+              "difference": -2.95,
+              "minutes": 69
+            },
+            {
+              "name": "Donnarumma",
+              "rank": 8,
+              "prediction": 3.77,
+              "actual": 2.0,
+              "difference": -1.77,
+              "minutes": 90
+            },
+            {
+              "name": "Bobb",
+              "rank": 9,
+              "prediction": 3.72,
+              "actual": 6.0,
+              "difference": 2.28,
+              "minutes": 76
+            },
+            {
+              "name": "Enzo",
+              "rank": 10,
+              "prediction": 3.66,
+              "actual": 1.0,
+              "difference": -2.66,
+              "minutes": 5
+            },
+            {
+              "name": "Cherki",
+              "rank": 11,
+              "prediction": 3.57,
+              "actual": 1.0,
+              "difference": -2.57,
+              "minutes": 20
+            },
+            {
+              "name": "Khusanov",
+              "rank": 12,
+              "prediction": 3.19,
+              "actual": 2.0,
+              "difference": -1.19,
+              "minutes": 90
+            },
+            {
+              "name": "Gvardiol",
+              "rank": 13,
+              "prediction": 3.12,
+              "actual": 1.0,
+              "difference": -2.12,
+              "minutes": 12
+            },
+            {
+              "name": "Robinson",
+              "rank": 14,
+              "prediction": 2.99,
+              "actual": 1.0,
+              "difference": -1.99,
+              "minutes": 20
+            },
+            {
+              "name": "Leno",
+              "rank": 15,
+              "prediction": 2.83,
+              "actual": 2.0,
+              "difference": -0.83,
+              "minutes": 90
+            },
+            {
+              "name": "Charles",
+              "rank": 16,
+              "prediction": 2.7,
+              "actual": 3.0,
+              "difference": 0.3,
+              "minutes": 90
+            },
+            {
+              "name": "Palacios",
+              "rank": 17,
+              "prediction": 2.6,
+              "actual": 1.0,
+              "difference": -1.6,
+              "minutes": 7
+            },
+            {
+              "name": "Bassey",
+              "rank": 19,
+              "prediction": 2.51,
+              "actual": 1.0,
+              "difference": -1.51,
+              "minutes": 90
+            },
+            {
+              "name": "Gonzalo",
+              "rank": 20,
+              "prediction": 2.44,
+              "actual": 1.0,
+              "difference": -1.44,
+              "minutes": 13
+            },
+            {
+              "name": "Bouaddi",
+              "rank": 22,
+              "prediction": 2.37,
+              "actual": 2.0,
+              "difference": -0.37,
+              "minutes": 84
+            },
+            {
+              "name": "Larsson",
+              "rank": 23,
+              "prediction": 2.33,
+              "actual": 1.0,
+              "difference": -1.33,
+              "minutes": 20
+            },
+            {
+              "name": "Foden",
+              "rank": 24,
+              "prediction": 2.21,
+              "actual": 2.0,
+              "difference": -0.21,
+              "minutes": 69
+            },
+            {
+              "name": "Affengruber",
+              "rank": 25,
+              "prediction": 2.19,
+              "actual": 4.0,
+              "difference": 1.81,
+              "minutes": 90
+            },
+            {
+              "name": "Berge",
+              "rank": 26,
+              "prediction": 2.05,
+              "actual": 4.0,
+              "difference": 1.95,
+              "minutes": 90
+            },
+            {
+              "name": "Muniz",
+              "rank": 27,
+              "prediction": 2.04,
+              "actual": 8.0,
+              "difference": 5.96,
+              "minutes": 82
+            },
+            {
+              "name": "Gu\u00e9hi",
+              "rank": 28,
+              "prediction": 1.82,
+              "actual": 2.0,
+              "difference": 0.18,
+              "minutes": 90
+            },
+            {
+              "name": "Allan",
+              "rank": 29,
+              "prediction": 1.64,
+              "actual": 1.0,
+              "difference": -0.64,
+              "minutes": 12
+            },
+            {
+              "name": "Sessegnon",
+              "rank": 30,
+              "prediction": 1.49,
+              "actual": 2.0,
+              "difference": 0.51,
+              "minutes": 82
+            },
+            {
+              "name": "O'Reilly",
+              "rank": 31,
+              "prediction": 1.45,
+              "actual": 2.0,
+              "difference": 0.55,
+              "minutes": 77
+            },
+            {
+              "name": "Tete",
+              "rank": 33,
+              "prediction": 1.2,
+              "actual": 4.0,
+              "difference": 2.8,
+              "minutes": 90
+            },
+            {
+              "name": "Cairney",
+              "rank": 34,
+              "prediction": 1.17,
+              "actual": 1.0,
+              "difference": -0.17,
+              "minutes": 7
+            }
+          ]
+        },
+        {
+          "home": "Newcastle",
+          "away": "Arsenal",
+          "players": [
+            {
+              "name": "Rice",
+              "rank": 1,
+              "prediction": 5.55,
+              "actual": 3.0,
+              "difference": -2.55,
+              "minutes": 90
+            },
+            {
+              "name": "Gabriel",
+              "rank": 2,
+              "prediction": 4.98,
+              "actual": 1.0,
+              "difference": -3.98,
+              "minutes": 90
+            },
+            {
+              "name": "Madueke",
+              "rank": 3,
+              "prediction": 4.27,
+              "actual": 8.0,
+              "difference": 3.73,
+              "minutes": 90
+            },
+            {
+              "name": "Osula",
+              "rank": 4,
+              "prediction": 4.16,
+              "actual": 5.0,
+              "difference": 0.84,
+              "minutes": 90
+            },
+            {
+              "name": "\u00d8degaard",
+              "rank": 5,
+              "prediction": 4.0,
+              "actual": 5.0,
+              "difference": 1.0,
+              "minutes": 90
+            },
+            {
+              "name": "Raya",
+              "rank": 6,
+              "prediction": 3.89,
+              "actual": 1.0,
+              "difference": -2.89,
+              "minutes": 69
+            },
+            {
+              "name": "Barnes",
+              "rank": 7,
+              "prediction": 3.81,
+              "actual": 7.0,
+              "difference": 3.19,
+              "minutes": 90
+            },
+            {
+              "name": "Wissa",
+              "rank": 8,
+              "prediction": 3.35,
+              "actual": 1.0,
+              "difference": -2.35,
+              "minutes": 7
+            },
+            {
+              "name": "Steur",
+              "rank": 9,
+              "prediction": 3.24,
+              "actual": 1.0,
+              "difference": -2.24,
+              "minutes": 45
+            },
+            {
+              "name": "J.Murphy",
+              "rank": 10,
+              "prediction": 3.23,
+              "actual": 1.0,
+              "difference": -2.23,
+              "minutes": 45
+            },
+            {
+              "name": "Bruno G.",
+              "rank": 11,
+              "prediction": 3.2,
+              "actual": 2.0,
+              "difference": -1.2,
+              "minutes": 69
+            },
+            {
+              "name": "Gy\u00f6keres",
+              "rank": 12,
+              "prediction": 3.1,
+              "actual": 0.0,
+              "difference": -3.1,
+              "minutes": 1
+            },
+            {
+              "name": "Hall",
+              "rank": 13,
+              "prediction": 3.01,
+              "actual": 1.0,
+              "difference": -2.01,
+              "minutes": 90
+            },
+            {
+              "name": "Havertz",
+              "rank": 14,
+              "prediction": 2.97,
+              "actual": 5.0,
+              "difference": 2.03,
+              "minutes": 90
+            },
+            {
+              "name": "Tzolis",
+              "rank": 15,
+              "prediction": 2.91,
+              "actual": 1.0,
+              "difference": -1.91,
+              "minutes": 20
+            },
+            {
+              "name": "Dedi\u0107",
+              "rank": 17,
+              "prediction": 2.84,
+              "actual": 0.0,
+              "difference": -2.84,
+              "minutes": 45
+            },
+            {
+              "name": "J.Timber",
+              "rank": 18,
+              "prediction": 2.79,
+              "actual": 1.0,
+              "difference": -1.79,
+              "minutes": 90
+            },
+            {
+              "name": "Calafiori",
+              "rank": 19,
+              "prediction": 2.76,
+              "actual": 1.0,
+              "difference": -1.76,
+              "minutes": 90
+            },
+            {
+              "name": "Konsa",
+              "rank": 20,
+              "prediction": 2.75,
+              "actual": 1.0,
+              "difference": -1.75,
+              "minutes": 90
+            },
+            {
+              "name": "Horn\u00ed\u010dek",
+              "rank": 21,
+              "prediction": 2.74,
+              "actual": 1.0,
+              "difference": -1.74,
+              "minutes": 90
+            },
+            {
+              "name": "Elanga",
+              "rank": 22,
+              "prediction": 2.45,
+              "actual": 1.0,
+              "difference": -1.45,
+              "minutes": 45
+            },
+            {
+              "name": "Burn",
+              "rank": 24,
+              "prediction": 2.31,
+              "actual": 2.0,
+              "difference": -0.31,
+              "minutes": 90
+            },
+            {
+              "name": "Eze",
+              "rank": 25,
+              "prediction": 2.28,
+              "actual": 10.0,
+              "difference": 7.72,
+              "minutes": 69
+            },
+            {
+              "name": "Willock",
+              "rank": 26,
+              "prediction": 2.18,
+              "actual": 5.0,
+              "difference": 2.82,
+              "minutes": 82
+            },
+            {
+              "name": "Merino",
+              "rank": 27,
+              "prediction": 2.04,
+              "actual": 1.0,
+              "difference": -1.04,
+              "minutes": 1
+            },
+            {
+              "name": "Thiaw",
+              "rank": 28,
+              "prediction": 2.03,
+              "actual": 7.0,
+              "difference": 4.97,
+              "minutes": 90
+            },
+            {
+              "name": "Lewis-Skelly",
+              "rank": 30,
+              "prediction": 1.82,
+              "actual": 1.0,
+              "difference": -0.82,
+              "minutes": 20
+            },
+            {
+              "name": "L.Miley",
+              "rank": 35,
+              "prediction": 1.6,
+              "actual": 2.0,
+              "difference": 0.4,
+              "minutes": 90
+            },
+            {
+              "name": "J.Ramsey",
+              "rank": 37,
+              "prediction": 1.36,
+              "actual": 1.0,
+              "difference": -0.36,
+              "minutes": 45
+            },
+            {
+              "name": "Livramento",
+              "rank": 40,
+              "prediction": 0.72,
+              "actual": 1.0,
+              "difference": 0.28,
+              "minutes": 45
+            },
+            {
+              "name": "Botman",
+              "rank": 44,
+              "prediction": 0.57,
+              "actual": 1.0,
+              "difference": 0.43,
+              "minutes": 1
+            },
+            {
+              "name": "Arrizabalaga",
+              "rank": 52,
+              "prediction": 0.08,
+              "actual": 1.0,
+              "difference": 0.92,
+              "minutes": 20
+            }
+          ]
+        },
+        {
+          "home": "Spurs",
+          "away": "Ipswich Town",
+          "players": [
+            {
+              "name": "Kudus",
+              "rank": 1,
+              "prediction": 3.92,
+              "actual": 2.0,
+              "difference": -1.92,
+              "minutes": 90
+            },
+            {
+              "name": "Emersonn",
+              "rank": 2,
+              "prediction": 3.79,
+              "actual": 1.0,
+              "difference": -2.79,
+              "minutes": 16
+            },
+            {
+              "name": "Enciso",
+              "rank": 3,
+              "prediction": 3.7,
+              "actual": 2.0,
+              "difference": -1.7,
+              "minutes": 90
+            },
+            {
+              "name": "Ouattara",
+              "rank": 4,
+              "prediction": 3.66,
+              "actual": 0.0,
+              "difference": -3.66,
+              "minutes": 55
+            },
+            {
+              "name": "Fernandes",
+              "rank": 5,
+              "prediction": 3.56,
+              "actual": 4.0,
+              "difference": 0.44,
+              "minutes": 90
+            },
+            {
+              "name": "Marmoush",
+              "rank": 7,
+              "prediction": 3.36,
+              "actual": 1.0,
+              "difference": -2.36,
+              "minutes": 26
+            },
+            {
+              "name": "Robertson",
+              "rank": 8,
+              "prediction": 3.33,
+              "actual": 1.0,
+              "difference": -2.33,
+              "minutes": 11
+            },
+            {
+              "name": "Palacios",
+              "rank": 11,
+              "prediction": 2.82,
+              "actual": 3.0,
+              "difference": 0.18,
+              "minutes": 55
+            },
+            {
+              "name": "Van Hecke",
+              "rank": 12,
+              "prediction": 2.74,
+              "actual": 6.0,
+              "difference": 3.26,
+              "minutes": 90
+            },
+            {
+              "name": "Kinsky",
+              "rank": 13,
+              "prediction": 2.69,
+              "actual": 7.0,
+              "difference": 4.31,
+              "minutes": 90
+            },
+            {
+              "name": "Davis",
+              "rank": 14,
+              "prediction": 2.64,
+              "actual": 1.0,
+              "difference": -1.64,
+              "minutes": 82
+            },
+            {
+              "name": "Solanke",
+              "rank": 15,
+              "prediction": 2.6,
+              "actual": 7.0,
+              "difference": 4.4,
+              "minutes": 63
+            },
+            {
+              "name": "Pedro Porro",
+              "rank": 16,
+              "prediction": 2.53,
+              "actual": 11.0,
+              "difference": 8.47,
+              "minutes": 90
+            },
+            {
+              "name": "Walton",
+              "rank": 17,
+              "prediction": 2.51,
+              "actual": 3.0,
+              "difference": 0.49,
+              "minutes": 90
+            },
+            {
+              "name": "O'Shea",
+              "rank": 19,
+              "prediction": 2.47,
+              "actual": 3.0,
+              "difference": 0.53,
+              "minutes": 90
+            },
+            {
+              "name": "Gray",
+              "rank": 20,
+              "prediction": 2.33,
+              "actual": 1.0,
+              "difference": -1.33,
+              "minutes": 1
+            },
+            {
+              "name": "Florentino",
+              "rank": 21,
+              "prediction": 2.24,
+              "actual": 1.0,
+              "difference": -1.24,
+              "minutes": 34
+            },
+            {
+              "name": "Diop",
+              "rank": 23,
+              "prediction": 2.23,
+              "actual": 0.0,
+              "difference": -2.23,
+              "minutes": 90
+            },
+            {
+              "name": "Fatawu",
+              "rank": 24,
+              "prediction": 2.2,
+              "actual": 1.0,
+              "difference": -1.2,
+              "minutes": 34
+            },
+            {
+              "name": "Maeda",
+              "rank": 25,
+              "prediction": 2.18,
+              "actual": 1.0,
+              "difference": -1.18,
+              "minutes": 55
+            },
+            {
+              "name": "Maddison",
+              "rank": 26,
+              "prediction": 2.14,
+              "actual": 2.0,
+              "difference": -0.14,
+              "minutes": 63
+            },
+            {
+              "name": "Clarke",
+              "rank": 28,
+              "prediction": 2.02,
+              "actual": 1.0,
+              "difference": -1.02,
+              "minutes": 34
+            },
+            {
+              "name": "Flemming",
+              "rank": 29,
+              "prediction": 1.88,
+              "actual": 2.0,
+              "difference": 0.12,
+              "minutes": 73
+            },
+            {
+              "name": "Gallagher",
+              "rank": 32,
+              "prediction": 1.75,
+              "actual": 3.0,
+              "difference": 1.25,
+              "minutes": 90
+            },
+            {
+              "name": "Senesi",
+              "rank": 33,
+              "prediction": 1.73,
+              "actual": 8.0,
+              "difference": 6.27,
+              "minutes": 90
+            },
+            {
+              "name": "Williams-Barnett",
+              "rank": 34,
+              "prediction": 1.44,
+              "actual": 13.0,
+              "difference": 11.56,
+              "minutes": 63
+            },
+            {
+              "name": "Udogie",
+              "rank": 38,
+              "prediction": 1.16,
+              "actual": 6.0,
+              "difference": 4.84,
+              "minutes": 78
+            },
+            {
+              "name": "Greaves",
+              "rank": 44,
+              "prediction": 0.59,
+              "actual": 1.0,
+              "difference": 0.41,
+              "minutes": 7
+            },
+            {
+              "name": "S\u00e1vio",
+              "rank": 48,
+              "prediction": 0.44,
+              "actual": 1.0,
+              "difference": 0.56,
+              "minutes": 25
+            },
+            {
+              "name": "Luki\u0107",
+              "rank": 50,
+              "prediction": 0.4,
+              "actual": 4.0,
+              "difference": 3.6,
+              "minutes": 90
+            },
+            {
+              "name": "Furlong",
+              "rank": 54,
+              "prediction": 0.26,
+              "actual": 1.0,
+              "difference": 0.74,
+              "minutes": 90
+            },
+            {
+              "name": "Bergvall",
+              "rank": 59,
+              "prediction": 0.18,
+              "actual": 1.0,
+              "difference": 0.82,
+              "minutes": 26
             }
           ]
         }

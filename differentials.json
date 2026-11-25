@@ -2,17 +2,17 @@
   "season": "2026/27",
   "data_gameweek": 11,
   "next_gameweek": 12,
-  "generated_at_utc": "2026-11-24T13:52:03.673072+00:00",
+  "generated_at_utc": "2026-11-25T00:01:53.407617+00:00",
   "picks": [
     {
       "name": "Wirtz",
       "team": "Liverpool",
       "position": "Midfielder",
-      "ownership": 9.3,
+      "ownership": 10.0,
       "prediction": 5.69843,
-      "differential_score": 5.168,
+      "differential_score": 5.129,
       "price": 7.4,
-      "form": 8.8,
+      "form": 9.7,
       "fixture": {
         "home": "Everton",
         "away": "Liverpool",
@@ -29,7 +29,7 @@
       "prediction": 4.766501,
       "differential_score": 4.504,
       "price": 7.8,
-      "form": 2.2,
+      "form": 2.7,
       "fixture": {
         "home": "Man Utd",
         "away": "Brentford",
@@ -63,7 +63,7 @@
       "prediction": 4.584157,
       "differential_score": 4.474,
       "price": 6.3,
-      "form": 4.5,
+      "form": 2.7,
       "fixture": {
         "home": "Fulham",
         "away": "Bournemouth",
@@ -80,7 +80,7 @@
       "prediction": 4.53739,
       "differential_score": 4.333,
       "price": 4.4,
-      "form": 1.5,
+      "form": 1.7,
       "fixture": {
         "home": "Crystal Palace",
         "away": "Hull City",
