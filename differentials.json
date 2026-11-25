@@ -2,25 +2,8 @@
   "season": "2026/27",
   "data_gameweek": 11,
   "next_gameweek": 12,
-  "generated_at_utc": "2026-11-25T00:01:53.407617+00:00",
+  "generated_at_utc": "2026-11-25T08:48:03.680059+00:00",
   "picks": [
-    {
-      "name": "Wirtz",
-      "team": "Liverpool",
-      "position": "Midfielder",
-      "ownership": 10.0,
-      "prediction": 5.69843,
-      "differential_score": 5.129,
-      "price": 7.4,
-      "form": 9.7,
-      "fixture": {
-        "home": "Everton",
-        "away": "Liverpool",
-        "is_home": false,
-        "kickoff": "2026-11-29T12:00:00",
-        "match_id": "26-27-prem-everton-vs-liverpool"
-      }
-    },
     {
       "name": "Cunha",
       "team": "Man Utd",
@@ -76,9 +59,9 @@
       "name": "Mitchell",
       "team": "Crystal Palace",
       "position": "Defender",
-      "ownership": 4.5,
+      "ownership": 4.4,
       "prediction": 4.53739,
-      "differential_score": 4.333,
+      "differential_score": 4.338,
       "price": 4.4,
       "form": 1.7,
       "fixture": {
@@ -87,6 +70,23 @@
         "is_home": true,
         "kickoff": "2026-11-29T14:05:00",
         "match_id": "26-27-prem-crystal-palace-vs-hull-city"
+      }
+    },
+    {
+      "name": "Barcola",
+      "team": "Liverpool",
+      "position": "Midfielder",
+      "ownership": 4.5,
+      "prediction": 4.483841,
+      "differential_score": 4.282,
+      "price": 8.1,
+      "form": 3.7,
+      "fixture": {
+        "home": "Everton",
+        "away": "Liverpool",
+        "is_home": false,
+        "kickoff": "2026-11-29T12:00:00",
+        "match_id": "26-27-prem-everton-vs-liverpool"
       }
     }
   ]

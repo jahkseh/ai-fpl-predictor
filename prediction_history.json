@@ -18916,7 +18916,7 @@
             {
               "rank": 34,
               "name": "Merino",
-              "prediction": 1.249638,
+              "prediction": 1.22851,
               "prediction_p10": 0.0,
               "prediction_p90": 3.402857,
               "confidence": "medium",
@@ -21163,9 +21163,9 @@
             {
               "rank": 8,
               "name": "Hill",
-              "prediction": 3.708189,
-              "prediction_p10": 0.854762,
-              "prediction_p90": 7.0,
+              "prediction": 3.700002,
+              "prediction_p10": 0.857143,
+              "prediction_p90": 7.104286,
               "confidence": "low",
               "expected_minutes": 73.567873
             },
@@ -22470,21 +22470,21 @@
             },
             {
               "rank": 21,
-              "name": "Grimes",
-              "prediction": 2.30015,
-              "prediction_p10": 0.0,
-              "prediction_p90": 5.584286,
-              "confidence": "low",
-              "expected_minutes": 23.724366
-            },
-            {
-              "rank": 22,
               "name": "Aaronson",
               "prediction": 2.294163,
               "prediction_p10": 0.222222,
               "prediction_p90": 5.507143,
               "confidence": "low",
               "expected_minutes": 21.90045
+            },
+            {
+              "rank": 22,
+              "name": "Grimes",
+              "prediction": 2.260535,
+              "prediction_p10": 0.0,
+              "prediction_p90": 5.584286,
+              "confidence": "low",
+              "expected_minutes": 23.724366
             },
             {
               "rank": 23,
@@ -23206,9 +23206,9 @@
             {
               "rank": 34,
               "name": "Andrey Santos",
-              "prediction": 1.182228,
+              "prediction": 1.217463,
               "prediction_p10": 0.0,
-              "prediction_p90": 3.011111,
+              "prediction_p90": 3.2,
               "confidence": "medium",
               "expected_minutes": 32.516293
             },
@@ -23305,9 +23305,9 @@
             {
               "rank": 45,
               "name": "Henry",
-              "prediction": 0.227034,
+              "prediction": 0.201437,
               "prediction_p10": 0.0,
-              "prediction_p90": 0.846154,
+              "prediction_p90": 0.75,
               "confidence": "high",
               "expected_minutes": 7.876944
             },
@@ -23527,7 +23527,7 @@
             {
               "rank": 6,
               "name": "Schlager",
-              "prediction": 3.4382,
+              "prediction": 3.432175,
               "prediction_p10": 0.312019,
               "prediction_p90": 7.67,
               "confidence": "low",
