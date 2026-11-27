@@ -5,6 +5,96 @@
   "players_compared": 654,
   "largest_changes": [
     {
+      "name": "George Hemmings",
+      "old_prediction": 1.025,
+      "new_prediction": 1.082,
+      "change": 0.056,
+      "old_confidence": "medium",
+      "new_confidence": "medium",
+      "expected_minutes": 31.30713,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Wirtz",
+      "old_prediction": 5.698,
+      "new_prediction": 5.658,
+      "change": -0.04,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 78.013253,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Okafor",
+      "old_prediction": 2.337,
+      "new_prediction": 2.298,
+      "change": -0.039,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 27.934014,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "Muharemovi\u0107",
+      "old_prediction": 3.862,
+      "new_prediction": 3.89,
+      "change": 0.028,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 74.602908,
+      "fixture_difficulty": 2
+    },
+    {
+      "name": "De Cuyper",
+      "old_prediction": 3.024,
+      "new_prediction": 3.05,
+      "change": 0.026,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 75.285977,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Brobbey",
+      "old_prediction": 2.753,
+      "new_prediction": 2.731,
+      "change": -0.022,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 51.46534,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Thiago",
+      "old_prediction": 3.414,
+      "new_prediction": 3.431,
+      "change": 0.017,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 49.456972,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Hume",
+      "old_prediction": 3.35,
+      "new_prediction": 3.343,
+      "change": -0.007,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 77.951065,
+      "fixture_difficulty": 3
+    },
+    {
+      "name": "Kinsky",
+      "old_prediction": 2.458,
+      "new_prediction": 2.466,
+      "change": 0.007,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 87.623352,
+      "fixture_difficulty": 2
+    },
+    {
       "name": "Haaland",
       "old_prediction": 5.636,
       "new_prediction": 5.636,
@@ -163,96 +253,6 @@
       "new_confidence": "low",
       "expected_minutes": 40.129038,
       "fixture_difficulty": 5
-    },
-    {
-      "name": "Enzo",
-      "old_prediction": 3.137,
-      "new_prediction": 3.137,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 56.313389,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Khusanov",
-      "old_prediction": 3.121,
-      "new_prediction": 3.121,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 79.048336,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Raya",
-      "old_prediction": 3.112,
-      "new_prediction": 3.112,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 61.971107,
-      "fixture_difficulty": 5
-    },
-    {
-      "name": "Konsa",
-      "old_prediction": 2.85,
-      "new_prediction": 2.85,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 80.881018,
-      "fixture_difficulty": 5
-    },
-    {
-      "name": "Gy\u00f6keres",
-      "old_prediction": 2.681,
-      "new_prediction": 2.681,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 28.203964,
-      "fixture_difficulty": 5
-    },
-    {
-      "name": "Matheus N.",
-      "old_prediction": 2.659,
-      "new_prediction": 2.659,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 60.745418,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Gu\u00e9hi",
-      "old_prediction": 2.514,
-      "new_prediction": 2.514,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 54.081566,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Bouaddi",
-      "old_prediction": 2.509,
-      "new_prediction": 2.509,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 39.397081,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "O'Reilly",
-      "old_prediction": 2.401,
-      "new_prediction": 2.401,
-      "change": 0.0,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 50.2382,
-      "fixture_difficulty": 4
     }
   ]
 }

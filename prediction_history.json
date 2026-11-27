@@ -19263,21 +19263,21 @@
             },
             {
               "rank": 10,
+              "name": "De Cuyper",
+              "prediction": 3.049581,
+              "prediction_p10": 0.872115,
+              "prediction_p90": 6.202222,
+              "confidence": "low",
+              "expected_minutes": 75.285977
+            },
+            {
+              "rank": 11,
               "name": "Verbruggen",
               "prediction": 3.038434,
               "prediction_p10": 0.841538,
               "prediction_p90": 6.007143,
               "confidence": "low",
               "expected_minutes": 83.014583
-            },
-            {
-              "rank": 11,
-              "name": "De Cuyper",
-              "prediction": 3.023567,
-              "prediction_p10": 0.767308,
-              "prediction_p90": 6.1025,
-              "confidence": "low",
-              "expected_minutes": 75.285977
             },
             {
               "rank": 12,
@@ -20545,7 +20545,7 @@
             {
               "rank": 1,
               "name": "Wirtz",
-              "prediction": 5.69843,
+              "prediction": 5.658292,
               "prediction_p10": 1.554545,
               "prediction_p90": 11.317544,
               "confidence": "low",
@@ -21961,9 +21961,9 @@
             {
               "rank": 38,
               "name": "George Hemmings",
-              "prediction": 1.025476,
+              "prediction": 1.081679,
               "prediction_p10": 0.0,
-              "prediction_p90": 2.847253,
+              "prediction_p90": 3.009091,
               "confidence": "medium",
               "expected_minutes": 31.30713
             },
@@ -22300,9 +22300,9 @@
             {
               "rank": 2,
               "name": "Muharemović",
-              "prediction": 3.861758,
-              "prediction_p10": 0.922436,
-              "prediction_p90": 7.626136,
+              "prediction": 3.889998,
+              "prediction_p10": 0.915909,
+              "prediction_p90": 7.639394,
               "confidence": "low",
               "expected_minutes": 74.602908
             },
@@ -22462,9 +22462,9 @@
             {
               "rank": 20,
               "name": "Okafor",
-              "prediction": 2.337483,
-              "prediction_p10": 0.180303,
-              "prediction_p90": 5.597619,
+              "prediction": 2.298289,
+              "prediction_p10": 0.166667,
+              "prediction_p90": 5.357143,
               "confidence": "low",
               "expected_minutes": 27.934014
             },
@@ -22936,9 +22936,9 @@
             {
               "rank": 4,
               "name": "Thiago",
-              "prediction": 3.414444,
+              "prediction": 3.431119,
               "prediction_p10": 0.142857,
-              "prediction_p90": 7.430159,
+              "prediction_p90": 7.45,
               "confidence": "low",
               "expected_minutes": 49.456972
             },
@@ -24118,8 +24118,8 @@
             {
               "rank": 5,
               "name": "Hume",
-              "prediction": 3.34967,
-              "prediction_p10": 0.689744,
+              "prediction": 3.342559,
+              "prediction_p10": 0.712088,
               "prediction_p90": 7.0,
               "confidence": "low",
               "expected_minutes": 77.951065
@@ -24208,8 +24208,8 @@
             {
               "rank": 15,
               "name": "Brobbey",
-              "prediction": 2.753405,
-              "prediction_p10": 0.375,
+              "prediction": 2.731025,
+              "prediction_p10": 0.363636,
               "prediction_p90": 6.225,
               "confidence": "low",
               "expected_minutes": 51.46534
@@ -24253,7 +24253,7 @@
             {
               "rank": 20,
               "name": "Kinsky",
-              "prediction": 2.458331,
+              "prediction": 2.46557,
               "prediction_p10": 0.459829,
               "prediction_p90": 5.803333,
               "confidence": "low",
