@@ -1,24 +1,24 @@
 {
   "season": "2026/27",
-  "data_gameweek": 11,
-  "next_gameweek": 12,
-  "generated_at_utc": "2026-11-27T12:29:51.638481+00:00",
+  "data_gameweek": 12,
+  "next_gameweek": 13,
+  "generated_at_utc": "2026-11-27T23:41:17.551211+00:00",
   "picks": [
     {
-      "name": "Cunha",
-      "team": "Man Utd",
+      "name": "Rayan",
+      "team": "Bournemouth",
       "position": "Midfielder",
-      "ownership": 5.5,
-      "prediction": 4.766501,
-      "differential_score": 4.504,
-      "price": 7.8,
-      "form": 2.7,
+      "ownership": 2.4,
+      "prediction": 4.642972,
+      "differential_score": 4.532,
+      "price": 6.3,
+      "form": 2.0,
       "fixture": {
-        "home": "Man Utd",
-        "away": "Brentford",
+        "home": "Bournemouth",
+        "away": "Brighton",
         "is_home": true,
-        "kickoff": "2026-11-28T15:00:00",
-        "match_id": "26-27-prem-manchester-united-vs-brentford"
+        "kickoff": "2026-12-02T20:15:00",
+        "match_id": "26-27-prem-afc-bournemouth-vs-brighton-hove-albion"
       }
     },
     {
@@ -26,67 +26,67 @@
       "team": "Nott'm Forest",
       "position": "Defender",
       "ownership": 1.9,
-      "prediction": 4.586049,
-      "differential_score": 4.499,
+      "prediction": 4.597343,
+      "differential_score": 4.51,
       "price": 5.5,
-      "form": 2.3,
+      "form": 2.5,
       "fixture": {
-        "home": "Nott'm Forest",
-        "away": "Chelsea",
-        "is_home": true,
-        "kickoff": "2026-11-27T20:00:00",
-        "match_id": "26-27-prem-nottingham-forest-vs-chelsea"
-      }
-    },
-    {
-      "name": "Rayan",
-      "team": "Bournemouth",
-      "position": "Midfielder",
-      "ownership": 2.4,
-      "prediction": 4.584157,
-      "differential_score": 4.474,
-      "price": 6.3,
-      "form": 2.7,
-      "fixture": {
-        "home": "Fulham",
-        "away": "Bournemouth",
+        "home": "Hull City",
+        "away": "Nott'm Forest",
         "is_home": false,
-        "kickoff": "2026-11-29T14:05:00",
-        "match_id": "26-27-prem-fulham-vs-afc-bournemouth"
+        "kickoff": "2026-12-02T19:30:00",
+        "match_id": "26-27-prem-hull-city-vs-nottingham-forest"
       }
     },
     {
-      "name": "Mitchell",
-      "team": "Crystal Palace",
-      "position": "Defender",
-      "ownership": 4.4,
-      "prediction": 4.53739,
-      "differential_score": 4.338,
-      "price": 4.4,
-      "form": 1.7,
-      "fixture": {
-        "home": "Crystal Palace",
-        "away": "Hull City",
-        "is_home": true,
-        "kickoff": "2026-11-29T14:05:00",
-        "match_id": "26-27-prem-crystal-palace-vs-hull-city"
-      }
-    },
-    {
-      "name": "Barcola",
-      "team": "Liverpool",
+      "name": "Manzambi",
+      "team": "Aston Villa",
       "position": "Midfielder",
-      "ownership": 4.5,
-      "prediction": 4.483841,
-      "differential_score": 4.282,
-      "price": 8.1,
-      "form": 3.7,
+      "ownership": 8.7,
+      "prediction": 4.811162,
+      "differential_score": 4.393,
+      "price": 6.2,
+      "form": 2.5,
       "fixture": {
-        "home": "Everton",
-        "away": "Liverpool",
+        "home": "Aston Villa",
+        "away": "Everton",
+        "is_home": true,
+        "kickoff": "2026-12-02T20:15:00",
+        "match_id": "26-27-prem-aston-villa-vs-everton"
+      }
+    },
+    {
+      "name": "Cunha",
+      "team": "Man Utd",
+      "position": "Midfielder",
+      "ownership": 5.5,
+      "prediction": 4.640935,
+      "differential_score": 4.386,
+      "price": 7.8,
+      "form": 2.0,
+      "fixture": {
+        "home": "Newcastle",
+        "away": "Man Utd",
         "is_home": false,
-        "kickoff": "2026-11-29T12:00:00",
-        "match_id": "26-27-prem-everton-vs-liverpool"
+        "kickoff": "2026-12-02T20:15:00",
+        "match_id": "26-27-prem-newcastle-united-vs-manchester-united"
+      }
+    },
+    {
+      "name": "Gibbs-White",
+      "team": "Nott'm Forest",
+      "position": "Midfielder",
+      "ownership": 8.7,
+      "prediction": 4.700959,
+      "differential_score": 4.292,
+      "price": 7.8,
+      "form": 5.5,
+      "fixture": {
+        "home": "Hull City",
+        "away": "Nott'm Forest",
+        "is_home": false,
+        "kickoff": "2026-12-02T19:30:00",
+        "match_id": "26-27-prem-hull-city-vs-nottingham-forest"
       }
     }
   ]
