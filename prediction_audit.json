@@ -5,56 +5,6 @@
   "players_compared": 654,
   "largest_changes": [
     {
-      "name": "Raya",
-      "old_prediction": 4.09,
-      "new_prediction": 3.112,
-      "change": -0.979,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 61.971107,
-      "fixture_difficulty": 5
-    },
-    {
-      "name": "Isak",
-      "old_prediction": 5.085,
-      "new_prediction": 5.12,
-      "change": 0.035,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 63.208255,
-      "fixture_difficulty": 3
-    },
-    {
-      "name": "Canvot",
-      "old_prediction": 2.222,
-      "new_prediction": 2.189,
-      "change": -0.033,
-      "old_confidence": "low",
-      "new_confidence": "low",
-      "expected_minutes": 36.670538,
-      "fixture_difficulty": 2
-    },
-    {
-      "name": "Darlow",
-      "old_prediction": 0.321,
-      "new_prediction": 0.331,
-      "change": 0.01,
-      "old_confidence": "high",
-      "new_confidence": "high",
-      "expected_minutes": 4.330149,
-      "fixture_difficulty": 4
-    },
-    {
-      "name": "Chilwell",
-      "old_prediction": 0.476,
-      "new_prediction": 0.482,
-      "change": 0.005,
-      "old_confidence": "high",
-      "new_confidence": "high",
-      "expected_minutes": 4.030282,
-      "fixture_difficulty": 2
-    },
-    {
       "name": "Haaland",
       "old_prediction": 5.636,
       "new_prediction": 5.636,
@@ -235,6 +185,16 @@
       "fixture_difficulty": 4
     },
     {
+      "name": "Raya",
+      "old_prediction": 3.112,
+      "new_prediction": 3.112,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 61.971107,
+      "fixture_difficulty": 5
+    },
+    {
       "name": "Konsa",
       "old_prediction": 2.85,
       "new_prediction": 2.85,
@@ -253,6 +213,46 @@
       "new_confidence": "low",
       "expected_minutes": 28.203964,
       "fixture_difficulty": 5
+    },
+    {
+      "name": "Matheus N.",
+      "old_prediction": 2.659,
+      "new_prediction": 2.659,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 60.745418,
+      "fixture_difficulty": 4
+    },
+    {
+      "name": "Gu\u00e9hi",
+      "old_prediction": 2.514,
+      "new_prediction": 2.514,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 54.081566,
+      "fixture_difficulty": 4
+    },
+    {
+      "name": "Bouaddi",
+      "old_prediction": 2.509,
+      "new_prediction": 2.509,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 39.397081,
+      "fixture_difficulty": 4
+    },
+    {
+      "name": "O'Reilly",
+      "old_prediction": 2.401,
+      "new_prediction": 2.401,
+      "change": 0.0,
+      "old_confidence": "low",
+      "new_confidence": "low",
+      "expected_minutes": 50.2382,
+      "fixture_difficulty": 4
     }
   ]
 }
