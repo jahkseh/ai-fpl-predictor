@@ -2,23 +2,23 @@
   "season": "2026/27",
   "data_gameweek": 12,
   "next_gameweek": 13,
-  "generated_at_utc": "2026-11-27T23:41:17.551211+00:00",
+  "generated_at_utc": "2026-11-28T07:59:04.680501+00:00",
   "picks": [
     {
-      "name": "Rayan",
-      "team": "Bournemouth",
+      "name": "Gibbs-White",
+      "team": "Nott'm Forest",
       "position": "Midfielder",
-      "ownership": 2.4,
-      "prediction": 4.642972,
-      "differential_score": 4.532,
-      "price": 6.3,
-      "form": 2.0,
+      "ownership": 8.8,
+      "prediction": 5.294941,
+      "differential_score": 4.829,
+      "price": 7.8,
+      "form": 5.5,
       "fixture": {
-        "home": "Bournemouth",
-        "away": "Brighton",
-        "is_home": true,
-        "kickoff": "2026-12-02T20:15:00",
-        "match_id": "26-27-prem-afc-bournemouth-vs-brighton-hove-albion"
+        "home": "Hull City",
+        "away": "Nott'm Forest",
+        "is_home": false,
+        "kickoff": "2026-12-02T19:30:00",
+        "match_id": "26-27-prem-hull-city-vs-nottingham-forest"
       }
     },
     {
@@ -26,8 +26,8 @@
       "team": "Nott'm Forest",
       "position": "Defender",
       "ownership": 1.9,
-      "prediction": 4.597343,
-      "differential_score": 4.51,
+      "prediction": 4.38085,
+      "differential_score": 4.298,
       "price": 5.5,
       "form": 2.5,
       "fixture": {
@@ -39,54 +39,54 @@
       }
     },
     {
-      "name": "Manzambi",
-      "team": "Aston Villa",
+      "name": "Rudoni",
+      "team": "Coventry City",
       "position": "Midfielder",
-      "ownership": 8.7,
-      "prediction": 4.811162,
-      "differential_score": 4.393,
-      "price": 6.2,
-      "form": 2.5,
+      "ownership": 2.1,
+      "prediction": 4.383641,
+      "differential_score": 4.292,
+      "price": 5.0,
+      "form": 5.2,
       "fixture": {
-        "home": "Aston Villa",
-        "away": "Everton",
+        "home": "Coventry City",
+        "away": "Ipswich Town",
+        "is_home": true,
+        "kickoff": "2026-12-01T20:00:00",
+        "match_id": "26-27-prem-coventry-city-vs-ipswich-town"
+      }
+    },
+    {
+      "name": "Araujo",
+      "team": "Liverpool",
+      "position": "Defender",
+      "ownership": 5.3,
+      "prediction": 4.519191,
+      "differential_score": 4.28,
+      "price": 5.5,
+      "form": 4.2,
+      "fixture": {
+        "home": "Liverpool",
+        "away": "Sunderland",
+        "is_home": true,
+        "kickoff": "2026-12-02T19:30:00",
+        "match_id": "26-27-prem-liverpool-vs-sunderland"
+      }
+    },
+    {
+      "name": "Silva",
+      "team": "Bournemouth",
+      "position": "Defender",
+      "ownership": 4.4,
+      "prediction": 4.152977,
+      "differential_score": 3.97,
+      "price": 5.1,
+      "form": 4.8,
+      "fixture": {
+        "home": "Bournemouth",
+        "away": "Brighton",
         "is_home": true,
         "kickoff": "2026-12-02T20:15:00",
-        "match_id": "26-27-prem-aston-villa-vs-everton"
-      }
-    },
-    {
-      "name": "Cunha",
-      "team": "Man Utd",
-      "position": "Midfielder",
-      "ownership": 5.5,
-      "prediction": 4.640935,
-      "differential_score": 4.386,
-      "price": 7.8,
-      "form": 2.0,
-      "fixture": {
-        "home": "Newcastle",
-        "away": "Man Utd",
-        "is_home": false,
-        "kickoff": "2026-12-02T20:15:00",
-        "match_id": "26-27-prem-newcastle-united-vs-manchester-united"
-      }
-    },
-    {
-      "name": "Gibbs-White",
-      "team": "Nott'm Forest",
-      "position": "Midfielder",
-      "ownership": 8.7,
-      "prediction": 4.700959,
-      "differential_score": 4.292,
-      "price": 7.8,
-      "form": 5.5,
-      "fixture": {
-        "home": "Hull City",
-        "away": "Nott'm Forest",
-        "is_home": false,
-        "kickoff": "2026-12-02T19:30:00",
-        "match_id": "26-27-prem-hull-city-vs-nottingham-forest"
+        "match_id": "26-27-prem-afc-bournemouth-vs-brighton-hove-albion"
       }
     }
   ]
